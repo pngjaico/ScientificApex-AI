@@ -10,6 +10,12 @@ __pycache__/
 .env
 .env.*
 
+# Local agent/tool state
+.agents/
+.claude/
+.codex/
+.playwright-osf/
+
 # Temporary working areas
 tmp/
 *.tmp
@@ -33,6 +39,107 @@ graphify-out/workspace_graph_manifest.json
 node_modules/
 dist/
 build/
+
+# Track the new operational graph script; keep old ad hoc scripts local unless
+# they are promoted intentionally.
+scripts/*
+!scripts/generate_workspace_graph.py
+
+# Local research corpora, project workspaces, and legacy folders.
+# These are intentionally not versioned by the root repo until a reviewed
+# migration manifest says otherwise.
+Correção Orientador/
+Doutorado/
+Leitor de Artigos/
+NMA_OSA_VPI/
+PDFS DR ANDRÉ/
+REVISÃO LIGA/
+Revisões Sistemáticas/
+Submissão Final/
+projects/
+sources/
+*.pdf
+pesquisa 2.txt
+pesquisa gastrosp e gastrão.txt
+kady-byok-logic.md
+
+# The full skill mirror is large. Track the Article Machine routing subset
+# explicitly; leave broad upstream mirrors local.
+skills/*
+!skills/agent-benchmark-harness/
+!skills/agent-benchmark-harness/**
+!skills/alphafold-pdb-structure-router/
+!skills/alphafold-pdb-structure-router/**
+!skills/arbor/
+!skills/arbor/**
+!skills/asreview-screening-bridge/
+!skills/asreview-screening-bridge/**
+!skills/author-identity-resolver/
+!skills/author-identity-resolver/**
+!skills/autoskill/
+!skills/autoskill/**
+!skills/bids/
+!skills/bids/**
+!skills/bulk-rnaseq/
+!skills/bulk-rnaseq/**
+!skills/chembl-bindingdb-miner/
+!skills/chembl-bindingdb-miner/**
+!skills/cwl-workflow-bridge/
+!skills/cwl-workflow-bridge/**
+!skills/database-retrieval-governor/
+!skills/database-retrieval-governor/**
+!skills/evidence-lock-hardener/
+!skills/evidence-lock-hardener/**
+!skills/exa-search/
+!skills/exa-search/**
+!skills/experimental-design/
+!skills/experimental-design/**
+!skills/experimental-design-planner/
+!skills/experimental-design-planner/**
+!skills/grade-sof-table-builder/
+!skills/grade-sof-table-builder/**
+!skills/guideline-router/
+!skills/guideline-router/**
+!skills/hypothesis-tournament/
+!skills/hypothesis-tournament/**
+!skills/in-silico-validation-governor/
+!skills/in-silico-validation-governor/**
+!skills/liteparse/
+!skills/liteparse/**
+!skills/nextflow/
+!skills/nextflow/**
+!skills/nextflow-pipeline-runner/
+!skills/nextflow-pipeline-runner/**
+!skills/open-targets-drug-targeting/
+!skills/open-targets-drug-targeting/**
+!skills/openalex-literature-graph/
+!skills/openalex-literature-graph/**
+!skills/paper-lookup/
+!skills/paper-lookup/**
+!skills/pathway-enrichment/
+!skills/pathway-enrichment/**
+!skills/ptbr-article-writing/
+!skills/ptbr-article-writing/**
+!skills/query-string-governor/
+!skills/query-string-governor/**
+!skills/retraction-integrity-checker/
+!skills/retraction-integrity-checker/**
+!skills/risk-of-bias-assistant/
+!skills/risk-of-bias-assistant/**
+!skills/ro-crate-provenance-export/
+!skills/ro-crate-provenance-export/**
+!skills/scientific-novelty-checker/
+!skills/scientific-novelty-checker/**
+!skills/scientific-red-team-reviewer/
+!skills/scientific-red-team-reviewer/**
+!skills/snakemake-pipeline-runner/
+!skills/snakemake-pipeline-runner/**
+!skills/stage-audit-governor/
+!skills/stage-audit-governor/**
+!skills/statistical-power/
+!skills/statistical-power/**
+!skills/topic-ideation-tournament/
+!skills/topic-ideation-tournament/**
 
 # OS/editor noise
 .DS_Store

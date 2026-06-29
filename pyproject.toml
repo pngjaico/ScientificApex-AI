@@ -1,0 +1,23 @@
+[project]
+name = "article-machine"
+version = "0.1.0"
+description = "Scientific OS for agent-native research, evidence synthesis, and computational discovery."
+readme = "README.md"
+requires-python = ">=3.13"
+dependencies = []
+
+[project.scripts]
+article-machine = "article_machine.cli:main"
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[dependency-groups]
+dev = [
+  "pytest>=8.3.5",
+]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-q"

@@ -1,0 +1,341 @@
+from __future__ import annotations
+
+from datetime import datetime, timezone
+from pathlib import Path
+import re
+import unicodedata
+
+from .serialization import load_structured_file, save_structured_file
+from .standards import route_standards
+
+
+MODE_ORDER = [
+    "bootstrap",
+    "protocol-freeze",
+    "corpus-build",
+    "screening",
+    "extraction",
+    "analysis",
+    "discovery",
+    "drafting",
+    "review-trinity",
+    "submission",
+]
+
+
+def _now_iso() -> str:
+    return datetime.now(timezone.utc).isoformat()
+
+
+def slugify_project_name(name: str) -> str:
+    normalized = unicodedata.normalize("NFKD", name).encode("ascii", "ignore").decode("ascii")
+    slug = re.sub(r"[^a-zA-Z0-9]+", "-", normalized).strip("-").lower()
+    return slug or "project"
+
+
+def next_modes(current_mode: str, lane: str) -> list[str]:
+    if current_mode == "analysis" and lane == "computational-discovery":
+        return ["discovery"]
+    if current_mode == "extraction" and lane == "computational-discovery":
+        return ["discovery"]
+    try:
+        idx = MODE_ORDER.index(current_mode)
+    except ValueError:
+        return []
+    if idx + 1 >= len(MODE_ORDER):
+        return []
+    upcoming = MODE_ORDER[idx + 1]
+    if current_mode == "drafting":
+        return ["review-trinity"]
+    if current_mode == "review-trinity":
+        return ["submission"]
+    if lane == "computational-discovery" and upcoming == "analysis":
+        return ["discovery"]
+    return [upcoming]
+
+
+def _project_template(name: str, slug: str, project_type: str, standards: dict) -> dict:
+    lane = standards["lane"]
+    return {
+        "id": slug,
+        "name": name,
+        "project_type": project_type,
+        "lane": lane,
+        "created_at": _now_iso(),
+        "updated_at": _now_iso(),
+        "state": {
+            "current_mode": "bootstrap",
+            "mode_history": ["bootstrap"],
+            "allowed_next_modes": next_modes("bootstrap", lane),
+        },
+    }
+
+
+def _protocol_template(project_type: str) -> dict:
+    return {
+        "project_type": project_type,
+        "status": "draft",
+        "research_question": "",
+        "hypothesis": "",
+        "objectives": [],
+        "inclusion_criteria": [],
+        "exclusion_criteria": [],
+        "registration": {
+            "required": False,
+            "status": "not-applicable",
+            "registry": "",
+            "registry_id": "",
+            "registry_url": "",
+            "registered_at": "",
+            "registered_before_extraction": False,
+            "notes": "",
+        },
+        "notes": "",
+    }
+
+
+def _compute_template(project_type: str, lane: str) -> dict:
+    discovery_skills = [
+        "rdkit",
+        "datamol",
+        "deepchem",
+        "diffdock",
+        "medchem",
+        "molecular-dynamics",
+        "statistical-analysis",
+        "scientific-visualization",
+    ]
+    return {
+        "project_type": project_type,
+        "lane": lane,
+        "r": {
+            "required": project_type in {"network-meta-analysis", "health-economics"},
+            "runner": "Rscript",
+            "packages": ["meta", "metafor", "dmetar"],
+        },
+        "python": {
+            "skills": discovery_skills if lane == "computational-discovery" else ["statistical-analysis"],
+        },
+    }
+
+
+def _write_text(path: Path, text: str) -> None:
+    path.parent.mkdir(parents=True, exist_ok=True)
+    path.write_text(text, encoding="utf-8")
+
+
+def init_project(workspace_root: Path, name: str, project_type: str) -> Path:
+    workspace_root = Path(workspace_root)
+    standards = route_standards(project_type)
+    slug = slugify_project_name(name)
+    project_dir = workspace_root / "projects" / slug
+    project_dir.mkdir(parents=True, exist_ok=True)
+
+    directories = [
+        "sources/raw",
+        "sources/converted",
+        "context/task_packets",
+        "context/life_science",
+        "evidence",
+        "evidence/life_science",
+        "analysis",
+        "drafts/thesis",
+        "deliverables",
+        "reviews",
+        "figures",
+        "exports",
+        ".machine/runs",
+    ]
+    for rel in directories:
+        (project_dir / rel).mkdir(parents=True, exist_ok=True)
+
+    project_data = _project_template(name, slug, project_type, standards)
+    save_structured_file(project_dir / "project.yaml", project_data)
+    protocol_data = _protocol_template(project_type)
+    registration_policy = standards.get("registration_policy", {})
+    protocol_data["registration"] = {
+        "required": bool(registration_policy.get("required", False)),
+        "status": "pending" if registration_policy.get("required", False) else "not-applicable",
+        "registry": "",
+        "registry_id": "",
+        "registry_url": "",
+        "registered_at": "",
+        "registered_before_extraction": False,
+        "notes": "",
+    }
+    save_structured_file(project_dir / "protocol.yaml", protocol_data)
+    save_structured_file(project_dir / "standards.yaml", standards)
+    save_structured_file(project_dir / "compute.yaml", _compute_template(project_type, standards["lane"]))
+    save_structured_file(
+        project_dir / "reviews" / "review_report.json",
+        {
+            "aggregate_status": "pending",
+            "reviewers": {
+                "methodological": {"status": "pending", "issues": []},
+                "quantitative": {"status": "pending", "issues": []},
+                "editorial": {"status": "pending", "issues": []},
+            },
+        },
+    )
+
+    _write_text(
+        project_dir / "drafts" / "manuscript.md",
+        "# Manuscript\n\nUse {{claim:claim-id}} markers for every factual assertion.\n",
+    )
+    _write_text(project_dir / "drafts" / "references.bib", "")
+    _write_text(project_dir / "evidence" / "claim_map.jsonl", "")
+    _write_text(
+        project_dir / "context" / "project_brief.md",
+        f"# {name}\n\nType: {project_type}\nLane: {standards['lane']}\n",
+    )
+    _write_text(
+        project_dir / "analysis" / "README.md",
+        "Place analysis scripts (.py, .R, .qmd) and generated reports in this directory.\n",
+    )
+    return project_dir
+
+
+def load_project(project_dir: Path) -> dict:
+    return load_structured_file(Path(project_dir) / "project.yaml")
+
+
+def save_project(project_dir: Path, payload: dict) -> None:
+    payload["updated_at"] = _now_iso()
+    state = payload.setdefault("state", {})
+    lane = payload.get("lane", "evidence-writing")
+    current_mode = state.get("current_mode", "bootstrap")
+    state["allowed_next_modes"] = next_modes(current_mode, lane)
+    save_structured_file(Path(project_dir) / "project.yaml", payload)
+
+
+def _has_nonempty_registry(project_dir: Path) -> bool:
+    registry = Path(project_dir) / "sources" / "registry.jsonl"
+    return registry.exists() and registry.read_text(encoding="utf-8").strip() != ""
+
+
+def _registration_required(project_dir: Path, project: dict | None = None, protocol: dict | None = None) -> bool:
+    standards = load_structured_file(Path(project_dir) / "standards.yaml")
+    registration_policy = standards.get("registration_policy", {})
+    if registration_policy.get("required", False):
+        return True
+    protocol_payload = protocol or load_structured_file(Path(project_dir) / "protocol.yaml")
+    return bool(protocol_payload.get("registration", {}).get("required", False))
+
+
+def _registration_gate(protocol: dict) -> list[str]:
+    registration = protocol.get("registration", {})
+    issues: list[str] = []
+    if not registration.get("required", False):
+        return issues
+    if registration.get("status") != "registered":
+        issues.append("protocol.yaml registration.status must be 'registered' before extraction.")
+    if not registration.get("registry"):
+        issues.append("protocol.yaml registration.registry is required before extraction.")
+    if not registration.get("registry_url"):
+        issues.append("protocol.yaml registration.registry_url is required before extraction.")
+    if not registration.get("registered_at"):
+        issues.append("protocol.yaml registration.registered_at is required before extraction.")
+    if not registration.get("registered_before_extraction", False):
+        issues.append("protocol.yaml registration.registered_before_extraction must be true before extraction.")
+    return issues
+
+
+def register_review_protocol(
+    project_dir: Path,
+    registry: str,
+    registry_id: str,
+    registry_url: str,
+    registered_at: str,
+    notes: str = "",
+) -> dict:
+    project_dir = Path(project_dir)
+    protocol = load_structured_file(project_dir / "protocol.yaml")
+    registration = protocol.setdefault("registration", {})
+    registration.update(
+        {
+            "required": True,
+            "status": "registered",
+            "registry": registry,
+            "registry_id": registry_id,
+            "registry_url": registry_url,
+            "registered_at": registered_at,
+            "registered_before_extraction": True,
+            "notes": notes,
+        }
+    )
+    save_structured_file(project_dir / "protocol.yaml", protocol)
+    return registration
+
+
+def gate_mode(project_dir: Path, target_mode: str) -> dict:
+    project_dir = Path(project_dir)
+    project = load_project(project_dir)
+    protocol = load_structured_file(project_dir / "protocol.yaml")
+    review_report = load_structured_file(project_dir / "reviews" / "review_report.json")
+    issues: list[str] = []
+
+    current_mode = project.get("state", {}).get("current_mode", "bootstrap")
+    allowed = project.get("state", {}).get("allowed_next_modes", [])
+    if target_mode not in allowed:
+        issues.append(f"Mode '{target_mode}' is not allowed from '{current_mode}'.")
+
+    if target_mode == "protocol-freeze":
+        if not protocol.get("research_question"):
+            issues.append("protocol.yaml is missing 'research_question'.")
+        if not protocol.get("objectives"):
+            issues.append("protocol.yaml must declare at least one objective.")
+    elif target_mode == "corpus-build":
+        if not (project_dir / "standards.yaml").exists():
+            issues.append("standards.yaml is missing.")
+    elif target_mode in {"screening", "extraction"}:
+        if not _has_nonempty_registry(project_dir):
+            issues.append("sources/registry.jsonl is empty.")
+        if target_mode == "extraction" and _registration_required(project_dir, project, protocol):
+            issues.extend(_registration_gate(protocol))
+    elif target_mode == "analysis":
+        if not (project_dir / "evidence" / "claim_map.jsonl").exists():
+            issues.append("evidence/claim_map.jsonl is missing.")
+        if _registration_required(project_dir, project, protocol):
+            issues.extend(_registration_gate(protocol))
+    elif target_mode == "discovery":
+        if project.get("lane") != "computational-discovery":
+            issues.append("Only computational-discovery projects can enter discovery mode.")
+    elif target_mode == "review-trinity":
+        manuscript = project_dir / "drafts" / "manuscript.md"
+        if not manuscript.exists() or not manuscript.read_text(encoding="utf-8").strip():
+            issues.append("drafts/manuscript.md is empty.")
+    elif target_mode == "submission":
+        if review_report.get("aggregate_status") != "pass":
+            issues.append("reviews/review_report.json must be PASS before submission.")
+
+    return {
+        "status": "passed" if not issues else "blocked",
+        "target_mode": target_mode,
+        "issues": issues,
+    }
+
+
+def advance_mode(project_dir: Path, target_mode: str) -> dict:
+    project_dir = Path(project_dir)
+    gate = gate_mode(project_dir, target_mode)
+    if gate["status"] != "passed":
+        return gate
+
+    project = load_project(project_dir)
+    state = project.setdefault("state", {})
+    history = state.setdefault("mode_history", [])
+    history.append(target_mode)
+    state["current_mode"] = target_mode
+    state["allowed_next_modes"] = next_modes(target_mode, project.get("lane", "evidence-writing"))
+
+    if target_mode == "protocol-freeze":
+        protocol = load_structured_file(project_dir / "protocol.yaml")
+        protocol["status"] = "frozen"
+        save_structured_file(project_dir / "protocol.yaml", protocol)
+
+    save_project(project_dir, project)
+    return {
+        "status": "passed",
+        "target_mode": target_mode,
+        "allowed_next_modes": state["allowed_next_modes"],
+    }
