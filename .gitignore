@@ -1,0 +1,39 @@
+# Python/runtime caches
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+
+# Local environments and secrets
+.venv/
+.env
+.env.*
+
+# Temporary working areas
+tmp/
+*.tmp
+*.bak
+
+# Graphify transient extraction state. Keep the final graph artifacts visible.
+.graphify_*
+graphify-out/.graphify_*
+graphify-out/cache/
+graphify-out/converted/
+graphify-out/.chunks_lines.jsonl
+graphify-out/.graphify_chunk_*.json
+graphify-out/.graphify_chunks*.json
+graphify-out/.graphify_uncached.txt
+graphify-out/workspace_graph_manifest.json
+!graphify-out/graph.json
+!graphify-out/graph.html
+!graphify-out/GRAPH_REPORT.md
+
+# Node/tooling
+node_modules/
+dist/
+build/
+
+# OS/editor noise
+.DS_Store
+Thumbs.db

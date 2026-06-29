@@ -1,0 +1,28 @@
+{
+  "name": "doutorado",
+  "version": "1.0.0",
+  "description": "Scientific OS for agent-native research, evidence synthesis, meta-analysis, thesis drafting, and computational discovery.",
+  "main": "index.js",
+  "directories": {
+    "doc": "docs",
+    "test": "tests"
+  },
+  "scripts": {
+    "test": ".venv\\\\Scripts\\\\python.exe -m pytest",
+    "article-machine:help": ".venv\\\\Scripts\\\\python.exe -m article_machine --help",
+    "article-machine:audit": ".venv\\\\Scripts\\\\python.exe -m article_machine machine audit --workspace-root .",
+    "graph:workspace": "python scripts\\\\generate_workspace_graph.py"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/pngjaico/ScientificApex-AI.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/pngjaico/ScientificApex-AI/issues"
+  },
+  "homepage": "https://github.com/pngjaico/ScientificApex-AI#readme"
+}
