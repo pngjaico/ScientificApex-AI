@@ -27,6 +27,16 @@ updates; the local unpublished package is outside the public package audit.
 Node dependency audit found zero vulnerabilities. A local CycloneDX SBOM was
 generated. Python, R and explicitly prepared browser runtimes passed preflight.
 
+A separate, corpus-free Git worktree at code candidate `4b057bd` restored the
+locked Python environment and Node `npm ci`. Its full suite also passed:
+**257 passed, 1 skipped; 85.25% branch-inclusive coverage**. Strict machine audit,
+skill-tree provenance (101 portable installed trees against the 264-entry
+inventory), and generated-document drift passed there. Initial clean-checkout
+failures exposed line-ending differences and unversioned conference/domain
+routes; those were corrected before the successful rerun. This checkout test
+does not imply that R restore, live providers or scientific benchmarks passed
+in that isolated worktree.
+
 Review fixes were exercised against failed checklists, missing reviewer evidence,
 changed inputs, stale red-team verdicts, invalid browser reports and timeouts.
 Clinical corpora were not read or moved; no push, PR, publication or human-data
