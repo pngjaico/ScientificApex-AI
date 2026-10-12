@@ -616,7 +616,7 @@
       },
       "pinned_revision": "local-unverified",
       "license": "NOASSERTION",
-      "tree_hash": "sha256:82810f53ef1e92497ea14123d04341755ded27ea708292aae081135abc4a6c3c",
+      "tree_hash": "sha256:93e2a3aca9b4832f245512e4dc78e971d5a1aaee11a9ffda86650b1c48cb0eb1",
       "dependencies": [],
       "credentials": [
         "ANTHROPIC_API_KEY",
@@ -1107,7 +1107,7 @@
       },
       "pinned_revision": "a1043ef544e3a100c28e70a736b6cf32554d0677",
       "license": "MIT",
-      "tree_hash": "sha256:e4ecbee12a4027c7cd624ce8b0b5ceeaaf46132c1bfacd97940e102a8231ee30",
+      "tree_hash": "sha256:5fbcdd04746c90f59b2931fa23084503fd16056eb6c53af38033bca0532afa4e",
       "dependencies": [
         "requests",
         "scholarly"
@@ -1156,7 +1156,7 @@
       },
       "pinned_revision": "local-unverified",
       "license": "NOASSERTION",
-      "tree_hash": "sha256:5b6244652d617c764b32ca14bee8ce899286ed720e4136f8a6bb24e60d5634fb",
+      "tree_hash": "sha256:17f349fbc1ce671c585cc5092ecd05a6c1c7ec515e75975f6431497418ba87bd",
       "dependencies": [],
       "credentials": [
         "OPENROUTER_API_KEY"
@@ -1184,7 +1184,7 @@
       },
       "pinned_revision": "a1043ef544e3a100c28e70a736b6cf32554d0677",
       "license": "MIT",
-      "tree_hash": "sha256:2852b88d321ea5db88bab65691e5f55aac67d32b917a71f5541ec39142ca0279",
+      "tree_hash": "sha256:440c42eb1d6fb4ab8b5ea85743cfa113c961d5090969b20add637a406a2878ce",
       "dependencies": [],
       "credentials": [],
       "network_domains": [
@@ -2133,7 +2133,7 @@
       },
       "pinned_revision": "local-unverified",
       "license": "NOASSERTION",
-      "tree_hash": "sha256:018e7f2e3c8c2dfcb9f64ba166d53c152b2cd10c5b53b79c29a1837f0f14899d",
+      "tree_hash": "sha256:09f051555977b46eb719ebea29fbeb8ef15182cd9e8af63e9a874aa032784c77",
       "dependencies": [
         "pandas",
         "torch"
@@ -2200,7 +2200,7 @@
       },
       "pinned_revision": "local-unverified",
       "license": "NOASSERTION",
-      "tree_hash": "sha256:df98fce2904cd38eb24afaabe8c62c4c58bdef241283ce61c249309b49350536",
+      "tree_hash": "sha256:d527f98a500f6eeaf4dd319590161e99db2f9b2eccb8b3ae14e1ddd103b79b50",
       "dependencies": [],
       "credentials": [],
       "network_domains": [
@@ -3206,7 +3206,7 @@
       },
       "pinned_revision": "local-unverified",
       "license": "NOASSERTION",
-      "tree_hash": "sha256:5d3e0c5cb9c94277eadb36db3d0776884e70ddeee3faa7e8f3a9425198e1434d",
+      "tree_hash": "sha256:5873d62f7fa8e70125bf588c7dc886ebd2fddb1e1c7f866074a7a3f6cad94216",
       "dependencies": [],
       "credentials": [
         "OPENROUTER_API_KEY"
@@ -3582,7 +3582,7 @@
       },
       "pinned_revision": "local-unverified",
       "license": "NOASSERTION",
-      "tree_hash": "sha256:d6c6442c953eb86b16a9aa6641b63c06c73b9b6545cc548fd3af3e440f6fe5c6",
+      "tree_hash": "sha256:7d4ce469454c3857d4596b7cd147c7b00ebb5ba45f20d886ecee8dd4923d1cc4",
       "dependencies": [],
       "credentials": [
         "OPENROUTER_API_KEY"
@@ -4077,7 +4077,7 @@
       },
       "pinned_revision": "local-unverified",
       "license": "NOASSERTION",
-      "tree_hash": "sha256:792b2a888a49b4b31067287210c356ecab864fa122a4b94cd0cac22daff1d150",
+      "tree_hash": "sha256:ba76bf768cb6402b57b764437521bcbad6e2eab84dece1a311750ced474a3a43",
       "dependencies": [],
       "credentials": [],
       "network_domains": [],
@@ -5058,7 +5058,7 @@
       },
       "pinned_revision": "local-unverified",
       "license": "NOASSERTION",
-      "tree_hash": "sha256:e8203fe19791062e1c50e4aad495ca312ac4a959e00667210042ec22d4ae2d82",
+      "tree_hash": "sha256:0c3be470d92a1d5ad71e0db8a0494d311e3fe5db404defa51721607bc9c7a6bc",
       "dependencies": [],
       "credentials": [],
       "network_domains": [
@@ -5409,7 +5409,7 @@
       },
       "pinned_revision": "local-unverified",
       "license": "NOASSERTION",
-      "tree_hash": "sha256:e2da60a2428909d59b3f4a98ddc76db838a550ed0098ea50265ac65478ba0b78",
+      "tree_hash": "sha256:59fd1c6c73952100bcded907344a2438ea9227c9389894d6ccf0c44dbcf891fc",
       "dependencies": [
         "canvas",
         "convert_from_path",
@@ -5447,7 +5447,7 @@
       },
       "pinned_revision": "a1043ef544e3a100c28e70a736b6cf32554d0677",
       "license": "MIT",
-      "tree_hash": "sha256:7dc5321291dcac8b859fd92091b9925718d4a0fdc944830fa27f8238ee6a63b4",
+      "tree_hash": "sha256:187c7477e93a028f9fe9f85fcb38123066e5b6076161428142486e1b643b6e5b",
       "dependencies": [],
       "credentials": [],
       "network_domains": [
@@ -5749,7 +5749,7 @@
       },
       "pinned_revision": "local-unverified",
       "license": "NOASSERTION",
-      "tree_hash": "sha256:1055c960abe6fb192899f11e0f5a5e3f2dee435eb8300ba201ba392851b027f2",
+      "tree_hash": "sha256:9de206639a72c12d2e395de5eb084aedeae49d2631439df6d2079339d775971c",
       "dependencies": [
         "pillow"
       ],
@@ -7448,7 +7448,7 @@
       },
       "pinned_revision": "local-unverified",
       "license": "NOASSERTION",
-      "tree_hash": "sha256:2fea1dc1609d7f9ebd94f0c3958e1f4f301bd854a53955c2596c5c2bb39f2e61",
+      "tree_hash": "sha256:ecd11d41a9e1362e2345cf52129b75724dbbae6f132c5b887c093f06fd657170",
       "dependencies": [],
       "credentials": [
         "OPENROUTER_API_KEY"
@@ -7478,7 +7478,7 @@
       },
       "pinned_revision": "local-unverified",
       "license": "NOASSERTION",
-      "tree_hash": "sha256:728bad642d1103e703c8d020f08e2a1ec1d2f58c3951521f19fe4f803f15b090",
+      "tree_hash": "sha256:cc120c88b214138484a9463171574e74f3059dd46c28068af8bf79cdceb72fd7",
       "dependencies": [
         "apply_palette",
         "apply_publication_style",
@@ -7554,7 +7554,7 @@
       },
       "pinned_revision": "a1043ef544e3a100c28e70a736b6cf32554d0677",
       "license": "MIT",
-      "tree_hash": "sha256:520dad6324392d5ef74df75c41877b87c65502bd4f8feb75b0872cf24eb44781",
+      "tree_hash": "sha256:f14aa135fbbc9fd3d56d773b1f2f7ff28574c269ed46208a97e9b606b4962351",
       "dependencies": [],
       "credentials": [],
       "network_domains": [
@@ -8538,7 +8538,7 @@
       },
       "pinned_revision": "local-unverified",
       "license": "NOASSERTION",
-      "tree_hash": "sha256:3cf9d5dbaa383d47c7445ceabfc177e388587bdeb735ae0e4ad4ada4b4613451",
+      "tree_hash": "sha256:463259982dfbee6739af9cd15a6250c9df5ec171c32694460c53a25e92296d1e",
       "dependencies": [
         "arima",
         "gc",
@@ -9315,7 +9315,7 @@
       },
       "pinned_revision": "local-unverified",
       "license": "NOASSERTION",
-      "tree_hash": "sha256:4491de28ec72ff701cdc3a5f24a743c8fa80e51ef7bf10804b850043fb604537",
+      "tree_hash": "sha256:d26d941954c5842fafd0e5ec675049a2f9de99188534554321823bd2eed222d6",
       "dependencies": [],
       "credentials": [
         "OPENROUTER_API_KEY"
@@ -9480,7 +9480,7 @@
       },
       "pinned_revision": "a1043ef544e3a100c28e70a736b6cf32554d0677",
       "license": "MIT",
-      "tree_hash": "sha256:0774e70eaf092f24df2b66425d10de4f794ed22f91d27eee266cf5f88104ae39",
+      "tree_hash": "sha256:e60ead872a4a6ae67e4fd915a0bff68709e376ffda75b98f3064390d90db6155",
       "dependencies": [],
       "credentials": [],
       "network_domains": [
@@ -9613,7 +9613,7 @@
       },
       "pinned_revision": "local-unverified",
       "license": "NOASSERTION",
-      "tree_hash": "sha256:32c971ad3553c65eabbdfab23d52e9fa6d78f58d952f07f786f4bc80a73142ec",
+      "tree_hash": "sha256:9395c90bd80675364d584b26da82cc955c6e07bf7dab615aaebc75aab63f7399",
       "dependencies": [
         "defusedxml",
         "font",

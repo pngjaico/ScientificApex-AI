@@ -57,11 +57,15 @@ def tree_hash(path: Path) -> str:
         digest.update(relative.encode("utf-8"))
         digest.update(b"\0")
         content = child.read_bytes()
-        if child.suffix.lower() in {
-            ".py", ".md", ".toml", ".lock", ".yml", ".yaml", ".json",
-            ".jsonl", ".html", ".css", ".js", ".sh", ".ps1", ".bat", ".cmd",
-        }:
-            content = content.replace(b"\r\n", b"\n")
+        # Git also normalizes extensionless instructions and text templates.
+        # Binary bytes remain exact; only valid, NUL-free UTF-8 is canonicalized.
+        try:
+            content.decode("utf-8")
+        except UnicodeDecodeError:
+            pass
+        else:
+            if b"\0" not in content:
+                content = content.replace(b"\r\n", b"\n")
         digest.update(content)
         digest.update(b"\0")
     return f"sha256:{digest.hexdigest()}"
