@@ -3,6 +3,32 @@ from pathlib import Path
 from article_machine import playwright_ops
 
 
+def test_playwright_cli_uses_locked_workspace_package_not_npx(tmp_path: Path, monkeypatch) -> None:
+    check = {
+        "status": "pass",
+        "node_path": "node",
+        "cli_path": str(tmp_path / "tools" / "playwright" / "node_modules" / "playwright" / "cli.js"),
+    }
+    monkeypatch.setattr(playwright_ops, "playwright_available", lambda: check)
+    calls = []
+
+    class Completed:
+        returncode = 0
+        stdout = "ok"
+        stderr = ""
+
+    def fake_run(command, **kwargs):
+        calls.append(command)
+        return Completed()
+
+    monkeypatch.setattr(playwright_ops.subprocess, "run", fake_run)
+    report = playwright_ops._run_playwright_cli(["--version"], tmp_path)
+
+    assert report["status"] == "pass"
+    assert calls[0][:2] == ["node", check["cli_path"]]
+    assert "npx" not in calls[0]
+
+
 def test_qa_html_falls_back_to_playwright_cli_when_node_api_is_unavailable(tmp_path: Path, monkeypatch) -> None:
     html_path = tmp_path / "deck.html"
     html_path.write_text("<html><body><section>ok</section></body></html>", encoding="utf-8")

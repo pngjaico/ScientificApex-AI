@@ -1,0 +1,1449 @@
+{
+  "contract": "WorkspacePreservationManifestV1",
+  "generated_at": "2026-07-22T17:32:13.617797+00:00",
+  "workspace_root": "C:\\Users\\Usuario-pc\\Desktop\\Doutorado",
+  "branch": "codex/article-machine-complete-56-ultra",
+  "head": "50430f080f9d825c7dfab94f0522c9dd4e6ed340",
+  "dirty": true,
+  "staging_policy": {
+    "git_add_dot_prohibited": true,
+    "explicit_pathspec_required": true,
+    "sensitive_files_must_remain_untracked": true
+  },
+  "classification_counts": {
+    "keep": 194,
+    "review": 4,
+    "exclude": 0,
+    "sensitive": 1
+  },
+  "worktree_entries": [
+    {
+      "path": ".agents/AGENTS.md",
+      "git_status": "??",
+      "classification": "keep",
+      "rationale": "code, policy, test, lock, or curated operational artifact"
+    },
+    {
+      "path": ".agents/GRAPH_FIRST.md",
+      "git_status": "??",
+      "classification": "keep",
+      "rationale": "code, policy, test, lock, or curated operational artifact"
+    },
+    {
+      "path": ".agents/README.md",
+      "git_status": "??",
+      "classification": "keep",
+      "rationale": "code, policy, test, lock, or curated operational artifact"
+    },
+    {
+      "path": ".agents/skills/content-preservation-guardian/SKILL.md",
+      "git_status": "??",
+      "classification": "keep",
+      "rationale": "code, policy, test, lock, or curated operational artifact"
+    },
+    {
+      "path": ".agents/skills/project-entry-navigator/SKILL.md",
+      "git_status": "??",
+      "classification": "keep",
+      "rationale": "code, policy, test, lock, or curated operational artifact"
+    },
+    {
+      "path": ".agents/skills/workspace-graph-navigator/SKILL.md",
+      "git_status": "??",
+      "classification": "keep",
+      "rationale": "code, policy, test, lock, or curated operational artifact"
+    },
+    {
+      "path": ".codex/agents/scientific-reviewer.toml",
+      "git_status": "??",
+      "classification": "keep",
+      "rationale": "code, policy, test, lock, or curated operational artifact"
+    },
+    {
+      "path": ".codex/agents/verification-runner.toml",
+      "git_status": "??",
+      "classification": "keep",
+      "rationale": "code, policy, test, lock, or curated operational artifact"
+    },
+    {
+      "path": ".codex/agents/workspace-explorer.toml",
+      "git_status": "??",
+      "classification": "keep",
+      "rationale": "code, policy, test, lock, or curated operational artifact"
+    },
+    {
+      "path": ".codex/config.toml",
+      "git_status": "??",
+      "classification": "keep",
+      "rationale": "code, policy, test, lock, or curated operational artifact"
+    },
+    {
+      "path": ".codex/profiles/ultra-benchmark.config.toml",
+      "git_status": "??",
+      "classification": "keep",
+      "rationale": "code, policy, test, lock, or curated operational artifact"
+    },
+    {
+      "path": ".codex/profiles/xhigh-baseline.config.toml",
+      "git_status": "??",
+      "classification": "keep",
+      "rationale": "code, policy, test, lock, or curated operational artifact"
+    },
+    {
+      "path": ".codex/README.md",
+      "git_status": "??",
+      "classification": "keep",
+      "rationale": "code, policy, test, lock, or curated operational artifact"
+    },
+    {
+      "path": ".gitattributes",
+      "git_status": "??",
+      "classification": "keep",
+      "rationale": "code, policy, test, lock, or curated operational artifact"
+    },
+    {
+      "path": ".github/workflows/quality-gate.yml",
+      "git_status": "??",
+      "classification": "keep",
+      "rationale": "code, policy, test, lock, or curated operational artifact"
+    },
+    {
+      "path": ".gitignore",
+      "git_status": " M",
+      "classification": "keep",
+      "rationale": "code, policy, test, lock, or curated operational artifact"
+    },
+    {
+      "path": ".machine/plugin_bindings.example.json",
+      "git_status": "??",
+      "classification": "review",
+      "rationale": "ambiguous root artifact requires explicit human review"
+    },
+    {
+      "path": "AGENT_MANIFEST.md",
+      "git_status": " M",
+      "classification": "keep",
+      "rationale": "code, policy, test, lock, or curated operational artifact"
+    },
+    {
+      "path": "AGENTS.md",
+      "git_status": " M",
+      "classification": "keep",
+      "rationale": "code, policy, test, lock, or curated operational artifact"
+    },
+    {
+      "path": "article_machine/adapters/__init__.py",
+      "git_status": "??",
+      "classification": "keep",
+      "rationale": "code, policy, test, lock, or curated operational artifact"
+    },
+    {
+      "path": "article_machine/adapters/runtime.py",
+      "git_status": "??",
+      "classification": "keep",
+      "rationale": "code, policy, test, lock, or curated operational artifact"
+    },
+    {
+      "path": "article_machine/agent_skills.py",
+      "git_status": " M",
+      "classification": "keep",
+      "rationale": "code, policy, test, lock, or curated operational artifact"
+    },
+    {
+      "path": "article_machine/analysis.py",
+      "git_status": " M",
+      "classification": "keep",
+      "rationale": "code, policy, test, lock, or curated operational artifact"
+    },
+    {
+      "path": "article_machine/benchmarks.py",
+      "git_status": "??",
+      "classification": "keep",
+      "rationale": "code, policy, test, lock, or curated operational artifact"
+    },
+    {
+      "path": "article_machine/cli.py",
+      "git_status": " M",
+      "classification": "keep",
+      "rationale": "code, policy, test, lock, or curated operational artifact"
+    },
+    {
+      "path": "article_machine/contracts/__init__.py",
+      "git_status": "??",
+      "classification": "keep",
+      "rationale": "code, policy, test, lock, or curated operational artifact"
+    },
+    {
+      "path": "article_machine/contracts/compute.py",
+      "git_status": "??",
+      "classification": "keep",
+      "rationale": "code, policy, test, lock, or curated operational artifact"
+    },
+    {
+      "path": "article_machine/evidence.py",
+      "git_status": " M",
+      "classification": "keep",
+      "rationale": "code, policy, test, lock, or curated operational artifact"
+    },
+    {
+      "path": "article_machine/policy/__init__.py",
+      "git_status": "??",
+      "classification": "keep",
+      "rationale": "code, policy, test, lock, or curated operational artifact"
+    },
+    {
+      "path": "article_machine/policy/gates.py",
+      "git_status": "??",
+      "classification": "keep",
+      "rationale": "code, policy, test, lock, or curated operational artifact"
+    },
+    {
+      "path": "article_machine/projects.py",
+      "git_status": " M",
+      "classification": "keep",
+      "rationale": "code, policy, test, lock, or curated operational artifact"
+    },
+    {
+      "path": "article_machine/ptbr_style.py",
+      "git_status": " M",
+      "classification": "keep",
+      "rationale": "code, policy, test, lock, or curated operational artifact"
+    },
+    {
+      "path": "article_machine/review.py",
+      "git_status": " M",
+      "classification": "keep",
+      "rationale": "code, policy, test, lock, or curated operational artifact"
+    },
+    {
+      "path": "article_machine/serialization.py",
+      "git_status": " M",
+      "classification": "keep",
+      "rationale": "code, policy, test, lock, or curated operational artifact"
+    },
+    {
+      "path": "article_machine/services/__init__.py",
+      "git_status": "??",
+      "classification": "keep",
+      "rationale": "code, policy, test, lock, or curated operational artifact"
+    },
+    {
+      "path": "article_machine/services/environment.py",
+      "git_status": "??",
+      "classification": "keep",
+      "rationale": "code, policy, test, lock, or curated operational artifact"
+    },
+    {
+      "path": "article_machine/services/gates.py",
+      "git_status": "??",
+      "classification": "keep",
+      "rationale": "code, policy, test, lock, or curated operational artifact"
+    },
+    {
+      "path": "article_machine/services/graph_query.py",
+      "git_status": "??",
+      "classification": "keep",
+      "rationale": "code, policy, test, lock, or curated operational artifact"
+    },
+    {
+      "path": "article_machine/services/runners.py",
+      "git_status": "??",
+      "classification": "keep",
+      "rationale": "code, policy, test, lock, or curated operational artifact"
+    },
+    {
+      "path": "article_machine/services/skill_registry.py",
+      "git_status": "??",
+      "classification": "keep",
+      "rationale": "code, policy, test, lock, or curated operational artifact"
+    },
+    {
+      "path": "article_machine/zero_trust.py",
+      "git_status": " M",
+      "classification": "keep",
+      "rationale": "code, policy, test, lock, or curated operational artifact"
+    },
+    {
+      "path": "docs/AGENT_OPERATION_MAP.md",
+      "git_status": "??",
+      "classification": "keep",
+      "rationale": "code, policy, test, lock, or curated operational artifact"
+    },
+    {
+      "path": "docs/AGENT_START_HERE.md",
+      "git_status": " M",
+      "classification": "keep",
+      "rationale": "code, policy, test, lock, or curated operational artifact"
+    },
+    {
+      "path": "docs/ARTICLE_MACHINE_AGENT_PLAYBOOK.md",
+      "git_status": " M",
+      "classification": "keep",
+      "rationale": "code, policy, test, lock, or curated operational artifact"
+    },
+    {
+      "path": "docs/WORKSPACE_REORG_PLAN.md",
+      "git_status": " M",
+      "classification": "keep",
+      "rationale": "code, policy, test, lock, or curated operational artifact"
+    },
+    {
+      "path": "graphify-out/graph.html",
+      "git_status": " M",
+      "classification": "review",
+      "rationale": "generated graph must be regenerated from a clean candidate commit"
+    },
+    {
+      "path": "graphify-out/graph.json",
+      "git_status": " M",
+      "classification": "review",
+      "rationale": "generated graph must be regenerated from a clean candidate commit"
+    },
+    {
+      "path": "graphify-out/GRAPH_REPORT.md",
+      "git_status": " M",
+      "classification": "review",
+      "rationale": "generated graph must be regenerated from a clean candidate commit"
+    },
+    {
+      "path": "pyproject.toml",
+      "git_status": " M",
+      "classification": "keep",
+      "rationale": "code, policy, test, lock, or curated operational artifact"
+    },
+    {
+      "path": "README.md",
+      "git_status": " M",
+      "classification": "keep",
+      "rationale": "code, policy, test, lock, or curated operational artifact"
+    },
+    {
+      "path": "scripts/generate_skill_docs.py",
+      "git_status": "??",
+      "classification": "keep",
+      "rationale": "code, policy, test, lock, or curated operational artifact"
+    },
+    {
+      "path": "scripts/generate_skill_registry.py",
+      "git_status": "??",
+      "classification": "keep",
+      "rationale": "code, policy, test, lock, or curated operational artifact"
+    },
+    {
+      "path": "scripts/generate_workspace_graph.py",
+      "git_status": " M",
+      "classification": "keep",
+      "rationale": "code, policy, test, lock, or curated operational artifact"
+    },
+    {
+      "path": "scripts/generate_workspace_inventory.py",
+      "git_status": "??",
+      "classification": "keep",
+      "rationale": "code, policy, test, lock, or curated operational artifact"
+    },
+    {
+      "path": "SKILL_INDEX.md",
+      "git_status": " M",
+      "classification": "keep",
+      "rationale": "code, policy, test, lock, or curated operational artifact"
+    },
+    {
+      "path": "skills/academic-office-deliverables/SKILL.md",
+      "git_status": "??",
+      "classification": "keep",
+      "rationale": "code, policy, test, lock, or curated operational artifact"
+    },
+    {
+      "path": "skills/agent-benchmark-harness/SKILL.md",
+      "git_status": " M",
+      "classification": "keep",
+      "rationale": "code, policy, test, lock, or curated operational artifact"
+    },
+    {
+      "path": "skills/anti-ai-writing-governor/agents/openai.yaml",
+      "git_status": "??",
+      "classification": "keep",
+      "rationale": "code, policy, test, lock, or curated operational artifact"
+    },
+    {
+      "path": "skills/anti-ai-writing-governor/references/ai-style-markers.md",
+      "git_status": "??",
+      "classification": "keep",
+      "rationale": "code, policy, test, lock, or curated operational artifact"
+    },
+    {
+      "path": "skills/anti-ai-writing-governor/references/article-structure.md",
+      "git_status": "??",
+      "classification": "keep",
+      "rationale": "code, policy, test, lock, or curated operational artifact"
+    },
+    {
+      "path": "skills/anti-ai-writing-governor/SKILL.md",
+      "git_status": "??",
+      "classification": "keep",
+      "rationale": "code, policy, test, lock, or curated operational artifact"
+    },
+    {
+      "path": "skills/clinical-trials-database/references/clinical_trials_api.md",
+      "git_status": "??",
+      "classification": "keep",
+      "rationale": "code, policy, test, lock, or curated operational artifact"
+    },
+    {
+      "path": "skills/clinical-trials-database/references/studies_schema.md",
+      "git_status": "??",
+      "classification": "keep",
+      "rationale": "code, policy, test, lock, or curated operational artifact"
+    },
+    {
+      "path": "skills/clinical-trials-database/scripts/clinical_trials_api.py",
+      "git_status": "??",
+      "classification": "keep",
+      "rationale": "code, policy, test, lock, or curated operational artifact"
+    },
+    {
+      "path": "skills/clinical-trials-database/SKILL.md",
+      "git_status": "??",
+      "classification": "keep",
+      "rationale": "code, policy, test, lock, or curated operational artifact"
+    },
+    {
+      "path": "skills/content-preservation-guardian/SKILL.md",
+      "git_status": "??",
+      "classification": "keep",
+      "rationale": "code, policy, test, lock, or curated operational artifact"
+    },
+    {
+      "path": "skills/crossref-unpaywall-resolver/SKILL.md",
+      "git_status": "??",
+      "classification": "keep",
+      "rationale": "code, policy, test, lock, or curated operational artifact"
+    },
+    {
+      "path": "skills/deep-thinking-governor/agents/openai.yaml",
+      "git_status": "??",
+      "classification": "keep",
+      "rationale": "code, policy, test, lock, or curated operational artifact"
+    },
+    {
+      "path": "skills/deep-thinking-governor/references/deep-thinking-protocol.md",
+      "git_status": "??",
+      "classification": "keep",
+      "rationale": "code, policy, test, lock, or curated operational artifact"
+    },
+    {
+      "path": "skills/deep-thinking-governor/SKILL.md",
+      "git_status": "??",
+      "classification": "keep",
+      "rationale": "code, policy, test, lock, or curated operational artifact"
+    },
+    {
+      "path": "skills/extraction-schema-governor/SKILL.md",
+      "git_status": "??",
+      "classification": "keep",
+      "rationale": "code, policy, test, lock, or curated operational artifact"
+    },
+    {
+      "path": "skills/life-science-router/SKILL.md",
+      "git_status": "??",
+      "classification": "keep",
+      "rationale": "code, policy, test, lock, or curated operational artifact"
+    },
+    {
+      "path": "skills/literature-search-arxiv/references/query_syntax.md",
+      "git_status": "??",
+      "classification": "keep",
+      "rationale": "code, policy, test, lock, or curated operational artifact"
+    },
+    {
+      "path": "skills/literature-search-arxiv/scripts/download_paper.py",
+      "git_status": "??",
+      "classification": "keep",
+      "rationale": "code, policy, test, lock, or curated operational artifact"
+    },
+    {
+      "path": "skills/literature-search-arxiv/scripts/download_paper_source.py",
+      "git_status": "??",
+      "classification": "keep",
+      "rationale": "code, policy, test, lock, or curated operational artifact"
+    },
+    {
+      "path": "skills/literature-search-arxiv/scripts/search_arxiv.py",
+      "git_status": "??",
+      "classification": "keep",
+      "rationale": "code, policy, test, lock, or curated operational artifact"
+    },
+    {
+      "path": "skills/literature-search-arxiv/SKILL.md",
+      "git_status": "??",
+      "classification": "keep",
+      "rationale": "code, policy, test, lock, or curated operational artifact"
+    },
+    {
+      "path": "skills/literature-search-biorxiv/scripts/search_by_dates.py",
+      "git_status": "??",
+      "classification": "keep",
+      "rationale": "code, policy, test, lock, or curated operational artifact"
+    },
+    {
+      "path": "skills/literature-search-biorxiv/scripts/search_by_doi.py",
+      "git_status": "??",
+      "classification": "keep",
+      "rationale": "code, policy, test, lock, or curated operational artifact"
+    },
+    {
+      "path": "skills/literature-search-biorxiv/SKILL.md",
+      "git_status": "??",
+      "classification": "keep",
+      "rationale": "code, policy, test, lock, or curated operational artifact"
+    },
+    {
+      "path": "skills/literature-search-europepmc/LICENSE_NOTIFICATION.txt",
+      "git_status": "??",
+      "classification": "keep",
+      "rationale": "code, policy, test, lock, or curated operational artifact"
+    },
+    {
+      "path": "skills/literature-search-europepmc/scripts/europepmc_api.py",
+      "git_status": "??",
+      "classification": "keep",
+      "rationale": "code, policy, test, lock, or curated operational artifact"
+    },
+    {
+      "path": "skills/literature-search-europepmc/SKILL.md",
+      "git_status": "??",
+      "classification": "keep",
+      "rationale": "code, policy, test, lock, or curated operational artifact"
+    },
+    {
+      "path": "skills/literature-search-openalex/LICENSE_NOTIFICATION.txt",
+      "git_status": "??",
+      "classification": "keep",
+      "rationale": "code, policy, test, lock, or curated operational artifact"
+    },
+    {
+      "path": "skills/literature-search-openalex/references/authors.md",
+      "git_status": "??",
+      "classification": "keep",
+      "rationale": "code, policy, test, lock, or curated operational artifact"
+    },
+    {
+      "path": "skills/literature-search-openalex/references/geo_and_language.md",
+      "git_status": "??",
+      "classification": "keep",
+      "rationale": "code, policy, test, lock, or curated operational artifact"
+    },
+    {
+      "path": "skills/literature-search-openalex/references/institutions.md",
+      "git_status": "??",
+      "classification": "keep",
+      "rationale": "code, policy, test, lock, or curated operational artifact"
+    },
+    {
+      "path": "skills/literature-search-openalex/references/publishers_funders.md",
+      "git_status": "??",
+      "classification": "keep",
+      "rationale": "code, policy, test, lock, or curated operational artifact"
+    },
+    {
+      "path": "skills/literature-search-openalex/references/sources.md",
+      "git_status": "??",
+      "classification": "keep",
+      "rationale": "code, policy, test, lock, or curated operational artifact"
+    },
+    {
+      "path": "skills/literature-search-openalex/references/taxonomy.md",
+      "git_status": "??",
+      "classification": "keep",
+      "rationale": "code, policy, test, lock, or curated operational artifact"
+    },
+    {
+      "path": "skills/literature-search-openalex/references/topics.md",
+      "git_status": "??",
+      "classification": "keep",
+      "rationale": "code, policy, test, lock, or curated operational artifact"
+    },
+    {
+      "path": "skills/literature-search-openalex/references/type_values.md",
+      "git_status": "??",
+      "classification": "keep",
+      "rationale": "code, policy, test, lock, or curated operational artifact"
+    },
+    {
+      "path": "skills/literature-search-openalex/references/works.md",
+      "git_status": "??",
+      "classification": "keep",
+      "rationale": "code, policy, test, lock, or curated operational artifact"
+    },
+    {
+      "path": "skills/literature-search-openalex/scripts/openalex_cli.py",
+      "git_status": "??",
+      "classification": "keep",
+      "rationale": "code, policy, test, lock, or curated operational artifact"
+    },
+    {
+      "path": "skills/literature-search-openalex/SKILL.md",
+      "git_status": "??",
+      "classification": "keep",
+      "rationale": "code, policy, test, lock, or curated operational artifact"
+    },
+    {
+      "path": "skills/living-review-monitor/SKILL.md",
+      "git_status": "??",
+      "classification": "keep",
+      "rationale": "code, policy, test, lock, or curated operational artifact"
+    },
+    {
+      "path": "skills/manuscript-integrity-response-governor/SKILL.md",
+      "git_status": "??",
+      "classification": "keep",
+      "rationale": "code, policy, test, lock, or curated operational artifact"
+    },
+    {
+      "path": "skills/ngs-analysis-router/agents/openai.yaml",
+      "git_status": "??",
+      "classification": "keep",
+      "rationale": "code, policy, test, lock, or curated operational artifact"
+    },
+    {
+      "path": "skills/ngs-analysis-router/references/ngs-article-machine-handoff.md",
+      "git_status": "??",
+      "classification": "keep",
+      "rationale": "code, policy, test, lock, or curated operational artifact"
+    },
+    {
+      "path": "skills/ngs-analysis-router/SKILL.md",
+      "git_status": "??",
+      "classification": "keep",
+      "rationale": "code, policy, test, lock, or curated operational artifact"
+    },
+    {
+      "path": "skills/opencitations-citation-audit/SKILL.md",
+      "git_status": "??",
+      "classification": "keep",
+      "rationale": "code, policy, test, lock, or curated operational artifact"
+    },
+    {
+      "path": "skills/project-entry-navigator/SKILL.md",
+      "git_status": "??",
+      "classification": "keep",
+      "rationale": "code, policy, test, lock, or curated operational artifact"
+    },
+    {
+      "path": "skills/protocol-registration-governor/SKILL.md",
+      "git_status": "??",
+      "classification": "keep",
+      "rationale": "code, policy, test, lock, or curated operational artifact"
+    },
+    {
+      "path": "skills/ptbr-article-writing/SKILL.md",
+      "git_status": " M",
+      "classification": "keep",
+      "rationale": "code, policy, test, lock, or curated operational artifact"
+    },
+    {
+      "path": "skills/pubmed-database/LICENSE_NOTIFICATION.txt",
+      "git_status": "??",
+      "classification": "keep",
+      "rationale": "code, policy, test, lock, or curated operational artifact"
+    },
+    {
+      "path": "skills/pubmed-database/references/advanced-linking.md",
+      "git_status": "??",
+      "classification": "keep",
+      "rationale": "code, policy, test, lock, or curated operational artifact"
+    },
+    {
+      "path": "skills/pubmed-database/references/advanced-search.md",
+      "git_status": "??",
+      "classification": "keep",
+      "rationale": "code, policy, test, lock, or curated operational artifact"
+    },
+    {
+      "path": "skills/pubmed-database/references/bulk-workflows.md",
+      "git_status": "??",
+      "classification": "keep",
+      "rationale": "code, policy, test, lock, or curated operational artifact"
+    },
+    {
+      "path": "skills/pubmed-database/references/citation-matching.md",
+      "git_status": "??",
+      "classification": "keep",
+      "rationale": "code, policy, test, lock, or curated operational artifact"
+    },
+    {
+      "path": "skills/pubmed-database/references/cross-database-linking.md",
+      "git_status": "??",
+      "classification": "keep",
+      "rationale": "code, policy, test, lock, or curated operational artifact"
+    },
+    {
+      "path": "skills/pubmed-database/references/fetch-and-resolve.md",
+      "git_status": "??",
+      "classification": "keep",
+      "rationale": "code, policy, test, lock, or curated operational artifact"
+    },
+    {
+      "path": "skills/pubmed-database/references/search-and-discovery.md",
+      "git_status": "??",
+      "classification": "keep",
+      "rationale": "code, policy, test, lock, or curated operational artifact"
+    },
+    {
+      "path": "skills/pubmed-database/references/utilities.md",
+      "git_status": "??",
+      "classification": "keep",
+      "rationale": "code, policy, test, lock, or curated operational artifact"
+    },
+    {
+      "path": "skills/pubmed-database/scripts/pubmed_api.py",
+      "git_status": "??",
+      "classification": "keep",
+      "rationale": "code, policy, test, lock, or curated operational artifact"
+    },
+    {
+      "path": "skills/pubmed-database/SKILL.md",
+      "git_status": "??",
+      "classification": "keep",
+      "rationale": "code, policy, test, lock, or curated operational artifact"
+    },
+    {
+      "path": "skills/scienceskillscommon/__init__.py",
+      "git_status": "??",
+      "classification": "keep",
+      "rationale": "code, policy, test, lock, or curated operational artifact"
+    },
+    {
+      "path": "skills/scienceskillscommon/__pycache__/http_client.cpython-313.pyc",
+      "git_status": "??",
+      "classification": "keep",
+      "rationale": "code, policy, test, lock, or curated operational artifact"
+    },
+    {
+      "path": "skills/scienceskillscommon/http_client.py",
+      "git_status": "??",
+      "classification": "keep",
+      "rationale": "code, policy, test, lock, or curated operational artifact"
+    },
+    {
+      "path": "skills/scienceskillscommon/pyproject.toml",
+      "git_status": "??",
+      "classification": "keep",
+      "rationale": "code, policy, test, lock, or curated operational artifact"
+    },
+    {
+      "path": "skills/scienceskillscommon/SKILL.md",
+      "git_status": "??",
+      "classification": "keep",
+      "rationale": "code, policy, test, lock, or curated operational artifact"
+    },
+    {
+      "path": "skills/semantic-scholar-citation-graph/SKILL.md",
+      "git_status": "??",
+      "classification": "keep",
+      "rationale": "code, policy, test, lock, or curated operational artifact"
+    },
+    {
+      "path": "skills/skill-upgrade-governor/SKILL.md",
+      "git_status": "??",
+      "classification": "keep",
+      "rationale": "code, policy, test, lock, or curated operational artifact"
+    },
+    {
+      "path": "skills/tooluniverse-clinical-data-integration/SKILL.md",
+      "git_status": "??",
+      "classification": "keep",
+      "rationale": "code, policy, test, lock, or curated operational artifact"
+    },
+    {
+      "path": "skills/tooluniverse-clinical-guidelines/SKILL.md",
+      "git_status": "??",
+      "classification": "keep",
+      "rationale": "code, policy, test, lock, or curated operational artifact"
+    },
+    {
+      "path": "skills/tooluniverse-clinical-guidelines/TOOLS_REFERENCE.md",
+      "git_status": "??",
+      "classification": "keep",
+      "rationale": "code, policy, test, lock, or curated operational artifact"
+    },
+    {
+      "path": "skills/tooluniverse-clinical-trial-design/.env.template",
+      "git_status": "??",
+      "classification": "keep",
+      "rationale": "code, policy, test, lock, or curated operational artifact"
+    },
+    {
+      "path": "skills/tooluniverse-clinical-trial-design/BEST_PRACTICES.md",
+      "git_status": "??",
+      "classification": "keep",
+      "rationale": "code, policy, test, lock, or curated operational artifact"
+    },
+    {
+      "path": "skills/tooluniverse-clinical-trial-design/EXAMPLES.md",
+      "git_status": "??",
+      "classification": "keep",
+      "rationale": "code, policy, test, lock, or curated operational artifact"
+    },
+    {
+      "path": "skills/tooluniverse-clinical-trial-design/python_implementation.py",
+      "git_status": "??",
+      "classification": "keep",
+      "rationale": "code, policy, test, lock, or curated operational artifact"
+    },
+    {
+      "path": "skills/tooluniverse-clinical-trial-design/QUICK_START.md",
+      "git_status": "??",
+      "classification": "keep",
+      "rationale": "code, policy, test, lock, or curated operational artifact"
+    },
+    {
+      "path": "skills/tooluniverse-clinical-trial-design/REPORT_TEMPLATE.md",
+      "git_status": "??",
+      "classification": "keep",
+      "rationale": "code, policy, test, lock, or curated operational artifact"
+    },
+    {
+      "path": "skills/tooluniverse-clinical-trial-design/SKILL.md",
+      "git_status": "??",
+      "classification": "keep",
+      "rationale": "code, policy, test, lock, or curated operational artifact"
+    },
+    {
+      "path": "skills/tooluniverse-clinical-trial-design/STUDY_DESIGN_PROCEDURES.md",
+      "git_status": "??",
+      "classification": "keep",
+      "rationale": "code, policy, test, lock, or curated operational artifact"
+    },
+    {
+      "path": "skills/tooluniverse-clinical-trial-design/trial_pipeline.py",
+      "git_status": "??",
+      "classification": "keep",
+      "rationale": "code, policy, test, lock, or curated operational artifact"
+    },
+    {
+      "path": "skills/tooluniverse-clinical-trial-design/WORKFLOW_DETAILS.md",
+      "git_status": "??",
+      "classification": "keep",
+      "rationale": "code, policy, test, lock, or curated operational artifact"
+    },
+    {
+      "path": "skills/tooluniverse-data-integration-analysis/SKILL.md",
+      "git_status": "??",
+      "classification": "keep",
+      "rationale": "code, policy, test, lock, or curated operational artifact"
+    },
+    {
+      "path": "skills/tooluniverse-dataset-discovery/SKILL.md",
+      "git_status": "??",
+      "classification": "keep",
+      "rationale": "code, policy, test, lock, or curated operational artifact"
+    },
+    {
+      "path": "skills/tooluniverse-diagnostic-test-evaluation/scripts/roc_analysis.py",
+      "git_status": "??",
+      "classification": "keep",
+      "rationale": "code, policy, test, lock, or curated operational artifact"
+    },
+    {
+      "path": "skills/tooluniverse-diagnostic-test-evaluation/SKILL.md",
+      "git_status": "??",
+      "classification": "keep",
+      "rationale": "code, policy, test, lock, or curated operational artifact"
+    },
+    {
+      "path": "skills/tooluniverse-diagnostic-test-evaluation/test_roc_analysis.py",
+      "git_status": "??",
+      "classification": "keep",
+      "rationale": "code, policy, test, lock, or curated operational artifact"
+    },
+    {
+      "path": "skills/tooluniverse-drug-repurposing/EXAMPLES.md",
+      "git_status": "??",
+      "classification": "keep",
+      "rationale": "code, policy, test, lock, or curated operational artifact"
+    },
+    {
+      "path": "skills/tooluniverse-drug-repurposing/PROCEDURES.md",
+      "git_status": "??",
+      "classification": "keep",
+      "rationale": "code, policy, test, lock, or curated operational artifact"
+    },
+    {
+      "path": "skills/tooluniverse-drug-repurposing/REFERENCE.md",
+      "git_status": "??",
+      "classification": "keep",
+      "rationale": "code, policy, test, lock, or curated operational artifact"
+    },
+    {
+      "path": "skills/tooluniverse-drug-repurposing/REPORT_TEMPLATE.md",
+      "git_status": "??",
+      "classification": "keep",
+      "rationale": "code, policy, test, lock, or curated operational artifact"
+    },
+    {
+      "path": "skills/tooluniverse-drug-repurposing/SKILL.md",
+      "git_status": "??",
+      "classification": "keep",
+      "rationale": "code, policy, test, lock, or curated operational artifact"
+    },
+    {
+      "path": "skills/tooluniverse-drug-repurposing/strategies_and_patterns.md",
+      "git_status": "??",
+      "classification": "keep",
+      "rationale": "code, policy, test, lock, or curated operational artifact"
+    },
+    {
+      "path": "skills/tooluniverse-drug-target-validation/QUICK_START.md",
+      "git_status": "??",
+      "classification": "keep",
+      "rationale": "code, policy, test, lock, or curated operational artifact"
+    },
+    {
+      "path": "skills/tooluniverse-drug-target-validation/REPORT_TEMPLATE.md",
+      "git_status": "??",
+      "classification": "keep",
+      "rationale": "code, policy, test, lock, or curated operational artifact"
+    },
+    {
+      "path": "skills/tooluniverse-drug-target-validation/SCORING_CRITERIA.md",
+      "git_status": "??",
+      "classification": "keep",
+      "rationale": "code, policy, test, lock, or curated operational artifact"
+    },
+    {
+      "path": "skills/tooluniverse-drug-target-validation/SKILL.md",
+      "git_status": "??",
+      "classification": "keep",
+      "rationale": "code, policy, test, lock, or curated operational artifact"
+    },
+    {
+      "path": "skills/tooluniverse-drug-target-validation/test_skill.py",
+      "git_status": "??",
+      "classification": "keep",
+      "rationale": "code, policy, test, lock, or curated operational artifact"
+    },
+    {
+      "path": "skills/tooluniverse-drug-target-validation/TOOL_REFERENCE.md",
+      "git_status": "??",
+      "classification": "keep",
+      "rationale": "code, policy, test, lock, or curated operational artifact"
+    },
+    {
+      "path": "skills/tooluniverse-epidemiological-analysis/SKILL.md",
+      "git_status": "??",
+      "classification": "keep",
+      "rationale": "code, policy, test, lock, or curated operational artifact"
+    },
+    {
+      "path": "skills/tooluniverse-literature-deep-research/EXAMPLES.md",
+      "git_status": "??",
+      "classification": "keep",
+      "rationale": "code, policy, test, lock, or curated operational artifact"
+    },
+    {
+      "path": "skills/tooluniverse-literature-deep-research/FULLTEXT_STRATEGY.md",
+      "git_status": "??",
+      "classification": "sensitive",
+      "rationale": "scientific or clinical source material"
+    },
+    {
+      "path": "skills/tooluniverse-literature-deep-research/QUICK_REFERENCE.md",
+      "git_status": "??",
+      "classification": "keep",
+      "rationale": "code, policy, test, lock, or curated operational artifact"
+    },
+    {
+      "path": "skills/tooluniverse-literature-deep-research/REPORT_TEMPLATE.md",
+      "git_status": "??",
+      "classification": "keep",
+      "rationale": "code, policy, test, lock, or curated operational artifact"
+    },
+    {
+      "path": "skills/tooluniverse-literature-deep-research/SKILL.md",
+      "git_status": "??",
+      "classification": "keep",
+      "rationale": "code, policy, test, lock, or curated operational artifact"
+    },
+    {
+      "path": "skills/tooluniverse-literature-deep-research/TOOL_NAMES_REFERENCE.md",
+      "git_status": "??",
+      "classification": "keep",
+      "rationale": "code, policy, test, lock, or curated operational artifact"
+    },
+    {
+      "path": "skills/tooluniverse-literature-deep-research/WORKFLOW.md",
+      "git_status": "??",
+      "classification": "keep",
+      "rationale": "code, policy, test, lock, or curated operational artifact"
+    },
+    {
+      "path": "skills/tooluniverse-meta-analysis/scripts/meta_analysis.py",
+      "git_status": "??",
+      "classification": "keep",
+      "rationale": "code, policy, test, lock, or curated operational artifact"
+    },
+    {
+      "path": "skills/tooluniverse-meta-analysis/SKILL.md",
+      "git_status": "??",
+      "classification": "keep",
+      "rationale": "code, policy, test, lock, or curated operational artifact"
+    },
+    {
+      "path": "skills/tooluniverse-meta-analysis/test_meta_analysis.py",
+      "git_status": "??",
+      "classification": "keep",
+      "rationale": "code, policy, test, lock, or curated operational artifact"
+    },
+    {
+      "path": "skills/tooluniverse-pharmacovigilance/CHECKLIST.md",
+      "git_status": "??",
+      "classification": "keep",
+      "rationale": "code, policy, test, lock, or curated operational artifact"
+    },
+    {
+      "path": "skills/tooluniverse-pharmacovigilance/EXAMPLES.md",
+      "git_status": "??",
+      "classification": "keep",
+      "rationale": "code, policy, test, lock, or curated operational artifact"
+    },
+    {
+      "path": "skills/tooluniverse-pharmacovigilance/REPORT_TEMPLATES.md",
+      "git_status": "??",
+      "classification": "keep",
+      "rationale": "code, policy, test, lock, or curated operational artifact"
+    },
+    {
+      "path": "skills/tooluniverse-pharmacovigilance/SIGNAL_ANALYSIS.md",
+      "git_status": "??",
+      "classification": "keep",
+      "rationale": "code, policy, test, lock, or curated operational artifact"
+    },
+    {
+      "path": "skills/tooluniverse-pharmacovigilance/SIGNAL_DETECTION.md",
+      "git_status": "??",
+      "classification": "keep",
+      "rationale": "code, policy, test, lock, or curated operational artifact"
+    },
+    {
+      "path": "skills/tooluniverse-pharmacovigilance/SKILL.md",
+      "git_status": "??",
+      "classification": "keep",
+      "rationale": "code, policy, test, lock, or curated operational artifact"
+    },
+    {
+      "path": "skills/tooluniverse-pharmacovigilance/TOOLS_REFERENCE.md",
+      "git_status": "??",
+      "classification": "keep",
+      "rationale": "code, policy, test, lock, or curated operational artifact"
+    },
+    {
+      "path": "skills/tooluniverse-self-review/SKILL.md",
+      "git_status": "??",
+      "classification": "keep",
+      "rationale": "code, policy, test, lock, or curated operational artifact"
+    },
+    {
+      "path": "skills/tooluniverse-variant-interpretation/ACMG_CLASSIFICATION.md",
+      "git_status": "??",
+      "classification": "keep",
+      "rationale": "code, policy, test, lock, or curated operational artifact"
+    },
+    {
+      "path": "skills/tooluniverse-variant-interpretation/CHECKLIST.md",
+      "git_status": "??",
+      "classification": "keep",
+      "rationale": "code, policy, test, lock, or curated operational artifact"
+    },
+    {
+      "path": "skills/tooluniverse-variant-interpretation/CODE_PATTERNS.md",
+      "git_status": "??",
+      "classification": "keep",
+      "rationale": "code, policy, test, lock, or curated operational artifact"
+    },
+    {
+      "path": "skills/tooluniverse-variant-interpretation/EXAMPLES.md",
+      "git_status": "??",
+      "classification": "keep",
+      "rationale": "code, policy, test, lock, or curated operational artifact"
+    },
+    {
+      "path": "skills/tooluniverse-variant-interpretation/SKILL.md",
+      "git_status": "??",
+      "classification": "keep",
+      "rationale": "code, policy, test, lock, or curated operational artifact"
+    },
+    {
+      "path": "skills/tooluniverse-variant-interpretation/TOOLS_REFERENCE.md",
+      "git_status": "??",
+      "classification": "keep",
+      "rationale": "code, policy, test, lock, or curated operational artifact"
+    },
+    {
+      "path": "skills/uv/SKILL.md",
+      "git_status": "??",
+      "classification": "keep",
+      "rationale": "code, policy, test, lock, or curated operational artifact"
+    },
+    {
+      "path": "skills/workspace-graph-navigator/SKILL.md",
+      "git_status": "??",
+      "classification": "keep",
+      "rationale": "code, policy, test, lock, or curated operational artifact"
+    },
+    {
+      "path": "skills/zotero-reference-manager/agents/openai.yaml",
+      "git_status": "??",
+      "classification": "keep",
+      "rationale": "code, policy, test, lock, or curated operational artifact"
+    },
+    {
+      "path": "skills/zotero-reference-manager/references/zotero-article-machine-bridge.md",
+      "git_status": "??",
+      "classification": "keep",
+      "rationale": "code, policy, test, lock, or curated operational artifact"
+    },
+    {
+      "path": "skills/zotero-reference-manager/SKILL.md",
+      "git_status": "??",
+      "classification": "keep",
+      "rationale": "code, policy, test, lock, or curated operational artifact"
+    },
+    {
+      "path": "SKILLS_CANON.md",
+      "git_status": " M",
+      "classification": "keep",
+      "rationale": "code, policy, test, lock, or curated operational artifact"
+    },
+    {
+      "path": "tests/fixtures/agent_benchmarks/gpt_5_6_sol_machine_governance_v1.md",
+      "git_status": "??",
+      "classification": "keep",
+      "rationale": "code, policy, test, lock, or curated operational artifact"
+    },
+    {
+      "path": "tests/test_agent_skills.py",
+      "git_status": " M",
+      "classification": "keep",
+      "rationale": "code, policy, test, lock, or curated operational artifact"
+    },
+    {
+      "path": "tests/test_benchmark_v2.py",
+      "git_status": "??",
+      "classification": "keep",
+      "rationale": "code, policy, test, lock, or curated operational artifact"
+    },
+    {
+      "path": "tests/test_ci_contract.py",
+      "git_status": "??",
+      "classification": "keep",
+      "rationale": "code, policy, test, lock, or curated operational artifact"
+    },
+    {
+      "path": "tests/test_cli_mode_guards.py",
+      "git_status": "??",
+      "classification": "keep",
+      "rationale": "code, policy, test, lock, or curated operational artifact"
+    },
+    {
+      "path": "tests/test_codex_control_plane.py",
+      "git_status": "??",
+      "classification": "keep",
+      "rationale": "code, policy, test, lock, or curated operational artifact"
+    },
+    {
+      "path": "tests/test_contracts_v2.py",
+      "git_status": "??",
+      "classification": "keep",
+      "rationale": "code, policy, test, lock, or curated operational artifact"
+    },
+    {
+      "path": "tests/test_environment_v2.py",
+      "git_status": "??",
+      "classification": "keep",
+      "rationale": "code, policy, test, lock, or curated operational artifact"
+    },
+    {
+      "path": "tests/test_evidence.py",
+      "git_status": " M",
+      "classification": "keep",
+      "rationale": "code, policy, test, lock, or curated operational artifact"
+    },
+    {
+      "path": "tests/test_evidence_lock_v2.py",
+      "git_status": "??",
+      "classification": "keep",
+      "rationale": "code, policy, test, lock, or curated operational artifact"
+    },
+    {
+      "path": "tests/test_gates_v2.py",
+      "git_status": "??",
+      "classification": "keep",
+      "rationale": "code, policy, test, lock, or curated operational artifact"
+    },
+    {
+      "path": "tests/test_ptbr_style.py",
+      "git_status": " M",
+      "classification": "keep",
+      "rationale": "code, policy, test, lock, or curated operational artifact"
+    },
+    {
+      "path": "tests/test_runners_v2.py",
+      "git_status": "??",
+      "classification": "keep",
+      "rationale": "code, policy, test, lock, or curated operational artifact"
+    },
+    {
+      "path": "tests/test_workspace_graph.py",
+      "git_status": "??",
+      "classification": "keep",
+      "rationale": "code, policy, test, lock, or curated operational artifact"
+    },
+    {
+      "path": "tests/test_zero_trust.py",
+      "git_status": " M",
+      "classification": "keep",
+      "rationale": "code, policy, test, lock, or curated operational artifact"
+    },
+    {
+      "path": "uv.lock",
+      "git_status": " M",
+      "classification": "keep",
+      "rationale": "code, policy, test, lock, or curated operational artifact"
+    }
+  ],
+  "protected_areas": [
+    {
+      "path": ".env",
+      "classification": "sensitive",
+      "exists": true,
+      "content_read": false,
+      "move_authorized": false,
+      "decision": "preserve-in-place",
+      "modified_at": "2026-04-21T19:49:54.726694+00:00",
+      "kind": "file",
+      "file_count": 1,
+      "size_bytes": 140
+    },
+    {
+      "path": "Correção Orientador",
+      "classification": "sensitive",
+      "exists": true,
+      "content_read": false,
+      "move_authorized": false,
+      "decision": "preserve-in-place",
+      "modified_at": "2026-04-28T16:12:28.683923+00:00",
+      "kind": "directory",
+      "file_count": 8,
+      "directory_count": 2,
+      "size_bytes": 1998112,
+      "related_project": "unresolved-manual-triage"
+    },
+    {
+      "path": "Doutorado",
+      "classification": "sensitive",
+      "exists": true,
+      "content_read": false,
+      "move_authorized": false,
+      "decision": "preserve-in-place",
+      "modified_at": "2026-05-22T00:06:12.665241+00:00",
+      "kind": "directory",
+      "file_count": 10,
+      "directory_count": 1,
+      "size_bytes": 45225349,
+      "related_project": "unresolved-manual-triage"
+    },
+    {
+      "path": "Leitor de Artigos",
+      "classification": "sensitive",
+      "exists": true,
+      "content_read": false,
+      "move_authorized": false,
+      "decision": "preserve-in-place",
+      "modified_at": "2026-04-15T13:24:21.455748+00:00",
+      "kind": "directory",
+      "file_count": 60485,
+      "directory_count": 9783,
+      "size_bytes": 1121644067,
+      "related_project": "unresolved-manual-triage"
+    },
+    {
+      "path": "NMA_OSA_VPI",
+      "classification": "sensitive",
+      "exists": true,
+      "content_read": false,
+      "move_authorized": false,
+      "decision": "preserve-in-place",
+      "modified_at": "2026-06-22T12:31:41.951223+00:00",
+      "kind": "directory",
+      "file_count": 13597,
+      "directory_count": 1486,
+      "size_bytes": 1536870109,
+      "related_project": "unresolved-manual-triage"
+    },
+    {
+      "path": "PDFS DR ANDRÉ",
+      "classification": "sensitive",
+      "exists": true,
+      "content_read": false,
+      "move_authorized": false,
+      "decision": "preserve-in-place",
+      "modified_at": "2026-04-21T20:15:48.499190+00:00",
+      "kind": "directory",
+      "file_count": 6,
+      "directory_count": 1,
+      "size_bytes": 44139585,
+      "related_project": "unresolved-manual-triage"
+    },
+    {
+      "path": "REVISÃO LIGA",
+      "classification": "sensitive",
+      "exists": true,
+      "content_read": false,
+      "move_authorized": false,
+      "decision": "preserve-in-place",
+      "modified_at": "2026-04-16T19:19:17.105285+00:00",
+      "kind": "directory",
+      "file_count": 9,
+      "directory_count": 4,
+      "size_bytes": 42825736,
+      "related_project": "unresolved-manual-triage"
+    },
+    {
+      "path": "Revisões Sistemáticas",
+      "classification": "sensitive",
+      "exists": true,
+      "content_read": false,
+      "move_authorized": false,
+      "decision": "preserve-in-place",
+      "modified_at": "2026-04-16T19:41:19.202181+00:00",
+      "kind": "directory",
+      "file_count": 1046,
+      "directory_count": 109,
+      "size_bytes": 1156958605,
+      "related_project": "unresolved-manual-triage"
+    },
+    {
+      "path": "Submissão Final",
+      "classification": "sensitive",
+      "exists": true,
+      "content_read": false,
+      "move_authorized": false,
+      "decision": "preserve-in-place",
+      "modified_at": "2026-04-21T21:46:31.031163+00:00",
+      "kind": "directory",
+      "file_count": 12,
+      "directory_count": 1,
+      "size_bytes": 672227,
+      "related_project": "unresolved-manual-triage"
+    },
+    {
+      "path": "sources",
+      "classification": "sensitive",
+      "exists": true,
+      "content_read": false,
+      "move_authorized": false,
+      "decision": "preserve-in-place",
+      "modified_at": "2026-04-21T20:40:44.831249+00:00",
+      "kind": "directory",
+      "file_count": 16,
+      "directory_count": 1,
+      "size_bytes": 176506,
+      "related_project": "unresolved-manual-triage"
+    },
+    {
+      "path": ".git",
+      "classification": "exclude",
+      "exists": true,
+      "content_read": false,
+      "move_authorized": false,
+      "decision": "preserve-in-place",
+      "modified_at": "2026-07-22T17:31:54.609620+00:00",
+      "kind": "directory",
+      "file_count": 1606,
+      "directory_count": 421,
+      "size_bytes": 77156358,
+      "related_project": "unresolved-manual-triage"
+    },
+    {
+      "path": ".venv",
+      "classification": "exclude",
+      "exists": true,
+      "content_read": false,
+      "move_authorized": false,
+      "decision": "preserve-in-place",
+      "modified_at": "2026-04-23T01:29:15.671984+00:00",
+      "kind": "directory",
+      "file_count": 3564,
+      "directory_count": 432,
+      "size_bytes": 157097385,
+      "related_project": "unresolved-manual-triage"
+    },
+    {
+      "path": ".pytest_cache",
+      "classification": "exclude",
+      "exists": true,
+      "content_read": false,
+      "move_authorized": false,
+      "decision": "preserve-in-place",
+      "modified_at": "2026-04-23T01:29:57.821998+00:00",
+      "kind": "directory",
+      "file_count": 5,
+      "directory_count": 3,
+      "size_bytes": 22953,
+      "related_project": "unresolved-manual-triage"
+    },
+    {
+      "path": ".mypy_cache",
+      "classification": "exclude",
+      "exists": false,
+      "content_read": false,
+      "move_authorized": false,
+      "decision": "preserve-in-place"
+    },
+    {
+      "path": ".ruff_cache",
+      "classification": "exclude",
+      "exists": false,
+      "content_read": false,
+      "move_authorized": false,
+      "decision": "preserve-in-place"
+    },
+    {
+      "path": ".playwright-osf",
+      "classification": "exclude",
+      "exists": true,
+      "content_read": false,
+      "move_authorized": false,
+      "decision": "preserve-in-place",
+      "modified_at": "2026-04-23T23:06:23.880373+00:00",
+      "kind": "directory",
+      "file_count": 381,
+      "directory_count": 64,
+      "size_bytes": 47396114,
+      "related_project": "unresolved-manual-triage"
+    },
+    {
+      "path": "node_modules",
+      "classification": "exclude",
+      "exists": false,
+      "content_read": false,
+      "move_authorized": false,
+      "decision": "preserve-in-place"
+    },
+    {
+      "path": "tmp",
+      "classification": "exclude",
+      "exists": true,
+      "content_read": false,
+      "move_authorized": false,
+      "decision": "preserve-in-place",
+      "modified_at": "2026-05-20T21:17:42.368233+00:00",
+      "kind": "directory",
+      "file_count": 5,
+      "directory_count": 3,
+      "size_bytes": 3754975,
+      "related_project": "unresolved-manual-triage"
+    }
+  ]
+}

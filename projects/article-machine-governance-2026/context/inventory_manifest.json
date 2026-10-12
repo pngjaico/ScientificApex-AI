@@ -1,0 +1,15 @@
+{
+  "contract": "MachineInventoryV1",
+  "observed_at": "2026-10-12",
+  "status": "recorded",
+  "historical_inventory": "inventory/worktree-preservation.json",
+  "protected_content_policy": "preserve-in-place; metadata-only; no scientific data upload",
+  "current_baseline": {
+    "branch": "codex/article-machine-complete-56-ultra",
+    "initial_test_failures": 14,
+    "uncommitted_july_implementation": true,
+    "installed_skills": 264,
+    "model_docs_were_stale": true
+  },
+  "versioning_policy": "Explicit reviewed operational paths; no git add dot, raw sources, secrets, runtimes or broad mirrors."
+}

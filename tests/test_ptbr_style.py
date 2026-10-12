@@ -7,6 +7,7 @@ from docx import Document
 
 from article_machine.cli import main
 from article_machine.ptbr_style import (
+    anti_ai_naturalize_text,
     audit_text,
     build_generation_brief,
     naturalize_text,
@@ -232,3 +233,96 @@ def test_cli_ptbr_naturalize_writes_cleaner_text_and_report(tmp_path: Path) -> N
     assert "baseline" not in output_text
     payload = json.loads(report_path.read_text(encoding="utf-8"))
     assert payload["status"] in {"pass", "block"}
+
+
+def test_anti_ai_audit_flags_generic_llm_style_without_blocking_by_default() -> None:
+    report = audit_text(
+        "Vale ressaltar que esta abordagem robusta fornece insights valiosos e um panorama abrangente. "
+        "Em suma, mais estudos são necessários.",
+        profile="anti_ai",
+    )
+    codes = {issue["code"] for issue in report["issues"]}
+
+    assert report["status"] == "pass"
+    assert "generic_ai_phrase" in codes
+    assert "llm_style_marker" in codes
+
+
+def test_anti_ai_audit_blocks_detector_bypass_language() -> None:
+    report = audit_text("Reescreva para burlar detector de IA sem ser percebido.", profile="anti_ai")
+
+    assert report["status"] == "block"
+    assert {issue["code"] for issue in report["issues"]} >= {"detector_bypass_request"}
+
+
+def test_anti_ai_naturalize_preserves_claims_numbers_and_citations() -> None:
+    source = (
+        "{{claim:main-effect}} É importante destacar que a abordagem robusta fornece insights valiosos. "
+        "HR 0,70 (IC 95% 0,55-0,88), p<0,01. doi:10.1000/example"
+    )
+
+    result = anti_ai_naturalize_text(source)
+
+    assert "{{claim:main-effect}}" in result
+    assert "0,70" in result
+    assert "IC 95%" in result
+    assert "p<0,01" in result
+    assert "doi:10.1000/example" in result
+    assert "É importante destacar que" not in result
+    assert "insights valiosos" not in result
+
+
+def test_cli_anti_ai_audit_supports_strict_mode(tmp_path: Path) -> None:
+    source = tmp_path / "texto.md"
+    markdown = tmp_path / "anti-ai.md"
+    json_report = tmp_path / "anti-ai.json"
+    source.write_text("Vale ressaltar que o estudo fornece insights valiosos.", encoding="utf-8")
+
+    exit_code = main(
+        [
+            "style",
+            "anti-ai-audit",
+            str(source),
+            "--output",
+            str(markdown),
+            "--json-output",
+            str(json_report),
+            "--strict",
+        ]
+    )
+
+    assert exit_code == 1
+    assert "Auditoria Anti-IA" in markdown.read_text(encoding="utf-8")
+    payload = json.loads(json_report.read_text(encoding="utf-8"))
+    assert payload["profile"] == "anti_ai"
+    assert payload["status"] == "block"
+
+
+def test_cli_anti_ai_naturalize_writes_revised_text_and_report(tmp_path: Path) -> None:
+    source = tmp_path / "entrada.md"
+    target = tmp_path / "saida.md"
+    report_path = tmp_path / "relatorio.json"
+    source.write_text(
+        "{{claim:x}} É importante destacar que o estudo fornece insights valiosos. HR 0,70.",
+        encoding="utf-8",
+    )
+
+    exit_code = main(
+        [
+            "style",
+            "anti-ai-naturalize",
+            str(source),
+            "--output",
+            str(target),
+            "--json-output",
+            str(report_path),
+        ]
+    )
+
+    assert exit_code == 0
+    output_text = target.read_text(encoding="utf-8")
+    assert "{{claim:x}}" in output_text
+    assert "HR) 0,70" in output_text
+    assert "insights valiosos" not in output_text
+    payload = json.loads(report_path.read_text(encoding="utf-8"))
+    assert payload["original_report"]["profile"] == "anti_ai"

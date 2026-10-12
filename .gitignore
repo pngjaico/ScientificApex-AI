@@ -4,16 +4,44 @@ __pycache__/
 .pytest_cache/
 .mypy_cache/
 .ruff_cache/
+.coverage
+htmlcov/
 
 # Local environments and secrets
 .venv/
 .env
 .env.*
 
-# Local agent/tool state
-.agents/
+# Local agent/tool state. Keep broad mirrors local, but track the small central
+# agent handoff layer used by future agents entering this workspace.
+.agents/*
+!.agents/AGENTS.md
+!.agents/README.md
+!.agents/GRAPH_FIRST.md
+!.agents/skills/
+.agents/skills/*
+!.agents/skills/workspace-graph-navigator/
+!.agents/skills/workspace-graph-navigator/**
+!.agents/skills/project-entry-navigator/
+!.agents/skills/project-entry-navigator/**
+!.agents/skills/content-preservation-guardian/
+!.agents/skills/content-preservation-guardian/**
+.agents/skills/scientific-agent-skills/
 .claude/
-.codex/
+.codex/*
+!.codex/config.toml
+!.codex/README.md
+!.codex/agents/
+.codex/agents/*
+!.codex/agents/workspace-explorer.toml
+!.codex/agents/scientific-reviewer.toml
+!.codex/agents/verification-runner.toml
+!.codex/agents/worker.toml
+!.codex/agents/luna-analyst.toml
+!.codex/profiles/
+.codex/profiles/*
+!.codex/profiles/xhigh-baseline.config.toml
+!.codex/profiles/ultra-benchmark.config.toml
 .playwright-osf/
 
 # Temporary working areas
@@ -44,6 +72,20 @@ build/
 # they are promoted intentionally.
 scripts/*
 !scripts/generate_workspace_graph.py
+!scripts/generate_workspace_inventory.py
+!scripts/generate_skill_registry.py
+!scripts/generate_skill_docs.py
+!scripts/sync_curated_kdense_skills.py
+!scripts/validate_scientific_workflows.py
+!scripts/publish_workspace_skills.py
+
+# Reproducible browser tooling. Runtime downloads remain ignored.
+!tools/
+!tools/playwright/
+!tools/playwright/package.json
+!tools/playwright/package-lock.json
+tools/playwright/node_modules/
+tools/playwright/.playwright/
 
 # Local research corpora, project workspaces, and legacy folders.
 # These are intentionally not versioned by the root repo until a reviewed
@@ -56,7 +98,26 @@ PDFS DR ANDRÉ/
 REVISÃO LIGA/
 Revisões Sistemáticas/
 Submissão Final/
-projects/
+projects/*
+!projects/article-machine-governance-2026/
+projects/article-machine-governance-2026/*
+!projects/article-machine-governance-2026/project.yaml
+!projects/article-machine-governance-2026/protocol.yaml
+!projects/article-machine-governance-2026/standards.yaml
+!projects/article-machine-governance-2026/compute.yaml
+!projects/article-machine-governance-2026/renv.lock
+!projects/article-machine-governance-2026/inventory/
+!projects/article-machine-governance-2026/inventory/**
+!projects/article-machine-governance-2026/benchmarks/
+!projects/article-machine-governance-2026/benchmarks/**
+!projects/article-machine-governance-2026/reviews/
+!projects/article-machine-governance-2026/reviews/**
+!projects/article-machine-governance-2026/context/
+projects/article-machine-governance-2026/context/*
+!projects/article-machine-governance-2026/context/inventory_manifest.json
+!projects/article-machine-governance-2026/context/upgrade_record.json
+!projects/article-machine-governance-2026/context/scientific_workflow_plan.json
+!projects/article-machine-governance-2026/context/scientific_workflow_packet.md
 sources/
 *.pdf
 pesquisa 2.txt
@@ -66,10 +127,41 @@ kady-byok-logic.md
 # The full skill mirror is large. Track the Article Machine routing subset
 # explicitly; leave broad upstream mirrors local.
 skills/*
+!skills/registry.json
+!skills/registry.sources/
+!skills/registry.sources/**
+!skills/research-lookup/
+!skills/research-lookup/**
+!skills/database-lookup/
+!skills/database-lookup/**
+!skills/citation-management/
+!skills/citation-management/**
+!skills/literature-review/
+!skills/literature-review/**
+!skills/statistical-analysis/
+!skills/statistical-analysis/**
+!skills/peer-review/
+!skills/peer-review/**
+!skills/clinical-reports/
+!skills/clinical-reports/**
+!skills/venue-templates/
+!skills/venue-templates/**
+!skills/scientific-writing/
+!skills/scientific-writing/**
+!skills/scientific-critical-thinking/
+!skills/scientific-critical-thinking/**
+!skills/scientific-workflow-orchestrator/
+!skills/scientific-workflow-orchestrator/**
+!skills/bilingual-scientific-writing/
+!skills/bilingual-scientific-writing/**
+!skills/academic-office-deliverables/
+!skills/academic-office-deliverables/**
 !skills/agent-benchmark-harness/
 !skills/agent-benchmark-harness/**
 !skills/alphafold-pdb-structure-router/
 !skills/alphafold-pdb-structure-router/**
+!skills/anti-ai-writing-governor/
+!skills/anti-ai-writing-governor/**
 !skills/arbor/
 !skills/arbor/**
 !skills/asreview-screening-bridge/
@@ -84,6 +176,14 @@ skills/*
 !skills/bulk-rnaseq/**
 !skills/chembl-bindingdb-miner/
 !skills/chembl-bindingdb-miner/**
+!skills/clinical-trials-database/
+!skills/clinical-trials-database/**
+!skills/crossref-unpaywall-resolver/
+!skills/crossref-unpaywall-resolver/**
+!skills/content-preservation-guardian/
+!skills/content-preservation-guardian/**
+!skills/deep-thinking-governor/
+!skills/deep-thinking-governor/**
 !skills/cwl-workflow-bridge/
 !skills/cwl-workflow-bridge/**
 !skills/database-retrieval-governor/
@@ -92,6 +192,8 @@ skills/*
 !skills/evidence-lock-hardener/**
 !skills/exa-search/
 !skills/exa-search/**
+!skills/extraction-schema-governor/
+!skills/extraction-schema-governor/**
 !skills/experimental-design/
 !skills/experimental-design/**
 !skills/experimental-design-planner/
@@ -106,10 +208,28 @@ skills/*
 !skills/in-silico-validation-governor/**
 !skills/liteparse/
 !skills/liteparse/**
+!skills/life-science-router/
+!skills/life-science-router/**
+!skills/literature-search-arxiv/
+!skills/literature-search-arxiv/**
+!skills/literature-search-biorxiv/
+!skills/literature-search-biorxiv/**
+!skills/literature-search-europepmc/
+!skills/literature-search-europepmc/**
+!skills/literature-search-openalex/
+!skills/literature-search-openalex/**
+!skills/living-review-monitor/
+!skills/living-review-monitor/**
+!skills/manuscript-integrity-response-governor/
+!skills/manuscript-integrity-response-governor/**
 !skills/nextflow/
 !skills/nextflow/**
 !skills/nextflow-pipeline-runner/
 !skills/nextflow-pipeline-runner/**
+!skills/ngs-analysis-router/
+!skills/ngs-analysis-router/**
+!skills/opencitations-citation-audit/
+!skills/opencitations-citation-audit/**
 !skills/open-targets-drug-targeting/
 !skills/open-targets-drug-targeting/**
 !skills/openalex-literature-graph/
@@ -118,8 +238,14 @@ skills/*
 !skills/paper-lookup/**
 !skills/pathway-enrichment/
 !skills/pathway-enrichment/**
+!skills/protocol-registration-governor/
+!skills/protocol-registration-governor/**
+!skills/project-entry-navigator/
+!skills/project-entry-navigator/**
 !skills/ptbr-article-writing/
 !skills/ptbr-article-writing/**
+!skills/pubmed-database/
+!skills/pubmed-database/**
 !skills/query-string-governor/
 !skills/query-string-governor/**
 !skills/retraction-integrity-checker/
@@ -128,10 +254,16 @@ skills/*
 !skills/risk-of-bias-assistant/**
 !skills/ro-crate-provenance-export/
 !skills/ro-crate-provenance-export/**
+!skills/scienceskillscommon/
+!skills/scienceskillscommon/**
 !skills/scientific-novelty-checker/
 !skills/scientific-novelty-checker/**
 !skills/scientific-red-team-reviewer/
 !skills/scientific-red-team-reviewer/**
+!skills/semantic-scholar-citation-graph/
+!skills/semantic-scholar-citation-graph/**
+!skills/skill-upgrade-governor/
+!skills/skill-upgrade-governor/**
 !skills/snakemake-pipeline-runner/
 !skills/snakemake-pipeline-runner/**
 !skills/stage-audit-governor/
@@ -140,7 +272,53 @@ skills/*
 !skills/statistical-power/**
 !skills/topic-ideation-tournament/
 !skills/topic-ideation-tournament/**
+!skills/tooluniverse-clinical-data-integration/
+!skills/tooluniverse-clinical-data-integration/**
+!skills/tooluniverse-clinical-guidelines/
+!skills/tooluniverse-clinical-guidelines/**
+!skills/tooluniverse-clinical-trial-design/
+!skills/tooluniverse-clinical-trial-design/**
+!skills/tooluniverse-data-integration-analysis/
+!skills/tooluniverse-data-integration-analysis/**
+!skills/tooluniverse-dataset-discovery/
+!skills/tooluniverse-dataset-discovery/**
+!skills/tooluniverse-diagnostic-test-evaluation/
+!skills/tooluniverse-diagnostic-test-evaluation/**
+!skills/tooluniverse-drug-repurposing/
+!skills/tooluniverse-drug-repurposing/**
+!skills/tooluniverse-drug-target-validation/
+!skills/tooluniverse-drug-target-validation/**
+!skills/tooluniverse-epidemiological-analysis/
+!skills/tooluniverse-epidemiological-analysis/**
+!skills/tooluniverse-literature-deep-research/
+!skills/tooluniverse-literature-deep-research/**
+!skills/tooluniverse-meta-analysis/
+!skills/tooluniverse-meta-analysis/**
+!skills/tooluniverse-pharmacovigilance/
+!skills/tooluniverse-pharmacovigilance/**
+!skills/tooluniverse-self-review/
+!skills/tooluniverse-self-review/**
+!skills/tooluniverse-variant-interpretation/
+!skills/tooluniverse-variant-interpretation/**
+!skills/uv/
+!skills/uv/**
+!skills/workspace-graph-navigator/
+!skills/workspace-graph-navigator/**
+!skills/zotero-reference-manager/
+!skills/zotero-reference-manager/**
 
 # OS/editor noise
+.machine/skill-backups/
+.machine/plugin_bindings.json
+.machine/generated-skill-docs/
+.machine/verification/
+.agents/skills/*/
+!.agents/skills/workspace-graph-navigator/
+!.agents/skills/project-entry-navigator/
+!.agents/skills/content-preservation-guardian/
 .DS_Store
 Thumbs.db
+
+# These exclusions must follow curated-tree allowlists.
+**/__pycache__/
+**/*.py[cod]

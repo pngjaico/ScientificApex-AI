@@ -6,14 +6,17 @@ one automated pass would create broken paths and false provenance.
 
 ## Current Problems
 
-- Git is effectively uninitialized locally: current branch has no commits and
-  almost everything is untracked.
+- Git is initialized and the current branch is two commits ahead of
+  `origin/main`, but the worktree contains many pre-existing modified and
+  untracked files. It has not been proven reproducible from a clean clone.
 - Scientific projects and legacy source folders are mixed at the root.
 - Generated graphify temporary files are present at root and under
   `graphify-out/`.
-- `projects/projects/` is nested and should be reviewed before migration.
 - The package runtime works through `.venv\Scripts\python.exe -m article_machine`;
-  docs used to imply the console command was always available.
+  docs used to imply the console command was always available. Graphifyy 0.9.8
+  is now a pinned development dependency for the same venv.
+- Several required critical skills exist locally but are not tracked in Git;
+  their contracts need explicit review before they can be called reproducible.
 
 ## Clean Target Layout
 
@@ -56,16 +59,16 @@ before moving:
 
 ## Branch Cleanup Policy
 
-Current branch: `codex/gastrosp-top1-final`.
+The safe cleanup is:
 
-The root repo has no local commit history. The safe cleanup is:
-
-1. Keep the current branch.
-2. Add `.gitignore` before staging.
-3. Generate workspace graph and docs.
-4. Review `git status --short`.
-5. Create the first local commit only after confirming no sensitive raw data is
-   being staged.
+1. Keep the current branch unless the user explicitly requests another branch.
+2. Add or verify `.gitignore` before staging.
+3. Run `machine audit --strict`, regenerate the workspace graph, and run tests.
+4. Review `git status --short` and an explicit candidate-file manifest.
+5. Stage only reviewed code, contracts, tests, and policy files; exclude raw
+   data, full texts, local runs, secrets, caches, and environment state.
+6. Commit only after confirming the staged diff is complete and contains no
+   sensitive scientific inputs.
 
 Do not run `git reset --hard`, `git clean`, or broad move commands in this
 workspace without an explicit reviewed file list.

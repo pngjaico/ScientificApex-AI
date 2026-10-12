@@ -1,0 +1,5 @@
+# Copy to ~/.codex/ultra-benchmark.config.toml for `codex --profile ultra-benchmark`.
+model = "gpt-5.6-sol"
+model_reasoning_effort = "ultra"
+sandbox_mode = "read-only"
+

@@ -1,0 +1,39 @@
+contract_version: 2
+project_type: machine-governance
+lane: machine-governance
+python:
+  required: true
+  version: "3.13"
+  package_manager: uv
+  package_manager_version: "0.11.31"
+  lockfile: uv.lock
+  runner: .venv/Scripts/python.exe
+  timeout_seconds: 600
+  allowed_directories:
+    - analysis
+    - scripts
+r:
+  required: true
+  version: "4.6.1"
+  package_manager: renv
+  package_manager_version: "1.2.3"
+  lockfile: renv.lock
+  runner: Rscript
+  timeout_seconds: 900
+  allowed_directories:
+    - analysis
+    - scripts
+browser:
+  required: true
+  version: "1.61.1"
+  node_version: "24"
+  package_manager: npm
+  package_manager_version: "11.17.0"
+  lockfile: tools/playwright/package-lock.json
+  runner: tools/playwright/node_modules/.bin/playwright.cmd
+  playwright_version: "1.61.1"
+  timeout_seconds: 180
+  allowed_directories:
+    - analysis
+    - scripts
+required_plugins: []

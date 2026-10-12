@@ -1,5 +1,11 @@
 # Article Machine
 
+October 2026: version 0.3.0 adds Sol medium/Luna coordination and scientific
+workflows in English and PT-BR. Start with [the workflow guide](docs/SCIENTIFIC_WORKFLOWS.md)
+and [migration notes](docs/MIGRATION_0_3.md). `workflow plan`, `workflow audit-language`
+and `plugins audit` expose the new operational layer. Project-specific scientific
+acceptance and independent review remain required for final results.
+
 Scientific OS for agent-native research, evidence synthesis, meta-analysis, thesis drafting, and computational discovery.
 
 ## Start here for agents
@@ -9,7 +15,7 @@ Use the local venv for Article Machine:
 
 ```powershell
 .\.venv\Scripts\python.exe -m article_machine --help
-.\.venv\Scripts\python.exe -m article_machine machine audit --workspace-root .
+.\.venv\Scripts\python.exe -m article_machine machine audit --workspace-root . --strict
 .\.venv\Scripts\python.exe -m pytest
 ```
 
@@ -19,10 +25,21 @@ after an editable install; `python -m article_machine` is the reliable command.
 For workspace navigation, generate the operational graph:
 
 ```powershell
-python scripts\generate_workspace_graph.py
+.\.venv\Scripts\python.exe scripts\generate_workspace_graph.py
 ```
 
 Then open `graphify-out/graph.html` or read `graphify-out/GRAPH_REPORT.md`.
+For a deterministic handoff, read `docs/AGENT_OPERATION_MAP.md` before changing
+evidence, analysis, discovery, or drafts.
+
+Also read `.agents/AGENTS.md`. It is the local control plane that tells agents
+to query the graph first for workspace navigation, architecture, file
+relationships, project selection, skill routing, cleanup, staging, unknown
+paths, and handoff even when the user does not explicitly mention the graph.
+Read `.codex/README.md` for the project-scoped model and subagent policy. It
+keeps Ultra as an explicit session choice and assigns bounded read-only work to
+cheaper roles; model capability never bypasses scientific or reproducibility
+gates.
 
 ## What this implements
 - Project-scoped scientific runtime in `article_machine/`
@@ -34,7 +51,7 @@ Then open `graphify-out/graph.html` or read `graphify-out/GRAPH_REPORT.md`.
 - Task Packets and project briefs for compact context handoff
 - Conference deliverables for HTML-first slides, posters, abstracts, handouts, submission packs, QA, PDF/PPTX export, and Playwright hooks
 - Life Science Research integration for biomedical skill routing across targets, variants, omics, structures, compounds, clinical trials, literature, and public datasets
-- Natural skill routing for hypothesis tournaments, novelty checks, experimental design, provenance, workflow engines, active-learning screening, risk of bias, GRADE, drug-target evidence, chemistry mining, structure routing, in silico validation, benchmarking, and scientific red-team review
+- Natural skill routing for hypothesis tournaments, novelty checks, deep-thinking gates, Zotero reference management, Life Science Research plugin routing, NGS analysis routing, experimental design, provenance, workflow engines, active-learning screening, risk of bias, GRADE, source-specific retrieval APIs, protocol registration, extraction schemas, living searches, drug-target evidence, chemistry mining, structure routing, in silico validation, benchmarking, and scientific red-team review
 
 ## Project layout
 Each project lives under `projects/<project_id>/` and includes:
@@ -77,9 +94,24 @@ article-machine skills route --query "Discover drug targets with ChEMBL, AlphaFo
 article-machine skills audit
 ```
 
-Agents should use the routed skills before doing the task manually. The world-class layer includes skills for hypothesis generation, novelty checks, experimental design, FAIR/RO-Crate provenance, Nextflow/Snakemake/CWL, active-learning screening, risk of bias, GRADE SoF tables, OpenAlex, Open Targets, ChEMBL/BindingDB, AlphaFold/PDB, in silico validation, benchmarking, and red-team review.
+For navigation and safe handoff, route through `workspace-graph-navigator`, `project-entry-navigator`, and `content-preservation-guardian` before exploring the root, choosing a project, staging files, moving legacy material, or indexing raw content.
+
+Agents should use the routed skills before doing the task manually. The world-class layer includes skills for hypothesis generation, novelty checks, experimental design, FAIR/RO-Crate provenance, Nextflow/Snakemake/CWL, active-learning screening, risk of bias, GRADE SoF tables, provider-specific literature and registry APIs, protocol registration, extraction schemas, living-review monitoring, OpenAlex, Open Targets, ChEMBL/BindingDB, AlphaFold/PDB, in silico validation, anti-AI-style manuscript naturalization without detector bypass, benchmarking, and red-team review.
 
 The local catalog also syncs selected upstream Scientific Agent Skills for article creation and scientific computing: `experimental-design`, `statistical-power`, `liteparse`, `paper-lookup`, `research-lookup`, `nextflow`, `bulk-rnaseq`, `pathway-enrichment`, `bids`, `onekgpd`, `tamarind`, `arbor`, and `autoskill`. These skills expand execution coverage; they do not weaken Article Machine gates. Evidence Lock, benchmark evidence, stage audit, and Review Trinity remain the authority before a manuscript, report, deck, or submission is called ready.
+
+The external-provider layer adds Google DeepMind Science Skills wrappers for `pubmed-database`, `clinical-trials-database`, `literature-search-europepmc`, `literature-search-openalex`, `literature-search-arxiv`, and `literature-search-biorxiv`; curated ToolUniverse workflows for deep literature research, meta-analysis, diagnostic accuracy, epidemiology, datasets, clinical guidelines, trial design, pharmacovigilance, target validation, variant interpretation, clinical data integration, biological annotation, drug repurposing, and self-review; plus local governors for Crossref/Unpaywall, Semantic Scholar, OpenCitations, protocol registration, extraction schemas, living reviews, reviewer-response/manuscript-integrity work, academic Office/LaTeX deliverables, and skill upgrades. These are execution aids, not final proof: source excerpts, manifests, Evidence Lock, and Review Trinity still decide readiness.
+
+The plugin gateway layer adds `zotero-reference-manager` for local Zotero/BibTeX/reference syncing and requested indexed full text, `life-science-router` for Life Science Research plugin orchestration, `ngs-analysis-router` for Life Sciences NGS Analysis routing and preflight-first sequencing workflows, and `deep-thinking-governor` for assumptions, alternatives, premortem/steelman/red-team checks, and decision summaries before strong claims. These gateways do not make the system perfect; benchmark evidence, Evidence Lock, preflight artifacts, and residual-risk notes still decide readiness.
+
+For scientific prose that sounds AI-generated, use:
+
+```bash
+article-machine style anti-ai-audit drafts/manuscript.md --output reviews/anti_ai_style.md --json-output reviews/anti_ai_style.json --strict
+article-machine style anti-ai-naturalize drafts/manuscript.md --output drafts/manuscript.naturalized.md --json-output reviews/anti_ai_naturalize.json
+```
+
+These commands are for accountable authorship and structure, not detector evasion.
 
 ## Conference Deliverables
 ```bash

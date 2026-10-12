@@ -3,12 +3,16 @@ from __future__ import annotations
 from datetime import datetime, timezone
 import hashlib
 import json
+import os
 from pathlib import Path
 import re
+import subprocess
 from typing import Any
 
+from .benchmarks import validate_benchmark_report
 from .evidence import validate_evidence_lock
-from .projects import MODE_ORDER
+from .projects import MODE_ORDER, MACHINE_GOVERNANCE_MODE_ORDER
+from .policy.gates import canonical_gate
 from .serialization import load_structured_file, save_structured_file
 
 
@@ -20,6 +24,29 @@ IDEA_REPORT_PATH = Path("analysis") / "idea_tournament_report.json"
 STAGE_AUDIT_PATH = Path("reviews") / "stage_audit_report.json"
 GUARDRAIL_PATH = Path("reviews") / "guardrail_report.json"
 MACHINE_AUDIT_PATH = Path("reviews") / "machine_audit_report.json"
+
+CURRENT_MACHINE_UPGRADE_REQUEST = (
+    "vamos melhorar a máquina, agora com o 5.6 sol ultra, ainda não mexi nela depois de ser lançado esse modelo, "
+    "veja oq podemos melhorar, aprimorar, revisar, organizar e afins"
+)
+
+ROUTING_CANARIES: tuple[dict[str, Any], ...] = (
+    {
+        "id": "current_sol_ultra_machine_upgrade",
+        "query": CURRENT_MACHINE_UPGRADE_REQUEST,
+        "required_skills": ("skill-upgrade-governor", "agent-benchmark-harness"),
+    },
+    {
+        "id": "graph_first_workspace_navigation",
+        "query": "Como um agente novo deve navegar o workspace usando o grafo operacional Graphify?",
+        "required_skills": ("workspace-graph-navigator",),
+    },
+    {
+        "id": "reviewer_response_integrity",
+        "query": "Responder pareceristas com rebuttal e checar a integridade das referências do manuscrito.",
+        "required_skills": ("manuscript-integrity-response-governor",),
+    },
+)
 
 QUERY_CONTRACT_VERSION = 1
 
@@ -801,11 +828,6 @@ def _file_nonempty(path: Path) -> bool:
     return path.exists() and path.read_text(encoding="utf-8", errors="replace").strip() != ""
 
 
-def _benchmark_passed(project_dir: Path) -> bool:
-    benchmark = load_structured_file(project_dir / "analysis" / "benchmark_report.json")
-    return benchmark.get("status") == "pass" or benchmark.get("aggregate_status") == "pass"
-
-
 def _journal_route_passed(project_dir: Path) -> bool:
     journal_report = load_structured_file(project_dir / "analysis" / "journal_strategy_report.json")
     if journal_report.get("status") == "routed":
@@ -818,12 +840,14 @@ def audit_stage(project_dir: Path, target_mode: str | None = None) -> dict[str, 
     project_dir = Path(project_dir)
     project = load_structured_file(project_dir / "project.yaml")
     protocol = load_structured_file(project_dir / "protocol.yaml")
-    target = target_mode or "submission"
-    if target not in MODE_ORDER:
-        target = "submission"
+    governance = project.get("lane") == "machine-governance"
+    order = MACHINE_GOVERNANCE_MODE_ORDER if governance else MODE_ORDER
+    target = target_mode or ("release" if governance else "submission")
+    if target not in order:
+        target = order[-1]
 
-    target_index = MODE_ORDER.index(target)
-    checked_modes = MODE_ORDER[: target_index + 1]
+    target_index = order.index(target)
+    checked_modes = order[: target_index + 1]
     checks: list[dict[str, Any]] = []
     issues: list[str] = []
 
@@ -843,6 +867,23 @@ def audit_stage(project_dir: Path, target_mode: str | None = None) -> dict[str, 
         add("bootstrap", "protocol.yaml", bool(protocol), "protocol.yaml is missing or empty.")
         add("bootstrap", "standards.yaml", (project_dir / "standards.yaml").exists(), "standards.yaml is missing.")
         add("bootstrap", "compute.yaml", (project_dir / "compute.yaml").exists(), "compute.yaml is missing.")
+
+    if governance:
+        if "inventory" in checked_modes:
+            add("inventory", "inventory_manifest", _file_nonempty(project_dir / "context" / "inventory_manifest.json"), "context/inventory_manifest.json is missing.")
+        if "upgrade" in checked_modes:
+            add("upgrade", "upgrade_record", _file_nonempty(project_dir / "context" / "upgrade_record.json"), "context/upgrade_record.json is missing.")
+        if "verification" in checked_modes:
+            add("verification", "verification_report", _file_nonempty(project_dir / "analysis" / "verification_report.json"), "analysis/verification_report.json is missing.")
+        if "acceptance-benchmark" in checked_modes:
+            benchmark_validation = validate_benchmark_report(project_dir)
+            add("acceptance-benchmark", "benchmark", benchmark_validation.get("gate_eligible") is True, "AgentBenchmarkReportV2 is missing or blocked.")
+        if "release" in checked_modes:
+            add("release", "release_audit", _file_nonempty(project_dir / "analysis" / "release_audit.json"), "analysis/release_audit.json is missing.")
+        stage_report = canonical_gate(project_dir, target, checks)
+        stage_report["checked_modes"] = checked_modes
+        save_structured_file(project_dir / STAGE_AUDIT_PATH, stage_report)
+        return stage_report
 
     if "protocol-freeze" in checked_modes:
         add("protocol-freeze", "research_question", bool(protocol.get("research_question")), "protocol.yaml research_question is empty.")
@@ -884,30 +925,33 @@ def audit_stage(project_dir: Path, target_mode: str | None = None) -> dict[str, 
 
     if "drafting" in checked_modes:
         evidence_report = validate_evidence_lock(project_dir)
-        add("drafting", "evidence_lock", evidence_report["status"] == "pass", "Evidence Lock is not passing.")
+        add("drafting", "evidence_lock", evidence_report.get("gate_eligible") is True, "Evidence Lock V2 is not gate eligible.")
 
     if "review-trinity" in checked_modes:
         review_report = load_structured_file(project_dir / "reviews" / "review_report.json")
+        from .policy.gates import file_sha256, workspace_snapshot
+        review_current = review_report.get("review_snapshot") == workspace_snapshot(project_dir)
+        red_team_current = review_report.get("red_team_sha256") == file_sha256(project_dir / "reviews" / "red_team_report.json")
         add(
             "review-trinity",
             "review_report",
-            review_report.get("aggregate_status") == "pass",
-            "Review Trinity aggregate_status is not pass.",
+            review_report.get("gate_eligible") is True and review_current and red_team_current,
+            "Review Trinity is missing, blocked or stale; rerun after inputs or red-team changes.",
         )
 
     if "submission" in checked_modes:
         add("submission", "journal_route", _journal_route_passed(project_dir), "journal route/report is missing or blocked.")
-        add("submission", "benchmark", _benchmark_passed(project_dir), "agent-benchmark-harness benchmark is missing or not pass.")
+        benchmark_validation = validate_benchmark_report(project_dir)
+        add(
+            "submission",
+            "benchmark",
+            benchmark_validation.get("gate_eligible") is True and benchmark_validation.get("eligibility_scope") == "scientific-acceptance",
+            "agent-benchmark-harness benchmark is missing, invalid, reporting-only, or not gate eligible.",
+        )
+        checks[-1]["validation"] = benchmark_validation
 
-    report = {
-        "contract": "StageAuditReport",
-        "status": _status_from_issues(issues),
-        "project_dir": str(project_dir),
-        "target_mode": target,
-        "checked_modes": checked_modes,
-        "checks": checks,
-        "issues": issues,
-    }
+    report = canonical_gate(project_dir, target, checks)
+    report["checked_modes"] = checked_modes
     save_structured_file(project_dir / STAGE_AUDIT_PATH, report)
     return report
 
@@ -941,7 +985,199 @@ def run_guard_check(project_dir: Path) -> dict[str, Any]:
     return guardrail
 
 
-def run_machine_audit(workspace_root: Path | None = None) -> dict[str, Any]:
+def audit_operational_graph(workspace_root: Path) -> dict[str, Any]:
+    """Run the workspace graph validator without generating graph artifacts."""
+
+    root = Path(workspace_root).resolve()
+    try:
+        from scripts.generate_workspace_graph import validate_operational_graph
+
+        report = validate_operational_graph(root)
+        if not isinstance(report, dict):
+            raise TypeError("operational graph validator returned a non-object report")
+        return report
+    except Exception as exc:
+        return {
+            "contract": "OperationalGraphAuditReport",
+            "status": "block",
+            "workspace_root": str(root),
+            "read_only": True,
+            "checks": {},
+            "issues": [f"operational graph audit could not run: {exc}"],
+        }
+
+
+def audit_routing_canaries(skills_dir: Path) -> dict[str, Any]:
+    """Exercise fixed router regressions against the installed skill catalog."""
+
+    from .agent_skills import route_workspace_skills
+
+    canary_reports: list[dict[str, Any]] = []
+    issues: list[str] = []
+    for canary in ROUTING_CANARIES:
+        route = route_workspace_skills(str(canary["query"]), Path(skills_dir), limit=16)
+        selected = {
+            item.get("skill")
+            for item in route.get("selected_skills", [])
+            if isinstance(item, dict) and isinstance(item.get("skill"), str)
+        }
+        required = set(canary["required_skills"])
+        missing = sorted(required - selected)
+        canary_reports.append(
+            {
+                "id": canary["id"],
+                "status": "pass" if not missing else "block",
+                "query": canary["query"],
+                "required_skills": sorted(required),
+                "selected_skills": sorted(selected),
+                "missing_skills": missing,
+            }
+        )
+        if missing:
+            issues.append(f"routing canary {canary['id']} missed required skill(s): {', '.join(missing)}")
+
+    return {
+        "contract": "RoutingCanaryAuditReport",
+        "status": _status_from_issues(issues),
+        "skills_dir": str(Path(skills_dir)),
+        "canaries": canary_reports,
+        "issues": issues,
+    }
+
+
+def audit_git_skill_reproducibility(
+    workspace_root: Path,
+    required_skills: tuple[str, ...] | None = None,
+) -> dict[str, Any]:
+    """Verify required skill entrypoints in both the Git index and ``HEAD``.
+
+    The index alone is insufficient clean-clone evidence: a newly staged skill
+    is still unavailable to another agent until it is committed.
+    """
+
+    root = Path(workspace_root).resolve()
+    if required_skills is None:
+        from .agent_skills import WORLD_CLASS_SKILLS
+
+        required_skills = WORLD_CLASS_SKILLS
+    required = tuple(dict.fromkeys(required_skills))
+    git_marker = root / ".git"
+    if not git_marker.exists():
+        return {
+            "contract": "GitSkillReproducibilityAuditReport",
+            "status": "pass",
+            "workspace_root": str(root),
+            "applicable": False,
+            "checked_skills": list(required),
+            "tracked_skills": [],
+            "untracked_skills": [],
+            "committed_skills": [],
+            "uncommitted_skills": [],
+            "staged_only_skills": [],
+            "issues": [],
+        }
+
+    git_env = os.environ.copy()
+    git_env["GIT_CONFIG_NOSYSTEM"] = "1"
+    git_env["GIT_CONFIG_GLOBAL"] = os.devnull
+    try:
+        index_result = subprocess.run(
+            ["git", "-C", str(root), "ls-files", "-z", "--", "skills"],
+            check=False,
+            capture_output=True,
+            env=git_env,
+        )
+        head_result = subprocess.run(
+            ["git", "-C", str(root), "ls-tree", "-r", "-z", "--name-only", "HEAD", "--", "skills"],
+            check=False,
+            capture_output=True,
+            env=git_env,
+        )
+    except OSError as exc:
+        return {
+            "contract": "GitSkillReproducibilityAuditReport",
+            "status": "block",
+            "workspace_root": str(root),
+            "applicable": True,
+            "checked_skills": list(required),
+            "tracked_skills": [],
+            "untracked_skills": list(required),
+            "committed_skills": [],
+            "uncommitted_skills": list(required),
+            "staged_only_skills": [],
+            "issues": [f"Git skill reproducibility audit could not run: {exc}"],
+        }
+
+    failed_result = next((result for result in (index_result, head_result) if result.returncode != 0), None)
+    if failed_result is not None:
+        stderr = failed_result.stderr.decode("utf-8", errors="replace").strip()
+        return {
+            "contract": "GitSkillReproducibilityAuditReport",
+            "status": "block",
+            "workspace_root": str(root),
+            "applicable": True,
+            "checked_skills": list(required),
+            "tracked_skills": [],
+            "untracked_skills": list(required),
+            "committed_skills": [],
+            "uncommitted_skills": list(required),
+            "staged_only_skills": [],
+            "issues": [
+                f"Git skill reproducibility audit failed ({failed_result.returncode}): "
+                f"{stderr or 'no error output'}"
+            ],
+        }
+
+    indexed_paths = {
+        path.replace("\\", "/")
+        for path in index_result.stdout.decode("utf-8", errors="surrogateescape").split("\0")
+        if path
+    }
+    head_paths = {
+        path.replace("\\", "/")
+        for path in head_result.stdout.decode("utf-8", errors="surrogateescape").split("\0")
+        if path
+    }
+    tracked_skills = [name for name in required if f"skills/{name}/SKILL.md" in indexed_paths]
+    untracked_skills = [name for name in required if f"skills/{name}/SKILL.md" not in indexed_paths]
+    committed_skills = [name for name in required if f"skills/{name}/SKILL.md" in head_paths]
+    uncommitted_skills = [name for name in required if f"skills/{name}/SKILL.md" not in head_paths]
+    staged_only_skills = [name for name in tracked_skills if name not in committed_skills]
+    committed_but_removed_from_index = [name for name in committed_skills if name not in tracked_skills]
+    issues = []
+    if untracked_skills:
+        issues.append(
+            f"{len(untracked_skills)}/{len(required)} required skill entrypoints are absent from the Git index: "
+            + ", ".join(untracked_skills)
+        )
+    if uncommitted_skills:
+        issues.append(
+            f"{len(uncommitted_skills)}/{len(required)} required skill entrypoints are absent from HEAD "
+            "and therefore unavailable to a clean clone: "
+            + ", ".join(uncommitted_skills)
+        )
+    if committed_but_removed_from_index:
+        issues.append(
+            "Required skill entrypoints exist in HEAD but are removed from the current index: "
+            + ", ".join(committed_but_removed_from_index)
+        )
+    return {
+        "contract": "GitSkillReproducibilityAuditReport",
+        "status": _status_from_issues(issues),
+        "workspace_root": str(root),
+        "applicable": True,
+        "checked_skills": list(required),
+        "tracked_skills": tracked_skills,
+        "untracked_skills": untracked_skills,
+        "committed_skills": committed_skills,
+        "uncommitted_skills": uncommitted_skills,
+        "staged_only_skills": staged_only_skills,
+        "committed_but_removed_from_index": committed_but_removed_from_index,
+        "issues": issues,
+    }
+
+
+def run_machine_audit(workspace_root: Path | None = None, strict: bool = False) -> dict[str, Any]:
     root = Path(workspace_root or Path.cwd())
     provider_audit = validate_provider_specs()
     reports: dict[str, Any] = {"provider_specs": provider_audit}
@@ -969,6 +1205,22 @@ def run_machine_audit(workspace_root: Path | None = None) -> dict[str, Any]:
     except Exception as exc:  # pragma: no cover - defensive CLI hardening
         issues.append(f"journal preset audit failed: {exc}")
 
+    if strict:
+        strict_audits = (
+            ("operational_graph", lambda: audit_operational_graph(root)),
+            ("routing_canaries", lambda: audit_routing_canaries(root / "skills")),
+            ("git_skill_reproducibility", lambda: audit_git_skill_reproducibility(root)),
+        )
+        for name, audit in strict_audits:
+            try:
+                strict_report = audit()
+            except Exception as exc:  # pragma: no cover - defensive CLI hardening
+                strict_report = {"status": "block", "issues": [f"{name} audit failed: {exc}"]}
+            reports[name] = strict_report
+            if strict_report.get("status") != "pass":
+                report_issues = strict_report.get("issues") or [f"{name} status is {strict_report.get('status')}." ]
+                issues.extend(str(item) for item in report_issues)
+
     report = {
         "contract": "MachineAuditReport",
         "status": _status_from_issues(issues),
@@ -977,6 +1229,9 @@ def run_machine_audit(workspace_root: Path | None = None) -> dict[str, Any]:
         "reports": reports,
         "issues": issues,
     }
-    if (root / "reviews").exists():
+    if strict:
+        report["strict"] = True
+        report["read_only"] = True
+    if not strict and (root / "reviews").exists():
         save_structured_file(root / MACHINE_AUDIT_PATH, report)
     return report

@@ -1,0 +1,160 @@
+{
+  "contract": "ScientificWorkflowPlanV1",
+  "status": "planned",
+  "gate_eligible": false,
+  "created_at": "2026-10-12T12:59:33.813032+00:00",
+  "project_id": "article-machine-governance-2026",
+  "project_type": "machine-governance",
+  "query": "Update complex scientific workflows in English and Portuguese with Sol medium and Luna",
+  "language": "en",
+  "current_mode": "bootstrap",
+  "allowed_next_modes": [
+    "inventory"
+  ],
+  "guidelines": [],
+  "selected_skills": [
+    {
+      "skill": "scientific-workflow-orchestrator",
+      "matched_triggers": [
+        "complex scientific",
+        "sol medium",
+        "luna"
+      ],
+      "reason": "Plan scientific phases and bounded delegation with project contracts and review gates.",
+      "skill_file": "C:\\Users\\Usuario-pc\\Desktop\\Doutorado\\skills\\scientific-workflow-orchestrator\\SKILL.md",
+      "registry_status": "active",
+      "promotion_requires_review": false
+    },
+    {
+      "skill": "bilingual-scientific-writing",
+      "matched_triggers": [
+        "in english"
+      ],
+      "reason": "Preserve claims, references, numbers and uncertainty across native English and PT-BR writing.",
+      "skill_file": "C:\\Users\\Usuario-pc\\Desktop\\Doutorado\\skills\\bilingual-scientific-writing\\SKILL.md",
+      "registry_status": "active",
+      "promotion_requires_review": false
+    }
+  ],
+  "coordination": {
+    "model": "gpt-6.1-sol",
+    "effort": "medium",
+    "service": "standard",
+    "verify_actual_runtime": true
+  },
+  "delegation": {
+    "exploration": {
+      "model": "gpt-6-luna",
+      "effort": "low"
+    },
+    "implementation": {
+      "model": "gpt-6-luna",
+      "effort": "medium"
+    },
+    "focused_analysis": {
+      "model": "gpt-6-luna",
+      "effort": "high"
+    },
+    "scientific_review": {
+      "model": "gpt-6.1-sol",
+      "effort": "high"
+    },
+    "start_with_workers": 1,
+    "max_subagents": 3,
+    "packet_required_fields": [
+      "objective",
+      "inputs",
+      "allowed_tools",
+      "owned_files",
+      "expected_artifacts",
+      "verification",
+      "stop_conditions"
+    ]
+  },
+  "phases": [
+    {
+      "id": "question",
+      "owner": "Sol",
+      "artifact": "context/question_and_alternatives.md",
+      "acceptance": "Protocol question, competing hypotheses, feasibility"
+    },
+    {
+      "id": "protocol",
+      "owner": "Sol",
+      "artifact": "protocol.yaml",
+      "acceptance": "Design, endpoints, estimand, registration, deviations"
+    },
+    {
+      "id": "retrieval",
+      "owner": "Luna",
+      "artifact": "context/retrieval/",
+      "acceptance": "Dated queries, source identifiers, deduplication, provider caveats"
+    },
+    {
+      "id": "screening",
+      "owner": "Luna",
+      "artifact": "evidence/screening/",
+      "acceptance": "Traceable decisions; ambiguous eligibility returns to Sol"
+    },
+    {
+      "id": "extraction",
+      "owner": "Luna",
+      "artifact": "evidence/extraction_manifest.json",
+      "acceptance": "Schema validation, locators, units, missing data"
+    },
+    {
+      "id": "methods",
+      "owner": "Sol",
+      "artifact": "reviews/methods_review.json",
+      "acceptance": "Bias, confounding, transitivity, sensitivity assumptions"
+    },
+    {
+      "id": "analysis",
+      "owner": "Luna",
+      "artifact": "analysis/manifest.json",
+      "acceptance": "Execute approved plan with locked runtime and hashes"
+    },
+    {
+      "id": "interpretation",
+      "owner": "Sol",
+      "artifact": "evidence/claim_map.jsonl",
+      "acceptance": "Support assessment, counterevidence, claim calibration"
+    },
+    {
+      "id": "writing",
+      "owner": "Sol",
+      "artifact": "drafts/manuscript.md",
+      "acceptance": "Native target-language prose and preserved claim/reference keys"
+    },
+    {
+      "id": "review",
+      "owner": "Sol",
+      "artifact": "reviews/review_report.json",
+      "acceptance": "Methodological, quantitative, editorial, independent red-team"
+    }
+  ],
+  "language_contract": {
+    "target": "en",
+    "glossary": "context/terminology_glossary.json",
+    "preserve": [
+      "claim_ids",
+      "reference_keys",
+      "study_ids",
+      "numeric_values",
+      "uncertainty",
+      "disclosure"
+    ]
+  },
+  "gates": [
+    "protocol registration when required",
+    "locked runtime preflight",
+    "Evidence Lock V2",
+    "Review Trinity V2",
+    "independent red-team"
+  ],
+  "limits": [
+    "planning does not advance lifecycle",
+    "scientific judgment remains with coordinator",
+    "plugins are optional retrieval aids"
+  ]
+}

@@ -25,13 +25,29 @@ Este manifesto define como qualquer agente deve operar esta máquina científica
 ## Roteamento Natural de Skills
 - Use `article-machine skills route --query "<pedido>"` quando a intenção exigir roteamento explícito.
 - Use `article-machine skills audit` após criar ou alterar skills.
+- Use `docs/AGENT_OPERATION_MAP.md` como handoff mínimo: entrada, auditoria,
+  graph, projeto ativo, roteamento, Task Packet e Evidence Lock.
+- Navegação de workspace usa `workspace-graph-navigator` antes de varredura ampla.
+- Entrada/retomada de projeto usa `project-entry-navigator` antes de evidência, análise, descoberta ou draft.
+- Reorganização, staging, graphing amplo e qualquer risco a fontes brutas usam `content-preservation-guardian`.
 - Hipóteses, novidade e desenho experimental usam `hypothesis-tournament`, `scientific-novelty-checker` e `experimental-design-planner`.
 - Reprodutibilidade e workflows usam `ro-crate-provenance-export`, `nextflow-pipeline-runner`, `snakemake-pipeline-runner` ou `cwl-workflow-bridge`.
 - Revisões sistemáticas usam `asreview-screening-bridge`, `risk-of-bias-assistant` e `grade-sof-table-builder`.
+- Protocolo, extração e revisão viva usam `protocol-registration-governor`, `extraction-schema-governor` e `living-review-monitor`.
+- Fontes específicas usam `pubmed-database`, `clinical-trials-database`, `literature-search-europepmc`, `literature-search-openalex`, `literature-search-arxiv`, `literature-search-biorxiv`, `crossref-unpaywall-resolver`, `semantic-scholar-citation-graph` e `opencitations-citation-audit`.
+- Zotero, BibTeX, `references.bib`, chaves de citação e full text local usam `zotero-reference-manager`.
 - Descoberta biomédica usa `openalex-literature-graph`, `open-targets-drug-targeting`, `chembl-bindingdb-miner`, `alphafold-pdb-structure-router` e `life-science-router`.
+- Sequenciamento/NGS usa `ngs-analysis-router` antes de qualquer instalação, referência grande, execução ou upload cloud.
+- Workflows `tooluniverse-*` instalados ampliam literatura profunda, meta-análise, epidemiologia, diagnóstico, datasets, guidelines, trial design, farmacovigilância, validação de alvo, variantes, integração biológica e drug repurposing, sempre subordinados ao Evidence Lock.
 - Resultados computacionais passam por `in-silico-validation-governor`.
+- Decisões fortes, claims frágeis e pedidos de "perfeito" usam `deep-thinking-governor`.
 - Avaliação da própria máquina usa `agent-benchmark-harness`.
+- Texto científico com cara de IA usa `anti-ai-writing-governor`, sem bypass de detector e sem perda de evidência.
+- Upgrade de skills usa `skill-upgrade-governor`.
 - Antes de submissão ou claim forte, use `scientific-red-team-reviewer`.
+
+- Resposta a pareceristas, rebuttal, integridade de referencias/citacoes e consistencia interna de manuscrito usam `manuscript-integrity-response-governor`.
+- DOCX/PPTX/LaTeX editaveis, relatorios de leitura, slides de defesa/reuniao e pacotes academicos com QA de layout usam `academic-office-deliverables`.
 
 ## Modos Obrigatórios
 1. `bootstrap`
@@ -69,3 +85,69 @@ Este manifesto define como qualquer agente deve operar esta máquina científica
 
 ## Resultado Esperado
 - Um agente novo deve conseguir abrir este workspace, inicializar ou retomar um projeto, passar pelos modos com gates reais e entregar saídas auditáveis sem depender de contexto implícito.
+
+<!-- ARTICLE_MACHINE_REGISTRY_START -->
+## Skill registry (generated)
+
+- `academic-office-deliverables` (active)
+- `agent-benchmark-harness` (active)
+- `alphafold-pdb-structure-router` (active)
+- `anti-ai-writing-governor` (active)
+- `asreview-screening-bridge` (active)
+- `author-identity-resolver` (active)
+- `bilingual-scientific-writing` (active)
+- `chembl-bindingdb-miner` (active)
+- `citation-management` (active)
+- `clinical-reports` (active)
+- `clinical-trials-database` (active)
+- `content-preservation-guardian` (active)
+- `crossref-unpaywall-resolver` (active)
+- `cwl-workflow-bridge` (active)
+- `database-lookup` (active)
+- `database-retrieval-governor` (active)
+- `deep-thinking-governor` (active)
+- `evidence-lock-hardener` (active)
+- `experimental-design-planner` (active)
+- `extraction-schema-governor` (active)
+- `grade-sof-table-builder` (active)
+- `guideline-router` (active)
+- `hypothesis-tournament` (active)
+- `in-silico-validation-governor` (active)
+- `life-science-router` (active)
+- `literature-review` (active)
+- `literature-search-arxiv` (active)
+- `literature-search-biorxiv` (active)
+- `literature-search-europepmc` (active)
+- `literature-search-openalex` (active)
+- `living-review-monitor` (active)
+- `manuscript-integrity-response-governor` (active)
+- `nextflow-pipeline-runner` (active)
+- `ngs-analysis-router` (active)
+- `open-targets-drug-targeting` (active)
+- `openalex-literature-graph` (active)
+- `opencitations-citation-audit` (active)
+- `peer-review` (active)
+- `project-entry-navigator` (active)
+- `protocol-registration-governor` (active)
+- `ptbr-article-writing` (active)
+- `pubmed-database` (active)
+- `query-string-governor` (active)
+- `research-lookup` (active)
+- `retraction-integrity-checker` (active)
+- `risk-of-bias-assistant` (active)
+- `ro-crate-provenance-export` (active)
+- `scientific-critical-thinking` (active)
+- `scientific-novelty-checker` (active)
+- `scientific-red-team-reviewer` (active)
+- `scientific-workflow-orchestrator` (active)
+- `scientific-writing` (active)
+- `semantic-scholar-citation-graph` (active)
+- `skill-upgrade-governor` (active)
+- `snakemake-pipeline-runner` (active)
+- `stage-audit-governor` (active)
+- `statistical-analysis` (active)
+- `topic-ideation-tournament` (active)
+- `venue-templates` (active)
+- `workspace-graph-navigator` (active)
+- `zotero-reference-manager` (active)
+<!-- ARTICLE_MACHINE_REGISTRY_END -->

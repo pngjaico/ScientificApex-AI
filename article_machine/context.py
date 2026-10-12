@@ -31,9 +31,22 @@ def build_task_packet(project_dir: Path, mode: str, active_hypothesis: str | Non
     project = load_project(project_dir)
     protocol = load_structured_file(project_dir / "protocol.yaml")
     standards = load_structured_file(project_dir / "standards.yaml")
+    from .zero_trust import audit_stage
+    from .commands.governance import record_blocked_attempt
+
+    gate = audit_stage(project_dir, target_mode=mode)
+    current_mode = project.get("state", {}).get("current_mode")
+    if mode != current_mode or gate.get("gate_eligible") is not True:
+        report = {"contract": "TaskPacketGateV2", "status": "blocked", "gate_eligible": False,
+                  "issues": ["Task Packet requires the active current mode and a passing canonical stage gate."], "gate": gate}
+        record_blocked_attempt(project_dir, "context-build", report)
+        return report
     hypothesis = active_hypothesis or protocol.get("hypothesis") or ""
 
     packet = {
+        "contract": "TaskPacketV2",
+        "status": "passed",
+        "stage_gate": gate,
         "created_at": _now_iso(),
         "mode": mode,
         "active_hypothesis": hypothesis,

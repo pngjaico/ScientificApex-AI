@@ -1,0 +1,105 @@
+name: Article Machine quality gate
+
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: quality-gate-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  clean-checkout:
+    name: Clean checkout / Python 3.13 / Windows
+    runs-on: windows-2025
+    timeout-minutes: 30
+    env:
+      PYTHONUTF8: "1"
+      UV_NO_PROGRESS: "1"
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          fetch-depth: 1
+          persist-credentials: false
+
+      - name: Set up Python 3.13
+        uses: actions/setup-python@ece7cb06caefa5fff74198d8649806c4678c61a1 # v6.3.0
+        with:
+          python-version: "3.13"
+          check-latest: false
+
+      - name: Set up uv
+        uses: astral-sh/setup-uv@08807647e7069bb48b6ef5acd8ec9567f424441b # v8.1.0
+        with:
+          version: "0.11.31"
+          enable-cache: true
+          cache-dependency-glob: uv.lock
+
+      - name: Verify toolchain
+        shell: pwsh
+        run: |
+          python --version
+          uv --version
+
+      - name: Sync locked development environment
+        shell: pwsh
+        run: uv sync --locked --all-extras --dev --python 3.13
+
+      - name: Restore browser tooling
+        shell: pwsh
+        run: npm ci --prefix tools/playwright --ignore-scripts
+
+      - name: Check skill documentation drift
+        shell: pwsh
+        run: uv run --no-sync python scripts/generate_skill_docs.py --check-workspace
+
+      - name: Lint new contract and service modules
+        shell: pwsh
+        run: uv run --no-sync python -m ruff check article_machine/contracts article_machine/adapters article_machine/services article_machine/policy article_machine/commands
+
+      - name: Type-check new modules
+        shell: pwsh
+        run: uv run --no-sync python -m mypy --follow-imports=silent article_machine/contracts article_machine/adapters article_machine/services article_machine/policy article_machine/commands
+
+      - name: Validate operational graph in memory
+        shell: pwsh
+        run: >-
+          uv run --no-sync python -c
+          "import json; from scripts.generate_workspace_graph import validate_operational_graph;
+          report = validate_operational_graph(); print(json.dumps(report, indent=2));
+          raise SystemExit(0 if report.get('status') == 'pass' else 1)"
+
+      - name: Run full test suite
+        shell: pwsh
+        run: uv run --no-sync python -m pytest --cov=article_machine --cov-report=term-missing --cov-fail-under=85
+
+      - name: Audit browser dependencies
+        shell: pwsh
+        run: npm audit --prefix tools/playwright --audit-level=high
+
+      - name: Audit Python dependencies
+        shell: pwsh
+        run: uv run --no-sync python -m pip_audit --progress-spinner off
+
+      - name: Run strict machine audit
+        if: ${{ !cancelled() }}
+        shell: pwsh
+        run: uv run --no-sync python -m article_machine machine audit --workspace-root . --strict
+
+      - name: Audit full skill provenance trees
+        shell: pwsh
+        run: uv run --no-sync python -m article_machine skills audit --strict --provenance
+
+      - name: Check whitespace and tracked-file drift
+        if: ${{ !cancelled() }}
+        shell: pwsh
+        run: |
+          git diff --check
+          if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+          git diff --exit-code

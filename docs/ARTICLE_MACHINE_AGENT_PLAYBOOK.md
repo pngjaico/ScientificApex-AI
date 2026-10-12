@@ -85,6 +85,9 @@ python scripts\generate_workspace_graph.py
 python -m graphify query "How should a new agent choose an active project?"
 ```
 
+For the deterministic handoff path, read `docs/AGENT_OPERATION_MAP.md` and
+follow its entry flow before touching evidence, analysis, discovery, or drafts.
+
 For a deep graph of one scientific project, run graphify inside that project
 folder or pass the project path. Do not run deep semantic extraction on the root
 unless you intentionally want to process caches, legacy folders, and large PDFs.

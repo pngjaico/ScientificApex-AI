@@ -2,23 +2,31 @@ from __future__ import annotations
 
 import json
 import os
-from pathlib import Path
 import shutil
 import subprocess
+from pathlib import Path
 
 
 def playwright_available() -> dict:
-    npx_path = shutil.which("npx")
-    if not npx_path:
+    node_path = shutil.which("node")
+    package_dir = Path(__file__).resolve().parents[1] / "tools" / "playwright" / "node_modules" / "playwright"
+    cli_path = package_dir / "cli.js"
+    if not node_path or not package_dir.is_dir() or not cli_path.is_file():
         return {
             "status": "blocked",
-            "npx_path": None,
-            "message": "npx is not available. Install Node.js/npm before running Playwright QA, PDF export, thumbnails, or submission automation.",
+            "node_path": node_path,
+            "playwright_path": str(package_dir),
+            "message": (
+                "The locked tools/playwright runtime is unavailable. "
+                "Run the explicit environment prepare flow to install it."
+            ),
         }
     return {
         "status": "pass",
-        "npx_path": npx_path,
-        "message": f"npx detected at {npx_path}.",
+        "node_path": node_path,
+        "playwright_path": str(package_dir),
+        "cli_path": str(cli_path),
+        "message": f"Locked Playwright runtime detected at {package_dir}.",
     }
 
 
@@ -31,107 +39,104 @@ def _run_playwright_script(script: str, output_dir: Path, timeout: int = 120) ->
 
     script_path = output_dir / "playwright_task.js"
     script_path.write_text(script, encoding="utf-8")
-    runtime = _ensure_playwright_node_runtime()
-    if runtime.get("status") == "pass":
-        command = [runtime["node_path"], str(script_path)]
-        env = runtime["env"]
-    else:
-        command = [check["npx_path"], "--yes", "--package", "playwright", "node", str(script_path)]
-        env = None
+    command = [check["node_path"], str(script_path)]
+    env = os.environ.copy()
+    env["PLAYWRIGHT_BROWSERS_PATH"] = str(Path(__file__).resolve().parents[1] / "tools" / "playwright" / ".playwright")
+    node_modules = str(Path(check["playwright_path"]).parent)
+    existing_node_path = env.get("NODE_PATH")
+    env["NODE_PATH"] = node_modules if not existing_node_path else f"{node_modules}{os.pathsep}{existing_node_path}"
 
-    result = subprocess.run(
-        command,
-        capture_output=True,
-        text=True,
-        encoding="utf-8",
-        errors="replace",
-        check=False,
-        cwd=output_dir,
-        env=env,
-        timeout=timeout,
-    )
+    try:
+        result = subprocess.run(
+            command,
+            capture_output=True,
+            text=True,
+            encoding="utf-8",
+            errors="replace",
+            check=False,
+            cwd=output_dir,
+            env=env,
+            timeout=timeout,
+        )
+    except subprocess.TimeoutExpired as exc:
+
+        def _text(value: str | bytes | None) -> str:
+            if isinstance(value, bytes):
+                return value.decode("utf-8", errors="replace")
+            return value or ""
+
+        return {
+            "status": "blocked",
+            "returncode": None,
+            "timed_out": True,
+            "timeout_seconds": timeout,
+            "stdout": _text(exc.stdout),
+            "stderr": _text(exc.stderr),
+            "message": f"Playwright script exceeded its {timeout}-second timeout.",
+        }
+    except OSError as exc:
+        return {
+            "status": "blocked",
+            "returncode": None,
+            "timed_out": False,
+            "stdout": "",
+            "stderr": str(exc),
+            "message": f"Playwright script could not be launched: {exc}",
+        }
     if result.returncode != 0:
         return {
             "status": "blocked",
             "returncode": result.returncode,
             "stdout": result.stdout,
             "stderr": result.stderr,
-            "message": "Playwright execution failed. Browser binaries may need `npx playwright install chromium`.",
+            "message": (
+                "Playwright execution failed. Browser binaries may be missing; "
+                "use the explicit environment prepare flow."
+            ),
+        }
+    lines = [line.strip() for line in (result.stdout or "").splitlines() if line.strip()]
+    if not lines:
+        return {
+            "status": "blocked",
+            "returncode": result.returncode,
+            "stdout": result.stdout or "",
+            "stderr": result.stderr or "",
+            "message": "Playwright script returned no JSON report.",
         }
     try:
-        payload = json.loads((result.stdout or "").strip().splitlines()[-1])
-    except Exception:
-        payload = {"stdout": result.stdout}
+        payload = json.loads(lines[-1])
+    except json.JSONDecodeError as exc:
+        return {
+            "status": "blocked",
+            "returncode": result.returncode,
+            "stdout": result.stdout or "",
+            "stderr": result.stderr or "",
+            "message": f"Playwright script returned invalid JSON: {exc}",
+        }
+    if not isinstance(payload, dict) or not payload:
+        return {
+            "status": "blocked",
+            "returncode": result.returncode,
+            "stdout": result.stdout or "",
+            "stderr": result.stderr or "",
+            "message": "Playwright script JSON report must be a non-empty object.",
+        }
     payload.setdefault("status", "pass")
     payload.setdefault("stderr", result.stderr)
     return payload
 
 
-def _node_runtime_dir() -> Path:
-    configured = os.environ.get("ARTICLE_MACHINE_NODE_RUNTIME")
-    if configured:
-        return Path(configured)
-    return Path.home() / ".article_machine" / "node-runtime"
-
-
 def _ensure_playwright_node_runtime() -> dict:
-    node_path = shutil.which("node")
-    npm_path = shutil.which("npm")
-    if not node_path or not npm_path:
-        return {
-            "status": "blocked",
-            "message": "node and npm are required for Playwright Node API overflow checks.",
-        }
-
-    runtime_dir = _node_runtime_dir()
-    package_dir = runtime_dir / "node_modules" / "playwright"
-    if not package_dir.exists():
-        runtime_dir.mkdir(parents=True, exist_ok=True)
-        package_json = runtime_dir / "package.json"
-        if not package_json.exists():
-            package_json.write_text(
-                json.dumps(
-                    {
-                        "private": True,
-                        "name": "article-machine-playwright-runtime",
-                        "version": "0.0.0",
-                    },
-                    indent=2,
-                )
-                + "\n",
-                encoding="utf-8",
-            )
-        install_env = os.environ.copy()
-        install_env["PLAYWRIGHT_SKIP_BROWSER_DOWNLOAD"] = "1"
-        result = subprocess.run(
-            [npm_path, "install", "--no-audit", "--no-fund", "playwright@latest"],
-            capture_output=True,
-            text=True,
-            encoding="utf-8",
-            errors="replace",
-            check=False,
-            cwd=runtime_dir,
-            env=install_env,
-            timeout=180,
-        )
-        if result.returncode != 0:
-            return {
-                "status": "blocked",
-                "stdout": result.stdout,
-                "stderr": result.stderr,
-                "message": "Could not install the local Playwright Node API runtime.",
-            }
-
+    """Compatibility probe only; installation belongs to environment preparation."""
+    check = playwright_available()
+    if check["status"] != "pass":
+        return check
     env = os.environ.copy()
-    node_modules = str(runtime_dir / "node_modules")
+    env["PLAYWRIGHT_BROWSERS_PATH"] = str(Path(__file__).resolve().parents[1] / "tools" / "playwright" / ".playwright")
+    node_modules = str(Path(check["playwright_path"]).parent)
     existing_node_path = env.get("NODE_PATH")
     env["NODE_PATH"] = node_modules if not existing_node_path else f"{node_modules}{os.pathsep}{existing_node_path}"
-    return {
-        "status": "pass",
-        "runtime_dir": str(runtime_dir),
-        "node_path": node_path,
-        "env": env,
-    }
+    return {**check, "env": env}
 
 
 def _run_playwright_cli(args: list[str], output_dir: Path, timeout: int = 120) -> dict:
@@ -143,20 +148,28 @@ def _run_playwright_cli(args: list[str], output_dir: Path, timeout: int = 120) -
 
     try:
         result = subprocess.run(
-            [check["npx_path"], "--yes", "playwright", *args],
+            [check["node_path"], check["cli_path"], *args],
             capture_output=True,
             text=True,
             encoding="utf-8",
             errors="replace",
             check=False,
             cwd=output_dir,
+            env={
+                **os.environ,
+                "PLAYWRIGHT_BROWSERS_PATH": str(
+                    Path(__file__).resolve().parents[1] / "tools" / "playwright" / ".playwright"
+                ),
+            },
             timeout=timeout,
         )
     except FileNotFoundError:
         return {
             "status": "blocked",
-            "message": f"npx executable was reported but could not be launched: {check['npx_path']}",
+            "message": f"Node executable was reported but could not be launched: {check['node_path']}",
         }
+    except (OSError, subprocess.TimeoutExpired) as exc:
+        return {"status": "blocked", "message": f"Playwright CLI failed or exceeded timeout: {exc}"}
 
     if result.returncode != 0:
         return {
@@ -164,7 +177,10 @@ def _run_playwright_cli(args: list[str], output_dir: Path, timeout: int = 120) -
             "returncode": result.returncode,
             "stdout": result.stdout,
             "stderr": result.stderr,
-            "message": "Playwright CLI execution failed. Run `npx playwright install chromium` if browser binaries are missing.",
+            "message": (
+                "Playwright CLI execution failed. Browser binaries may be missing; "
+                "use the explicit environment prepare flow."
+            ),
         }
     return {
         "status": "pass",
@@ -232,7 +248,9 @@ const fs = require('fs');
       return (Math.max(l1, l2) + 0.05) / (Math.min(l1, l2) + 0.05);
     }}
     const elements = Array.from(document.querySelectorAll('h1,h2,p,.kicker,.notes,.brandline')).slice(0, 80);
-    const ratios = elements.map((el) => ratio(parseRgb(window.getComputedStyle(el).color), nearestBackground(el))).filter(Boolean);
+    const ratios = elements
+      .map((el) => ratio(parseRgb(window.getComputedStyle(el).color), nearestBackground(el)))
+      .filter(Boolean);
     const minimum = ratios.length ? Math.min(...ratios) : null;
     return {{
       status: minimum === null || minimum >= 4.5 ? 'pass' : 'block',
@@ -390,7 +408,9 @@ const {{ chromium }} = require('playwright');
 """
     report = _run_playwright_script(script, output_path.parent)
     if report.get("status") != "pass":
-        report = _run_playwright_cli(["screenshot", "--full-page", html_path.as_uri(), str(output_path)], output_path.parent)
+        report = _run_playwright_cli(
+            ["screenshot", "--full-page", html_path.as_uri(), str(output_path)], output_path.parent
+        )
     if report.get("status") == "pass":
         report.update({"profile": profile, "path": str(output_path)})
     return report
@@ -408,7 +428,12 @@ const {{ chromium }} = require('playwright');
   const text = await page.locator('body').innerText();
   await page.screenshot({{ path: {json.dumps(str(screenshot))}, fullPage: true }});
   await browser.close();
-  console.log(JSON.stringify({{ status: 'pass', url: {json.dumps(url)}, text, screenshot: {json.dumps(str(screenshot))} }}));
+  console.log(JSON.stringify({{
+    status: 'pass',
+    url: {json.dumps(url)},
+    text,
+    screenshot: {json.dumps(str(screenshot))}
+  }}));
 }})().catch((error) => {{
   console.error(error.stack || String(error));
   process.exit(1);

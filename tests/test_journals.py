@@ -9,6 +9,7 @@ from article_machine.journals import (
     write_journal_report,
 )
 from article_machine.projects import init_project
+from evidence_fixtures import register_claim_sources
 
 
 def _seed_supported_manuscript(project_dir: Path) -> None:
@@ -32,6 +33,7 @@ def _seed_supported_manuscript(project_dir: Path) -> None:
         "@article{smith2024,\n  title={Study 1},\n  year={2024}\n}\n",
         encoding="utf-8",
     )
+    register_claim_sources(project_dir)
 
 
 def test_journal_presets_validate_and_catalog_domains() -> None:

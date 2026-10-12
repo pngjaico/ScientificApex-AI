@@ -5,6 +5,7 @@ import json
 from pathlib import Path
 import re
 from typing import Any
+import yaml
 
 from .evidence import validate_evidence_lock
 from .serialization import load_structured_file, save_structured_file
@@ -89,6 +90,10 @@ def load_journal_presets(presets_dir: Path | None = None) -> list[dict[str, Any]
 
     for preset_file in sorted(root.glob("*.yaml")):
         payload = _load_preset_file(preset_file)
+        if payload.get("journal_id"):
+            payload["_preset_file"] = preset_file.name
+            journals.append(payload)
+            continue
         entries = payload.get("journals", [])
         if isinstance(entries, list):
             for entry in entries:
@@ -103,119 +108,11 @@ def load_journal_presets(presets_dir: Path | None = None) -> list[dict[str, Any]
 
 
 def _load_preset_file(path: Path) -> dict[str, Any]:
-    text = path.read_text(encoding="utf-8")
-    if text.lstrip().startswith("{"):
-        return json.loads(text)
-    try:
-        return load_structured_file(path)
-    except Exception:
-        return _load_journal_yaml_subset(text)
-
-
-def _parse_scalar(value: str) -> Any:
-    value = value.strip()
-    if value in {"", "''", '""'}:
-        return ""
-    if value == "{}":
-        return {}
-    if value == "[]":
-        return []
-    if value.lower() in {"null", "none"}:
-        return None
-    if value.lower() == "true":
-        return True
-    if value.lower() == "false":
-        return False
-    if value.startswith("[") and value.endswith("]"):
-        inner = value[1:-1].strip()
-        if not inner:
-            return []
-        return [_parse_scalar(item.strip()) for item in inner.split(",")]
-    if (value.startswith("'") and value.endswith("'")) or (value.startswith('"') and value.endswith('"')):
-        return value[1:-1]
-    try:
-        return int(value)
-    except ValueError:
-        try:
-            return float(value)
-        except ValueError:
-            return value
-
-
-def _split_key_value(line: str) -> tuple[str, str]:
-    key, value = line.split(":", 1)
-    return key.strip(), value.strip()
-
-
-def _load_journal_yaml_subset(text: str) -> dict[str, Any]:
-    object_keys = {"metrics", "format_rules", "open_access", "apc", "turnaround"}
-    list_keys = {"source_urls"}
-    payload: dict[str, Any] = {}
-    journals: list[dict[str, Any]] = []
-    current: dict[str, Any] | None = None
-    nested_key: str | None = None
-    in_journals = False
-
-    for raw_line in text.splitlines():
-        if not raw_line.strip() or raw_line.lstrip().startswith("#"):
-            continue
-        indent = len(raw_line) - len(raw_line.lstrip(" "))
-        stripped = raw_line.strip()
-
-        if stripped == "journals:":
-            in_journals = True
-            payload["journals"] = journals
-            continue
-
-        if not in_journals:
-            if ":" in stripped:
-                key, value = _split_key_value(stripped)
-                payload[key] = _parse_scalar(value)
-            continue
-
-        if indent == 0 and stripped.startswith("- "):
-            if current is not None:
-                journals.append(current)
-            current = {}
-            nested_key = None
-            remainder = stripped[2:].strip()
-            if remainder and ":" in remainder:
-                key, value = _split_key_value(remainder)
-                current[key] = _parse_scalar(value)
-            continue
-
-        if current is None:
-            continue
-
-        if nested_key and stripped.startswith("- "):
-            target = current.get(nested_key)
-            if isinstance(target, list):
-                target.append(_parse_scalar(stripped[2:].strip()))
-                continue
-
-        if indent == 2 and ":" in stripped:
-            key, value = _split_key_value(stripped)
-            if value == "":
-                if key in object_keys:
-                    current[key] = {}
-                elif key in list_keys:
-                    current[key] = []
-                else:
-                    current[key] = {}
-                nested_key = key
-            else:
-                current[key] = _parse_scalar(value)
-                nested_key = None
-            continue
-
-        if nested_key and indent >= 4 and ":" in stripped:
-            target = current.get(nested_key)
-            if isinstance(target, dict):
-                key, value = _split_key_value(stripped)
-                target[key] = _parse_scalar(value)
-
-    if current is not None:
-        journals.append(current)
+    # PyYAML is a required dependency. A malformed document must not be
+    # reinterpreted by the old permissive subset parser as a passing preset.
+    payload = load_structured_file(path)
+    if not payload or (not payload.get("journal_id") and not isinstance(payload.get("journals"), list)):
+        raise ValueError(f"Malformed or empty journal preset: {path.name}")
     return payload
 
 
@@ -273,8 +170,14 @@ def validate_journal_preset(journal: dict[str, Any], today: date | None = None) 
 
 
 def verify_journal_presets(presets_dir: Path | None = None) -> dict[str, Any]:
-    journals = load_journal_presets(presets_dir)
+    try:
+        journals = load_journal_presets(presets_dir)
+    except (OSError, ValueError, yaml.YAMLError) as exc:
+        return {"status": "block", "preset_dir": str(_presets_dir(presets_dir)), "journal_count": 0,
+                "red_flagged_journals": [], "issues": [str(exc)]}
     issues: list[str] = []
+    if not journals:
+        issues.append("No journal presets were found; journal verification is blocked.")
     seen_ids: set[str] = set()
     red_flagged: list[str] = []
     for journal in journals:

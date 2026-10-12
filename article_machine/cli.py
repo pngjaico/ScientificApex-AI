@@ -7,7 +7,9 @@ import sys
 from typing import Any
 
 from .agent_skills import audit_workspace_skills, catalog_workspace_skills, route_workspace_skills
-from .analysis import preflight, run_r_script
+from .analysis import preflight, run_python_script, run_r_script
+from .benchmarks import validate_benchmark_report
+from .commands.governance import aggregate_benchmark_file, record_blocked_attempt
 from .context import build_task_packet
 from .congress_profiles import save_congress_profile, use_congress_profile
 from .deliverables import (
@@ -23,9 +25,22 @@ from .evidence import validate_evidence_lock
 from .ingest import register_source
 from .journals import catalog_journals, route_journals, verify_journal_presets, write_journal_report
 from .life_science import catalog_life_science_skills, plan_life_science_retrieval
-from .projects import advance_mode, init_project, register_review_protocol
-from .ptbr_style import audit_text, build_generation_brief, naturalize_text, read_text_for_audit, write_audit_reports
+from .projects import advance_mode, init_project, load_project, register_review_protocol
+from .ptbr_style import (
+    anti_ai_naturalize_text,
+    audit_text,
+    build_generation_brief,
+    naturalize_text,
+    read_text_for_audit,
+    write_audit_reports,
+)
 from .review import run_review_trinity
+from .services.environment import check_environment, prepare_environment
+from .services.graph_query import query_operational_graph
+from .services.machine import machine_doctor, release_audit
+from .services.skill_registry import build_skill_update_plan
+from .services.scientific_workflows import audit_language, plan_scientific_workflow
+from .services.plugins import audit_scientific_plugins
 from .zero_trust import (
     audit_retrieval,
     audit_stage,
@@ -46,6 +61,25 @@ def _print(payload: Any) -> None:
     print(json.dumps(payload, ensure_ascii=False, indent=2))
 
 
+def _require_command_mode(project_dir: Path, command: str, required_mode: str) -> dict[str, Any]:
+    project = load_project(project_dir)
+    current_mode = project.get("state", {}).get("current_mode", "bootstrap")
+    issues = []
+    if current_mode != required_mode:
+        issues.append(
+            f"Command '{command}' requires current_mode '{required_mode}', found '{current_mode}'. "
+            "Advance through the state machine before producing this artifact."
+        )
+    return {
+        "contract": "CommandModeGate",
+        "status": "pass" if not issues else "block",
+        "command": command,
+        "required_mode": required_mode,
+        "current_mode": current_mode,
+        "issues": issues,
+    }
+
+
 def build_parser() -> argparse.ArgumentParser:
     parser = argparse.ArgumentParser(prog="article-machine")
     subparsers = parser.add_subparsers(dest="command", required=True)
@@ -57,6 +91,27 @@ def build_parser() -> argparse.ArgumentParser:
 
     preflight_parser = subparsers.add_parser("preflight")
     preflight_parser.add_argument("project_dir")
+
+    workflow_parser = subparsers.add_parser("workflow")
+    workflow_sub = workflow_parser.add_subparsers(dest="workflow_command", required=True)
+    workflow_plan = workflow_sub.add_parser("plan")
+    workflow_plan.add_argument("project_dir")
+    workflow_plan.add_argument("--query", required=True)
+    workflow_plan.add_argument("--language", required=True, choices=["en", "pt-BR"])
+    workflow_language = workflow_sub.add_parser("audit-language")
+    workflow_language.add_argument("project_dir")
+    workflow_language.add_argument("--language", required=True, choices=["en", "pt-BR"])
+    workflow_language.add_argument("--draft", default="drafts/manuscript.md")
+    workflow_language.add_argument("--reference")
+
+    env_parser = subparsers.add_parser("env")
+    env_sub = env_parser.add_subparsers(dest="env_command", required=True)
+    for env_action in ("check", "prepare"):
+        env_action_parser = env_sub.add_parser(env_action)
+        env_action_parser.add_argument("project_dir")
+        env_action_parser.add_argument("--runtime", required=True, choices=["python", "r", "browser"])
+        if env_action == "prepare":
+            env_action_parser.add_argument("--dry-run", action="store_true")
 
     ingest_parser = subparsers.add_parser("ingest")
     ingest_parser.add_argument("project_dir")
@@ -88,6 +143,10 @@ def build_parser() -> argparse.ArgumentParser:
     run_r_parser = subparsers.add_parser("run-r")
     run_r_parser.add_argument("project_dir")
     run_r_parser.add_argument("script_path")
+
+    run_python_parser = subparsers.add_parser("run-python")
+    run_python_parser.add_argument("project_dir")
+    run_python_parser.add_argument("script_path")
 
     draft_parser = subparsers.add_parser("draft")
     draft_parser.add_argument("project_dir")
@@ -158,6 +217,10 @@ def build_parser() -> argparse.ArgumentParser:
     skills_catalog.add_argument("--skills-dir")
     skills_audit = skills_sub.add_parser("audit")
     skills_audit.add_argument("--skills-dir")
+    skills_audit.add_argument("--strict", action="store_true")
+    skills_audit.add_argument("--provenance", action="store_true")
+    skills_update = skills_sub.add_parser("update-plan")
+    skills_update.add_argument("--workspace-root", default=".")
     skills_route = skills_sub.add_parser("route")
     skills_route.add_argument("--query", required=True)
     skills_route.add_argument("--skills-dir")
@@ -211,10 +274,38 @@ def build_parser() -> argparse.ArgumentParser:
     stage_audit.add_argument("project_dir")
     stage_audit.add_argument("--target-mode")
 
+    benchmark_parser = subparsers.add_parser("benchmark")
+    benchmark_sub = benchmark_parser.add_subparsers(dest="benchmark_command", required=True)
+    benchmark_validate = benchmark_sub.add_parser("validate")
+    benchmark_validate.add_argument("project_dir")
+    benchmark_aggregate = benchmark_sub.add_parser("aggregate")
+    benchmark_aggregate.add_argument("project_dir")
+    benchmark_aggregate.add_argument("--input")
+    benchmark_aggregate.add_argument("--output")
+
+    graph_parser = subparsers.add_parser("graph")
+    graph_sub = graph_parser.add_subparsers(dest="graph_command", required=True)
+    graph_query = graph_sub.add_parser("query")
+    graph_query.add_argument("query")
+    graph_query.add_argument("--scope", default="control-plane")
+    graph_query.add_argument("--limit", type=int, default=10)
+    graph_query.add_argument("--graph-path")
+
     machine_parser = subparsers.add_parser("machine")
     machine_sub = machine_parser.add_subparsers(dest="machine_command", required=True)
     machine_audit = machine_sub.add_parser("audit")
     machine_audit.add_argument("--workspace-root", default=".")
+    machine_audit.add_argument("--strict", action="store_true")
+    machine_doctor_parser = machine_sub.add_parser("doctor")
+    machine_doctor_parser.add_argument("--workspace-root", default=".")
+    machine_doctor_parser.add_argument("--project-dir")
+    machine_release = machine_sub.add_parser("release-audit")
+    machine_release.add_argument("project_dir")
+
+    plugins_parser = subparsers.add_parser("plugins")
+    plugins_sub = plugins_parser.add_subparsers(dest="plugins_command", required=True)
+    plugins_audit = plugins_sub.add_parser("audit")
+    plugins_audit.add_argument("--workspace-root", default=".")
 
     style_parser = subparsers.add_parser("style")
     style_sub = style_parser.add_subparsers(dest="style_command", required=True)
@@ -231,6 +322,16 @@ def build_parser() -> argparse.ArgumentParser:
     ptbr_naturalize.add_argument("input_path")
     ptbr_naturalize.add_argument("--output", required=True)
     ptbr_naturalize.add_argument("--json-output")
+    anti_ai_audit = style_sub.add_parser("anti-ai-audit")
+    anti_ai_audit.add_argument("paths", nargs="+")
+    anti_ai_audit.add_argument("--output")
+    anti_ai_audit.add_argument("--json-output")
+    anti_ai_audit.add_argument("--strict", action="store_true")
+    anti_ai_audit.add_argument("--allow-issues", action="store_true")
+    anti_ai_naturalize = style_sub.add_parser("anti-ai-naturalize")
+    anti_ai_naturalize.add_argument("input_path")
+    anti_ai_naturalize.add_argument("--output", required=True)
+    anti_ai_naturalize.add_argument("--json-output")
 
     return parser
 
@@ -239,13 +340,37 @@ def main(argv: list[str] | None = None) -> int:
     parser = build_parser()
     args = parser.parse_args(argv)
 
+    if args.command == "plugins":
+        _print(audit_scientific_plugins(Path(args.workspace_root).resolve()))
+        return 0
+
+    if args.command == "workflow":
+        try:
+            if args.workflow_command == "plan":
+                payload = plan_scientific_workflow(Path(args.project_dir), args.query, args.language)
+            else:
+                payload = audit_language(Path(args.project_dir), args.language, args.draft, args.reference)
+        except (OSError, ValueError) as exc:
+            payload = {"status": "block", "gate_eligible": False, "issues": [str(exc)]}
+        _print(payload)
+        return 0 if payload.get("status") in {"pass", "planned"} else 1
+
     if args.command == "init":
         project_dir = init_project(Path(args.workspace_root), args.name, args.project_type)
         _print({"status": "created", "project_dir": str(project_dir)})
         return 0
     if args.command == "preflight":
-        _print(preflight(Path(args.project_dir)))
-        return 0
+        payload = preflight(Path(args.project_dir))
+        _print(payload)
+        return 0 if payload.get("status") in {"pass", "passed"} else 1
+    if args.command == "env":
+        project_dir = Path(args.project_dir)
+        if args.env_command == "check":
+            payload = check_environment(project_dir, args.runtime)
+        else:
+            payload = prepare_environment(project_dir, args.runtime, execute=not bool(args.dry_run))
+        _print(payload)
+        return 0 if payload.get("status") in {"pass", "passed"} else 1
     if args.command == "ingest":
         _print(register_source(Path(args.project_dir), args.source, args.kind))
         return 0
@@ -262,28 +387,58 @@ def main(argv: list[str] | None = None) -> int:
         )
         return 0
     if args.command == "context" and args.context_command == "build":
-        _print(build_task_packet(Path(args.project_dir), args.mode, args.hypothesis))
-        return 0
+        payload = build_task_packet(Path(args.project_dir), args.mode, args.hypothesis)
+        _print(payload)
+        return 0 if payload.get("status") == "passed" else 1
     if args.command == "analyze":
         project_dir = Path(args.project_dir)
-        packet = build_task_packet(project_dir, args.mode, args.hypothesis)
         transition = advance_mode(project_dir, args.mode)
-        payload = {"task_packet": packet, "transition": transition}
+        if transition["status"] != "passed":
+            attempt_path = record_blocked_attempt(project_dir, "analyze", {"mode": args.mode, "transition": transition})
+            _print({"transition": transition, "task_packet": None, "attempt": str(attempt_path), "status": "blocked"})
+            return 1
+        packet = build_task_packet(project_dir, args.mode, args.hypothesis)
+        payload = {"task_packet": packet, "transition": transition, "status": "passed"}
         if args.mode == "discovery" and transition["status"] == "passed":
             payload["discovery_plan"] = build_discovery_plan(project_dir)
         _print(payload)
         return 0
     if args.command == "run-r":
-        _print(run_r_script(Path(args.project_dir), Path(args.script_path)))
-        return 0
+        payload = run_r_script(Path(args.project_dir), Path(args.script_path))
+        _print(payload)
+        return 0 if payload.get("status") in {"pass", "passed"} else 1
+    if args.command == "run-python":
+        payload = run_python_script(Path(args.project_dir), Path(args.script_path))
+        _print(payload)
+        return 0 if payload.get("status") in {"pass", "passed"} else 1
     if args.command == "draft":
-        _print(validate_evidence_lock(Path(args.project_dir)))
-        return 0
+        project_dir = Path(args.project_dir)
+        gate = _require_command_mode(project_dir, "draft", "drafting")
+        if gate["status"] != "pass":
+            _print(gate)
+            return 1
+        report = validate_evidence_lock(project_dir)
+        _print(report)
+        return 0 if report.get("gate_eligible") is True else 1
     if args.command == "review":
-        _print(run_review_trinity(Path(args.project_dir)))
-        return 0
+        project_dir = Path(args.project_dir)
+        gate = _require_command_mode(project_dir, "review", "review-trinity")
+        if gate["status"] != "pass":
+            _print(gate)
+            return 1
+        report = run_review_trinity(project_dir)
+        _print(report)
+        return 0 if report.get("gate_eligible") is True else 1
     if args.command == "export":
         project_dir = Path(args.project_dir)
+        gate = _require_command_mode(project_dir, "export", "submission")
+        if gate["status"] != "pass":
+            _print(gate)
+            return 1
+        stage_gate = audit_stage(project_dir, target_mode="submission")
+        if stage_gate.get("gate_eligible") is not True:
+            _print(stage_gate)
+            return 1
         export_path = project_dir / "exports" / "project_summary.json"
         payload = {
             "project_dir": str(project_dir),
@@ -325,11 +480,13 @@ def main(argv: list[str] | None = None) -> int:
             _print(build_deliverable(deliverable_dir))
             return 0
         if action == "qa":
-            _print(qa_deliverable(deliverable_dir))
-            return 0
+            payload = qa_deliverable(deliverable_dir)
+            _print(payload)
+            return 1 if payload.get("status") in {"block", "blocked", "failed", "fail"} else 0
         if action == "export":
-            _print(export_deliverable(deliverable_dir, strict=bool(getattr(args, "strict", False))))
-            return 0
+            payload = export_deliverable(deliverable_dir, strict=bool(getattr(args, "strict", False)))
+            _print(payload)
+            return 1 if payload.get("status") in {"block", "blocked", "failed", "fail"} else 0
     if args.command == "submit":
         _print(
             submit_deliverable(
@@ -353,11 +510,16 @@ def main(argv: list[str] | None = None) -> int:
             _print(catalog_workspace_skills(skills_dir))
             return 0
         if args.skills_command == "audit":
-            _print(audit_workspace_skills(skills_dir))
-            return 0
+            payload = audit_workspace_skills(skills_dir, strict=bool(args.strict), provenance=bool(args.provenance))
+            _print(payload)
+            return 0 if payload.get("status") == "pass" else 1
         if args.skills_command == "route":
             _print(route_workspace_skills(args.query, skills_dir, limit=args.limit))
             return 0
+        if args.skills_command == "update-plan":
+            payload = build_skill_update_plan(Path(args.workspace_root).resolve())
+            _print(payload)
+            return 0 if payload.get("status") == "pass" else 1
     if args.command == "journal":
         presets_dir = Path(args.presets_dir) if getattr(args, "presets_dir", None) else None
         if args.journal_command == "catalog":
@@ -393,16 +555,68 @@ def main(argv: list[str] | None = None) -> int:
         _print(run_idea_tournament(Path(args.project_dir)))
         return 0
     if args.command == "stage" and args.stage_command == "audit":
-        _print(audit_stage(Path(args.project_dir), target_mode=args.target_mode))
-        return 0
+        payload = audit_stage(Path(args.project_dir), target_mode=args.target_mode)
+        _print(payload)
+        return 0 if payload.get("gate_eligible") is True else 1
+    if args.command == "benchmark" and args.benchmark_command == "validate":
+        payload = validate_benchmark_report(Path(args.project_dir))
+        _print(payload)
+        return 0 if payload.get("gate_eligible") is True else 1
+    if args.command == "benchmark" and args.benchmark_command == "aggregate":
+        payload = aggregate_benchmark_file(
+            Path(args.project_dir),
+            input_path=Path(args.input) if args.input else None,
+            output_path=Path(args.output) if args.output else None,
+        )
+        _print(payload)
+        return 0 if payload.get("gate_eligible") is True else 1
+    if args.command == "graph" and args.graph_command == "query":
+        try:
+            payload = query_operational_graph(
+                args.query,
+                scope=args.scope,
+                limit=args.limit,
+                graph_path=Path(args.graph_path) if args.graph_path else None,
+            )
+        except (OSError, ValueError, json.JSONDecodeError) as exc:
+            payload = {"status": "block", "issues": [str(exc)]}
+        _print(payload)
+        return 0 if payload.get("status") == "ok" else 1
     if args.command == "machine" and args.machine_command == "audit":
-        _print(run_machine_audit(Path(args.workspace_root)))
+        strict = bool(args.strict)
+        payload = run_machine_audit(Path(args.workspace_root), strict=strict)
+        _print(payload)
+        if strict and payload.get("status") != "pass":
+            return 1
         return 0
+    if args.command == "machine" and args.machine_command == "doctor":
+        payload = machine_doctor(
+            Path(args.workspace_root), Path(args.project_dir) if args.project_dir else None
+        )
+        _print(payload)
+        return 0 if payload.get("status") == "pass" else 1
+    if args.command == "machine" and args.machine_command == "release-audit":
+        payload = release_audit(Path(args.project_dir))
+        _print(payload)
+        return 0 if payload.get("gate_eligible") is True else 1
     if args.command == "style" and args.style_command == "ptbr-audit":
         payload = write_audit_reports(
             args.paths,
             Path(args.output) if args.output else None,
             Path(args.json_output) if args.json_output else None,
+        )
+        _print(payload)
+        if payload["status"] == "block" and not args.allow_issues:
+            return 1
+        return 0
+    if args.command == "style" and args.style_command == "anti-ai-audit":
+        payload = write_audit_reports(
+            args.paths,
+            Path(args.output) if args.output else None,
+            Path(args.json_output) if args.json_output else None,
+            profile="anti_ai",
+            title="Auditoria Anti-IA De Escrita Científica",
+            strict=bool(args.strict),
         )
         _print(payload)
         if payload["status"] == "block" and not args.allow_issues:
@@ -431,6 +645,26 @@ def main(argv: list[str] | None = None) -> int:
             "output": str(output_path),
             "original_report": audit_text(original_text, path=input_path),
             "revised_report": audit_text(revised_text, path=output_path),
+        }
+        if args.json_output:
+            json_output = Path(args.json_output)
+            json_output.parent.mkdir(parents=True, exist_ok=True)
+            json_output.write_text(json.dumps(payload, ensure_ascii=False, indent=2), encoding="utf-8")
+        _print(payload)
+        return 0
+    if args.command == "style" and args.style_command == "anti-ai-naturalize":
+        input_path = Path(args.input_path)
+        output_path = Path(args.output)
+        original_text = read_text_for_audit(input_path)
+        revised_text = anti_ai_naturalize_text(original_text)
+        output_path.parent.mkdir(parents=True, exist_ok=True)
+        output_path.write_text(revised_text, encoding="utf-8")
+        payload = {
+            "status": audit_text(revised_text, path=output_path, profile="anti_ai")["status"],
+            "input": str(input_path),
+            "output": str(output_path),
+            "original_report": audit_text(original_text, path=input_path, profile="anti_ai"),
+            "revised_report": audit_text(revised_text, path=output_path, profile="anti_ai"),
         }
         if args.json_output:
             json_output = Path(args.json_output)

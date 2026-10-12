@@ -4,6 +4,13 @@ from copy import deepcopy
 
 
 _STANDARD_MATRIX: dict[str, dict] = {
+    "machine-governance": {
+        "lane": "machine-governance",
+        "guidelines": [],
+        "risk_of_bias_tools": [],
+        "policy_labels": ["machine-governance", "reproducibility", "fail-closed"],
+        "deliverables": ["inventory", "upgrade record", "verification report", "benchmark", "release audit"],
+    },
     "systematic-review": {
         "lane": "evidence-writing",
         "guidelines": ["PRISMA", "GRADE", "ROBIS", "AMSTAR 2"],
@@ -113,6 +120,7 @@ _DEFAULT_STANDARD = {
 def route_standards(project_type: str) -> dict:
     key = (project_type or "").strip().lower()
     routed = deepcopy(_STANDARD_MATRIX.get(key, _DEFAULT_STANDARD))
+    routed["contract_version"] = 2
     routed["project_type"] = key
     checklist = {}
     for guideline in routed["guidelines"]:

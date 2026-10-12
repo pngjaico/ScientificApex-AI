@@ -5,8 +5,12 @@ import re
 import unicodedata
 from typing import Any
 
+from .services.skill_registry import audit_skill_provenance, load_registry
+
 
 WORLD_CLASS_SKILLS: tuple[str, ...] = (
+    "scientific-workflow-orchestrator",
+    "bilingual-scientific-writing",
     "hypothesis-tournament",
     "scientific-novelty-checker",
     "experimental-design-planner",
@@ -33,10 +37,123 @@ WORLD_CLASS_SKILLS: tuple[str, ...] = (
     "guideline-router",
     "retraction-integrity-checker",
     "ptbr-article-writing",
+    "anti-ai-writing-governor",
+    "manuscript-integrity-response-governor",
+    "academic-office-deliverables",
+    "deep-thinking-governor",
+    "zotero-reference-manager",
+    "life-science-router",
+    "ngs-analysis-router",
+    "skill-upgrade-governor",
+    "workspace-graph-navigator",
+    "project-entry-navigator",
+    "content-preservation-guardian",
+    "pubmed-database",
+    "clinical-trials-database",
+    "literature-search-europepmc",
+    "literature-search-openalex",
+    "literature-search-arxiv",
+    "literature-search-biorxiv",
+    "semantic-scholar-citation-graph",
+    "crossref-unpaywall-resolver",
+    "opencitations-citation-audit",
+    "protocol-registration-governor",
+    "extraction-schema-governor",
+    "living-review-monitor",
+    "tooluniverse-literature-deep-research",
+    "tooluniverse-meta-analysis",
+    "tooluniverse-diagnostic-test-evaluation",
+    "tooluniverse-epidemiological-analysis",
+    "tooluniverse-dataset-discovery",
+    "tooluniverse-clinical-guidelines",
+    "tooluniverse-clinical-trial-design",
+    "tooluniverse-pharmacovigilance",
+    "tooluniverse-drug-target-validation",
+    "tooluniverse-variant-interpretation",
+    "tooluniverse-self-review",
+    "tooluniverse-clinical-data-integration",
+    "tooluniverse-data-integration-analysis",
+    "tooluniverse-drug-repurposing",
 )
 
 
 ROUTE_RULES: tuple[dict[str, Any], ...] = (
+    {
+        "skill": "scientific-workflow-orchestrator",
+        "triggers": ("complex scientific", "scientific workflow", "trabalho cientifico", "trabalhos cientificos", "fluxo cientifico", "coordenar pesquisa", "research orchestration", "sol medio", "sol medium", "luna"),
+        "reason": "Plan scientific phases and bounded delegation with project contracts and review gates.",
+    },
+    {
+        "skill": "bilingual-scientific-writing",
+        "triggers": ("bilingual", "bilingue", "em ingles", "in english", "english manuscript", "portugues", "pt-br", "traduzir artigo", "translate manuscript", "semantic fidelity"),
+        "reason": "Preserve claims, references, numbers and uncertainty across native English and PT-BR writing.",
+    },
+    {
+        "skill": "workspace-graph-navigator",
+        "triggers": (
+            "workspace graph",
+            "graphify",
+            "graph",
+            "grafo",
+            "navigation graph",
+            "operational graph",
+            "mapa operacional",
+            "agent navigation",
+            "navegacao",
+            "navegar",
+            "agente novo",
+            "handoff",
+            "graph extremamente detalhado",
+            "detalhar o graph",
+            "facilitar agentes",
+        ),
+        "reason": "Use the operational graph and graphify query layer before broad workspace navigation.",
+    },
+    {
+        "skill": "project-entry-navigator",
+        "triggers": (
+            "active project",
+            "projeto ativo",
+            "select project",
+            "selecionar projeto",
+            "resume project",
+            "retomar projeto",
+            "create project",
+            "criar projeto",
+            "projects/<project_id>",
+            "project.yaml",
+            "protocol.yaml",
+            "task packet",
+            "bootstrap",
+            "entrar no projeto",
+        ),
+        "reason": "Select or create the active Article Machine project and read contract files before scientific work.",
+    },
+    {
+        "skill": "content-preservation-guardian",
+        "triggers": (
+            "sem comprometer conteudo",
+            "sem comprometer o conteudo",
+            "preserve content",
+            "preservar conteudo",
+            "reorganize",
+            "reorganizar",
+            "cleanup",
+            "limpar workspace",
+            "move files",
+            "mover arquivos",
+            "delete files",
+            "deletar",
+            "legacy folders",
+            "raw data",
+            "patient dumps",
+            "source dumps",
+            "migration manifest",
+            "git hygiene",
+            "staging",
+        ),
+        "reason": "Protect raw scientific content and require migration manifests before moves, deletes, or bulk indexing.",
+    },
     {
         "skill": "hypothesis-tournament",
         "triggers": (
@@ -284,6 +401,7 @@ ROUTE_RULES: tuple[dict[str, Any], ...] = (
             "regression",
             "score",
             "quality audit",
+            "melhorar a maquina",
         ),
         "reason": "Prove capability with benchmark tasks and scoring rather than impressions.",
     },
@@ -291,6 +409,32 @@ ROUTE_RULES: tuple[dict[str, Any], ...] = (
         "skill": "scientific-red-team-reviewer",
         "triggers": ("red team", "stress test", "review critically", "revisar criticamente", "hallucination", "weak evidence", "causal overreach", "flaw", "falha"),
         "reason": "Attack claims and artifacts before submission or dissemination.",
+    },
+    {
+        "skill": "manuscript-integrity-response-governor",
+        "triggers": (
+            "reviewer comments",
+            "response to reviewers",
+            "respond to reviewers",
+            "rebuttal",
+            "author response",
+            "revision letter",
+            "point-by-point",
+            "parecerista",
+            "responder pareceristas",
+            "resposta aos revisores",
+            "claim strength",
+            "claim-strength",
+            "reference integrity",
+            "citation integrity",
+            "integridade de referencias",
+            "integridade das referencias",
+            "manuscript consistency",
+            "consistencia do manuscrito",
+            "figure table consistency",
+            "pre-submission repair",
+        ),
+        "reason": "Build reviewer responses and manuscript integrity repairs without weakening Evidence Lock.",
     },
     {
         "skill": "query-string-governor",
@@ -322,6 +466,249 @@ ROUTE_RULES: tuple[dict[str, Any], ...] = (
             "manifest",
         ),
         "reason": "Plan database retrieval with provider contracts, rate limits, cache, and manifests.",
+    },
+    {
+        "skill": "skill-upgrade-governor",
+        "triggers": (
+            "skill upgrade",
+            "skills upgrade",
+            "skill gap",
+            "skill gaps",
+            "must-have skills",
+            "must have skills",
+            "install skills",
+            "instalar skills",
+            "new skills",
+            "novas skills",
+            "github skills",
+            "github por skills",
+            "scientific research skills",
+            "external skill",
+            "external skills",
+            "skill repository",
+            "skill repositories",
+            "skill catalog",
+            "catalogo de skills",
+            "triagem de skills",
+            "pesquisar skills",
+            "claude-prism",
+            "claude prism",
+            "academic-research-skills",
+            "openclaw medical skills",
+            "awesome scientific skills",
+            "article machine skills",
+            "adjust machine",
+            "ajustar maquina",
+            "melhorar maquina",
+            "melhorar a maquina",
+        ),
+        "reason": "Research, select, install, audit, and route Article Machine skills without turning the catalog into unmanaged clutter.",
+    },
+    {
+        "skill": "pubmed-database",
+        "triggers": (
+            "pubmed",
+            "pmid",
+            "pmc",
+            "pubmed central",
+            "ncbi e-utilities",
+            "eutils",
+            "mesh",
+            "biomedical abstract",
+            "medical spelling",
+            "citation matching",
+        ),
+        "reason": "Use the PubMed/NCBI wrapper for grounded biomedical literature and PMID/PMC workflows.",
+    },
+    {
+        "skill": "clinical-trials-database",
+        "triggers": (
+            "clinicaltrials.gov",
+            "clinical trials.gov",
+            "nct",
+            "nct id",
+            "trial registry",
+            "recruiting trial",
+            "eligibility criteria",
+            "trial status",
+            "trial phase",
+            "sponsor portfolio",
+        ),
+        "reason": "Retrieve and audit ClinicalTrials.gov v2 records before using trial status, eligibility, or registry facts.",
+    },
+    {
+        "skill": "literature-search-europepmc",
+        "triggers": (
+            "europe pmc",
+            "europepmc",
+            "pmcid",
+            "open access full text",
+            "jats xml",
+            "full text xml",
+            "pmc full text",
+            "biomedical full text",
+        ),
+        "reason": "Use Europe PMC for open-access biomedical full text and PubMed fallback searches.",
+    },
+    {
+        "skill": "literature-search-openalex",
+        "triggers": (
+            "openalex api",
+            "openalex works",
+            "openalex authors",
+            "openalex institutions",
+            "openalex topics",
+            "bibliometric aggregation",
+            "h-index",
+            "venue analysis",
+        ),
+        "reason": "Use the executable OpenAlex wrapper for metadata retrieval, entity resolution, and bibliometric aggregation.",
+    },
+    {
+        "skill": "literature-search-arxiv",
+        "triggers": (
+            "arxiv",
+            "arxiv id",
+            "preprint server",
+            "cs preprint",
+            "physics preprint",
+            "math preprint",
+        ),
+        "reason": "Use the arXiv wrapper for non-biomedical preprint retrieval and PDF/HTML metadata.",
+    },
+    {
+        "skill": "literature-search-biorxiv",
+        "triggers": (
+            "biorxiv",
+            "medrxiv",
+            "biology preprint",
+            "medical preprint",
+            "recent preprint",
+            "preprint doi",
+        ),
+        "reason": "Use bioRxiv/medRxiv retrieval with tight date windows and preprint caveats.",
+    },
+    {
+        "skill": "semantic-scholar-citation-graph",
+        "triggers": (
+            "semantic scholar",
+            "ai2",
+            "academic graph",
+            "citation graph",
+            "paper recommendations",
+            "influential citations",
+            "cited by",
+            "citation expansion",
+        ),
+        "reason": "Use Semantic Scholar for citation-neighborhood and recommendation checks, not as final claim evidence.",
+    },
+    {
+        "skill": "crossref-unpaywall-resolver",
+        "triggers": (
+            "crossref",
+            "unpaywall",
+            "doi metadata",
+            "doi lookup",
+            "open access status",
+            "oa pdf",
+            "license",
+            "crossmark",
+            "references deposited",
+            "funder metadata",
+        ),
+        "reason": "Resolve DOI metadata and legal open-access locations with contact-aware provider rules.",
+    },
+    {
+        "skill": "opencitations-citation-audit",
+        "triggers": (
+            "opencitations",
+            "coci",
+            "open citations",
+            "doi-to-doi",
+            "citation audit",
+            "reference coverage",
+            "open citation graph",
+        ),
+        "reason": "Audit DOI-to-DOI citation links with open citation data and clear coverage caveats.",
+    },
+    {
+        "skill": "protocol-registration-governor",
+        "triggers": (
+            "prospero",
+            "osf registration",
+            "preregistration",
+            "pre-registration",
+            "registered protocol",
+            "protocol registration",
+            "protocol freeze",
+            "amendment",
+            "registered before",
+            "rebec",
+            "ictrp",
+        ),
+        "reason": "Verify registration, protocol freeze, and amendments before prespecification claims.",
+    },
+    {
+        "skill": "extraction-schema-governor",
+        "triggers": (
+            "extraction schema",
+            "data extraction",
+            "extract data",
+            "extraction form",
+            "variable dictionary",
+            "dual extraction",
+            "conflict resolution",
+            "extraction pilot",
+            "table extraction",
+            "numeric outcome",
+        ),
+        "reason": "Design and pilot structured extraction before values enter analysis or Evidence Lock.",
+    },
+    {
+        "skill": "living-review-monitor",
+        "triggers": (
+            "living review",
+            "living search",
+            "search update",
+            "update search",
+            "evidence freshness",
+            "freshness",
+            "surveillance query",
+            "trial update",
+            "new preprints",
+            "monitor literature",
+        ),
+        "reason": "Set up controlled evidence refreshes without bypassing screening, extraction, or Evidence Lock.",
+    },
+    {
+        "skill": "tooluniverse-literature-deep-research",
+        "triggers": (
+            "deep literature",
+            "deep research",
+            "literature deep research",
+            "multi-source literature",
+            "evidence grading",
+            "t1-t4",
+            "collision-aware",
+            "answer with citations",
+        ),
+        "reason": "Use ToolUniverse deep literature workflow when multi-source retrieval and evidence grading are required.",
+    },
+    {
+        "skill": "tooluniverse-self-review",
+        "triggers": (
+            "self-review",
+            "self review",
+            "success criteria",
+            "definition of done",
+            "rubric",
+            "scoring criteria",
+            "completeness checklist",
+            "llm-as-judge",
+            "qworld",
+            "ret algorithm",
+        ),
+        "reason": "Build task-specific success criteria and score work against them before claiming completion.",
     },
     {
         "skill": "exa-search",
@@ -514,9 +901,371 @@ ROUTE_RULES: tuple[dict[str, Any], ...] = (
         "reason": "Draft, naturalize, and audit claim-safe scientific writing and citation style in Brazilian Portuguese.",
     },
     {
+        "skill": "anti-ai-writing-governor",
+        "triggers": (
+            "anti ia",
+            "anti-ia",
+            "cara de ia",
+            "texto de ia",
+            "parece ia",
+            "parece chatgpt",
+            "chatgpt",
+            "humanizar",
+            "humanize",
+            "naturalizar artigo",
+            "naturalizar texto",
+            "tirar cara de ia",
+            "detector de ia",
+            "ai detector",
+            "llm style",
+            "ai-generated",
+            "generico",
+            "genérico",
+            "over-polished",
+            "anti-ai-audit",
+            "anti-ai-naturalize",
+        ),
+        "reason": "Audit and naturalize scientific prose that sounds AI-generated without bypassing detectors or weakening evidence.",
+    },
+    {
+        "skill": "academic-office-deliverables",
+        "triggers": (
+            "docx",
+            "pptx",
+            "powerpoint",
+            "word document",
+            "office deliverable",
+            "office file",
+            "latex workspace",
+            "latex project",
+            "editable document",
+            "editable slides",
+            "thesis defense",
+            "defense slides",
+            "group meeting",
+            "paper-reading report",
+            "paper reading report",
+            "template-matched",
+            "layout qa",
+            "claudeprism",
+            "claude-prism",
+            "local-first writing",
+            "zotero-backed document",
+        ),
+        "reason": "Produce editable academic DOCX/PPTX/LaTeX deliverables with source labels, Zotero support, and layout QA.",
+    },
+    {
+        "skill": "deep-thinking-governor",
+        "triggers": (
+            "deep thinking",
+            "pensar profundamente",
+            "pense profundamente",
+            "pensamento profundo",
+            "raciocinio profundo",
+            "raciocínio profundo",
+            "analise critica",
+            "análise crítica",
+            "nao seja superficial",
+            "não seja superficial",
+            "premortem",
+            "pre-mortem",
+            "steelman",
+            "assumption audit",
+            "decision matrix",
+            "matriz de decisao",
+            "matriz de decisão",
+            "deixe perfeito",
+            "perfeito",
+            "perfect",
+        ),
+        "reason": "Stress-test scientific decisions with alternatives, assumptions, red-team critique, and verification gates.",
+    },
+    {
+        "skill": "zotero-reference-manager",
+        "triggers": (
+            "zotero",
+            "references.bib",
+            "bibtex",
+            "ris",
+            "citation key",
+            "citation keys",
+            "chave de citacao",
+            "chave de citação",
+            "biblioteca zotero",
+            "organizar referencias",
+            "organizar referências",
+            "gerenciar referencias",
+            "gerenciar referências",
+            "full text",
+            "full-text",
+            "fulltexto",
+            "pdf attachment",
+            "attachment path",
+            "local api",
+            "localhost:23119",
+            "pyzotero",
+        ),
+        "reason": "Use Zotero Desktop/Web API to organize references, export BibTeX, sync references.bib, and retrieve indexed full text when allowed.",
+    },
+    {
+        "skill": "ngs-analysis-router",
+        "triggers": (
+            "ngs",
+            "next generation sequencing",
+            "sequencing",
+            "sequenciamento",
+            "fastq",
+            "fq.gz",
+            "bcl",
+            "bam",
+            "cram",
+            "vcf",
+            "variant calling",
+            "germline",
+            "somatic",
+            "umi panel",
+            "bulk rnaseq",
+            "bulk rna-seq",
+            "rnaseq",
+            "rna-seq",
+            "single cell",
+            "single-cell",
+            "scrna",
+            "snrna",
+            "atac",
+            "atac-seq",
+            "chip-seq",
+            "cut&run",
+            "cutandrun",
+            "cut&tag",
+            "cutandtag",
+            "amplicon",
+            "shotgun metagenomics",
+            "demultiplex",
+            "bcl to fastq",
+        ),
+        "reason": "Route sequencing inputs to Life Sciences NGS Analysis plugin workflows with preflight-first provenance.",
+    },
+    {
         "skill": "life-science-router",
-        "triggers": ("gene", "variant", "protein", "proteina", "drug", "omics", "microbiome", "microbioma", "clinical trial", "ensaio clinico", "pathway", "biomedical", "biomedico"),
+        "triggers": (
+            "life science",
+            "life sciences",
+            "life science research",
+            "life-science-research",
+            "life sciences research",
+            "plugin life science",
+            "gene",
+            "variant",
+            "protein",
+            "proteina",
+            "drug",
+            "omics",
+            "microbiome",
+            "microbioma",
+            "clinical trial",
+            "ensaio clinico",
+            "pathway",
+            "biomedical",
+            "biomedico",
+            "biomedical discovery",
+            "dataset discovery",
+            "public biomedical dataset",
+        ),
         "reason": "Route biomedical retrieval through Life Science Research plugin skills.",
+    },
+    {
+        "skill": "tooluniverse-meta-analysis",
+        "triggers": (
+            "meta-analysis",
+            "metaanalysis",
+            "meta analise",
+            "meta-analise",
+            "pooled estimate",
+            "forest plot",
+            "heterogeneity",
+            "i2",
+            "tau squared",
+            "random effects",
+            "fixed effects",
+            "odds ratio ci",
+            "hazard ratio ci",
+        ),
+        "reason": "Pool extracted effects only after scale, direction, and standard error handling are explicit.",
+    },
+    {
+        "skill": "tooluniverse-diagnostic-test-evaluation",
+        "triggers": (
+            "diagnostic test",
+            "diagnostic accuracy",
+            "sensibilidade",
+            "specificity",
+            "specificidade",
+            "ppv",
+            "npv",
+            "likelihood ratio",
+            "auc",
+            "roc",
+            "youden",
+            "2x2 table",
+            "biomarker accuracy",
+        ),
+        "reason": "Calculate diagnostic performance and prevalence-dependent interpretation from explicit gold-standard data.",
+    },
+    {
+        "skill": "tooluniverse-epidemiological-analysis",
+        "triggers": (
+            "epidemiology",
+            "epidemiological",
+            "epidemiologia",
+            "observational",
+            "cohort",
+            "case-control",
+            "cross-sectional",
+            "confounders",
+            "propensity score",
+            "nhanes",
+            "uk biobank",
+            "peco",
+        ),
+        "reason": "Run observational epidemiology with explicit design, confounding, and sensitivity-analysis choices.",
+    },
+    {
+        "skill": "tooluniverse-dataset-discovery",
+        "triggers": (
+            "dataset discovery",
+            "find dataset",
+            "find data",
+            "public dataset",
+            "cohort data",
+            "where can i get data",
+            "dados publicos",
+            "geo dataset",
+            "arrayexpress",
+            "dbgap",
+            "gwas catalog",
+        ),
+        "reason": "Map the research question to feasible datasets and study-design constraints before analysis.",
+    },
+    {
+        "skill": "tooluniverse-clinical-guidelines",
+        "triggers": (
+            "clinical guideline",
+            "clinical guidelines",
+            "practice guideline",
+            "diretriz clinica",
+            "nccn",
+            "nice guideline",
+            "who guideline",
+            "uspstf",
+            "aha guideline",
+            "idsa",
+            "guideline recommendation",
+        ),
+        "reason": "Retrieve and rank clinical practice guidelines from authoritative sources with hierarchy caveats.",
+    },
+    {
+        "skill": "tooluniverse-clinical-trial-design",
+        "triggers": (
+            "trial design",
+            "clinical trial design",
+            "trial feasibility",
+            "endpoint selection",
+            "comparator selection",
+            "enrollment projection",
+            "phase 1/2",
+            "basket trial",
+            "biomarker trial",
+            "fda precedent",
+        ),
+        "reason": "Assess clinical trial feasibility with endpoints, population, comparator, duration, and regulatory precedent.",
+    },
+    {
+        "skill": "tooluniverse-pharmacovigilance",
+        "triggers": (
+            "pharmacovigilance",
+            "farmacovigilancia",
+            "faers",
+            "adverse event",
+            "adverse drug reaction",
+            "black box warning",
+            "drug safety signal",
+            "disproportionality",
+            "prr",
+            "reporting odds ratio",
+        ),
+        "reason": "Analyze post-market safety signals with explicit spontaneous-reporting caveats.",
+    },
+    {
+        "skill": "tooluniverse-clinical-data-integration",
+        "triggers": (
+            "clinical data integration",
+            "label vs real world",
+            "drug safety review",
+            "fda label",
+            "pharmacogenomic biomarker",
+            "regulatory safety",
+            "clinical decision support drug safety",
+        ),
+        "reason": "Integrate FDA labels, FAERS, clinical trials, pharmacogenomics, and literature for drug-safety review.",
+    },
+    {
+        "skill": "tooluniverse-drug-target-validation",
+        "triggers": (
+            "target validation",
+            "drug target validation",
+            "target validation score",
+            "druggability",
+            "selectivity",
+            "admet feasibility",
+            "structural tractability",
+            "go/no-go target",
+            "target deselection",
+        ),
+        "reason": "Score target evidence across druggability, safety, ADMET, and structural feasibility before committing.",
+    },
+    {
+        "skill": "tooluniverse-variant-interpretation",
+        "triggers": (
+            "variant interpretation",
+            "acmg",
+            "vus",
+            "pathogenicity",
+            "clinvar",
+            "gnomad",
+            "molecular tumor board",
+            "variant pathogenic",
+            "structural variant impact",
+        ),
+        "reason": "Interpret variants with ACMG-style evidence and explicit database/structural caveats.",
+    },
+    {
+        "skill": "tooluniverse-data-integration-analysis",
+        "triggers": (
+            "biological annotation",
+            "annotate genes",
+            "annotate variants",
+            "pathway context",
+            "mechanism narrative",
+            "reactome annotation",
+            "go annotation",
+            "statistical results biology",
+            "beyond p-values",
+        ),
+        "reason": "Connect statistical findings to biological context without overclaiming mechanism.",
+    },
+    {
+        "skill": "tooluniverse-drug-repurposing",
+        "triggers": (
+            "drug repurposing",
+            "repurpose drug",
+            "new indication",
+            "orphan disease drug",
+            "drug-disease network",
+            "existing drug",
+            "repurposing candidates",
+        ),
+        "reason": "Generate hypothesis-level repurposing candidates with clinical, regulatory, and mechanism caveats.",
     },
     {
         "skill": "bids",
@@ -638,6 +1387,75 @@ ROUTE_RULES: tuple[dict[str, Any], ...] = (
         "triggers": ("slides", "poster", "congress", "congresso", "conference", "abstract", "oral presentation", "apresentacao oral", "handout", "submission pack"),
         "reason": "Use the HTML-first congress deliverable pipeline with Evidence Lock.",
     },
+    {
+        "skill": "intestinal-transplant-research",
+        "triggers": (
+            "intestinal transplant",
+            "transplante intestinal",
+            "transplante de intestino",
+            "transplante de intestino delgado",
+            "transplante intestino",
+            "intestinal transplantation",
+            "multivisceral",
+            "transplante multivisceral",
+            "intestinal failure",
+            "falencia intestinal",
+            "short bowel syndrome",
+            "sbs-if",
+            "glp-2",
+            "teduglutide",
+            "apraglutide",
+            "intestinal rejection",
+            "rejeicao intestinal",
+            "dd-cfdna",
+            "citrulline",
+            "citrulina",
+            "calprotectin",
+            "calprotectina",
+            "intestinal machine perfusion",
+            "machine perfusion intestinal",
+            "intestinal organoid",
+            "organoide intestinal",
+            "organoides intestinais",
+            "intestinal ischemia-reperfusion",
+            "isquemia-reperfusao intestinal",
+            "intestinal graft",
+            "enxerto intestinal",
+            "abto",
+        ),
+        "reason": "Route intestinal transplant, intestinal failure, and translational GI research through the domain-specific evidence and workflow gates.",
+    },
+    {
+        "skill": "datasus-research-engine",
+        "triggers": (
+            "datasus",
+            "data sus",
+            "pysus",
+            "sih",
+            "sih rd",
+            "sim",
+            "sia",
+            "sinasc",
+            "cnes",
+            "pni",
+            "tabnet",
+            "tabwin",
+            "sigtap",
+            "duckdb",
+            "parquet",
+            "aih",
+            "morte hospitalar sus",
+            "internacoes sus",
+            "internações sus",
+            "coorte datasus",
+            "extracao datasus",
+            "extração datasus",
+            "meddatasus",
+            "sus epidemiology",
+            "epidemiologia sus",
+        ),
+        "reason": "Route DATASUS/PySUS extraction, cohort construction, analysis, reporting, and scientific QC through the complete research-engine workflow.",
+    },
 )
 
 
@@ -715,21 +1533,55 @@ def catalog_workspace_skills(skills_dir: Path | None = None) -> dict:
     }
 
 
+_MOJIBAKE_MARKERS = ("Ã", "Â", "â", "ƒ", "€", "™", "�")
+
+
+def _mojibake_score(value: str) -> int:
+    return sum(value.count(marker) for marker in _MOJIBAKE_MARKERS)
+
+
+def _repair_utf8_mojibake(value: str) -> str:
+    """Repair up to two common UTF-8-as-Windows/Latin-1 decoding layers.
+
+    A candidate is accepted only when it reduces known mojibake markers, so
+    correctly decoded Portuguese text is left untouched.
+    """
+
+    current = value
+    for _ in range(2):
+        current_score = _mojibake_score(current)
+        if current_score == 0:
+            break
+        candidates: list[str] = []
+        for encoding in ("cp1252", "latin-1"):
+            try:
+                candidates.append(current.encode(encoding).decode("utf-8"))
+            except (UnicodeEncodeError, UnicodeDecodeError):
+                continue
+        if not candidates:
+            break
+        best = min(candidates, key=_mojibake_score)
+        if _mojibake_score(best) >= current_score:
+            break
+        current = best
+    return current
+
+
 def _normalize_text(value: str) -> str:
-    normalized = unicodedata.normalize("NFKD", value.lower())
+    normalized = unicodedata.normalize("NFKD", _repair_utf8_mojibake(value).lower())
     return "".join(character for character in normalized if not unicodedata.combining(character))
 
 
 def _trigger_matches(query: str, trigger: str) -> bool:
     trigger_normalized = _normalize_text(trigger)
     pattern = re.escape(trigger_normalized).replace("\\ ", r"\s+")
-    if re.search(rf"\b{pattern}\b", query):
-        return True
-    return len(trigger_normalized) >= 5 and trigger_normalized in query
+    return bool(re.search(rf"(?<![a-z0-9]){pattern}(?![a-z0-9])", query))
 
 
 def route_workspace_skills(query: str, skills_dir: Path | None = None, limit: int = 8) -> dict:
-    normalized = re.sub(r"\s+", " ", _normalize_text((query or "").strip()))
+    raw_query = (query or "").strip()
+    repaired_query = _repair_utf8_mojibake(raw_query)
+    normalized = re.sub(r"\s+", " ", _normalize_text(repaired_query))
     catalog = catalog_workspace_skills(skills_dir)
     available = catalog.get("skills", {})
     matches: list[dict] = []
@@ -748,15 +1600,26 @@ def route_workspace_skills(query: str, skills_dir: Path | None = None, limit: in
         )
 
     matches.sort(key=lambda item: (-len(item["matched_triggers"]), item["skill"]))
+    registry = load_registry(_workspace_root()).get("skills", {}) if skills_dir is None else {}
+    for match in matches:
+        entry = registry.get(match["skill"], {})
+        match["registry_status"] = entry.get("status", "not-registered")
+        match["promotion_requires_review"] = entry.get("status") in {"hold", "pilot", "quarantine"}
     return {
         "status": "routed" if matches else "no-match",
         "query": query,
+        "input_encoding_repaired": repaired_query != raw_query,
         "selected_skills": matches[:limit],
         "guidance": "Use the selected skills before attempting the task directly. If no skill matches, proceed normally and consider creating a skill if the workflow repeats.",
     }
 
 
-def audit_workspace_skills(skills_dir: Path | None = None) -> dict:
+def audit_workspace_skills(
+    skills_dir: Path | None = None,
+    *,
+    strict: bool = False,
+    provenance: bool = False,
+) -> dict:
     catalog = catalog_workspace_skills(skills_dir)
     skills = catalog.get("skills", {})
     issues: list[str] = []
@@ -770,9 +1633,15 @@ def audit_workspace_skills(skills_dir: Path | None = None) -> dict:
             issues.append(f"{skill_name} description must start with 'Use when'.")
         if "TODO" in description:
             issues.append(f"{skill_name} description still contains TODO text.")
-    return {
+    report = {
         "status": "pass" if not issues else "block",
         "skills_dir": catalog.get("skills_dir"),
         "checked_skills": list(WORLD_CLASS_SKILLS),
         "issues": issues,
     }
+    if provenance:
+        provenance_report = audit_skill_provenance(skills_dir, strict=strict)
+        report["provenance"] = provenance_report
+        report["issues"].extend(provenance_report["issues"])
+        report["status"] = "pass" if not report["issues"] else "block"
+    return report

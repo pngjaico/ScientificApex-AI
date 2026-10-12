@@ -9,12 +9,15 @@ def test_build_task_packet_saves_compact_context_for_mode(tmp_path: Path) -> Non
 
     packet = build_task_packet(
         project_dir,
-        mode="discovery",
+        mode="bootstrap",
         active_hypothesis="A digital twin can estimate perfusion collapse under ischemia.",
     )
 
-    assert packet["mode"] == "discovery"
+    assert packet["mode"] == "bootstrap"
     assert packet["active_hypothesis"].startswith("A digital twin")
     assert packet["project"]["lane"] == "computational-discovery"
     assert "deliverables" in packet
     assert (project_dir / packet["packet_path"]).is_file()
+    rejected = build_task_packet(project_dir, mode="discovery")
+    assert rejected["status"] == "blocked"
+    assert "packet_path" not in rejected

@@ -1,0 +1,16 @@
+{
+  "contract": "MachineUpgradeRecordV1",
+  "status": "implemented-pending-final-verification",
+  "target_version": "0.3.0",
+  "policy": "GPT-6.1 Sol medium Standard; GPT-6 Luna bounded low/medium/high; Sol high scientific review",
+  "changes": [
+    "Ten curated K-Dense trees pinned to inspected October revision with backups and hashes",
+    "Scientific workflow planner and bilingual regression auditor",
+    "Symbolic plugin discovery with ambiguity detection and optional-provider fallback",
+    "JSON serialization, lifecycle, evidence freshness, source ingestion and export failure propagation repaired",
+    "File-backed benchmark regression evidence cannot unlock scientific acceptance",
+    "Locked dependencies and browser preparation; security fixes for pip and urllib3"
+  ],
+  "scientific_acceptance_verified": false,
+  "remote_ci_verified": false
+}

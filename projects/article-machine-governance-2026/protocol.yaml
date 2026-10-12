@@ -1,0 +1,22 @@
+contract_version: 2
+project_type: machine-governance
+lane: machine-governance
+status: frozen
+objective: >-
+  Make the Article Machine reproducible, fail-closed, organized, portable, and
+  verifiable for the explicitly benchmarked local scope under GPT-6.1 Sol medium
+  coordination and GPT-6 Luna bounded execution, with English and PT-BR workflows.
+acceptance_boundary: >-
+  Complete for the validated scope only; never universal, perfect, or
+  production-grade without broader independent benchmarks and remote CI.
+authorized_changes:
+  - local code, tests, contracts, locks, CI configuration, curated skills, and documentation
+  - local branch and selective local commits
+prohibited_changes:
+  - push, pull request, publication, or external data upload
+  - movement or content inspection of protected clinical and raw-data folders
+  - bulk skill installation without a project-specific benchmark
+  - git add dot
+historical_inputs:
+  project_id: article-machine-upgrade-2026
+  gate_eligible: false

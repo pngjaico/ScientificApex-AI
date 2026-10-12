@@ -22,6 +22,10 @@ MODE_ORDER = [
     "submission",
 ]
 
+MACHINE_GOVERNANCE_MODE_ORDER = [
+    "bootstrap", "inventory", "upgrade", "verification", "acceptance-benchmark", "release",
+]
+
 
 def _now_iso() -> str:
     return datetime.now(timezone.utc).isoformat()
@@ -34,6 +38,12 @@ def slugify_project_name(name: str) -> str:
 
 
 def next_modes(current_mode: str, lane: str) -> list[str]:
+    if lane == "machine-governance":
+        try:
+            index = MACHINE_GOVERNANCE_MODE_ORDER.index(current_mode)
+        except ValueError:
+            return []
+        return [] if index + 1 >= len(MACHINE_GOVERNANCE_MODE_ORDER) else [MACHINE_GOVERNANCE_MODE_ORDER[index + 1]]
     if current_mode == "analysis" and lane == "computational-discovery":
         return ["discovery"]
     if current_mode == "extraction" and lane == "computational-discovery":
@@ -57,6 +67,7 @@ def next_modes(current_mode: str, lane: str) -> list[str]:
 def _project_template(name: str, slug: str, project_type: str, standards: dict) -> dict:
     lane = standards["lane"]
     return {
+        "contract_version": 2,
         "id": slug,
         "name": name,
         "project_type": project_type,
@@ -73,6 +84,7 @@ def _project_template(name: str, slug: str, project_type: str, standards: dict) 
 
 def _protocol_template(project_type: str) -> dict:
     return {
+        "contract_version": 2,
         "project_type": project_type,
         "status": "draft",
         "research_question": "",
@@ -105,16 +117,44 @@ def _compute_template(project_type: str, lane: str) -> dict:
         "statistical-analysis",
         "scientific-visualization",
     ]
+    r_required = project_type in {"network-meta-analysis", "health-economics", "machine-governance"}
+    browser_required = project_type == "machine-governance"
     return {
+        "contract_version": 2,
         "project_type": project_type,
         "lane": lane,
+        "required_plugins": [],
         "r": {
-            "required": project_type in {"network-meta-analysis", "health-economics"},
+            "required": r_required,
+            "version": "4.6.1" if r_required else "4.6",
             "runner": "Rscript",
+            "package_manager": "renv",
+            "package_manager_version": "1.2.3",
+            "lockfile": "renv.lock" if r_required else None,
+            "timeout_seconds": 900,
+            "allowed_directories": ["analysis", "scripts"],
             "packages": ["meta", "metafor", "dmetar"],
         },
         "python": {
+            "required": True,
+            "version": "3.13",
+            "runner": ".venv/Scripts/python.exe",
+            "package_manager": "uv",
+            "package_manager_version": "0.11.31",
+            "lockfile": "uv.lock",
+            "timeout_seconds": 600,
+            "allowed_directories": ["analysis", "scripts"],
             "skills": discovery_skills if lane == "computational-discovery" else ["statistical-analysis"],
+        },
+        "browser": {
+            "required": browser_required,
+            "version": "1.61.1",
+            "runner": "tools/playwright/node_modules/.bin/playwright.cmd",
+            "package_manager": "npm",
+            "package_manager_version": "11.17.0",
+            "lockfile": "tools/playwright/package-lock.json" if browser_required else None,
+            "timeout_seconds": 180,
+            "allowed_directories": ["analysis", "scripts"],
         },
     }
 
@@ -279,6 +319,23 @@ def gate_mode(project_dir: Path, target_mode: str) -> dict:
     if target_mode not in allowed:
         issues.append(f"Mode '{target_mode}' is not allowed from '{current_mode}'.")
 
+    if project.get("lane") == "machine-governance":
+        governance_requirements = {
+            "inventory": [(project_dir / "context" / "inventory_manifest.json", "context/inventory_manifest.json is required.")],
+            "upgrade": [(project_dir / "context" / "inventory_manifest.json", "inventory must be completed before upgrade.")],
+            "verification": [(project_dir / "analysis" / "verification_report.json", "analysis/verification_report.json is required.")],
+            "acceptance-benchmark": [(project_dir / "analysis" / "benchmark_report.json", "analysis/benchmark_report.json is required.")],
+            "release": [(project_dir / "analysis" / "release_audit.json", "analysis/release_audit.json is required.")],
+        }
+        for path, message in governance_requirements.get(target_mode, []):
+            if not path.exists():
+                issues.append(message)
+        if target_mode == "acceptance-benchmark":
+            from .benchmarks import benchmark_gate_passed
+            if not benchmark_gate_passed(project_dir):
+                issues.append("AgentBenchmarkReportV2 is missing or not gate eligible.")
+        return {"status": "passed" if not issues else "blocked", "target_mode": target_mode, "issues": issues}
+
     if target_mode == "protocol-freeze":
         if not protocol.get("research_question"):
             issues.append("protocol.yaml is missing 'research_question'.")
@@ -307,6 +364,13 @@ def gate_mode(project_dir: Path, target_mode: str) -> dict:
     elif target_mode == "submission":
         if review_report.get("aggregate_status") != "pass":
             issues.append("reviews/review_report.json must be PASS before submission.")
+        from .policy.gates import workspace_snapshot, file_sha256
+        if review_report.get("contract") != "ReviewTrinityReportV2":
+            issues.append("reviews/review_report.json must use ReviewTrinityReportV2.")
+        elif review_report.get("review_snapshot") != workspace_snapshot(project_dir):
+            issues.append("reviews/review_report.json is stale for current protected project inputs.")
+        if review_report.get("red_team_sha256") != file_sha256(project_dir / "reviews" / "red_team_report.json"):
+            issues.append("reviews/review_report.json does not match the current red-team artifact.")
 
     return {
         "status": "passed" if not issues else "blocked",
@@ -320,6 +384,39 @@ def advance_mode(project_dir: Path, target_mode: str) -> dict:
     gate = gate_mode(project_dir, target_mode)
     if gate["status"] != "passed":
         return gate
+
+    # The transition-specific checks above preserve the V1 API, but are not the
+    # authoritative gate: audit every prerequisite up to this stage and reject
+    # a stage that is incomplete even when a legacy sentinel file exists.
+    from .zero_trust import audit_stage
+    protocol_before_stage_audit = None
+    if target_mode == "protocol-freeze":
+        protocol_before_stage_audit = load_structured_file(project_dir / "protocol.yaml")
+        frozen_protocol = dict(protocol_before_stage_audit)
+        frozen_protocol["status"] = "frozen"
+        save_structured_file(project_dir / "protocol.yaml", frozen_protocol)
+    stage = audit_stage(project_dir, target_mode=target_mode)
+    if stage.get("gate_eligible") is not True:
+        if protocol_before_stage_audit is not None:
+            save_structured_file(project_dir / "protocol.yaml", protocol_before_stage_audit)
+        return {
+            "status": "blocked",
+            "target_mode": target_mode,
+            "issues": stage.get("issues", ["Canonical stage audit is not gate eligible."]),
+            "stage_audit": stage,
+        }
+
+    # The V2 transition report binds the successful legacy and canonical checks
+    # to current project and control-plane hashes.
+    from .policy.gates import canonical_gate
+    checks = [
+        {"name": "legacy_transition", "status": "pass", "message": "Transition-specific requirements passed."},
+        {"name": "project_contract", "status": "pass" if (project_dir / "compute.yaml").exists() else "block", "message": "compute.yaml is required."},
+        {"name": "canonical_stage_audit", "status": "pass", "message": "Canonical stage audit passed."},
+    ]
+    v2 = canonical_gate(project_dir, target_mode, checks)
+    if v2["status"] != "pass":
+        return {"status": "blocked", "target_mode": target_mode, "issues": v2["issues"], "gate": v2}
 
     project = load_project(project_dir)
     state = project.setdefault("state", {})
@@ -338,4 +435,5 @@ def advance_mode(project_dir: Path, target_mode: str) -> dict:
         "status": "passed",
         "target_mode": target_mode,
         "allowed_next_modes": state["allowed_next_modes"],
+        "gate": v2,
     }

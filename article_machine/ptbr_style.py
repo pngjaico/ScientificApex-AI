@@ -69,11 +69,17 @@ TRANSLATION_CLICHES: list[dict[str, str]] = [
     {"pattern": "no contexto do", "replacement": "na análise do"},
     {"pattern": "no contexto da", "replacement": "na análise da"},
     {"pattern": "em termos de", "replacement": "quanto a"},
+    {"pattern": "no que tange ao", "replacement": "quanto ao"},
+    {"pattern": "no que tange à", "replacement": "quanto à"},
+    {"pattern": "no que tange a", "replacement": "quanto a"},
     {"pattern": "à luz de", "replacement": "considerando"},
     {"pattern": "evidencia-se", "replacement": "os dados mostram"},
     {"pattern": "ressalta-se", "replacement": "é importante observar"},
     {"pattern": "destaca-se", "replacement": "observa-se"},
     {"pattern": "caracterizado por", "replacement": "com"},
+    {"pattern": "temática em questão", "replacement": "tema"},
+    {"pattern": "lançar luz sobre", "replacement": "examinar"},
+    {"pattern": "lança luz sobre", "replacement": "examina"},
 ]
 
 
@@ -86,6 +92,8 @@ UNNECESSARY_ENGLISH_TERMS: list[dict[str, str]] = [
     {"term": "layer", "replacement": "análise"},
     {"term": "signal", "replacement": "associação observada"},
     {"term": "hub", "replacement": "estudo dominante"},
+    {"term": "impactful", "replacement": "relevante apenas se a magnitude estiver descrita"},
+    {"term": "endereçar", "replacement": "abordar"},
 ]
 
 
@@ -120,10 +128,16 @@ STATISTICAL_TERMS: list[dict[str, str]] = [
 
 AI_TONE_TERMS = [
     "robusto",
+    "impactante",
+    "altamente significativo",
     "inovador",
     "transformador",
     "disruptivo",
     "definitivo",
+    "demonstra definitivamente",
+    "demonstra de forma clara",
+    "prova",
+    "comprova",
     "prova causal",
     "100% perfeito",
     "perfeito",
@@ -131,12 +145,110 @@ AI_TONE_TERMS = [
     "publicável",
 ]
 
+AI_STYLE_MARKERS: list[dict[str, str]] = [
+    {"term": "abrangente", "suggestion": "Nomeie o escopo real em vez de usar adjetivo amplo."},
+    {"term": "crucial", "suggestion": "Mostre a medida, o desenho ou a consequência específica."},
+    {"term": "impactante", "suggestion": "Troque por magnitude, intervalo, consistência ou consequência mensurável."},
+    {"term": "altamente significativo", "suggestion": "Informe a medida, o valor de p/intervalo quando aplicável e a relevância clínica separadamente."},
+    {"term": "de forma significativa", "suggestion": "Especifique se é significância estatística, magnitude do efeito ou relevância prática."},
+    {"term": "meticulosamente", "suggestion": "Descreva o procedimento concreto ou remova o advérbio."},
+    {"term": "notavelmente", "suggestion": "Apresente o resultado e sua magnitude sem marcador ornamental."},
+    {"term": "insights", "suggestion": "Use achados, resultados, hipóteses ou implicações específicas."},
+    {"term": "pivotal", "suggestion": "Evite inglês promocional; descreva o papel real do achado."},
+    {"term": "comprehensive", "suggestion": "Troque por abrangente apenas se o escopo foi realmente completo."},
+    {"term": "delve", "suggestion": "Use investigar, avaliar ou analisar, conforme o método real."},
+]
+
+GENERIC_AI_PHRASES: list[dict[str, str]] = [
+    {"pattern": "vale ressaltar", "suggestion": "Remova o marcador e apresente o fato diretamente."},
+    {"pattern": "é importante destacar", "suggestion": "Remova o marcador ou explique por que o ponto altera a interpretação."},
+    {"pattern": "de maneira geral", "suggestion": "Use apenas se houver síntese real; caso contrário, remova."},
+    {"pattern": "no contexto atual", "suggestion": "Nomeie o cenário, período, população ou problema real."},
+    {"pattern": "de forma significativa", "suggestion": "Substitua por resultado mensurável ou remova."},
+    {"pattern": "temática em questão", "suggestion": "Nomeie o tema específico."},
+    {"pattern": "lançar luz", "suggestion": "Use examinar, avaliar, descrever ou estimar, conforme o método."},
+    {"pattern": "lacuna importante", "suggestion": "Defina a lacuna específica e sua consequência para o objetivo."},
+    {"pattern": "em suma", "suggestion": "Use uma conclusão proporcional ao objetivo."},
+    {"pattern": "fornece insights", "suggestion": "Substitua por achados específicos."},
+    {"pattern": "insights valiosos", "suggestion": "Substitua por achados ou implicações verificáveis."},
+    {"pattern": "panorama abrangente", "suggestion": "Nomeie o escopo, bases, período ou população."},
+    {"pattern": "contribui para a literatura", "suggestion": "Declare a contribuição concreta ou remova."},
+    {"pattern": "complexa interação", "suggestion": "Nomeie as variáveis e a direção da relação."},
+    {"pattern": "intricado", "suggestion": "Explique a relação em termos observáveis."},
+    {"pattern": "mais estudos são necessários", "suggestion": "Diga qual estudo, população, desfecho ou comparação falta."},
+]
+
+DETECTOR_BYPASS_PHRASES = [
+    "burlar detector",
+    "enganar detector",
+    "driblar detector",
+    "passar no detector",
+    "evadir detector",
+    "evitar deteccao",
+    "undetectable ai",
+]
+
+ANTI_AI_REPLACEMENTS: list[dict[str, str]] = [
+    {"pattern": "vale ressaltar que", "replacement": ""},
+    {"pattern": "é importante destacar que", "replacement": ""},
+    {"pattern": "e importante destacar que", "replacement": ""},
+    {"pattern": "de maneira geral", "replacement": ""},
+    {"pattern": "no contexto atual", "replacement": ""},
+    {"pattern": "a temática em questão", "replacement": "o tema"},
+    {"pattern": "temática em questão", "replacement": "tema"},
+    {"pattern": "lançar luz sobre", "replacement": "examinar"},
+    {"pattern": "lança luz sobre", "replacement": "examina"},
+    {"pattern": "endereçar uma questão", "replacement": "abordar uma questão"},
+    {"pattern": "endereçamos uma lacuna", "replacement": "abordamos uma lacuna"},
+    {"pattern": "fornece insights valiosos", "replacement": "descreve achados"},
+    {"pattern": "fornece insights", "replacement": "descreve achados"},
+    {"pattern": "insights valiosos", "replacement": "achados"},
+    {"pattern": "panorama abrangente", "replacement": "síntese"},
+    {"pattern": "abordagem robusta", "replacement": "método descrito"},
+    {
+        "pattern": "mais estudos são necessários",
+        "replacement": "a incerteza restante deve ser testada em estudo definido pelo desenho e desfecho",
+    },
+    {
+        "pattern": "mais estudos sao necessarios",
+        "replacement": "a incerteza restante deve ser testada em estudo definido pelo desenho e desfecho",
+    },
+]
+
+PROTECTED_SEGMENT_PATTERNS = [
+    r"\{\{claim:[^}]+\}\}",
+    r"\bdoi:\s*10\.\d{4,9}/\S+",
+    r"\b10\.\d{4,9}/\S+",
+    r"\bPMID:?\s*\d+",
+    r"\bPMCID:?\s*[A-Z]*\d+",
+    r"\bp\s*[<=>]\s*0?[,.]\d+",
+    r"\bIC\s*95%[^.;,\n]*",
+    r"\bCI\s*95%[^.;,\n]*",
+]
+
+STRUCTURE_HEADING_GROUPS: dict[str, tuple[str, ...]] = {
+    "introducao": ("introducao", "introdução", "introduction", "background"),
+    "metodos": ("metodos", "métodos", "methods", "methodology"),
+    "resultados": ("resultados", "results"),
+    "discussao": ("discussao", "discussão", "discussion"),
+}
+
 
 LONG_SENTENCE_WORD_LIMIT = 42
 NOMINALIZATION_LIMIT = 5
 
 
 PTBR_STYLE_SOURCE_NOTES: list[dict[str, str]] = [
+    {
+        "source": "Pesquisa local 2026-07 - Redação científica em português",
+        "url": "local attachment: pasted-text.txt",
+        "lesson": "A skill deve escolher perfil editorial, variante pt-BR/pt-PT, tipo de manuscrito, revista-alvo, sistema de citação e limite de tamanho antes de redigir.",
+    },
+    {
+        "source": "Pesquisa local 2026-07 - Naturalidade editorial",
+        "url": "local attachment: pasted-text.txt",
+        "lesson": "Texto natural em português científico usa frases curtas a moderadas, progressão contexto-lacuna-objetivo, hedging compatível com o desenho e evita metadiscurso vazio típico de IA.",
+    },
     {
         "source": "Revista de Saúde Pública - instruções aos autores",
         "url": "https://rsp.fsp.usp.br/pt-br/instrucoes-aos-autores/",
@@ -337,6 +449,40 @@ def _split_sentences(text: str) -> list[tuple[str, int]]:
     return [(match.group(0).strip(), match.start()) for match in matches if match.group(0).strip()]
 
 
+def _protect_segments(text: str) -> tuple[str, dict[str, str]]:
+    protected: dict[str, str] = {}
+
+    def replace(match: re.Match[str]) -> str:
+        token = f"@@AM_PROTECTED_{len(protected)}@@"
+        protected[token] = match.group(0)
+        return token
+
+    result = text
+    for pattern in PROTECTED_SEGMENT_PATTERNS:
+        result = re.sub(pattern, replace, result, flags=re.IGNORECASE)
+    return result, protected
+
+
+def _restore_segments(text: str, protected: dict[str, str]) -> str:
+    result = text
+    for token, original in protected.items():
+        result = result.replace(token, original)
+    return result
+
+
+def _document_headings(text: str) -> set[str]:
+    headings: set[str] = set()
+    for line in text.splitlines():
+        stripped = line.strip().strip("#").strip(":").strip()
+        if not stripped or len(stripped) > 80:
+            continue
+        normalized = _norm(stripped)
+        for group, variants in STRUCTURE_HEADING_GROUPS.items():
+            if any(_norm(variant) == normalized for variant in variants):
+                headings.add(group)
+    return headings
+
+
 def _statistical_term_is_explained(text: str, term: str, accepted_explanations: list[str]) -> bool:
     normalized = _norm(text)
     term_norm = _norm(term)
@@ -400,6 +546,26 @@ def naturalize_text(text: str) -> str:
     return result
 
 
+def anti_ai_naturalize_text(text: str) -> str:
+    protected_text, protected = _protect_segments(text)
+    result = naturalize_text(protected_text)
+    for item in ANTI_AI_REPLACEMENTS:
+        result = _replace_phrase(result, item["pattern"], item["replacement"])
+
+    result = _replace_word(result, "crucial", "importante")
+    result = _replace_word(result, "notavelmente", "")
+    result = _replace_word(result, "meticulosamente", "")
+    result = _replace_word(result, "pivotal", "central")
+    result = _replace_word(result, "comprehensive", "abrangente")
+    result = re.sub(r"[ \t]{2,}", " ", result)
+    result = re.sub(r"(?m)^\s+", "", result)
+    result = re.sub(r"\s+([,.;:])", r"\1", result)
+    result = _restore_segments(result, protected)
+    if text and text[0].isupper() and result and result[0].islower():
+        result = result[0].upper() + result[1:]
+    return result
+
+
 def build_generation_brief(*, deliverable: str, audience: str = "pesquisador") -> str:
     source_lines = "\n".join(
         f"- {item['source']}: {item['lesson']} ({item['url']})" for item in PTBR_STYLE_SOURCE_NOTES
@@ -419,7 +585,16 @@ Leitor principal: {audience}
 
 Escreva primeiro em português brasileiro. Não traduza template inglês. Use linguagem científica natural, como artigo biomédico brasileiro: frase direta, sujeito claro, números explícitos e conclusão proporcional à evidência.
 
+Antes de redigir, congele o perfil editorial: variante linguística, área, tipo de manuscrito, periódico/congresso-alvo, seção, sistema de citação e limite de palavras. Se o destino não estiver claro, use PT-BR científico com IMRAD explícito e registre a pendência.
+
 Quando o texto for resumo estruturado, use Objetivo, Métodos, Resultados e Conclusão. Introdução pode entrar antes do Objetivo quando o congresso exigir.
+
+## Perfis Editoriais
+
+- ABNT acadêmico brasileiro: aplicar ABNT e instrução institucional para tese, TCC, dissertação e relatório; não assumir que periódico biomédico quer ABNT.
+- Biomédico/Vancouver: seguir ICMJE/NLM e instruções da revista; manter citação numérica consistente e conclusão proporcional ao desenho.
+- SciELO/periódico brasileiro: prever título, resumo, palavras-chave e metadados em português/inglês quando exigidos; usar DeCS/MeSH quando aplicável.
+- Português europeu: só usar quando o destino pedir pt-PT; manter variante consistente e consultar guia local/NP ISO 690 quando o problema for normalização bibliográfica.
 
 ## Medidas E Siglas
 
@@ -452,8 +627,11 @@ Conclusão:
 
 - Não entregue texto com mojibake ou caracteres quebrados.
 - Evite anglicismos dispensáveis: framework, endpoint, outcome, baseline, arm-level, layer, signal, hub.
-- Troque clichês de tradução por frases diretas: "no contexto de" -> "na análise de"; "em termos de" -> "quanto a"; "à luz de" -> "considerando".
+- Troque clichês de tradução por frases diretas: "no contexto de" -> "na análise de"; "em termos de" -> "quanto a"; "no que tange a" -> "quanto a"; "lançar luz" -> "examinar".
+- Remova marcadores genéricos de IA: "é importante destacar que", "vale ressaltar que", "de maneira geral", "no contexto atual", "fornece insights" e "panorama abrangente".
+- Use hedging proporcional: "sugere", "indica", "foi observada associação"; bloqueie "prova", "demonstra definitivamente" e "deve ser expandido para todos os contextos" sem desenho que sustente.
 - Evite frases com muitas palavras abstratas terminadas em -ção, -mento, -dade ou -ência. Use sujeito e verbo.
+- Em resumos, mire frases de 15 a 30 palavras; acima de 35 palavras, divida salvo exigência metodológica.
 - Se uma frase tiver mais de uma ideia metodológica, divida em duas.
 
 ## Base De Calibragem
@@ -462,7 +640,78 @@ Conclusão:
 """.strip() + "\n"
 
 
-def audit_text(text: str, *, path: str | Path | None = None) -> dict[str, Any]:
+def _append_anti_ai_issues(text: str, issues: list[dict[str, Any]], *, path_str: str | None) -> None:
+    normalized_text = _norm(text)
+
+    for phrase in DETECTOR_BYPASS_PHRASES:
+        offset = normalized_text.find(_norm(phrase))
+        if offset >= 0:
+            line = _line_number(text, offset)
+            issues.append(
+                _issue(
+                    code="detector_bypass_request",
+                    severity="block",
+                    term=phrase,
+                    line=line,
+                    message="Pedido ou texto orientado a burlar detector de IA, não a melhorar autoria científica.",
+                    suggestion="Reformule como auditoria de autoria, naturalidade, estrutura e preservação de evidência.",
+                    excerpt=_line_excerpt(text, line),
+                    path=path_str,
+                )
+            )
+
+    for item in AI_STYLE_MARKERS:
+        for start, _end in _iter_term_matches(text, item["term"]):
+            line = _line_number(text, start)
+            excerpt = _line_excerpt(text, line)
+            if _looks_like_reference_line(excerpt):
+                continue
+            issues.append(
+                _issue(
+                    code="llm_style_marker",
+                    severity="warn",
+                    term=item["term"],
+                    line=line,
+                    message=f"Marcador comum de texto genérico ou artificial: {item['term']}.",
+                    suggestion=item["suggestion"],
+                    excerpt=excerpt,
+                    path=path_str,
+                )
+            )
+
+    for item in GENERIC_AI_PHRASES:
+        for start, _end in _iter_term_matches(text, item["pattern"]):
+            line = _line_number(text, start)
+            issues.append(
+                _issue(
+                    code="generic_ai_phrase",
+                    severity="warn",
+                    term=item["pattern"],
+                    line=line,
+                    message=f"Frase genérica que costuma deixar o texto com aparência de IA: {item['pattern']}.",
+                    suggestion=item["suggestion"],
+                    excerpt=_line_excerpt(text, line),
+                    path=path_str,
+                )
+            )
+
+    headings = _document_headings(text)
+    if len(text) > 1500 and headings and {"metodos", "resultados"} - headings:
+        missing = ", ".join(sorted({"metodos", "resultados"} - headings))
+        issues.append(
+            _issue(
+                code="structure_gap",
+                severity="warn",
+                line=1,
+                message=f"Documento longo com estrutura científica incompleta ou pouco explícita: faltam {missing}.",
+                suggestion="Para artigo original, use IMRAD ou justifique a estrutura exigida pelo periódico/congresso.",
+                excerpt="",
+                path=path_str,
+            )
+        )
+
+
+def audit_text(text: str, *, path: str | Path | None = None, profile: str = "ptbr") -> dict[str, Any]:
     path_str = str(path) if path is not None else None
     issues: list[dict[str, Any]] = []
 
@@ -653,25 +902,33 @@ def audit_text(text: str, *, path: str | Path | None = None) -> dict[str, Any]:
                 )
             )
 
+    if profile == "anti_ai":
+        _append_anti_ai_issues(text, issues, path_str=path_str)
+
     status = "block" if any(issue["severity"] == "block" for issue in issues) else "pass"
     return {
         "path": path_str,
+        "profile": profile,
         "status": status,
         "issue_count": len(issues),
         "issues": issues,
     }
 
 
-def audit_paths(paths: list[str | Path]) -> dict[str, Any]:
+def audit_paths(paths: list[str | Path], *, profile: str = "ptbr", strict: bool = False) -> dict[str, Any]:
     reports = []
     for raw_path in paths:
         path = Path(raw_path)
         text = read_text_for_audit(path)
-        reports.append(audit_text(text, path=path))
+        reports.append(audit_text(text, path=path, profile=profile))
 
-    status = "block" if any(report["status"] == "block" for report in reports) else "pass"
+    has_block = any(report["status"] == "block" for report in reports)
+    has_issues = any(report["issue_count"] for report in reports)
+    status = "block" if has_block or (strict and has_issues) else "pass"
     return {
         "status": status,
+        "profile": profile,
+        "strict": strict,
         "created_at": datetime.now(timezone.utc).isoformat(),
         "files_checked": len(reports),
         "issue_count": sum(report["issue_count"] for report in reports),
@@ -679,9 +936,16 @@ def audit_paths(paths: list[str | Path]) -> dict[str, Any]:
     }
 
 
-def render_markdown_report(reports: list[dict[str, Any]], *, title: str = "Auditoria De Estilo PT-BR") -> str:
+def render_markdown_report(
+    reports: list[dict[str, Any]],
+    *,
+    title: str = "Auditoria De Estilo PT-BR",
+    strict: bool = False,
+) -> str:
     status = "block" if any(report["status"] == "block" for report in reports) else "pass"
     issues = [issue for report in reports for issue in report["issues"]]
+    if strict and issues:
+        status = "block"
     counts = Counter(issue["code"] for issue in issues)
 
     lines = [
@@ -735,9 +999,17 @@ def render_markdown_report(reports: list[dict[str, Any]], *, title: str = "Audit
     return "\n".join(lines).strip() + "\n"
 
 
-def write_audit_reports(paths: list[str | Path], output: Path | None, json_output: Path | None) -> dict[str, Any]:
-    payload = audit_paths(paths)
-    markdown = render_markdown_report(payload["reports"])
+def write_audit_reports(
+    paths: list[str | Path],
+    output: Path | None,
+    json_output: Path | None,
+    *,
+    profile: str = "ptbr",
+    title: str = "Auditoria De Estilo PT-BR",
+    strict: bool = False,
+) -> dict[str, Any]:
+    payload = audit_paths(paths, profile=profile, strict=strict)
+    markdown = render_markdown_report(payload["reports"], title=title, strict=strict)
 
     if output is not None:
         output.parent.mkdir(parents=True, exist_ok=True)

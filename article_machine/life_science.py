@@ -7,6 +7,7 @@ from typing import Any
 
 from .projects import load_project
 from .serialization import save_structured_file
+from .services.plugins import resolve_scientific_plugin
 
 
 PLUGIN_NAME = "life-science-research"
@@ -102,19 +103,10 @@ LANES: tuple[Lane, ...] = (
 
 
 def _discover_plugin_root() -> Path | None:
-    if not DEFAULT_PLUGIN_CACHE.exists():
+    try:
+        return resolve_scientific_plugin(PLUGIN_NAME)
+    except (OSError, ValueError):
         return None
-    direct_plugin = DEFAULT_PLUGIN_CACHE / ".codex-plugin" / "plugin.json"
-    if direct_plugin.exists():
-        return DEFAULT_PLUGIN_CACHE
-    candidates = [
-        path
-        for path in DEFAULT_PLUGIN_CACHE.iterdir()
-        if path.is_dir() and (path / ".codex-plugin" / "plugin.json").exists()
-    ]
-    if not candidates:
-        return None
-    return sorted(candidates, key=lambda path: path.stat().st_mtime, reverse=True)[0]
 
 
 def _parse_skill_frontmatter(skill_path: Path) -> dict[str, Any]:
@@ -171,7 +163,9 @@ def catalog_life_science_skills(plugin_root: Path | None = None) -> dict:
 
 
 def _normalize_question(question: str) -> str:
-    return re.sub(r"\s+", " ", (question or "").strip().lower())
+    from .agent_skills import _normalize_text
+
+    return re.sub(r"\s+", " ", _normalize_text(question or "").strip())
 
 
 def _lane_matches(question: str, lane: Lane) -> list[str]:
@@ -180,6 +174,19 @@ def _lane_matches(question: str, lane: Lane) -> list[str]:
         pattern = re.escape(trigger.lower()).replace("\\ ", r"\s+")
         if re.search(rf"\b{pattern}\b", question):
             matches.append(trigger)
+    portuguese = {
+        "target-disease-evidence": ("alvo", "alvos", "doenca", "inflamacao", "proteina", "via biologica"),
+        "chemistry-pharmacology": ("farmaco", "farmacos", "composto", "compostos", "molecula", "ligante", "farmacologia"),
+        "genetics-variant-interpretation": ("variante", "variantes", "ancestralidade", "frequencia alelica"),
+        "protein-structure-mechanism": ("estrutura proteica", "mecanismo", "dominio"),
+        "omics-datasets": ("dados publicos", "expressao", "proteomica", "metabolomica", "celula"),
+        "microbiome-metabolite-context": ("intestino", "microbiota", "metabolito"),
+        "clinical-translational-evidence": ("ensaio clinico", "ensaios clinicos", "paciente", "oncologia", "translacional"),
+        "literature-dataset-discovery": ("literatura", "artigo", "artigos", "revisao"),
+    }
+    from .agent_skills import _trigger_matches
+
+    matches.extend(trigger for trigger in portuguese.get(lane.name, ()) if _trigger_matches(question, trigger))
     return matches
 
 

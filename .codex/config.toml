@@ -1,0 +1,17 @@
+# Project-scoped Codex control plane for Article Machine governance work.
+# The primary agent owns synthesis and high-risk judgment; bounded read-only
+# Explicit workspace defaults implement the user's October 2026 policy.
+
+model = "gpt-6.1-sol"
+model_reasoning_effort = "medium"
+service_tier = "standard"
+
+
+[agents]
+enabled = true
+max_concurrent_threads_per_session = 3
+default_subagent_model = "gpt-6-luna"
+default_subagent_reasoning_effort = "medium"
+
+[mcp_servers.openaiDeveloperDocs]
+url = "https://developers.openai.com/mcp"

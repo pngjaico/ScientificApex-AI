@@ -1,0 +1,23 @@
+contract_version: 2
+project_type: machine-governance
+lane: machine-governance
+governance_standards:
+  - fail-closed-gates
+  - evidence-lock-v2
+  - review-trinity-v2
+  - independent-red-team
+  - reproducible-lockfiles
+  - selective-version-control
+quality_thresholds:
+  coverage_overall_minimum: 0.85
+  coverage_changed_critical_minimum: 0.90
+  router_macro_f1_minimum: 0.90
+  graph_recall_at_10_minimum: 0.95
+  graph_mrr_minimum: 0.75
+  graph_p95_seconds_maximum: 10
+  benchmark_family_minimum: 0.90
+  benchmark_utility_minimum: 0.80
+  benchmark_case_minimum: 0.85
+release_states:
+  verified-local: clean isolated worktree and all local gates green
+  released: same SHA also green in remote CI

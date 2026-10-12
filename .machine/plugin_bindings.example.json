@@ -1,0 +1,14 @@
+{
+  "schema_version": 1,
+  "bindings": {
+    "life-science-research": [
+      {"version": "1.0.3", "root": "C:/replace/with/plugin/root"}
+    ],
+    "ngs-analysis": [
+      {"version": "1.0.3", "root": "C:/replace/with/plugin/root"}
+    ],
+    "zotero": [
+      {"version": "0.1.2", "root": "C:/replace/with/plugin/root"}
+    ]
+  }
+}
