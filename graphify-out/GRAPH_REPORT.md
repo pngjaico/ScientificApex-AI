@@ -129,7 +129,7 @@ _Questions this graph is uniquely positioned to answer:_
 - Read-only Codex benchmark profiles indexed: 2
 
 ## Generation Provenance
-- Git HEAD: `323a784ea611530ee0dec14119f4c7af4a937b05`
+- Git HEAD: `fbcef5510659b75d320d2517c4a71463f0ab8d14`
 - Dirty worktree at generation: `false`
 - Porcelain status entries at generation: 0
 
