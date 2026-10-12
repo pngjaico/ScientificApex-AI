@@ -72,7 +72,7 @@ def test_operational_graph_maps_agent_flow_and_real_legacy_dirs() -> None:
     assert manifest["git_state"]["available"] is True
     assert isinstance(manifest["git_state"]["worktree_dirty"], bool)
 
-    assert "hygiene_sources" in nodes
+    assert ("hygiene_sources" in nodes) == (workspace_graph.ROOT / "sources").exists()
     assert "hygiene_agents" in nodes
     assert "hygiene_graphify_out" in nodes
     assert len(communities[5]) > 1

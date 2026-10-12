@@ -37,6 +37,13 @@ for _manifest in set(K_DENSE_MANIFEST_BY_SKILL.values()):
     except (OSError, json.JSONDecodeError):
         K_DENSE_SOURCE_BY_MANIFEST[_manifest] = {}
 PLUGIN_BRIDGES = {"life-science-router", "ngs-analysis-router", "zotero-reference-manager"}
+PORTABLE_LOCAL_ROUTES = {
+    "conference-deliverable-router", "conference-requirements-importer",
+    "conference-slides-html", "conference-posters-html", "visual-backend-router",
+    "playwright-layout-qa", "pptx-export-bridge", "submission-ops-playwright",
+    "speaker-notes-timing", "paper-to-talk", "paper-to-poster",
+    "intestinal-transplant-research", "datasus-research-engine",
+}
 
 
 def _source_for(name: str) -> tuple[dict[str, str], str, str, str]:
@@ -92,7 +99,7 @@ def build_registry(skills_dir: Path = ROOT / "skills") -> dict:
             },
             "artifact_destination": "context/ or evidence/ as defined by the active project",
             "status": status,
-            "required_for_clone": name in WORLD_CLASS_SKILLS or name in CURATED_K_DENSE,
+            "required_for_clone": name in WORLD_CLASS_SKILLS or name in CURATED_K_DENSE or name in PORTABLE_LOCAL_ROUTES,
             "next_review": "2027-01-12",
         }
         if name.startswith("tooluniverse-"):

@@ -1377,7 +1377,7 @@
       },
       "artifact_destination": "context/ or evidence/ as defined by the active project",
       "status": "hold",
-      "required_for_clone": false,
+      "required_for_clone": true,
       "next_review": "2027-01-12",
       "license_note": "Private workspace use; redistribution rights for inherited content require separate review."
     },
@@ -1403,7 +1403,7 @@
       },
       "artifact_destination": "context/ or evidence/ as defined by the active project",
       "status": "hold",
-      "required_for_clone": false,
+      "required_for_clone": true,
       "next_review": "2027-01-12",
       "license_note": "Private workspace use; redistribution rights for inherited content require separate review."
     },
@@ -1429,7 +1429,7 @@
       },
       "artifact_destination": "context/ or evidence/ as defined by the active project",
       "status": "hold",
-      "required_for_clone": false,
+      "required_for_clone": true,
       "next_review": "2027-01-12",
       "license_note": "Private workspace use; redistribution rights for inherited content require separate review."
     },
@@ -1455,7 +1455,7 @@
       },
       "artifact_destination": "context/ or evidence/ as defined by the active project",
       "status": "hold",
-      "required_for_clone": false,
+      "required_for_clone": true,
       "next_review": "2027-01-12",
       "license_note": "Private workspace use; redistribution rights for inherited content require separate review."
     },
@@ -1947,7 +1947,7 @@
       },
       "artifact_destination": "context/ or evidence/ as defined by the active project",
       "status": "hold",
-      "required_for_clone": false,
+      "required_for_clone": true,
       "next_review": "2027-01-12",
       "license_note": "Private workspace use; redistribution rights for inherited content require separate review."
     },
@@ -3433,7 +3433,7 @@
       },
       "artifact_destination": "context/ or evidence/ as defined by the active project",
       "status": "hold",
-      "required_for_clone": false,
+      "required_for_clone": true,
       "next_review": "2027-01-12",
       "license_note": "Private workspace use; redistribution rights for inherited content require separate review."
     },
@@ -5203,7 +5203,7 @@
       },
       "artifact_destination": "context/ or evidence/ as defined by the active project",
       "status": "hold",
-      "required_for_clone": false,
+      "required_for_clone": true,
       "next_review": "2027-01-12",
       "license_note": "Private workspace use; redistribution rights for inherited content require separate review."
     },
@@ -5229,7 +5229,7 @@
       },
       "artifact_destination": "context/ or evidence/ as defined by the active project",
       "status": "hold",
-      "required_for_clone": false,
+      "required_for_clone": true,
       "next_review": "2027-01-12",
       "license_note": "Private workspace use; redistribution rights for inherited content require separate review."
     },
@@ -5648,7 +5648,7 @@
       },
       "artifact_destination": "context/ or evidence/ as defined by the active project",
       "status": "hold",
-      "required_for_clone": false,
+      "required_for_clone": true,
       "next_review": "2027-01-12",
       "license_note": "Private workspace use; redistribution rights for inherited content require separate review."
     },
@@ -5792,7 +5792,7 @@
       },
       "artifact_destination": "context/ or evidence/ as defined by the active project",
       "status": "hold",
-      "required_for_clone": false,
+      "required_for_clone": true,
       "next_review": "2027-01-12",
       "license_note": "Private workspace use; redistribution rights for inherited content require separate review."
     },
@@ -8150,7 +8150,7 @@
       },
       "artifact_destination": "context/ or evidence/ as defined by the active project",
       "status": "hold",
-      "required_for_clone": false,
+      "required_for_clone": true,
       "next_review": "2027-01-12",
       "license_note": "Private workspace use; redistribution rights for inherited content require separate review."
     },
@@ -8384,7 +8384,7 @@
       },
       "artifact_destination": "context/ or evidence/ as defined by the active project",
       "status": "hold",
-      "required_for_clone": false,
+      "required_for_clone": true,
       "next_review": "2027-01-12",
       "license_note": "Private workspace use; redistribution rights for inherited content require separate review."
     },
@@ -9529,7 +9529,7 @@
       },
       "artifact_destination": "context/ or evidence/ as defined by the active project",
       "status": "hold",
-      "required_for_clone": false,
+      "required_for_clone": true,
       "next_review": "2027-01-12",
       "license_note": "Private workspace use; redistribution rights for inherited content require separate review."
     },

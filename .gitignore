@@ -320,5 +320,31 @@ skills/*
 Thumbs.db
 
 # These exclusions must follow curated-tree allowlists.
+!skills/conference-deliverable-router/**
+!skills/conference-deliverable-router/
+!skills/conference-requirements-importer/**
+!skills/conference-requirements-importer/
+!skills/conference-slides-html/**
+!skills/conference-slides-html/
+!skills/conference-posters-html/**
+!skills/conference-posters-html/
+!skills/visual-backend-router/**
+!skills/visual-backend-router/
+!skills/playwright-layout-qa/**
+!skills/playwright-layout-qa/
+!skills/pptx-export-bridge/**
+!skills/pptx-export-bridge/
+!skills/submission-ops-playwright/**
+!skills/submission-ops-playwright/
+!skills/speaker-notes-timing/**
+!skills/speaker-notes-timing/
+!skills/paper-to-talk/**
+!skills/paper-to-talk/
+!skills/paper-to-poster/**
+!skills/paper-to-poster/
+!skills/intestinal-transplant-research/**
+!skills/intestinal-transplant-research/
+!skills/datasus-research-engine/**
+!skills/datasus-research-engine/
 **/__pycache__/
 **/*.py[cod]
