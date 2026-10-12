@@ -866,6 +866,21 @@
       "norm_label": "agent_manifest.md :: resultado esperado"
     },
     {
+      "operational_id": "doc_section_agent_manifest_md_12_skill_registry_generated",
+      "label": "AGENT_MANIFEST.md :: Skill registry (generated)",
+      "file_type": "document",
+      "source_file": "AGENT_MANIFEST.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "section_level": 2,
+      "id": "doc_section_agent_manifest_md_12_skill_registry_generated",
+      "community": 4,
+      "norm_label": "agent_manifest.md :: skill registry (generated)"
+    },
+    {
       "operational_id": "doc_readme_md",
       "label": "README.md",
       "file_type": "document",
@@ -1329,6 +1344,21 @@
       "norm_label": "skill_index.md :: natural skill routing"
     },
     {
+      "operational_id": "doc_section_skill_index_md_20_skill_registry",
+      "label": "SKILL_INDEX.md :: Skill Registry",
+      "file_type": "document",
+      "source_file": "SKILL_INDEX.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "section_level": 1,
+      "id": "doc_section_skill_index_md_20_skill_registry",
+      "community": 4,
+      "norm_label": "skill_index.md :: skill registry"
+    },
+    {
       "operational_id": "doc_skills_canon_md",
       "label": "SKILLS_CANON.md",
       "file_type": "document",
@@ -1523,6 +1553,21 @@
       "norm_label": "skills_canon.md :: regra de ouro"
     },
     {
+      "operational_id": "doc_section_skills_canon_md_13_skills_canon",
+      "label": "SKILLS_CANON.md :: Skills Canon",
+      "file_type": "document",
+      "source_file": "SKILLS_CANON.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "section_level": 1,
+      "id": "doc_section_skills_canon_md_13_skills_canon",
+      "community": 4,
+      "norm_label": "skills_canon.md :: skills canon"
+    },
+    {
       "operational_id": "doc_docs_agent_start_here_md",
       "label": "docs/AGENT_START_HERE.md",
       "file_type": "document",
@@ -1582,8 +1627,8 @@
       "norm_label": "docs/agent_start_here.md :: operating rules"
     },
     {
-      "operational_id": "doc_section_docs_agent_start_here_md_4_known_workspace_defects",
-      "label": "docs/AGENT_START_HERE.md :: Known Workspace Defects",
+      "operational_id": "doc_section_docs_agent_start_here_md_4_july_2026_baseline_defects_historical_snapshot",
+      "label": "docs/AGENT_START_HERE.md :: July 2026 Baseline Defects (historical snapshot)",
       "file_type": "document",
       "source_file": "docs/AGENT_START_HERE.md",
       "source_location": null,
@@ -1592,9 +1637,9 @@
       "author": null,
       "contributor": null,
       "section_level": 2,
-      "id": "doc_section_docs_agent_start_here_md_4_known_workspace_defects",
+      "id": "doc_section_docs_agent_start_here_md_4_july_2026_baseline_defects_historical_snapshot",
       "community": 4,
-      "norm_label": "docs/agent_start_here.md :: known workspace defects"
+      "norm_label": "docs/agent_start_here.md :: july 2026 baseline defects (historical snapshot)"
     },
     {
       "operational_id": "doc_section_docs_agent_start_here_md_5_useful_files",
@@ -1924,6 +1969,154 @@
       "norm_label": "docs/workspace_reorg_plan.md :: branch cleanup policy"
     },
     {
+      "operational_id": "doc_docs_scientific_workflows_md",
+      "label": "docs/SCIENTIFIC_WORKFLOWS.md",
+      "file_type": "document",
+      "source_file": "docs/SCIENTIFIC_WORKFLOWS.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "doc_docs_scientific_workflows_md",
+      "community": 4,
+      "norm_label": "docs/scientific_workflows.md"
+    },
+    {
+      "operational_id": "doc_section_docs_scientific_workflows_md_1_scientific_work_in_english_and_pt_br",
+      "label": "docs/SCIENTIFIC_WORKFLOWS.md :: Scientific work in English and PT-BR",
+      "file_type": "document",
+      "source_file": "docs/SCIENTIFIC_WORKFLOWS.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "section_level": 1,
+      "id": "doc_section_docs_scientific_workflows_md_1_scientific_work_in_english_and_pt_br",
+      "community": 4,
+      "norm_label": "docs/scientific_workflows.md :: scientific work in english and pt-br"
+    },
+    {
+      "operational_id": "doc_section_docs_scientific_workflows_md_2_start_a_project",
+      "label": "docs/SCIENTIFIC_WORKFLOWS.md :: Start a project",
+      "file_type": "document",
+      "source_file": "docs/SCIENTIFIC_WORKFLOWS.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "section_level": 2,
+      "id": "doc_section_docs_scientific_workflows_md_2_start_a_project",
+      "community": 4,
+      "norm_label": "docs/scientific_workflows.md :: start a project"
+    },
+    {
+      "operational_id": "doc_section_docs_scientific_workflows_md_3_choose_the_scientific_design",
+      "label": "docs/SCIENTIFIC_WORKFLOWS.md :: Choose the scientific design",
+      "file_type": "document",
+      "source_file": "docs/SCIENTIFIC_WORKFLOWS.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "section_level": 2,
+      "id": "doc_section_docs_scientific_workflows_md_3_choose_the_scientific_design",
+      "community": 4,
+      "norm_label": "docs/scientific_workflows.md :: choose the scientific design"
+    },
+    {
+      "operational_id": "doc_section_docs_scientific_workflows_md_4_delegate_bounded_tasks",
+      "label": "docs/SCIENTIFIC_WORKFLOWS.md :: Delegate bounded tasks",
+      "file_type": "document",
+      "source_file": "docs/SCIENTIFIC_WORKFLOWS.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "section_level": 2,
+      "id": "doc_section_docs_scientific_workflows_md_4_delegate_bounded_tasks",
+      "community": 4,
+      "norm_label": "docs/scientific_workflows.md :: delegate bounded tasks"
+    },
+    {
+      "operational_id": "doc_section_docs_scientific_workflows_md_5_write_and_translate",
+      "label": "docs/SCIENTIFIC_WORKFLOWS.md :: Write and translate",
+      "file_type": "document",
+      "source_file": "docs/SCIENTIFIC_WORKFLOWS.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "section_level": 2,
+      "id": "doc_section_docs_scientific_workflows_md_5_write_and_translate",
+      "community": 4,
+      "norm_label": "docs/scientific_workflows.md :: write and translate"
+    },
+    {
+      "operational_id": "doc_section_docs_scientific_workflows_md_6_providers_and_plugins",
+      "label": "docs/SCIENTIFIC_WORKFLOWS.md :: Providers and plugins",
+      "file_type": "document",
+      "source_file": "docs/SCIENTIFIC_WORKFLOWS.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "section_level": 2,
+      "id": "doc_section_docs_scientific_workflows_md_6_providers_and_plugins",
+      "community": 4,
+      "norm_label": "docs/scientific_workflows.md :: providers and plugins"
+    },
+    {
+      "operational_id": "doc_section_docs_scientific_workflows_md_7_completion_and_evidence",
+      "label": "docs/SCIENTIFIC_WORKFLOWS.md :: Completion and evidence",
+      "file_type": "document",
+      "source_file": "docs/SCIENTIFIC_WORKFLOWS.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "section_level": 2,
+      "id": "doc_section_docs_scientific_workflows_md_7_completion_and_evidence",
+      "community": 4,
+      "norm_label": "docs/scientific_workflows.md :: completion and evidence"
+    },
+    {
+      "operational_id": "doc_docs_migration_0_3_md",
+      "label": "docs/MIGRATION_0_3.md",
+      "file_type": "document",
+      "source_file": "docs/MIGRATION_0_3.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "doc_docs_migration_0_3_md",
+      "community": 4,
+      "norm_label": "docs/migration_0_3.md"
+    },
+    {
+      "operational_id": "doc_section_docs_migration_0_3_md_1_migration_to_0_3_0",
+      "label": "docs/MIGRATION_0_3.md :: Migration to 0.3.0",
+      "file_type": "document",
+      "source_file": "docs/MIGRATION_0_3.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "section_level": 1,
+      "id": "doc_section_docs_migration_0_3_md_1_migration_to_0_3_0",
+      "community": 4,
+      "norm_label": "docs/migration_0_3.md :: migration to 0.3.0"
+    },
+    {
       "operational_id": "codex_control_plane",
       "label": "Codex project control plane",
       "file_type": "document",
@@ -1992,6 +2185,34 @@
       "id": "codex_agent_verification_runner",
       "community": 4,
       "norm_label": "codex role: verification-runner"
+    },
+    {
+      "operational_id": "codex_agent_worker",
+      "label": "Codex role: worker",
+      "file_type": "document",
+      "source_file": ".codex/agents/worker.toml",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "codex_agent_worker",
+      "community": 4,
+      "norm_label": "codex role: worker"
+    },
+    {
+      "operational_id": "codex_agent_luna_analyst",
+      "label": "Codex role: luna-analyst",
+      "file_type": "document",
+      "source_file": ".codex/agents/luna-analyst.toml",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "codex_agent_luna_analyst",
+      "community": 4,
+      "norm_label": "codex role: luna-analyst"
     },
     {
       "operational_id": "codex_profile_xhigh_baseline",
@@ -2204,6 +2425,34 @@
       "norm_label": "article_machine.__main__"
     },
     {
+      "operational_id": "module_adapters_init",
+      "label": "article_machine.adapters.__init__",
+      "file_type": "code",
+      "source_file": "article_machine/adapters/__init__.py",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "module_adapters_init",
+      "community": 1,
+      "norm_label": "article_machine.adapters.__init__"
+    },
+    {
+      "operational_id": "module_adapters_runtime",
+      "label": "article_machine.adapters.runtime",
+      "file_type": "code",
+      "source_file": "article_machine/adapters/runtime.py",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "module_adapters_runtime",
+      "community": 1,
+      "norm_label": "article_machine.adapters.runtime"
+    },
+    {
       "operational_id": "module_agent_skills",
       "label": "article_machine.agent_skills",
       "file_type": "code",
@@ -2302,6 +2551,34 @@
       "norm_label": "article_machine.cli"
     },
     {
+      "operational_id": "module_commands_init",
+      "label": "article_machine.commands.__init__",
+      "file_type": "code",
+      "source_file": "article_machine/commands/__init__.py",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "module_commands_init",
+      "community": 1,
+      "norm_label": "article_machine.commands.__init__"
+    },
+    {
+      "operational_id": "module_commands_governance",
+      "label": "article_machine.commands.governance",
+      "file_type": "code",
+      "source_file": "article_machine/commands/governance.py",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "module_commands_governance",
+      "community": 1,
+      "norm_label": "article_machine.commands.governance"
+    },
+    {
       "operational_id": "module_congress_profiles",
       "label": "article_machine.congress_profiles",
       "file_type": "code",
@@ -2356,6 +2633,34 @@
       "id": "module_group_project_runtime",
       "community": 1,
       "norm_label": "project contracts context runs and serialization"
+    },
+    {
+      "operational_id": "module_contracts_init",
+      "label": "article_machine.contracts.__init__",
+      "file_type": "code",
+      "source_file": "article_machine/contracts/__init__.py",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "module_contracts_init",
+      "community": 1,
+      "norm_label": "article_machine.contracts.__init__"
+    },
+    {
+      "operational_id": "module_contracts_compute",
+      "label": "article_machine.contracts.compute",
+      "file_type": "code",
+      "source_file": "article_machine/contracts/compute.py",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "module_contracts_compute",
+      "community": 1,
+      "norm_label": "article_machine.contracts.compute"
     },
     {
       "operational_id": "module_deliverable_contracts",
@@ -2470,6 +2775,34 @@
       "norm_label": "article_machine.playwright_ops"
     },
     {
+      "operational_id": "module_policy_init",
+      "label": "article_machine.policy.__init__",
+      "file_type": "code",
+      "source_file": "article_machine/policy/__init__.py",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "module_policy_init",
+      "community": 1,
+      "norm_label": "article_machine.policy.__init__"
+    },
+    {
+      "operational_id": "module_policy_gates",
+      "label": "article_machine.policy.gates",
+      "file_type": "code",
+      "source_file": "article_machine/policy/gates.py",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "module_policy_gates",
+      "community": 1,
+      "norm_label": "article_machine.policy.gates"
+    },
+    {
       "operational_id": "module_pptx_bridge",
       "label": "article_machine.pptx_bridge",
       "file_type": "code",
@@ -2554,6 +2887,132 @@
       "norm_label": "article_machine.serialization"
     },
     {
+      "operational_id": "module_services_init",
+      "label": "article_machine.services.__init__",
+      "file_type": "code",
+      "source_file": "article_machine/services/__init__.py",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "module_services_init",
+      "community": 1,
+      "norm_label": "article_machine.services.__init__"
+    },
+    {
+      "operational_id": "module_services_environment",
+      "label": "article_machine.services.environment",
+      "file_type": "code",
+      "source_file": "article_machine/services/environment.py",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "module_services_environment",
+      "community": 1,
+      "norm_label": "article_machine.services.environment"
+    },
+    {
+      "operational_id": "module_services_gates",
+      "label": "article_machine.services.gates",
+      "file_type": "code",
+      "source_file": "article_machine/services/gates.py",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "module_services_gates",
+      "community": 1,
+      "norm_label": "article_machine.services.gates"
+    },
+    {
+      "operational_id": "module_services_graph_query",
+      "label": "article_machine.services.graph_query",
+      "file_type": "code",
+      "source_file": "article_machine/services/graph_query.py",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "module_services_graph_query",
+      "community": 1,
+      "norm_label": "article_machine.services.graph_query"
+    },
+    {
+      "operational_id": "module_services_machine",
+      "label": "article_machine.services.machine",
+      "file_type": "code",
+      "source_file": "article_machine/services/machine.py",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "module_services_machine",
+      "community": 1,
+      "norm_label": "article_machine.services.machine"
+    },
+    {
+      "operational_id": "module_services_plugins",
+      "label": "article_machine.services.plugins",
+      "file_type": "code",
+      "source_file": "article_machine/services/plugins.py",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "module_services_plugins",
+      "community": 1,
+      "norm_label": "article_machine.services.plugins"
+    },
+    {
+      "operational_id": "module_services_runners",
+      "label": "article_machine.services.runners",
+      "file_type": "code",
+      "source_file": "article_machine/services/runners.py",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "module_services_runners",
+      "community": 1,
+      "norm_label": "article_machine.services.runners"
+    },
+    {
+      "operational_id": "module_services_scientific_workflows",
+      "label": "article_machine.services.scientific_workflows",
+      "file_type": "code",
+      "source_file": "article_machine/services/scientific_workflows.py",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "module_services_scientific_workflows",
+      "community": 1,
+      "norm_label": "article_machine.services.scientific_workflows"
+    },
+    {
+      "operational_id": "module_services_skill_registry",
+      "label": "article_machine.services.skill_registry",
+      "file_type": "code",
+      "source_file": "article_machine/services/skill_registry.py",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "module_services_skill_registry",
+      "community": 1,
+      "norm_label": "article_machine.services.skill_registry"
+    },
+    {
       "operational_id": "module_standards",
       "label": "article_machine.standards",
       "file_type": "code",
@@ -2596,6 +3055,20 @@
       "norm_label": "article_machine.zero_trust"
     },
     {
+      "operational_id": "cli_aggregate",
+      "label": "article-machine aggregate",
+      "file_type": "code",
+      "source_file": "article_machine/cli.py",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "article_machine_cli_aggregate",
+      "community": 1,
+      "norm_label": "article-machine aggregate"
+    },
+    {
       "operational_id": "cli_analyze",
       "label": "article-machine analyze",
       "file_type": "code",
@@ -2636,6 +3109,20 @@
       "id": "article_machine_cli_anti_ai_naturalize",
       "community": 1,
       "norm_label": "article-machine anti-ai-naturalize"
+    },
+    {
+      "operational_id": "cli_audit_language",
+      "label": "article-machine audit-language",
+      "file_type": "code",
+      "source_file": "article_machine/cli.py",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "article_machine_cli_audit_language",
+      "community": 1,
+      "norm_label": "article-machine audit-language"
     },
     {
       "operational_id": "cli_benchmark",
@@ -2722,6 +3209,20 @@
       "norm_label": "article-machine deck"
     },
     {
+      "operational_id": "cli_doctor",
+      "label": "article-machine doctor",
+      "file_type": "code",
+      "source_file": "article_machine/cli.py",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "article_machine_cli_doctor",
+      "community": 1,
+      "norm_label": "article-machine doctor"
+    },
+    {
       "operational_id": "cli_draft",
       "label": "article-machine draft",
       "file_type": "code",
@@ -2736,6 +3237,20 @@
       "norm_label": "article-machine draft"
     },
     {
+      "operational_id": "cli_env",
+      "label": "article-machine env",
+      "file_type": "code",
+      "source_file": "article_machine/cli.py",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "article_machine_cli_env",
+      "community": 1,
+      "norm_label": "article-machine env"
+    },
+    {
       "operational_id": "cli_export",
       "label": "article-machine export",
       "file_type": "code",
@@ -2748,6 +3263,20 @@
       "id": "article_machine_cli_export",
       "community": 1,
       "norm_label": "article-machine export"
+    },
+    {
+      "operational_id": "cli_graph",
+      "label": "article-machine graph",
+      "file_type": "code",
+      "source_file": "article_machine/cli.py",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "article_machine_cli_graph",
+      "community": 1,
+      "norm_label": "article-machine graph"
     },
     {
       "operational_id": "cli_guard",
@@ -2848,6 +3377,20 @@
       "norm_label": "article-machine machine"
     },
     {
+      "operational_id": "cli_plugins",
+      "label": "article-machine plugins",
+      "file_type": "code",
+      "source_file": "article_machine/cli.py",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "article_machine_cli_plugins",
+      "community": 1,
+      "norm_label": "article-machine plugins"
+    },
+    {
       "operational_id": "cli_poster",
       "label": "article-machine poster",
       "file_type": "code",
@@ -2946,6 +3489,20 @@
       "norm_label": "article-machine registry"
     },
     {
+      "operational_id": "cli_release_audit",
+      "label": "article-machine release-audit",
+      "file_type": "code",
+      "source_file": "article_machine/cli.py",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "article_machine_cli_release_audit",
+      "community": 1,
+      "norm_label": "article-machine release-audit"
+    },
+    {
       "operational_id": "cli_report",
       "label": "article-machine report",
       "file_type": "code",
@@ -2986,6 +3543,20 @@
       "id": "article_machine_cli_review",
       "community": 1,
       "norm_label": "article-machine review"
+    },
+    {
+      "operational_id": "cli_run_python",
+      "label": "article-machine run-python",
+      "file_type": "code",
+      "source_file": "article_machine/cli.py",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "article_machine_cli_run_python",
+      "community": 1,
+      "norm_label": "article-machine run-python"
     },
     {
       "operational_id": "cli_run_r",
@@ -3086,6 +3657,20 @@
       "norm_label": "article-machine tournament"
     },
     {
+      "operational_id": "cli_update_plan",
+      "label": "article-machine update-plan",
+      "file_type": "code",
+      "source_file": "article_machine/cli.py",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "article_machine_cli_update_plan",
+      "community": 1,
+      "norm_label": "article-machine update-plan"
+    },
+    {
       "operational_id": "cli_use_profile",
       "label": "article-machine use-profile",
       "file_type": "code",
@@ -3128,6 +3713,164 @@
       "norm_label": "article-machine verify"
     },
     {
+      "operational_id": "cli_workflow",
+      "label": "article-machine workflow",
+      "file_type": "code",
+      "source_file": "article_machine/cli.py",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "article_machine_cli_workflow",
+      "community": 1,
+      "norm_label": "article-machine workflow"
+    },
+    {
+      "operational_id": "project_article_machine_governance_2026",
+      "label": "Article Machine Governance 2026",
+      "file_type": "document",
+      "source_file": "projects/article-machine-governance-2026/project.yaml",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "projects_article_machine_governance_2026_project_article_machine_governance_2026",
+      "community": 2,
+      "norm_label": "article machine governance 2026"
+    },
+    {
+      "operational_id": "lane_machine_governance",
+      "label": "lane: machine-governance",
+      "file_type": "rationale",
+      "source_file": "projects/article-machine-governance-2026/project.yaml",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "lane_machine_governance",
+      "community": 2,
+      "norm_label": "lane: machine-governance"
+    },
+    {
+      "operational_id": "mode_bootstrap",
+      "label": "mode: bootstrap",
+      "file_type": "rationale",
+      "source_file": "projects/sp-congress-idea-tournament-2026/project.yaml",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "mode_bootstrap",
+      "community": 2,
+      "norm_label": "mode: bootstrap"
+    },
+    {
+      "operational_id": "type_machine_governance",
+      "label": "type: machine-governance",
+      "file_type": "rationale",
+      "source_file": "projects/article-machine-governance-2026/project.yaml",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "type_machine_governance",
+      "community": 2,
+      "norm_label": "type: machine-governance"
+    },
+    {
+      "operational_id": "project_contract_article_machine_governance_2026_project_yaml",
+      "label": "article-machine-governance-2026/project.yaml",
+      "file_type": "document",
+      "source_file": "projects/article-machine-governance-2026/project.yaml",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "projects_article_machine_governance_2026_project_contract_article_machine_governance_2026_project_yaml",
+      "community": 2,
+      "norm_label": "article-machine-governance-2026/project.yaml"
+    },
+    {
+      "operational_id": "project_contract_article_machine_governance_2026_protocol_yaml",
+      "label": "article-machine-governance-2026/protocol.yaml",
+      "file_type": "document",
+      "source_file": "projects/article-machine-governance-2026/protocol.yaml",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "project_contract_article_machine_governance_2026_protocol_yaml",
+      "community": 2,
+      "norm_label": "article-machine-governance-2026/protocol.yaml"
+    },
+    {
+      "operational_id": "project_contract_article_machine_governance_2026_standards_yaml",
+      "label": "article-machine-governance-2026/standards.yaml",
+      "file_type": "document",
+      "source_file": "projects/article-machine-governance-2026/standards.yaml",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "project_contract_article_machine_governance_2026_standards_yaml",
+      "community": 2,
+      "norm_label": "article-machine-governance-2026/standards.yaml"
+    },
+    {
+      "operational_id": "project_contract_article_machine_governance_2026_compute_yaml",
+      "label": "article-machine-governance-2026/compute.yaml",
+      "file_type": "document",
+      "source_file": "projects/article-machine-governance-2026/compute.yaml",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "project_contract_article_machine_governance_2026_compute_yaml",
+      "community": 2,
+      "norm_label": "article-machine-governance-2026/compute.yaml"
+    },
+    {
+      "operational_id": "project_artifact_article_machine_governance_2026_context",
+      "label": "article-machine-governance-2026/context (4 direct items)",
+      "file_type": "document",
+      "source_file": "projects/article-machine-governance-2026/context",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "artifact_purpose": "briefs, retrieval plans, and task packets",
+      "direct_child_count": 4,
+      "id": "project_artifact_article_machine_governance_2026_context",
+      "community": 2,
+      "norm_label": "article-machine-governance-2026/context (4 direct items)"
+    },
+    {
+      "operational_id": "project_artifact_article_machine_governance_2026_analysis",
+      "label": "article-machine-governance-2026/analysis (1 direct items)",
+      "file_type": "document",
+      "source_file": "projects/article-machine-governance-2026/analysis",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "artifact_purpose": "analysis outputs and run envelopes",
+      "direct_child_count": 1,
+      "id": "project_artifact_article_machine_governance_2026_analysis",
+      "community": 2,
+      "norm_label": "article-machine-governance-2026/analysis (1 direct items)"
+    },
+    {
       "operational_id": "project_article_machine_upgrade_2026",
       "label": "Article Machine Upgrade 2026",
       "file_type": "document",
@@ -3154,20 +3897,6 @@
       "id": "lane_evidence_writing",
       "community": 2,
       "norm_label": "lane: evidence-writing"
-    },
-    {
-      "operational_id": "mode_bootstrap",
-      "label": "mode: bootstrap",
-      "file_type": "rationale",
-      "source_file": "projects/sp-congress-idea-tournament-2026/project.yaml",
-      "source_location": null,
-      "source_url": null,
-      "captured_at": null,
-      "author": null,
-      "contributor": null,
-      "id": "mode_bootstrap",
-      "community": 2,
-      "norm_label": "mode: bootstrap"
     },
     {
       "operational_id": "type_thesis_chapter",
@@ -4417,7 +5146,7 @@
       "operational_id": "lane_unknown",
       "label": "lane: unknown",
       "file_type": "rationale",
-      "source_file": "projects/in-silico-ml-surgery-idea-tournament-2026/project.yaml",
+      "source_file": "projects/congress-winners-2026/project.yaml",
       "source_location": null,
       "source_url": null,
       "captured_at": null,
@@ -4431,7 +5160,7 @@
       "operational_id": "mode_unknown",
       "label": "mode: unknown",
       "file_type": "rationale",
-      "source_file": "projects/in-silico-ml-surgery-idea-tournament-2026/project.yaml",
+      "source_file": "projects/GastroSP_Gold_NMA_Biomarkers/project.yaml",
       "source_location": null,
       "source_url": null,
       "captured_at": null,
@@ -4593,7 +5322,7 @@
     },
     {
       "operational_id": "project_gastrosp_gold_nma_biomarkers",
-      "label": "GastroSP_Gold_NMA_Biomarkers",
+      "label": "Hierarquia de Biomarcadores na IIA",
       "file_type": "document",
       "source_file": "projects/GastroSP_Gold_NMA_Biomarkers/project.yaml",
       "source_location": null,
@@ -4603,7 +5332,21 @@
       "contributor": null,
       "id": "projects_gastrosp_gold_nma_biomarkers_project_gastrosp_gold_nma_biomarkers",
       "community": 2,
-      "norm_label": "gastrosp_gold_nma_biomarkers"
+      "norm_label": "hierarquia de biomarcadores na iia"
+    },
+    {
+      "operational_id": "lane_clinical_meta_analysis",
+      "label": "lane: clinical-meta-analysis",
+      "file_type": "rationale",
+      "source_file": "projects/OncoMetabolic_CRC_NMA/project.yaml",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "lane_clinical_meta_analysis",
+      "community": 2,
+      "norm_label": "lane: clinical-meta-analysis"
     },
     {
       "operational_id": "project_contract_gastrosp_gold_nma_biomarkers_project_yaml",
@@ -5199,7 +5942,7 @@
     },
     {
       "operational_id": "project_in_silico_ml_surgery_idea_tournament_2026",
-      "label": "in-silico-ml-surgery-idea-tournament-2026",
+      "label": "In Silico ML Surgery Idea Tournament 2026",
       "file_type": "document",
       "source_file": "projects/in-silico-ml-surgery-idea-tournament-2026/project.yaml",
       "source_location": null,
@@ -5209,7 +5952,21 @@
       "contributor": null,
       "id": "projects_in_silico_ml_surgery_idea_tournament_2026_project_in_silico_ml_surgery_idea_tournament_2026",
       "community": 2,
-      "norm_label": "in-silico-ml-surgery-idea-tournament-2026"
+      "norm_label": "in silico ml surgery idea tournament 2026"
+    },
+    {
+      "operational_id": "type_computational_ideation",
+      "label": "type: computational-ideation",
+      "file_type": "rationale",
+      "source_file": "projects/in-silico-ml-surgery-idea-tournament-2026/project.yaml",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "type_computational_ideation",
+      "community": 2,
+      "norm_label": "type: computational-ideation"
     },
     {
       "operational_id": "project_contract_in_silico_ml_surgery_idea_tournament_2026_project_yaml",
@@ -5834,20 +6591,6 @@
       "norm_label": "oncometabolic colorectal neoplasia nma"
     },
     {
-      "operational_id": "lane_clinical_meta_analysis",
-      "label": "lane: clinical-meta-analysis",
-      "file_type": "rationale",
-      "source_file": "projects/OncoMetabolic_CRC_NMA/project.yaml",
-      "source_location": null,
-      "source_url": null,
-      "captured_at": null,
-      "author": null,
-      "contributor": null,
-      "id": "lane_clinical_meta_analysis",
-      "community": 2,
-      "norm_label": "lane: clinical-meta-analysis"
-    },
-    {
       "operational_id": "mode_analysis",
       "label": "mode: analysis",
       "file_type": "rationale",
@@ -6044,18 +6787,18 @@
       "norm_label": "pct e d-dimero na necrose intestinal transmural 2026"
     },
     {
-      "operational_id": "mode_protocol_freeze",
-      "label": "mode: protocol-freeze",
+      "operational_id": "mode_review_trinity",
+      "label": "mode: review-trinity",
       "file_type": "rationale",
-      "source_file": "projects/urology-rirs-sepsis-br-validation-2026/project.yaml",
+      "source_file": "projects/pct-e-d-dimero-na-necrose-intestinal-transmural-2026/project.yaml",
       "source_location": null,
       "source_url": null,
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "mode_protocol_freeze",
+      "id": "mode_review_trinity",
       "community": 2,
-      "norm_label": "mode: protocol-freeze"
+      "norm_label": "mode: review-trinity"
     },
     {
       "operational_id": "project_contract_pct_e_d_dimero_na_necrose_intestinal_transmural_2026_project_yaml",
@@ -6115,7 +6858,7 @@
     },
     {
       "operational_id": "project_artifact_pct_e_d_dimero_na_necrose_intestinal_transmural_2026_sources",
-      "label": "pct-e-d-dimero-na-necrose-intestinal-transmural-2026/sources (7 direct items)",
+      "label": "pct-e-d-dimero-na-necrose-intestinal-transmural-2026/sources (14 direct items)",
       "file_type": "document",
       "source_file": "projects/pct-e-d-dimero-na-necrose-intestinal-transmural-2026/sources",
       "source_location": null,
@@ -6124,14 +6867,14 @@
       "author": null,
       "contributor": null,
       "artifact_purpose": "source registry and raw/converted intake",
-      "direct_child_count": 7,
+      "direct_child_count": 14,
       "id": "project_artifact_pct_e_d_dimero_na_necrose_intestinal_transmural_2026_sources",
       "community": 2,
-      "norm_label": "pct-e-d-dimero-na-necrose-intestinal-transmural-2026/sources (7 direct items)"
+      "norm_label": "pct-e-d-dimero-na-necrose-intestinal-transmural-2026/sources (14 direct items)"
     },
     {
       "operational_id": "project_artifact_pct_e_d_dimero_na_necrose_intestinal_transmural_2026_context",
-      "label": "pct-e-d-dimero-na-necrose-intestinal-transmural-2026/context (13 direct items)",
+      "label": "pct-e-d-dimero-na-necrose-intestinal-transmural-2026/context (26 direct items)",
       "file_type": "document",
       "source_file": "projects/pct-e-d-dimero-na-necrose-intestinal-transmural-2026/context",
       "source_location": null,
@@ -6140,14 +6883,14 @@
       "author": null,
       "contributor": null,
       "artifact_purpose": "briefs, retrieval plans, and task packets",
-      "direct_child_count": 13,
+      "direct_child_count": 26,
       "id": "project_artifact_pct_e_d_dimero_na_necrose_intestinal_transmural_2026_context",
       "community": 2,
-      "norm_label": "pct-e-d-dimero-na-necrose-intestinal-transmural-2026/context (13 direct items)"
+      "norm_label": "pct-e-d-dimero-na-necrose-intestinal-transmural-2026/context (26 direct items)"
     },
     {
       "operational_id": "project_artifact_pct_e_d_dimero_na_necrose_intestinal_transmural_2026_evidence",
-      "label": "pct-e-d-dimero-na-necrose-intestinal-transmural-2026/evidence (5 direct items)",
+      "label": "pct-e-d-dimero-na-necrose-intestinal-transmural-2026/evidence (9 direct items)",
       "file_type": "document",
       "source_file": "projects/pct-e-d-dimero-na-necrose-intestinal-transmural-2026/evidence",
       "source_location": null,
@@ -6156,14 +6899,14 @@
       "author": null,
       "contributor": null,
       "artifact_purpose": "claim maps and evidence locks",
-      "direct_child_count": 5,
+      "direct_child_count": 9,
       "id": "project_artifact_pct_e_d_dimero_na_necrose_intestinal_transmural_2026_evidence",
       "community": 2,
-      "norm_label": "pct-e-d-dimero-na-necrose-intestinal-transmural-2026/evidence (5 direct items)"
+      "norm_label": "pct-e-d-dimero-na-necrose-intestinal-transmural-2026/evidence (9 direct items)"
     },
     {
       "operational_id": "project_artifact_pct_e_d_dimero_na_necrose_intestinal_transmural_2026_analysis",
-      "label": "pct-e-d-dimero-na-necrose-intestinal-transmural-2026/analysis (5 direct items)",
+      "label": "pct-e-d-dimero-na-necrose-intestinal-transmural-2026/analysis (26 direct items)",
       "file_type": "document",
       "source_file": "projects/pct-e-d-dimero-na-necrose-intestinal-transmural-2026/analysis",
       "source_location": null,
@@ -6172,14 +6915,14 @@
       "author": null,
       "contributor": null,
       "artifact_purpose": "analysis outputs and run envelopes",
-      "direct_child_count": 5,
+      "direct_child_count": 26,
       "id": "project_artifact_pct_e_d_dimero_na_necrose_intestinal_transmural_2026_analysis",
       "community": 2,
-      "norm_label": "pct-e-d-dimero-na-necrose-intestinal-transmural-2026/analysis (5 direct items)"
+      "norm_label": "pct-e-d-dimero-na-necrose-intestinal-transmural-2026/analysis (26 direct items)"
     },
     {
       "operational_id": "project_artifact_pct_e_d_dimero_na_necrose_intestinal_transmural_2026_drafts",
-      "label": "pct-e-d-dimero-na-necrose-intestinal-transmural-2026/drafts (4 direct items)",
+      "label": "pct-e-d-dimero-na-necrose-intestinal-transmural-2026/drafts (11 direct items)",
       "file_type": "document",
       "source_file": "projects/pct-e-d-dimero-na-necrose-intestinal-transmural-2026/drafts",
       "source_location": null,
@@ -6188,14 +6931,14 @@
       "author": null,
       "contributor": null,
       "artifact_purpose": "manuscripts and references",
-      "direct_child_count": 4,
+      "direct_child_count": 11,
       "id": "project_artifact_pct_e_d_dimero_na_necrose_intestinal_transmural_2026_drafts",
       "community": 2,
-      "norm_label": "pct-e-d-dimero-na-necrose-intestinal-transmural-2026/drafts (4 direct items)"
+      "norm_label": "pct-e-d-dimero-na-necrose-intestinal-transmural-2026/drafts (11 direct items)"
     },
     {
       "operational_id": "project_artifact_pct_e_d_dimero_na_necrose_intestinal_transmural_2026_reviews",
-      "label": "pct-e-d-dimero-na-necrose-intestinal-transmural-2026/reviews (7 direct items)",
+      "label": "pct-e-d-dimero-na-necrose-intestinal-transmural-2026/reviews (38 direct items)",
       "file_type": "document",
       "source_file": "projects/pct-e-d-dimero-na-necrose-intestinal-transmural-2026/reviews",
       "source_location": null,
@@ -6204,14 +6947,14 @@
       "author": null,
       "contributor": null,
       "artifact_purpose": "review reports and red-team notes",
-      "direct_child_count": 7,
+      "direct_child_count": 38,
       "id": "project_artifact_pct_e_d_dimero_na_necrose_intestinal_transmural_2026_reviews",
       "community": 2,
-      "norm_label": "pct-e-d-dimero-na-necrose-intestinal-transmural-2026/reviews (7 direct items)"
+      "norm_label": "pct-e-d-dimero-na-necrose-intestinal-transmural-2026/reviews (38 direct items)"
     },
     {
       "operational_id": "project_artifact_pct_e_d_dimero_na_necrose_intestinal_transmural_2026_figures",
-      "label": "pct-e-d-dimero-na-necrose-intestinal-transmural-2026/figures (0 direct items)",
+      "label": "pct-e-d-dimero-na-necrose-intestinal-transmural-2026/figures (3 direct items)",
       "file_type": "document",
       "source_file": "projects/pct-e-d-dimero-na-necrose-intestinal-transmural-2026/figures",
       "source_location": null,
@@ -6220,14 +6963,14 @@
       "author": null,
       "contributor": null,
       "artifact_purpose": "figures and visual assets",
-      "direct_child_count": 0,
+      "direct_child_count": 3,
       "id": "project_artifact_pct_e_d_dimero_na_necrose_intestinal_transmural_2026_figures",
       "community": 2,
-      "norm_label": "pct-e-d-dimero-na-necrose-intestinal-transmural-2026/figures (0 direct items)"
+      "norm_label": "pct-e-d-dimero-na-necrose-intestinal-transmural-2026/figures (3 direct items)"
     },
     {
       "operational_id": "project_artifact_pct_e_d_dimero_na_necrose_intestinal_transmural_2026_deliverables",
-      "label": "pct-e-d-dimero-na-necrose-intestinal-transmural-2026/deliverables (0 direct items)",
+      "label": "pct-e-d-dimero-na-necrose-intestinal-transmural-2026/deliverables (2 direct items)",
       "file_type": "document",
       "source_file": "projects/pct-e-d-dimero-na-necrose-intestinal-transmural-2026/deliverables",
       "source_location": null,
@@ -6236,10 +6979,10 @@
       "author": null,
       "contributor": null,
       "artifact_purpose": "conference decks posters and submission packs",
-      "direct_child_count": 0,
+      "direct_child_count": 2,
       "id": "project_artifact_pct_e_d_dimero_na_necrose_intestinal_transmural_2026_deliverables",
       "community": 2,
-      "norm_label": "pct-e-d-dimero-na-necrose-intestinal-transmural-2026/deliverables (0 direct items)"
+      "norm_label": "pct-e-d-dimero-na-necrose-intestinal-transmural-2026/deliverables (2 direct items)"
     },
     {
       "operational_id": "project_sp_congress_idea_tournament_2026",
@@ -6452,6 +7195,20 @@
       "id": "projects_urology_rirs_sepsis_br_validation_2026_project_urology_rirs_sepsis_br_validation_2026",
       "community": 2,
       "norm_label": "urology rirs sepsis br validation 2026"
+    },
+    {
+      "operational_id": "mode_protocol_freeze",
+      "label": "mode: protocol-freeze",
+      "file_type": "rationale",
+      "source_file": "projects/urology-rirs-sepsis-br-validation-2026/project.yaml",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "mode_protocol_freeze",
+      "community": 2,
+      "norm_label": "mode: protocol-freeze"
     },
     {
       "operational_id": "type_prediction_model",
@@ -9176,6 +9933,64 @@
       "id": "artifact_ngs_run_envelopes",
       "community": 3,
       "norm_label": "project analysis/ngs run envelopes"
+    },
+    {
+      "operational_id": "skill_scientific_workflow_orchestrator",
+      "label": "scientific-workflow-orchestrator",
+      "file_type": "document",
+      "source_file": "skills/scientific-workflow-orchestrator/SKILL.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "skills_scientific_workflow_orchestrator_skill_scientific_workflow_orchestrator",
+      "community": 3,
+      "norm_label": "scientific-workflow-orchestrator"
+    },
+    {
+      "operational_id": "skill_section_scientific_workflow_orchestrator_1_scientific_workflow_orchestration",
+      "label": "scientific-workflow-orchestrator :: Scientific workflow orchestration",
+      "file_type": "document",
+      "source_file": "skills/scientific-workflow-orchestrator/SKILL.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "section_level": 1,
+      "id": "skills_scientific_workflow_orchestrator_skill_section_scientific_workflow_orchestrator_1_scientific_workflow_orchestration",
+      "community": 3,
+      "norm_label": "scientific-workflow-orchestrator :: scientific workflow orchestration"
+    },
+    {
+      "operational_id": "skill_bilingual_scientific_writing",
+      "label": "bilingual-scientific-writing",
+      "file_type": "document",
+      "source_file": "skills/bilingual-scientific-writing/SKILL.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "skills_bilingual_scientific_writing_skill_bilingual_scientific_writing",
+      "community": 3,
+      "norm_label": "bilingual-scientific-writing"
+    },
+    {
+      "operational_id": "skill_section_bilingual_scientific_writing_1_bilingual_scientific_writing",
+      "label": "bilingual-scientific-writing :: Bilingual scientific writing",
+      "file_type": "document",
+      "source_file": "skills/bilingual-scientific-writing/SKILL.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "section_level": 1,
+      "id": "skills_bilingual_scientific_writing_skill_section_bilingual_scientific_writing_1_bilingual_scientific_writing",
+      "community": 3,
+      "norm_label": "bilingual-scientific-writing :: bilingual scientific writing"
     },
     {
       "operational_id": "skill_manuscript_integrity_response_governor",
@@ -14485,7 +15300,7 @@
     },
     {
       "operational_id": "alias_pt_model_orchestration",
-      "label": "pedido: melhorar maquina com gpt 5.6 sol ultra multiagente",
+      "label": "pedido: melhorar maquina sol medio luna trabalhos cientificos complexos ingles portugues",
       "file_type": "rationale",
       "source_file": "docs/AGENT_OPERATION_MAP.md",
       "source_location": null,
@@ -14495,7 +15310,7 @@
       "contributor": null,
       "id": "alias_pt_model_orchestration",
       "community": 4,
-      "norm_label": "pedido: melhorar maquina com gpt 5.6 sol ultra multiagente"
+      "norm_label": "pedido: melhorar maquina sol medio luna trabalhos cientificos complexos ingles portugues"
     }
   ],
   "links": [
@@ -14587,6 +15402,16 @@
       "source_location": null,
       "weight": 1.0,
       "source": "hub_runtime",
+      "target": "article_machine_cli_aggregate"
+    },
+    {
+      "relation": "exposes",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "article_machine/cli.py",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "hub_runtime",
       "target": "article_machine_cli_analyze"
     },
     {
@@ -14608,6 +15433,16 @@
       "weight": 1.0,
       "source": "hub_runtime",
       "target": "article_machine_cli_anti_ai_naturalize"
+    },
+    {
+      "relation": "exposes",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "article_machine/cli.py",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "hub_runtime",
+      "target": "article_machine_cli_audit_language"
     },
     {
       "relation": "exposes",
@@ -14677,6 +15512,16 @@
       "source_location": null,
       "weight": 1.0,
       "source": "hub_runtime",
+      "target": "article_machine_cli_doctor"
+    },
+    {
+      "relation": "exposes",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "article_machine/cli.py",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "hub_runtime",
       "target": "article_machine_cli_draft"
     },
     {
@@ -14687,7 +15532,27 @@
       "source_location": null,
       "weight": 1.0,
       "source": "hub_runtime",
+      "target": "article_machine_cli_env"
+    },
+    {
+      "relation": "exposes",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "article_machine/cli.py",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "hub_runtime",
       "target": "article_machine_cli_export"
+    },
+    {
+      "relation": "exposes",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "article_machine/cli.py",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "hub_runtime",
+      "target": "article_machine_cli_graph"
     },
     {
       "relation": "exposes",
@@ -14767,6 +15632,16 @@
       "source_location": null,
       "weight": 1.0,
       "source": "hub_runtime",
+      "target": "article_machine_cli_plugins"
+    },
+    {
+      "relation": "exposes",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "article_machine/cli.py",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "hub_runtime",
       "target": "article_machine_cli_poster"
     },
     {
@@ -14837,6 +15712,16 @@
       "source_location": null,
       "weight": 1.0,
       "source": "hub_runtime",
+      "target": "article_machine_cli_release_audit"
+    },
+    {
+      "relation": "exposes",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "article_machine/cli.py",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "hub_runtime",
       "target": "article_machine_cli_report"
     },
     {
@@ -14858,6 +15743,16 @@
       "weight": 1.0,
       "source": "hub_runtime",
       "target": "article_machine_cli_review"
+    },
+    {
+      "relation": "exposes",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "article_machine/cli.py",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "hub_runtime",
+      "target": "article_machine_cli_run_python"
     },
     {
       "relation": "exposes",
@@ -14937,6 +15832,16 @@
       "source_location": null,
       "weight": 1.0,
       "source": "hub_runtime",
+      "target": "article_machine_cli_update_plan"
+    },
+    {
+      "relation": "exposes",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "article_machine/cli.py",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "hub_runtime",
       "target": "article_machine_cli_use_profile"
     },
     {
@@ -14958,6 +15863,16 @@
       "weight": 1.0,
       "source": "hub_runtime",
       "target": "article_machine_cli_verify"
+    },
+    {
+      "relation": "exposes",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "article_machine/cli.py",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "hub_runtime",
+      "target": "article_machine_cli_workflow"
     },
     {
       "relation": "documents",
@@ -15133,6 +16048,26 @@
       "relation": "references",
       "confidence": "INFERRED",
       "confidence_score": 0.75,
+      "source_file": "docs/MIGRATION_0_3.md",
+      "source_location": null,
+      "weight": 0.8,
+      "source": "doc_docs_migration_0_3_md",
+      "target": "hub_article_machine"
+    },
+    {
+      "relation": "references",
+      "confidence": "INFERRED",
+      "confidence_score": 0.75,
+      "source_file": "docs/SCIENTIFIC_WORKFLOWS.md",
+      "source_location": null,
+      "weight": 0.8,
+      "source": "doc_docs_scientific_workflows_md",
+      "target": "hub_article_machine"
+    },
+    {
+      "relation": "references",
+      "confidence": "INFERRED",
+      "confidence_score": 0.75,
       "source_file": "docs/WORKSPACE_REORG_PLAN.md",
       "source_location": null,
       "weight": 0.8,
@@ -15168,6 +16103,26 @@
       "weight": 0.8,
       "source": "doc_skills_canon_md",
       "target": "hub_article_machine"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "article_machine/adapters/__init__.py",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "hub_article_machine",
+      "target": "module_adapters_init"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "article_machine/adapters/runtime.py",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "hub_article_machine",
+      "target": "module_adapters_runtime"
     },
     {
       "relation": "contains",
@@ -15213,6 +16168,26 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
+      "source_file": "article_machine/commands/governance.py",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "hub_article_machine",
+      "target": "module_commands_governance"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "article_machine/commands/__init__.py",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "hub_article_machine",
+      "target": "module_commands_init"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
       "source_file": "article_machine/congress_profiles.py",
       "source_location": null,
       "weight": 1.0,
@@ -15228,6 +16203,26 @@
       "weight": 1.0,
       "source": "hub_article_machine",
       "target": "module_context"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "article_machine/contracts/compute.py",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "hub_article_machine",
+      "target": "module_contracts_compute"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "article_machine/contracts/__init__.py",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "hub_article_machine",
+      "target": "module_contracts_init"
     },
     {
       "relation": "contains",
@@ -15393,6 +16388,26 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
+      "source_file": "article_machine/policy/gates.py",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "hub_article_machine",
+      "target": "module_policy_gates"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "article_machine/policy/__init__.py",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "hub_article_machine",
+      "target": "module_policy_init"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
       "source_file": "article_machine/pptx_bridge.py",
       "source_location": null,
       "weight": 1.0,
@@ -15448,6 +16463,96 @@
       "weight": 1.0,
       "source": "hub_article_machine",
       "target": "module_serialization"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "article_machine/services/environment.py",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "hub_article_machine",
+      "target": "module_services_environment"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "article_machine/services/gates.py",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "hub_article_machine",
+      "target": "module_services_gates"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "article_machine/services/graph_query.py",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "hub_article_machine",
+      "target": "module_services_graph_query"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "article_machine/services/__init__.py",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "hub_article_machine",
+      "target": "module_services_init"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "article_machine/services/machine.py",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "hub_article_machine",
+      "target": "module_services_machine"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "article_machine/services/plugins.py",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "hub_article_machine",
+      "target": "module_services_plugins"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "article_machine/services/runners.py",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "hub_article_machine",
+      "target": "module_services_runners"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "article_machine/services/scientific_workflows.py",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "hub_article_machine",
+      "target": "module_services_scientific_workflows"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "article_machine/services/skill_registry.py",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "hub_article_machine",
+      "target": "module_services_skill_registry"
     },
     {
       "relation": "contains",
@@ -15553,7 +16658,17 @@
       "relation": "catalogs_lane",
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
-      "source_file": "projects/in-silico-ml-surgery-idea-tournament-2026/project.yaml",
+      "source_file": "projects/article-machine-governance-2026/project.yaml",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "hub_projects",
+      "target": "lane_machine_governance"
+    },
+    {
+      "relation": "catalogs_lane",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "projects/congress-winners-2026/project.yaml",
       "source_location": null,
       "weight": 1.0,
       "source": "hub_projects",
@@ -15603,6 +16718,16 @@
       "relation": "catalogs_mode",
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
+      "source_file": "projects/pct-e-d-dimero-na-necrose-intestinal-transmural-2026/project.yaml",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "hub_projects",
+      "target": "mode_review_trinity"
+    },
+    {
+      "relation": "catalogs_mode",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
       "source_file": "projects/NMA_OSA_VPI/project.yaml",
       "source_location": null,
       "weight": 1.0,
@@ -15613,11 +16738,21 @@
       "relation": "catalogs_mode",
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
-      "source_file": "projects/in-silico-ml-surgery-idea-tournament-2026/project.yaml",
+      "source_file": "projects/GastroSP_Gold_NMA_Biomarkers/project.yaml",
       "source_location": null,
       "weight": 1.0,
       "source": "hub_projects",
       "target": "mode_unknown"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "projects/article-machine-governance-2026/project.yaml",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "hub_projects",
+      "target": "projects_article_machine_governance_2026_project_article_machine_governance_2026"
     },
     {
       "relation": "contains",
@@ -15803,11 +16938,31 @@
       "relation": "catalogs_type",
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
+      "source_file": "projects/in-silico-ml-surgery-idea-tournament-2026/project.yaml",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "hub_projects",
+      "target": "type_computational_ideation"
+    },
+    {
+      "relation": "catalogs_type",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
       "source_file": "projects/hyper-barrier-jp-ohb-ir-sr/project.yaml",
       "source_location": null,
       "weight": 1.0,
       "source": "hub_projects",
       "target": "type_evidence_synthesis"
+    },
+    {
+      "relation": "catalogs_type",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "projects/article-machine-governance-2026/project.yaml",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "hub_projects",
+      "target": "type_machine_governance"
     },
     {
       "relation": "catalogs_type",
@@ -15938,6 +17093,16 @@
       "weight": 1.0,
       "source": "hub_skills",
       "target": "skills_author_identity_resolver_skill_author_identity_resolver"
+    },
+    {
+      "relation": "routes_to",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "skills/bilingual-scientific-writing/SKILL.md",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "hub_skills",
+      "target": "skills_bilingual_scientific_writing_skill_bilingual_scientific_writing"
     },
     {
       "relation": "routes_to",
@@ -16303,6 +17468,16 @@
       "relation": "routes_to",
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
+      "source_file": "skills/scientific-workflow-orchestrator/SKILL.md",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "hub_skills",
+      "target": "skills_scientific_workflow_orchestrator_skill_scientific_workflow_orchestrator"
+    },
+    {
+      "relation": "routes_to",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
       "source_file": "skills/semantic-scholar-citation-graph/SKILL.md",
       "source_location": null,
       "weight": 1.0,
@@ -16628,6 +17803,26 @@
       "weight": 1.0,
       "source": "hub_docs",
       "target": "doc_docs_article_machine_agent_playbook_md"
+    },
+    {
+      "relation": "documents",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "docs/MIGRATION_0_3.md",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "hub_docs",
+      "target": "doc_docs_migration_0_3_md"
+    },
+    {
+      "relation": "documents",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "docs/SCIENTIFIC_WORKFLOWS.md",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "hub_docs",
+      "target": "doc_docs_scientific_workflows_md"
     },
     {
       "relation": "documents",
@@ -17133,20 +18328,20 @@
       "relation": "needs_review_missing_research_question",
       "confidence": "INFERRED",
       "confidence_score": 0.75,
-      "source_file": "projects/GastroSP_Gold_NMA_Biomarkers/protocol.yaml",
+      "source_file": "projects/article-machine-governance-2026/protocol.yaml",
       "source_location": null,
       "weight": 0.6,
-      "source": "projects_gastrosp_gold_nma_biomarkers_project_gastrosp_gold_nma_biomarkers",
+      "source": "projects_article_machine_governance_2026_project_article_machine_governance_2026",
       "target": "hub_git"
     },
     {
       "relation": "needs_review_missing_research_question",
       "confidence": "INFERRED",
       "confidence_score": 0.75,
-      "source_file": "projects/in-silico-ml-surgery-idea-tournament-2026/protocol.yaml",
+      "source_file": "projects/GastroSP_Gold_NMA_Biomarkers/protocol.yaml",
       "source_location": null,
       "weight": 0.6,
-      "source": "projects_in_silico_ml_surgery_idea_tournament_2026_project_in_silico_ml_surgery_idea_tournament_2026",
+      "source": "projects_gastrosp_gold_nma_biomarkers_project_gastrosp_gold_nma_biomarkers",
       "target": "hub_git"
     },
     {
@@ -17787,6 +18982,16 @@
       "source_location": null,
       "weight": 1.0,
       "source": "doc_agent_manifest_md",
+      "target": "doc_section_agent_manifest_md_12_skill_registry_generated"
+    },
+    {
+      "relation": "has_section",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "AGENT_MANIFEST.md",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "doc_agent_manifest_md",
       "target": "doc_section_agent_manifest_md_1_agent_manifest_scientific_os_runtime"
     },
     {
@@ -17968,6 +19173,16 @@
       "weight": 1.0,
       "source": "doc_section_agent_manifest_md_10_revisao_final",
       "target": "doc_section_agent_manifest_md_11_resultado_esperado"
+    },
+    {
+      "relation": "next_section",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "AGENT_MANIFEST.md",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "doc_section_agent_manifest_md_11_resultado_esperado",
+      "target": "doc_section_agent_manifest_md_12_skill_registry_generated"
     },
     {
       "relation": "has_section",
@@ -18277,6 +19492,16 @@
       "source_location": null,
       "weight": 1.0,
       "source": "doc_skill_index_md",
+      "target": "doc_section_skill_index_md_20_skill_registry"
+    },
+    {
+      "relation": "has_section",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "SKILL_INDEX.md",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "doc_skill_index_md",
       "target": "doc_section_skill_index_md_2_layer_0_navigation_and_content_preservation"
     },
     {
@@ -18408,6 +19633,16 @@
       "weight": 0.8,
       "source": "doc_skill_index_md",
       "target": "skills_author_identity_resolver_skill_author_identity_resolver"
+    },
+    {
+      "relation": "references",
+      "confidence": "INFERRED",
+      "confidence_score": 0.75,
+      "source_file": "SKILL_INDEX.md",
+      "source_location": null,
+      "weight": 0.8,
+      "source": "doc_skill_index_md",
+      "target": "skills_bilingual_scientific_writing_skill_bilingual_scientific_writing"
     },
     {
       "relation": "references",
@@ -18768,6 +20003,16 @@
       "weight": 0.8,
       "source": "doc_skill_index_md",
       "target": "skills_scientific_red_team_reviewer_skill_scientific_red_team_reviewer"
+    },
+    {
+      "relation": "references",
+      "confidence": "INFERRED",
+      "confidence_score": 0.75,
+      "source_file": "SKILL_INDEX.md",
+      "source_location": null,
+      "weight": 0.8,
+      "source": "doc_skill_index_md",
+      "target": "skills_scientific_workflow_orchestrator_skill_scientific_workflow_orchestrator"
     },
     {
       "relation": "references",
@@ -19160,6 +20405,16 @@
       "target": "doc_section_skill_index_md_19_natural_skill_routing"
     },
     {
+      "relation": "next_section",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "SKILL_INDEX.md",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "doc_section_skill_index_md_19_natural_skill_routing",
+      "target": "doc_section_skill_index_md_20_skill_registry"
+    },
+    {
       "relation": "has_section",
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
@@ -19188,6 +20443,16 @@
       "weight": 1.0,
       "source": "doc_skills_canon_md",
       "target": "doc_section_skills_canon_md_12_regra_de_ouro"
+    },
+    {
+      "relation": "has_section",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "SKILLS_CANON.md",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "doc_skills_canon_md",
+      "target": "doc_section_skills_canon_md_13_skills_canon"
     },
     {
       "relation": "has_section",
@@ -19390,6 +20655,16 @@
       "target": "doc_section_skills_canon_md_12_regra_de_ouro"
     },
     {
+      "relation": "next_section",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "SKILLS_CANON.md",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "doc_section_skills_canon_md_12_regra_de_ouro",
+      "target": "doc_section_skills_canon_md_13_skills_canon"
+    },
+    {
       "relation": "has_section",
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
@@ -19427,7 +20702,7 @@
       "source_location": null,
       "weight": 1.0,
       "source": "doc_docs_agent_start_here_md",
-      "target": "doc_section_docs_agent_start_here_md_4_known_workspace_defects"
+      "target": "doc_section_docs_agent_start_here_md_4_july_2026_baseline_defects_historical_snapshot"
     },
     {
       "relation": "has_section",
@@ -19467,7 +20742,7 @@
       "source_location": null,
       "weight": 1.0,
       "source": "doc_section_docs_agent_start_here_md_3_operating_rules",
-      "target": "doc_section_docs_agent_start_here_md_4_known_workspace_defects"
+      "target": "doc_section_docs_agent_start_here_md_4_july_2026_baseline_defects_historical_snapshot"
     },
     {
       "relation": "next_section",
@@ -19476,7 +20751,7 @@
       "source_file": "docs/AGENT_START_HERE.md",
       "source_location": null,
       "weight": 1.0,
-      "source": "doc_section_docs_agent_start_here_md_4_known_workspace_defects",
+      "source": "doc_section_docs_agent_start_here_md_4_july_2026_baseline_defects_historical_snapshot",
       "target": "doc_section_docs_agent_start_here_md_5_useful_files"
     },
     {
@@ -19880,6 +21155,156 @@
       "target": "doc_section_docs_workspace_reorg_plan_md_6_branch_cleanup_policy"
     },
     {
+      "relation": "has_section",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "docs/SCIENTIFIC_WORKFLOWS.md",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "doc_docs_scientific_workflows_md",
+      "target": "doc_section_docs_scientific_workflows_md_1_scientific_work_in_english_and_pt_br"
+    },
+    {
+      "relation": "has_section",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "docs/SCIENTIFIC_WORKFLOWS.md",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "doc_docs_scientific_workflows_md",
+      "target": "doc_section_docs_scientific_workflows_md_2_start_a_project"
+    },
+    {
+      "relation": "has_section",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "docs/SCIENTIFIC_WORKFLOWS.md",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "doc_docs_scientific_workflows_md",
+      "target": "doc_section_docs_scientific_workflows_md_3_choose_the_scientific_design"
+    },
+    {
+      "relation": "has_section",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "docs/SCIENTIFIC_WORKFLOWS.md",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "doc_docs_scientific_workflows_md",
+      "target": "doc_section_docs_scientific_workflows_md_4_delegate_bounded_tasks"
+    },
+    {
+      "relation": "has_section",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "docs/SCIENTIFIC_WORKFLOWS.md",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "doc_docs_scientific_workflows_md",
+      "target": "doc_section_docs_scientific_workflows_md_5_write_and_translate"
+    },
+    {
+      "relation": "has_section",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "docs/SCIENTIFIC_WORKFLOWS.md",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "doc_docs_scientific_workflows_md",
+      "target": "doc_section_docs_scientific_workflows_md_6_providers_and_plugins"
+    },
+    {
+      "relation": "has_section",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "docs/SCIENTIFIC_WORKFLOWS.md",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "doc_docs_scientific_workflows_md",
+      "target": "doc_section_docs_scientific_workflows_md_7_completion_and_evidence"
+    },
+    {
+      "relation": "next_section",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "docs/SCIENTIFIC_WORKFLOWS.md",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "doc_section_docs_scientific_workflows_md_1_scientific_work_in_english_and_pt_br",
+      "target": "doc_section_docs_scientific_workflows_md_2_start_a_project"
+    },
+    {
+      "relation": "next_section",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "docs/SCIENTIFIC_WORKFLOWS.md",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "doc_section_docs_scientific_workflows_md_2_start_a_project",
+      "target": "doc_section_docs_scientific_workflows_md_3_choose_the_scientific_design"
+    },
+    {
+      "relation": "next_section",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "docs/SCIENTIFIC_WORKFLOWS.md",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "doc_section_docs_scientific_workflows_md_3_choose_the_scientific_design",
+      "target": "doc_section_docs_scientific_workflows_md_4_delegate_bounded_tasks"
+    },
+    {
+      "relation": "next_section",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "docs/SCIENTIFIC_WORKFLOWS.md",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "doc_section_docs_scientific_workflows_md_4_delegate_bounded_tasks",
+      "target": "doc_section_docs_scientific_workflows_md_5_write_and_translate"
+    },
+    {
+      "relation": "next_section",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "docs/SCIENTIFIC_WORKFLOWS.md",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "doc_section_docs_scientific_workflows_md_5_write_and_translate",
+      "target": "doc_section_docs_scientific_workflows_md_6_providers_and_plugins"
+    },
+    {
+      "relation": "next_section",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "docs/SCIENTIFIC_WORKFLOWS.md",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "doc_section_docs_scientific_workflows_md_6_providers_and_plugins",
+      "target": "doc_section_docs_scientific_workflows_md_7_completion_and_evidence"
+    },
+    {
+      "relation": "has_section",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "docs/MIGRATION_0_3.md",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "doc_docs_migration_0_3_md",
+      "target": "doc_section_docs_migration_0_3_md_1_migration_to_0_3_0"
+    },
+    {
+      "relation": "governed_by",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": ".codex/agents/luna-analyst.toml",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "codex_agent_luna_analyst",
+      "target": "codex_control_plane"
+    },
+    {
       "relation": "governed_by",
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
@@ -19897,6 +21322,16 @@
       "source_location": null,
       "weight": 1.0,
       "source": "codex_agent_verification_runner",
+      "target": "codex_control_plane"
+    },
+    {
+      "relation": "governed_by",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": ".codex/agents/worker.toml",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "codex_agent_worker",
       "target": "codex_control_plane"
     },
     {
@@ -19953,6 +21388,16 @@
       "relation": "declares_read_only_role",
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
+      "source_file": ".codex/agents/luna-analyst.toml",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "codex_project_config",
+      "target": "codex_agent_luna_analyst"
+    },
+    {
+      "relation": "declares_read_only_role",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
       "source_file": ".codex/agents/scientific-reviewer.toml",
       "source_location": null,
       "weight": 1.0,
@@ -19968,6 +21413,16 @@
       "weight": 1.0,
       "source": "codex_project_config",
       "target": "codex_agent_verification_runner"
+    },
+    {
+      "relation": "declares_bounded_worker_role",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": ".codex/agents/worker.toml",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "codex_project_config",
+      "target": "codex_agent_worker"
     },
     {
       "relation": "declares_read_only_role",
@@ -20178,6 +21633,36 @@
       "weight": 1.0,
       "source": "flow_project_contract",
       "target": "flow_skill_route"
+    },
+    {
+      "relation": "satisfies_entry_check",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "projects/article-machine-governance-2026/compute.yaml",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "project_contract_article_machine_governance_2026_compute_yaml",
+      "target": "flow_project_contract"
+    },
+    {
+      "relation": "satisfies_entry_check",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "projects/article-machine-governance-2026/protocol.yaml",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "project_contract_article_machine_governance_2026_protocol_yaml",
+      "target": "flow_project_contract"
+    },
+    {
+      "relation": "satisfies_entry_check",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "projects/article-machine-governance-2026/standards.yaml",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "project_contract_article_machine_governance_2026_standards_yaml",
+      "target": "flow_project_contract"
     },
     {
       "relation": "satisfies_entry_check",
@@ -20693,6 +22178,16 @@
       "relation": "satisfies_entry_check",
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
+      "source_file": "projects/article-machine-governance-2026/project.yaml",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "projects_article_machine_governance_2026_project_contract_article_machine_governance_2026_project_yaml",
+      "target": "flow_project_contract"
+    },
+    {
+      "relation": "satisfies_entry_check",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
       "source_file": "projects/article-machine-upgrade-2026/project.yaml",
       "source_location": null,
       "weight": 1.0,
@@ -20888,6 +22383,26 @@
       "weight": 1.0,
       "source": "flow_task_packet",
       "target": "flow_evidence_lock"
+    },
+    {
+      "relation": "feeds_or_records_context",
+      "confidence": "INFERRED",
+      "confidence_score": 0.75,
+      "source_file": "projects/article-machine-governance-2026/analysis",
+      "source_location": null,
+      "weight": 0.7,
+      "source": "project_artifact_article_machine_governance_2026_analysis",
+      "target": "flow_task_packet"
+    },
+    {
+      "relation": "feeds_or_records_context",
+      "confidence": "INFERRED",
+      "confidence_score": 0.75,
+      "source_file": "projects/article-machine-governance-2026/context",
+      "source_location": null,
+      "weight": 0.7,
+      "source": "project_artifact_article_machine_governance_2026_context",
+      "target": "flow_task_packet"
     },
     {
       "relation": "feeds_or_records_context",
@@ -22223,6 +23738,16 @@
       "relation": "contains_module",
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
+      "source_file": "article_machine/adapters/__init__.py",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "module_group_entrypoints",
+      "target": "module_adapters_init"
+    },
+    {
+      "relation": "contains_module",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
       "source_file": "article_machine/cli.py",
       "source_location": null,
       "weight": 1.0,
@@ -22233,11 +23758,51 @@
       "relation": "contains_module",
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
+      "source_file": "article_machine/commands/__init__.py",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "module_group_entrypoints",
+      "target": "module_commands_init"
+    },
+    {
+      "relation": "contains_module",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "article_machine/contracts/__init__.py",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "module_group_entrypoints",
+      "target": "module_contracts_init"
+    },
+    {
+      "relation": "contains_module",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
       "source_file": "article_machine/__main__.py",
       "source_location": null,
       "weight": 1.0,
       "source": "module_group_entrypoints",
       "target": "module_main"
+    },
+    {
+      "relation": "contains_module",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "article_machine/policy/__init__.py",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "module_group_entrypoints",
+      "target": "module_policy_init"
+    },
+    {
+      "relation": "contains_module",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "article_machine/services/__init__.py",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "module_group_entrypoints",
+      "target": "module_services_init"
     },
     {
       "relation": "routes_query_to",
@@ -22298,6 +23863,16 @@
       "weight": 1.0,
       "source": "module_agent_skills",
       "target": "skills_author_identity_resolver_skill_author_identity_resolver"
+    },
+    {
+      "relation": "routes_query_to",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "article_machine/agent_skills.py",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "module_agent_skills",
+      "target": "skills_bilingual_scientific_writing_skill_bilingual_scientific_writing"
     },
     {
       "relation": "routes_query_to",
@@ -22667,6 +24242,16 @@
       "source_location": null,
       "weight": 1.0,
       "source": "module_agent_skills",
+      "target": "skills_scientific_workflow_orchestrator_skill_scientific_workflow_orchestrator"
+    },
+    {
+      "relation": "routes_query_to",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "article_machine/agent_skills.py",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "module_agent_skills",
       "target": "skills_semantic_scholar_citation_graph_skill_semantic_scholar_citation_graph"
     },
     {
@@ -22977,6 +24562,16 @@
       "source_location": null,
       "weight": 1.0,
       "source": "module_cli",
+      "target": "article_machine_cli_aggregate"
+    },
+    {
+      "relation": "defines_cli",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "article_machine/cli.py",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "module_cli",
       "target": "article_machine_cli_analyze"
     },
     {
@@ -22998,6 +24593,16 @@
       "weight": 1.0,
       "source": "module_cli",
       "target": "article_machine_cli_anti_ai_naturalize"
+    },
+    {
+      "relation": "defines_cli",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "article_machine/cli.py",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "module_cli",
+      "target": "article_machine_cli_audit_language"
     },
     {
       "relation": "defines_cli",
@@ -23067,6 +24672,16 @@
       "source_location": null,
       "weight": 1.0,
       "source": "module_cli",
+      "target": "article_machine_cli_doctor"
+    },
+    {
+      "relation": "defines_cli",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "article_machine/cli.py",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "module_cli",
       "target": "article_machine_cli_draft"
     },
     {
@@ -23077,7 +24692,27 @@
       "source_location": null,
       "weight": 1.0,
       "source": "module_cli",
+      "target": "article_machine_cli_env"
+    },
+    {
+      "relation": "defines_cli",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "article_machine/cli.py",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "module_cli",
       "target": "article_machine_cli_export"
+    },
+    {
+      "relation": "defines_cli",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "article_machine/cli.py",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "module_cli",
+      "target": "article_machine_cli_graph"
     },
     {
       "relation": "defines_cli",
@@ -23157,6 +24792,16 @@
       "source_location": null,
       "weight": 1.0,
       "source": "module_cli",
+      "target": "article_machine_cli_plugins"
+    },
+    {
+      "relation": "defines_cli",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "article_machine/cli.py",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "module_cli",
       "target": "article_machine_cli_poster"
     },
     {
@@ -23227,6 +24872,16 @@
       "source_location": null,
       "weight": 1.0,
       "source": "module_cli",
+      "target": "article_machine_cli_release_audit"
+    },
+    {
+      "relation": "defines_cli",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "article_machine/cli.py",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "module_cli",
       "target": "article_machine_cli_report"
     },
     {
@@ -23248,6 +24903,16 @@
       "weight": 1.0,
       "source": "module_cli",
       "target": "article_machine_cli_review"
+    },
+    {
+      "relation": "defines_cli",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "article_machine/cli.py",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "module_cli",
+      "target": "article_machine_cli_run_python"
     },
     {
       "relation": "defines_cli",
@@ -23327,6 +24992,16 @@
       "source_location": null,
       "weight": 1.0,
       "source": "module_cli",
+      "target": "article_machine_cli_update_plan"
+    },
+    {
+      "relation": "defines_cli",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "article_machine/cli.py",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "module_cli",
       "target": "article_machine_cli_use_profile"
     },
     {
@@ -23348,6 +25023,16 @@
       "weight": 1.0,
       "source": "module_cli",
       "target": "article_machine_cli_verify"
+    },
+    {
+      "relation": "defines_cli",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "article_machine/cli.py",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "module_cli",
+      "target": "article_machine_cli_workflow"
     },
     {
       "relation": "contains_module",
@@ -23503,11 +25188,91 @@
       "relation": "uses_lane",
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
-      "source_file": "projects/article-machine-upgrade-2026/project.yaml",
+      "source_file": "projects/article-machine-governance-2026/project.yaml",
       "source_location": null,
       "weight": 1.0,
-      "source": "projects_article_machine_upgrade_2026_project_article_machine_upgrade_2026",
-      "target": "lane_evidence_writing"
+      "source": "projects_article_machine_governance_2026_project_article_machine_governance_2026",
+      "target": "lane_machine_governance"
+    },
+    {
+      "relation": "current_mode",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "projects/article-machine-governance-2026/project.yaml",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "projects_article_machine_governance_2026_project_article_machine_governance_2026",
+      "target": "mode_bootstrap"
+    },
+    {
+      "relation": "has_artifact_area",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "projects/article-machine-governance-2026/analysis",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "projects_article_machine_governance_2026_project_article_machine_governance_2026",
+      "target": "project_artifact_article_machine_governance_2026_analysis"
+    },
+    {
+      "relation": "has_artifact_area",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "projects/article-machine-governance-2026/context",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "projects_article_machine_governance_2026_project_article_machine_governance_2026",
+      "target": "project_artifact_article_machine_governance_2026_context"
+    },
+    {
+      "relation": "has_contract_file",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "projects/article-machine-governance-2026/compute.yaml",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "projects_article_machine_governance_2026_project_article_machine_governance_2026",
+      "target": "project_contract_article_machine_governance_2026_compute_yaml"
+    },
+    {
+      "relation": "has_contract_file",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "projects/article-machine-governance-2026/protocol.yaml",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "projects_article_machine_governance_2026_project_article_machine_governance_2026",
+      "target": "project_contract_article_machine_governance_2026_protocol_yaml"
+    },
+    {
+      "relation": "has_contract_file",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "projects/article-machine-governance-2026/standards.yaml",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "projects_article_machine_governance_2026_project_article_machine_governance_2026",
+      "target": "project_contract_article_machine_governance_2026_standards_yaml"
+    },
+    {
+      "relation": "has_contract_file",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "projects/article-machine-governance-2026/project.yaml",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "projects_article_machine_governance_2026_project_article_machine_governance_2026",
+      "target": "projects_article_machine_governance_2026_project_contract_article_machine_governance_2026_project_yaml"
+    },
+    {
+      "relation": "project_type",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "projects/article-machine-governance-2026/project.yaml",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "projects_article_machine_governance_2026_project_article_machine_governance_2026",
+      "target": "type_machine_governance"
     },
     {
       "relation": "current_mode",
@@ -23518,6 +25283,106 @@
       "weight": 1.0,
       "source": "projects_article_machine_upgrade_2026_project_article_machine_upgrade_2026",
       "target": "mode_bootstrap"
+    },
+    {
+      "relation": "current_mode",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "projects/cbcp-cosmiatria-idea-tournament-2026/project.yaml",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "projects_cbcp_cosmiatria_idea_tournament_2026_project_cbcp_cosmiatria_idea_tournament_2026",
+      "target": "mode_bootstrap"
+    },
+    {
+      "relation": "current_mode",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "projects/cbcp-top1-idea-tournament-2026/project.yaml",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "projects_cbcp_top1_idea_tournament_2026_project_cbcp_top1_idea_tournament_2026",
+      "target": "mode_bootstrap"
+    },
+    {
+      "relation": "current_mode",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "projects/clinmed-core-idea-tournament-2026/project.yaml",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "projects_clinmed_core_idea_tournament_2026_project_clinmed_core_idea_tournament_2026",
+      "target": "mode_bootstrap"
+    },
+    {
+      "relation": "current_mode",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "projects/clinmed-pancreatitis-dynamic-phenotypes-2026/project.yaml",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "projects_clinmed_pancreatitis_dynamic_phenotypes_2026_project_clinmed_pancreatitis_dynamic_phenotypes_2026",
+      "target": "mode_bootstrap"
+    },
+    {
+      "relation": "current_mode",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "projects/clinmed-ugib-dynamic-risk-mimic-eicu-2026/project.yaml",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "projects_clinmed_ugib_dynamic_risk_mimic_eicu_2026_project_clinmed_ugib_dynamic_risk_mimic_eicu_2026",
+      "target": "mode_bootstrap"
+    },
+    {
+      "relation": "current_mode",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "projects/hyper-barrier-jp/project.yaml",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "projects_hyper_barrier_jp_project_hyper_barrier_jp",
+      "target": "mode_bootstrap"
+    },
+    {
+      "relation": "current_mode",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "projects/in-silico-ml-surgery-idea-tournament-2026/project.yaml",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "projects_in_silico_ml_surgery_idea_tournament_2026_project_in_silico_ml_surgery_idea_tournament_2026",
+      "target": "mode_bootstrap"
+    },
+    {
+      "relation": "current_mode",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "projects/intestinal-transplant-research-program-2026/project.yaml",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "projects_intestinal_transplant_research_program_2026_project_intestinal_transplant_research_program_2026",
+      "target": "mode_bootstrap"
+    },
+    {
+      "relation": "current_mode",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "projects/sp-congress-idea-tournament-2026/project.yaml",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "projects_sp_congress_idea_tournament_2026_project_sp_congress_idea_tournament_2026",
+      "target": "mode_bootstrap"
+    },
+    {
+      "relation": "uses_lane",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "projects/article-machine-upgrade-2026/project.yaml",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "projects_article_machine_upgrade_2026_project_article_machine_upgrade_2026",
+      "target": "lane_evidence_writing"
     },
     {
       "relation": "has_artifact_area",
@@ -23723,6 +25588,16 @@
       "relation": "uses_lane",
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
+      "source_file": "projects/in-silico-ml-surgery-idea-tournament-2026/project.yaml",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "projects_in_silico_ml_surgery_idea_tournament_2026_project_in_silico_ml_surgery_idea_tournament_2026",
+      "target": "lane_evidence_writing"
+    },
+    {
+      "relation": "uses_lane",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
       "source_file": "projects/intestinal-transplant-research-program-2026/project.yaml",
       "source_location": null,
       "weight": 1.0,
@@ -23768,86 +25643,6 @@
       "weight": 1.0,
       "source": "projects_urology_rirs_sepsis_br_validation_2026_project_urology_rirs_sepsis_br_validation_2026",
       "target": "lane_evidence_writing"
-    },
-    {
-      "relation": "current_mode",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "projects/cbcp-cosmiatria-idea-tournament-2026/project.yaml",
-      "source_location": null,
-      "weight": 1.0,
-      "source": "projects_cbcp_cosmiatria_idea_tournament_2026_project_cbcp_cosmiatria_idea_tournament_2026",
-      "target": "mode_bootstrap"
-    },
-    {
-      "relation": "current_mode",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "projects/cbcp-top1-idea-tournament-2026/project.yaml",
-      "source_location": null,
-      "weight": 1.0,
-      "source": "projects_cbcp_top1_idea_tournament_2026_project_cbcp_top1_idea_tournament_2026",
-      "target": "mode_bootstrap"
-    },
-    {
-      "relation": "current_mode",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "projects/clinmed-core-idea-tournament-2026/project.yaml",
-      "source_location": null,
-      "weight": 1.0,
-      "source": "projects_clinmed_core_idea_tournament_2026_project_clinmed_core_idea_tournament_2026",
-      "target": "mode_bootstrap"
-    },
-    {
-      "relation": "current_mode",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "projects/clinmed-pancreatitis-dynamic-phenotypes-2026/project.yaml",
-      "source_location": null,
-      "weight": 1.0,
-      "source": "projects_clinmed_pancreatitis_dynamic_phenotypes_2026_project_clinmed_pancreatitis_dynamic_phenotypes_2026",
-      "target": "mode_bootstrap"
-    },
-    {
-      "relation": "current_mode",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "projects/clinmed-ugib-dynamic-risk-mimic-eicu-2026/project.yaml",
-      "source_location": null,
-      "weight": 1.0,
-      "source": "projects_clinmed_ugib_dynamic_risk_mimic_eicu_2026_project_clinmed_ugib_dynamic_risk_mimic_eicu_2026",
-      "target": "mode_bootstrap"
-    },
-    {
-      "relation": "current_mode",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "projects/hyper-barrier-jp/project.yaml",
-      "source_location": null,
-      "weight": 1.0,
-      "source": "projects_hyper_barrier_jp_project_hyper_barrier_jp",
-      "target": "mode_bootstrap"
-    },
-    {
-      "relation": "current_mode",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "projects/intestinal-transplant-research-program-2026/project.yaml",
-      "source_location": null,
-      "weight": 1.0,
-      "source": "projects_intestinal_transplant_research_program_2026_project_intestinal_transplant_research_program_2026",
-      "target": "mode_bootstrap"
-    },
-    {
-      "relation": "current_mode",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "projects/sp-congress-idea-tournament-2026/project.yaml",
-      "source_location": null,
-      "weight": 1.0,
-      "source": "projects_sp_congress_idea_tournament_2026_project_sp_congress_idea_tournament_2026",
-      "target": "mode_bootstrap"
     },
     {
       "relation": "has_artifact_area",
@@ -24660,26 +26455,6 @@
       "target": "type_unknown"
     },
     {
-      "relation": "uses_lane",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "projects/GastroSP_Gold_NMA_Biomarkers/project.yaml",
-      "source_location": null,
-      "weight": 1.0,
-      "source": "projects_gastrosp_gold_nma_biomarkers_project_gastrosp_gold_nma_biomarkers",
-      "target": "lane_unknown"
-    },
-    {
-      "relation": "uses_lane",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "projects/in-silico-ml-surgery-idea-tournament-2026/project.yaml",
-      "source_location": null,
-      "weight": 1.0,
-      "source": "projects_in_silico_ml_surgery_idea_tournament_2026_project_in_silico_ml_surgery_idea_tournament_2026",
-      "target": "lane_unknown"
-    },
-    {
       "relation": "current_mode",
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
@@ -24690,16 +26465,6 @@
       "target": "mode_unknown"
     },
     {
-      "relation": "current_mode",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "projects/in-silico-ml-surgery-idea-tournament-2026/project.yaml",
-      "source_location": null,
-      "weight": 1.0,
-      "source": "projects_in_silico_ml_surgery_idea_tournament_2026_project_in_silico_ml_surgery_idea_tournament_2026",
-      "target": "mode_unknown"
-    },
-    {
       "relation": "project_type",
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
@@ -24707,16 +26472,6 @@
       "source_location": null,
       "weight": 1.0,
       "source": "projects_gastrosp_gold_nma_biomarkers_project_gastrosp_gold_nma_biomarkers",
-      "target": "type_unknown"
-    },
-    {
-      "relation": "project_type",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "projects/in-silico-ml-surgery-idea-tournament-2026/project.yaml",
-      "source_location": null,
-      "weight": 1.0,
-      "source": "projects_in_silico_ml_surgery_idea_tournament_2026_project_in_silico_ml_surgery_idea_tournament_2026",
       "target": "type_unknown"
     },
     {
@@ -24728,6 +26483,16 @@
       "weight": 1.0,
       "source": "projects_oncometabolic_crc_nma_project_oncometabolic_crc_nma",
       "target": "type_unknown"
+    },
+    {
+      "relation": "uses_lane",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "projects/GastroSP_Gold_NMA_Biomarkers/project.yaml",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "projects_gastrosp_gold_nma_biomarkers_project_gastrosp_gold_nma_biomarkers",
+      "target": "lane_clinical_meta_analysis"
     },
     {
       "relation": "has_artifact_area",
@@ -24838,6 +26603,16 @@
       "weight": 1.0,
       "source": "projects_gastrosp_gold_nma_biomarkers_project_gastrosp_gold_nma_biomarkers",
       "target": "projects_gastrosp_gold_nma_biomarkers_project_contract_gastrosp_gold_nma_biomarkers_project_yaml"
+    },
+    {
+      "relation": "uses_lane",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "projects/OncoMetabolic_CRC_NMA/project.yaml",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "projects_oncometabolic_crc_nma_project_oncometabolic_crc_nma",
+      "target": "lane_clinical_meta_analysis"
     },
     {
       "relation": "has_artifact_area",
@@ -25220,6 +26995,16 @@
       "target": "projects_in_silico_ml_surgery_idea_tournament_2026_project_contract_in_silico_ml_surgery_idea_tournament_2026_project_yaml"
     },
     {
+      "relation": "project_type",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "projects/in-silico-ml-surgery-idea-tournament-2026/project.yaml",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "projects_in_silico_ml_surgery_idea_tournament_2026_project_in_silico_ml_surgery_idea_tournament_2026",
+      "target": "type_computational_ideation"
+    },
+    {
       "relation": "has_artifact_area",
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
@@ -25480,16 +27265,6 @@
       "target": "projects_nma_osa_vpi_project_contract_nma_osa_vpi_project_yaml"
     },
     {
-      "relation": "uses_lane",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "projects/OncoMetabolic_CRC_NMA/project.yaml",
-      "source_location": null,
-      "weight": 1.0,
-      "source": "projects_oncometabolic_crc_nma_project_oncometabolic_crc_nma",
-      "target": "lane_clinical_meta_analysis"
-    },
-    {
       "relation": "current_mode",
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
@@ -25617,7 +27392,7 @@
       "source_location": null,
       "weight": 1.0,
       "source": "projects_pct_e_d_dimero_na_necrose_intestinal_transmural_2026_project_pct_e_d_dimero_na_necrose_intestinal_transmural_2026",
-      "target": "mode_protocol_freeze"
+      "target": "mode_review_trinity"
     },
     {
       "relation": "has_artifact_area",
@@ -25740,16 +27515,6 @@
       "target": "projects_pct_e_d_dimero_na_necrose_intestinal_transmural_2026_project_contract_pct_e_d_dimero_na_necrose_intestinal_transmural_2026_project_yaml"
     },
     {
-      "relation": "current_mode",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "projects/urology-rirs-sepsis-br-validation-2026/project.yaml",
-      "source_location": null,
-      "weight": 1.0,
-      "source": "projects_urology_rirs_sepsis_br_validation_2026_project_urology_rirs_sepsis_br_validation_2026",
-      "target": "mode_protocol_freeze"
-    },
-    {
       "relation": "has_artifact_area",
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
@@ -25868,6 +27633,16 @@
       "weight": 1.0,
       "source": "projects_sp_congress_idea_tournament_2026_project_sp_congress_idea_tournament_2026",
       "target": "projects_sp_congress_idea_tournament_2026_project_contract_sp_congress_idea_tournament_2026_project_yaml"
+    },
+    {
+      "relation": "current_mode",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "projects/urology-rirs-sepsis-br-validation-2026/project.yaml",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "projects_urology_rirs_sepsis_br_validation_2026_project_urology_rirs_sepsis_br_validation_2026",
+      "target": "mode_protocol_freeze"
     },
     {
       "relation": "has_artifact_area",
@@ -28598,6 +30373,26 @@
       "weight": 1.0,
       "source": "alias_pt_ngs",
       "target": "artifact_ngs_run_envelopes"
+    },
+    {
+      "relation": "has_instruction_section",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "skills/scientific-workflow-orchestrator/SKILL.md",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "skills_scientific_workflow_orchestrator_skill_scientific_workflow_orchestrator",
+      "target": "skills_scientific_workflow_orchestrator_skill_section_scientific_workflow_orchestrator_1_scientific_workflow_orchestration"
+    },
+    {
+      "relation": "has_instruction_section",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "skills/bilingual-scientific-writing/SKILL.md",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "skills_bilingual_scientific_writing_skill_bilingual_scientific_writing",
+      "target": "skills_bilingual_scientific_writing_skill_section_bilingual_scientific_writing_1_bilingual_scientific_writing"
     },
     {
       "relation": "has_instruction_section",
@@ -34451,5 +36246,5 @@
     }
   ],
   "hyperedges": [],
-  "built_at_commit": "50430f080f9d825c7dfab94f0522c9dd4e6ed340"
+  "built_at_commit": "323a784ea611530ee0dec14119f4c7af4a937b05"
 }

@@ -1,83 +1,84 @@
-# Graph Report - C:\Users\Usuario-pc\Desktop\Doutorado  (2026-07-22)
+# Graph Report - C:\Users\Usuario-pc\Desktop\Doutorado  (2026-10-12)
 
 ## Corpus Check
 - Root semantic graph was not run: the workspace is too broad and detection timed out. This is an operational navigation graph.
 
 ## Summary
-- 979 nodes · 1995 edges · 8 communities
-- Extraction: 88% EXTRACTED · 12% INFERRED · 0% AMBIGUOUS · INFERRED: 237 edges (avg confidence: 0.75)
+- 1036 nodes · 2093 edges · 8 communities (7 shown, 1 thin omitted)
+- Extraction: 88% EXTRACTED · 12% INFERRED · 0% AMBIGUOUS · INFERRED: 243 edges (avg confidence: 0.75)
 - Token cost: 0 input · 0 output
 
 ## Community Hubs (Navigation)
-- [[_COMMUNITY_Runtime Commands|Runtime Commands]]
-- [[_COMMUNITY_Article Machine|Article Machine]]
-- [[_COMMUNITY_Projects And Modes|Projects And Modes]]
-- [[_COMMUNITY_Scientific Skills|Scientific Skills]]
-- [[_COMMUNITY_Agent Docs|Agent Docs]]
-- [[_COMMUNITY_Legacy Sources|Legacy Sources]]
-- [[_COMMUNITY_Graphify Map|Graphify Map]]
-- [[_COMMUNITY_Git Hygiene|Git Hygiene]]
+- Runtime Commands
+- Article Machine
+- Projects And Modes
+- Scientific Skills
+- Agent Docs
+- Legacy Sources
+- Graphify Map
+- Git Hygiene
 
 ## God Nodes (most connected - your core abstractions)
-1. `Build context Task Packet` - 134 edges
-2. `Read project protocol standards compute files` - 71 edges
-3. `Critical Scientific Skills` - 66 edges
-4. `article_machine.agent_skills` - 65 edges
-5. `Article Machine Package` - 49 edges
-6. `Runtime And Commands` - 47 edges
-7. `article_machine.cli` - 40 edges
-8. `Article Machine Projects` - 36 edges
-9. `Agent Documentation` - 30 edges
+1. `Build context Task Packet` - 136 edges
+2. `Read project protocol standards compute files` - 75 edges
+3. `Article Machine Package` - 68 edges
+4. `Critical Scientific Skills` - 68 edges
+5. `article_machine.agent_skills` - 67 edges
+6. `Runtime And Commands` - 57 edges
+7. `article_machine.cli` - 50 edges
+8. `Article Machine Projects` - 41 edges
+9. `Agent Documentation` - 32 edges
 10. `Git Hygiene` - 20 edges
 
 ## Surprising Connections (you probably didn't know these)
+- `Runtime And Commands` --exposes--> `article-machine aggregate`  [EXTRACTED]
+  . → article_machine/cli.py
 - `Runtime And Commands` --exposes--> `article-machine analyze`  [EXTRACTED]
   . → article_machine/cli.py
 - `Runtime And Commands` --exposes--> `article-machine anti-ai-audit`  [EXTRACTED]
   . → article_machine/cli.py
 - `Runtime And Commands` --exposes--> `article-machine anti-ai-naturalize`  [EXTRACTED]
   . → article_machine/cli.py
-- `Runtime And Commands` --exposes--> `article-machine benchmark`  [EXTRACTED]
-  . → article_machine/cli.py
-- `Runtime And Commands` --exposes--> `article-machine check`  [EXTRACTED]
+- `Runtime And Commands` --exposes--> `article-machine audit-language`  [EXTRACTED]
   . → article_machine/cli.py
 
 ## Import Cycles
 - None detected.
 
-## Communities (8 total, 0 thin omitted)
+## Communities (8 total, 1 thin omitted)
 
 ### Community 0 - "Runtime Commands"
 Cohesion: 0.20
 Nodes (10): Doutorado Workspace, Runtime And Commands, .venv python -m article_machine, .venv python -m graphify, global python -m graphify, .venv python -m pytest, article_machine machine audit --strict, article_machine benchmark validate (+2 more)
 
 ### Community 1 - "Article Machine"
-Cohesion: 0.04
-Nodes (70): Article Machine Package, article_machine.__init__, Article Machine entrypoints and CLI, article_machine.__main__, article_machine.agent_skills, Skill routing and PT-BR style gates, article_machine.analysis, Analysis discovery and life-science planning (+62 more)
+Cohesion: 0.03
+Nodes (97): Article Machine Package, article_machine.__init__, Article Machine entrypoints and CLI, article_machine.__main__, article_machine.adapters.__init__, article_machine.adapters.runtime, article_machine.agent_skills, Skill routing and PT-BR style gates (+89 more)
 
 ### Community 2 - "Projects And Modes"
 Cohesion: 0.01
-Nodes (234): Article Machine Projects, Article Machine Upgrade 2026, lane: evidence-writing, mode: bootstrap, type: thesis-chapter, article-machine-upgrade-2026/project.yaml, article-machine-upgrade-2026/protocol.yaml, article-machine-upgrade-2026/standards.yaml (+226 more)
+Nodes (173): Article Machine Projects, Article Machine Governance 2026, lane: machine-governance, mode: bootstrap, type: machine-governance, article-machine-governance-2026/context (4 direct items), article-machine-governance-2026/analysis (1 direct items), Article Machine Upgrade 2026 (+165 more)
 
 ### Community 3 - "Scientific Skills"
 Cohesion: 0.01
-Nodes (498): Critical Scientific Skills, hypothesis-tournament, hypothesis-tournament :: Hypothesis Tournament, hypothesis-tournament :: Workflow, hypothesis-tournament :: Output Contract, hypothesis-tournament :: Gates, scientific-novelty-checker, scientific-novelty-checker :: Scientific Novelty Checker (+490 more)
+Nodes (502): Critical Scientific Skills, hypothesis-tournament, hypothesis-tournament :: Hypothesis Tournament, hypothesis-tournament :: Workflow, hypothesis-tournament :: Output Contract, hypothesis-tournament :: Gates, scientific-novelty-checker, scientific-novelty-checker :: Scientific Novelty Checker (+494 more)
 
 ### Community 4 - "Agent Docs"
-Cohesion: 0.03
-Nodes (140): Agent Documentation, .agents/AGENTS.md, .agents/AGENTS.md :: Local Agent Control Plane, .agents/AGENTS.md :: Graph-First Rule, .agents/AGENTS.md :: Required Entry Flow, .agents/AGENTS.md :: Local Skills, .agents/AGENTS.md :: Hard Rules, .agents/GRAPH_FIRST.md (+132 more)
+Cohesion: 0.02
+Nodes (145): Agent Documentation, .agents/AGENTS.md :: Local Agent Control Plane, .agents/AGENTS.md :: Graph-First Rule, .agents/AGENTS.md :: Required Entry Flow, .agents/AGENTS.md :: Local Skills, .agents/AGENTS.md :: Hard Rules, .agents/GRAPH_FIRST.md :: Graph-First Operating Policy, .agents/GRAPH_FIRST.md :: Commands (+137 more)
 
 ### Community 5 - "Legacy Sources"
 Cohesion: 0.22
 Nodes (9): Legacy And Raw Sources, legacy: Correção Orientador, legacy: Doutorado, legacy: Leitor de Artigos, legacy: PDFS DR ANDRÉ, legacy: REVISÃO LIGA, legacy: Revisões Sistemáticas, legacy: Submissão Final (+1 more)
 
-### Community 6 - "Graphify Map"
-Cohesion: 0.60
-Nodes (5): Graphify Operational Map, scripts/generate_workspace_graph.py, graphify-out/GRAPH_REPORT.md, graphify-out/graph.html, graphify-out/graph.json
-
 ### Community 7 - "Git Hygiene"
 Cohesion: 0.25
 Nodes (8): Git Hygiene, local agent control plane; track only policy files and selected navigation skills, local virtual environment; never stage, pytest cache; generated, browser automation cache; generated, temporary workspace output, shared source intake; review before staging raw data, generated operational graph outputs
+
+## Knowledge Gaps
+- **15 isolated node(s):** `docs/MIGRATION_0_3.md :: Migration to 0.3.0`, `article_machine.adapters.runtime`, `article_machine.commands.governance`, `article_machine.contracts.compute`, `article_machine.policy.gates` (+10 more)
+  These have ≤1 connection - possible missing edges or undocumented components.
+- **1 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
 
 ## Suggested Questions
 _Questions this graph is uniquely positioned to answer:_
@@ -88,7 +89,7 @@ _Questions this graph is uniquely positioned to answer:_
   _Highlights untracked/generated areas, legacy folders, and nested projects._
 - **How do Graphify and Article Machine runtimes differ in this checkout?**
   _Shows the reproducible venv runtimes and the diagnosed global Graphify fallback._
-- **How should GPT-5.6 Sol Ultra and subagents be used in this workspace?**
+- **How should GPT-6.1 Sol medium and GPT-6 Luna coordinate bilingual scientific work?**
   _Routes model orchestration to the project-scoped Codex roles, strict audit, and benchmark gate._
 - **Which skills are mandatory before strong scientific claims?**
   _Bridges critical scientific skills to the Article Machine gates._
@@ -119,18 +120,18 @@ _Questions this graph is uniquely positioned to answer:_
 - `content-preservation-guardian` -> `skills/content-preservation-guardian/SKILL.md`
 
 ## Detailed Navigation Layers
-- Markdown sections indexed: 100
-- Project contract files indexed: 68
-- Project artifact areas indexed: 131
-- Skill instruction sections indexed: 426
+- Markdown sections indexed: 111
+- Project contract files indexed: 72
+- Project artifact areas indexed: 133
+- Skill instruction sections indexed: 428
 - Navigation/preservation skills installed: 3
-- Project-scoped Codex agent roles indexed: 3
+- Project-scoped Codex agent roles indexed: 5
 - Read-only Codex benchmark profiles indexed: 2
 
 ## Generation Provenance
-- Git HEAD: `50430f080f9d825c7dfab94f0522c9dd4e6ed340`
-- Dirty worktree at generation: `true`
-- Porcelain status entries at generation: 76
+- Git HEAD: `323a784ea611530ee0dec14119f4c7af4a937b05`
+- Dirty worktree at generation: `false`
+- Porcelain status entries at generation: 0
 
 ## Natural Language Gateway Phrases
 These nodes make Portuguese and operational user phrasing easier for `graphify query` to match.
@@ -146,7 +147,7 @@ These nodes make Portuguese and operational user phrasing easier for `graphify q
 - `pedido: ngs fastq bam vcf sequenciamento` -> ngs-analysis-router, Life Sciences NGS Analysis plugin router, project analysis/ngs run envelopes
 - `pedido: pensamento profundo decisao forte hipotese fragil` -> deep-thinking-governor, Decision quality gate for assumptions alternatives premortems, decision notes residual-risk summaries
 - `pedido: artigo pt br abnt vancouver sem cara de ia` -> ptbr-article-writing, anti-ai-writing-governor, article_machine.ptbr_style
-- `pedido: melhorar maquina com gpt 5.6 sol ultra multiagente` -> Codex project configuration, Codex role: workspace-explorer, Codex role: scientific-reviewer, Codex role: verification-runner, Codex read-only profile: xhigh-baseline.config, Codex read-only profile: ultra-benchmark.config, skill-upgrade-governor, agent-benchmark-harness, article_machine benchmark validate, article_machine machine audit --strict
+- `pedido: melhorar maquina sol medio luna trabalhos cientificos complexos ingles portugues` -> Codex project configuration, Codex role: workspace-explorer, Codex role: scientific-reviewer, Codex role: verification-runner, Codex read-only profile: xhigh-baseline.config, Codex read-only profile: ultra-benchmark.config, skill-upgrade-governor, agent-benchmark-harness, article_machine benchmark validate, article_machine machine audit --strict
 
 ## Legacy And Hygiene Map
 Legacy folders requiring manual triage before moves or staging:
