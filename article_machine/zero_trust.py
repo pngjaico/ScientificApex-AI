@@ -177,6 +177,103 @@ PROVIDER_SPECS: dict[str, dict[str, Any]] = {
         "supported_fields": ["title", "doi"],
         "requires_manifest_fields": ["provider", "query_hash", "retrieved_at", "record_count", "records_sha256"],
     },
+    "osf": {
+        "contract": "ProviderSpec",
+        "provider": "osf",
+        "display_name": "Open Science Framework (OSF) API v2",
+        "source_url": "https://developer.osf.io/",
+        "base_url": "https://api.osf.io/v2/",
+        "requires_live_calls": False,
+        "authentication": {
+            "api_key_optional": True,
+            "token_env_var": "OSF_TOKEN",
+            "token_cost": "free",
+        },
+        "rate_limit": {
+            "policy": "OSF API v2 rate limiting (100 req/min authenticated, 30 req/min unauthenticated); exponential backoff on 429",
+            "requests_per_second_without_key": 0.5,
+            "requests_per_second_with_key": 1.6,
+        },
+        "supported_fields": ["title", "abstract", "author", "doi", "affiliation", "institution"],
+        "requires_manifest_fields": ["provider", "query_hash", "retrieved_at", "record_count", "records_sha256"],
+    },
+    "scopus": {
+        "contract": "ProviderSpec",
+        "provider": "scopus",
+        "display_name": "Elsevier Scopus Search API / Export",
+        "source_url": "https://dev.elsevier.com/sc_search_tips.html",
+        "base_url": "https://api.elsevier.com/content/search/scopus",
+        "requires_live_calls": False,
+        "authentication": {
+            "api_key_optional": True,
+            "token_env_var": "SCOPUS_API_KEY",
+            "manual_export_drop_folder": "sources/manual_imports/scopus",
+        },
+        "rate_limit": {
+            "policy": "Elsevier API quota (2 to 9 req/sec depending on endpoint); supports manual RIS/CSV drop-folder import",
+            "requests_per_second_without_key": 0,
+            "requests_per_second_with_key": 2,
+        },
+        "supported_fields": ["title_abstract", "title", "abstract", "mesh", "author", "journal", "doi", "pmid", "affiliation"],
+        "requires_manifest_fields": ["provider", "query_hash", "retrieved_at", "record_count", "records_sha256"],
+    },
+    "embase": {
+        "contract": "ProviderSpec",
+        "provider": "embase",
+        "display_name": "Elsevier Embase (Emtree / TiAbKw)",
+        "source_url": "https://www.embase.com/",
+        "base_url": "https://www.embase.com/",
+        "requires_live_calls": False,
+        "authentication": {
+            "api_key_optional": True,
+            "manual_export_drop_folder": "sources/manual_imports/embase",
+        },
+        "rate_limit": {
+            "policy": "Compiled Embase query string for institutional export (RIS/CSV) into sources/manual_imports/embase",
+            "requests_per_second_without_key": None,
+            "requests_per_second_with_key": None,
+        },
+        "supported_fields": ["title_abstract", "title", "abstract", "mesh", "author", "journal", "doi", "pmid"],
+        "requires_manifest_fields": ["provider", "query_hash", "retrieved_at", "record_count", "records_sha256"],
+    },
+    "cochrane_central": {
+        "contract": "ProviderSpec",
+        "provider": "cochrane_central",
+        "display_name": "Cochrane CENTRAL Register of Controlled Trials",
+        "source_url": "https://www.cochranelibrary.com/advanced-search",
+        "base_url": "https://www.cochranelibrary.com/",
+        "requires_live_calls": False,
+        "authentication": {
+            "api_key_optional": True,
+            "manual_export_drop_folder": "sources/manual_imports/cochrane_central",
+        },
+        "rate_limit": {
+            "policy": "Compiled CENTRAL query string for RIS/CSV export into sources/manual_imports/cochrane_central",
+            "requests_per_second_without_key": None,
+            "requests_per_second_with_key": None,
+        },
+        "supported_fields": ["title_abstract", "title", "abstract", "mesh", "author", "journal", "doi"],
+        "requires_manifest_fields": ["provider", "query_hash", "retrieved_at", "record_count", "records_sha256"],
+    },
+    "lilacs_bvs": {
+        "contract": "ProviderSpec",
+        "provider": "lilacs_bvs",
+        "display_name": "LILACS / BVS (BIREME)",
+        "source_url": "https://pesquisa.bvsalud.org/",
+        "base_url": "https://pesquisa.bvsalud.org/",
+        "requires_live_calls": False,
+        "authentication": {
+            "api_key_optional": True,
+            "manual_export_drop_folder": "sources/manual_imports/lilacs_bvs",
+        },
+        "rate_limit": {
+            "policy": "Compiled BVS/LILACS query string for RIS/CSV export into sources/manual_imports/lilacs_bvs",
+            "requests_per_second_without_key": None,
+            "requests_per_second_with_key": None,
+        },
+        "supported_fields": ["title_abstract", "title", "abstract", "mesh", "author", "journal", "doi"],
+        "requires_manifest_fields": ["provider", "query_hash", "retrieved_at", "record_count", "records_sha256"],
+    },
 }
 
 GUIDELINE_ROUTES: dict[str, dict[str, str]] = {
@@ -246,6 +343,53 @@ FIELD_RENDERERS: dict[str, dict[str, str]] = {
     },
     "crossref_retractions": {
         "title": "query.title",
+        "doi": "doi",
+    },
+    "osf": {
+        "title": "title",
+        "abstract": "description",
+        "author": "contributors",
+        "doi": "doi",
+        "affiliation": "affiliated_institutions",
+        "institution": "affiliated_institutions",
+    },
+    "scopus": {
+        "title_abstract": "TITLE-ABS-KEY",
+        "title": "TITLE",
+        "abstract": "ABS",
+        "mesh": "INDEXTERMS",
+        "author": "AUTH",
+        "journal": "SRCTITLE",
+        "doi": "DOI",
+        "pmid": "PMID",
+        "affiliation": "AFFIL",
+    },
+    "embase": {
+        "title_abstract": ":ti,ab,kw",
+        "title": ":ti",
+        "abstract": ":ab",
+        "mesh": "/exp",
+        "author": ":au",
+        "journal": ":jt",
+        "doi": ":doi",
+        "pmid": ":ui",
+    },
+    "cochrane_central": {
+        "title_abstract": ":ti,ab,kw",
+        "title": ":ti",
+        "abstract": ":ab",
+        "mesh": "mh",
+        "author": ":au",
+        "journal": ":so",
+        "doi": ":doi",
+    },
+    "lilacs_bvs": {
+        "title_abstract": "tw",
+        "title": "ti",
+        "abstract": "ab",
+        "mesh": "mh",
+        "author": "au",
+        "journal": "ta",
         "doi": "doi",
     },
 }
@@ -485,7 +629,18 @@ def _compile_term(provider: str, field: str, term: str) -> str:
         if renderer in {"doi", "ids.pmid", "authorships.author.orcid", "institutions.ror"}:
             return f"{renderer}:{_clean_term(term)}"
         return f"{renderer}:{quoted}"
-    if provider in {"crossref", "crossref_retractions", "orcid", "ror"}:
+    if provider == "scopus":
+        return f"{renderer}({quoted})"
+    if provider == "embase":
+        escaped = _clean_term(term).replace("'", "")
+        return f"'{escaped}'{renderer}"
+    if provider == "cochrane_central":
+        if field == "mesh":
+            return f"[mh {quoted}]"
+        return f"({quoted}){renderer}"
+    if provider == "lilacs_bvs":
+        return f"{renderer}:({quoted})"
+    if provider in {"crossref", "crossref_retractions", "orcid", "ror", "osf"}:
         if field in {"doi", "orcid"}:
             return f"{renderer}:{_clean_term(term)}"
         return f"{renderer}:{quoted}"
@@ -527,6 +682,19 @@ def _date_filter(provider: str, date_range: dict[str, Any] | None) -> str:
         if end:
             filters.append(f"to_publication_date:{end}")
         return "filter:" + ",".join(filters)
+    if provider == "scopus":
+        parts = []
+        if date_range.get("from"):
+            y_from = str(date_range["from"])[:4]
+            parts.append(f"PUBYEAR > {int(y_from) - 1}")
+        if date_range.get("to"):
+            y_to = str(date_range["to"])[:4]
+            parts.append(f"PUBYEAR < {int(y_to) + 1}")
+        return "(" + " AND ".join(parts) + ")" if parts else ""
+    if provider == "embase":
+        y_from = str(date_range.get("from") or "1800")[:4]
+        y_to = str(date_range.get("to") or "3000")[:4]
+        return f"[{y_from}-{y_to}]/py"
     if provider in {"crossref", "crossref_retractions"}:
         filters = []
         if date_range.get("from"):
@@ -840,7 +1008,7 @@ def audit_stage(project_dir: Path, target_mode: str | None = None) -> dict[str, 
     project_dir = Path(project_dir)
     project = load_structured_file(project_dir / "project.yaml")
     protocol = load_structured_file(project_dir / "protocol.yaml")
-    governance = project.get("lane") == "machine-governance"
+    governance = project.get("lane") == "machine-governance" and project.get("project_type") == "machine-governance"
     order = MACHINE_GOVERNANCE_MODE_ORDER if governance else MODE_ORDER
     target = target_mode or ("release" if governance else "submission")
     if target not in order:
@@ -889,6 +1057,11 @@ def audit_stage(project_dir: Path, target_mode: str | None = None) -> dict[str, 
         add("protocol-freeze", "research_question", bool(protocol.get("research_question")), "protocol.yaml research_question is empty.")
         add("protocol-freeze", "objectives", bool(protocol.get("objectives")), "protocol.yaml objectives are empty.")
         add("protocol-freeze", "status", protocol.get("status") in {"frozen", "approved", "locked"}, "protocol.yaml is not frozen.")
+
+    if any(mode not in {"bootstrap", "protocol-freeze"} for mode in checked_modes):
+        from .services.protocol_registration import registration_gate
+        registration = registration_gate(project_dir, target)
+        add("corpus-build", "protocol_registration", registration["status"] == "pass", "; ".join(registration["issues"]))
 
     if "corpus-build" in checked_modes:
         query_validation = validate_query_plan(project_dir)

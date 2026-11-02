@@ -1,0 +1,41 @@
+{
+  "date": "2026-11-01",
+  "result": "pass",
+  "tests": [
+    {
+      "skill": "metodos-ml-clinico",
+      "frontmatter_yaml_valid": true,
+      "folder_name_matches_frontmatter": true,
+      "description_nonempty": true,
+      "trigger_assertions": 10,
+      "failed_triggers": [],
+      "skill_creator_quick_validate": "pass",
+      "passed": true
+    },
+    {
+      "skill": "meta-analise-medica",
+      "frontmatter_yaml_valid": true,
+      "folder_name_matches_frontmatter": true,
+      "description_nonempty": true,
+      "trigger_assertions": 12,
+      "failed_triggers": [],
+      "skill_creator_quick_validate": "pass",
+      "passed": true
+    },
+    {
+      "skill": "publicacao-medica-organizada",
+      "frontmatter_yaml_valid": true,
+      "folder_name_matches_frontmatter": true,
+      "description_nonempty": true,
+      "trigger_assertions": 10,
+      "failed_triggers": [],
+      "skill_creator_quick_validate": "pass",
+      "passed": true
+    }
+  ],
+  "registry_or_gitignore_modified": false,
+  "limits": [
+    "Own tests check YAML frontmatter and required scope/method triggers; they do not establish scientific validity or automatic skill routing.",
+    "New .agents/skills paths are ignored by the existing .gitignore rules; no ignore rule was changed."
+  ]
+}

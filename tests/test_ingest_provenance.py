@@ -11,6 +11,8 @@ from article_machine.serialization import load_structured_file, save_structured_
 
 def test_ingest_same_basename_preserves_both_versions_and_registers_hashes(tmp_path):
     project = init_project(tmp_path, "Sources", "systematic-review")
+    from registration_fixtures import reviewed_registration_fixture
+    reviewed_registration_fixture(project)
     source = tmp_path / "paper.txt"
     source.write_text("First observed result")
     first = register_source(project, str(source), "file")

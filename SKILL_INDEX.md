@@ -169,6 +169,7 @@ Generated from `skills/registry.json`; do not edit this section manually.
 - `biopython` — hold — local unverified skill tree — `local-unverified`
 - `bioservices` — hold — local unverified skill tree — `local-unverified`
 - `bulk-rnaseq` — hold — local unverified skill tree — `local-unverified`
+- `catalogos-cientificos-sob-demanda` — active — Article Machine curated layer — `workspace-2026-11-01`
 - `cellxgene-census` — hold — local unverified skill tree — `local-unverified`
 - `chembl-bindingdb-miner` — active — Article Machine curated layer — `workspace-2026-10-12`
 - `churn-prevention` — hold — local unverified skill tree — `local-unverified`
@@ -263,6 +264,8 @@ Generated from `skills/registry.json`; do not edit this section manually.
 - `matlab` — hold — local unverified skill tree — `local-unverified`
 - `matplotlib` — hold — local unverified skill tree — `local-unverified`
 - `medchem` — hold — local unverified skill tree — `local-unverified`
+- `meta-analise-medica` — active — Article Machine curated layer — `workspace-2026-11-01`
+- `metodos-ml-clinico` — active — Article Machine curated layer — `workspace-2026-11-01`
 - `modal` — hold — local unverified skill tree — `local-unverified`
 - `molecular-dynamics` — hold — local unverified skill tree — `local-unverified`
 - `molfeat` — hold — local unverified skill tree — `local-unverified`
@@ -313,6 +316,7 @@ Generated from `skills/registry.json`; do not edit this section manually.
 - `protocol-registration-governor` — active — Article Machine curated layer — `workspace-2026-10-12`
 - `protocolsio-integration` — hold — local unverified skill tree — `local-unverified`
 - `ptbr-article-writing` — active — Article Machine curated layer — `workspace-2026-10-12`
+- `publicacao-medica-organizada` — active — Article Machine curated layer — `workspace-2026-11-01`
 - `pubmed-database` — active — Article Machine curated layer — `workspace-2026-10-12`
 - `pufferlib` — hold — local unverified skill tree — `local-unverified`
 - `pydeseq2` — hold — local unverified skill tree — `local-unverified`
@@ -325,7 +329,7 @@ Generated from `skills/registry.json`; do not edit this section manually.
 - `pyopenms` — hold — local unverified skill tree — `local-unverified`
 - `pysam` — hold — local unverified skill tree — `local-unverified`
 - `pytdc` — hold — local unverified skill tree — `local-unverified`
-- `pytorch-lightning` — hold — local unverified skill tree — `local-unverified`
+- `pytorch-lightning` — pilot — K-Dense AI — `5f2bc0341354fd5590aef76a533ada1e1e5b4e62`
 - `pyzotero` — hold — local unverified skill tree — `local-unverified`
 - `qiskit` — hold — local unverified skill tree — `local-unverified`
 - `query-string-governor` — active — Article Machine curated layer — `workspace-2026-10-12`
@@ -350,11 +354,11 @@ Generated from `skills/registry.json`; do not edit this section manually.
 - `scientific-red-team-reviewer` — active — Article Machine curated layer — `workspace-2026-10-12`
 - `scientific-schematics` — hold — local unverified skill tree — `local-unverified`
 - `scientific-slides` — hold — local unverified skill tree — `local-unverified`
-- `scientific-visualization` — hold — local unverified skill tree — `local-unverified`
+- `scientific-visualization` — pilot — K-Dense AI — `5f2bc0341354fd5590aef76a533ada1e1e5b4e62`
 - `scientific-workflow-orchestrator` — active — Article Machine curated layer — `workspace-2026-10-12`
 - `scientific-writing` — active — K-Dense AI — `a1043ef544e3a100c28e70a736b6cf32554d0677`
 - `scikit-bio` — hold — local unverified skill tree — `local-unverified`
-- `scikit-learn` — hold — local unverified skill tree — `local-unverified`
+- `scikit-learn` — pilot — K-Dense AI — `5f2bc0341354fd5590aef76a533ada1e1e5b4e62`
 - `scikit-survival` — hold — local unverified skill tree — `local-unverified`
 - `scvelo` — hold — local unverified skill tree — `local-unverified`
 - `scvi-tools` — hold — local unverified skill tree — `local-unverified`

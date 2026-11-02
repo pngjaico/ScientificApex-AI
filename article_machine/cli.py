@@ -2,16 +2,16 @@ from __future__ import annotations
 
 import argparse
 import json
-from pathlib import Path
 import sys
+from pathlib import Path
 from typing import Any
 
 from .agent_skills import audit_workspace_skills, catalog_workspace_skills, route_workspace_skills
 from .analysis import preflight, run_python_script, run_r_script
 from .benchmarks import validate_benchmark_report
 from .commands.governance import aggregate_benchmark_file, record_blocked_attempt
-from .context import build_task_packet
 from .congress_profiles import save_congress_profile, use_congress_profile
+from .context import build_task_packet
 from .deliverables import (
     build_deliverable,
     export_deliverable,
@@ -38,9 +38,9 @@ from .review import run_review_trinity
 from .services.environment import check_environment, prepare_environment
 from .services.graph_query import query_operational_graph
 from .services.machine import machine_doctor, release_audit
-from .services.skill_registry import build_skill_update_plan
-from .services.scientific_workflows import audit_language, plan_scientific_workflow
 from .services.plugins import audit_scientific_plugins
+from .services.scientific_workflows import audit_language, plan_scientific_workflow
+from .services.skill_registry import build_skill_update_plan
 from .zero_trust import (
     audit_retrieval,
     audit_stage,
@@ -55,7 +55,7 @@ from .zero_trust import (
 
 def _print(payload: Any) -> None:
     try:
-        sys.stdout.reconfigure(encoding="utf-8", errors="replace")
+        getattr(sys.stdout, "reconfigure", lambda **_: None)(encoding="utf-8", errors="replace")
     except Exception:
         pass
     print(json.dumps(payload, ensure_ascii=False, indent=2))
@@ -64,7 +64,9 @@ def _print(payload: Any) -> None:
 def _require_command_mode(project_dir: Path, command: str, required_mode: str) -> dict[str, Any]:
     project = load_project(project_dir)
     current_mode = project.get("state", {}).get("current_mode", "bootstrap")
-    issues = []
+    from .services.protocol_registration import registration_gate
+
+    issues = list(registration_gate(project_dir, command)["issues"])
     if current_mode != required_mode:
         issues.append(
             f"Command '{command}' requires current_mode '{required_mode}', found '{current_mode}'. "
@@ -127,6 +129,186 @@ def build_parser() -> argparse.ArgumentParser:
     registry_register.add_argument("--url", required=True, dest="registry_url")
     registry_register.add_argument("--registered-at", required=True, dest="registered_at")
     registry_register.add_argument("--notes", default="")
+    registry_verify = registry_sub.add_parser("verify")
+    registry_verify.add_argument("project_dir")
+    registry_verify.add_argument(
+        "--record",
+        required=True,
+        help="Reviewed registry-evidence JSON inside the project; never creates a registration",
+    )
+    registry_check_osf = registry_sub.add_parser("check-osf", help="Test OSF API v2 token and connectivity")
+    registry_check_osf.add_argument(
+        "--token", default=None, help="Explicit token to test; defaults to OSF_TOKEN env or .env"
+    )
+    registry_fetch_osf = registry_sub.add_parser(
+        "fetch-osf", help="Fetch OSF registration snapshot, compute hash and scaffold verification"
+    )
+    registry_fetch_osf.add_argument("project_dir")
+    registry_fetch_osf.add_argument(
+        "--id", required=True, dest="registry_id", help="OSF registration identifier (e.g. 5+ chars)"
+    )
+    registry_fetch_osf.add_argument("--reviewer", default="", help="Name of reviewer confirming protocol match")
+    registry_fetch_osf.add_argument("--token", default=None, help="Explicit token; defaults to OSF_TOKEN env or .env")
+
+    methodology_parser = subparsers.add_parser(
+        "methodology", help="Protocol validation, PROSPERO/OSF packet compilation, EQUATOR & extraction audits"
+    )
+    methodology_sub = methodology_parser.add_subparsers(dest="methodology_command", required=True)
+    meth_val_proto = methodology_sub.add_parser(
+        "validate-protocol", help="Validate design-specific methodological completeness in protocol.yaml"
+    )
+    meth_val_proto.add_argument("project_dir")
+    meth_compile_reg = methodology_sub.add_parser(
+        "compile-registration-packet", help="Compile paired PT-BR/EN registration packets for PROSPERO and OSF"
+    )
+    meth_compile_reg.add_argument("project_dir")
+    meth_equator = methodology_sub.add_parser(
+        "audit-equator", help="Audit protocol and manuscripts against machine-readable EQUATOR checklists"
+    )
+    meth_equator.add_argument("project_dir")
+    meth_extract = methodology_sub.add_parser(
+        "validate-extraction", help="Validate extracted study rows for denominator, SD/SE, 2x2, and NMA connectivity"
+    )
+    meth_extract.add_argument("file_path")
+    meth_extract.add_argument("--mode", default="pairwise", choices=["pairwise", "nma", "diagnostic"])
+    meth_numbers = methodology_sub.add_parser(
+        "audit-numbers", help="Verify numerical consistency between analysis/results_ledger.json and PT/EN drafts"
+    )
+    meth_numbers.add_argument("project_dir")
+
+    corpus_parser = subparsers.add_parser(
+        "corpus", help="Multi-database search compilation, drop-folders, PubMed API retrieval, and PRISMA deduplication"
+    )
+    corpus_sub = corpus_parser.add_subparsers(dest="corpus_command", required=True)
+    corpus_prep = corpus_sub.add_parser(
+        "prepare",
+        help="Compile search strings (PubMed, Scopus, Embase, CENTRAL, LILACS) and create manual drop-folders",
+    )
+    corpus_prep.add_argument("project_dir")
+    corpus_pubmed = corpus_sub.add_parser(
+        "fetch-pubmed", help="Execute live PubMed E-utilities retrieval for compiled query"
+    )
+    corpus_pubmed.add_argument("project_dir")
+    corpus_pubmed.add_argument("--max-records", type=int, default=200, dest="max_records")
+    corpus_scopus = corpus_sub.add_parser("fetch-scopus", help="Execute live Scopus API retrieval using SCOPUS_API_KEY")
+    corpus_scopus.add_argument("project_dir")
+    corpus_scopus.add_argument("--max-records", type=int, default=200, dest="max_records")
+    corpus_check_scopus = corpus_sub.add_parser("check-scopus", help="Test live Scopus API key connectivity")
+    corpus_check_scopus.add_argument("--project-dir", default=".", dest="project_dir")
+    corpus_dedup = corpus_sub.add_parser(
+        "deduplicate",
+        help="Ingest drop-folders (.ris, .nbib, .csv, .json), write manifests, and run 3-stage PRISMA deduplication",
+    )
+    corpus_dedup.add_argument("project_dir")
+
+    datasets_parser = subparsers.add_parser(
+        "datasets", help="Clinical & Healthcare ML dataset catalog, staging, and SHA-256 verification"
+    )
+    datasets_sub = datasets_parser.add_subparsers(dest="datasets_command", required=True)
+    ds_cat = datasets_sub.add_parser(
+        "catalog", help="List curated clinical/ML datasets (open-direct and credentialed-dua)"
+    )
+    ds_cat.add_argument("--domain", default=None)
+    ds_cat.add_argument("--access-tier", default=None, dest="access_tier")
+    ds_cat.add_argument("--query", default=None)
+    ds_cat.add_argument("--auto-only", action="store_true", dest="auto_only")
+    ds_packs = datasets_sub.add_parser(
+        "packs", help="List specialty dataset packs ready for automatic API/HTTP/R download"
+    )
+    ds_packs.add_argument("--pack", default=None)
+    ds_stage = datasets_sub.add_parser(
+        "stage", help="Create dataset drop-folders (sources/datasets/<id>/) and bilingual governance plan"
+    )
+    ds_stage.add_argument("project_dir")
+    ds_stage.add_argument("--ids", default=None, help="Comma-separated dataset IDs to stage (defaults to all)")
+    ds_fetch = datasets_sub.add_parser(
+        "fetch", help="Automatically download & verify an open-direct dataset via REST API, HTTP/ZIP, or R 4.6.1"
+    )
+    ds_fetch.add_argument("project_dir")
+    ds_fetch.add_argument("--id", required=True, dest="dataset_id")
+    ds_fetch_pack = datasets_sub.add_parser(
+        "fetch-pack", help="Stage and automatically download all open datasets in a specialty pack"
+    )
+    ds_fetch_pack.add_argument("project_dir")
+    ds_fetch_pack.add_argument("--pack", default="essential-core", dest="pack_id")
+    ds_verify = datasets_sub.add_parser(
+        "verify", help="Verify local dataset files in sources/datasets/<id>/ and write SHA-256 manifest"
+    )
+    ds_verify.add_argument("project_dir")
+    ds_verify.add_argument("--id", required=True, dest="dataset_id")
+
+    hygiene_parser = subparsers.add_parser(
+        "hygiene", help="Workspace anti-pollution shield, project organizer & real-flow skill bindings"
+    )
+    hygiene_sub = hygiene_parser.add_subparsers(dest="hygiene_command", required=True)
+    hyg_check = hygiene_sub.add_parser("check", help="Audit workspace root, projects/, and optionally git staged files")
+    hyg_check.add_argument("--workspace-root", default=".", dest="workspace_root")
+    hyg_check.add_argument(
+        "--staged", action="store_true", help="Also audit git staged files for secrets or loose files"
+    )
+    hyg_bind = hygiene_sub.add_parser(
+        "bindings", help="Resolve mandatory skills, CLI commands & allowed paths for a project/mode"
+    )
+    hyg_bind.add_argument("project_dir")
+    hyg_bind.add_argument("--mode", default=None)
+    hyg_org = hygiene_sub.add_parser(
+        "organize", help="Organize stray top-level files inside a project into canonical folders with SHA-256 manifest"
+    )
+    hyg_org.add_argument("project_dir")
+    hyg_org.add_argument(
+        "--apply", action="store_true", help="Move stray files into canonical folders (default is dry-run manifest)"
+    )
+    hyg_hook = hygiene_sub.add_parser(
+        "install-hook", help="Install automatic .git/hooks/pre-commit anti-pollution guard"
+    )
+    hyg_hook.add_argument("--workspace-root", default=".", dest="workspace_root")
+
+    study_parser = subparsers.add_parser(
+        "study", help="Build bilingual study guide, didactic lessons & defense flashcards"
+    )
+    study_sub = study_parser.add_subparsers(dest="study_command", required=True)
+    study_build = study_sub.add_parser(
+        "build", help="Generate PT-BR/EN study & defense guides and interactive HTML dashboard"
+    )
+    study_build.add_argument("project_dir")
+
+    synth_parser = subparsers.add_parser(
+        "synthesis", help="Generate bilingual manuscripts, abstracts, slides & posters from R outputs"
+    )
+    synth_sub = synth_parser.add_subparsers(dest="synthesis_command", required=True)
+    synth_sub.add_parser("templates", help="List expanded bilingual publication, slide, poster & abstract templates")
+    synth_harvest = synth_sub.add_parser(
+        "harvest", help="Harvest R/Python tables, metrics & figures into results_ledger.json"
+    )
+    synth_harvest.add_argument("project_dir")
+    synth_build = synth_sub.add_parser(
+        "build", help="Synthesize complete PT-BR/EN manuscripts, abstracts, slides & posters from R outputs"
+    )
+    synth_build.add_argument("project_dir")
+    synth_build.add_argument(
+        "--publication-template", default="jama-lancet-nejm-high-impact", dest="publication_template"
+    )
+    synth_build.add_argument("--slide-template", default="congresso-cirurgico-oral-10min", dest="slide_template")
+    synth_build.add_argument("--poster-template", default="eposter-digital-16x9-congresso", dest="poster_template")
+    synth_build.add_argument("--slug", default="pacote-completo-r")
+
+    prospero_parser = subparsers.add_parser(
+        "prospero",
+        help="Compile all 40 official NIHR CRD PROSPERO fields and launch built-in Playwright browser assistant",
+    )
+    prospero_sub = prospero_parser.add_subparsers(dest="prospero_command", required=True)
+    prospero_compile = prospero_sub.add_parser(
+        "compile",
+        help="Compile 40 PROSPERO fields + 5 screening wizard answers into PT-BR/EN guides and HTML5 1-Click Assistant",
+    )
+    prospero_compile.add_argument("project_dir")
+    prospero_assist = prospero_sub.add_parser(
+        "browser-assist",
+        help="Launch Playwright Chromium on PROSPERO with floating 40-field Auto-Fill Dock for login & review",
+    )
+    prospero_assist.add_argument("project_dir")
+    prospero_assist.add_argument("--dry-run", action="store_true", dest="dry_run")
+    prospero_assist.add_argument("--headless", action="store_true")
 
     context_parser = subparsers.add_parser("context")
     context_sub = context_parser.add_subparsers(dest="context_command", required=True)
@@ -372,8 +554,18 @@ def main(argv: list[str] | None = None) -> int:
         _print(payload)
         return 0 if payload.get("status") in {"pass", "passed"} else 1
     if args.command == "ingest":
-        _print(register_source(Path(args.project_dir), args.source, args.kind))
-        return 0
+        payload = register_source(Path(args.project_dir), args.source, args.kind)
+        _print(payload)
+        return 1 if payload.get("status") == "blocked" else 0
+    if args.command == "registry" and args.registry_command == "verify":
+        from .services.protocol_registration import verify_protocol_registration
+
+        try:
+            payload = verify_protocol_registration(Path(args.project_dir), Path(args.record))
+        except (OSError, ValueError, TypeError) as exc:
+            payload = {"status": "blocked", "issues": [str(exc)]}
+        _print(payload)
+        return 0 if payload.get("status") == "pass" else 1
     if args.command == "registry" and args.registry_command == "register":
         _print(
             register_review_protocol(
@@ -386,6 +578,163 @@ def main(argv: list[str] | None = None) -> int:
             )
         )
         return 0
+    if args.command == "registry" and args.registry_command == "check-osf":
+        from .services.osf import verify_osf_connection
+
+        payload = verify_osf_connection(token=args.token)
+        _print(payload)
+        return 0 if payload.get("status") == "pass" else 1
+    if args.command == "registry" and args.registry_command == "fetch-osf":
+        from .services.osf import fetch_and_save_osf_evidence
+
+        payload = fetch_and_save_osf_evidence(
+            Path(args.project_dir),
+            registration_id=args.registry_id,
+            reviewer=args.reviewer,
+            token=args.token,
+        )
+        _print(payload)
+        return 0 if payload.get("status") == "pass" else 1
+    if args.command == "methodology":
+        from .services.extraction_validator import load_extraction_records, validate_extraction_records
+        from .services.methodology_engine import (
+            audit_equator_compliance,
+            compile_registration_packet,
+            validate_protocol_methodology,
+        )
+        from .services.results_ledger import audit_numerical_consistency
+
+        if args.methodology_command == "validate-protocol":
+            payload = validate_protocol_methodology(Path(args.project_dir))
+        elif args.methodology_command == "compile-registration-packet":
+            payload = compile_registration_packet(Path(args.project_dir))
+        elif args.methodology_command == "audit-equator":
+            payload = audit_equator_compliance(Path(args.project_dir))
+        elif args.methodology_command == "validate-extraction":
+            records = load_extraction_records(Path(args.file_path))
+            payload = validate_extraction_records(records, mode=args.mode)
+        else:
+            payload = audit_numerical_consistency(Path(args.project_dir))
+        _print(payload)
+        return 0 if payload.get("status") == "pass" else 1
+    if args.command == "corpus":
+        from .services.corpus_pipeline import (
+            execute_pubmed_api_search,
+            execute_scopus_api_search,
+            ingest_drop_folders_and_deduplicate,
+            prepare_search_workspace,
+            verify_scopus_connection,
+        )
+
+        if args.corpus_command == "prepare":
+            payload = prepare_search_workspace(Path(args.project_dir))
+        elif args.corpus_command == "fetch-pubmed":
+            payload = execute_pubmed_api_search(Path(args.project_dir), max_records=args.max_records)
+        elif args.corpus_command == "fetch-scopus":
+            payload = execute_scopus_api_search(Path(args.project_dir), max_records=args.max_records)
+        elif args.corpus_command == "check-scopus":
+            payload = verify_scopus_connection(Path(args.project_dir))
+        else:
+            payload = ingest_drop_folders_and_deduplicate(Path(args.project_dir))
+        _print(payload)
+        return 0 if payload.get("status") == "pass" else 1
+    if args.command == "datasets":
+        from .services.clinical_datasets import (
+            DATASET_SPECIALTY_PACKS,
+            fetch_open_dataset,
+            fetch_specialty_pack,
+            ingest_and_verify_dataset,
+            list_clinical_datasets,
+            prepare_dataset_stage,
+        )
+
+        if args.datasets_command == "catalog":
+            items = list_clinical_datasets(
+                domain=args.domain,
+                access_tier=args.access_tier,
+                query=args.query,
+                auto_fetchable_only=bool(getattr(args, "auto_only", False)),
+            )
+            payload = {
+                "status": "pass",
+                "count": len(items),
+                "auto_fetchable_count": sum(1 for d in items if d.get("auto_fetchable")),
+                "datasets": items,
+            }
+        elif args.datasets_command == "packs":
+            payload = {"status": "pass", "packs": DATASET_SPECIALTY_PACKS}
+        elif args.datasets_command == "stage":
+            ids = [s.strip() for s in args.ids.split(",") if s.strip()] if args.ids else None
+            payload = prepare_dataset_stage(Path(args.project_dir), dataset_ids=ids)
+        elif args.datasets_command == "fetch":
+            payload = fetch_open_dataset(Path(args.project_dir), dataset_id=args.dataset_id)
+        elif args.datasets_command == "fetch-pack":
+            payload = fetch_specialty_pack(Path(args.project_dir), pack_id=args.pack_id)
+        else:
+            payload = ingest_and_verify_dataset(Path(args.project_dir), dataset_id=args.dataset_id)
+        _print(payload)
+        return 0 if payload.get("status") == "pass" else 1
+    if args.command == "hygiene":
+        from .services.workspace_hygiene import (
+            audit_workspace_hygiene,
+            install_git_hygiene_hook,
+            organize_project_strays,
+            write_active_mode_guide,
+        )
+
+        if args.hygiene_command == "check":
+            payload = audit_workspace_hygiene(Path(args.workspace_root), check_staged=args.staged)
+        elif args.hygiene_command == "bindings":
+            payload = write_active_mode_guide(Path(args.project_dir), mode=args.mode)
+        elif args.hygiene_command == "organize":
+            payload = organize_project_strays(Path(args.project_dir), apply=args.apply)
+        else:
+            payload = install_git_hygiene_hook(Path(args.workspace_root))
+        _print(payload)
+        return 0 if payload.get("status") == "pass" else 1
+    if args.command == "study":
+        from .services.study_and_synthesis import build_project_study_guide
+
+        payload = build_project_study_guide(Path(args.project_dir))
+        _print(payload)
+        return 0 if payload.get("status") == "pass" else 1
+    if args.command == "synthesis":
+        from .services.study_and_synthesis import (
+            harvest_analysis_outputs,
+            list_synthesis_templates,
+            synthesize_from_r_outputs,
+        )
+
+        if args.synthesis_command == "templates":
+            payload = list_synthesis_templates()
+        elif args.synthesis_command == "harvest":
+            payload = harvest_analysis_outputs(Path(args.project_dir))
+        else:
+            payload = synthesize_from_r_outputs(
+                Path(args.project_dir),
+                publication_template_id=args.publication_template,
+                slide_template_id=args.slide_template,
+                poster_template_id=args.poster_template,
+                slug=args.slug,
+            )
+        _print(payload)
+        return 0 if payload.get("status") == "pass" else 1
+    if args.command == "prospero":
+        from .services.prospero_assistant import (
+            compile_prospero_40_fields,
+            launch_prospero_browser_assistant,
+        )
+
+        if args.prospero_command == "compile":
+            payload = compile_prospero_40_fields(Path(args.project_dir))
+        else:
+            payload = launch_prospero_browser_assistant(
+                Path(args.project_dir),
+                dry_run=bool(args.dry_run),
+                headless=bool(args.headless),
+            )
+        _print(payload)
+        return 0 if payload.get("status") == "pass" else 1
     if args.command == "context" and args.context_command == "build":
         payload = build_task_packet(Path(args.project_dir), args.mode, args.hypothesis)
         _print(payload)
@@ -529,7 +878,9 @@ def main(argv: list[str] | None = None) -> int:
             _print(verify_journal_presets(presets_dir))
             return 0
         if args.journal_command == "route":
-            _print(route_journals(Path(args.project_dir), domain=args.domain, limit=args.limit, presets_dir=presets_dir))
+            _print(
+                route_journals(Path(args.project_dir), domain=args.domain, limit=args.limit, presets_dir=presets_dir)
+            )
             return 0
         if args.journal_command == "report":
             _print(write_journal_report(Path(args.project_dir), domain=args.domain, presets_dir=presets_dir))
@@ -590,9 +941,7 @@ def main(argv: list[str] | None = None) -> int:
             return 1
         return 0
     if args.command == "machine" and args.machine_command == "doctor":
-        payload = machine_doctor(
-            Path(args.workspace_root), Path(args.project_dir) if args.project_dir else None
-        )
+        payload = machine_doctor(Path(args.workspace_root), Path(args.project_dir) if args.project_dir else None)
         _print(payload)
         return 0 if payload.get("status") == "pass" else 1
     if args.command == "machine" and args.machine_command == "release-audit":

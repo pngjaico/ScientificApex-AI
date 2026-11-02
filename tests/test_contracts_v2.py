@@ -43,6 +43,8 @@ def _v2_project(tmp_path: Path) -> Path:
         "required_plugins": [],
     }
     save_structured_file(project / "compute.yaml", compute)
+    from registration_fixtures import reviewed_registration_fixture
+    reviewed_registration_fixture(project)
     return project
 
 

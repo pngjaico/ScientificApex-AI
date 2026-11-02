@@ -1,0 +1,138 @@
+{
+  "contract": "ResearcherProfileV1",
+  "updated_at": "2026-11-02T17:05:00-03:00",
+  "full_name": "João Vitor Fiches Machado",
+  "citation_names": [
+    "Machado, J. V. F.",
+    "Fiches Machado, J. V.",
+    "Machado JVF",
+    "João Vitor Fiches Machado"
+  ],
+  "role_en": "Medical Student & Clinical/Surgical Researcher",
+  "role_pt": "Acadêmico de Medicina e Pesquisador de Iniciação Científica",
+  "orcid": {
+    "id": "0009-0002-6235-7630",
+    "url": "https://orcid.org/0009-0002-6235-7630"
+  },
+  "lattes": {
+    "id": "8773153489726352",
+    "url": "https://lattes.cnpq.br/8773153489726352",
+    "cnpq_internal_menu_url": "https://wwws.cnpq.br/cvlattesweb/PKG_MENU.menu?f_cod=6ED0B9A6659BF6A46682D31AC67899F6#"
+  },
+  "osf": {
+    "user_id": "p8js9",
+    "url": "https://osf.io/p8js9/"
+  },
+  "emails": {
+    "primary_institutional": "j.v.machado@uni9.edu.br",
+    "secondary_personal": "pngjaico@gmail.com"
+  },
+  "affiliations": {
+    "primary_pt": "Curso de Medicina, Universidade Nove de Julho (UNINOVE), São Paulo, SP, Brasil (campus A_CONFIRMAR)",
+    "primary_en": "School of Medicine, Universidade Nove de Julho (UNINOVE), São Paulo, SP, Brazil",
+    "scientific_initiation_collaboration_pt": "Trabalho apresentado no 34º SIICUSP (USP), orientação Nivaldo Alonso, colaboração Diego Emil Arbaje Cerda e Marcel Gutierrez (verificado na declaração nº 877)",
+    "scientific_initiation_collaboration_en": "Work presented at the 34th USP International Symposium of Scientific and Technological Initiation (SIICUSP), advisor Nivaldo Alonso (verified, declaration no. 877)",
+    "clinical_internship_pt": "A_CONFIRMAR (certificado da Liga CVC é imagem; conteúdo não verificado)",
+    "institutional_address": "A_CONFIRMAR pelo pesquisador",
+    "country": "Brazil"
+  },
+  "collaborators_and_advisors": [
+    {
+      "name": "Prof. Dr. Nivaldo Alonso",
+      "role": "Senior Advisor / Orientador (USP / FMUSP — Cirurgia Plástica e Craniomaxilofacial)"
+    },
+    {
+      "name": "Diego Emil Arbaje Cerda",
+      "role": "Co-researcher / Colaborador (USP)"
+    },
+    {
+      "name": "Marcel Gutierrez",
+      "role": "Co-researcher / Colaborador (USP)"
+    }
+  ],
+  "selected_certificates": [
+    {
+      "id": "siicusp-2026-nma-osa-vpi",
+      "category": "Iniciação Científica & Meta-Análise (USP)",
+      "title": "34º Simpósio Internacional de Iniciação Científica e Tecnológica da USP (SIICUSP) — Apneia Obstrutiva do Sono após Cirurgia para Insuficiência Velofaríngea em Pacientes com Fissura Palatina: Revisão Sistemática e Metanálise de Proporções de Braço Único",
+      "institution": "Universidade de São Paulo (USP)",
+      "date": "2026-10-26",
+      "verification_code": "Z8GE-H57W-RU87-W1LZ",
+      "local_path": "acervo_de_referencia/perfil_pesquisador/certificados_selecionados/declaracao_iniciacao_cientifica.pdf",
+      "verified_from_pdf": true
+    },
+    {
+      "id": "enap-estatistica-linguagem-r-2026",
+      "category": "Estatística & Linguagem R (Nota 100/100)",
+      "title": "Estatística para Análise de Dados na Administração Pública (25 h, nota 100; inclui módulo Introdução à Linguagem R)",
+      "institution": "Escola Nacional de Administração Pública (ENAP / EV.G)",
+      "date": "2026-10-30",
+      "verification_code": "A_CONFIRMAR (texto do código ilegível no PDF)",
+      "local_path": "acervo_de_referencia/perfil_pesquisador/certificados_selecionados/certificado_estatistica_e_rstudio.pdf",
+      "verified_from_pdf": true
+    },
+    {
+      "id": "ablcp-capacitacao-pesquisa",
+      "category": "Metodologia Científica em Cirurgia Plástica",
+      "title": "Curso de Pesquisa ABLCP (carga horária A_CONFIRMAR)",
+      "institution": "Associação Brasileira das Ligas Acadêmicas de Cirurgia Plástica (ABLCP)",
+      "local_path": "acervo_de_referencia/perfil_pesquisador/certificados_selecionados/certificado_curso_pesquisa_ablcp.pdf",
+      "verified_from_pdf": false,
+      "note": "PDF é imagem: título, carga horária, data e código NÃO foram lidos do documento; confirmar manualmente."
+    },
+    {
+      "id": "estagio-cirurgia-vascular-hospital-ipiranga",
+      "category": "Estágio Cirúrgico Hospitalar & Liga Acadêmica (108 horas)",
+      "title": "Certificado Liga de Cirurgia Cardiovascular (conteúdo A_CONFIRMAR)",
+      "institution": "Universidade Nove de Julho (UNINOVE) / Hospital Ipiranga",
+      "local_path": "acervo_de_referencia/perfil_pesquisador/certificados_selecionados/certificado_liga_cvc.pdf",
+      "verified_from_pdf": false,
+      "note": "PDF é imagem: título, carga horária, data e código NÃO foram lidos do documento; confirmar manualmente."
+    },
+    {
+      "id": "capitulo-livro-ecg-2026",
+      "category": "Capítulo de Livro Publicado com DOI",
+      "title": "Capítulo 12: Bloqueio de Ramo, Periférico e Profundo do Ramo Direito — Dominando o Eletrocardiograma: Da Teoria à Prática Clínica (1ª Edição)",
+      "institution": "Editora Humanize",
+      "date": "2026-01-16",
+      "doi": "10.5281/zenodo.18268516",
+      "isbn": "978-65-5255-158-0",
+      "local_path": "acervo_de_referencia/perfil_pesquisador/certificados_selecionados/capitulo_ecg.pdf",
+      "author_position": "4º de 8 autores",
+      "verified_from_pdf": true
+    },
+    {
+      "id": "publicacao-transplante-cardiaco-sus-2024",
+      "category": "Publicação em Anais & Pôster (SUS / DATASUS)",
+      "title": "Impacto do Transplante Cardíaco no Sistema Único de Saúde: Uma Análise de Indicadores de Saúde (resumo simples + pôster)",
+      "institution": "III Congresso Internacional de Saúde Pública e Coletiva no SUS (III COINSUS)",
+      "date": "2024-11-11",
+      "isbn": "978-65-85639-09-5",
+      "verification_code": "MHRUU9-AP",
+      "local_path": "acervo_de_referencia/perfil_pesquisador/certificados_selecionados/impacto_do_transplante_cardiaco_no_sistema_unico_de_saud.pdf",
+      "author_position": "coautor (autora principal: Bianca Rios Sampaio)",
+      "verified_from_pdf": true
+    },
+    {
+      "id": "publicacao-cuidados-com-feridas-2024",
+      "category": "Publicação Científica (Feridas & Cirurgia/Enfermagem)",
+      "title": "Educação em Saúde sobre Cuidados com Feridas: Capacitação de Profissionais e Pacientes",
+      "institution": "Editora SciSaúde",
+      "verification_code": "B9BM1M-A",
+      "local_path": "acervo_de_referencia/perfil_pesquisador/certificados_selecionados/publicacao_educacao_em_saude_sobre_cuidados_com_feridas.pdf",
+      "author_position": "coautor (6º autor listado)",
+      "verified_from_pdf": true
+    },
+    {
+      "id": "workshop-abdomen-agudo-coma-uninove-2025",
+      "category": "Treinamento Cirúrgico / Emergência Abdominal (20 horas)",
+      "title": "Workshop Abdômen Agudo (detalhes A_CONFIRMAR)",
+      "institution": "Universidade Nove de Julho (UNINOVE)",
+      "verification_code": "18577130.80942105.6.8.85771308094210568 (verificado, Even3)",
+      "local_path": "acervo_de_referencia/perfil_pesquisador/certificados_selecionados/ws_abdomen_agudo.pdf",
+      "verified_from_pdf": false,
+      "note": "PDF é imagem: título, carga horária, data e código NÃO foram lidos do documento; confirmar manualmente."
+    }
+  ],
+  "verification_note": "Campos marcados A_CONFIRMAR ou verified_from_pdf=false não podem ser usados em submissões sem confirmação do pesquisador."
+}

@@ -1,11 +1,14 @@
-# Graph Report - C:\Users\Usuario-pc\Desktop\Doutorado  (2026-10-12)
+# Graph Report - D:\Usuario-pc\Projetos\Doutorado  (2026-11-02)
+
+> **Start here:** [`graphify-out/LEIA-ME.md`](LEIA-ME.md) maps every generated file.
+> The agent quickstart and query recipes are at the end of this report.
 
 ## Corpus Check
 - Root semantic graph was not run: the workspace is too broad and detection timed out. This is an operational navigation graph.
 
 ## Summary
-- 1036 nodes · 2093 edges · 8 communities (7 shown, 1 thin omitted)
-- Extraction: 88% EXTRACTED · 12% INFERRED · 0% AMBIGUOUS · INFERRED: 243 edges (avg confidence: 0.75)
+- 1294 nodes · 2601 edges · 8 communities (7 shown, 1 thin omitted)
+- Extraction: 90% EXTRACTED · 10% INFERRED · 0% AMBIGUOUS · INFERRED: 256 edges (avg confidence: 0.75)
 - Token cost: 0 input · 0 output
 
 ## Community Hubs (Navigation)
@@ -19,16 +22,16 @@
 - Git Hygiene
 
 ## God Nodes (most connected - your core abstractions)
-1. `Build context Task Packet` - 136 edges
-2. `Read project protocol standards compute files` - 75 edges
-3. `Article Machine Package` - 68 edges
-4. `Critical Scientific Skills` - 68 edges
-5. `article_machine.agent_skills` - 67 edges
-6. `Runtime And Commands` - 57 edges
-7. `article_machine.cli` - 50 edges
-8. `Article Machine Projects` - 41 edges
-9. `Agent Documentation` - 32 edges
-10. `Git Hygiene` - 20 edges
+1. `Build context Task Packet` - 139 edges
+2. `Article Machine Package` - 101 edges
+3. `Runtime And Commands` - 91 edges
+4. `article_machine.cli` - 78 edges
+5. `Read project protocol standards compute files` - 75 edges
+6. `Critical Scientific Skills` - 72 edges
+7. `article_machine.agent_skills` - 71 edges
+8. `Agent Documentation` - 56 edges
+9. `Article Machine Projects` - 43 edges
+10. `Graphify Operational Map` - 38 edges
 
 ## Surprising Connections (you probably didn't know these)
 - `Runtime And Commands` --exposes--> `article-machine aggregate`  [EXTRACTED]
@@ -39,7 +42,7 @@
   . → article_machine/cli.py
 - `Runtime And Commands` --exposes--> `article-machine anti-ai-naturalize`  [EXTRACTED]
   . → article_machine/cli.py
-- `Runtime And Commands` --exposes--> `article-machine audit-language`  [EXTRACTED]
+- `Runtime And Commands` --exposes--> `article-machine audit-equator`  [EXTRACTED]
   . → article_machine/cli.py
 
 ## Import Cycles
@@ -48,35 +51,35 @@
 ## Communities (8 total, 1 thin omitted)
 
 ### Community 0 - "Runtime Commands"
-Cohesion: 0.20
-Nodes (10): Doutorado Workspace, Runtime And Commands, .venv python -m article_machine, .venv python -m graphify, global python -m graphify, .venv python -m pytest, article_machine machine audit --strict, article_machine benchmark validate (+2 more)
+Cohesion: 0.11
+Nodes (20): Doutorado Workspace, Runtime And Commands, .venv python -m article_machine, .venv python -m graphify, global python -m graphify, .venv python -m pytest, article_machine machine audit --strict, article_machine benchmark validate (+12 more)
 
 ### Community 1 - "Article Machine"
-Cohesion: 0.03
-Nodes (97): Article Machine Package, article_machine.__init__, Article Machine entrypoints and CLI, article_machine.__main__, article_machine.adapters.__init__, article_machine.adapters.runtime, article_machine.agent_skills, Skill routing and PT-BR style gates (+89 more)
+Cohesion: 0.02
+Nodes (136): Article Machine Package, article_machine.__init__, Article Machine entrypoints and CLI, article_machine.__main__, article_machine.adapters.__init__, article_machine.adapters.runtime, article_machine.agent_skills, Skill routing and PT-BR style gates (+128 more)
 
 ### Community 2 - "Projects And Modes"
 Cohesion: 0.01
-Nodes (173): Article Machine Projects, Article Machine Governance 2026, lane: machine-governance, mode: bootstrap, type: machine-governance, article-machine-governance-2026/context (4 direct items), article-machine-governance-2026/analysis (1 direct items), Article Machine Upgrade 2026 (+165 more)
+Nodes (176): Article Machine Projects, Article Machine Governance 2026, lane: machine-governance, mode: bootstrap, type: machine-governance, article-machine-governance-2026/context (5 direct items), article-machine-governance-2026/analysis (6 direct items), article-machine-governance-2026/reviews (2 direct items) (+168 more)
 
 ### Community 3 - "Scientific Skills"
 Cohesion: 0.01
-Nodes (502): Critical Scientific Skills, hypothesis-tournament, hypothesis-tournament :: Hypothesis Tournament, hypothesis-tournament :: Workflow, hypothesis-tournament :: Output Contract, hypothesis-tournament :: Gates, scientific-novelty-checker, scientific-novelty-checker :: Scientific Novelty Checker (+494 more)
+Nodes (521): Critical Scientific Skills, hypothesis-tournament, hypothesis-tournament :: Hypothesis Tournament, hypothesis-tournament :: Workflow, hypothesis-tournament :: Output Contract, hypothesis-tournament :: Gates, scientific-novelty-checker, scientific-novelty-checker :: Scientific Novelty Checker (+513 more)
 
 ### Community 4 - "Agent Docs"
-Cohesion: 0.02
-Nodes (145): Agent Documentation, .agents/AGENTS.md :: Local Agent Control Plane, .agents/AGENTS.md :: Graph-First Rule, .agents/AGENTS.md :: Required Entry Flow, .agents/AGENTS.md :: Local Skills, .agents/AGENTS.md :: Hard Rules, .agents/GRAPH_FIRST.md :: Graph-First Operating Policy, .agents/GRAPH_FIRST.md :: Commands (+137 more)
+Cohesion: 0.01
+Nodes (288): Agent Documentation, Workspace Navigation Index, .AGENTES :: Operação permanente da máquina científica, docs/ingles/AGENTES_DA_MAQUINA.md :: Permanent scientific-machine operations, docs/portugues/GUIA_DA_MAQUINA.md :: Guia da máquina científica, docs/portugues/GUIA_DA_MAQUINA.md :: Em uma frase, docs/portugues/GUIA_DA_MAQUINA.md :: Caminho normal, do pedido ao pacote revisável, docs/portugues/GUIA_DA_MAQUINA.md :: 1. Escolha o projeto e entenda os contratos (+280 more)
 
-### Community 5 - "Legacy Sources"
-Cohesion: 0.22
-Nodes (9): Legacy And Raw Sources, legacy: Correção Orientador, legacy: Doutorado, legacy: Leitor de Artigos, legacy: PDFS DR ANDRÉ, legacy: REVISÃO LIGA, legacy: Revisões Sistemáticas, legacy: Submissão Final (+1 more)
+### Community 6 - "Graphify Map"
+Cohesion: 0.07
+Nodes (33): Graphify Operational Map, Área / Area: .agents, Área / Area: .codex, Área / Area: .git, Área / Area: .github, Área / Area: .machine, Área / Area: .mypy_cache, Área / Area: .pytest_cache (+25 more)
 
 ### Community 7 - "Git Hygiene"
-Cohesion: 0.25
-Nodes (8): Git Hygiene, local agent control plane; track only policy files and selected navigation skills, local virtual environment; never stage, pytest cache; generated, browser automation cache; generated, temporary workspace output, shared source intake; review before staging raw data, generated operational graph outputs
+Cohesion: 0.33
+Nodes (6): Git Hygiene, local agent control plane; track only policy files and selected navigation skills, local virtual environment; never stage, pytest cache; generated, shared source intake; review before staging raw data, generated operational graph outputs
 
 ## Knowledge Gaps
-- **15 isolated node(s):** `docs/MIGRATION_0_3.md :: Migration to 0.3.0`, `article_machine.adapters.runtime`, `article_machine.commands.governance`, `article_machine.contracts.compute`, `article_machine.policy.gates` (+10 more)
+- **38 isolated node(s):** `.AGENTES :: Operação permanente da máquina científica`, `docs/ingles/AGENTES_DA_MAQUINA.md :: Permanent scientific-machine operations`, `docs/portugues/ESTADO_E_LIMITES_DA_MAQUINA.md :: Estado atual e limites verificáveis`, `docs/ingles/ESTADO_E_LIMITES_DA_MAQUINA.md :: Current state and verifiable limitations`, `LEIA-ME_PRIMEIRO.md :: Comece aqui — fábrica científica` (+33 more)
   These have ≤1 connection - possible missing edges or undocumented components.
 - **1 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
 
@@ -101,12 +104,29 @@ _Questions this graph is uniquely positioned to answer:_
 2. Read .agents/AGENTS.md
 3. Run article_machine machine audit --strict
 4. Open graphify-out/GRAPH_REPORT.md
-5. Query graph before broad navigation
-6. Select or create projects/<project_id>
-7. Read project protocol standards compute files
-8. Run article_machine skills route
-9. Build context Task Packet
-10. Validate Evidence Lock before ready claims
+5. Read graphify-out/LEIA-ME.md for the generated file map
+6. Query graph before broad navigation
+7. Select or create projects/<project_id>
+8. Read project protocol standards compute files
+9. Run article_machine skills route
+10. Build context Task Packet
+11. Validate Evidence Lock before ready claims
+
+## Agent Quickstart By Intent
+- **Open the operational graph**: graphify-out/LEIA-ME.md -> graphify-out/GRAPH_REPORT.md -> graphify-out/graph.html
+- **New agent entering the workspace**: docs/INDICE_DO_WORKSPACE.md -> docs/AGENT_START_HERE.md -> .agents/AGENTS.md
+- **Choose or resume a project**: docs/ESTADO_DOS_PROJETOS.md -> projects/<project_id>/project.yaml
+- **Restore an environment**: docs/AMBIENTES_E_LOCKS.md -> uv.lock or renv.lock
+- **Organize or clean without deleting**: docs/ORGANIZACAO_E_LIMPEZA.md
+- **Check Git or worktrees**: docs/GIT_E_WORKTREES.md
+- **Migrate or audit the C: legacy**: docs/MIGRACAO_PARA_D_STATUS.md -> archive/legado_C_2026-11/LEIA-ME.md
+- **Claim something as ready**: evidence/claim_map.jsonl -> Review Trinity
+
+## Agent Query Recipes
+- `graphify query "onde esta o painel de projetos" --budget 1200`
+- `graphify query "como restaurar o ambiente R" --budget 1200`
+- `graphify query "como organizar sem excluir conteudo bruto" --budget 1200`
+- `graphify query "qual projeto esta no modo analysis" --budget 1200`
 
 ## Plugin Gateway Map
 - `deep-thinking-governor` -> Decision quality gate for assumptions alternatives premortems -> decision notes residual-risk summaries
@@ -120,18 +140,18 @@ _Questions this graph is uniquely positioned to answer:_
 - `content-preservation-guardian` -> `skills/content-preservation-guardian/SKILL.md`
 
 ## Detailed Navigation Layers
-- Markdown sections indexed: 111
+- Markdown sections indexed: 246
 - Project contract files indexed: 72
-- Project artifact areas indexed: 133
-- Skill instruction sections indexed: 428
+- Project artifact areas indexed: 136
+- Skill instruction sections indexed: 443
 - Navigation/preservation skills installed: 3
 - Project-scoped Codex agent roles indexed: 5
 - Read-only Codex benchmark profiles indexed: 2
 
 ## Generation Provenance
-- Git HEAD: `fbcef5510659b75d320d2517c4a71463f0ab8d14`
-- Dirty worktree at generation: `false`
-- Porcelain status entries at generation: 0
+- Git HEAD: `8401756d9b90cf922416c155f55a1fd287c65027`
+- Dirty worktree at generation: `true`
+- Porcelain status entries at generation: 110
 
 ## Natural Language Gateway Phrases
 These nodes make Portuguese and operational user phrasing easier for `graphify query` to match.
@@ -148,24 +168,19 @@ These nodes make Portuguese and operational user phrasing easier for `graphify q
 - `pedido: pensamento profundo decisao forte hipotese fragil` -> deep-thinking-governor, Decision quality gate for assumptions alternatives premortems, decision notes residual-risk summaries
 - `pedido: artigo pt br abnt vancouver sem cara de ia` -> ptbr-article-writing, anti-ai-writing-governor, article_machine.ptbr_style
 - `pedido: melhorar maquina sol medio luna trabalhos cientificos complexos ingles portugues` -> Codex project configuration, Codex role: workspace-explorer, Codex role: scientific-reviewer, Codex role: verification-runner, Codex read-only profile: xhigh-baseline.config, Codex read-only profile: ultra-benchmark.config, skill-upgrade-governor, agent-benchmark-harness, article_machine benchmark validate, article_machine machine audit --strict
+- `pedido: indice do workspace painel de projetos estado atual` -> Workspace Navigation Index, docs/INDICE_DO_WORKSPACE.md, docs/ESTADO_DOS_PROJETOS.md, Article Machine Projects
+- `pedido: restaurar ambiente r renv python uv lock quarto playwright` -> R 4.6.1 renv scientific environment, Python 3.13 root uv environment, Clinical ML Python uv environments, Quarto 1.10.20 portable toolchain, Playwright 1.61.1 browser tooling, docs/AMBIENTES_E_LOCKS.md
+- `pedido: organizar limpar workspace sem excluir conteudo bruto` -> content-preservation-guardian, docs/ORGANIZACAO_E_LIMPEZA.md, docs/GIT_E_WORKTREES.md, Git Hygiene
+- `pedido: migracao c para d backup legado archive` -> docs/MIGRACAO_PARA_D.md, docs/MIGRACAO_PARA_D_STATUS.md, Legacy And Raw Sources, docs/ORGANIZACAO_E_LIMPEZA.md
+- `pedido: worktree sujo git status antes de commit` -> Git Hygiene, docs/GIT_E_WORKTREES.md, docs/ORGANIZACAO_E_LIMPEZA.md
+- `pedido: abrir grafo operacional graph html graph report` -> graphify-out/LEIA-ME.md, graphify-out/GRAPH_REPORT.md, graphify-out/graph.html, scripts/generate_workspace_graph.py, Graphify Operational Map
 
 ## Legacy And Hygiene Map
-Legacy folders requiring manual triage before moves or staging:
-- `Correção Orientador/`
-- `Doutorado/`
-- `Leitor de Artigos/`
-- `PDFS DR ANDRÉ/`
-- `REVISÃO LIGA/`
-- `Revisões Sistemáticas/`
-- `Submissão Final/`
-- `NMA_OSA_VPI/`
 
 Git hygiene targets:
 - `.agents/`: local agent control plane; track only policy files and selected navigation skills
 - `.venv/`: local virtual environment; never stage
 - `.pytest_cache/`: pytest cache; generated
-- `.playwright-osf/`: browser automation cache; generated
-- `tmp/`: temporary workspace output
 - `sources/`: shared source intake; review before staging raw data
 - `graphify-out/`: generated operational graph outputs
 

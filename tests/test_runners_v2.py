@@ -13,6 +13,8 @@ def _ready_project(tmp_path: Path) -> Path:
     protocol["research_question"] = "Does the runner preserve provenance?"
     protocol["objectives"] = ["Validate execution."]
     save_structured_file(project / "protocol.yaml", protocol)
+    from registration_fixtures import reviewed_registration_fixture
+    reviewed_registration_fixture(project)
     return project
 
 

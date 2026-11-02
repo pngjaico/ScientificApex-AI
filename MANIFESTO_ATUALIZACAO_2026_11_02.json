@@ -1,0 +1,932 @@
+{
+  "data": "2026-11-02T17:23:42.973671+00:00",
+  "raiz": "D:\\Usuario-pc\\Projetos\\Doutorado",
+  "arquivos": [
+    {
+      "caminho": ".AGENTES",
+      "bytes": 3868,
+      "sha256": "e81ddbb4f1c9b44a6a7db92260282999a3a1ac284a14c306adda360178c5bfd8"
+    },
+    {
+      "caminho": "AGENTS.md",
+      "bytes": 13030,
+      "sha256": "b2a17ebda7f77fceb172bd51d012cc05ea47a3c9924a94be0dea0af6b3d59dba"
+    },
+    {
+      "caminho": "article_machine/cli.py",
+      "bytes": 33265,
+      "sha256": "bdc75cbb285a1378a7f753ddbeff2c812aa51389401ce11599ed18b4ca0534fd"
+    },
+    {
+      "caminho": "article_machine/ingest.py",
+      "bytes": 2248,
+      "sha256": "252d75bcc9fc2b1fd47af45cb4586ac8279e5a1bb8042b3f99cc038faa6143f2"
+    },
+    {
+      "caminho": "article_machine/projects.py",
+      "bytes": 18627,
+      "sha256": "f045b4edf42f96d1d68aab9f94eb24e7af5689351bb93f1c63e99d2731361a7e"
+    },
+    {
+      "caminho": "article_machine/services/protocol_registration.py",
+      "bytes": 12245,
+      "sha256": "325450e32dea7feaea45c038a5fc7c047c401ffe8f8be6ab53b0fec3be47fb70"
+    },
+    {
+      "caminho": "article_machine/services/runners.py",
+      "bytes": 6404,
+      "sha256": "445db791c642f5b4c90f7df0fbca254f4ca0bf26f72d4b12cdaa7e155545d50b"
+    },
+    {
+      "caminho": "article_machine/standards.py",
+      "bytes": 5855,
+      "sha256": "75100869e1358fcc289f517d596325b1a384a04a44f383a667398ebe0a71f057"
+    },
+    {
+      "caminho": "article_machine/zero_trust.py",
+      "bytes": 53947,
+      "sha256": "d8f1d19d136d207bbca5fc1f983604aa941ced56a8177d1e3b896f140ad2502c"
+    },
+    {
+      "caminho": "docs/ingles/ESTADO_E_LIMITES_DA_MAQUINA.md",
+      "bytes": 5181,
+      "sha256": "87c51b2a4720a7588719ce53334c06e9fe782faab7e4f602776afd4a9fda566f"
+    },
+    {
+      "caminho": "docs/ingles/GUIA_DA_MAQUINA.md",
+      "bytes": 14919,
+      "sha256": "3a100e040a0325e60f48a14e76e165ace7763716c8eba55bb023ccf93989064c"
+    },
+    {
+      "caminho": "docs/portugues/ESTADO_E_LIMITES_DA_MAQUINA.md",
+      "bytes": 5591,
+      "sha256": "9d1986d7ff595330cafda85249b39e3358002156519fad0f6cbfb30037c0aa10"
+    },
+    {
+      "caminho": "docs/portugues/GUIA_DA_MAQUINA.md",
+      "bytes": 15171,
+      "sha256": "90985ae4a17840899fed9ebdf381b096f790b499ec085eb51338dc76e7137535"
+    },
+    {
+      "caminho": "graphify-out/arvore_da_maquina/graph.json",
+      "bytes": 21069003,
+      "sha256": "0b131571910908fb73c42ab047a891771999fb64693f86c5a88677245cbf2a70"
+    },
+    {
+      "caminho": "graphify-out/arvore_da_maquina/manifesto_da_arvore.json",
+      "bytes": 15382,
+      "sha256": "fe1e65e56d7021eb1c24d234967073dfba15debf941365d59b6f32e3826fccf0"
+    },
+    {
+      "caminho": "graphify-out/graph.json",
+      "bytes": 1577993,
+      "sha256": "9f0c44f6b6c4ac2d9c5aefa2a095c12553a2d60887f080752c1db9ef43e3ccc6"
+    },
+    {
+      "caminho": "graphify-out/GRAPH_REPORT.md",
+      "bytes": 11261,
+      "sha256": "661c2fb5f65315d5f4d33db7e59fc68c7d124156481fe0d3d54b2c450e6c8a5c"
+    },
+    {
+      "caminho": "integracoes/catalogos_cientificos/ingles/auditoria_das_fontes.md",
+      "bytes": 9140,
+      "sha256": "d258f413da6379a6f60bc5763f4255310e810ba9d8ea309e0d23dcbf3c69b00c"
+    },
+    {
+      "caminho": "integracoes/catalogos_cientificos/ingles/catalogo_sob_demanda.md",
+      "bytes": 4466,
+      "sha256": "18257673d46e4a704fa97e2a848acb34625bc4569be38386002a87446143574b"
+    },
+    {
+      "caminho": "integracoes/catalogos_cientificos/ingles/LEIA-ME.md",
+      "bytes": 1123,
+      "sha256": "013761cd95c7891134a8d962d8fa2ad484a5cde825de9fb80ca6e4cb9eed474b"
+    },
+    {
+      "caminho": "integracoes/catalogos_cientificos/inventario_de_habilidades.json",
+      "bytes": 64195,
+      "sha256": "8ecd6b533c54e84f95b05db4e9d841f0a56846430a704ed4a724d22fbf48eade"
+    },
+    {
+      "caminho": "integracoes/catalogos_cientificos/manifesto_da_quarentena.json",
+      "bytes": 296919,
+      "sha256": "480955063b0188a263765e42d123f675d8318354854fbfa5ebb1480728d26d3c"
+    },
+    {
+      "caminho": "integracoes/catalogos_cientificos/manifesto_das_fontes.json",
+      "bytes": 74603,
+      "sha256": "8f70a02c68ff92bfccb11bf8e66fd42128e4b8712eb5fac968d45048fd41be5d"
+    },
+    {
+      "caminho": "integracoes/catalogos_cientificos/portugues/auditoria_das_fontes.md",
+      "bytes": 9281,
+      "sha256": "b607f803f6d3a8a6d4143305865230e6bab9c5ff66f05e662181007486551498"
+    },
+    {
+      "caminho": "integracoes/catalogos_cientificos/portugues/catalogo_sob_demanda.md",
+      "bytes": 4561,
+      "sha256": "120c8a3d9f371b7a211dfc990554fa023406d246625d8779e31061ad60c1f134"
+    },
+    {
+      "caminho": "integracoes/catalogos_cientificos/portugues/LEIA-ME.md",
+      "bytes": 1156,
+      "sha256": "096ac0157665736cfd8e4fb9fdea248c15b3bf13cf2a001e3ae00a4a036626b0"
+    },
+    {
+      "caminho": "LEIA-ME_PRIMEIRO.md",
+      "bytes": 2277,
+      "sha256": "9e146e3d710b084b73cb4b003067b3a85d61d996a622e4c972ca0d9b457f65f5"
+    },
+    {
+      "caminho": "maquina_canonica.json",
+      "bytes": 1322,
+      "sha256": "bfbbbd528388031910f2531573a44f6444cdf17d8d865ea2bd0b9d29784d823a"
+    },
+    {
+      "caminho": "modelos/aprendizado_de_maquina_clinico/ambientes/aprendizado_maquina/uv.lock",
+      "bytes": 43541,
+      "sha256": "93461c1002d438be50feb43acab371def1d7fd5a993b164a2805d509f8a16ec9"
+    },
+    {
+      "caminho": "modelos/aprendizado_de_maquina_clinico/ambientes/aprendizado_profundo/uv.lock",
+      "bytes": 31771,
+      "sha256": "c8200dabc197f1a3e7c66afe767b103d2664e1366c11e61b4a7ad214d83449ec"
+    },
+    {
+      "caminho": "modelos/aprendizado_de_maquina_clinico/compute.yaml",
+      "bytes": 895,
+      "sha256": "f5b92d775171ff6be89b892885cd450cedf97857f80b1cff32edd8ebc85b7ff8"
+    },
+    {
+      "caminho": "modelos/aprendizado_de_maquina_clinico/ingles/LEIA-ME.md",
+      "bytes": 380,
+      "sha256": "da6a00a5b239ee99c0737db306d169a1e4ce30c5a2612b2283fe5bd3dda2617e"
+    },
+    {
+      "caminho": "modelos/aprendizado_de_maquina_clinico/ingles/PROTOCOLO.md",
+      "bytes": 428,
+      "sha256": "1d8a160e4f9459f4ac2a66706008bef5708c807578e09a6c176c5ba8f9b1840c"
+    },
+    {
+      "caminho": "modelos/aprendizado_de_maquina_clinico/portugues/LEIA-ME.md",
+      "bytes": 405,
+      "sha256": "92db8f482ad6648203cf00c8fde868a1409d55f86e91424086b7d9ce9aa0bc90"
+    },
+    {
+      "caminho": "modelos/aprendizado_de_maquina_clinico/portugues/PROTOCOLO.md",
+      "bytes": 429,
+      "sha256": "9a07d625dd6190877335ed3e61b33e8795f95d3f743c1660a5e168cf1a1d9996"
+    },
+    {
+      "caminho": "modelos/aprendizado_de_maquina_clinico/project.yaml",
+      "bytes": 372,
+      "sha256": "f84d546d1356eaf1a9cae10eae6867628283162fe34c9740719264e63c073289"
+    },
+    {
+      "caminho": "modelos/aprendizado_de_maquina_clinico/protocol.yaml",
+      "bytes": 437,
+      "sha256": "e120a1c5f04dc62a6ada6dc132549d845635c5c509c92b5ccde16aea34e7de44"
+    },
+    {
+      "caminho": "modelos/aprendizado_de_maquina_clinico/standards.yaml",
+      "bytes": 654,
+      "sha256": "6e5d8e43aa8d8517be8c1104b821e87d2770d342fb63520e69f4b50bd751fc31"
+    },
+    {
+      "caminho": "modelos/aprendizado_de_maquina_clinico/uv.lock",
+      "bytes": 43541,
+      "sha256": "93461c1002d438be50feb43acab371def1d7fd5a993b164a2805d509f8a16ec9"
+    },
+    {
+      "caminho": "modelos/estatistica_e_figuras/ambiente/instalar_pacotes.R",
+      "bytes": 2335,
+      "sha256": "c42bf6a5d443e5edcc2c63f573f3672e9747585f71a5dbb2726900d7ec9f9319"
+    },
+    {
+      "caminho": "modelos/estatistica_e_figuras/ambiente/renv.lock",
+      "bytes": 219574,
+      "sha256": "ba062a7f6cf09bae2171d095a96ae1e87724ea741739eebd3165332637a55ac4"
+    },
+    {
+      "caminho": "modelos/estatistica_e_figuras/ingles/LEIA-ME.md",
+      "bytes": 1050,
+      "sha256": "9e2f0188ed43db32c6dd5f45a13428c10a776b68fa5eee9e7ad7c8cf59d79161"
+    },
+    {
+      "caminho": "modelos/estatistica_e_figuras/ingles/PROTOCOLO.md",
+      "bytes": 2097,
+      "sha256": "b07ff67c085f172db82eaac78e3aa053b849cbca710d9ad2fc421b1dde9b04e5"
+    },
+    {
+      "caminho": "modelos/estatistica_e_figuras/portugues/LEIA-ME.md",
+      "bytes": 1127,
+      "sha256": "2a69b097e25e71473520aad22f4776d98a8e50a093237603d7d1754597ce7da1"
+    },
+    {
+      "caminho": "modelos/estatistica_e_figuras/portugues/PROTOCOLO.md",
+      "bytes": 2255,
+      "sha256": "d4bee4ac98925dd2d64605c6228f66f25df286835b906788ee02dd682c4bf6db"
+    },
+    {
+      "caminho": "modelos/estatistica_e_figuras/scripts/gerar_demonstracoes.R",
+      "bytes": 21552,
+      "sha256": "f5406a806bd60e58f81ab1632043160926791b7852e0a140b8bd08e3fa301bbb"
+    },
+    {
+      "caminho": "modelos/manuscrito/compute.yaml",
+      "bytes": 896,
+      "sha256": "73203d44ffcf6ef117da81d50bdfecdd7a816377c5bf8cfe885d5c043e502ff7"
+    },
+    {
+      "caminho": "modelos/manuscrito/ingles/LEIA-ME.md",
+      "bytes": 387,
+      "sha256": "2c08b4ded15e491e5d7ed2e37e9344735a4809d8c06463e5652610b14723f1ea"
+    },
+    {
+      "caminho": "modelos/manuscrito/ingles/PROTOCOLO.md",
+      "bytes": 424,
+      "sha256": "00cf35f6fd0b897001e40b800ec8403e72d4af9e6224bd7cce113b9f21a0c539"
+    },
+    {
+      "caminho": "modelos/manuscrito/portugues/LEIA-ME.md",
+      "bytes": 412,
+      "sha256": "348a899d7b05ac6dde9566561154cab15dcfa2ac7ab9b172755c6225cc8ec8e7"
+    },
+    {
+      "caminho": "modelos/manuscrito/portugues/PROTOCOLO.md",
+      "bytes": 416,
+      "sha256": "6e5cdfbddf26f49bcf8bdf59e5884adf759a6471692777ba75f73d039b17821c"
+    },
+    {
+      "caminho": "modelos/manuscrito/project.yaml",
+      "bytes": 335,
+      "sha256": "cb3cc0aafe810f69ade4554d1d820a9f838a64a1a441a35dede9f9cb589b27c4"
+    },
+    {
+      "caminho": "modelos/manuscrito/protocol.yaml",
+      "bytes": 440,
+      "sha256": "ad90f2d93777e0022f25805ed4edfe374b0a6c289414e81c1099e3de0006336e"
+    },
+    {
+      "caminho": "modelos/manuscrito/standards.yaml",
+      "bytes": 650,
+      "sha256": "b3ad5cf9336ed4a7fb1e05220fc634f957cd5df79680ccb7b52d86d3a55f3b18"
+    },
+    {
+      "caminho": "modelos/meta_analise_em_r/ambiente/renv.lock",
+      "bytes": 49135,
+      "sha256": "826edbf34293d162066e33f6e6e014c881556d89ae8da99d8a6f6a8e1c4f45e4"
+    },
+    {
+      "caminho": "modelos/meta_analise_em_r/compute.yaml",
+      "bytes": 898,
+      "sha256": "5495ceb05f9f62a834a623886c604c4e0671d34660a9125a52ffca20810e4dc3"
+    },
+    {
+      "caminho": "modelos/meta_analise_em_r/ingles/LEIA-ME.md",
+      "bytes": 387,
+      "sha256": "7cc40dd45c5285f13cc9321aaafcb0c88528e670001081a6858fab3b1694375f"
+    },
+    {
+      "caminho": "modelos/meta_analise_em_r/ingles/PROTOCOLO.md",
+      "bytes": 421,
+      "sha256": "2beddbdcb5f6afbc0da209db68f797d4adefca7aa3a58d6cee19d6a426358c4e"
+    },
+    {
+      "caminho": "modelos/meta_analise_em_r/portugues/LEIA-ME.md",
+      "bytes": 412,
+      "sha256": "9a96814e133c4d7811e4739d14603e153c9995d46519df7b7206bef137022a87"
+    },
+    {
+      "caminho": "modelos/meta_analise_em_r/portugues/PROTOCOLO.md",
+      "bytes": 414,
+      "sha256": "2bc7445e32cdb9b84df1c42cbc0182aaaa51a3910a952ee1fe08872158ac7f18"
+    },
+    {
+      "caminho": "modelos/meta_analise_em_r/project.yaml",
+      "bytes": 347,
+      "sha256": "8ffca9343d6c1437acfc616400392cd834f35bc2d66e91c3c5c896436b6a2d37"
+    },
+    {
+      "caminho": "modelos/meta_analise_em_r/protocol.yaml",
+      "bytes": 438,
+      "sha256": "f99d876432311d95c0eb3925a0caca3422c15ad0556857ac0bc079f527c84382"
+    },
+    {
+      "caminho": "modelos/meta_analise_em_r/renv.lock",
+      "bytes": 49135,
+      "sha256": "826edbf34293d162066e33f6e6e014c881556d89ae8da99d8a6f6a8e1c4f45e4"
+    },
+    {
+      "caminho": "modelos/meta_analise_em_r/standards.yaml",
+      "bytes": 898,
+      "sha256": "12c011dae6f58f698f5c547fc0958dff553c2209adff79b1f43a68891374f373"
+    },
+    {
+      "caminho": "modelos/publicacao_em_revistas/editaveis/ingles/carta_ao_editor.docx",
+      "bytes": 11143,
+      "sha256": "dda324809ade0b4ea1fb37bc7f6fc4f5c20622cb9f204730d4e09e55ce471079"
+    },
+    {
+      "caminho": "modelos/publicacao_em_revistas/editaveis/ingles/carta_de_apresentacao.docx",
+      "bytes": 11231,
+      "sha256": "435165b7a05e36edeb9dd1b3717106e173dd07951c269881b460e59d06f8bf7a"
+    },
+    {
+      "caminho": "modelos/publicacao_em_revistas/editaveis/ingles/declaracoes_e_autoria.docx",
+      "bytes": 11514,
+      "sha256": "0d737f1037c9f5b2ed6b49c7e3f4ff3118a48d88528a93ae5526d4f8473af959"
+    },
+    {
+      "caminho": "modelos/publicacao_em_revistas/editaveis/ingles/LEIA-ME.docx",
+      "bytes": 10828,
+      "sha256": "76119407c52e785627732583da92a2813056d067d673b6092e867ec742e82b49"
+    },
+    {
+      "caminho": "modelos/publicacao_em_revistas/editaveis/ingles/lista_de_verificacao_de_submissao.docx",
+      "bytes": 11596,
+      "sha256": "7b86ca55b74cd70235fa54a80ad9bc1eb0993ea6d969bb011b44a64cb8aa6026"
+    },
+    {
+      "caminho": "modelos/publicacao_em_revistas/editaveis/ingles/manuscrito_ia_clinica.docx",
+      "bytes": 11688,
+      "sha256": "7f8b6322366116ee1c848f91eab77451b860273cac40af5690b8e415f225e445"
+    },
+    {
+      "caminho": "modelos/publicacao_em_revistas/editaveis/ingles/manuscrito_original.docx",
+      "bytes": 11584,
+      "sha256": "0a46fbe50b7a14fe10b72fe2093c46335cee2b68856f45e738dd06daa9eb5489"
+    },
+    {
+      "caminho": "modelos/publicacao_em_revistas/editaveis/ingles/manuscrito_revisao_sistematica.docx",
+      "bytes": 11526,
+      "sha256": "82cd57af6ca420535130d049d929db9de23b9c339cf11f9b787ef2194b0e277a"
+    },
+    {
+      "caminho": "modelos/publicacao_em_revistas/editaveis/ingles/pagina_de_rosto.docx",
+      "bytes": 11220,
+      "sha256": "8ec53ce06886d71604912ba599ecc542114028d4c5468c37bcf539c8674eb381"
+    },
+    {
+      "caminho": "modelos/publicacao_em_revistas/editaveis/ingles/plano_de_suplementos.docx",
+      "bytes": 11384,
+      "sha256": "78dd0715b9375daa2bd292124efb544295acf8cffca277bf11cde2ba19ea08a7"
+    },
+    {
+      "caminho": "modelos/publicacao_em_revistas/editaveis/ingles/relato_de_caso_ou_nota_tecnica.docx",
+      "bytes": 11230,
+      "sha256": "bce503d9c7004e2e299810abd1babbd43ca8be87dea2775dced9508c1fb3e871"
+    },
+    {
+      "caminho": "modelos/publicacao_em_revistas/editaveis/ingles/resposta_a_pareceristas.docx",
+      "bytes": 11134,
+      "sha256": "595ef4e7062df49aec9bf0679cf822fd1ec33e7447b35f599adc10ab03c8dff9"
+    },
+    {
+      "caminho": "modelos/publicacao_em_revistas/editaveis/portugues/carta_ao_editor.docx",
+      "bytes": 11171,
+      "sha256": "1cedf14a17dc9e5db3e98214f317c7b419a51fa1177dc81538419a68967d29c4"
+    },
+    {
+      "caminho": "modelos/publicacao_em_revistas/editaveis/portugues/carta_de_apresentacao.docx",
+      "bytes": 11292,
+      "sha256": "f94c7504cdd32f558a88578fb751dfe6dc8d6f8e2761a8097ebd6093420b8564"
+    },
+    {
+      "caminho": "modelos/publicacao_em_revistas/editaveis/portugues/declaracoes_e_autoria.docx",
+      "bytes": 11596,
+      "sha256": "26bd832860ca6e5a119f0f2240b328471b1b59fe77dbfbd3865c227bc00b71ac"
+    },
+    {
+      "caminho": "modelos/publicacao_em_revistas/editaveis/portugues/LEIA-ME.docx",
+      "bytes": 10878,
+      "sha256": "7d0e2bfcba83cbb635362b1f5eb77a107f405153345da6f6edbba6bddcac0b58"
+    },
+    {
+      "caminho": "modelos/publicacao_em_revistas/editaveis/portugues/lista_de_verificacao_de_submissao.docx",
+      "bytes": 11697,
+      "sha256": "0f90673ba06aad42251250ad007d17cb79b66d53a8832a225769bef41dd624d0"
+    },
+    {
+      "caminho": "modelos/publicacao_em_revistas/editaveis/portugues/manuscrito_ia_clinica.docx",
+      "bytes": 11747,
+      "sha256": "713960bdfe459e85a2221cf598510d42af6bd3975384bde77442d4a62dae9976"
+    },
+    {
+      "caminho": "modelos/publicacao_em_revistas/editaveis/portugues/manuscrito_original.docx",
+      "bytes": 11650,
+      "sha256": "2795b8aa1643e4a57bdfa6b840ddfc20daa3bf85f8a0902335ea51364ca025e1"
+    },
+    {
+      "caminho": "modelos/publicacao_em_revistas/editaveis/portugues/manuscrito_revisao_sistematica.docx",
+      "bytes": 11606,
+      "sha256": "5cb4dcc4edab02348a7d954898d54ec6503d9086cb4261c05e67c37824638e08"
+    },
+    {
+      "caminho": "modelos/publicacao_em_revistas/editaveis/portugues/pagina_de_rosto.docx",
+      "bytes": 11282,
+      "sha256": "99713801ffe9ab6a610dffcffd8ca84bf3f707e3969f754c88050c97ff6d6d0d"
+    },
+    {
+      "caminho": "modelos/publicacao_em_revistas/editaveis/portugues/plano_de_suplementos.docx",
+      "bytes": 11431,
+      "sha256": "0fe4498f00765ac6fac77348578ce4290ebc6b4b927d62f8880665b838a5082a"
+    },
+    {
+      "caminho": "modelos/publicacao_em_revistas/editaveis/portugues/relato_de_caso_ou_nota_tecnica.docx",
+      "bytes": 11276,
+      "sha256": "bd4465cb36456824a6a18a3a5b1c639b15d6302fb1f0dde1395cd33cc28ab7bb"
+    },
+    {
+      "caminho": "modelos/publicacao_em_revistas/editaveis/portugues/resposta_a_pareceristas.docx",
+      "bytes": 11198,
+      "sha256": "49fcee35995e627dd54a9a70150c4e9be5f3b7d1cffbb3e4feaffb4b5941c50d"
+    },
+    {
+      "caminho": "modelos/publicacao_em_revistas/ingles/.gitignore",
+      "bytes": 30,
+      "sha256": "c98307bbe20958ee0588c22c3e0e2c723e53024d885ca743f2949f881df0e532"
+    },
+    {
+      "caminho": "modelos/publicacao_em_revistas/ingles/carta_ao_editor.md",
+      "bytes": 1085,
+      "sha256": "ea86b0358e161ecd47d9b2cbaa147416ad9de4de0cd50f456f57573d1ed87ba9"
+    },
+    {
+      "caminho": "modelos/publicacao_em_revistas/ingles/carta_de_apresentacao.md",
+      "bytes": 1301,
+      "sha256": "8b89f3ec5a85a505f9a175e2f1442baa31cb26be683b9ed9e02adb7be27124f8"
+    },
+    {
+      "caminho": "modelos/publicacao_em_revistas/ingles/declaracoes_e_autoria.md",
+      "bytes": 1411,
+      "sha256": "7d33dc159c7250c31bcf48a570b742c6de479a89a4fa0f6b342ad2c2f73e657b"
+    },
+    {
+      "caminho": "modelos/publicacao_em_revistas/ingles/LEIA-ME.md",
+      "bytes": 553,
+      "sha256": "d30c60f8445d06a35c3e276a2d1f1412f90e55ea681b4b90614a0f279449564e"
+    },
+    {
+      "caminho": "modelos/publicacao_em_revistas/ingles/lista_de_verificacao_de_submissao.md",
+      "bytes": 1716,
+      "sha256": "d0e5e5ff68f9495495a78d2f3d86eb6355b471e8c19218e820a3dc9fc630bb66"
+    },
+    {
+      "caminho": "modelos/publicacao_em_revistas/ingles/manuscrito_ia_clinica.md",
+      "bytes": 2061,
+      "sha256": "7920cdf93828c8980fcc281bf3c19ef45c464e703ce52482a5e39df85d87523a"
+    },
+    {
+      "caminho": "modelos/publicacao_em_revistas/ingles/manuscrito_original.md",
+      "bytes": 1943,
+      "sha256": "2fe10663a29351e83b2964cf7d5d4b33e8e14e56bab4e8816011d3e187b47594"
+    },
+    {
+      "caminho": "modelos/publicacao_em_revistas/ingles/manuscrito_revisao_sistematica.md",
+      "bytes": 1771,
+      "sha256": "882dcfe013302941795d076007c7e029f2fc968a49d3f6388effecb5a7bca965"
+    },
+    {
+      "caminho": "modelos/publicacao_em_revistas/ingles/pagina_de_rosto.md",
+      "bytes": 1272,
+      "sha256": "bfe7d64a8c8a05b2418ab0de187efa9ec5d48adc9f16b8a73ab1adb178383513"
+    },
+    {
+      "caminho": "modelos/publicacao_em_revistas/ingles/plano_de_suplementos.md",
+      "bytes": 1268,
+      "sha256": "2c1b6a324ef2101f12cec70a1b1ccf0ac4a04e655fd744e4040c75ce3d6d7926"
+    },
+    {
+      "caminho": "modelos/publicacao_em_revistas/ingles/relato_de_caso_ou_nota_tecnica.md",
+      "bytes": 1255,
+      "sha256": "b076e225dfe3d444add769577bffd141d1d0deb3df0ae62558441b9b8253af9d"
+    },
+    {
+      "caminho": "modelos/publicacao_em_revistas/ingles/resposta_a_pareceristas.md",
+      "bytes": 1113,
+      "sha256": "dd998532e49e55f1f3aa4996627b0cebe3af5336f1d3da3f18279b6361de67dd"
+    },
+    {
+      "caminho": "modelos/publicacao_em_revistas/perfis_de_revistas/catalogo_revistas.json",
+      "bytes": 8926,
+      "sha256": "910f03551abef5f45acb2b542c71a3d26d35cf8383c756eeb6412ac4c27c2cd3"
+    },
+    {
+      "caminho": "modelos/publicacao_em_revistas/perfis_de_revistas/ingles/perfil_atualizacoes_em_cirurgia.md",
+      "bytes": 1093,
+      "sha256": "9186072489f5c909fd27ad2c45235273f514a17376fa64061cd91ec03ed44b8d"
+    },
+    {
+      "caminho": "modelos/publicacao_em_revistas/perfis_de_revistas/ingles/perfil_cirurgia_geral.md",
+      "bytes": 1033,
+      "sha256": "055df41f3456f543aa65c53b61b79ddff473292add53759f4181d53593c807ef"
+    },
+    {
+      "caminho": "modelos/publicacao_em_revistas/perfis_de_revistas/ingles/perfil_cirurgia_plastica.md",
+      "bytes": 1105,
+      "sha256": "69986c55ef270f0b093ea697402a7d0f3e7c09ada674d1f65e603e6ad7dfc1bc"
+    },
+    {
+      "caminho": "modelos/publicacao_em_revistas/perfis_de_revistas/ingles/perfil_cirurgia_plastica_estetica.md",
+      "bytes": 770,
+      "sha256": "ac196cc44dcb2ae095bf1d67103904eaf1fed93da7d41e4f1a5ea63b598204a5"
+    },
+    {
+      "caminho": "modelos/publicacao_em_revistas/perfis_de_revistas/ingles/perfil_engenharia_biomedica.md",
+      "bytes": 884,
+      "sha256": "738e53b5967fce9a5a0f2b3c8e526af55052f18c5d9998a0835e786dbe7723d8"
+    },
+    {
+      "caminho": "modelos/publicacao_em_revistas/perfis_de_revistas/ingles/perfil_sistemas_medicos.md",
+      "bytes": 1073,
+      "sha256": "d79740f149c32c1e0cf7659ed11caf645e9f08e2bf043da03c139e91eeaba36d"
+    },
+    {
+      "caminho": "modelos/publicacao_em_revistas/perfis_de_revistas/ingles/selecao_de_revistas.md",
+      "bytes": 2887,
+      "sha256": "0b6e605a0797f7d0b2a9adbd929f162bc716bd51ba2feb9ab2309c8c7f8e2dfe"
+    },
+    {
+      "caminho": "modelos/publicacao_em_revistas/perfis_de_revistas/portugues/perfil_atualizacoes_em_cirurgia.md",
+      "bytes": 1138,
+      "sha256": "592d6dccc1aeeccca185fdbb1d5b4692fb0a5852f3d88b1b20fefe633deccd9b"
+    },
+    {
+      "caminho": "modelos/publicacao_em_revistas/perfis_de_revistas/portugues/perfil_cirurgia_geral.md",
+      "bytes": 1047,
+      "sha256": "1236349bede8d1fc18796ff77dc72347ff56bd05412d9ceb3ddda50fdede4c12"
+    },
+    {
+      "caminho": "modelos/publicacao_em_revistas/perfis_de_revistas/portugues/perfil_cirurgia_plastica.md",
+      "bytes": 1125,
+      "sha256": "da2e3c730d95868a4b0fe05e477d30adf7dfa6a654629cf084ba0c09aa3b9519"
+    },
+    {
+      "caminho": "modelos/publicacao_em_revistas/perfis_de_revistas/portugues/perfil_cirurgia_plastica_estetica.md",
+      "bytes": 789,
+      "sha256": "1458df4d9cfaab0514fbf5f862150398db2687aba9a5d10908ff0aa72a0e0e19"
+    },
+    {
+      "caminho": "modelos/publicacao_em_revistas/perfis_de_revistas/portugues/perfil_engenharia_biomedica.md",
+      "bytes": 915,
+      "sha256": "94350058a351efe8b4a8e4ddf989695436b9d058956a89187f9cb65d88129c58"
+    },
+    {
+      "caminho": "modelos/publicacao_em_revistas/perfis_de_revistas/portugues/perfil_sistemas_medicos.md",
+      "bytes": 1092,
+      "sha256": "137b9974a3991ca4203f4496117ca4203dcc414c7aeac53c2b9619da0bd3d601"
+    },
+    {
+      "caminho": "modelos/publicacao_em_revistas/perfis_de_revistas/portugues/selecao_de_revistas.md",
+      "bytes": 2914,
+      "sha256": "17079a1edd7cf37bad3f17e3c1e0d6f9fdf9ca8501fdcc53982245c026ccec76"
+    },
+    {
+      "caminho": "modelos/publicacao_em_revistas/portugues/.gitignore",
+      "bytes": 30,
+      "sha256": "c98307bbe20958ee0588c22c3e0e2c723e53024d885ca743f2949f881df0e532"
+    },
+    {
+      "caminho": "modelos/publicacao_em_revistas/portugues/carta_ao_editor.md",
+      "bytes": 1082,
+      "sha256": "9022232743566e3504f6c8d7ae2fa103a39f13913a41c8dc05b3c014d78fd185"
+    },
+    {
+      "caminho": "modelos/publicacao_em_revistas/portugues/carta_de_apresentacao.md",
+      "bytes": 1351,
+      "sha256": "1841dab6a0f47360cba3b70a4849823c3e643ea7d0b061f8ebeab958797baebc"
+    },
+    {
+      "caminho": "modelos/publicacao_em_revistas/portugues/declaracoes_e_autoria.md",
+      "bytes": 1505,
+      "sha256": "2a0ecd58e48d878ae23945ccf5111220d5c1f309d263d5ca6ac245940f66a36b"
+    },
+    {
+      "caminho": "modelos/publicacao_em_revistas/portugues/LEIA-ME.md",
+      "bytes": 597,
+      "sha256": "36137732044b8dfcd687b54d900e8d4ac686a52a440f25d5bb966c85574e6b35"
+    },
+    {
+      "caminho": "modelos/publicacao_em_revistas/portugues/lista_de_verificacao_de_submissao.md",
+      "bytes": 1825,
+      "sha256": "aaf701687af8d7e9259ada81d15c72b8e6797f2879a1731ef47a8036bbd5fc44"
+    },
+    {
+      "caminho": "modelos/publicacao_em_revistas/portugues/manuscrito_ia_clinica.md",
+      "bytes": 2174,
+      "sha256": "3e52a5464178eabda2f867ec486067d7b5e2439a4d1958cb8c8a521f74d1edd4"
+    },
+    {
+      "caminho": "modelos/publicacao_em_revistas/portugues/manuscrito_original.md",
+      "bytes": 1995,
+      "sha256": "037c63483a85c589bea032d5321fa7b674e63994c4e82aed0098a8d4c2e81f7e"
+    },
+    {
+      "caminho": "modelos/publicacao_em_revistas/portugues/manuscrito_revisao_sistematica.md",
+      "bytes": 1837,
+      "sha256": "665262fc66f07d3935101d61f45c54f771aa36a625d516fc18104261cd688d99"
+    },
+    {
+      "caminho": "modelos/publicacao_em_revistas/portugues/pagina_de_rosto.md",
+      "bytes": 1342,
+      "sha256": "a705c649c432a6d1f377c1be209f5c0577dc398bdde6316a7360997a2c480f54"
+    },
+    {
+      "caminho": "modelos/publicacao_em_revistas/portugues/plano_de_suplementos.md",
+      "bytes": 1327,
+      "sha256": "845c91528b023b8ddbac858711235e796d833d428c4d500a1b1a7e403535b752"
+    },
+    {
+      "caminho": "modelos/publicacao_em_revistas/portugues/relato_de_caso_ou_nota_tecnica.md",
+      "bytes": 1280,
+      "sha256": "1e0fa12060f8de82198aa2408ebfb14b817678c98c8f3adb1346ec3ebabc904b"
+    },
+    {
+      "caminho": "modelos/publicacao_em_revistas/portugues/resposta_a_pareceristas.md",
+      "bytes": 1166,
+      "sha256": "1f9274007d9301329e3b8962e950eb8da62c5cacd1feada30d5803821c85459c"
+    },
+    {
+      "caminho": "modelos/publicacao_em_revistas/registro_renderizacao.json",
+      "bytes": 4586,
+      "sha256": "93e3aa70b81407298e9e0e05254a768935c03b3e2aa569c2b69dfc9fccda0608"
+    },
+    {
+      "caminho": "modelos/publicacao_em_revistas/renderizar_modelos.py",
+      "bytes": 2493,
+      "sha256": "39d971b4c3fe7dcf79fe218e7ecaec85670679aa3f081a5431f7cb46f026b44d"
+    },
+    {
+      "caminho": "modelos/registro_de_protocolo/ingles/fluxo_de_decisao.md",
+      "bytes": 7236,
+      "sha256": "6857236d24e8177a25affc75bd2a5db20bad33d17253008e7374520d74a1465f"
+    },
+    {
+      "caminho": "modelos/registro_de_protocolo/ingles/guia_de_registro_e_verificacao.md",
+      "bytes": 6692,
+      "sha256": "ffee813f65aefea747efea78ddacdf8c23aaee41a77e96111580af5968db5e0e"
+    },
+    {
+      "caminho": "modelos/registro_de_protocolo/ingles/LEIA-ME.md",
+      "bytes": 1634,
+      "sha256": "8630f63f5349ed5b7fb79d4a7ec83cbae8a4012bf2cf924c73d99746bbfdb088"
+    },
+    {
+      "caminho": "modelos/registro_de_protocolo/ingles/modelo_registro_em_branco.json",
+      "bytes": 452,
+      "sha256": "5349f8c6a0acf027a76d1d07e0c74f4e76ad2670ef107ddbf41169c9c317424a"
+    },
+    {
+      "caminho": "modelos/registro_de_protocolo/ingles/questionario.md",
+      "bytes": 12816,
+      "sha256": "3df1d997ff28fa411e79a5702135a9721704c2e148da442af2b8a8ec1e49ed02"
+    },
+    {
+      "caminho": "modelos/registro_de_protocolo/portugues/fluxo_de_decisao.md",
+      "bytes": 7543,
+      "sha256": "e3846d851a5e78f9449526296e90bd296a3c77cd9fd1119a1d205df7cd635a84"
+    },
+    {
+      "caminho": "modelos/registro_de_protocolo/portugues/guia_de_registro_e_verificacao.md",
+      "bytes": 6932,
+      "sha256": "0b5cc78b4f3b0a617af60d709a2ef8532744276e8ed6794a52f15d6fbc05a230"
+    },
+    {
+      "caminho": "modelos/registro_de_protocolo/portugues/LEIA-ME.md",
+      "bytes": 1651,
+      "sha256": "1b7f346f44fe64e75f442b31c4937c1e32a8fd1e59fe7423a18d44a0adfc3b56"
+    },
+    {
+      "caminho": "modelos/registro_de_protocolo/portugues/modelo_registro_em_branco.json",
+      "bytes": 452,
+      "sha256": "5349f8c6a0acf027a76d1d07e0c74f4e76ad2670ef107ddbf41169c9c317424a"
+    },
+    {
+      "caminho": "modelos/registro_de_protocolo/portugues/questionario.md",
+      "bytes": 13742,
+      "sha256": "9a7071a42f2587bc639ad0a25052775e59afe92b8edf4fc9967911649f700f19"
+    },
+    {
+      "caminho": "projects/article-machine-governance-2026/analysis/publicacao-2026-11-02/auditoria_maquina_final.json",
+      "bytes": 14212,
+      "sha256": "27a02441c67288b766493be5d042869383a571facaf0657ab36636b9b651f88a"
+    },
+    {
+      "caminho": "projects/article-machine-governance-2026/analysis/publicacao-2026-11-02/auditoria_skills_final.json",
+      "bytes": 2625,
+      "sha256": "00e3a1519d6dde06e7351d3020b8dbb62945762f0ab35041883f9d7fea3aa56b"
+    },
+    {
+      "caminho": "projects/article-machine-governance-2026/analysis/publicacao-2026-11-02/estatistica/ingles/figura_calibracao_sintetica_2026-11-02_v01.png",
+      "bytes": 114860,
+      "sha256": "03ec67520db4adcc5966c98b74f4d0b4b882476903b24fc01423c0e798abea9d"
+    },
+    {
+      "caminho": "projects/article-machine-governance-2026/analysis/publicacao-2026-11-02/estatistica/ingles/figura_calibracao_sintetica_2026-11-02_v01.svg",
+      "bytes": 10801,
+      "sha256": "d9db91253648fbfdab3c5eb9b5e892356788a745627fc623f7693812672485d8"
+    },
+    {
+      "caminho": "projects/article-machine-governance-2026/analysis/publicacao-2026-11-02/estatistica/ingles/figura_distribuicao_sintetica_2026-11-02_v01.png",
+      "bytes": 155878,
+      "sha256": "897e72bc9d10c295c4be41fa80a613f6a79290e471b61a9150467ec09a7bbc4a"
+    },
+    {
+      "caminho": "projects/article-machine-governance-2026/analysis/publicacao-2026-11-02/estatistica/ingles/figura_distribuicao_sintetica_2026-11-02_v01.svg",
+      "bytes": 36767,
+      "sha256": "992960e88207c036eb6e2e524f403d65143a792e3ee92fdb2d58436e9560e328"
+    },
+    {
+      "caminho": "projects/article-machine-governance-2026/analysis/publicacao-2026-11-02/estatistica/ingles/figura_floresta_sintetica_2026-11-02_v01.png",
+      "bytes": 109294,
+      "sha256": "7e600d7592a5d267ea849673ccae0eaaf2df854202445cd51a5fc5e83be7986a"
+    },
+    {
+      "caminho": "projects/article-machine-governance-2026/analysis/publicacao-2026-11-02/estatistica/ingles/figura_floresta_sintetica_2026-11-02_v01.svg",
+      "bytes": 9237,
+      "sha256": "0b5d64327772d56b139a94f74dccd847688a5e9e7eb9a3c78cca4d03fb496114"
+    },
+    {
+      "caminho": "projects/article-machine-governance-2026/analysis/publicacao-2026-11-02/estatistica/ingles/figura_painel_efeitos_calibracao_sinteticos_2026-11-02_v01.png",
+      "bytes": 183655,
+      "sha256": "479edff23f45e46fb496f602e5e0e130fe2a3471b97f35a2bb90681b9858077f"
+    },
+    {
+      "caminho": "projects/article-machine-governance-2026/analysis/publicacao-2026-11-02/estatistica/ingles/figura_painel_efeitos_calibracao_sinteticos_2026-11-02_v01.svg",
+      "bytes": 20233,
+      "sha256": "0b6de86fdee1550d3b4d5264c45c103851e79fb913f901ce8dc9c7f1f9b87bff"
+    },
+    {
+      "caminho": "projects/article-machine-governance-2026/analysis/publicacao-2026-11-02/estatistica/ingles/legendas_e_textos_alternativos.md",
+      "bytes": 974,
+      "sha256": "56cdfab577e24b692f6f520f9dad4808860cc553de5fd6f383e291ff28ae5540"
+    },
+    {
+      "caminho": "projects/article-machine-governance-2026/analysis/publicacao-2026-11-02/estatistica/ingles/registro_execucao.md",
+      "bytes": 3465,
+      "sha256": "99ff8c2b37c9dfee668ea3afae5db5e63a82062e6e01a1c5f84b6f72b1b646bd"
+    },
+    {
+      "caminho": "projects/article-machine-governance-2026/analysis/publicacao-2026-11-02/estatistica/ingles/relatorio_estatistica_revisoes_figuras.md",
+      "bytes": 25756,
+      "sha256": "07310ed054636d014d0e2fc781193c5a4fc7727c5d4631b596889441f3b2ea5b"
+    },
+    {
+      "caminho": "projects/article-machine-governance-2026/analysis/publicacao-2026-11-02/estatistica/ingles/tabela1_sintetica_2026-11-02_v01.csv",
+      "bytes": 385,
+      "sha256": "d51726f972c59bf983badf2781728f99eb05ecc27cc5a8ce897d22a4418aa450"
+    },
+    {
+      "caminho": "projects/article-machine-governance-2026/analysis/publicacao-2026-11-02/estatistica/ingles/tabela1_sintetica_2026-11-02_v01.docx",
+      "bytes": 14318,
+      "sha256": "54fd5e38fab86ae5b5804051016cb5f28033aed9a328e51af7d7b2d78909ca98"
+    },
+    {
+      "caminho": "projects/article-machine-governance-2026/analysis/publicacao-2026-11-02/estatistica/ingles/tabela1_sintetica_2026-11-02_v01.html",
+      "bytes": 11682,
+      "sha256": "b95e73c09e86efe975a237efa738e34dd1a2aa0c9daff7b5f269dc99351fdf84"
+    },
+    {
+      "caminho": "projects/article-machine-governance-2026/analysis/publicacao-2026-11-02/estatistica/ingles/tabela_estimativas_sinteticas_2026-11-02_v01.csv",
+      "bytes": 513,
+      "sha256": "f1061b4cecbc934d0ec3a83e2b8921023e49ce2dfae64974cf11e3c9a842c7b3"
+    },
+    {
+      "caminho": "projects/article-machine-governance-2026/analysis/publicacao-2026-11-02/estatistica/ingles/tabela_estimativas_sinteticas_2026-11-02_v01.docx",
+      "bytes": 14776,
+      "sha256": "70cf307be1d762010c307a3506340c1f92b892051fb07dabd21f527f62b7193c"
+    },
+    {
+      "caminho": "projects/article-machine-governance-2026/analysis/publicacao-2026-11-02/estatistica/ingles/tabela_estimativas_sinteticas_2026-11-02_v01.html",
+      "bytes": 12921,
+      "sha256": "4238b2995dddb16daaa6e7ff883f334ffe900324f295e2de3b6e3d8d675903ee"
+    },
+    {
+      "caminho": "projects/article-machine-governance-2026/analysis/publicacao-2026-11-02/estatistica/portugues/figura_calibracao_sintetica_2026-11-02_v01.png",
+      "bytes": 117790,
+      "sha256": "bbbfbd10dafbefaba53900bd0195baa3c6c4e982762909deb8e880e719c4cb54"
+    },
+    {
+      "caminho": "projects/article-machine-governance-2026/analysis/publicacao-2026-11-02/estatistica/portugues/figura_calibracao_sintetica_2026-11-02_v01.svg",
+      "bytes": 10835,
+      "sha256": "cfd7fbfabc451832225d4361143cda8ed8c344fbcb9cc80107053a025fc69e78"
+    },
+    {
+      "caminho": "projects/article-machine-governance-2026/analysis/publicacao-2026-11-02/estatistica/portugues/figura_distribuicao_sintetica_2026-11-02_v01.png",
+      "bytes": 158045,
+      "sha256": "6b1a15fc29a1164fb4bf46c540668c611b5c506e23cf4fd724fb04db97955f4e"
+    },
+    {
+      "caminho": "projects/article-machine-governance-2026/analysis/publicacao-2026-11-02/estatistica/portugues/figura_distribuicao_sintetica_2026-11-02_v01.svg",
+      "bytes": 36771,
+      "sha256": "188606cdf2adb60ea98aaecd876508eec08ca8a22fdc6bda6ae4e44619e98e4d"
+    },
+    {
+      "caminho": "projects/article-machine-governance-2026/analysis/publicacao-2026-11-02/estatistica/portugues/figura_floresta_sintetica_2026-11-02_v01.png",
+      "bytes": 105315,
+      "sha256": "36c5dd736382c347e2ad63eb804b3620ee106a015156fcf19c591753516ba0d3"
+    },
+    {
+      "caminho": "projects/article-machine-governance-2026/analysis/publicacao-2026-11-02/estatistica/portugues/figura_floresta_sintetica_2026-11-02_v01.svg",
+      "bytes": 9249,
+      "sha256": "8f4720fdfe6149b1c609b22997492835b513ebb2743425d8e22da680a77b884c"
+    },
+    {
+      "caminho": "projects/article-machine-governance-2026/analysis/publicacao-2026-11-02/estatistica/portugues/figura_painel_efeitos_calibracao_sinteticos_2026-11-02_v01.png",
+      "bytes": 182257,
+      "sha256": "e7cc000b89bd9edf6ecd05ac5dde15b0bcd5afb46da0f863405042063a82cd5e"
+    },
+    {
+      "caminho": "projects/article-machine-governance-2026/analysis/publicacao-2026-11-02/estatistica/portugues/figura_painel_efeitos_calibracao_sinteticos_2026-11-02_v01.svg",
+      "bytes": 20271,
+      "sha256": "9bfd0fcce831e54da817af3cfdb2aafde1c70fecd310db1e2d88b44f0cb6dbf8"
+    },
+    {
+      "caminho": "projects/article-machine-governance-2026/analysis/publicacao-2026-11-02/estatistica/portugues/legendas_e_textos_alternativos.md",
+      "bytes": 1059,
+      "sha256": "e9792c0cbb7bc28989a35d2556eea030a24083bbf6ec6aa50aa85ce7f91be6fb"
+    },
+    {
+      "caminho": "projects/article-machine-governance-2026/analysis/publicacao-2026-11-02/estatistica/portugues/registro_execucao.md",
+      "bytes": 3721,
+      "sha256": "d007cbc31902d11b934477788b2eee268907902447977e191b4995a7d59f4a12"
+    },
+    {
+      "caminho": "projects/article-machine-governance-2026/analysis/publicacao-2026-11-02/estatistica/portugues/relatorio_estatistica_revisoes_figuras.md",
+      "bytes": 27149,
+      "sha256": "974be803d4b1ca4ba029aa5680756ff2c785d1bfef46baf4a82297690f4cdee9"
+    },
+    {
+      "caminho": "projects/article-machine-governance-2026/analysis/publicacao-2026-11-02/estatistica/portugues/tabela1_sintetica_2026-11-02_v01.csv",
+      "bytes": 382,
+      "sha256": "cb22396ff470db3987e8f156e643d6ebdf0859e909e6393c713065307f1a7a11"
+    },
+    {
+      "caminho": "projects/article-machine-governance-2026/analysis/publicacao-2026-11-02/estatistica/portugues/tabela1_sintetica_2026-11-02_v01.docx",
+      "bytes": 14515,
+      "sha256": "c897d571275bebac5457bbdd8024fef42d6a780e6bc4f0eb676fbe0ba5944209"
+    },
+    {
+      "caminho": "projects/article-machine-governance-2026/analysis/publicacao-2026-11-02/estatistica/portugues/tabela1_sintetica_2026-11-02_v01.html",
+      "bytes": 12073,
+      "sha256": "f9d326fb137cf3ec86ec7cc77347da5ab3874e44c23652ae0c4207544248ce75"
+    },
+    {
+      "caminho": "projects/article-machine-governance-2026/analysis/publicacao-2026-11-02/estatistica/portugues/tabela_estimativas_sinteticas_2026-11-02_v01.csv",
+      "bytes": 514,
+      "sha256": "daf63ca4c0fc5276c7bd97ff37c4687d08e7e6dbc80b2cd2eb1a84ee0eb9df04"
+    },
+    {
+      "caminho": "projects/article-machine-governance-2026/analysis/publicacao-2026-11-02/estatistica/portugues/tabela_estimativas_sinteticas_2026-11-02_v01.docx",
+      "bytes": 14788,
+      "sha256": "d3bb7b47b9c3c72c919e6cec52f441830288a9c5f116706e19a44d299aebeff2"
+    },
+    {
+      "caminho": "projects/article-machine-governance-2026/analysis/publicacao-2026-11-02/estatistica/portugues/tabela_estimativas_sinteticas_2026-11-02_v01.html",
+      "bytes": 13171,
+      "sha256": "3b8c0a90a4076d948d9d4f3f5a84ba6ce1072b0669ab0c14484723c1ada120ad"
+    },
+    {
+      "caminho": "projects/article-machine-governance-2026/analysis/publicacao-2026-11-02/verificacao_dos_pares.json",
+      "bytes": 1568,
+      "sha256": "0e7fd782ad017a19650ce7ccc82fa6cae0b168ef6749b4277f564d2340abe45d"
+    },
+    {
+      "caminho": "projects/article-machine-governance-2026/analysis/publicacao-2026-11-02/verificacao_final_completa.log",
+      "bytes": 985,
+      "sha256": "26a96e4fcda92eb562f981919473c6e055b239c8de7fbb124890ae766569c206"
+    },
+    {
+      "caminho": "skills/catalogos-cientificos-sob-demanda/scripts/consultar_catalogos.py",
+      "bytes": 2847,
+      "sha256": "9c8fd7e5c43ecb4c03f6205c8edaba1dc6854348c93e90be308586a65ef041c1"
+    },
+    {
+      "caminho": "skills/catalogos-cientificos-sob-demanda/SKILL.md",
+      "bytes": 2685,
+      "sha256": "b8f4d45d7baf0d2dc3884f734a376cd2bfbda13da96a5457d5eb41f9fd53b6b3"
+    },
+    {
+      "caminho": "skills/registry.json",
+      "bytes": 443032,
+      "sha256": "bddc3b204b3009418c852060ed65c076e10a40a3044011dcb9c0553a6153a23e"
+    }
+  ],
+  "manifesto_anterior": "MANIFESTO_DA_ENTREGA.json is a historical earlier snapshot; current changed files use this manifest",
+  "prova": "local bounded artifacts; no clean-clone or clinical validation claim",
+  "testes": {
+    "passed": 307,
+    "skipped": 1
+  },
+  "pares": "PASS",
+  "pendencias": [
+    "real study registration and execution",
+    "human semantic/layout review",
+    "BYOK authenticated startup/full build",
+    "Zotero API",
+    "HTML browser visual QA",
+    "clean restore/remote CI",
+    "clinical validation"
+  ]
+}

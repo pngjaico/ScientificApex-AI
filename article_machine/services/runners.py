@@ -43,6 +43,10 @@ def run_script(
     project_dir: Path, script_path: Path, runtime: str, *, subprocess_run: Any = subprocess.run
 ) -> dict[str, Any]:
     project_dir = Path(project_dir)
+    from .protocol_registration import registration_gate
+    registration = registration_gate(project_dir, f"run-{runtime}")
+    if registration["status"] != "pass":
+        return {**registration, "runtime": runtime, "gate_eligible": False}
     preflight = preflight_environment(project_dir)
     if preflight["status"] != "passed":
         return preflight
@@ -61,6 +65,7 @@ def run_script(
             "issues": [f"{runtime} executable is unavailable."],
         }
 
+    registration_gate(project_dir, f"run-{runtime}", mark_started=True)
     manifest = open_run(project_dir, mode="analysis", prompt=f"Run {runtime} script {script.name}")
     run_dir = project_dir / ".machine" / "runs" / manifest["run_id"] / "analysis" / runtime / script.stem
     run_dir.mkdir(parents=True, exist_ok=True)

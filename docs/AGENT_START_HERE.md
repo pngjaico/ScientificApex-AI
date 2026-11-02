@@ -5,15 +5,20 @@ Machine workspace containing a Python package, many project folders, local
 skills, legacy source folders, generated outputs, and old graphify leftovers.
 Treat it like an operating workspace, not a flat corpus.
 
+For the one-page map of the root, the generated project dashboard, the
+environment locks, and the no-deletion policy, start with
+`docs/INDICE_DO_WORKSPACE.md`.
+
 ## First Commands
 
-Run from `C:\Users\Usuario-pc\Desktop\Doutorado`.
+Run from `D:\Usuario-pc\Projetos\Doutorado`.
 
 ```powershell
 .\.venv\Scripts\python.exe -m article_machine --help
 .\.venv\Scripts\python.exe -m article_machine machine audit --workspace-root . --strict
 .\.venv\Scripts\python.exe -m pytest
 .\.venv\Scripts\python.exe scripts\generate_workspace_graph.py
+.\.venv\Scripts\python.exe scripts\estado_dos_projetos.py
 ```
 
 Use `python -m article_machine ...` or `.\.venv\Scripts\python.exe -m article_machine ...`
@@ -62,9 +67,10 @@ to check numeric, citation and claim-marker preservation between drafts.
 - The current branch has three commits and is two commits ahead of `origin/main`,
   but the worktree is heavily mixed with pre-existing modified and untracked
   files. A green local test is not clean-clone proof.
-- `machine audit --strict` currently blocks because 37 of 63 required critical
-  skill entrypoints are present locally but absent from the Git index. Review an
-  explicit staging manifest before versioning them; do not bulk-stage the root.
+- At that snapshot, `machine audit --strict` blocked because 37 of 63 required
+  critical skill entrypoints were present locally but absent from the Git
+  index. On 2026-11-02 the audit passes with zero issues; re-run it before
+  trusting this historical note. Do not bulk-stage the root.
 - The root contains legacy folders and generated artifacts. A full graphify
   detect on the root timed out; use the generated operational graph or graph a
   specific project subfolder.
@@ -86,6 +92,18 @@ to check numeric, citation and claim-marker preservation between drafts.
   `content-preservation-guardian`: first-line local skills for graph navigation,
   project entry, and safe cleanup/reorganization.
 - `docs/AGENT_OPERATION_MAP.md`: shortest safe operating flow for agents.
+- `docs/INDICE_DO_WORKSPACE.md`: one-page map of the root, artifact destinations,
+  and coexistence rules for concurrent agents.
+- `docs/ESTADO_DOS_PROJETOS.md`: generated dashboard of every project, current
+  mode, contract completeness, and artifact counts.
+- `docs/AMBIENTES_E_LOCKS.md`: Python, R, Quarto, Playwright, locks, and restore
+  commands.
+- `docs/GIT_E_WORKTREES.md`: canonical worktree, dirty-state rules, and the
+  dry-run worktree diagnostic.
+- `docs/ORGANIZACAO_E_LIMPEZA.md`: no-deletion policy, inventory, and the safe
+  future-cleanup order.
+- `graphify-out/LEIA-ME.md`: which generated graph file to open and how to
+  regenerate it.
 - `docs/ARTICLE_MACHINE_AGENT_PLAYBOOK.md`: prompt and usage guide for agents.
 - `docs/WORKSPACE_REORG_PLAN.md`: non-destructive reorganization plan.
 - `graphify-out/graph.html`: interactive operational graph.

@@ -10,7 +10,7 @@ Scientific OS for agent-native research, evidence synthesis, meta-analysis, thes
 
 ## Start here for agents
 
-This checkout should be operated from `C:\Users\Usuario-pc\Desktop\Doutorado`.
+This checkout should be operated from `D:\Usuario-pc\Projetos\Doutorado`.
 Use the local venv for Article Machine:
 
 ```powershell
@@ -21,6 +21,10 @@ Use the local venv for Article Machine:
 
 Do not assume the `article-machine` console script is on PATH. It exists only
 after an editable install; `python -m article_machine` is the reliable command.
+
+For the workspace map, the generated project dashboard, and the no-deletion
+policy, read `docs/INDICE_DO_WORKSPACE.md`, `docs/ESTADO_DOS_PROJETOS.md` and
+`docs/ORGANIZACAO_E_LIMPEZA.md`.
 
 For workspace navigation, generate the operational graph:
 

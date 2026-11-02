@@ -1,0 +1,41 @@
+{
+  "$schema": "https://opencode.ai/schema/config.json",
+  "project": {
+    "name": "Article Machine - Doutorado",
+    "description": "Ambiente de pesquisa e publicacao cientifica em medicina, com orquestracao multiagente (Antigravity, Codex, OpenCode)",
+    "instructions": [
+      "AGENTS.md",
+      ".AGENTES",
+      "docs/AGENT_START_HERE.md",
+      "docs/HANDOFF_ENTRE_AGENTES.md"
+    ]
+  },
+  "environment": {
+    "python": ".\\.venv\\Scripts\\python.exe",
+    "r": "C:/Users/Usuario-pc/AppData/Local/Programs/R/R-4.6.1/bin/x64/Rscript.exe",
+    "quarto": "ferramentas/quarto-1.10.20/bin/quarto.exe"
+  },
+  "rules": {
+    "graph_first": true,
+    "graph_query_cmd": ".\\.venv\\Scripts\\python.exe -m graphify query \"{query}\" --budget 1200",
+    "audit_cmd": ".\\.venv\\Scripts\\python.exe -m article_machine machine audit --workspace-root . --strict",
+    "test_cmd": ".\\.venv\\Scripts\\python.exe -m pytest tests/",
+    "sequential_handoff_protocol": true,
+    "handoff_state_file": ".machine/handoff_sessao.json",
+    "handoff_log_file": "docs/HANDOFF_ENTRE_AGENTES.md",
+    "preserve_raw_content": true,
+    "bilingual_deliverables": true
+  },
+  "permission_boundaries": {
+    "allow_root_file_scans": false,
+    "allow_unapproved_cloud_uploads": false,
+    "allow_modification_outside_active_project": false,
+    "protected_paths": [
+      ".env",
+      ".venv/",
+      "acervo_de_referencia/",
+      "archive/",
+      "sources/"
+    ]
+  }
+}

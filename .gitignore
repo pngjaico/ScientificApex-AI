@@ -11,6 +11,12 @@ htmlcov/
 .venv/
 .env
 .env.*
+# renv: keep the lock and activation files, not the installed library
+**/renv/library/
+**/renv/staging/
+**/renv/python/
+**/renv/sandbox/
+renv.lock.antes_da_atualizacao_*
 
 # Local agent/tool state. Keep broad mirrors local, but track the small central
 # agent handoff layer used by future agents entering this workspace.
@@ -49,6 +55,10 @@ tmp/
 *.tmp
 *.bak
 
+# Local migration archive copied from the historic C: backup. Kept out of Git
+# because it contains raw PDFs, clinical data and local secrets.
+archive/
+
 # Graphify transient extraction state. Keep the final graph artifacts visible.
 .graphify_*
 graphify-out/.graphify_*
@@ -78,6 +88,10 @@ scripts/*
 !scripts/sync_curated_kdense_skills.py
 !scripts/validate_scientific_workflows.py
 !scripts/publish_workspace_skills.py
+!scripts/estado_dos_projetos.py
+!scripts/migrar_legado_c.ps1
+!scripts/limpar_worktrees.ps1
+!scripts/atualizar_ambiente_meta_analise.R
 
 # Reproducible browser tooling. Runtime downloads remain ignored.
 !tools/
@@ -336,6 +350,31 @@ Thumbs.db
 !skills/pptx-export-bridge/
 !skills/submission-ops-playwright/**
 !skills/submission-ops-playwright/
+!skills/metodos-ml-clinico/
+!skills/metodos-ml-clinico/**
+!skills/meta-analise-medica/
+!skills/meta-analise-medica/**
+!skills/publicacao-medica-organizada/
+!skills/publicacao-medica-organizada/**
+
+# Local authored skills remain mirrored under .agents for discovery; keep only
+# these three curated source trees visible alongside the existing navigators.
+!.agents/skills/metodos-ml-clinico/
+!.agents/skills/metodos-ml-clinico/**
+!.agents/skills/meta-analise-medica/
+!.agents/skills/meta-analise-medica/**
+!.agents/skills/publicacao-medica-organizada/
+!.agents/skills/publicacao-medica-organizada/**
+
+# Reproducible curated skill integration evidence only. Other analysis outputs,
+# environments, libraries, venvs, smoke tests, and raw inputs remain ignored.
+!projects/article-machine-governance-2026/analysis/
+projects/article-machine-governance-2026/analysis/*
+!projects/article-machine-governance-2026/analysis/backup_integracao_skills/
+!projects/article-machine-governance-2026/analysis/backup_integracao_skills/**
+!projects/article-machine-governance-2026/analysis/codex-first-2026-11-01/
+projects/article-machine-governance-2026/analysis/codex-first-2026-11-01/*
+!projects/article-machine-governance-2026/analysis/codex-first-2026-11-01/validacao_skills_novas.json
 !skills/speaker-notes-timing/**
 !skills/speaker-notes-timing/
 !skills/paper-to-talk/**
@@ -348,3 +387,37 @@ Thumbs.db
 !skills/datasus-research-engine/
 **/__pycache__/
 **/*.py[cod]
+
+# New D machine: generated installations and copied legacy artifacts stay local.
+integracoes/catalogos_cientificos/kdense/
+integracoes/catalogos_cientificos/kdense_reference/
+integracoes/catalogos_cientificos/denden/
+integracoes/catalogos_cientificos/orchestra/
+integracoes/catalogos_cientificos/imbad/
+integracoes/catalogos_cientificos/internscience/
+integracoes/catalogos_cientificos/acervo_preexistente_em_quarentena/
+!skills/catalogos-cientificos-sob-demanda/
+!skills/catalogos-cientificos-sob-demanda/**
+ferramentas/
+acervo_de_referencia/
+**/biblioteca/
+**/.venv/
+# Curated upstream source trees, without model/data/output binaries.
+!skills/scikit-learn/
+!skills/scikit-learn/**/
+!skills/scikit-learn/**/*.md
+!skills/scikit-learn/**/*.py
+!skills/scikit-learn/**/*.json
+!skills/scikit-learn/**/*.mplstyle
+!skills/pytorch-lightning/
+!skills/pytorch-lightning/**/
+!skills/pytorch-lightning/**/*.md
+!skills/pytorch-lightning/**/*.py
+!skills/pytorch-lightning/**/*.json
+!skills/pytorch-lightning/**/*.mplstyle
+!skills/scientific-visualization/
+!skills/scientific-visualization/**/
+!skills/scientific-visualization/**/*.md
+!skills/scientific-visualization/**/*.py
+!skills/scientific-visualization/**/*.json
+!skills/scientific-visualization/**/*.mplstyle

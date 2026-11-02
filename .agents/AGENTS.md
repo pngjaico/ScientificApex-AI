@@ -1,7 +1,7 @@
 # Local Agent Control Plane
 
 This `.agents` directory is the local handoff layer for agents entering
-`C:\Users\Usuario-pc\Desktop\Doutorado`.
+`D:\Usuario-pc\Projetos\Doutorado`.
 
 ## Graph-First Rule
 - If the task involves workspace navigation, architecture, code/file
@@ -30,6 +30,11 @@ This `.agents` directory is the local handoff layer for agents entering
 6. Run `.\.venv\Scripts\python.exe -m article_machine skills route --query "<task>"`
    before non-trivial scientific work.
 
+## Tri-Agent Sequential Operation
+- Antigravity, Codex, and OpenCode operate sequentially without concurrency.
+- Entry: check `git status`, read `.machine/handoff_sessao.json` and `docs/HANDOFF_ENTRE_AGENTES.md`.
+- Exit: validate tests/audit, update handoff state, commit changes cleanly.
+
 ## Local Skills
 - `workspace-graph-navigator`: graph-first navigation.
 - `project-entry-navigator`: project selection and contract-file entry.
@@ -43,3 +48,9 @@ This `.agents` directory is the local handoff layer for agents entering
 - Do not treat graph edges as scientific evidence.
 - Evidence, analysis, discovery, and manuscript work must happen inside
   `projects/<project_id>/`.
+
+## R Environment (R 4.6.1 / renv 1.3.1)
+- Canonical template & lockfile: `modelos/meta_analise_em_r/renv.lock` (69 direct packages, 302 in CRAN closure: `tidymodels`, `xgboost`, `lightgbm`, `glmnet`, `ranger`, `probably`, `dcurves`, `DALEX`, `DALEXtra`, `kernelshap`, `shapviz`, `metafor`, `meta`, `netmeta`, `clubSandwich`, `mada`, `dosresmeta`, `robvis`, `PRISMA2020`, `ggplot2`, `patchwork`, `ggpubr`, `survminer`, `plotly`, `gtsummary`, `gt`, `flextable`, `mice`, `data.table`, `janitor`, `skimr`, `broom`, `parameters`, `performance`, `effectsize`, `emmeans`, `marginaleffects`, `quarto`, `shiny`).
+- Verify stack: `"C:/Users/Usuario-pc/AppData/Local/Programs/R/R-4.6.1/bin/x64/Rscript.exe" --vanilla modelos/meta_analise_em_r/analysis/00_pacotes_do_ambiente.R`
+- Refresh lockfile: `"C:/Users/Usuario-pc/AppData/Local/Programs/R/R-4.6.1/bin/x64/Rscript.exe" --vanilla scripts/atualizar_ambiente_meta_analise.R`
+- Run inside active project: `.\.venv\Scripts\python.exe -m article_machine run-r projects/<project_id> projects/<project_id>/analysis/<script>.R`

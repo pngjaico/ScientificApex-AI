@@ -7,7 +7,7 @@ Use the graph before broad manual exploration when any of these are true:
 - The task is about architecture, relationships, dependencies, routing, cleanup,
   staging, or handoff.
 - The path is unknown or the workspace feels ambiguous.
-- A new conversation starts inside `C:\Users\Usuario-pc\Desktop\Doutorado`.
+- A new conversation starts inside `D:\Usuario-pc\Projetos\Doutorado`.
 
 ## Commands
 

@@ -25,10 +25,17 @@ CURATED_K_DENSE = {
 }
 K_DENSE_MANIFEST = "skills/registry.sources/kdense-curated-a1043ef.json"
 K_DENSE_ADDITIONS_MANIFEST = "skills/registry.sources/kdense-curated-foundations-a1043ef.json"
+K_DENSE_ML_VISUAL_MANIFEST = "skills/registry.sources/kdense-ml-visual-5f2bc03.json"
+K_DENSE_ML_VISUAL_SKILLS = {
+    "scikit-learn": "BSD-3-Clause",
+    "pytorch-lightning": "Apache-2.0",
+    "scientific-visualization": "MIT",
+}
 K_DENSE_MANIFEST_BY_SKILL = {
     **{name: K_DENSE_MANIFEST for name in CURATED_K_DENSE - {"scientific-writing", "scientific-critical-thinking"}},
     "scientific-writing": K_DENSE_ADDITIONS_MANIFEST,
     "scientific-critical-thinking": K_DENSE_ADDITIONS_MANIFEST,
+    **{name: K_DENSE_ML_VISUAL_MANIFEST for name in K_DENSE_ML_VISUAL_SKILLS},
 }
 K_DENSE_SOURCE_BY_MANIFEST: dict[str, dict] = {}
 for _manifest in set(K_DENSE_MANIFEST_BY_SKILL.values()):
@@ -44,6 +51,12 @@ PORTABLE_LOCAL_ROUTES = {
     "speaker-notes-timing", "paper-to-talk", "paper-to-poster",
     "intestinal-transplant-research", "datasus-research-engine",
 }
+LOCAL_CURATED_SKILLS = {
+    "catalogos-cientificos-sob-demanda",
+    "metodos-ml-clinico",
+    "meta-analise-medica",
+    "publicacao-medica-organizada",
+}
 
 
 def _source_for(name: str) -> tuple[dict[str, str], str, str, str]:
@@ -51,12 +64,22 @@ def _source_for(name: str) -> tuple[dict[str, str], str, str, str]:
         return ({"provider": "ToolUniverse", "url": TOOLUNIVERSE_URL}, TOOLUNIVERSE_REVISION, "NOASSERTION", "hold")
     if name in PLUGIN_BRIDGES:
         return ({"provider": "Article Machine plugin bridge", "url": LOCAL_URL}, "workspace-2026-10-12", "LicenseRef-Local-Private", "active")
+    if name in LOCAL_CURATED_SKILLS:
+        return ({"provider": "Article Machine curated layer", "url": LOCAL_URL}, "workspace-2026-11-01", "LicenseRef-Local-Private", "active")
     if name in CURATED_K_DENSE:
         source = K_DENSE_SOURCE_BY_MANIFEST.get(K_DENSE_MANIFEST_BY_SKILL[name], {})
         revision = source.get("revision", "local-unverified")
         license_name = source.get("license", "NOASSERTION")
         status = "active" if license_name != "NOASSERTION" and revision != "local-unverified" else "hold"
         return ({"provider": "K-Dense AI", "url": K_DENSE_URL}, revision, license_name, status)
+    if name in K_DENSE_ML_VISUAL_SKILLS:
+        source = K_DENSE_SOURCE_BY_MANIFEST.get(K_DENSE_MANIFEST_BY_SKILL[name], {})
+        return (
+            {"provider": "K-Dense AI", "url": K_DENSE_URL},
+            source.get("revision", "local-unverified"),
+            source.get("per_skill_licenses", {}).get(name, K_DENSE_ML_VISUAL_SKILLS[name]),
+            source.get("status", "pilot"),
+        )
     if name in WORLD_CLASS_SKILLS:
         return ({"provider": "Article Machine curated layer", "url": LOCAL_URL}, "workspace-2026-10-12", "LicenseRef-Local-Private", "active")
     return ({"provider": "local unverified skill tree", "url": LOCAL_URL}, "local-unverified", "NOASSERTION", "hold")
@@ -114,6 +137,10 @@ def build_registry(skills_dir: Path = ROOT / "skills") -> dict:
             entries[name]["review_note"] = "Curated K-Dense update; visual-generation assets and scripts remain quarantined."
             entries[name]["sync_manifest"] = K_DENSE_MANIFEST_BY_SKILL[name]
             entries[name]["sync_mode"] = "curated-tree-with-visual-quarantine"
+        if name in K_DENSE_ML_VISUAL_SKILLS:
+            entries[name]["review_note"] = "Pinned K-Dense pilot; local changes and methods require focused review before promotion."
+            entries[name]["sync_manifest"] = K_DENSE_MANIFEST_BY_SKILL[name]
+            entries[name]["sync_mode"] = "curated-tree-pilot"
     return {
         "schema_version": REGISTRY_SCHEMA_VERSION,
         "registry_policy": "single-source-of-truth; generated documents must not be hand-edited",

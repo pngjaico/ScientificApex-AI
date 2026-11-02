@@ -1,0 +1,400 @@
+# SKILLS CANON: SCIENTIFIC OS
+
+## Objetivo
+- Usar skills como aceleradores especializados, mas subordinar todas elas ao runtime `article_machine/`, aos modos e aos gates do projeto ativo.
+
+## Hierarquia
+1. `project.yaml` e `protocol.yaml`
+2. `standards.yaml`
+3. `article_machine/` runtime
+4. Skills especializadas do workspace
+5. Prompts livres do agente
+
+## Camadas
+
+### Layer 0: Project Scope
+- Todo trabalho nasce ou continua em `projects/<project_id>/`.
+- O agente deve descobrir o projeto ativo antes de pesquisar, escrever ou executar.
+- `workspace-graph-navigator` guia navegação pelo grafo operacional antes de varredura manual ampla.
+- `project-entry-navigator` força seleção/criação do projeto ativo e leitura dos contratos.
+- `content-preservation-guardian` protege fontes, legados, PDFs, dumps e caches durante limpeza, staging, graphing ou reorganização.
+
+### Layer 1: Context Management
+- Grandes corpora nunca devem ser despejados brutos no modelo.
+- O fluxo padrão é:
+  1. registrar fonte em `sources/registry.jsonl`
+  2. converter ou resumir em `sources/converted/`
+  3. consolidar contexto em `context/project_brief.md`
+  4. gerar `context/task_packets/*.json`
+
+### Layer 2: Standards Routing
+- O tipo do projeto define guidelines e checklists:
+  - `systematic-review` -> `PRISMA`, `GRADE`, `ROBIS`, `AMSTAR 2`
+  - `network-meta-analysis` -> `PRISMA-NMA`, `GRADE`
+  - `diagnostic-study` -> `STARD`, `QUADAS-2`
+  - `clinical-trial` -> `CONSORT`
+  - `observational-study` -> `STROBE`
+  - `animal-study` -> `ARRIVE`
+  - `prediction-model` -> `TRIPOD`
+  - `health-economics` -> `CHEERS`
+
+### Layer 3: Evidence Lock
+- Todo draft factual deve ser compatível com `evidence/claim_map.jsonl`.
+- Toda citação deve resolver contra `drafts/references.bib`.
+- `zotero-reference-manager` pode sincronizar biblioteca Zotero e `references.bib`, mas a relação claim-fonte continua sendo validada pelo Evidence Lock.
+- O agente deve rodar o gate antes de afirmar que o manuscrito está pronto.
+
+### Layer 4: Computational Discovery
+- Projetos `drug-discovery` e `intestinal-digital-twin` pertencem à `computational-discovery`.
+- Skills prioritárias:
+  - `rdkit`
+  - `datamol`
+  - `deepchem`
+  - `diffdock`
+  - `medchem`
+  - `molecular-dynamics`
+  - `statistical-analysis`
+  - `scientific-visualization`
+- `ngs-analysis-router` roteia BCL/FASTQ/BAM/VCF/count matrices para workflows NGS com preflight, run envelopes e raw data read-only.
+- Todo resultado sai com rótulo `hypothesis-generating`.
+
+### Layer 5: Review Trinity
+- Sem `Review Trinity` em `PASS`, não existe `submission`.
+
+### Layer 6: World-Class Agent Skills
+- O agente deve consultar `article-machine skills route --query "<pedido>"` quando houver dúvida sobre quais skills usar.
+- Skills de ideação e planejamento:
+  - `hypothesis-tournament`
+  - `scientific-novelty-checker`
+  - `experimental-design-planner`
+- Skills de reprodutibilidade:
+  - `ro-crate-provenance-export`
+  - `nextflow-pipeline-runner`
+  - `snakemake-pipeline-runner`
+  - `cwl-workflow-bridge`
+- Skills de revisão e evidência:
+  - `asreview-screening-bridge`
+  - `risk-of-bias-assistant`
+  - `grade-sof-table-builder`
+  - `protocol-registration-governor`
+  - `extraction-schema-governor`
+  - `living-review-monitor`
+- Skills de fontes e provedores:
+  - `pubmed-database`
+  - `clinical-trials-database`
+  - `literature-search-europepmc`
+  - `literature-search-openalex`
+  - `literature-search-arxiv`
+  - `literature-search-biorxiv`
+  - `semantic-scholar-citation-graph`
+  - `crossref-unpaywall-resolver`
+  - `opencitations-citation-audit`
+- Skills de descoberta biomédica:
+  - `openalex-literature-graph`
+  - `open-targets-drug-targeting`
+  - `chembl-bindingdb-miner`
+  - `alphafold-pdb-structure-router`
+  - `in-silico-validation-governor`
+  - `tooluniverse-drug-target-validation`
+  - `tooluniverse-variant-interpretation`
+  - `tooluniverse-data-integration-analysis`
+  - `tooluniverse-drug-repurposing`
+- Skills de analise e desenho clinico:
+  - `tooluniverse-literature-deep-research`
+  - `tooluniverse-meta-analysis`
+  - `tooluniverse-diagnostic-test-evaluation`
+  - `tooluniverse-epidemiological-analysis`
+  - `tooluniverse-dataset-discovery`
+  - `tooluniverse-clinical-guidelines`
+  - `tooluniverse-clinical-trial-design`
+  - `tooluniverse-pharmacovigilance`
+  - `tooluniverse-clinical-data-integration`
+- Skills de auditoria:
+  - `deep-thinking-governor`
+  - `agent-benchmark-harness`
+  - `scientific-red-team-reviewer`
+  - `tooluniverse-self-review`
+  - `anti-ai-writing-governor`
+  - `manuscript-integrity-response-governor`
+  - `academic-office-deliverables`
+  - `skill-upgrade-governor`
+- Skills de navegação e preservação:
+  - `workspace-graph-navigator`
+  - `project-entry-navigator`
+  - `content-preservation-guardian`
+
+## Regra de Ouro
+- Skills ajudam a executar.
+- O runtime decide o estado metodológico.
+- Se uma skill cobre a tarefa, ela deve ser usada antes de solução manual livre.
+
+<!-- ARTICLE_MACHINE_REGISTRY_START -->
+# Skills Canon
+
+Generated from `skills/registry.json`.
+
+- `ab-test-setup`: `sha256:07f75f2188e30cacedcf680fa10fc094c9c735eda786226c978f02c4f0558f04`
+- `academic-office-deliverables`: `sha256:f1b718ba33320bd47691e5b85a4e8b5148f9245cdda3f911e302041c79a7b79e`
+- `ad-creative`: `sha256:e85e2050f0d276c669e20ac529822d242ec78b3a1f025d325b8481eb9e0701af`
+- `adaptyv`: `sha256:f0882eb8659b2f4ab410790fb00fc1683f02e7aec7bd7d0a3eb5eecc2bf915a6`
+- `aeon`: `sha256:02bb7999069af751e5fd2c39c60e25e3a1268a564586f303b5fb6bd6042fb1df`
+- `agent-benchmark-harness`: `sha256:a242710989eb9a8a8a9f5947a8fc2168ab449c14eab74a78d8a6ccbe8b087563`
+- `ai-seo`: `sha256:4db6c5cec0afe2cac37b1eb6dce7f41cb3a0ef080fb40b66c909298d527447e7`
+- `alphafold-pdb-structure-router`: `sha256:c117c419f1deb1e2a852961a1ebda3ef617b1768853e1518af7ee8f7625cd246`
+- `analytics-tracking`: `sha256:b7c405a5c41ac65aca2ca0bc9057489630f68cb547a5da47b7f19ae6acbcb5d8`
+- `anndata`: `sha256:034006eb0551d28a278e197127268c417a09a78ee252fcefeab2992c70b68527`
+- `anti-ai-writing-governor`: `sha256:ff1838dc1dec088a85e0e84d238473d53ddd6bd061e8bf2851f09e5d31dedab4`
+- `arbor`: `sha256:52802901704e41aeb5c934bcd7ad99208371fbe420f1a1794289ef151f56f074`
+- `arboreto`: `sha256:338a46bda3c5d4cc9cbbee5db5f15315d07afae6db2ad8bef8a67fbb90735cea`
+- `asreview-screening-bridge`: `sha256:1344e46f68643b05038546afa99bf8529e90e2a43cd6b049d2a286911a151c22`
+- `astropy`: `sha256:1e18eef4ee7a85ce5f461ae0fd61af56244d3e6789a1b1e699c1981d07e1b9c0`
+- `author-identity-resolver`: `sha256:ec5c691977a4802b2b0771dd9080a4a79dfdb8f31ab60df2e7bae95f010749e9`
+- `autoskill`: `sha256:93e2a3aca9b4832f245512e4dc78e971d5a1aaee11a9ffda86650b1c48cb0eb1`
+- `benchling-integration`: `sha256:6b970de3a24766512cd33c87414f228428de00a7fb6aab6286fc2a6e1553729d`
+- `bgpt-paper-search`: `sha256:511b33f75bb731adbb3250034567eb5afa9c869128032673e095e752c1c67bb8`
+- `bids`: `sha256:748d256fab9f9a1fa476ec9ca70b74824771dc8b831e17c9dacc7414c74d9a3a`
+- `bilingual-scientific-writing`: `sha256:65239cd38ae7b36d47d4a16333698ce60ac15fbed918a146381c1cb1c9af2e39`
+- `biopython`: `sha256:a17ad5d90a0ca3e893791c53ae239557541b00a37843813d4b9647da98caf1b8`
+- `bioservices`: `sha256:b0cde0ab5f77d603425cdd16f82c7fe3e690a2c48a0b72f4ca7e88a6e9ccf305`
+- `bulk-rnaseq`: `sha256:a55bedb970a1b8528cc2d8bd841a454604e69e6658785ebaa3644a48eec59393`
+- `cellxgene-census`: `sha256:6d63102b60461fd43077ac370214c1646c6f0b090ba51e569bae18a84fc4d831`
+- `chembl-bindingdb-miner`: `sha256:b55996bb6f364a398414a9a52928becfd2a1cda96c0f94819857e3007e36de3c`
+- `churn-prevention`: `sha256:7bec8900893ef677ab485025b0852888a12c9a05ffc6367ddf16b162f5f79fe5`
+- `cirq`: `sha256:56898cdee8396a45285ca33cd8f29887c9ba2751b4410fb98e59451909d14d4c`
+- `citation-management`: `sha256:5fbcdd04746c90f59b2931fa23084503fd16056eb6c53af38033bca0532afa4e`
+- `clinical-decision-support`: `sha256:17f349fbc1ce671c585cc5092ecd05a6c1c7ec515e75975f6431497418ba87bd`
+- `clinical-reports`: `sha256:440c42eb1d6fb4ab8b5ea85743cfa113c961d5090969b20add637a406a2878ce`
+- `clinical-trials-database`: `sha256:2f889f6ac76565ac62e080638a7f3e3da08c19733b59bfe3395d81c088788d33`
+- `cobrapy`: `sha256:5e10be79c36654d62e4bf89b546d5bc57b82d4fe1bff4e309f867a6ac792bc03`
+- `cold-email`: `sha256:c50193d7d0242a0df7f88499da88725321c5cb069f5545295bd9619aba757ff9`
+- `competitor-alternatives`: `sha256:35fac42df6c102233ef4d4195d6e8b4f27788d4a4148c953edb5b540dc34f5d9`
+- `conference-deliverable-router`: `sha256:07c4b982aa2f25a273ecb72947d3d06d8885b31cf9bf184d2a415f3b9ef76c3e`
+- `conference-posters-html`: `sha256:2d89a18b8e37c89e8dbfaff47017552f8a5b50917fc02c211f00e45662cd3a3b`
+- `conference-requirements-importer`: `sha256:d10ce17bb12c374577be30bfb7d59b068123d2bb87b599ae224974175a804612`
+- `conference-slides-html`: `sha256:cc34abe6e7fefeb686c35d7ae1a1d7d197e0f5eb09af48fb5be6a0bcf38113c5`
+- `consciousness-council`: `sha256:a78c41f8e76d6894e6263681672a3350e6b632db4195b7f814fdbb328d052da8`
+- `content-preservation-guardian`: `sha256:664f9158085c2af257096ee1dc0ace5f88b67d822a79e4344581899ffdf73723`
+- `content-strategy`: `sha256:5601a2017397a54bdbd2ad3d701acb374e87e63979faf540fff67c920b5b1c11`
+- `copy-editing`: `sha256:1639a6ddc3b47a5e645272a810232bddc66261669461807335c88e1a537ef1ab`
+- `copywriting`: `sha256:005da01d4e7edc17a1985b3a56019e2c6955865c801b6602ebe07c38e1c30c94`
+- `crossref-unpaywall-resolver`: `sha256:08614ae15ab9bcbd629ca517b0f18e36f24754c2a950f8a582c9dd17b591e29e`
+- `customer-research`: `sha256:3f5f67dc27a1cf8ce55bd73080a1972f1413d7756b3bb3548d63b2fa34252a15`
+- `cwl-workflow-bridge`: `sha256:7918212ee02f4e48e322d88b3e34865999f888f5c26586f40053a651e1112491`
+- `dask`: `sha256:8e95be238869dd8f362520e59a9454996ef91cbe2396b59c0b656615ae00bec1`
+- `database-lookup`: `sha256:a601341612e47bb9e62d08a768abf5fa73b9b41e4eea478337bfde66ac8c8e8d`
+- `database-retrieval-governor`: `sha256:2b124b09c9964945edcffce36e4e7438bf3c2f813099af211f6559d68bed1e5a`
+- `datamol`: `sha256:efaa604d6f1fbf403514fad372fdc5cbf0be08a3740c2ced739d961ab3d04779`
+- `datasus-research-engine`: `sha256:e7ec6e99be27183b5722838eb9c0ac780085dd7f45272fc10561cf8effb46d7e`
+- `deep-thinking-governor`: `sha256:0c34cdd24da3564d09c998b11c932bfc9a1e7e268ccc7b996bbfc97934cf437b`
+- `deepchem`: `sha256:e10d0df0b951b5f795f096e011d597be8ccfc99c48ae1ac8d9a310c23d6b0ad2`
+- `deeptools`: `sha256:677305e2ab7131f10997f8f797bee14dbef3a94f6a0c33c512dce40f1ba3795a`
+- `depmap`: `sha256:a6b8f7245c67eba692ee5592db51f7dabff448b5c9912704146d29d17b6e533c`
+- `dhdna-profiler`: `sha256:0d73aa84e6ac5bc084926c2c3e6126e00be84a0f7c78d4a0a8f3083f6befe07a`
+- `diffdock`: `sha256:09f051555977b46eb719ebea29fbeb8ef15182cd9e8af63e9a874aa032784c77`
+- `dnanexus-integration`: `sha256:f5e6e6d0786383e3bfefc1fba3e372dc15dff4eb161eab0965a3b296fe27fd44`
+- `docx`: `sha256:d527f98a500f6eeaf4dd319590161e99db2f9b2eccb8b3ae14e1ddd103b79b50`
+- `email-sequence`: `sha256:f3757565ae18ade3907100c0b0f016ad2cad9a8fc2c06153900c3270e1fac8b3`
+- `esm`: `sha256:7d604e611f48c4e424ab068c2f4f83d785e6471945d3250e25864e2f581901f2`
+- `etetoolkit`: `sha256:adec55be119a7841c95e8f7582f5219bf81e912549349fc7fbcfa4f0ca075e96`
+- `evidence-lock-hardener`: `sha256:01bcf1d7ce08c7dfd059e465e9c06fa2bc5023da58a19eb5de75618e9d7b39ec`
+- `exa-search`: `sha256:d2c3e6973b23372fe36a8a35191763558f0240fa0b5a472671e6748ded2c5e5d`
+- `experimental-design`: `sha256:d0eaffe520d6dc3f7b01ea6f2cf59285caa04440e26bb1efd9ffd5393411ec99`
+- `experimental-design-planner`: `sha256:5951d495fa5b75f476f0fbdb223bd332730e4b6c5d8262fc56ef0b67dacc091d`
+- `exploratory-data-analysis`: `sha256:f34f297613401edba519e06239a5cd70193bff12aaef6bd3b47958a29519600a`
+- `extraction-schema-governor`: `sha256:d9ce758d3a4e5598cb961964cc6941a0a421cd6902d21d456da7defe40d518d1`
+- `flowio`: `sha256:2fd9005a437114a247592fac28931e0a3a176182738fcabafebda0397290e801`
+- `fluidsim`: `sha256:5c7f40acb23b30715090e380e3eb1a9b49d42038367970cfa6160414f60f76a1`
+- `form-cro`: `sha256:09d8962a1dd42372cf0b4b5a70af05a3352f98e99bb90478f90644a8aa3d3b56`
+- `free-tool-strategy`: `sha256:0dc19986a0800b7b00fed2db393d3e58f46206bd7fc46f84a1e10786fefa3355`
+- `generate-image`: `sha256:a87c45c8f09de30352f7c0c6cb3f3b3cb4be561fcbef12f86b4d6cb2bbbd3067`
+- `geniml`: `sha256:4f0a21c531b0e7232955df476542e7be909f2a947cafc2bf99985940e4213874`
+- `geomaster`: `sha256:9bd440787e7f6fa11a36d570d5e3cbb0154f79a352fb6d47ad26e16f2bf54a24`
+- `geopandas`: `sha256:cec830be3e1ac1280e8d9a8b950753f4e0f5ecd69b60f79dd4ec37340c95f6ee`
+- `get-available-resources`: `sha256:48d925a19d58d6c17b75ecbe4212f37552100e59453295508d57c6835dae2fb1`
+- `gget`: `sha256:c70a0b16a78b50c9486825961e943daca46fcc86f7e090a635a422438095d4de`
+- `ginkgo-cloud-lab`: `sha256:a4d91b247503df0624e3d4ec0241faf08864685bb09b40403ac8f918c8ed2ba6`
+- `glycoengineering`: `sha256:09b64678db892b7503e2ebe871d47bb67e6862f954110bbc9fe03841f860e166`
+- `grade-sof-table-builder`: `sha256:f375717ccfdd63856bd7a125902ed5f7435ce7327e35fe9ccb32132225709576`
+- `gtars`: `sha256:3f97ea793b0723f8bd74c6e2a1d9e36b50a5800500d1411bcf63ae5008833d12`
+- `guideline-router`: `sha256:c69daa4d5207ce183db9f2cc28353bac949ebfaa96a5f2549f8603e23c3eb3d0`
+- `histolab`: `sha256:62cbacb6d908984371a784b5b4625a474e685213c723229917cf6624dcaf1b56`
+- `hugging-science`: `sha256:20d92ad2b347b1170046b4ac1abcd14886256f8a6515b573c8461e51e2879169`
+- `hypogenic`: `sha256:7ef710be6eb05e0160cf29da2b1a213e9a28825b03a35a695b5fbc53ecafc2df`
+- `hypothesis-generation`: `sha256:5873d62f7fa8e70125bf588c7dc886ebd2fddb1e1c7f866074a7a3f6cad94216`
+- `hypothesis-tournament`: `sha256:685d31981337d5360d5e7952ba163e0ede46adccbb8c6f5835af13a4ee1790c8`
+- `imaging-data-commons`: `sha256:ac47b9ad94357ae80500bf62f841ac0edae004dddaefcd2964a59c283906646c`
+- `in-silico-validation-governor`: `sha256:a9ac46876c3e2a907f1c829885e4c33283e90f0f76bcc4f8dbca6b822f78716c`
+- `infographics`: `sha256:e9ce604c84f61d3a2e2c8478311503e0fdad35221355ad525ec3034665e0fb7a`
+- `intestinal-transplant-research`: `sha256:536cb63cf69ac437ece91f860fbaea1b9b60c93d19f17f764333f5c6b9c3fbff`
+- `iso-13485-certification`: `sha256:4f4479e0605702f4e6e305ac53c5bbbd6f4a2c6e560270d5e16109cfe4022c9f`
+- `labarchive-integration`: `sha256:8a05f63ae35426ef36498c6029b7eea32f806173b3bb58885204efb103767b03`
+- `lamindb`: `sha256:ba8e4dff8e0bd2b4c067fdb0805ea04fc3a0f9d0ea4ab01b8703f457800dfeec`
+- `latchbio-integration`: `sha256:c6d8a9c097152da45d3f9abdcf8301ebc564b6aa6e052ee075d1f5841dd6681a`
+- `latex-posters`: `sha256:7d4ce469454c3857d4596b7cd147c7b00ebb5ba45f20d886ecee8dd4923d1cc4`
+- `launch-strategy`: `sha256:e603fce0ce5073d46eb802485e436c1e3bd5510d3d77404861feeb0c541c9373`
+- `lead-magnets`: `sha256:898661f03e87bb5ffa89477dc977c54dc800d8d2acfe0c764fbe818d31f06432`
+- `life-science-router`: `sha256:5207c24ae8d63a4163141191a878e221e7e12f46b4bb9eb8db1226b20e03d8c6`
+- `liteparse`: `sha256:5bf50e60bb27521ffd2448761302d433d515ed7675dabc94623ea431b3b9e502`
+- `literature-review`: `sha256:887b5072eba581a49ed3d47de5c24648ccba396155ace6b8f09ddd6be44d8a4d`
+- `literature-search-arxiv`: `sha256:0187ce6f4491448fc1423608720a912fdde03e019f510fd24d727f583b25b82a`
+- `literature-search-biorxiv`: `sha256:7b9f1d04ca25e51f1a35305777771c0739da17ee6930199b8d8371a73a2ae4f2`
+- `literature-search-europepmc`: `sha256:89ad1ceb08680d53bad05cdaa545766403887c956d96457f8645307815cc3130`
+- `literature-search-openalex`: `sha256:4c0624d8e525031af06b20f7c89a2c87d61e999ee62d828c75ed5af27f3f8301`
+- `living-review-monitor`: `sha256:649b6e53b3f26e476d6cf4c4a410680419037183c68168d838f68f734bd4ad80`
+- `manuscript-integrity-response-governor`: `sha256:e68d41e67ee89637bcd1dd87f90c851aca85d8f0e72af4608afcbdc68d06b638`
+- `markdown-mermaid-writing`: `sha256:c5a151a3f77b4a6c3cf2f32829cd19665e28bde4853a0ce0fafdba4c241ecd73`
+- `market-research-reports`: `sha256:ba76bf768cb6402b57b764437521bcbad6e2eab84dece1a311750ced474a3a43`
+- `marketing-ideas`: `sha256:88d9f18f4cbb537d7337c7fbbf1d84354724423364a88f6df32ccebd0084b95e`
+- `marketing-psychology`: `sha256:8bc57fd0283ba55110734f74d62a9f8ac4a364b8151bc1ae5333c6f19a2a639f`
+- `markitdown`: `sha256:29f7974a37a90680419824e1ce1b39a083f281b1967af076c6e34211b94bd111`
+- `matchms`: `sha256:930add4f7f501c2dc348dbb8d2c2d1b8e03997b17c166a91a3cb74c94e70c747`
+- `matlab`: `sha256:c925512b3e6a3a45266daa949931e2a9b59fd94c9628743bc8cc656f8c6877e4`
+- `matplotlib`: `sha256:f12122c3b06d2c14be6b8b2b712c4fb3d5cb0981d17f03d83366369091ad7660`
+- `medchem`: `sha256:0ec5b20e15736eb80674ecdc984239650ef18a622a91c5f9d682254ea8bdab6c`
+- `modal`: `sha256:a463764b499ce2a7bde319170d6647e7e3245d03f5653bd77c57742569d3fa9f`
+- `molecular-dynamics`: `sha256:56a6a523fa1b9f587c14d95444d2b74dd740a8cc897d073a41b282553708cb5c`
+- `molfeat`: `sha256:70121c82b9a4dca1633cc4ad27b321aff5333adbb7c9f9821d977b948d2a39b8`
+- `networkx`: `sha256:deccb6e507285cb83c86e7c8d84608f7784429a13e541c71624a9e91a4a1d02b`
+- `neurokit2`: `sha256:2bddc7df9f0720ee868713730df6d2260e24ed3b9599ee2b70270e1057632386`
+- `neuropixels-analysis`: `sha256:2ca6c4e8ad88d9514f6825bc601775f191e4234c21a58b043a485c59b1d500d2`
+- `nextflow`: `sha256:52357f4a2a7110145eeb20c8dad6525748896e03ac725e2ee34e5d3853ce0550`
+- `nextflow-pipeline-runner`: `sha256:5295561d423ad8bd44b1c3246327d29504aa9b35805c138e2f2510b99f2defb6`
+- `ngs-analysis-router`: `sha256:703cd7b32e225d618fa04d2bc6cc06c14db629d67e6a3b70fe2ea26142a91fd2`
+- `omero-integration`: `sha256:08d6c95a93e27538193b15e3cc7f9fb0558901277cc3f955ffd527da87fc291a`
+- `onboarding-cro`: `sha256:944150546f7af2ce84006dd629764d262364ace6dd571187fac84194c4d11d61`
+- `onekgpd`: `sha256:bcc079ef444b96190b1b44eba5d8b8651450ea024b0583ca7e3b0ccdbc64853e`
+- `open-notebook`: `sha256:3bb2f2c430ca93eba942f508997d49780d1999a4ed690b663fb66280fa803af2`
+- `open-targets-drug-targeting`: `sha256:486d0100fca11e4f93de0926ab1240e77142dc96c2f3f4692ded11c4df989ac4`
+- `openalex-literature-graph`: `sha256:a718304300f7636b9eeede248cc17b2a9802a07ac48486dd60775ef6e1e6de6a`
+- `opencitations-citation-audit`: `sha256:ccd3ca0f132bac66c016972490ba60bbf111d83a0080cf4276e73b2137823dc5`
+- `opentrons-integration`: `sha256:56d1cc1c83bdbe5d1bf359e42eb1ed0faa0203b04f9e2022370c2fcd92083a8b`
+- `optimize-for-gpu`: `sha256:079426185b98bb60dc083cc6edf6f63d74a4c286b4d9a998adbd33e180a54962`
+- `pacsomatic`: `sha256:0c3be470d92a1d5ad71e0db8a0494d311e3fe5db404defa51721607bc9c7a6bc`
+- `page-cro`: `sha256:adaacdea04dfde31840f7df2cfed310f3c62be5fc15d22805dfd3fece4d315ce`
+- `paid-ads`: `sha256:3b290b3e6a5e5adb6181227be7ab518853941f8fc303ede1a1edb77bc266faf5`
+- `paper-lookup`: `sha256:7d5103d96703cec1b500e2cf6e37849ca452d0dc1eb736179f1e9daf27f9a5f7`
+- `paper-to-poster`: `sha256:8fe010e3231098e2fb9a0f9dfa70ab6ae6d2c2b3db3ecb43bf8582d4b51e6c0f`
+- `paper-to-talk`: `sha256:6a872eb8988b5bb2374bcb9c2e4decfcb6023418c6045a60d2e2a9eac26524cc`
+- `paperzilla`: `sha256:f8b66d321f8febcc60ec9322dda47a007cf128d707c0a18bded7fc8fe4a0c065`
+- `parallel-web`: `sha256:ff3960e4ec947e53f56baa2803095eb91241a2dd4d7cee1a4a3cdcb5a135eea8`
+- `pathml`: `sha256:15b4689cfd74736f65544bf21faf688d4bfa636e31c57b8c1afa0ac5bcdf0d7b`
+- `pathway-enrichment`: `sha256:54a1bdfe6658cab323e4639f1811e600a5697a642a840505456499bf420bf6ec`
+- `paywall-upgrade-cro`: `sha256:3bbf1ba70eff9d2943f6b9df2461ef62b21f9578ecc5bf5af63d177e9a4d1470`
+- `pdf`: `sha256:59fd1c6c73952100bcded907344a2438ea9227c9389894d6ccf0c44dbcf891fc`
+- `peer-review`: `sha256:187c7477e93a028f9fe9f85fcb38123066e5b6076161428142486e1b643b6e5b`
+- `pennylane`: `sha256:f09ec3c29951ddea661f73c45cea688c2cd13ba3d0ea5ed7e265cd13b050d6b3`
+- `perplexity-search`: `sha256:d35b3a75d7419a96762ecaee7c429e75b722a9068aa03bab5ac8e8867aef66ac`
+- `phylogenetics`: `sha256:33df8e85e2ebce3e5864fae21abb886c13103749adfef27c3ea3455ba84f5614`
+- `pi-agent`: `sha256:f67c8dd12a6fa3f4d881c6637dd99d02f0b72494cd0a30a547d34daf8e9fcd5b`
+- `playwright-layout-qa`: `sha256:a8185e9bbe7c611316eb7a4f27efef28a1af9838c0c3e69995dbaa5a6eba1635`
+- `polars`: `sha256:520e4d8370663efa9b63c44a7a43ec5d5dfcba3f56eeb844b4d88e813de84cd1`
+- `polars-bio`: `sha256:95128c11d75e6bbb3f2b98c14508d230d13f4fa151e894c660c50d1547cd4c74`
+- `popup-cro`: `sha256:bffac6624ae6faea34e66dd352d21c10275bba0bc6ba1ae2fbc8ca13fe1a509b`
+- `pptx`: `sha256:9de206639a72c12d2e395de5eb084aedeae49d2631439df6d2079339d775971c`
+- `pptx-export-bridge`: `sha256:9470a3d16311994139d633cbcf7af27f3dc06f68cdba2b2c0ad9002a72f01005`
+- `pptx-posters`: `sha256:9f6bdb92766f7c0ebd07634e9f57bddf325a7beeb5ecf85b23bcf9806101e221`
+- `pricing-strategy`: `sha256:768d2cbd13070d05632b31552e5c800105b9146ff79067f2c7b602002348768d`
+- `primekg`: `sha256:e2bbf84c29f1181722af03cec725bce7577aed8edeff8d74097cf132d44f4bcb`
+- `product-marketing-context`: `sha256:539c515129842c19129de933d5573e4791daf1671c6162df11967facb76002f1`
+- `programmatic-seo`: `sha256:0dda2e31a93f3ae1b9461143a5be8a72a0599321602496d34c0a968ecc4216f1`
+- `project-entry-navigator`: `sha256:65f5bbe5734d1b15ca75945bd6f6b9ad3e4d1e9927f98cc09d35976da42eba92`
+- `protocol-registration-governor`: `sha256:d5a85ec7446582cf9feb2f273e6e5eaae8311c32ab9a223a1ab5af9b647891c6`
+- `protocolsio-integration`: `sha256:693549fee6098b58d5f8079292681cfff6faa64ac2b8c75b17ad235412a518b2`
+- `ptbr-article-writing`: `sha256:3431b58aaccce730bab104266bae6e6534186bf4ed434a9029af1449c1297b14`
+- `pubmed-database`: `sha256:8452c0cb7027cc9fb362babd45a74b0301d74d25650b6c94af19311000678eb3`
+- `pufferlib`: `sha256:ed68bd1db9c3e6447455d867bb58e897414e98d29f4d8330d2554d5e162ce9ed`
+- `pydeseq2`: `sha256:ea4525ddea5887ebd5d26d906cfa4549c33191471abae5efa1188b2c9a513ff4`
+- `pydicom`: `sha256:df574d2d9dcffaf9758e0f3ab776e301cd04eb7b64831fbccd398bea97203454`
+- `pyhealth`: `sha256:f4625f3c543a1c81b2cf87ce8154e1bc21d4d9f1be902db109a7c215837fb6f1`
+- `pylabrobot`: `sha256:78d4b65f8beb949e152377fe98b11cdc4e7a7ed3a678324569277f42ef44b15a`
+- `pymatgen`: `sha256:f78d8706677687e76bd0870aa47e4644875df701d77fb1ff6b62b74521b1a08c`
+- `pymc`: `sha256:d87221c85a939253f17e26f0553eff4ba4b0edf723045fe1dc0362ed8dc2c433`
+- `pymoo`: `sha256:99ab606d040eec7cbf6c521076a0b1c95a2f82c2099edd82a7f6dfa9ee07ecea`
+- `pyopenms`: `sha256:2d9739672dbb2035000b952255f57d0c8cd6f6596314857665e44ab8fc8f6854`
+- `pysam`: `sha256:a468b56fcb4a471feaf3242bd4127d4abdf6a51ead77fb46e21c25cb8ee06402`
+- `pytdc`: `sha256:320c00e8d15c2c9234ab781f7c3465fbf7ca5d429c38796da916504f306be3ec`
+- `pytorch-lightning`: `sha256:23551cbf8c0bdf6bb64b314c7710f0c9c26da26ba5131c31a471ffd3fb7a119c`
+- `pyzotero`: `sha256:f72d90c7813f116c0239b96ab3483a81e7bc3ee4c3555cb084b88d930b7262bb`
+- `qiskit`: `sha256:214aba904dd9f80cfafe24f065c3fbb83a90c1e70c9b43e37ade304733f52be4`
+- `query-string-governor`: `sha256:b7670f086e27732399581f1aecf0bc1436530402a0ab4473eef16fafe864aa8f`
+- `qutip`: `sha256:760fb1c6186bf843e4e777bd112454ff4c77c8d4cbc010f637aaef5f87bbb95a`
+- `rdkit`: `sha256:607871eb8e3a03ef6e6a4706eb7947a5c7c68dc5df426445164ac620b2c3c483`
+- `referral-program`: `sha256:ed8e6b5be1208c977a420a6b53d86dccbe20e6b9cfa4a989d3e86e444b3be7ba`
+- `research-grants`: `sha256:fd871048f71aa603c065edb88570acc7c2c503784a5b13ae5aabebeb16f931bd`
+- `research-lookup`: `sha256:1e52ab3750daa621b7efbc589a5c4ff46fdac9716a6602961e28aeb96caa003c`
+- `retraction-integrity-checker`: `sha256:e98d93148423c1c891bcddef3dcf8a84795d0dfb254400af811b413bee2934b5`
+- `revops`: `sha256:f70cc8fec6648901ee91ce68e10090404fb994a75fb8e01e57810f6806cb4db5`
+- `risk-of-bias-assistant`: `sha256:29d2f7d63577f0069d2ddb0f19cf7721195c582282e19da9fd1d5edba61a237b`
+- `ro-crate-provenance-export`: `sha256:12bfa65c64091ad43478d5de09c23562018370fbbe8d77d73ab65949f4b244ef`
+- `rowan`: `sha256:c9f772d9f494e7c94d4e048843824c50e06b828d731416507f0b39f385a5645e`
+- `sales-enablement`: `sha256:68699beb191f979e67b64ecc6300330c93c18439d9b4cb93fca0bcc2b84fae81`
+- `scanpy`: `sha256:329f4b1bebdbb215343210e086e1816fd3ea2b0c99c87e390751874637c63e03`
+- `schema-markup`: `sha256:87dfdf353dd432c46ff4897c760265d0cc2ec6905f0fae570c0ec6e87777c731`
+- `scholar-evaluation`: `sha256:4358d0c8170df558fc419e6cde24dff296e44deec6acb952c6338db696f613a9`
+- `scienceskillscommon`: `sha256:9a2f724e8fcb02bc78d2f02a6b29c4396bc3e9a179e358a46390c7a0c8ef959f`
+- `scientific-brainstorming`: `sha256:fc084a96e4490aecfd15885191f8fe5085cd39f219f1d3c45b3991545fa5fe98`
+- `scientific-critical-thinking`: `sha256:e41d7c161cd92a615a0231c7639cd0f480d305d82d776a48a9857112a6298d89`
+- `scientific-novelty-checker`: `sha256:09ce506c52547c8a198f813da96375a9dc3a7c2970c6b609d42927f36eaffa86`
+- `scientific-red-team-reviewer`: `sha256:d6f6064ed31a1c235726218adbf32911e6d38463fae0cc642ae36ac78a6bba2b`
+- `scientific-schematics`: `sha256:71b202359fd1499a83519f78484822345e59520e454700ae406b23dc532a5418`
+- `scientific-slides`: `sha256:ecd11d41a9e1362e2345cf52129b75724dbbae6f132c5b887c093f06fd657170`
+- `scientific-visualization`: `sha256:cc120c88b214138484a9463171574e74f3059dd46c28068af8bf79cdceb72fd7`
+- `scientific-workflow-orchestrator`: `sha256:b6e8f3b246dcdbd59599adefb94e97b89d5e430559b845e3e03d51bc3a7e7961`
+- `scientific-writing`: `sha256:f14aa135fbbc9fd3d56d773b1f2f7ff28574c269ed46208a97e9b606b4962351`
+- `scikit-bio`: `sha256:cbf2746c05474a7268d939c1b0a23932f326d52ad12a54227eedd00378238ef4`
+- `scikit-learn`: `sha256:b5c1f59b4ddebd3a46d3f631aebfce5c0348e3b36d6b66b8a5cda64d3b6f8015`
+- `scikit-survival`: `sha256:d645368a888c9f259f443b60c588c2f04985f95b52511267c4bf3a47253df210`
+- `scvelo`: `sha256:7f2c7d490a9e195e4b00b02c84f764f7c410dc764e130a4f1e50cf89798f04b0`
+- `scvi-tools`: `sha256:3d07bf7a80ac576f54ab36a0b6d56a44ffb1314404fd0b60d3b76a56de4c1812`
+- `seaborn`: `sha256:0192684ad02a2229ef222e8ee2d6d1c6440d2234840fee3118d318d5aa2f5628`
+- `semantic-scholar-citation-graph`: `sha256:c51da4e12339efefdc2de6152a47e1d4ac1fc67de7abb1b83bb7e002a152f55e`
+- `seo-audit`: `sha256:7f2581c79a9cc2c9992217b3736d8a4b8574eddbead37d711039319a555ab058`
+- `shap`: `sha256:0f347af7d40b7dd72c86ef121a53b8e0ea5ee1143cb424756ddf137b2642e8d4`
+- `signup-flow-cro`: `sha256:4e2df184eddf2da56dc1880f04705c963be003a8237c8924fcf63091bfca8ada`
+- `simpy`: `sha256:37f05382d2869ce77b47645c5ac7d2b1039d90389f6d563cda5b4c817c639c55`
+- `site-architecture`: `sha256:a86c315881458a75914fc261573951d7ec8c70e26a4db1f35d54c92ed57e4ba0`
+- `skill-upgrade-governor`: `sha256:17f4be044ff3d811175a3983d85f255dd2c2250167a24193bd269f6e917992e7`
+- `snakemake-pipeline-runner`: `sha256:e51c1af8e6d5f2e3e6abfac66dff9503f56b703226004c702fce0d431ec0ef8e`
+- `social-content`: `sha256:c67860a06b4b594fc65ac942711416e2ea71494a3e6520019b39b4a74ca52774`
+- `speaker-notes-timing`: `sha256:72c766ac7e059c9dea66993d3c0f13ae67d1e71c0877836f2e93de349ad2db43`
+- `stable-baselines3`: `sha256:604abb7be046ee920c6e77a66ef30ab47da9ffa637504b25ceb7cd76145338aa`
+- `stage-audit-governor`: `sha256:ccc36788773a34fee6cb15aab4ac9ffacaf2f30c355b24f6aceb007015ac21e2`
+- `statistical-analysis`: `sha256:5cf0048af9691d8f9764fc54837a28e2f5850747902a36c444197017336e76ac`
+- `statistical-power`: `sha256:8887b8e2c4ee8470187c121a2db35fa1dd25e1b65cdafcca5525bcf91ec03d32`
+- `statsmodels`: `sha256:c970f878a5dab527e55535537f54beab392efb653e4956977319a59049403f5c`
+- `submission-ops-playwright`: `sha256:a852d0c63de13b7fbf5027b877ed29acebd026efa75e7a762a7303605b3840b5`
+- `sympy`: `sha256:a8c97166a3f400083e83faa27084441e901da53fbc52662336f2ca96a386d336`
+- `tamarind`: `sha256:0fbd1eea302526da863d8dd01913b43d4c46328b3ba6f6ce17efbfeafba7a38f`
+- `tiledbvcf`: `sha256:eeb98934b6637abd623acfc0dc2b9770e5ba1030328bbdb3fb96c2d420ebbb03`
+- `timesfm-forecasting`: `sha256:463259982dfbee6739af9cd15a6250c9df5ec171c32694460c53a25e92296d1e`
+- `tooluniverse-clinical-data-integration`: `sha256:274b33eedaef60d50dd8fddce149581bca79d00abff20d5d0f48b792f8ae7c6c`
+- `tooluniverse-clinical-guidelines`: `sha256:40265c677d3b27249e1f8b5e531a3ef5f0cde3ba27043615db7e199fae3301a3`
+- `tooluniverse-clinical-trial-design`: `sha256:6734413a1cd46fc36a72d856ef218163b66bc71a25337c29fa3cb0c5a654de0a`
+- `tooluniverse-data-integration-analysis`: `sha256:9b2b0a8031c0991e205c00e9f493dc0053ebb644b8ab097a8ca904662fb4b9c6`
+- `tooluniverse-dataset-discovery`: `sha256:3e8eca19a65df01feb5ec466c4c74e01ed4a029ccba72bcf32bf0ae30fb07b05`
+- `tooluniverse-diagnostic-test-evaluation`: `sha256:54b52a5501c5ca7d0c254e884247996c1f36e7537d1b68422945d7b654e66729`
+- `tooluniverse-drug-repurposing`: `sha256:f13c3b51c96762abbefa051be51231ea550ecc5906a0280cef146126bbab4f87`
+- `tooluniverse-drug-target-validation`: `sha256:22ef85dbc3e6833e46faffdbf74616598b443608ee52665cd8cb7b4f8e158bea`
+- `tooluniverse-epidemiological-analysis`: `sha256:59000b340915b718f7b61be962c379ce3ccb39f651c46d3b02ef61f6660b2afe`
+- `tooluniverse-literature-deep-research`: `sha256:a2a7972888d919e2cfdee6ab3556fc6e4a36ef70c91d8e41d2069240a00adf10`
+- `tooluniverse-meta-analysis`: `sha256:154de2c1a39eda215401dcf5a20dc84902285f942b1705b2d71550fb64242669`
+- `tooluniverse-pharmacovigilance`: `sha256:a0fa4cd9a3af25bd1e8153d7c9c9bbdb408c116532311adf4eec156d4e6fe08a`
+- `tooluniverse-self-review`: `sha256:9792bac00adedc814248419c8f5f738f7ddf886d087cc2e6e44200cadfdd8f8c`
+- `tooluniverse-variant-interpretation`: `sha256:9e45e324bcd77e57f378dea63430846f48c81af5ad4925a0554e7bb1a6567fd9`
+- `topic-ideation-tournament`: `sha256:ffeee767bf0c17a4b2ecdeec653f2baeeb70419f00ccb394dfe3143dbaa38afc`
+- `torch-geometric`: `sha256:50ce5246e25979c639667c4d8c311c895640271912bc372ec37f3c77c7f1b7ba`
+- `torchdrug`: `sha256:d236fc0943097d8d9f83adb8651ea137b646ea15ec9eaae329208cdd2e7807fe`
+- `transformers`: `sha256:ec3d98f2f610bbfa2771ae20cb92eb0ee2ded9745955c6e820d22474fd36f6f5`
+- `treatment-plans`: `sha256:d26d941954c5842fafd0e5ec675049a2f9de99188534554321823bd2eed222d6`
+- `umap-learn`: `sha256:201c040e737d5585494d57b09cf56a633f039b75e0db5ded305a04b228eaf094`
+- `usfiscaldata`: `sha256:3cdaefa6d4458cfb90997aeb871c4d3165af1c1283b91f6c1588f18e479d9078`
+- `uv`: `sha256:94aa0ae8ae401c3b5f5b0e8cf1e71696aee138ee3c1abfb110b51261e0c7fe10`
+- `vaex`: `sha256:0686f54549b07b65ed0ee5931e609e36ced9aa493db9d01ee0f64ae7f3071ed7`
+- `venue-templates`: `sha256:e60ead872a4a6ae67e4fd915a0bff68709e376ffda75b98f3064390d90db6155`
+- `visual-backend-router`: `sha256:d660a2fc51bee4eb35163111b39c4dfdf50db733713d2d091a324eac3b1cd896`
+- `what-if-oracle`: `sha256:e9b2dd701c89871fab2ad221f25375b4a0e08161acf38715a0d8ae40439a59dc`
+- `workspace-graph-navigator`: `sha256:52a7581049fefb1a60ce942d0c44679089c21abef77f380f75b6e0e12f829e77`
+- `xlsx`: `sha256:9395c90bd80675364d584b26da82cc955c6e07bf7dab615aaebc75aab63f7399`
+- `zarr-python`: `sha256:015f391fabb12b647f198991fdda37253c08b22636061bb3954b5c28f910724f`
+- `zotero-reference-manager`: `sha256:c34558a1b27e8561cedab87d6c55ef4db03c3b08a5376924b232f9ed89f227db`
+<!-- ARTICLE_MACHINE_REGISTRY_END -->

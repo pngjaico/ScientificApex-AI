@@ -9,6 +9,10 @@ import hashlib
 
 def register_source(project_dir: Path, source: str, source_kind: str) -> dict:
     project_dir = Path(project_dir)
+    from .services.protocol_registration import registration_gate
+    registration = registration_gate(project_dir, "ingest", mark_started=True)
+    if registration["status"] != "pass":
+        return registration
     registry_path = project_dir / "sources" / "registry.jsonl"
     registry_path.parent.mkdir(parents=True, exist_ok=True)
     if source_kind not in {"file", "url", "doi", "note"}:

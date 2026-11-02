@@ -129,11 +129,11 @@ def _compute_template(project_type: str, lane: str) -> dict:
             "version": "4.6.1" if r_required else "4.6",
             "runner": "Rscript",
             "package_manager": "renv",
-            "package_manager_version": "1.2.3",
+            "package_manager_version": "1.3.1",
             "lockfile": "renv.lock" if r_required else None,
             "timeout_seconds": 900,
             "allowed_directories": ["analysis", "scripts"],
-            "packages": ["meta", "metafor", "dmetar"],
+            "packages": ["metafor", "meta", "netmeta", "clubSandwich", "robvis", "PRISMA2020", "ggplot2", "patchwork", "gtsummary"],
         },
         "python": {
             "required": True,
@@ -254,12 +254,8 @@ def _has_nonempty_registry(project_dir: Path) -> bool:
 
 
 def _registration_required(project_dir: Path, project: dict | None = None, protocol: dict | None = None) -> bool:
-    standards = load_structured_file(Path(project_dir) / "standards.yaml")
-    registration_policy = standards.get("registration_policy", {})
-    if registration_policy.get("required", False):
-        return True
-    protocol_payload = protocol or load_structured_file(Path(project_dir) / "protocol.yaml")
-    return bool(protocol_payload.get("registration", {}).get("required", False))
+    from .services.protocol_registration import registration_required
+    return registration_required(project_dir)
 
 
 def _registration_gate(protocol: dict) -> list[str]:
@@ -268,7 +264,7 @@ def _registration_gate(protocol: dict) -> list[str]:
     if not registration.get("required", False):
         return issues
     if registration.get("status") != "registered":
-        issues.append("protocol.yaml registration.status must be 'registered' before extraction.")
+        issues.append("protocol.yaml registration.status must be 'registered' and verified before scientific work.")
     if not registration.get("registry"):
         issues.append("protocol.yaml registration.registry is required before extraction.")
     if not registration.get("registry_url"):
@@ -294,12 +290,13 @@ def register_review_protocol(
     registration.update(
         {
             "required": True,
-            "status": "registered",
+            "status": "declared-unverified",
             "registry": registry,
             "registry_id": registry_id,
             "registry_url": registry_url,
             "registered_at": registered_at,
-            "registered_before_extraction": True,
+            "registered_before_extraction": False,
+            "registered_before_scientific_work": False,
             "notes": notes,
         }
     )
@@ -319,7 +316,7 @@ def gate_mode(project_dir: Path, target_mode: str) -> dict:
     if target_mode not in allowed:
         issues.append(f"Mode '{target_mode}' is not allowed from '{current_mode}'.")
 
-    if project.get("lane") == "machine-governance":
+    if project.get("lane") == "machine-governance" and project.get("project_type") == "machine-governance":
         governance_requirements = {
             "inventory": [(project_dir / "context" / "inventory_manifest.json", "context/inventory_manifest.json is required.")],
             "upgrade": [(project_dir / "context" / "inventory_manifest.json", "inventory must be completed before upgrade.")],
@@ -335,6 +332,10 @@ def gate_mode(project_dir: Path, target_mode: str) -> dict:
             if not benchmark_gate_passed(project_dir):
                 issues.append("AgentBenchmarkReportV2 is missing or not gate eligible.")
         return {"status": "passed" if not issues else "blocked", "target_mode": target_mode, "issues": issues}
+
+    from .services.protocol_registration import PLANNING_MODES, registration_gate
+    if target_mode not in PLANNING_MODES:
+        issues.extend(registration_gate(project_dir, target_mode)["issues"])
 
     if target_mode == "protocol-freeze":
         if not protocol.get("research_question"):
@@ -430,6 +431,9 @@ def advance_mode(project_dir: Path, target_mode: str) -> dict:
         protocol["status"] = "frozen"
         save_structured_file(project_dir / "protocol.yaml", protocol)
 
+    if target_mode not in {"bootstrap", "protocol-freeze"}:
+        from .services.protocol_registration import registration_gate
+        registration_gate(project_dir, target_mode, mark_started=True)
     save_project(project_dir, project)
     return {
         "status": "passed",

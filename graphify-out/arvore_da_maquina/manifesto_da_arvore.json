@@ -1,0 +1,562 @@
+{
+  "created_at": "2026-11-02T19:32:32.021117+00:00",
+  "scope": "whole-root-structural-metadata",
+  "content_files_read": 0,
+  "nodes": 26269,
+  "edges": 26268,
+  "opaque_leaves": [
+    {
+      "path": ".git",
+      "reason": "opaque-protected-or-generated"
+    },
+    {
+      "path": ".pytest_cache",
+      "reason": "opaque-protected-or-generated"
+    },
+    {
+      "path": ".ruff_cache",
+      "reason": "opaque-protected-or-generated"
+    },
+    {
+      "path": ".venv",
+      "reason": "opaque-protected-or-generated"
+    },
+    {
+      "path": "acervo_de_referencia",
+      "reason": "opaque-protected-or-generated"
+    },
+    {
+      "path": "sources",
+      "reason": "opaque-protected-or-generated"
+    },
+    {
+      "parent": ".",
+      "reason": "credential-or-private-file-names-redacted",
+      "count": 1
+    },
+    {
+      "path": "tools/playwright/node_modules",
+      "reason": "opaque-protected-or-generated"
+    },
+    {
+      "path": "tests/__pycache__",
+      "reason": "opaque-protected-or-generated"
+    },
+    {
+      "parent": "skills/tooluniverse-clinical-trial-design",
+      "reason": "credential-or-private-file-names-redacted",
+      "count": 1
+    },
+    {
+      "path": "skills/catalogos-cientificos-sob-demanda/scripts/__pycache__",
+      "reason": "opaque-protected-or-generated"
+    },
+    {
+      "path": "scripts/__pycache__",
+      "reason": "opaque-protected-or-generated"
+    },
+    {
+      "path": "projects/urology-rirs-sepsis-br-validation-2026/evidence",
+      "reason": "opaque-protected-or-generated"
+    },
+    {
+      "path": "projects/urology-rirs-sepsis-br-validation-2026/sources",
+      "reason": "opaque-protected-or-generated"
+    },
+    {
+      "path": "projects/sp-congress-idea-tournament-2026/evidence",
+      "reason": "opaque-protected-or-generated"
+    },
+    {
+      "path": "projects/sp-congress-idea-tournament-2026/sources",
+      "reason": "opaque-protected-or-generated"
+    },
+    {
+      "path": "projects/pct-e-d-dimero-na-necrose-intestinal-transmural-2026/evidence",
+      "reason": "opaque-protected-or-generated"
+    },
+    {
+      "path": "projects/pct-e-d-dimero-na-necrose-intestinal-transmural-2026/sources",
+      "reason": "opaque-protected-or-generated"
+    },
+    {
+      "path": "projects/pct-e-d-dimero-na-necrose-intestinal-transmural-2026/exports/pacote_entrega_2026-10-13/Reprodutibilidade/evidence",
+      "reason": "opaque-protected-or-generated"
+    },
+    {
+      "path": "projects/OncoMetabolic_CRC_NMA/evidence",
+      "reason": "opaque-protected-or-generated"
+    },
+    {
+      "path": "projects/OncoMetabolic_CRC_NMA/sources",
+      "reason": "opaque-protected-or-generated"
+    },
+    {
+      "path": "projects/OncoMetabolic_CRC_NMA/deliverables/fulltexts_evaluated_20260527/04_included_primary_nma_7_studies/pdfs",
+      "reason": "opaque-protected-or-generated"
+    },
+    {
+      "path": "projects/NMA_OSA_VPI/evidence",
+      "reason": "opaque-protected-or-generated"
+    },
+    {
+      "path": "projects/NMA_OSA_VPI/sources",
+      "reason": "opaque-protected-or-generated"
+    },
+    {
+      "path": "projects/intestinal-transplant-research-program-2026/evidence",
+      "reason": "opaque-protected-or-generated"
+    },
+    {
+      "path": "projects/intestinal-transplant-research-program-2026/sources",
+      "reason": "opaque-protected-or-generated"
+    },
+    {
+      "path": "projects/in-silico-ml-surgery-idea-tournament-2026/evidence",
+      "reason": "opaque-protected-or-generated"
+    },
+    {
+      "path": "projects/in-silico-ml-surgery-idea-tournament-2026/sources",
+      "reason": "opaque-protected-or-generated"
+    },
+    {
+      "path": "projects/hyper-barrier-jp-ohb-ir-sr/evidence",
+      "reason": "opaque-protected-or-generated"
+    },
+    {
+      "path": "projects/hyper-barrier-jp-ohb-ir-sr/sources",
+      "reason": "opaque-protected-or-generated"
+    },
+    {
+      "path": "projects/hyper-barrier-jp/evidence",
+      "reason": "opaque-protected-or-generated"
+    },
+    {
+      "path": "projects/hyper-barrier-jp/sources",
+      "reason": "opaque-protected-or-generated"
+    },
+    {
+      "path": "projects/hyper-barrier-jp/experiments/data/raw",
+      "reason": "opaque-protected-or-generated"
+    },
+    {
+      "path": "projects/GastroSP_Gold_NMA_Biomarkers/evidence",
+      "reason": "opaque-protected-or-generated"
+    },
+    {
+      "path": "projects/GastroSP_Gold_NMA_Biomarkers/sources",
+      "reason": "opaque-protected-or-generated"
+    },
+    {
+      "path": "projects/congress-winners-2026/evidence",
+      "reason": "opaque-protected-or-generated"
+    },
+    {
+      "path": "projects/congress-winners-2026/sources",
+      "reason": "opaque-protected-or-generated"
+    },
+    {
+      "path": "projects/clinmed-ugib-dynamic-risk-mimic-eicu-2026/evidence",
+      "reason": "opaque-protected-or-generated"
+    },
+    {
+      "path": "projects/clinmed-ugib-dynamic-risk-mimic-eicu-2026/sources",
+      "reason": "opaque-protected-or-generated"
+    },
+    {
+      "path": "projects/clinmed-pancreatitis-dynamic-phenotypes-2026/evidence",
+      "reason": "opaque-protected-or-generated"
+    },
+    {
+      "path": "projects/clinmed-pancreatitis-dynamic-phenotypes-2026/sources",
+      "reason": "opaque-protected-or-generated"
+    },
+    {
+      "path": "projects/clinmed-core-idea-tournament-2026/evidence",
+      "reason": "opaque-protected-or-generated"
+    },
+    {
+      "path": "projects/clinmed-core-idea-tournament-2026/sources",
+      "reason": "opaque-protected-or-generated"
+    },
+    {
+      "path": "projects/cbcp-top1-idea-tournament-2026/evidence",
+      "reason": "opaque-protected-or-generated"
+    },
+    {
+      "path": "projects/cbcp-top1-idea-tournament-2026/sources",
+      "reason": "opaque-protected-or-generated"
+    },
+    {
+      "path": "projects/cbcp-cosmiatria-idea-tournament-2026/evidence",
+      "reason": "opaque-protected-or-generated"
+    },
+    {
+      "path": "projects/cbcp-cosmiatria-idea-tournament-2026/sources",
+      "reason": "opaque-protected-or-generated"
+    },
+    {
+      "path": "projects/article-machine-upgrade-2026/evidence",
+      "reason": "opaque-protected-or-generated"
+    },
+    {
+      "path": "projects/article-machine-upgrade-2026/sources",
+      "reason": "opaque-protected-or-generated"
+    },
+    {
+      "path": "projects/article-machine-governance-2026/analysis/backup_integracao_skills",
+      "reason": "opaque-protected-or-generated"
+    },
+    {
+      "path": "projects/article-machine-governance-2026/analysis/continuacao-2026-11-02/byok/upstream_ro/.git",
+      "reason": "opaque-protected-or-generated"
+    },
+    {
+      "parent": "projects/article-machine-governance-2026/analysis/continuacao-2026-11-02/byok/upstream_ro",
+      "reason": "credential-or-private-file-names-redacted",
+      "count": 1
+    },
+    {
+      "path": "projects/article-machine-governance-2026/analysis/continuacao-2026-11-02/byok/upstream_ro/web/node_modules",
+      "reason": "opaque-protected-or-generated"
+    },
+    {
+      "path": "projects/article-machine-governance-2026/analysis/continuacao-2026-11-02/byok/upstream_ro/server/node_modules",
+      "reason": "opaque-protected-or-generated"
+    },
+    {
+      "path": "projects/article-machine-governance-2026/analysis/continuacao-2026-11-02/byok/upstream_ro/server/src/evidence",
+      "reason": "opaque-protected-or-generated"
+    },
+    {
+      "parent": "projects/article-machine-governance-2026/analysis/continuacao-2026-11-02/byok/npm-sandbox/temp/kady-vitest-pi-agent-256",
+      "reason": "credential-or-private-file-names-redacted",
+      "count": 1
+    },
+    {
+      "parent": "projects/article-machine-governance-2026/analysis/continuacao-2026-11-02/byok/npm-sandbox/temp/kady-vitest-pi-agent-10548",
+      "reason": "credential-or-private-file-names-redacted",
+      "count": 1
+    },
+    {
+      "path": "projects/article-machine-governance-2026/analysis/codex-first-2026-11-01/__pycache__",
+      "reason": "opaque-protected-or-generated"
+    },
+    {
+      "path": "projects/article-machine-governance-2026/analysis/codex-first-2026-11-01/backup_skills_upstream",
+      "reason": "opaque-protected-or-generated"
+    },
+    {
+      "path": "projects/article-machine-governance-2026/analysis/codex-first-2026-11-01/ambientes/meta_analise_r/biblioteca",
+      "reason": "opaque-protected-or-generated"
+    },
+    {
+      "path": "projects/article-machine-governance-2026/analysis/codex-first-2026-11-01/ambientes/aprendizado_profundo/.venv",
+      "reason": "opaque-protected-or-generated"
+    },
+    {
+      "path": "projects/article-machine-governance-2026/analysis/codex-first-2026-11-01/ambientes/aprendizado_maquina/.venv",
+      "reason": "opaque-protected-or-generated"
+    },
+    {
+      "path": "modelos/meta_analise_em_r/renv",
+      "reason": "opaque-protected-or-generated"
+    },
+    {
+      "path": "modelos/estatistica_e_figuras/ambiente/biblioteca",
+      "reason": "opaque-protected-or-generated"
+    },
+    {
+      "path": "integracoes/catalogos_cientificos/orchestra/.git",
+      "reason": "opaque-protected-or-generated"
+    },
+    {
+      "path": "integracoes/catalogos_cientificos/kdense_reference/.git",
+      "reason": "opaque-protected-or-generated"
+    },
+    {
+      "path": "integracoes/catalogos_cientificos/kdense/.git",
+      "reason": "opaque-protected-or-generated"
+    },
+    {
+      "path": "integracoes/catalogos_cientificos/internscience/.git",
+      "reason": "opaque-protected-or-generated"
+    },
+    {
+      "path": "integracoes/catalogos_cientificos/imbad/.git",
+      "reason": "opaque-protected-or-generated"
+    },
+    {
+      "path": "integracoes/catalogos_cientificos/denden/.git",
+      "reason": "opaque-protected-or-generated"
+    },
+    {
+      "path": "integracoes/catalogos_cientificos/acervo_preexistente_em_quarentena/.git",
+      "reason": "opaque-protected-or-generated"
+    },
+    {
+      "path": "graphify-out/.chunks_lines.jsonl",
+      "reason": "opaque-protected-or-generated"
+    },
+    {
+      "path": "graphify-out/.graphify_ast.json",
+      "reason": "opaque-protected-or-generated"
+    },
+    {
+      "path": "graphify-out/.graphify_chunk_000.json",
+      "reason": "opaque-protected-or-generated"
+    },
+    {
+      "path": "graphify-out/.graphify_chunk_001.json",
+      "reason": "opaque-protected-or-generated"
+    },
+    {
+      "path": "graphify-out/.graphify_chunk_002.json",
+      "reason": "opaque-protected-or-generated"
+    },
+    {
+      "path": "graphify-out/.graphify_chunks.json",
+      "reason": "opaque-protected-or-generated"
+    },
+    {
+      "path": "graphify-out/.graphify_chunks_plain.txt",
+      "reason": "opaque-protected-or-generated"
+    },
+    {
+      "path": "graphify-out/.graphify_detect.json",
+      "reason": "opaque-protected-or-generated"
+    },
+    {
+      "path": "graphify-out/.graphify_extract.json",
+      "reason": "opaque-protected-or-generated"
+    },
+    {
+      "path": "graphify-out/.graphify_python",
+      "reason": "opaque-protected-or-generated"
+    },
+    {
+      "path": "graphify-out/.graphify_root",
+      "reason": "opaque-protected-or-generated"
+    },
+    {
+      "path": "graphify-out/.graphify_uncached.txt",
+      "reason": "opaque-protected-or-generated"
+    },
+    {
+      "path": "graphify-out/arvore_da_maquina",
+      "reason": "opaque-protected-or-generated"
+    },
+    {
+      "path": "graphify-out/cache",
+      "reason": "opaque-protected-or-generated"
+    },
+    {
+      "path": "graphify-out/converted",
+      "reason": "opaque-protected-or-generated"
+    },
+    {
+      "path": "graphify-out/graph.html",
+      "reason": "opaque-protected-or-generated"
+    },
+    {
+      "path": "graphify-out/graph.json",
+      "reason": "opaque-protected-or-generated"
+    },
+    {
+      "path": "graphify-out/GRAPH_REPORT.md",
+      "reason": "opaque-protected-or-generated"
+    },
+    {
+      "path": "graphify-out/LEIA-ME.md",
+      "reason": "opaque-protected-or-generated"
+    },
+    {
+      "path": "graphify-out/workspace_graph_manifest.json",
+      "reason": "opaque-protected-or-generated"
+    },
+    {
+      "path": "article_machine/__pycache__",
+      "reason": "opaque-protected-or-generated"
+    },
+    {
+      "path": "article_machine/services/__pycache__",
+      "reason": "opaque-protected-or-generated"
+    },
+    {
+      "path": "article_machine/policy/__pycache__",
+      "reason": "opaque-protected-or-generated"
+    },
+    {
+      "path": "article_machine/contracts/__pycache__",
+      "reason": "opaque-protected-or-generated"
+    },
+    {
+      "path": "article_machine/commands/__pycache__",
+      "reason": "opaque-protected-or-generated"
+    },
+    {
+      "path": "article_machine/adapters/__pycache__",
+      "reason": "opaque-protected-or-generated"
+    },
+    {
+      "path": "archive/legado_C_2026-11/tmp/pdfs",
+      "reason": "opaque-protected-or-generated"
+    },
+    {
+      "parent": "archive/legado_C_2026-11/segredos",
+      "reason": "credential-or-private-file-names-redacted",
+      "count": 1
+    },
+    {
+      "path": "archive/legado_C_2026-11/Revisões Sistemáticas/RS_NMP_Intestine/PDFs",
+      "reason": "opaque-protected-or-generated"
+    },
+    {
+      "path": "archive/legado_C_2026-11/Revisões Sistemáticas/Revisão Sistemática OHB/PDFS",
+      "reason": "opaque-protected-or-generated"
+    },
+    {
+      "path": "archive/legado_C_2026-11/Revisões Sistemáticas/revisao_sistematica_ifabp/pdfs",
+      "reason": "opaque-protected-or-generated"
+    },
+    {
+      "path": "archive/legado_C_2026-11/Revisões Sistemáticas/revisao_ferroptose_animal/PDFs",
+      "reason": "opaque-protected-or-generated"
+    },
+    {
+      "path": "archive/legado_C_2026-11/Revisões Sistemáticas/NMA_IIR_CellDeath/PDFs",
+      "reason": "opaque-protected-or-generated"
+    },
+    {
+      "path": "archive/legado_C_2026-11/REVISÃO LIGA/PDFs",
+      "reason": "opaque-protected-or-generated"
+    },
+    {
+      "path": "archive/legado_C_2026-11/REVISÃO LIGA/sources",
+      "reason": "opaque-protected-or-generated"
+    },
+    {
+      "path": "archive/legado_C_2026-11/NMA_OSA_VPI/pdfs",
+      "reason": "opaque-protected-or-generated"
+    },
+    {
+      "parent": "archive/legado_C_2026-11/NMA_OSA_VPI/HC DADOS/aos_fissurados",
+      "reason": "credential-or-private-file-names-redacted",
+      "count": 2
+    },
+    {
+      "path": "archive/legado_C_2026-11/NMA_OSA_VPI/HC DADOS/aos_fissurados/data/hc_drive_manual_2026-06-14/raw",
+      "reason": "opaque-protected-or-generated"
+    },
+    {
+      "parent": ".mypy_cache/3.13",
+      "reason": "credential-or-private-file-names-redacted",
+      "count": 1
+    },
+    {
+      "path": ".agents/skills/bilingual-scientific-writing",
+      "reason": "reparse-not-followed"
+    },
+    {
+      "path": ".agents/skills/catalogos-cientificos-sob-demanda",
+      "reason": "reparse-not-followed"
+    },
+    {
+      "path": ".agents/skills/citation-management",
+      "reason": "reparse-not-followed"
+    },
+    {
+      "path": ".agents/skills/clinical-reports",
+      "reason": "reparse-not-followed"
+    },
+    {
+      "path": ".agents/skills/database-lookup",
+      "reason": "reparse-not-followed"
+    },
+    {
+      "path": ".agents/skills/literature-review",
+      "reason": "reparse-not-followed"
+    },
+    {
+      "path": ".agents/skills/peer-review",
+      "reason": "reparse-not-followed"
+    },
+    {
+      "path": ".agents/skills/protocol-registration-governor",
+      "reason": "reparse-not-followed"
+    },
+    {
+      "path": ".agents/skills/research-lookup",
+      "reason": "reparse-not-followed"
+    },
+    {
+      "path": ".agents/skills/scientific-critical-thinking",
+      "reason": "reparse-not-followed"
+    },
+    {
+      "path": ".agents/skills/scientific-workflow-orchestrator",
+      "reason": "reparse-not-followed"
+    },
+    {
+      "path": ".agents/skills/scientific-writing",
+      "reason": "reparse-not-followed"
+    },
+    {
+      "path": ".agents/skills/statistical-analysis",
+      "reason": "reparse-not-followed"
+    },
+    {
+      "path": ".agents/skills/venue-templates",
+      "reason": "reparse-not-followed"
+    }
+  ],
+  "errors": [],
+  "external_api_calls": 0,
+  "top_level_entries": [
+    ".AGENTES",
+    ".agents",
+    ".codex",
+    ".git",
+    ".gitattributes",
+    ".github",
+    ".gitignore",
+    ".machine",
+    ".mypy_cache",
+    ".pre-commit-config.yaml",
+    ".pytest_cache",
+    ".ruff_cache",
+    ".venv",
+    "AGENTS.md",
+    "AGENT_MANIFEST.md",
+    "CANONICAL_PROTOCOL_RSMA.md",
+    "CHANGELOG.md",
+    "LAB_TEMPLATES.md",
+    "LEIA-ME_PRIMEIRO.md",
+    "MANIFESTO_ATUALIZACAO_2026_11_02.json",
+    "MANIFESTO_DA_ENTREGA.json",
+    "README.md",
+    "SKILLS_CANON.md",
+    "SKILL_INDEX.md",
+    "abrir_codex.cmd",
+    "acervo_de_referencia",
+    "archive",
+    "article_machine",
+    "docs",
+    "ferramentas",
+    "graphify-out",
+    "iniciar_maquina.ps1",
+    "integracoes",
+    "maquina_canonica.json",
+    "modelos",
+    "package.json",
+    "projects",
+    "pyproject.toml",
+    "scripts",
+    "skills",
+    "sources",
+    "tests",
+    "tools",
+    "uv.lock"
+  ],
+  "semantic_or_scientific_verification": false
+}

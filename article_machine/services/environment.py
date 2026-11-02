@@ -118,8 +118,8 @@ def prepare_environment(project_dir: Path, runtime: str, *, execute: bool = Fals
             [
                 check.get("executable") or "Rscript",
                 "-e",
-                "if (!requireNamespace('renv', quietly=TRUE) || as.character(packageVersion('renv')) != '1.2.3') "
-                "install.packages('https://cran.r-project.org/src/contrib/renv_1.2.3.tar.gz', "
+                "if (!requireNamespace('renv', quietly=TRUE) || as.character(packageVersion('renv')) != '1.3.1') "
+                "install.packages('https://cran.r-project.org/src/contrib/renv_1.3.1.tar.gz', "
                 "repos=NULL, type='source'); "
                 "renv::restore(lockfile='renv.lock', prompt=FALSE)",
             ]

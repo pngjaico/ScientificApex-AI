@@ -1,0 +1,34 @@
+{
+  "contract": "AgentHandoffStateV1",
+  "updated_at": "2026-11-02T17:23:00-03:00",
+  "supported_agents": [
+    "Antigravity",
+    "Codex",
+    "OpenCode"
+  ],
+  "concurrency_mode": "STRICT_SEQUENTIAL_EXCLUSIVE",
+  "concurrency_policy": "Nenhum agente deve ser executado simultaneamente ao outro. Apenas uma sessao ativa por vez.",
+  "active_project": "projects/article-machine-governance-2026",
+  "current_mode": "analysis",
+  "last_session": {
+    "agent": "Antigravity",
+    "timestamp": "2026-11-02T17:23:00-03:00",
+    "summary": "Revisao e estruturacao completa do protocolo de intercambiacao sequencial entre Codex, Antigravity e OpenCode. Validacao dos 328 testes unitarios e auditoria estrita de governanca.",
+    "tests_status": "328 passed, 1 skipped",
+    "machine_audit": "pass (strict)",
+    "branch": "main",
+    "git_commit": "HEAD"
+  },
+  "operational_entry_checklist": [
+    "1. Verificar git status e git log -1 para entender a transicao anterior.",
+    "2. Ler .machine/handoff_sessao.json e a ultima entrada de docs/HANDOFF_ENTRE_AGENTES.md.",
+    "3. Executar auditoria: .\\.venv\\Scripts\\python.exe -m article_machine machine audit --workspace-root . --strict.",
+    "4. Consultar o grafo antes de navegar: .\\.venv\\Scripts\\python.exe -m graphify query \"<tarefa>\" --budget 1200.",
+    "5. Trabalhar estritamente no escopo do projeto ativo declarado.",
+    "6. Ao finalizar a sessao: registrar no handoff e realizar commit checkpoint."
+  ],
+  "next_recommended_actions": [
+    "Retomar o projeto ativo projects/article-machine-governance-2026 ou definir novo projeto em projects/<project_id>/.",
+    "Manter commits regulares para preservar historico limpo entre os agentes."
+  ]
+}

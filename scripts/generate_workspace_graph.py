@@ -55,7 +55,7 @@ try:
 except Exception:
     ARTICLE_MACHINE_SKILLS = ()
 
-CRITICAL_SKILLS = list(dict.fromkeys([*CRITICAL_SKILLS, *ARTICLE_MACHINE_SKILLS]))
+CRITICAL_SKILLS = list(dict.fromkeys([*CRITICAL_SKILLS, *ARTICLE_MACHINE_SKILLS, "meta-analise-medica", "metodos-ml-clinico", "publicacao-medica-organizada", "catalogos-cientificos-sob-demanda"]))
 
 NAVIGATION_SKILLS = [
     "workspace-graph-navigator",
@@ -64,6 +64,20 @@ NAVIGATION_SKILLS = [
 ]
 
 DETAILED_DOCS = [
+    ".AGENTES",
+    "docs/ingles/AGENTES_DA_MAQUINA.md",
+    "docs/portugues/GUIA_DA_MAQUINA.md",
+    "docs/ingles/GUIA_DA_MAQUINA.md",
+    "docs/portugues/ESTADO_E_LIMITES_DA_MAQUINA.md",
+    "docs/ingles/ESTADO_E_LIMITES_DA_MAQUINA.md",
+    "integracoes/catalogos_cientificos/portugues/catalogo_sob_demanda.md",
+    "integracoes/catalogos_cientificos/ingles/catalogo_sob_demanda.md",
+    "LEIA-ME_PRIMEIRO.md",
+    "docs/ARQUITETURA_FINAL.md",
+    "docs/FLUXOS_CIENTIFICOS.md",
+    "docs/INVENTARIO_CODEX.md",
+    "docs/MATRIZ_SKILLS.md",
+    "docs/ORGANIZACAO_DAS_PUBLICACOES.md",
     ".agents/AGENTS.md",
     ".agents/GRAPH_FIRST.md",
     ".agents/README.md",
@@ -79,6 +93,14 @@ DETAILED_DOCS = [
     "docs/WORKSPACE_REORG_PLAN.md",
     "docs/SCIENTIFIC_WORKFLOWS.md",
     "docs/MIGRATION_0_3.md",
+    "docs/INDICE_DO_WORKSPACE.md",
+    "docs/ESTADO_DOS_PROJETOS.md",
+    "docs/AMBIENTES_E_LOCKS.md",
+    "docs/ORGANIZACAO_E_LIMPEZA.md",
+    "docs/MIGRACAO_PARA_D.md",
+    "docs/MIGRACAO_PARA_D_STATUS.md",
+    "docs/GIT_E_WORKTREES.md",
+    "graphify-out/LEIA-ME.md",
 ]
 
 CODEX_AGENT_FILES = [
@@ -183,6 +205,7 @@ AGENT_FLOW_STEPS = [
     ("flow_agents_control_plane", "Read .agents/AGENTS.md"),
     ("flow_machine_audit", "Run article_machine machine audit --strict"),
     ("flow_graph_report", "Open graphify-out/GRAPH_REPORT.md"),
+    ("flow_graph_readme", "Read graphify-out/LEIA-ME.md for the generated file map"),
     ("flow_graph_first_query", "Query graph before broad navigation"),
     ("flow_project_select", "Select or create projects/<project_id>"),
     ("flow_project_contract", "Read project protocol standards compute files"),
@@ -274,6 +297,68 @@ NATURAL_LANGUAGE_GATEWAYS = [
             "skill_agent_benchmark_harness",
             "runtime_benchmark_validate",
             "runtime_machine_audit",
+        ],
+    },
+    {
+        "id": "alias_pt_workspace_index",
+        "label": "pedido: indice do workspace painel de projetos estado atual",
+        "targets": [
+            "nav_workspace_index",
+            "doc_docs_indice_do_workspace_md",
+            "doc_docs_estado_dos_projetos_md",
+            "hub_projects",
+        ],
+    },
+    {
+        "id": "alias_pt_environment_restore",
+        "label": "pedido: restaurar ambiente r renv python uv lock quarto playwright",
+        "targets": [
+            "env_r_science",
+            "env_python_root",
+            "env_python_ml",
+            "env_quarto",
+            "env_playwright",
+            "doc_docs_ambientes_e_locks_md",
+        ],
+    },
+    {
+        "id": "alias_pt_cleanup_no_delete",
+        "label": "pedido: organizar limpar workspace sem excluir conteudo bruto",
+        "targets": [
+            "skill_content_preservation_guardian",
+            "doc_docs_organizacao_e_limpeza_md",
+            "doc_docs_git_e_worktrees_md",
+            "hub_git",
+        ],
+    },
+    {
+        "id": "alias_pt_migration_c_d",
+        "label": "pedido: migracao c para d backup legado archive",
+        "targets": [
+            "doc_docs_migracao_para_d_md",
+            "doc_docs_migracao_para_d_status_md",
+            "hub_legacy",
+            "doc_docs_organizacao_e_limpeza_md",
+        ],
+    },
+    {
+        "id": "alias_pt_dirty_worktree",
+        "label": "pedido: worktree sujo git status antes de commit",
+        "targets": [
+            "hub_git",
+            "doc_docs_git_e_worktrees_md",
+            "doc_docs_organizacao_e_limpeza_md",
+        ],
+    },
+    {
+        "id": "alias_pt_graph_files",
+        "label": "pedido: abrir grafo operacional graph html graph report",
+        "targets": [
+            "doc_graphify_out_leia_me_md",
+            "graphify_report",
+            "graphify_html",
+            "graphify_refresh_script",
+            "hub_graphify",
         ],
     },
 ]
@@ -509,6 +594,31 @@ def build_extraction() -> tuple[dict[str, Any], dict[int, list[str]], dict[int, 
         add_node(nodes, node_id, label, "rationale", ".")
         add_edge(edges, "workspace_doutorado", node_id, "contains", "EXTRACTED", ".")
 
+    # Every top-level area is represented without reading its scientific content.
+    for directory in sorted((p for p in ROOT.iterdir() if p.is_dir()), key=lambda p: p.name):
+        rel = directory.name
+        node_id = "tree_area_" + slug(rel)
+        add_node(nodes, node_id, "Área / Area: " + rel, "directory", rel)
+        add_edge(edges, "workspace_doutorado", node_id, "contains_area", "EXTRACTED", rel)
+        add_edge(edges, "hub_graphify", node_id, "structural_navigation", "EXTRACTED", rel)
+    for rel, label in {
+        "graphify-out/arvore_da_maquina/graph.json": "Grafo estrutural da pasta inteira / Whole-root structural graph",
+        "graphify-out/arvore_da_maquina/arvore_navegavel.html": "Árvore navegável / Navigable tree",
+        "integracoes/catalogos_cientificos/manifesto_das_fontes.json": "Cinco fontes fixadas / Five pinned sources",
+        "integracoes/catalogos_cientificos/inventario_de_habilidades.json": "Catálogo completo de nomes / Full name catalog",
+        "modelos/publicacao_em_revistas/portugues/LEIA-ME.md": "Kit editorial PT / Editorial kit PT",
+        "modelos/publicacao_em_revistas/ingles/LEIA-ME.md": "Kit editorial EN / Editorial kit EN",
+        "modelos/publicacao_em_revistas/perfis_de_revistas/catalogo_revistas.json": "Seis perfis de revistas / Six journal profiles",
+        "modelos/registro_de_protocolo/portugues/LEIA-ME.md": "Protocolo e registro / Protocol registration",
+        "modelos/estatistica_e_figuras/portugues/LEIA-ME.md": "R, estatística e figuras / R statistics and figures",
+    }.items():
+        if (ROOT / rel).exists():
+            node_id = "graphify_new_" + slug(rel)
+            add_node(nodes, node_id, label, "document", rel)
+            add_edge(edges, "hub_graphify", node_id, "navigates_to", "EXTRACTED", rel)
+            add_edge(edges, "tree_area_" + slug(rel.split("/")[0]), node_id,
+                     "stores_artifact", "EXTRACTED", rel)
+
     runtime_nodes = {
         "runtime_venv_article_machine": ".venv python -m article_machine",
         "runtime_venv_graphify": ".venv python -m graphify",
@@ -547,6 +657,146 @@ def build_extraction() -> tuple[dict[str, Any], dict[int, list[str]], dict[int, 
                     add_edge(edges, previous_section_id, section_id, "next_section", "EXTRACTED", doc)
                 previous_section_id = section_id
                 detail_counts["doc_sections"] += 1
+
+    # Environment and lock nodes: restoration must be discoverable by intent.
+    environment_nodes = {
+        "env_python_root": ("Python 3.13 root uv environment", "uv.lock"),
+        "env_python_ml": ("Clinical ML Python uv environments", "modelos/aprendizado_de_maquina_clinico/uv.lock"),
+        "env_r_science": ("R 4.6.1 renv scientific environment", "modelos/meta_analise_em_r/renv.lock"),
+        "env_quarto": ("Quarto 1.10.20 portable toolchain", "ferramentas/quarto-1.10.20/bin/quarto.exe"),
+        "env_playwright": ("Playwright 1.61.1 browser tooling", "tools/playwright/package-lock.json"),
+    }
+    environments_doc = ROOT / "docs" / "AMBIENTES_E_LOCKS.md"
+    for node_id, (label, source) in environment_nodes.items():
+        add_node(nodes, node_id, label, "code", source)
+        add_edge(edges, "hub_runtime", node_id, "documents", "EXTRACTED", source)
+        if environments_doc.exists():
+            add_edge(
+                edges,
+                node_id,
+                "doc_docs_ambientes_e_locks_md",
+                "documented_by",
+                "EXTRACTED",
+                str(environments_doc.relative_to(ROOT)),
+            )
+
+    lock_nodes = {
+        "env_root_lock": ("Root Python lock (uv.lock)", "uv.lock", "env_python_root"),
+        "env_ml_lock": (
+            "Clinical ML lock (uv.lock)",
+            "modelos/aprendizado_de_maquina_clinico/uv.lock",
+            "env_python_ml",
+        ),
+        "env_r_lock": (
+            "Scientific R lock (renv.lock)",
+            "modelos/meta_analise_em_r/renv.lock",
+            "env_r_science",
+        ),
+        "env_playwright_lock": (
+            "Playwright lock (package-lock.json)",
+            "tools/playwright/package-lock.json",
+            "env_playwright",
+        ),
+    }
+    for node_id, (label, source, owner) in lock_nodes.items():
+        if (ROOT / source).exists():
+            add_node(nodes, node_id, label, "document", source)
+            add_edge(edges, node_id, owner, "locks", "EXTRACTED", source)
+            add_edge(edges, owner, node_id, "locked_by", "EXTRACTED", source)
+
+    r_updater = ROOT / "scripts" / "atualizar_ambiente_meta_analise.R"
+    if r_updater.exists():
+        add_node(
+            nodes,
+            "env_r_updater",
+            "R environment updater and lock validator",
+            "code",
+            "scripts/atualizar_ambiente_meta_analise.R",
+        )
+        add_edge(
+            edges,
+            "env_r_updater",
+            "env_r_science",
+            "updates",
+            "EXTRACTED",
+            "scripts/atualizar_ambiente_meta_analise.R",
+        )
+        add_edge(
+            edges,
+            "env_r_updater",
+            "env_r_lock",
+            "writes",
+            "EXTRACTED",
+            "scripts/atualizar_ambiente_meta_analise.R",
+        )
+
+    # One navigation hub for humans and agents entering the workspace.
+    add_node(
+        nodes,
+        "nav_workspace_index",
+        "Workspace Navigation Index",
+        "rationale",
+        "docs/INDICE_DO_WORKSPACE.md",
+    )
+    add_edge(
+        edges,
+        "workspace_doutorado",
+        "nav_workspace_index",
+        "starts_at",
+        "EXTRACTED",
+        "docs/INDICE_DO_WORKSPACE.md",
+    )
+    add_edge(
+        edges,
+        "hub_docs",
+        "nav_workspace_index",
+        "documents",
+        "EXTRACTED",
+        "docs/INDICE_DO_WORKSPACE.md",
+    )
+    navigation_targets = {
+        "doc_docs_indice_do_workspace_md": "workspace map",
+        "doc_docs_estado_dos_projetos_md": "project dashboard",
+        "doc_docs_ambientes_e_locks_md": "environments and locks",
+        "doc_docs_organizacao_e_limpeza_md": "organization and cleanup policy",
+        "doc_docs_git_e_worktrees_md": "git and worktree hygiene",
+        "doc_docs_migracao_para_d_status_md": "migration status",
+    }
+    for target_id, relation in navigation_targets.items():
+        if target_id in nodes:
+            add_edge(
+                edges,
+                "nav_workspace_index",
+                target_id,
+                "routes_to",
+                "EXTRACTED",
+                "docs/INDICE_DO_WORKSPACE.md",
+            )
+            add_edge(
+                edges,
+                target_id,
+                "nav_workspace_index",
+                relation.replace(" ", "_"),
+                "INFERRED",
+                "docs/INDICE_DO_WORKSPACE.md",
+                0.8,
+            )
+    add_edge(
+        edges,
+        "nav_workspace_index",
+        "hub_projects",
+        "routes_to",
+        "EXTRACTED",
+        "docs/ESTADO_DOS_PROJETOS.md",
+    )
+    add_edge(
+        edges,
+        "nav_workspace_index",
+        "hub_runtime",
+        "routes_to",
+        "EXTRACTED",
+        "docs/AMBIENTES_E_LOCKS.md",
+    )
 
     codex_readme = ".codex/README.md"
     if (ROOT / codex_readme).exists():
@@ -730,7 +980,8 @@ def build_extraction() -> tuple[dict[str, Any], dict[int, list[str]], dict[int, 
                 add_edge(edges, alias_id, target_id, "routes_to", "EXTRACTED", "docs/AGENT_OPERATION_MAP.md")
 
     communities = {
-        0: ["workspace_doutorado", "hub_runtime"] + [n for n in nodes if n.startswith("runtime_")],
+        0: ["workspace_doutorado", "hub_runtime"]
+        + [n for n in nodes if n.startswith(("runtime_", "env_"))],
         1: ["hub_article_machine"] + [n for n in nodes if n.startswith("module_") or n.startswith("cli_")],
         2: ["hub_projects"] + [
             n
@@ -753,10 +1004,21 @@ def build_extraction() -> tuple[dict[str, Any], dict[int, list[str]], dict[int, 
             or n.startswith("gate_")
         ],
         4: [
-            "hub_docs"
-        ] + [n for n in nodes if n.startswith("doc_") or n.startswith("doc_section_") or n.startswith("flow_") or n.startswith("alias_") or n.startswith("codex_") or n == "hub_gateway_phrases"],
+            "hub_docs",
+            "nav_workspace_index",
+        ]
+        + [
+            n
+            for n in nodes
+            if n.startswith("doc_")
+            or n.startswith("doc_section_")
+            or n.startswith("flow_")
+            or n.startswith("alias_")
+            or n.startswith("codex_")
+            or n == "hub_gateway_phrases"
+        ],
         5: ["hub_legacy"] + [n for n in nodes if n.startswith("legacy_")],
-        6: ["hub_graphify"] + [n for n in nodes if n.startswith("graphify_")],
+        6: ["hub_graphify"] + [n for n in nodes if n.startswith("graphify_") or n.startswith("tree_area_")],
         7: ["hub_git"] + [n for n in nodes if n.startswith("hygiene_")],
     }
     communities = {cid: [n for n in members if n in nodes] for cid, members in communities.items()}
@@ -1343,9 +1605,39 @@ def write_graph() -> None:
         str(ROOT),
         suggested_questions=questions,
     )
+    report = report.replace(
+        "\n\n## Corpus Check",
+        "\n\n> **Start here:** [`graphify-out/LEIA-ME.md`](LEIA-ME.md) maps every "
+        "generated file.\n> The agent quickstart and query recipes are at the end "
+        "of this report.\n\n## Corpus Check",
+        1,
+    )
     report += "\n\n## Agent Operating Flow\n"
     for index, (_flow_id, label) in enumerate(AGENT_FLOW_STEPS, start=1):
         report += f"{index}. {label}\n"
+    report += "\n## Agent Quickstart By Intent\n"
+    for intent, entry in (
+        (
+            "Open the operational graph",
+            "graphify-out/LEIA-ME.md -> graphify-out/GRAPH_REPORT.md -> graphify-out/graph.html",
+        ),
+        (
+            "New agent entering the workspace",
+            "docs/INDICE_DO_WORKSPACE.md -> docs/AGENT_START_HERE.md -> .agents/AGENTS.md",
+        ),
+        ("Choose or resume a project", "docs/ESTADO_DOS_PROJETOS.md -> projects/<project_id>/project.yaml"),
+        ("Restore an environment", "docs/AMBIENTES_E_LOCKS.md -> uv.lock or renv.lock"),
+        ("Organize or clean without deleting", "docs/ORGANIZACAO_E_LIMPEZA.md"),
+        ("Check Git or worktrees", "docs/GIT_E_WORKTREES.md"),
+        ("Migrate or audit the C: legacy", "docs/MIGRACAO_PARA_D_STATUS.md -> archive/legado_C_2026-11/LEIA-ME.md"),
+        ("Claim something as ready", "evidence/claim_map.jsonl -> Review Trinity"),
+    ):
+        report += f"- **{intent}**: {entry}\n"
+    report += "\n## Agent Query Recipes\n"
+    report += "- `graphify query \"onde esta o painel de projetos\" --budget 1200`\n"
+    report += "- `graphify query \"como restaurar o ambiente R\" --budget 1200`\n"
+    report += "- `graphify query \"como organizar sem excluir conteudo bruto\" --budget 1200`\n"
+    report += "- `graphify query \"qual projeto esta no modo analysis\" --budget 1200`\n"
     report += "\n## Plugin Gateway Map\n"
     for skill_name, bridge in GATEWAY_BRIDGES.items():
         if (ROOT / "skills" / skill_name / "SKILL.md").exists():

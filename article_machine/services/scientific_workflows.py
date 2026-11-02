@@ -65,8 +65,11 @@ def plan_scientific_workflow(project_dir: Path, query: str, language: str) -> di
     if issues:
         return {"contract": "ScientificWorkflowPlanV1", "status": "block", "gate_eligible": False, "issues": issues}
     from ..agent_skills import route_workspace_skills
+    from .workspace_hygiene import write_active_mode_guide
 
     route = route_workspace_skills(query, limit=12)
+    current_mode_str = str(contracts["project"].get("state", {}).get("current_mode") or "bootstrap")
+    flow_bindings = write_active_mode_guide(project, current_mode_str)
     plan: dict[str, Any] = {
         "contract": "ScientificWorkflowPlanV1",
         "status": "planned",
@@ -80,6 +83,9 @@ def plan_scientific_workflow(project_dir: Path, query: str, language: str) -> di
         "allowed_next_modes": contracts["project"].get("state", {}).get("allowed_next_modes", []),
         "guidelines": contracts["standards"].get("guidelines", []),
         "selected_skills": route["selected_skills"],
+        "mandatory_mode_skills": flow_bindings["mandatory_skills"],
+        "canonical_mode_commands": flow_bindings["canonical_commands"],
+        "allowed_write_paths": flow_bindings["allowed_write_paths"],
         "coordination": {
             "model": "gpt-6.1-sol",
             "effort": "medium",

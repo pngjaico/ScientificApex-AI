@@ -39,8 +39,8 @@ _STANDARD_MATRIX: dict[str, dict] = {
     },
     "diagnostic-study": {
         "lane": "evidence-writing",
-        "guidelines": ["STARD", "QUADAS-2"],
-        "risk_of_bias_tools": ["QUADAS-2"],
+        "guidelines": ["STARD 2015", "QUADAS-3"],
+        "risk_of_bias_tools": ["QUADAS-3"],
         "policy_labels": ["diagnostic-accuracy"],
         "deliverables": ["protocol", "analysis", "claim map", "manuscript", "review report"],
     },
@@ -53,7 +53,7 @@ _STANDARD_MATRIX: dict[str, dict] = {
     },
     "clinical-trial": {
         "lane": "evidence-writing",
-        "guidelines": ["CONSORT"],
+        "guidelines": ["CONSORT 2025", "SPIRIT 2025"],
         "risk_of_bias_tools": ["RoB 2"],
         "policy_labels": ["interventional"],
         "deliverables": ["protocol", "analysis", "claim map", "manuscript", "review report"],
@@ -67,8 +67,8 @@ _STANDARD_MATRIX: dict[str, dict] = {
     },
     "prediction-model": {
         "lane": "evidence-writing",
-        "guidelines": ["TRIPOD"],
-        "risk_of_bias_tools": ["PROBAST"],
+        "guidelines": ["TRIPOD+AI"],
+        "risk_of_bias_tools": ["PROBAST+AI"],
         "policy_labels": ["prediction"],
         "deliverables": ["protocol", "analysis", "claim map", "manuscript", "review report"],
     },
@@ -122,6 +122,14 @@ def route_standards(project_type: str) -> dict:
     routed = deepcopy(_STANDARD_MATRIX.get(key, _DEFAULT_STANDARD))
     routed["contract_version"] = 2
     routed["project_type"] = key
+    if key != "machine-governance":
+        routed["registration_policy"] = {
+            "required": True,
+            "timing": "before-scientific-work",
+            "accepted_registries": ["PROSPERO", "OSF"],
+            "verification_required": True,
+            "rationale": "User policy: verified protocol registration before scientific execution; preparing the protocol is permitted.",
+        }
     checklist = {}
     for guideline in routed["guidelines"]:
         checklist[guideline] = {"status": "pending", "items": []}

@@ -15,7 +15,7 @@ def test_systematic_review_routes_to_required_guidelines() -> None:
 def test_diagnostic_study_routes_to_stard_and_quadas() -> None:
     routed = route_standards("diagnostic-study")
 
-    assert routed["guidelines"] == ["STARD", "QUADAS-2"]
+    assert routed["guidelines"] == ["STARD 2015", "QUADAS-3"]
 
 
 def test_drug_discovery_is_hypothesis_generating() -> None:

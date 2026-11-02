@@ -961,6 +961,44 @@
       "next_review": "2027-01-12",
       "license_note": "Private workspace use; redistribution rights for inherited content require separate review."
     },
+    "catalogos-cientificos-sob-demanda": {
+      "name": "catalogos-cientificos-sob-demanda",
+      "description": "Use when selecting or comparing scientific skills from K-Dense, DenDen047, Orchestra-Research, Imbad0202 or InternScience, or when existing medical-research routes need a justified external capability.",
+      "origin": {
+        "provider": "Article Machine curated layer",
+        "url": "local://doutorado/article-machine"
+      },
+      "pinned_revision": "workspace-2026-11-01",
+      "license": "LicenseRef-Local-Private",
+      "tree_hash": "sha256:ac52f83759cea933fce360a333757b5ac3aee063815883db446bbb70b6b21380",
+      "dependencies": [],
+      "credentials": [],
+      "network_domains": [],
+      "human_data_policy": "no-upload-without-explicit-permission",
+      "routes": {
+        "positive": [
+          "AI-research-SKILLs",
+          "DenDen047",
+          "Imbad0202",
+          "InternScience",
+          "Orchestra-Research",
+          "academic-research-skills",
+          "catalogos cientificos",
+          "catálogos científicos",
+          "cinco catalogos",
+          "five catalogs",
+          "scientific skill catalogs"
+        ],
+        "negative": [
+          "unrelated request without an explicit capability trigger"
+        ]
+      },
+      "artifact_destination": "context/ or evidence/ as defined by the active project",
+      "status": "active",
+      "required_for_clone": false,
+      "next_review": "2027-01-12",
+      "license_note": "Private workspace use; redistribution rights for inherited content require separate review."
+    },
     "cellxgene-census": {
       "name": "cellxgene-census",
       "description": "Query the CZ CELLxGENE Census programmatically for versioned public single-cell and spatial transcriptomics data. Use when you need population-scale cell metadata, gene expression slices, Census summary counts, source H5AD URIs/downloads, embeddings, spatial Census data, or reference atlas comparisons across organisms, tissues, diseases, assays, and cell types. For analyzing your own local single-cell data use scanpy, anndata, or scvi-tools.",
@@ -4324,6 +4362,98 @@
       "next_review": "2027-01-12",
       "license_note": "Private workspace use; redistribution rights for inherited content require separate review."
     },
+    "meta-analise-medica": {
+      "name": "meta-analise-medica",
+      "description": "Use for protocol-driven systematic reviews and meta-analyses of clinical evidence in R, from PICO and reproducible search through duplicate screening, extraction, risk of bias, synthesis, small-k uncertainty, GRADE, and paired PT-BR/English outputs. Not for pooling incompatible outcomes or study designs.",
+      "origin": {
+        "provider": "Article Machine curated layer",
+        "url": "local://doutorado/article-machine"
+      },
+      "pinned_revision": "workspace-2026-11-01",
+      "license": "LicenseRef-Local-Private",
+      "tree_hash": "sha256:129de26c0ed09758c6fb66ceafcdfa4e9898b24465a8fd37ec440d18708c7f40",
+      "dependencies": [],
+      "credentials": [],
+      "network_domains": [
+        "book.gradepro.org",
+        "www.cochrane.org",
+        "www.prisma-statement.org"
+      ],
+      "human_data_policy": "no-upload-without-explicit-permission",
+      "routes": {
+        "positive": [
+          "Hartung-Knapp em meta-análise",
+          "Hartung-Knapp meta-analysis",
+          "PICO meta-analysis GRADE",
+          "PICO meta-análise GRADE",
+          "clinical systematic review meta-analysis",
+          "medical meta-analysis in R",
+          "medical meta-analysis report in PT-BR and English",
+          "meta-análise de efeitos aleatórios REML",
+          "meta-análise médica com poucos estudos",
+          "meta-análise médica em R",
+          "random-effects meta-analysis REML",
+          "relatório de meta-análise médica em português e inglês",
+          "revisão sistemática clínica com meta-análise",
+          "small-k medical meta-analysis"
+        ],
+        "negative": [
+          "unrelated request without an explicit capability trigger"
+        ]
+      },
+      "artifact_destination": "context/ or evidence/ as defined by the active project",
+      "status": "active",
+      "required_for_clone": false,
+      "next_review": "2027-01-12",
+      "license_note": "Private workspace use; redistribution rights for inherited content require separate review."
+    },
+    "metodos-ml-clinico": {
+      "name": "metodos-ml-clinico",
+      "description": "Use for developing or validating clinical prediction models with regression, machine learning, or deep learning; covers patient-level nested validation, calibration, uncertainty, external validation, TRIPOD+AI reporting, PROBAST+AI appraisal, and paired PT-BR/English scientific outputs. Not for bedside diagnosis or treatment decisions.",
+      "origin": {
+        "provider": "Article Machine curated layer",
+        "url": "local://doutorado/article-machine"
+      },
+      "pinned_revision": "workspace-2026-11-01",
+      "license": "LicenseRef-Local-Private",
+      "tree_hash": "sha256:002a56d6e4e875691ce1699072ecca588ca5f4c33ec5fb0ef8ea5ef8aac8712c",
+      "dependencies": [],
+      "credentials": [],
+      "network_domains": [
+        "www.bmj.com"
+      ],
+      "human_data_policy": "no-upload-without-explicit-permission",
+      "routes": {
+        "positive": [
+          "PROBAST+AI prediction model",
+          "TRIPOD+AI",
+          "calibração de modelo preditivo clínico",
+          "clinical deep learning model",
+          "clinical machine learning model",
+          "clinical prediction model",
+          "clinical prediction model in PT-BR and English",
+          "deep learning clínico",
+          "modelo preditivo clínico",
+          "modelo preditivo clínico em português e inglês",
+          "nested cross-validation clinical",
+          "patient-level model validation",
+          "predição clínica com aprendizado de máquina",
+          "temporal external validation model",
+          "validação cruzada aninhada clínica",
+          "validação externa de modelo clínico",
+          "validação por paciente em modelo clínico",
+          "validação temporal de modelo clínico"
+        ],
+        "negative": [
+          "unrelated request without an explicit capability trigger"
+        ]
+      },
+      "artifact_destination": "context/ or evidence/ as defined by the active project",
+      "status": "active",
+      "required_for_clone": false,
+      "next_review": "2027-01-12",
+      "license_note": "Private workspace use; redistribution rights for inherited content require separate review."
+    },
     "modal": {
       "name": "modal",
       "description": "Modal is a serverless cloud platform for running Python on demand, including on-demand GPUs. Use when deploying or serving AI/ML models, running GPU-accelerated workloads (training, fine-tuning, inference), serving web endpoints, scheduling batch jobs, or scaling Python code to cloud containers with the Modal SDK.",
@@ -5985,7 +6115,7 @@
       },
       "pinned_revision": "workspace-2026-10-12",
       "license": "LicenseRef-Local-Private",
-      "tree_hash": "sha256:d5a85ec7446582cf9feb2f273e6e5eaae8311c32ab9a223a1ab5af9b647891c6",
+      "tree_hash": "sha256:e00a81118ab14aa5b43dff9f81cebd5a56cd7b5f5c21fb47d95e66d05a3429fb",
       "dependencies": [],
       "credentials": [],
       "network_domains": [],
@@ -6114,6 +6244,44 @@
       "artifact_destination": "context/ or evidence/ as defined by the active project",
       "status": "active",
       "required_for_clone": true,
+      "next_review": "2027-01-12",
+      "license_note": "Private workspace use; redistribution rights for inherited content require separate review."
+    },
+    "publicacao-medica-organizada": {
+      "name": "publicacao-medica-organizada",
+      "description": "Use to organize a medical manuscript and its journal-specific versions inside an existing Article Machine project, create an empty publication index, preserve canonical drafts/evidence paths, prepare paired PT-BR/English deliverables, or audit a journal submission checklist. Does not submit manuscripts or move existing material.",
+      "origin": {
+        "provider": "Article Machine curated layer",
+        "url": "local://doutorado/article-machine"
+      },
+      "pinned_revision": "workspace-2026-11-01",
+      "license": "LicenseRef-Local-Private",
+      "tree_hash": "sha256:899697c07fc592e7efe4a44676801da7e61e3683b4b1b631ea8f0d62070c041e",
+      "dependencies": [],
+      "credentials": [],
+      "network_domains": [],
+      "human_data_policy": "no-upload-without-explicit-permission",
+      "routes": {
+        "positive": [
+          "checklist de submissão para revista médica",
+          "journal-specific publication folders",
+          "medical journal submission checklist",
+          "medical publication package PT-BR English",
+          "organizar publicação médica em português e inglês",
+          "organizar publicação médica por revista",
+          "organizar versões de manuscrito médico",
+          "organizar_publicacoes.py",
+          "organize medical manuscript versions",
+          "pasta de publicação médica por projeto e revista",
+          "prepare medical manuscript for journal submission"
+        ],
+        "negative": [
+          "unrelated request without an explicit capability trigger"
+        ]
+      },
+      "artifact_destination": "context/ or evidence/ as defined by the active project",
+      "status": "active",
+      "required_for_clone": false,
       "next_review": "2027-01-12",
       "license_note": "Private workspace use; redistribution rights for inherited content require separate review."
     },
@@ -6611,18 +6779,26 @@
       "name": "pytorch-lightning",
       "description": "Deep learning framework (PyTorch Lightning / lightning package). Organize PyTorch code into LightningModules, configure Trainers for multi-GPU/TPU, implement data pipelines, callbacks, logging (W&B, TensorBoard, MLflow), distributed training (DDP, FSDP, DeepSpeed), for scalable neural network training.",
       "origin": {
-        "provider": "local unverified skill tree",
-        "url": "local://doutorado/article-machine"
+        "provider": "K-Dense AI",
+        "url": "https://github.com/K-Dense-AI/scientific-agent-skills"
       },
-      "pinned_revision": "local-unverified",
-      "license": "NOASSERTION",
-      "tree_hash": "sha256:23551cbf8c0bdf6bb64b314c7710f0c9c26da26ba5131c31a471ffd3fb7a119c",
+      "pinned_revision": "5f2bc0341354fd5590aef76a533ada1e1e5b4e62",
+      "license": "Apache-2.0",
+      "tree_hash": "sha256:12c56ee9af581daa19f0317c3e2766c1a0c7bb5d6f45a7cd0db59c90891ef52c",
       "dependencies": [
         "lightning",
+        "production_single_gpu_trainer",
+        "pytorch_lightning",
+        "templatedatamodule",
+        "templatelightningmodule",
         "wandb"
       ],
       "credentials": [],
       "network_domains": [
+        "arxiv.org",
+        "doi.org",
+        "export.arxiv.org",
+        "github.com",
         "lightning.ai"
       ],
       "human_data_policy": "no-upload-without-explicit-permission",
@@ -6633,10 +6809,12 @@
         ]
       },
       "artifact_destination": "context/ or evidence/ as defined by the active project",
-      "status": "hold",
+      "status": "pilot",
       "required_for_clone": false,
       "next_review": "2027-01-12",
-      "license_note": "Private workspace use; redistribution rights for inherited content require separate review."
+      "review_note": "Pinned K-Dense pilot; local changes and methods require focused review before promotion.",
+      "sync_manifest": "skills/registry.sources/kdense-ml-visual-5f2bc03.json",
+      "sync_mode": "curated-tree-pilot"
     },
     "pyzotero": {
       "name": "pyzotero",
@@ -7471,30 +7649,28 @@
     },
     "scientific-visualization": {
       "name": "scientific-visualization",
-      "description": "Meta-skill for publication-ready figures. Use when creating journal submission figures requiring multi-panel layouts, significance annotations, error bars, colorblind-safe palettes, and specific journal formatting (Nature, Science, Cell). Orchestrates matplotlib/seaborn/plotly with publication styles. For quick exploration use seaborn or plotly directly.",
+      "description": "Creates and audits truthful, accessible, publication-ready scientific figures with Matplotlib, Seaborn, or Plotly. Use it for figure design, multi-panel layouts, uncertainty and missing-data displays, color/contrast review, image metadata validation, and journal export planning.",
       "origin": {
-        "provider": "local unverified skill tree",
-        "url": "local://doutorado/article-machine"
+        "provider": "K-Dense AI",
+        "url": "https://github.com/K-Dense-AI/scientific-agent-skills"
       },
-      "pinned_revision": "local-unverified",
-      "license": "NOASSERTION",
-      "tree_hash": "sha256:cc120c88b214138484a9463171574e74f3059dd46c28068af8bf79cdceb72fd7",
+      "pinned_revision": "5f2bc0341354fd5590aef76a533ada1e1e5b4e62",
+      "license": "MIT",
+      "tree_hash": "sha256:192e4c25eb2341a7cab32a3480c184e5cb557f0e78264eb0608c93229ca031a3",
       "dependencies": [
-        "apply_palette",
-        "apply_publication_style",
-        "ascii_uppercase",
-        "check_figure_size",
-        "configure_for_journal",
+        "export_figure",
         "matplotlib",
         "matplotlib.pyplot",
-        "numpy",
-        "okabe_ito_list",
-        "save_for_journal",
-        "save_publication_figure",
-        "seaborn"
+        "path",
+        "style_context"
       ],
       "credentials": [],
-      "network_domains": [],
+      "network_domains": [
+        "arxiv.org",
+        "doi.org",
+        "export.arxiv.org",
+        "seaborn.pydata.org"
+      ],
       "human_data_policy": "no-upload-without-explicit-permission",
       "routes": {
         "positive": [],
@@ -7503,10 +7679,12 @@
         ]
       },
       "artifact_destination": "context/ or evidence/ as defined by the active project",
-      "status": "hold",
+      "status": "pilot",
       "required_for_clone": false,
       "next_review": "2027-01-12",
-      "license_note": "Private workspace use; redistribution rights for inherited content require separate review."
+      "review_note": "Pinned K-Dense pilot; local changes and methods require focused review before promotion.",
+      "sync_manifest": "skills/registry.sources/kdense-ml-visual-5f2bc03.json",
+      "sync_mode": "curated-tree-pilot"
     },
     "scientific-workflow-orchestrator": {
       "name": "scientific-workflow-orchestrator",
@@ -7629,28 +7807,24 @@
     },
     "scikit-learn": {
       "name": "scikit-learn",
-      "description": "Machine learning in Python with scikit-learn. Use when working with supervised learning (classification, regression), unsupervised learning (clustering, dimensionality reduction), model evaluation, hyperparameter tuning, preprocessing, or building ML pipelines. Provides comprehensive reference documentation for algorithms, preprocessing techniques, pipelines, and best practices.",
+      "description": "Supports machine learning in Python with scikit-learn. Applies when working with supervised learning (classification, regression), unsupervised learning (clustering, dimensionality reduction), model evaluation, hyperparameter tuning, preprocessing, or building ML pipelines. Provides comprehensive reference documentation for algorithms, preprocessing techniques, pipelines, and best practices.",
       "origin": {
-        "provider": "local unverified skill tree",
-        "url": "local://doutorado/article-machine"
+        "provider": "K-Dense AI",
+        "url": "https://github.com/K-Dense-AI/scientific-agent-skills"
       },
-      "pinned_revision": "local-unverified",
-      "license": "NOASSERTION",
-      "tree_hash": "sha256:b5c1f59b4ddebd3a46d3f631aebfce5c0348e3b36d6b66b8a5cda64d3b6f8015",
+      "pinned_revision": "5f2bc0341354fd5590aef76a533ada1e1e5b4e62",
+      "license": "BSD-3-Clause",
+      "tree_hash": "sha256:e5a9214d1b52145b9166d9b05cdfdcb021043c043cddc2e815c51b758e86d656",
       "dependencies": [
         "classification_report",
         "columntransformer",
         "gradientboostingclassifier",
-        "gridsearchcv",
-        "kmeans",
         "minibatchkmeans",
         "pandas",
         "patterns",
-        "pca",
         "pipeline",
         "randomforestclassifier",
         "sgdclassifier",
-        "silhouette_score",
         "simpleimputer",
         "sklearn",
         "standardscaler",
@@ -7658,6 +7832,9 @@
       ],
       "credentials": [],
       "network_domains": [
+        "arxiv.org",
+        "doi.org",
+        "export.arxiv.org",
         "scikit-learn.org"
       ],
       "human_data_policy": "no-upload-without-explicit-permission",
@@ -7668,10 +7845,12 @@
         ]
       },
       "artifact_destination": "context/ or evidence/ as defined by the active project",
-      "status": "hold",
+      "status": "pilot",
       "required_for_clone": false,
       "next_review": "2027-01-12",
-      "license_note": "Private workspace use; redistribution rights for inherited content require separate review."
+      "review_note": "Pinned K-Dense pilot; local changes and methods require focused review before promotion.",
+      "sync_manifest": "skills/registry.sources/kdense-ml-visual-5f2bc03.json",
+      "sync_mode": "curated-tree-pilot"
     },
     "scikit-survival": {
       "name": "scikit-survival",
@@ -9571,7 +9750,7 @@
       },
       "pinned_revision": "workspace-2026-10-12",
       "license": "LicenseRef-Local-Private",
-      "tree_hash": "sha256:52a7581049fefb1a60ce942d0c44679089c21abef77f380f75b6e0e12f829e77",
+      "tree_hash": "sha256:729add32efb33fe485213cb9ab1ac4c85d1c397c7c3a6d5c6bbd3a39577c4ca2",
       "dependencies": [],
       "credentials": [],
       "network_domains": [],

@@ -1,0 +1,76 @@
+{
+  "purpose": "pre-integration snapshot; rollback evidence only",
+  "date": "2026-11-01",
+  "files": [
+    {
+      "source": "article_machine/agent_skills.py",
+      "backup": "projects/article-machine-governance-2026/analysis/backup_integracao_skills/article_machine/agent_skills.py",
+      "sha256_original": "6f7d2a25e08a9e79898fe1f36713ceabb5da16e5fb61efa7fa0b4d29a504368d",
+      "sha256_backup": "6f7d2a25e08a9e79898fe1f36713ceabb5da16e5fb61efa7fa0b4d29a504368d",
+      "bytes": 53156
+    },
+    {
+      "source": "scripts/generate_skill_registry.py",
+      "backup": "projects/article-machine-governance-2026/analysis/backup_integracao_skills/scripts/generate_skill_registry.py",
+      "sha256_original": "7f6da1c663a868d8f1566f865ebb77d8437ba71be4fea2d189fba486c8d9a12c",
+      "sha256_backup": "7f6da1c663a868d8f1566f865ebb77d8437ba71be4fea2d189fba486c8d9a12c",
+      "bytes": 7048
+    },
+    {
+      "source": "skills/registry.json",
+      "backup": "projects/article-machine-governance-2026/analysis/backup_integracao_skills/skills/registry.json",
+      "sha256_original": "b60be68872e86a46b39e4f1230412db2c7a6b7dd8c6a0476fb7e1c5259e3eb3e",
+      "sha256_backup": "b60be68872e86a46b39e4f1230412db2c7a6b7dd8c6a0476fb7e1c5259e3eb3e",
+      "bytes": 434445
+    },
+    {
+      "source": "SKILL_INDEX.md",
+      "backup": "projects/article-machine-governance-2026/analysis/backup_integracao_skills/SKILL_INDEX.md",
+      "sha256_original": "b0ebab51376616455a51bbfff3be1d5290cd40be3bacb02e61eb434640346f60",
+      "sha256_backup": "b0ebab51376616455a51bbfff3be1d5290cd40be3bacb02e61eb434640346f60",
+      "bytes": 35241
+    },
+    {
+      "source": "SKILLS_CANON.md",
+      "backup": "projects/article-machine-governance-2026/analysis/backup_integracao_skills/SKILLS_CANON.md",
+      "sha256_original": "9d541854284618a68b1d56e041a4439a0e512cdd0d73fc1e07781090781cf726",
+      "sha256_backup": "9d541854284618a68b1d56e041a4439a0e512cdd0d73fc1e07781090781cf726",
+      "bytes": 30470
+    },
+    {
+      "source": "AGENT_MANIFEST.md",
+      "backup": "projects/article-machine-governance-2026/analysis/backup_integracao_skills/AGENT_MANIFEST.md",
+      "sha256_original": "86da4555d6a6bb7301ebdbce85bb73210c9dce905dad3bf9b56bd77134fa88d6",
+      "sha256_backup": "86da4555d6a6bb7301ebdbce85bb73210c9dce905dad3bf9b56bd77134fa88d6",
+      "bytes": 8500
+    },
+    {
+      "source": ".gitignore",
+      "backup": "projects/article-machine-governance-2026/analysis/backup_integracao_skills/.gitignore",
+      "sha256_original": "cec83757155074bd1ea97b4a48786191d61f9e328b1c659e4c8b802e444b30da",
+      "sha256_backup": "cec83757155074bd1ea97b4a48786191d61f9e328b1c659e4c8b802e444b30da",
+      "bytes": 11237
+    },
+    {
+      "source": ".agents/skills/metodos-ml-clinico/SKILL.md",
+      "backup": "projects/article-machine-governance-2026/analysis/backup_integracao_skills/.agents/skills/metodos-ml-clinico/SKILL.md",
+      "sha256_original": "ee713685d8458b3e6a4621ea990d1e24db946124661379692ef196b9e7272308",
+      "sha256_backup": "ee713685d8458b3e6a4621ea990d1e24db946124661379692ef196b9e7272308",
+      "bytes": 3672
+    },
+    {
+      "source": ".agents/skills/meta-analise-medica/SKILL.md",
+      "backup": "projects/article-machine-governance-2026/analysis/backup_integracao_skills/.agents/skills/meta-analise-medica/SKILL.md",
+      "sha256_original": "2d7818ee5ab12c770f0321b1adb8ebe3533413ad05b0a86c49713179c3210a3f",
+      "sha256_backup": "2d7818ee5ab12c770f0321b1adb8ebe3533413ad05b0a86c49713179c3210a3f",
+      "bytes": 5352
+    },
+    {
+      "source": ".agents/skills/publicacao-medica-organizada/SKILL.md",
+      "backup": "projects/article-machine-governance-2026/analysis/backup_integracao_skills/.agents/skills/publicacao-medica-organizada/SKILL.md",
+      "sha256_original": "1fce7dddf3482b3a2d4ec6d1bce193d28b917b0b3e41d48bcc5faa7c38da53bd",
+      "sha256_backup": "1fce7dddf3482b3a2d4ec6d1bce193d28b917b0b3e41d48bcc5faa7c38da53bd",
+      "bytes": 2995
+    }
+  ]
+}

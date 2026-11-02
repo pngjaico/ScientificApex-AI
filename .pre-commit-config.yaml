@@ -1,0 +1,32 @@
+# Hooks locais não destrutivos. Nenhum hook reescreve arquivos por padrão.
+# Instalação: uv run pre-commit install
+# Verificação completa: uv run pre-commit run --all-files
+minimum_pre_commit_version: "4.0.0"
+default_stages: [pre-commit]
+exclude: (^|/)(archive|\.venv|graphify-out|\.machine|node_modules|renv/library|\.pytest_cache|\.ruff_cache|\.mypy_cache|__pycache__)(/|$)
+
+repos:
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v5.0.0
+    hooks:
+      - id: check-yaml
+      - id: check-json
+      - id: check-merge-conflict
+      - id: check-added-large-files
+        args: ["--maxkb=2048"]
+      - id: detect-private-key
+      - id: forbid-submodules
+
+  - repo: https://github.com/astral-sh/ruff-pre-commit
+    rev: v0.15.22
+    hooks:
+      - id: ruff
+
+  - repo: local
+    hooks:
+      - id: estado-dos-projetos
+        name: painel de projetos atualizado
+        entry: uv run --no-sync python scripts/estado_dos_projetos.py --check
+        language: system
+        pass_filenames: false
+        files: ^projects/[^/]+/project\.yaml$

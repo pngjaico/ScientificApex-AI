@@ -5,7 +5,7 @@ description: Use when an agent must navigate the Doutorado workspace, query or r
 
 # Workspace Graph Navigator
 
-Use this skill before broad workspace navigation in `C:\Users\Usuario-pc\Desktop\Doutorado`.
+Use this skill before broad workspace navigation in `D:\Usuario-pc\Projetos\Doutorado`.
 
 ## Purpose
 - Make `graphify-out/GRAPH_REPORT.md`, `graphify-out/graph.html`, and `graphify-out/graph.json` the first navigation layer.

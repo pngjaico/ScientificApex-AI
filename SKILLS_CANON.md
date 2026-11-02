@@ -157,6 +157,7 @@ Generated from `skills/registry.json`.
 - `biopython`: `sha256:a17ad5d90a0ca3e893791c53ae239557541b00a37843813d4b9647da98caf1b8`
 - `bioservices`: `sha256:b0cde0ab5f77d603425cdd16f82c7fe3e690a2c48a0b72f4ca7e88a6e9ccf305`
 - `bulk-rnaseq`: `sha256:a55bedb970a1b8528cc2d8bd841a454604e69e6658785ebaa3644a48eec59393`
+- `catalogos-cientificos-sob-demanda`: `sha256:ac52f83759cea933fce360a333757b5ac3aee063815883db446bbb70b6b21380`
 - `cellxgene-census`: `sha256:6d63102b60461fd43077ac370214c1646c6f0b090ba51e569bae18a84fc4d831`
 - `chembl-bindingdb-miner`: `sha256:b55996bb6f364a398414a9a52928becfd2a1cda96c0f94819857e3007e36de3c`
 - `churn-prevention`: `sha256:7bec8900893ef677ab485025b0852888a12c9a05ffc6367ddf16b162f5f79fe5`
@@ -251,6 +252,8 @@ Generated from `skills/registry.json`.
 - `matlab`: `sha256:c925512b3e6a3a45266daa949931e2a9b59fd94c9628743bc8cc656f8c6877e4`
 - `matplotlib`: `sha256:f12122c3b06d2c14be6b8b2b712c4fb3d5cb0981d17f03d83366369091ad7660`
 - `medchem`: `sha256:0ec5b20e15736eb80674ecdc984239650ef18a622a91c5f9d682254ea8bdab6c`
+- `meta-analise-medica`: `sha256:129de26c0ed09758c6fb66ceafcdfa4e9898b24465a8fd37ec440d18708c7f40`
+- `metodos-ml-clinico`: `sha256:002a56d6e4e875691ce1699072ecca588ca5f4c33ec5fb0ef8ea5ef8aac8712c`
 - `modal`: `sha256:a463764b499ce2a7bde319170d6647e7e3245d03f5653bd77c57742569d3fa9f`
 - `molecular-dynamics`: `sha256:56a6a523fa1b9f587c14d95444d2b74dd740a8cc897d073a41b282553708cb5c`
 - `molfeat`: `sha256:70121c82b9a4dca1633cc4ad27b321aff5333adbb7c9f9821d977b948d2a39b8`
@@ -298,9 +301,10 @@ Generated from `skills/registry.json`.
 - `product-marketing-context`: `sha256:539c515129842c19129de933d5573e4791daf1671c6162df11967facb76002f1`
 - `programmatic-seo`: `sha256:0dda2e31a93f3ae1b9461143a5be8a72a0599321602496d34c0a968ecc4216f1`
 - `project-entry-navigator`: `sha256:65f5bbe5734d1b15ca75945bd6f6b9ad3e4d1e9927f98cc09d35976da42eba92`
-- `protocol-registration-governor`: `sha256:d5a85ec7446582cf9feb2f273e6e5eaae8311c32ab9a223a1ab5af9b647891c6`
+- `protocol-registration-governor`: `sha256:e00a81118ab14aa5b43dff9f81cebd5a56cd7b5f5c21fb47d95e66d05a3429fb`
 - `protocolsio-integration`: `sha256:693549fee6098b58d5f8079292681cfff6faa64ac2b8c75b17ad235412a518b2`
 - `ptbr-article-writing`: `sha256:3431b58aaccce730bab104266bae6e6534186bf4ed434a9029af1449c1297b14`
+- `publicacao-medica-organizada`: `sha256:899697c07fc592e7efe4a44676801da7e61e3683b4b1b631ea8f0d62070c041e`
 - `pubmed-database`: `sha256:8452c0cb7027cc9fb362babd45a74b0301d74d25650b6c94af19311000678eb3`
 - `pufferlib`: `sha256:ed68bd1db9c3e6447455d867bb58e897414e98d29f4d8330d2554d5e162ce9ed`
 - `pydeseq2`: `sha256:ea4525ddea5887ebd5d26d906cfa4549c33191471abae5efa1188b2c9a513ff4`
@@ -313,7 +317,7 @@ Generated from `skills/registry.json`.
 - `pyopenms`: `sha256:2d9739672dbb2035000b952255f57d0c8cd6f6596314857665e44ab8fc8f6854`
 - `pysam`: `sha256:a468b56fcb4a471feaf3242bd4127d4abdf6a51ead77fb46e21c25cb8ee06402`
 - `pytdc`: `sha256:320c00e8d15c2c9234ab781f7c3465fbf7ca5d429c38796da916504f306be3ec`
-- `pytorch-lightning`: `sha256:23551cbf8c0bdf6bb64b314c7710f0c9c26da26ba5131c31a471ffd3fb7a119c`
+- `pytorch-lightning`: `sha256:12c56ee9af581daa19f0317c3e2766c1a0c7bb5d6f45a7cd0db59c90891ef52c`
 - `pyzotero`: `sha256:f72d90c7813f116c0239b96ab3483a81e7bc3ee4c3555cb084b88d930b7262bb`
 - `qiskit`: `sha256:214aba904dd9f80cfafe24f065c3fbb83a90c1e70c9b43e37ade304733f52be4`
 - `query-string-governor`: `sha256:b7670f086e27732399581f1aecf0bc1436530402a0ab4473eef16fafe864aa8f`
@@ -338,11 +342,11 @@ Generated from `skills/registry.json`.
 - `scientific-red-team-reviewer`: `sha256:d6f6064ed31a1c235726218adbf32911e6d38463fae0cc642ae36ac78a6bba2b`
 - `scientific-schematics`: `sha256:71b202359fd1499a83519f78484822345e59520e454700ae406b23dc532a5418`
 - `scientific-slides`: `sha256:ecd11d41a9e1362e2345cf52129b75724dbbae6f132c5b887c093f06fd657170`
-- `scientific-visualization`: `sha256:cc120c88b214138484a9463171574e74f3059dd46c28068af8bf79cdceb72fd7`
+- `scientific-visualization`: `sha256:192e4c25eb2341a7cab32a3480c184e5cb557f0e78264eb0608c93229ca031a3`
 - `scientific-workflow-orchestrator`: `sha256:b6e8f3b246dcdbd59599adefb94e97b89d5e430559b845e3e03d51bc3a7e7961`
 - `scientific-writing`: `sha256:f14aa135fbbc9fd3d56d773b1f2f7ff28574c269ed46208a97e9b606b4962351`
 - `scikit-bio`: `sha256:cbf2746c05474a7268d939c1b0a23932f326d52ad12a54227eedd00378238ef4`
-- `scikit-learn`: `sha256:b5c1f59b4ddebd3a46d3f631aebfce5c0348e3b36d6b66b8a5cda64d3b6f8015`
+- `scikit-learn`: `sha256:e5a9214d1b52145b9166d9b05cdfdcb021043c043cddc2e815c51b758e86d656`
 - `scikit-survival`: `sha256:d645368a888c9f259f443b60c588c2f04985f95b52511267c4bf3a47253df210`
 - `scvelo`: `sha256:7f2c7d490a9e195e4b00b02c84f764f7c410dc764e130a4f1e50cf89798f04b0`
 - `scvi-tools`: `sha256:3d07bf7a80ac576f54ab36a0b6d56a44ffb1314404fd0b60d3b76a56de4c1812`
@@ -393,7 +397,7 @@ Generated from `skills/registry.json`.
 - `venue-templates`: `sha256:e60ead872a4a6ae67e4fd915a0bff68709e376ffda75b98f3064390d90db6155`
 - `visual-backend-router`: `sha256:d660a2fc51bee4eb35163111b39c4dfdf50db733713d2d091a324eac3b1cd896`
 - `what-if-oracle`: `sha256:e9b2dd701c89871fab2ad221f25375b4a0e08161acf38715a0d8ae40439a59dc`
-- `workspace-graph-navigator`: `sha256:52a7581049fefb1a60ce942d0c44679089c21abef77f380f75b6e0e12f829e77`
+- `workspace-graph-navigator`: `sha256:729add32efb33fe485213cb9ab1ac4c85d1c397c7c3a6d5c6bbd3a39577c4ca2`
 - `xlsx`: `sha256:9395c90bd80675364d584b26da82cc955c6e07bf7dab615aaebc75aab63f7399`
 - `zarr-python`: `sha256:015f391fabb12b647f198991fdda37253c08b22636061bb3954b5c28f910724f`
 - `zotero-reference-manager`: `sha256:c34558a1b27e8561cedab87d6c55ef4db03c3b08a5376924b232f9ed89f227db`

@@ -1,0 +1,2289 @@
+{
+  "snapshot_utc": "2026-11-02",
+  "scope": "Tree-level inventory of all five requested repositories; selected-content spot audit is documented in source_audit.md. No upstream scripts, hooks, installers, lifecycle commands, or npx executed.",
+  "method": "git ls-remote HEAD/default-branch and depth-1 partial clones; tree paths, commit SHAs, dates and submodule gitlinks recorded. Unselected SKILL.md bodies are not claimed reviewed.",
+  "local_canonical_skill_count": 267,
+  "sources": [
+    {
+      "id": "kdense",
+      "repository": "K-Dense-AI/scientific-agent-skills",
+      "official_url": "https://github.com/K-Dense-AI/scientific-agent-skills",
+      "default_branch_observed": "main",
+      "head_sha": "a25cf9ec00e2745d03f8704acf6f6919694ccd9a",
+      "observed_commit_date": "2026-11-02T09:23:26Z",
+      "observed_head_subject": "chore: update security scan report [skip ci]",
+      "tree_path_count": 2780,
+      "actual_skill_md_entrypoints": 177,
+      "local_exact_slug_overlap_count": 144,
+      "local_exact_slug_overlap": [
+        "adaptyv",
+        "aeon",
+        "anndata",
+        "arbor",
+        "arboreto",
+        "astropy",
+        "autoskill",
+        "benchling-integration",
+        "bgpt-paper-search",
+        "bids",
+        "biopython",
+        "bioservices",
+        "bulk-rnaseq",
+        "cellxgene-census",
+        "cirq",
+        "citation-management",
+        "clinical-decision-support",
+        "clinical-reports",
+        "cobrapy",
+        "consciousness-council",
+        "dask",
+        "database-lookup",
+        "datamol",
+        "deepchem",
+        "deeptools",
+        "depmap",
+        "dhdna-profiler",
+        "diffdock",
+        "dnanexus-integration",
+        "esm",
+        "etetoolkit",
+        "exa-search",
+        "experimental-design",
+        "exploratory-data-analysis",
+        "flowio",
+        "fluidsim",
+        "generate-image",
+        "geniml",
+        "geomaster",
+        "geopandas",
+        "get-available-resources",
+        "gget",
+        "ginkgo-cloud-lab",
+        "glycoengineering",
+        "gtars",
+        "histolab",
+        "hugging-science",
+        "hypogenic",
+        "hypothesis-generation",
+        "imaging-data-commons",
+        "infographics",
+        "labarchive-integration",
+        "lamindb",
+        "latchbio-integration",
+        "latex-posters",
+        "liteparse",
+        "literature-review",
+        "markdown-mermaid-writing",
+        "market-research-reports",
+        "markitdown",
+        "matchms",
+        "matlab",
+        "matplotlib",
+        "medchem",
+        "modal",
+        "molecular-dynamics",
+        "molfeat",
+        "networkx",
+        "neurokit2",
+        "neuropixels-analysis",
+        "nextflow",
+        "omero-integration",
+        "onekgpd",
+        "open-notebook",
+        "opentrons-integration",
+        "optimize-for-gpu",
+        "pacsomatic",
+        "paper-lookup",
+        "paperzilla",
+        "parallel-web",
+        "pathml",
+        "pathway-enrichment",
+        "peer-review",
+        "pennylane",
+        "phylogenetics",
+        "pi-agent",
+        "polars",
+        "polars-bio",
+        "pptx-posters",
+        "primekg",
+        "protocolsio-integration",
+        "pufferlib",
+        "pydeseq2",
+        "pydicom",
+        "pyhealth",
+        "pylabrobot",
+        "pymatgen",
+        "pymc",
+        "pymoo",
+        "pyopenms",
+        "pysam",
+        "pytdc",
+        "pytorch-lightning",
+        "pyzotero",
+        "qiskit",
+        "qutip",
+        "rdkit",
+        "research-grants",
+        "research-lookup",
+        "rowan",
+        "scanpy",
+        "scholar-evaluation",
+        "scientific-brainstorming",
+        "scientific-critical-thinking",
+        "scientific-schematics",
+        "scientific-slides",
+        "scientific-visualization",
+        "scientific-writing",
+        "scikit-bio",
+        "scikit-learn",
+        "scikit-survival",
+        "scvelo",
+        "scvi-tools",
+        "seaborn",
+        "shap",
+        "simpy",
+        "stable-baselines3",
+        "statistical-analysis",
+        "statistical-power",
+        "statsmodels",
+        "sympy",
+        "tamarind",
+        "tiledbvcf",
+        "timesfm-forecasting",
+        "torch-geometric",
+        "torchdrug",
+        "transformers",
+        "treatment-plans",
+        "umap-learn",
+        "usfiscaldata",
+        "vaex",
+        "venue-templates",
+        "what-if-oracle",
+        "zarr-python"
+      ],
+      "license_assessment": "MIT repo LICENSE.md; each skill metadata/embedded assets can override",
+      "license_paths": [
+        "LICENSE.md",
+        "skills/pacsomatic/LICENSE",
+        "tests/flowkit/fixtures/LICENSE",
+        "tests/qiime2-amplicon/fixtures/LICENSE"
+      ],
+      "skill_entries_with_frontmatter_spot_checked": 7,
+      "remaining_skill_bodies_unreviewed": 170,
+      "tree_only_names_and_paths": [
+        {
+          "name": "13c-metabolic-flux",
+          "path": "skills/13c-metabolic-flux/SKILL.md",
+          "metadata_status": "tree_only"
+        },
+        {
+          "name": "adaptyv",
+          "path": "skills/adaptyv/SKILL.md",
+          "metadata_status": "tree_only"
+        },
+        {
+          "name": "aeon",
+          "path": "skills/aeon/SKILL.md",
+          "metadata_status": "tree_only"
+        },
+        {
+          "name": "alphagenome",
+          "path": "skills/alphagenome/SKILL.md",
+          "metadata_status": "tree_only"
+        },
+        {
+          "name": "analytical-method-validation",
+          "path": "skills/analytical-method-validation/SKILL.md",
+          "metadata_status": "frontmatter_read_selected_spot_audit"
+        },
+        {
+          "name": "anndata",
+          "path": "skills/anndata/SKILL.md",
+          "metadata_status": "tree_only"
+        },
+        {
+          "name": "arbor",
+          "path": "skills/arbor/SKILL.md",
+          "metadata_status": "tree_only"
+        },
+        {
+          "name": "arboreto",
+          "path": "skills/arboreto/SKILL.md",
+          "metadata_status": "tree_only"
+        },
+        {
+          "name": "astropy",
+          "path": "skills/astropy/SKILL.md",
+          "metadata_status": "tree_only"
+        },
+        {
+          "name": "autoskill",
+          "path": "skills/autoskill/SKILL.md",
+          "metadata_status": "tree_only"
+        },
+        {
+          "name": "benchling-integration",
+          "path": "skills/benchling-integration/SKILL.md",
+          "metadata_status": "tree_only"
+        },
+        {
+          "name": "bgpt-paper-search",
+          "path": "skills/bgpt-paper-search/SKILL.md",
+          "metadata_status": "tree_only"
+        },
+        {
+          "name": "bids",
+          "path": "skills/bids/SKILL.md",
+          "metadata_status": "tree_only"
+        },
+        {
+          "name": "biopython",
+          "path": "skills/biopython/SKILL.md",
+          "metadata_status": "tree_only"
+        },
+        {
+          "name": "bioservices",
+          "path": "skills/bioservices/SKILL.md",
+          "metadata_status": "tree_only"
+        },
+        {
+          "name": "bulk-rnaseq",
+          "path": "skills/bulk-rnaseq/SKILL.md",
+          "metadata_status": "tree_only"
+        },
+        {
+          "name": "cantera",
+          "path": "skills/cantera/SKILL.md",
+          "metadata_status": "tree_only"
+        },
+        {
+          "name": "cellprofiler",
+          "path": "skills/cellprofiler/SKILL.md",
+          "metadata_status": "tree_only"
+        },
+        {
+          "name": "cellxgene-census",
+          "path": "skills/cellxgene-census/SKILL.md",
+          "metadata_status": "tree_only"
+        },
+        {
+          "name": "cirq",
+          "path": "skills/cirq/SKILL.md",
+          "metadata_status": "tree_only"
+        },
+        {
+          "name": "citation-management",
+          "path": "skills/citation-management/SKILL.md",
+          "metadata_status": "tree_only"
+        },
+        {
+          "name": "clinical-decision-support",
+          "path": "skills/clinical-decision-support/SKILL.md",
+          "metadata_status": "tree_only"
+        },
+        {
+          "name": "clinical-reports",
+          "path": "skills/clinical-reports/SKILL.md",
+          "metadata_status": "frontmatter_read_selected_spot_audit"
+        },
+        {
+          "name": "cobrapy",
+          "path": "skills/cobrapy/SKILL.md",
+          "metadata_status": "tree_only"
+        },
+        {
+          "name": "consciousness-council",
+          "path": "skills/consciousness-council/SKILL.md",
+          "metadata_status": "tree_only"
+        },
+        {
+          "name": "dask",
+          "path": "skills/dask/SKILL.md",
+          "metadata_status": "tree_only"
+        },
+        {
+          "name": "database-lookup",
+          "path": "skills/database-lookup/SKILL.md",
+          "metadata_status": "tree_only"
+        },
+        {
+          "name": "datalad",
+          "path": "skills/datalad/SKILL.md",
+          "metadata_status": "tree_only"
+        },
+        {
+          "name": "datamol",
+          "path": "skills/datamol/SKILL.md",
+          "metadata_status": "tree_only"
+        },
+        {
+          "name": "deepchem",
+          "path": "skills/deepchem/SKILL.md",
+          "metadata_status": "tree_only"
+        },
+        {
+          "name": "deepspot-m",
+          "path": "skills/deepspot-m/SKILL.md",
+          "metadata_status": "tree_only"
+        },
+        {
+          "name": "deeptools",
+          "path": "skills/deeptools/SKILL.md",
+          "metadata_status": "tree_only"
+        },
+        {
+          "name": "depmap",
+          "path": "skills/depmap/SKILL.md",
+          "metadata_status": "tree_only"
+        },
+        {
+          "name": "dhdna-profiler",
+          "path": "skills/dhdna-profiler/SKILL.md",
+          "metadata_status": "tree_only"
+        },
+        {
+          "name": "diffdock",
+          "path": "skills/diffdock/SKILL.md",
+          "metadata_status": "tree_only"
+        },
+        {
+          "name": "dnanexus-integration",
+          "path": "skills/dnanexus-integration/SKILL.md",
+          "metadata_status": "tree_only"
+        },
+        {
+          "name": "esm",
+          "path": "skills/esm/SKILL.md",
+          "metadata_status": "tree_only"
+        },
+        {
+          "name": "etetoolkit",
+          "path": "skills/etetoolkit/SKILL.md",
+          "metadata_status": "tree_only"
+        },
+        {
+          "name": "exa-search",
+          "path": "skills/exa-search/SKILL.md",
+          "metadata_status": "tree_only"
+        },
+        {
+          "name": "experimental-design",
+          "path": "skills/experimental-design/SKILL.md",
+          "metadata_status": "tree_only"
+        },
+        {
+          "name": "exploratory-data-analysis",
+          "path": "skills/exploratory-data-analysis/SKILL.md",
+          "metadata_status": "tree_only"
+        },
+        {
+          "name": "fictiv",
+          "path": "skills/fictiv/SKILL.md",
+          "metadata_status": "tree_only"
+        },
+        {
+          "name": "flowio",
+          "path": "skills/flowio/SKILL.md",
+          "metadata_status": "tree_only"
+        },
+        {
+          "name": "flowkit",
+          "path": "skills/flowkit/SKILL.md",
+          "metadata_status": "tree_only"
+        },
+        {
+          "name": "fluidsim",
+          "path": "skills/fluidsim/SKILL.md",
+          "metadata_status": "tree_only"
+        },
+        {
+          "name": "folklore-variant-evidence",
+          "path": "skills/folklore-variant-evidence/SKILL.md",
+          "metadata_status": "tree_only"
+        },
+        {
+          "name": "generate-image",
+          "path": "skills/generate-image/SKILL.md",
+          "metadata_status": "tree_only"
+        },
+        {
+          "name": "geniml",
+          "path": "skills/geniml/SKILL.md",
+          "metadata_status": "tree_only"
+        },
+        {
+          "name": "genomic-coordinates",
+          "path": "skills/genomic-coordinates/SKILL.md",
+          "metadata_status": "tree_only"
+        },
+        {
+          "name": "genomic-intelligence",
+          "path": "skills/genomic-intelligence/SKILL.md",
+          "metadata_status": "tree_only"
+        },
+        {
+          "name": "geomaster",
+          "path": "skills/geomaster/SKILL.md",
+          "metadata_status": "tree_only"
+        },
+        {
+          "name": "geopandas",
+          "path": "skills/geopandas/SKILL.md",
+          "metadata_status": "tree_only"
+        },
+        {
+          "name": "get-available-resources",
+          "path": "skills/get-available-resources/SKILL.md",
+          "metadata_status": "tree_only"
+        },
+        {
+          "name": "gget",
+          "path": "skills/gget/SKILL.md",
+          "metadata_status": "tree_only"
+        },
+        {
+          "name": "ginkgo-cloud-lab",
+          "path": "skills/ginkgo-cloud-lab/SKILL.md",
+          "metadata_status": "tree_only"
+        },
+        {
+          "name": "glycoengineering",
+          "path": "skills/glycoengineering/SKILL.md",
+          "metadata_status": "tree_only"
+        },
+        {
+          "name": "gtars",
+          "path": "skills/gtars/SKILL.md",
+          "metadata_status": "tree_only"
+        },
+        {
+          "name": "histolab",
+          "path": "skills/histolab/SKILL.md",
+          "metadata_status": "tree_only"
+        },
+        {
+          "name": "hugging-science",
+          "path": "skills/hugging-science/SKILL.md",
+          "metadata_status": "tree_only"
+        },
+        {
+          "name": "hypogenic",
+          "path": "skills/hypogenic/SKILL.md",
+          "metadata_status": "tree_only"
+        },
+        {
+          "name": "hypothesis-generation",
+          "path": "skills/hypothesis-generation/SKILL.md",
+          "metadata_status": "tree_only"
+        },
+        {
+          "name": "imaging-data-commons",
+          "path": "skills/imaging-data-commons/SKILL.md",
+          "metadata_status": "tree_only"
+        },
+        {
+          "name": "infographics",
+          "path": "skills/infographics/SKILL.md",
+          "metadata_status": "tree_only"
+        },
+        {
+          "name": "iso-standards-readiness",
+          "path": "skills/iso-standards-readiness/SKILL.md",
+          "metadata_status": "tree_only"
+        },
+        {
+          "name": "lab-hardware-cad",
+          "path": "skills/lab-hardware-cad/SKILL.md",
+          "metadata_status": "tree_only"
+        },
+        {
+          "name": "labarchive-integration",
+          "path": "skills/labarchive-integration/SKILL.md",
+          "metadata_status": "tree_only"
+        },
+        {
+          "name": "lamindb",
+          "path": "skills/lamindb/SKILL.md",
+          "metadata_status": "tree_only"
+        },
+        {
+          "name": "latchbio-integration",
+          "path": "skills/latchbio-integration/SKILL.md",
+          "metadata_status": "tree_only"
+        },
+        {
+          "name": "latex-posters",
+          "path": "skills/latex-posters/SKILL.md",
+          "metadata_status": "tree_only"
+        },
+        {
+          "name": "liteparse",
+          "path": "skills/liteparse/SKILL.md",
+          "metadata_status": "tree_only"
+        },
+        {
+          "name": "literature-review",
+          "path": "skills/literature-review/SKILL.md",
+          "metadata_status": "tree_only"
+        },
+        {
+          "name": "mageck",
+          "path": "skills/mageck/SKILL.md",
+          "metadata_status": "tree_only"
+        },
+        {
+          "name": "marine-carbonate-chemistry",
+          "path": "skills/marine-carbonate-chemistry/SKILL.md",
+          "metadata_status": "tree_only"
+        },
+        {
+          "name": "markdown-mermaid-writing",
+          "path": "skills/markdown-mermaid-writing/SKILL.md",
+          "metadata_status": "tree_only"
+        },
+        {
+          "name": "market-research-reports",
+          "path": "skills/market-research-reports/SKILL.md",
+          "metadata_status": "tree_only"
+        },
+        {
+          "name": "markitdown",
+          "path": "skills/markitdown/SKILL.md",
+          "metadata_status": "tree_only"
+        },
+        {
+          "name": "matchms",
+          "path": "skills/matchms/SKILL.md",
+          "metadata_status": "tree_only"
+        },
+        {
+          "name": "matlab",
+          "path": "skills/matlab/SKILL.md",
+          "metadata_status": "tree_only"
+        },
+        {
+          "name": "matplotlib",
+          "path": "skills/matplotlib/SKILL.md",
+          "metadata_status": "tree_only"
+        },
+        {
+          "name": "medchem",
+          "path": "skills/medchem/SKILL.md",
+          "metadata_status": "tree_only"
+        },
+        {
+          "name": "modal",
+          "path": "skills/modal/SKILL.md",
+          "metadata_status": "tree_only"
+        },
+        {
+          "name": "molecular-dynamics",
+          "path": "skills/molecular-dynamics/SKILL.md",
+          "metadata_status": "tree_only"
+        },
+        {
+          "name": "molfeat",
+          "path": "skills/molfeat/SKILL.md",
+          "metadata_status": "tree_only"
+        },
+        {
+          "name": "ncats-arax",
+          "path": "skills/ncats-arax/SKILL.md",
+          "metadata_status": "tree_only"
+        },
+        {
+          "name": "networkx",
+          "path": "skills/networkx/SKILL.md",
+          "metadata_status": "tree_only"
+        },
+        {
+          "name": "neurokit2",
+          "path": "skills/neurokit2/SKILL.md",
+          "metadata_status": "tree_only"
+        },
+        {
+          "name": "neuropixels-analysis",
+          "path": "skills/neuropixels-analysis/SKILL.md",
+          "metadata_status": "tree_only"
+        },
+        {
+          "name": "nextflow",
+          "path": "skills/nextflow/SKILL.md",
+          "metadata_status": "tree_only"
+        },
+        {
+          "name": "nmrglue",
+          "path": "skills/nmrglue/SKILL.md",
+          "metadata_status": "tree_only"
+        },
+        {
+          "name": "nwb-conversion",
+          "path": "skills/nwb-conversion/SKILL.md",
+          "metadata_status": "tree_only"
+        },
+        {
+          "name": "omero-integration",
+          "path": "skills/omero-integration/SKILL.md",
+          "metadata_status": "tree_only"
+        },
+        {
+          "name": "onekgpd",
+          "path": "skills/onekgpd/SKILL.md",
+          "metadata_status": "tree_only"
+        },
+        {
+          "name": "ontology-term-resolution",
+          "path": "skills/ontology-term-resolution/SKILL.md",
+          "metadata_status": "tree_only"
+        },
+        {
+          "name": "open-notebook",
+          "path": "skills/open-notebook/SKILL.md",
+          "metadata_status": "tree_only"
+        },
+        {
+          "name": "openpiv",
+          "path": "skills/openpiv/SKILL.md",
+          "metadata_status": "tree_only"
+        },
+        {
+          "name": "opentrons-integration",
+          "path": "skills/opentrons-integration/SKILL.md",
+          "metadata_status": "tree_only"
+        },
+        {
+          "name": "optimize-for-gpu",
+          "path": "skills/optimize-for-gpu/SKILL.md",
+          "metadata_status": "tree_only"
+        },
+        {
+          "name": "pacsomatic",
+          "path": "skills/pacsomatic/SKILL.md",
+          "metadata_status": "tree_only"
+        },
+        {
+          "name": "paper-lookup",
+          "path": "skills/paper-lookup/SKILL.md",
+          "metadata_status": "tree_only"
+        },
+        {
+          "name": "paperclip",
+          "path": "skills/paperclip/SKILL.md",
+          "metadata_status": "tree_only"
+        },
+        {
+          "name": "paperzilla",
+          "path": "skills/paperzilla/SKILL.md",
+          "metadata_status": "tree_only"
+        },
+        {
+          "name": "parallel-web",
+          "path": "skills/parallel-web/SKILL.md",
+          "metadata_status": "tree_only"
+        },
+        {
+          "name": "pathml",
+          "path": "skills/pathml/SKILL.md",
+          "metadata_status": "tree_only"
+        },
+        {
+          "name": "pathogen-variant-surveillance",
+          "path": "skills/pathogen-variant-surveillance/SKILL.md",
+          "metadata_status": "tree_only"
+        },
+        {
+          "name": "pathway-enrichment",
+          "path": "skills/pathway-enrichment/SKILL.md",
+          "metadata_status": "tree_only"
+        },
+        {
+          "name": "peer-review",
+          "path": "skills/peer-review/SKILL.md",
+          "metadata_status": "tree_only"
+        },
+        {
+          "name": "pennylane",
+          "path": "skills/pennylane/SKILL.md",
+          "metadata_status": "tree_only"
+        },
+        {
+          "name": "phylogenetics",
+          "path": "skills/phylogenetics/SKILL.md",
+          "metadata_status": "tree_only"
+        },
+        {
+          "name": "pi-agent",
+          "path": "skills/pi-agent/SKILL.md",
+          "metadata_status": "tree_only"
+        },
+        {
+          "name": "pkpd-modeling",
+          "path": "skills/pkpd-modeling/SKILL.md",
+          "metadata_status": "frontmatter_read_selected_spot_audit"
+        },
+        {
+          "name": "polars-bio",
+          "path": "skills/polars-bio/SKILL.md",
+          "metadata_status": "tree_only"
+        },
+        {
+          "name": "polars",
+          "path": "skills/polars/SKILL.md",
+          "metadata_status": "tree_only"
+        },
+        {
+          "name": "pptx-posters",
+          "path": "skills/pptx-posters/SKILL.md",
+          "metadata_status": "tree_only"
+        },
+        {
+          "name": "primekg",
+          "path": "skills/primekg/SKILL.md",
+          "metadata_status": "tree_only"
+        },
+        {
+          "name": "primer-design",
+          "path": "skills/primer-design/SKILL.md",
+          "metadata_status": "tree_only"
+        },
+        {
+          "name": "protocolsio-integration",
+          "path": "skills/protocolsio-integration/SKILL.md",
+          "metadata_status": "tree_only"
+        },
+        {
+          "name": "pufferlib",
+          "path": "skills/pufferlib/SKILL.md",
+          "metadata_status": "tree_only"
+        },
+        {
+          "name": "pybamm",
+          "path": "skills/pybamm/SKILL.md",
+          "metadata_status": "tree_only"
+        },
+        {
+          "name": "pycalphad",
+          "path": "skills/pycalphad/SKILL.md",
+          "metadata_status": "tree_only"
+        },
+        {
+          "name": "pydeseq2",
+          "path": "skills/pydeseq2/SKILL.md",
+          "metadata_status": "tree_only"
+        },
+        {
+          "name": "pydicom",
+          "path": "skills/pydicom/SKILL.md",
+          "metadata_status": "tree_only"
+        },
+        {
+          "name": "pyhealth",
+          "path": "skills/pyhealth/SKILL.md",
+          "metadata_status": "tree_only"
+        },
+        {
+          "name": "pylabrobot",
+          "path": "skills/pylabrobot/SKILL.md",
+          "metadata_status": "tree_only"
+        },
+        {
+          "name": "pymatgen",
+          "path": "skills/pymatgen/SKILL.md",
+          "metadata_status": "tree_only"
+        },
+        {
+          "name": "pymc",
+          "path": "skills/pymc/SKILL.md",
+          "metadata_status": "tree_only"
+        },
+        {
+          "name": "pymoo",
+          "path": "skills/pymoo/SKILL.md",
+          "metadata_status": "tree_only"
+        },
+        {
+          "name": "pyopenms",
+          "path": "skills/pyopenms/SKILL.md",
+          "metadata_status": "tree_only"
+        },
+        {
+          "name": "pysam",
+          "path": "skills/pysam/SKILL.md",
+          "metadata_status": "tree_only"
+        },
+        {
+          "name": "pytdc",
+          "path": "skills/pytdc/SKILL.md",
+          "metadata_status": "tree_only"
+        },
+        {
+          "name": "pytorch-lightning",
+          "path": "skills/pytorch-lightning/SKILL.md",
+          "metadata_status": "frontmatter_read_selected_spot_audit"
+        },
+        {
+          "name": "pyzotero",
+          "path": "skills/pyzotero/SKILL.md",
+          "metadata_status": "tree_only"
+        },
+        {
+          "name": "qiime2-amplicon",
+          "path": "skills/qiime2-amplicon/SKILL.md",
+          "metadata_status": "tree_only"
+        },
+        {
+          "name": "qiskit",
+          "path": "skills/qiskit/SKILL.md",
+          "metadata_status": "tree_only"
+        },
+        {
+          "name": "qutip",
+          "path": "skills/qutip/SKILL.md",
+          "metadata_status": "tree_only"
+        },
+        {
+          "name": "rdkit",
+          "path": "skills/rdkit/SKILL.md",
+          "metadata_status": "tree_only"
+        },
+        {
+          "name": "relion",
+          "path": "skills/relion/SKILL.md",
+          "metadata_status": "tree_only"
+        },
+        {
+          "name": "relsa-severity-assessment",
+          "path": "skills/relsa-severity-assessment/SKILL.md",
+          "metadata_status": "tree_only"
+        },
+        {
+          "name": "research-grants",
+          "path": "skills/research-grants/SKILL.md",
+          "metadata_status": "tree_only"
+        },
+        {
+          "name": "research-lookup",
+          "path": "skills/research-lookup/SKILL.md",
+          "metadata_status": "tree_only"
+        },
+        {
+          "name": "rowan",
+          "path": "skills/rowan/SKILL.md",
+          "metadata_status": "tree_only"
+        },
+        {
+          "name": "scanpy",
+          "path": "skills/scanpy/SKILL.md",
+          "metadata_status": "tree_only"
+        },
+        {
+          "name": "scholar-evaluation",
+          "path": "skills/scholar-evaluation/SKILL.md",
+          "metadata_status": "tree_only"
+        },
+        {
+          "name": "scientific-brainstorming",
+          "path": "skills/scientific-brainstorming/SKILL.md",
+          "metadata_status": "tree_only"
+        },
+        {
+          "name": "scientific-critical-thinking",
+          "path": "skills/scientific-critical-thinking/SKILL.md",
+          "metadata_status": "tree_only"
+        },
+        {
+          "name": "scientific-schematics",
+          "path": "skills/scientific-schematics/SKILL.md",
+          "metadata_status": "tree_only"
+        },
+        {
+          "name": "scientific-slides",
+          "path": "skills/scientific-slides/SKILL.md",
+          "metadata_status": "tree_only"
+        },
+        {
+          "name": "scientific-visualization",
+          "path": "skills/scientific-visualization/SKILL.md",
+          "metadata_status": "tree_only"
+        },
+        {
+          "name": "scientific-writing",
+          "path": "skills/scientific-writing/SKILL.md",
+          "metadata_status": "frontmatter_read_selected_spot_audit"
+        },
+        {
+          "name": "scikit-bio",
+          "path": "skills/scikit-bio/SKILL.md",
+          "metadata_status": "tree_only"
+        },
+        {
+          "name": "scikit-learn",
+          "path": "skills/scikit-learn/SKILL.md",
+          "metadata_status": "tree_only"
+        },
+        {
+          "name": "scikit-survival",
+          "path": "skills/scikit-survival/SKILL.md",
+          "metadata_status": "tree_only"
+        },
+        {
+          "name": "scvelo",
+          "path": "skills/scvelo/SKILL.md",
+          "metadata_status": "tree_only"
+        },
+        {
+          "name": "scvi-tools",
+          "path": "skills/scvi-tools/SKILL.md",
+          "metadata_status": "tree_only"
+        },
+        {
+          "name": "seaborn",
+          "path": "skills/seaborn/SKILL.md",
+          "metadata_status": "tree_only"
+        },
+        {
+          "name": "shap",
+          "path": "skills/shap/SKILL.md",
+          "metadata_status": "tree_only"
+        },
+        {
+          "name": "simpy",
+          "path": "skills/simpy/SKILL.md",
+          "metadata_status": "tree_only"
+        },
+        {
+          "name": "stable-baselines3",
+          "path": "skills/stable-baselines3/SKILL.md",
+          "metadata_status": "tree_only"
+        },
+        {
+          "name": "statistical-analysis",
+          "path": "skills/statistical-analysis/SKILL.md",
+          "metadata_status": "frontmatter_read_selected_spot_audit"
+        },
+        {
+          "name": "statistical-power",
+          "path": "skills/statistical-power/SKILL.md",
+          "metadata_status": "tree_only"
+        },
+        {
+          "name": "statsmodels",
+          "path": "skills/statsmodels/SKILL.md",
+          "metadata_status": "tree_only"
+        },
+        {
+          "name": "sympy",
+          "path": "skills/sympy/SKILL.md",
+          "metadata_status": "tree_only"
+        },
+        {
+          "name": "tamarind",
+          "path": "skills/tamarind/SKILL.md",
+          "metadata_status": "tree_only"
+        },
+        {
+          "name": "tellurium",
+          "path": "skills/tellurium/SKILL.md",
+          "metadata_status": "tree_only"
+        },
+        {
+          "name": "tiledbvcf",
+          "path": "skills/tiledbvcf/SKILL.md",
+          "metadata_status": "tree_only"
+        },
+        {
+          "name": "timesfm-forecasting",
+          "path": "skills/timesfm-forecasting/SKILL.md",
+          "metadata_status": "tree_only"
+        },
+        {
+          "name": "torch-geometric",
+          "path": "skills/torch-geometric/SKILL.md",
+          "metadata_status": "tree_only"
+        },
+        {
+          "name": "torchdrug",
+          "path": "skills/torchdrug/SKILL.md",
+          "metadata_status": "tree_only"
+        },
+        {
+          "name": "transformers",
+          "path": "skills/transformers/SKILL.md",
+          "metadata_status": "tree_only"
+        },
+        {
+          "name": "treatment-plans",
+          "path": "skills/treatment-plans/SKILL.md",
+          "metadata_status": "tree_only"
+        },
+        {
+          "name": "umap-learn",
+          "path": "skills/umap-learn/SKILL.md",
+          "metadata_status": "tree_only"
+        },
+        {
+          "name": "uncertainty-and-units",
+          "path": "skills/uncertainty-and-units/SKILL.md",
+          "metadata_status": "frontmatter_read_selected_spot_audit"
+        },
+        {
+          "name": "usfiscaldata",
+          "path": "skills/usfiscaldata/SKILL.md",
+          "metadata_status": "tree_only"
+        },
+        {
+          "name": "vaex",
+          "path": "skills/vaex/SKILL.md",
+          "metadata_status": "tree_only"
+        },
+        {
+          "name": "venue-templates",
+          "path": "skills/venue-templates/SKILL.md",
+          "metadata_status": "tree_only"
+        },
+        {
+          "name": "waypoint-bio",
+          "path": "skills/waypoint-bio/SKILL.md",
+          "metadata_status": "tree_only"
+        },
+        {
+          "name": "what-if-oracle",
+          "path": "skills/what-if-oracle/SKILL.md",
+          "metadata_status": "tree_only"
+        },
+        {
+          "name": "zarr-python",
+          "path": "skills/zarr-python/SKILL.md",
+          "metadata_status": "tree_only"
+        }
+      ],
+      "gitlink_count": 0,
+      "gitlinks": [],
+      "clone_path": "integracoes/catalogos_cientificos/kdense (partial checkout)",
+      "clone_depth": "depth 1, blob filter requested",
+      "additional_same_sha_reference": "integracoes/catalogos_cientificos/kdense_reference (no checkout; redundant ref)"
+    },
+    {
+      "id": "denden",
+      "repository": "DenDen047/claude-scientific-skills",
+      "official_url": "https://github.com/DenDen047/claude-scientific-skills",
+      "default_branch_observed": "main",
+      "head_sha": "190b4f0a5fdf2d3a7feae8e99505fcb92cb5faf1",
+      "observed_commit_date": "2026-04-02T09:15:42+09:00",
+      "observed_head_subject": "Merge remote-tracking branch 'upstream/main'",
+      "tree_path_count": 850,
+      "actual_skill_md_entrypoints": 75,
+      "local_exact_slug_overlap_count": 73,
+      "local_exact_slug_overlap": [
+        "aeon",
+        "astropy",
+        "bgpt-paper-search",
+        "cirq",
+        "citation-management",
+        "consciousness-council",
+        "dask",
+        "database-lookup",
+        "dhdna-profiler",
+        "docx",
+        "exploratory-data-analysis",
+        "fluidsim",
+        "generate-image",
+        "geomaster",
+        "geopandas",
+        "get-available-resources",
+        "hypogenic",
+        "hypothesis-generation",
+        "infographics",
+        "latex-posters",
+        "literature-review",
+        "markdown-mermaid-writing",
+        "market-research-reports",
+        "markitdown",
+        "matlab",
+        "matplotlib",
+        "modal",
+        "networkx",
+        "paper-lookup",
+        "parallel-web",
+        "pdf",
+        "peer-review",
+        "pennylane",
+        "perplexity-search",
+        "polars",
+        "pptx",
+        "pptx-posters",
+        "pufferlib",
+        "pymatgen",
+        "pymc",
+        "pymoo",
+        "pytorch-lightning",
+        "pyzotero",
+        "qiskit",
+        "qutip",
+        "research-grants",
+        "research-lookup",
+        "scholar-evaluation",
+        "scientific-brainstorming",
+        "scientific-critical-thinking",
+        "scientific-schematics",
+        "scientific-slides",
+        "scientific-visualization",
+        "scientific-writing",
+        "scikit-learn",
+        "scikit-survival",
+        "seaborn",
+        "shap",
+        "simpy",
+        "stable-baselines3",
+        "statistical-analysis",
+        "statsmodels",
+        "sympy",
+        "timesfm-forecasting",
+        "torch-geometric",
+        "transformers",
+        "umap-learn",
+        "usfiscaldata",
+        "vaex",
+        "venue-templates",
+        "what-if-oracle",
+        "xlsx",
+        "zarr-python"
+      ],
+      "license_assessment": "MIT repo LICENSE.md; individual skills and four Anthropic document terms require per-skill review",
+      "license_paths": [
+        "LICENSE.md",
+        "scientific-skills/docx/LICENSE.txt",
+        "scientific-skills/pdf/LICENSE.txt",
+        "scientific-skills/pptx/LICENSE.txt",
+        "scientific-skills/xlsx/LICENSE.txt"
+      ],
+      "skill_entries_with_frontmatter_spot_checked": 1,
+      "remaining_skill_bodies_unreviewed": 74,
+      "tree_only_names_and_paths": [
+        {
+          "name": "aeon",
+          "path": "scientific-skills/aeon/SKILL.md",
+          "metadata_status": "tree_only"
+        },
+        {
+          "name": "astropy",
+          "path": "scientific-skills/astropy/SKILL.md",
+          "metadata_status": "tree_only"
+        },
+        {
+          "name": "bgpt-paper-search",
+          "path": "scientific-skills/bgpt-paper-search/SKILL.md",
+          "metadata_status": "tree_only"
+        },
+        {
+          "name": "cirq",
+          "path": "scientific-skills/cirq/SKILL.md",
+          "metadata_status": "tree_only"
+        },
+        {
+          "name": "citation-management",
+          "path": "scientific-skills/citation-management/SKILL.md",
+          "metadata_status": "tree_only"
+        },
+        {
+          "name": "consciousness-council",
+          "path": "scientific-skills/consciousness-council/SKILL.md",
+          "metadata_status": "tree_only"
+        },
+        {
+          "name": "dask",
+          "path": "scientific-skills/dask/SKILL.md",
+          "metadata_status": "tree_only"
+        },
+        {
+          "name": "database-lookup",
+          "path": "scientific-skills/database-lookup/SKILL.md",
+          "metadata_status": "tree_only"
+        },
+        {
+          "name": "dhdna-profiler",
+          "path": "scientific-skills/dhdna-profiler/SKILL.md",
+          "metadata_status": "tree_only"
+        },
+        {
+          "name": "docx",
+          "path": "scientific-skills/docx/SKILL.md",
+          "metadata_status": "tree_only"
+        },
+        {
+          "name": "exploratory-data-analysis",
+          "path": "scientific-skills/exploratory-data-analysis/SKILL.md",
+          "metadata_status": "tree_only"
+        },
+        {
+          "name": "fluidsim",
+          "path": "scientific-skills/fluidsim/SKILL.md",
+          "metadata_status": "tree_only"
+        },
+        {
+          "name": "generate-image",
+          "path": "scientific-skills/generate-image/SKILL.md",
+          "metadata_status": "tree_only"
+        },
+        {
+          "name": "geomaster",
+          "path": "scientific-skills/geomaster/SKILL.md",
+          "metadata_status": "tree_only"
+        },
+        {
+          "name": "geopandas",
+          "path": "scientific-skills/geopandas/SKILL.md",
+          "metadata_status": "tree_only"
+        },
+        {
+          "name": "get-available-resources",
+          "path": "scientific-skills/get-available-resources/SKILL.md",
+          "metadata_status": "tree_only"
+        },
+        {
+          "name": "hypogenic",
+          "path": "scientific-skills/hypogenic/SKILL.md",
+          "metadata_status": "tree_only"
+        },
+        {
+          "name": "hypothesis-generation",
+          "path": "scientific-skills/hypothesis-generation/SKILL.md",
+          "metadata_status": "tree_only"
+        },
+        {
+          "name": "infographics",
+          "path": "scientific-skills/infographics/SKILL.md",
+          "metadata_status": "tree_only"
+        },
+        {
+          "name": "latex-posters",
+          "path": "scientific-skills/latex-posters/SKILL.md",
+          "metadata_status": "tree_only"
+        },
+        {
+          "name": "literature-review",
+          "path": "scientific-skills/literature-review/SKILL.md",
+          "metadata_status": "tree_only"
+        },
+        {
+          "name": "markdown-mermaid-writing",
+          "path": "scientific-skills/markdown-mermaid-writing/SKILL.md",
+          "metadata_status": "tree_only"
+        },
+        {
+          "name": "market-research-reports",
+          "path": "scientific-skills/market-research-reports/SKILL.md",
+          "metadata_status": "tree_only"
+        },
+        {
+          "name": "markitdown",
+          "path": "scientific-skills/markitdown/SKILL.md",
+          "metadata_status": "tree_only"
+        },
+        {
+          "name": "matlab",
+          "path": "scientific-skills/matlab/SKILL.md",
+          "metadata_status": "tree_only"
+        },
+        {
+          "name": "matplotlib",
+          "path": "scientific-skills/matplotlib/SKILL.md",
+          "metadata_status": "tree_only"
+        },
+        {
+          "name": "modal",
+          "path": "scientific-skills/modal/SKILL.md",
+          "metadata_status": "tree_only"
+        },
+        {
+          "name": "networkx",
+          "path": "scientific-skills/networkx/SKILL.md",
+          "metadata_status": "tree_only"
+        },
+        {
+          "name": "paper-2-web",
+          "path": "scientific-skills/paper-2-web/SKILL.md",
+          "metadata_status": "tree_only"
+        },
+        {
+          "name": "paper-lookup",
+          "path": "scientific-skills/paper-lookup/SKILL.md",
+          "metadata_status": "tree_only"
+        },
+        {
+          "name": "parallel-web",
+          "path": "scientific-skills/parallel-web/SKILL.md",
+          "metadata_status": "tree_only"
+        },
+        {
+          "name": "pdf",
+          "path": "scientific-skills/pdf/SKILL.md",
+          "metadata_status": "tree_only"
+        },
+        {
+          "name": "peer-review",
+          "path": "scientific-skills/peer-review/SKILL.md",
+          "metadata_status": "tree_only"
+        },
+        {
+          "name": "pennylane",
+          "path": "scientific-skills/pennylane/SKILL.md",
+          "metadata_status": "tree_only"
+        },
+        {
+          "name": "perplexity-search",
+          "path": "scientific-skills/perplexity-search/SKILL.md",
+          "metadata_status": "tree_only"
+        },
+        {
+          "name": "plotly",
+          "path": "scientific-skills/plotly/SKILL.md",
+          "metadata_status": "tree_only"
+        },
+        {
+          "name": "polars",
+          "path": "scientific-skills/polars/SKILL.md",
+          "metadata_status": "tree_only"
+        },
+        {
+          "name": "pptx-posters",
+          "path": "scientific-skills/pptx-posters/SKILL.md",
+          "metadata_status": "tree_only"
+        },
+        {
+          "name": "pptx",
+          "path": "scientific-skills/pptx/SKILL.md",
+          "metadata_status": "tree_only"
+        },
+        {
+          "name": "pufferlib",
+          "path": "scientific-skills/pufferlib/SKILL.md",
+          "metadata_status": "tree_only"
+        },
+        {
+          "name": "pymatgen",
+          "path": "scientific-skills/pymatgen/SKILL.md",
+          "metadata_status": "tree_only"
+        },
+        {
+          "name": "pymc",
+          "path": "scientific-skills/pymc/SKILL.md",
+          "metadata_status": "tree_only"
+        },
+        {
+          "name": "pymoo",
+          "path": "scientific-skills/pymoo/SKILL.md",
+          "metadata_status": "tree_only"
+        },
+        {
+          "name": "pytorch-lightning",
+          "path": "scientific-skills/pytorch-lightning/SKILL.md",
+          "metadata_status": "tree_only"
+        },
+        {
+          "name": "pyzotero",
+          "path": "scientific-skills/pyzotero/SKILL.md",
+          "metadata_status": "tree_only"
+        },
+        {
+          "name": "qiskit",
+          "path": "scientific-skills/qiskit/SKILL.md",
+          "metadata_status": "tree_only"
+        },
+        {
+          "name": "qutip",
+          "path": "scientific-skills/qutip/SKILL.md",
+          "metadata_status": "tree_only"
+        },
+        {
+          "name": "research-grants",
+          "path": "scientific-skills/research-grants/SKILL.md",
+          "metadata_status": "tree_only"
+        },
+        {
+          "name": "research-lookup",
+          "path": "scientific-skills/research-lookup/SKILL.md",
+          "metadata_status": "tree_only"
+        },
+        {
+          "name": "scholar-evaluation",
+          "path": "scientific-skills/scholar-evaluation/SKILL.md",
+          "metadata_status": "tree_only"
+        },
+        {
+          "name": "scientific-brainstorming",
+          "path": "scientific-skills/scientific-brainstorming/SKILL.md",
+          "metadata_status": "tree_only"
+        },
+        {
+          "name": "scientific-critical-thinking",
+          "path": "scientific-skills/scientific-critical-thinking/SKILL.md",
+          "metadata_status": "tree_only"
+        },
+        {
+          "name": "scientific-schematics",
+          "path": "scientific-skills/scientific-schematics/SKILL.md",
+          "metadata_status": "tree_only"
+        },
+        {
+          "name": "scientific-slides",
+          "path": "scientific-skills/scientific-slides/SKILL.md",
+          "metadata_status": "tree_only"
+        },
+        {
+          "name": "scientific-visualization",
+          "path": "scientific-skills/scientific-visualization/SKILL.md",
+          "metadata_status": "tree_only"
+        },
+        {
+          "name": "scientific-writing",
+          "path": "scientific-skills/scientific-writing/SKILL.md",
+          "metadata_status": "tree_only"
+        },
+        {
+          "name": "scikit-learn",
+          "path": "scientific-skills/scikit-learn/SKILL.md",
+          "metadata_status": "tree_only"
+        },
+        {
+          "name": "scikit-survival",
+          "path": "scientific-skills/scikit-survival/SKILL.md",
+          "metadata_status": "tree_only"
+        },
+        {
+          "name": "seaborn",
+          "path": "scientific-skills/seaborn/SKILL.md",
+          "metadata_status": "tree_only"
+        },
+        {
+          "name": "shap",
+          "path": "scientific-skills/shap/SKILL.md",
+          "metadata_status": "tree_only"
+        },
+        {
+          "name": "simpy",
+          "path": "scientific-skills/simpy/SKILL.md",
+          "metadata_status": "tree_only"
+        },
+        {
+          "name": "stable-baselines3",
+          "path": "scientific-skills/stable-baselines3/SKILL.md",
+          "metadata_status": "tree_only"
+        },
+        {
+          "name": "statistical-analysis",
+          "path": "scientific-skills/statistical-analysis/SKILL.md",
+          "metadata_status": "frontmatter_read_selected_spot_audit"
+        },
+        {
+          "name": "statsmodels",
+          "path": "scientific-skills/statsmodels/SKILL.md",
+          "metadata_status": "tree_only"
+        },
+        {
+          "name": "sympy",
+          "path": "scientific-skills/sympy/SKILL.md",
+          "metadata_status": "tree_only"
+        },
+        {
+          "name": "timesfm-forecasting",
+          "path": "scientific-skills/timesfm-forecasting/SKILL.md",
+          "metadata_status": "tree_only"
+        },
+        {
+          "name": "torch-geometric",
+          "path": "scientific-skills/torch-geometric/SKILL.md",
+          "metadata_status": "tree_only"
+        },
+        {
+          "name": "transformers",
+          "path": "scientific-skills/transformers/SKILL.md",
+          "metadata_status": "tree_only"
+        },
+        {
+          "name": "umap-learn",
+          "path": "scientific-skills/umap-learn/SKILL.md",
+          "metadata_status": "tree_only"
+        },
+        {
+          "name": "usfiscaldata",
+          "path": "scientific-skills/usfiscaldata/SKILL.md",
+          "metadata_status": "tree_only"
+        },
+        {
+          "name": "vaex",
+          "path": "scientific-skills/vaex/SKILL.md",
+          "metadata_status": "tree_only"
+        },
+        {
+          "name": "venue-templates",
+          "path": "scientific-skills/venue-templates/SKILL.md",
+          "metadata_status": "tree_only"
+        },
+        {
+          "name": "what-if-oracle",
+          "path": "scientific-skills/what-if-oracle/SKILL.md",
+          "metadata_status": "tree_only"
+        },
+        {
+          "name": "xlsx",
+          "path": "scientific-skills/xlsx/SKILL.md",
+          "metadata_status": "tree_only"
+        },
+        {
+          "name": "zarr-python",
+          "path": "scientific-skills/zarr-python/SKILL.md",
+          "metadata_status": "tree_only"
+        }
+      ],
+      "gitlink_count": 0,
+      "gitlinks": [],
+      "clone_path": "integracoes/catalogos_cientificos/denden (no checkout)",
+      "clone_depth": "depth 1, blob filter requested"
+    },
+    {
+      "id": "orchestra",
+      "repository": "Orchestra-Research/AI-research-SKILLs",
+      "official_url": "https://github.com/Orchestra-Research/AI-research-SKILLs",
+      "default_branch_observed": "main",
+      "head_sha": "773a52944ba4747a18bd4ae9ade53fff041adcbc",
+      "observed_commit_date": "2026-06-15T21:36:40-04:00",
+      "observed_head_subject": "release: v1.7.2 — ship Qoder agent auto-detection to npm",
+      "tree_path_count": 529,
+      "actual_skill_md_entrypoints": 98,
+      "local_exact_slug_overlap_count": 2,
+      "local_exact_slug_overlap": [
+        "modal",
+        "pytorch-lightning"
+      ],
+      "license_assessment": "MIT repo LICENSE",
+      "license_paths": [
+        "LICENSE"
+      ],
+      "skill_entries_with_frontmatter_spot_checked": 3,
+      "remaining_skill_bodies_unreviewed": 95,
+      "tree_only_names_and_paths": [
+        {
+          "name": "0-autoresearch-skill",
+          "path": "0-autoresearch-skill/SKILL.md",
+          "metadata_status": "frontmatter_read_selected_spot_audit"
+        },
+        {
+          "name": "litgpt",
+          "path": "01-model-architecture/litgpt/SKILL.md",
+          "metadata_status": "tree_only"
+        },
+        {
+          "name": "mamba",
+          "path": "01-model-architecture/mamba/SKILL.md",
+          "metadata_status": "tree_only"
+        },
+        {
+          "name": "nanogpt",
+          "path": "01-model-architecture/nanogpt/SKILL.md",
+          "metadata_status": "tree_only"
+        },
+        {
+          "name": "rwkv",
+          "path": "01-model-architecture/rwkv/SKILL.md",
+          "metadata_status": "tree_only"
+        },
+        {
+          "name": "torchtitan",
+          "path": "01-model-architecture/torchtitan/SKILL.md",
+          "metadata_status": "tree_only"
+        },
+        {
+          "name": "huggingface-tokenizers",
+          "path": "02-tokenization/huggingface-tokenizers/SKILL.md",
+          "metadata_status": "tree_only"
+        },
+        {
+          "name": "sentencepiece",
+          "path": "02-tokenization/sentencepiece/SKILL.md",
+          "metadata_status": "tree_only"
+        },
+        {
+          "name": "axolotl",
+          "path": "03-fine-tuning/axolotl/SKILL.md",
+          "metadata_status": "tree_only"
+        },
+        {
+          "name": "llama-factory",
+          "path": "03-fine-tuning/llama-factory/SKILL.md",
+          "metadata_status": "tree_only"
+        },
+        {
+          "name": "peft",
+          "path": "03-fine-tuning/peft/SKILL.md",
+          "metadata_status": "tree_only"
+        },
+        {
+          "name": "unsloth",
+          "path": "03-fine-tuning/unsloth/SKILL.md",
+          "metadata_status": "tree_only"
+        },
+        {
+          "name": "nnsight",
+          "path": "04-mechanistic-interpretability/nnsight/SKILL.md",
+          "metadata_status": "tree_only"
+        },
+        {
+          "name": "pyvene",
+          "path": "04-mechanistic-interpretability/pyvene/SKILL.md",
+          "metadata_status": "tree_only"
+        },
+        {
+          "name": "saelens",
+          "path": "04-mechanistic-interpretability/saelens/SKILL.md",
+          "metadata_status": "tree_only"
+        },
+        {
+          "name": "transformer-lens",
+          "path": "04-mechanistic-interpretability/transformer-lens/SKILL.md",
+          "metadata_status": "tree_only"
+        },
+        {
+          "name": "nemo-curator",
+          "path": "05-data-processing/nemo-curator/SKILL.md",
+          "metadata_status": "tree_only"
+        },
+        {
+          "name": "ray-data",
+          "path": "05-data-processing/ray-data/SKILL.md",
+          "metadata_status": "tree_only"
+        },
+        {
+          "name": "grpo-rl-training",
+          "path": "06-post-training/grpo-rl-training/SKILL.md",
+          "metadata_status": "tree_only"
+        },
+        {
+          "name": "miles",
+          "path": "06-post-training/miles/SKILL.md",
+          "metadata_status": "tree_only"
+        },
+        {
+          "name": "openrlhf",
+          "path": "06-post-training/openrlhf/SKILL.md",
+          "metadata_status": "tree_only"
+        },
+        {
+          "name": "simpo",
+          "path": "06-post-training/simpo/SKILL.md",
+          "metadata_status": "tree_only"
+        },
+        {
+          "name": "slime",
+          "path": "06-post-training/slime/SKILL.md",
+          "metadata_status": "tree_only"
+        },
+        {
+          "name": "torchforge",
+          "path": "06-post-training/torchforge/SKILL.md",
+          "metadata_status": "tree_only"
+        },
+        {
+          "name": "trl-fine-tuning",
+          "path": "06-post-training/trl-fine-tuning/SKILL.md",
+          "metadata_status": "tree_only"
+        },
+        {
+          "name": "verl",
+          "path": "06-post-training/verl/SKILL.md",
+          "metadata_status": "tree_only"
+        },
+        {
+          "name": "constitutional-ai",
+          "path": "07-safety-alignment/constitutional-ai/SKILL.md",
+          "metadata_status": "tree_only"
+        },
+        {
+          "name": "llamaguard",
+          "path": "07-safety-alignment/llamaguard/SKILL.md",
+          "metadata_status": "tree_only"
+        },
+        {
+          "name": "nemo-guardrails",
+          "path": "07-safety-alignment/nemo-guardrails/SKILL.md",
+          "metadata_status": "tree_only"
+        },
+        {
+          "name": "prompt-guard",
+          "path": "07-safety-alignment/prompt-guard/SKILL.md",
+          "metadata_status": "tree_only"
+        },
+        {
+          "name": "accelerate",
+          "path": "08-distributed-training/accelerate/SKILL.md",
+          "metadata_status": "tree_only"
+        },
+        {
+          "name": "deepspeed",
+          "path": "08-distributed-training/deepspeed/SKILL.md",
+          "metadata_status": "tree_only"
+        },
+        {
+          "name": "megatron-core",
+          "path": "08-distributed-training/megatron-core/SKILL.md",
+          "metadata_status": "tree_only"
+        },
+        {
+          "name": "pytorch-fsdp2",
+          "path": "08-distributed-training/pytorch-fsdp2/SKILL.md",
+          "metadata_status": "tree_only"
+        },
+        {
+          "name": "pytorch-lightning",
+          "path": "08-distributed-training/pytorch-lightning/SKILL.md",
+          "metadata_status": "tree_only"
+        },
+        {
+          "name": "ray-train",
+          "path": "08-distributed-training/ray-train/SKILL.md",
+          "metadata_status": "tree_only"
+        },
+        {
+          "name": "lambda-labs",
+          "path": "09-infrastructure/lambda-labs/SKILL.md",
+          "metadata_status": "tree_only"
+        },
+        {
+          "name": "modal",
+          "path": "09-infrastructure/modal/SKILL.md",
+          "metadata_status": "tree_only"
+        },
+        {
+          "name": "skypilot",
+          "path": "09-infrastructure/skypilot/SKILL.md",
+          "metadata_status": "tree_only"
+        },
+        {
+          "name": "awq",
+          "path": "10-optimization/awq/SKILL.md",
+          "metadata_status": "tree_only"
+        },
+        {
+          "name": "bitsandbytes",
+          "path": "10-optimization/bitsandbytes/SKILL.md",
+          "metadata_status": "tree_only"
+        },
+        {
+          "name": "flash-attention",
+          "path": "10-optimization/flash-attention/SKILL.md",
+          "metadata_status": "tree_only"
+        },
+        {
+          "name": "gguf",
+          "path": "10-optimization/gguf/SKILL.md",
+          "metadata_status": "tree_only"
+        },
+        {
+          "name": "gptq",
+          "path": "10-optimization/gptq/SKILL.md",
+          "metadata_status": "tree_only"
+        },
+        {
+          "name": "hqq",
+          "path": "10-optimization/hqq/SKILL.md",
+          "metadata_status": "tree_only"
+        },
+        {
+          "name": "ml-training-recipes",
+          "path": "10-optimization/ml-training-recipes/SKILL.md",
+          "metadata_status": "tree_only"
+        },
+        {
+          "name": "bigcode-evaluation-harness",
+          "path": "11-evaluation/bigcode-evaluation-harness/SKILL.md",
+          "metadata_status": "tree_only"
+        },
+        {
+          "name": "lm-evaluation-harness",
+          "path": "11-evaluation/lm-evaluation-harness/SKILL.md",
+          "metadata_status": "tree_only"
+        },
+        {
+          "name": "nemo-evaluator",
+          "path": "11-evaluation/nemo-evaluator/SKILL.md",
+          "metadata_status": "tree_only"
+        },
+        {
+          "name": "llama-cpp",
+          "path": "12-inference-serving/llama-cpp/SKILL.md",
+          "metadata_status": "tree_only"
+        },
+        {
+          "name": "sglang",
+          "path": "12-inference-serving/sglang/SKILL.md",
+          "metadata_status": "tree_only"
+        },
+        {
+          "name": "tensorrt-llm",
+          "path": "12-inference-serving/tensorrt-llm/SKILL.md",
+          "metadata_status": "tree_only"
+        },
+        {
+          "name": "vllm",
+          "path": "12-inference-serving/vllm/SKILL.md",
+          "metadata_status": "tree_only"
+        },
+        {
+          "name": "mlflow",
+          "path": "13-mlops/mlflow/SKILL.md",
+          "metadata_status": "tree_only"
+        },
+        {
+          "name": "swanlab",
+          "path": "13-mlops/swanlab/SKILL.md",
+          "metadata_status": "tree_only"
+        },
+        {
+          "name": "tensorboard",
+          "path": "13-mlops/tensorboard/SKILL.md",
+          "metadata_status": "tree_only"
+        },
+        {
+          "name": "weights-and-biases",
+          "path": "13-mlops/weights-and-biases/SKILL.md",
+          "metadata_status": "tree_only"
+        },
+        {
+          "name": "a-evolve",
+          "path": "14-agents/a-evolve/SKILL.md",
+          "metadata_status": "tree_only"
+        },
+        {
+          "name": "autogpt",
+          "path": "14-agents/autogpt/SKILL.md",
+          "metadata_status": "tree_only"
+        },
+        {
+          "name": "crewai",
+          "path": "14-agents/crewai/SKILL.md",
+          "metadata_status": "tree_only"
+        },
+        {
+          "name": "langchain",
+          "path": "14-agents/langchain/SKILL.md",
+          "metadata_status": "tree_only"
+        },
+        {
+          "name": "llamaindex",
+          "path": "14-agents/llamaindex/SKILL.md",
+          "metadata_status": "tree_only"
+        },
+        {
+          "name": "chroma",
+          "path": "15-rag/chroma/SKILL.md",
+          "metadata_status": "tree_only"
+        },
+        {
+          "name": "faiss",
+          "path": "15-rag/faiss/SKILL.md",
+          "metadata_status": "tree_only"
+        },
+        {
+          "name": "pinecone",
+          "path": "15-rag/pinecone/SKILL.md",
+          "metadata_status": "tree_only"
+        },
+        {
+          "name": "qdrant",
+          "path": "15-rag/qdrant/SKILL.md",
+          "metadata_status": "tree_only"
+        },
+        {
+          "name": "sentence-transformers",
+          "path": "15-rag/sentence-transformers/SKILL.md",
+          "metadata_status": "tree_only"
+        },
+        {
+          "name": "dspy",
+          "path": "16-prompt-engineering/dspy/SKILL.md",
+          "metadata_status": "tree_only"
+        },
+        {
+          "name": "guidance",
+          "path": "16-prompt-engineering/guidance/SKILL.md",
+          "metadata_status": "tree_only"
+        },
+        {
+          "name": "instructor",
+          "path": "16-prompt-engineering/instructor/SKILL.md",
+          "metadata_status": "tree_only"
+        },
+        {
+          "name": "outlines",
+          "path": "16-prompt-engineering/outlines/SKILL.md",
+          "metadata_status": "tree_only"
+        },
+        {
+          "name": "langsmith",
+          "path": "17-observability/langsmith/SKILL.md",
+          "metadata_status": "tree_only"
+        },
+        {
+          "name": "phoenix",
+          "path": "17-observability/phoenix/SKILL.md",
+          "metadata_status": "tree_only"
+        },
+        {
+          "name": "audiocraft",
+          "path": "18-multimodal/audiocraft/SKILL.md",
+          "metadata_status": "tree_only"
+        },
+        {
+          "name": "blip-2",
+          "path": "18-multimodal/blip-2/SKILL.md",
+          "metadata_status": "tree_only"
+        },
+        {
+          "name": "clip",
+          "path": "18-multimodal/clip/SKILL.md",
+          "metadata_status": "tree_only"
+        },
+        {
+          "name": "cosmos-policy",
+          "path": "18-multimodal/cosmos-policy/SKILL.md",
+          "metadata_status": "tree_only"
+        },
+        {
+          "name": "llava",
+          "path": "18-multimodal/llava/SKILL.md",
+          "metadata_status": "tree_only"
+        },
+        {
+          "name": "openpi",
+          "path": "18-multimodal/openpi/SKILL.md",
+          "metadata_status": "tree_only"
+        },
+        {
+          "name": "openvla-oft",
+          "path": "18-multimodal/openvla-oft/SKILL.md",
+          "metadata_status": "tree_only"
+        },
+        {
+          "name": "segment-anything",
+          "path": "18-multimodal/segment-anything/SKILL.md",
+          "metadata_status": "tree_only"
+        },
+        {
+          "name": "stable-diffusion",
+          "path": "18-multimodal/stable-diffusion/SKILL.md",
+          "metadata_status": "tree_only"
+        },
+        {
+          "name": "whisper",
+          "path": "18-multimodal/whisper/SKILL.md",
+          "metadata_status": "tree_only"
+        },
+        {
+          "name": "knowledge-distillation",
+          "path": "19-emerging-techniques/knowledge-distillation/SKILL.md",
+          "metadata_status": "tree_only"
+        },
+        {
+          "name": "long-context",
+          "path": "19-emerging-techniques/long-context/SKILL.md",
+          "metadata_status": "tree_only"
+        },
+        {
+          "name": "model-merging",
+          "path": "19-emerging-techniques/model-merging/SKILL.md",
+          "metadata_status": "tree_only"
+        },
+        {
+          "name": "model-pruning",
+          "path": "19-emerging-techniques/model-pruning/SKILL.md",
+          "metadata_status": "tree_only"
+        },
+        {
+          "name": "moe-training",
+          "path": "19-emerging-techniques/moe-training/SKILL.md",
+          "metadata_status": "tree_only"
+        },
+        {
+          "name": "speculative-decoding",
+          "path": "19-emerging-techniques/speculative-decoding/SKILL.md",
+          "metadata_status": "tree_only"
+        },
+        {
+          "name": "academic-plotting",
+          "path": "20-ml-paper-writing/academic-plotting/SKILL.md",
+          "metadata_status": "tree_only"
+        },
+        {
+          "name": "ml-paper-writing",
+          "path": "20-ml-paper-writing/ml-paper-writing/SKILL.md",
+          "metadata_status": "frontmatter_read_selected_spot_audit"
+        },
+        {
+          "name": "presenting-conference-talks",
+          "path": "20-ml-paper-writing/presenting-conference-talks/SKILL.md",
+          "metadata_status": "tree_only"
+        },
+        {
+          "name": "systems-paper-writing",
+          "path": "20-ml-paper-writing/systems-paper-writing/SKILL.md",
+          "metadata_status": "tree_only"
+        },
+        {
+          "name": "brainstorming-research-ideas",
+          "path": "21-research-ideation/brainstorming-research-ideas/SKILL.md",
+          "metadata_status": "tree_only"
+        },
+        {
+          "name": "creative-thinking-for-research",
+          "path": "21-research-ideation/creative-thinking-for-research/SKILL.md",
+          "metadata_status": "tree_only"
+        },
+        {
+          "name": "compiler",
+          "path": "22-agent-native-research-artifact/compiler/SKILL.md",
+          "metadata_status": "tree_only"
+        },
+        {
+          "name": "research-manager",
+          "path": "22-agent-native-research-artifact/research-manager/SKILL.md",
+          "metadata_status": "tree_only"
+        },
+        {
+          "name": "rigor-reviewer",
+          "path": "22-agent-native-research-artifact/rigor-reviewer/SKILL.md",
+          "metadata_status": "frontmatter_read_selected_spot_audit"
+        }
+      ],
+      "gitlink_count": 0,
+      "gitlinks": [],
+      "clone_path": "integracoes/catalogos_cientificos/orchestra (no checkout)",
+      "clone_depth": "depth 1, blob filter requested"
+    },
+    {
+      "id": "imbad",
+      "repository": "Imbad0202/academic-research-skills",
+      "official_url": "https://github.com/Imbad0202/academic-research-skills",
+      "default_branch_observed": "main",
+      "head_sha": "2e02041a3b821a160d98c9398f173c484ac759a8",
+      "observed_commit_date": "2026-11-02T15:27:50+08:00",
+      "observed_head_subject": "docs: record that uploaded skills can dispatch a built-in sub-agent (#1040) (#1045)",
+      "tree_path_count": 2860,
+      "actual_skill_md_entrypoints": 5,
+      "local_exact_slug_overlap_count": 0,
+      "local_exact_slug_overlap": [],
+      "license_assessment": "CC BY-NC 4.0; non-commercial condition limits reuse",
+      "license_paths": [
+        "LICENSE"
+      ],
+      "skill_entries_with_frontmatter_spot_checked": 3,
+      "remaining_skill_bodies_unreviewed": 2,
+      "tree_only_names_and_paths": [
+        {
+          "name": "academic-paper-reviewer",
+          "path": "academic-paper-reviewer/SKILL.md",
+          "metadata_status": "frontmatter_read_selected_spot_audit"
+        },
+        {
+          "name": "academic-paper",
+          "path": "academic-paper/SKILL.md",
+          "metadata_status": "frontmatter_read_selected_spot_audit"
+        },
+        {
+          "name": "academic-pipeline",
+          "path": "academic-pipeline/SKILL.md",
+          "metadata_status": "frontmatter_read_selected_spot_audit"
+        },
+        {
+          "name": "deep-research",
+          "path": "deep-research/SKILL.md",
+          "metadata_status": "tree_only"
+        },
+        {
+          "name": "sr-screener",
+          "path": "sr-screener/SKILL.md",
+          "metadata_status": "tree_only"
+        }
+      ],
+      "gitlink_count": 0,
+      "gitlinks": [],
+      "clone_path": "integracoes/catalogos_cientificos/imbad (no checkout)",
+      "clone_depth": "depth 1, blob filter requested"
+    },
+    {
+      "id": "internscience",
+      "repository": "InternScience/Awesome-Scientific-Skills",
+      "official_url": "https://github.com/InternScience/Awesome-Scientific-Skills",
+      "default_branch_observed": "main",
+      "head_sha": "e67760e2081508773a59398f72bf808f3ac3217c",
+      "observed_commit_date": "2026-08-13T17:28:38+08:00",
+      "observed_head_subject": "Merge pull request #14 from Agnuxo1/add-paperclaw",
+      "tree_path_count": 42,
+      "actual_skill_md_entrypoints": 0,
+      "local_exact_slug_overlap_count": 0,
+      "local_exact_slug_overlap": [],
+      "license_assessment": "MIT applies to curated list; linked projects keep their own licenses",
+      "license_paths": [
+        "LICENSE"
+      ],
+      "skill_entries_with_frontmatter_spot_checked": 0,
+      "remaining_skill_bodies_unreviewed": 0,
+      "tree_only_names_and_paths": [],
+      "gitlink_count": 30,
+      "gitlinks": [
+        {
+          "path": "skills/ComposioHQ-awesome-claude-skills",
+          "commit": "27904475d1270d8395acf07691966267d5abda2d",
+          "upstream_url": "https://github.com/ComposioHQ/awesome-claude-skills.git"
+        },
+        {
+          "path": "skills/HaoxuanLiTHUAI-awesome_cognitive_and_neuroscience_skills",
+          "commit": "165e4d77d61d2ae51d914c7af623678c6fefef16",
+          "upstream_url": "https://github.com/HaoxuanLiTHUAI/awesome_cognitive_and_neuroscience_skills.git"
+        },
+        {
+          "path": "skills/HughYau-AcademicForge",
+          "commit": "2a64713ed8105348e9f12d4b5faac32d37c40fb1",
+          "upstream_url": "https://github.com/HughYau/AcademicForge.git"
+        },
+        {
+          "path": "skills/HughYau-neuroforge-skills",
+          "commit": "8f589b47f1c95ae3c736f2dfd12d9f42a8bc7be4",
+          "upstream_url": "https://github.com/HughYau/neuroforge-skills.git"
+        },
+        {
+          "path": "skills/InternScience-scp",
+          "commit": "2e7ac7d8f9071bfacf7f50a9208e6fdb0141c3f9",
+          "upstream_url": "https://github.com/InternScience/scp.git"
+        },
+        {
+          "path": "skills/K-Dense-AI-claude-scientific-skills",
+          "commit": "b271271df41bbdbf2613dcf09f4feb7ae4506f5e",
+          "upstream_url": "https://github.com/K-Dense-AI/claude-scientific-skills.git"
+        },
+        {
+          "path": "skills/K-Dense-AI-claude-scientific-writer",
+          "commit": "76d7923c8f8761904132a4b8123dcc52170dfbb7",
+          "upstream_url": "https://github.com/K-Dense-AI/claude-scientific-writer.git"
+        },
+        {
+          "path": "skills/K-Dense-AI-claude-skills-mcp",
+          "commit": "6238e705f9591b220d84661df4739707a7d7eb21",
+          "upstream_url": "https://github.com/K-Dense-AI/claude-skills-mcp.git"
+        },
+        {
+          "path": "skills/OthmanAdi-planning-with-files",
+          "commit": "24442f5c8cfc062ac5e9704a1b6bfda10d983c45",
+          "upstream_url": "https://github.com/OthmanAdi/planning-with-files.git"
+        },
+        {
+          "path": "skills/VoltAgent-awesome-openclaw-skills",
+          "commit": "cfd47001dd152ce412c4b10d8a6b1f651fa0c3dd",
+          "upstream_url": "https://github.com/VoltAgent/awesome-openclaw-skills.git"
+        },
+        {
+          "path": "skills/Weizhena-Deep-Research-skills",
+          "commit": "e932c92cc6881c48bde70a597450b5a31a82a9e9",
+          "upstream_url": "https://github.com/Weizhena/Deep-Research-skills.git"
+        },
+        {
+          "path": "skills/affaan-m-everything-claude-code",
+          "commit": "32e9c293f0d6f04e3b9bf804887747d5c8b5dc10",
+          "upstream_url": "https://github.com/affaan-m/everything-claude-code.git"
+        },
+        {
+          "path": "skills/agentskills-agentskills",
+          "commit": "f019a02dbbb1302217c4b4a14557d6384d9ace9a",
+          "upstream_url": "https://github.com/agentskills/agentskills.git"
+        },
+        {
+          "path": "skills/anthropics-skills",
+          "commit": "3d59511518591fa82e6cfcf0438d68dd5dad3e76",
+          "upstream_url": "https://github.com/anthropics/skills.git"
+        },
+        {
+          "path": "skills/coreyhaines31-marketingskills",
+          "commit": "2f5db8d95cff07fcc67d6f2be7fb0a677bf897e6",
+          "upstream_url": "https://github.com/coreyhaines31/marketingskills.git"
+        },
+        {
+          "path": "skills/heilcheng-awesome-agent-skills",
+          "commit": "b7598be3dd5ecd8ec021f9e43495f90e883b9808",
+          "upstream_url": "https://github.com/heilcheng/awesome-agent-skills.git"
+        },
+        {
+          "path": "skills/hesreallyhim-awesome-claude-code",
+          "commit": "886b0d45d7b44c31bfb06a5bee86bb1aeacb21ea",
+          "upstream_url": "https://github.com/hesreallyhim/awesome-claude-code.git"
+        },
+        {
+          "path": "skills/huggingface-skills",
+          "commit": "99a61b26ea997305810fb538c414a21d9cb85dd2",
+          "upstream_url": "https://github.com/huggingface/skills.git"
+        },
+        {
+          "path": "skills/jaechang-hits-scicraft",
+          "commit": "864172bb46fa0cb49f301af143ffbc6fe881ade5",
+          "upstream_url": "https://github.com/jaechang-hits/scicraft.git"
+        },
+        {
+          "path": "skills/kepano-obsidian-skills",
+          "commit": "bb9ec95e1b59c3471bd6fd77a78a4042430bfac3",
+          "upstream_url": "https://github.com/kepano/obsidian-skills.git"
+        },
+        {
+          "path": "skills/muratcankoylan-Agent-Skills-for-Context-Engineering",
+          "commit": "f7fb0703c86536c7778c634661b4c345a2e9044c",
+          "upstream_url": "https://github.com/muratcankoylan/Agent-Skills-for-Context-Engineering.git"
+        },
+        {
+          "path": "skills/nextlevelbuilder-ui-ux-pro-max-skill",
+          "commit": "58f9dfcc71863757371abe2f66397604cb604c87",
+          "upstream_url": "https://github.com/nextlevelbuilder/ui-ux-pro-max-skill.git"
+        },
+        {
+          "path": "skills/obra-superpowers",
+          "commit": "e4a2375cb705ca5800f0833528ce36a3faf9017a",
+          "upstream_url": "https://github.com/obra/superpowers.git"
+        },
+        {
+          "path": "skills/openai-skills",
+          "commit": "8d04dc2f7ea6dd83d7639cd2f22a1d0b4f586573",
+          "upstream_url": "https://github.com/openai/skills.git"
+        },
+        {
+          "path": "skills/openclaw-clawhub",
+          "commit": "bc06dbffd0045ad3e9f8d73f3882a28855eafbc0",
+          "upstream_url": "https://github.com/openclaw/clawhub.git"
+        },
+        {
+          "path": "skills/sickn33-antigravity-awesome-skills",
+          "commit": "038148d53f24dd09bb8f9dda34d7bdee1be75da2",
+          "upstream_url": "https://github.com/sickn33/antigravity-awesome-skills.git"
+        },
+        {
+          "path": "skills/travisvn-awesome-claude-skills",
+          "commit": "c9f1fd4399d0d429677f813b1db3389de66b75b3",
+          "upstream_url": "https://github.com/travisvn/awesome-claude-skills.git"
+        },
+        {
+          "path": "skills/vercel-labs-agent-skills",
+          "commit": "cc8bd7a5b51e41270f20b43466ffa4149c18cc01",
+          "upstream_url": "https://github.com/vercel-labs/agent-skills.git"
+        },
+        {
+          "path": "skills/ynulihao-AgentSkillOS",
+          "commit": "7d814d4ea937ec275d0e99ea20bf49d1ba18d9f7",
+          "upstream_url": "https://github.com/ynulihao/AgentSkillOS.git"
+        },
+        {
+          "path": "skills/yorkeccak-scientific-skills",
+          "commit": "20b3d503700656f847e6de873753335bf90e63e3",
+          "upstream_url": "https://github.com/yorkeccak/scientific-skills.git"
+        }
+      ],
+      "clone_path": "integracoes/catalogos_cientificos/internscience (no checkout)",
+      "clone_depth": "depth 1, blob filter requested"
+    }
+  ],
+  "local_count_basis": "Historical comparison baseline: 267 canonical skills/*/SKILL.md before the gateway integration; coordinator reports 268 after the later gateway addition. Percentages remain on baseline 267."
+}

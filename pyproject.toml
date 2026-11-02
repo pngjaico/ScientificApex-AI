@@ -12,6 +12,12 @@ dependencies = [
 office = [
     "python-docx==1.2.0",
 ]
+analysis = [
+    "lifelines>=0.30.3",
+    "mapie>=1.6.0",
+    "pandera>=0.35.0",
+    "pdfplumber>=0.11.10",
+]
 
 [project.scripts]
 article-machine = "article_machine.cli:main"
@@ -23,9 +29,11 @@ build-backend = "hatchling.build"
 [dependency-groups]
 dev = [
   "cyclonedx-bom==7.3.0",
+  "detect-secrets>=1.5.0",
   "graphifyy==0.9.23",
   "mypy==1.20.2",
   "pip-audit==2.10.1",
+  "pre-commit>=4.7.0",
   "pytest==9.1.1",
   "pytest-cov==7.1.0",
   "ruff==0.15.22",

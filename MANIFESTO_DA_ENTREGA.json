@@ -1,0 +1,302 @@
+{
+  "tipo": "manifesto de entrega local; nao certificacao cientifica",
+  "raiz": "D:\\Usuario-pc\\Projetos\\Doutorado",
+  "requisitos": {
+    "inventario_read_only": "PASS com correcoes preservadas; nenhum segredo exibido",
+    "fontes_atuais": "PASS: paginas oficiais e6HEADs; API timeouts recuperados viaGit",
+    "matriz_decisao": "PASS com beneficios,redundancia,maturidade,licenca,manutencao,seguranca,custo,integracao,aceite",
+    "workflows_ABCD": "PASS documentados, runners demonstrativos executados; etapas reais dependem projeto/revisores",
+    "skills_locais": "PASS auditoria267,65criticas;3proprias integradas+3upstreamcuradas40arquivos",
+    "plano_backups": "PASS fonteCpreservada+hashes+backupsD,sem configglobalmodificada",
+    "smokes": "PASS R,ML,DL,Quarto,bibliografia,paridade; Zotero,Lightning,UIHTML SKIPPED",
+    "documentos_templates": "PASS 5docsobrigatorios+3templatescomcontratoslockschecks,paresPTEN",
+    "migracao_D": "PASS snapshot12642+complemento92arquivos;18projetos;canonicomarcado",
+    "portugues_natural": "PASS perfilpreservado+auditoriaPTBRsemachados",
+    "organizacao_futura": "PASS9areascom18subpastasidioma;9testesorganizador",
+    "bilingue": "PASS11paresdemo+docsmodelospares;semanticaexigerevisaohumana"
+  },
+  "arquivos": [
+    {
+      "arquivo": "docs/INVENTARIO_CODEX.md",
+      "sha256": "a54adb6c1ae2a1353ff495571b7475727f5902e1b4a7ce6990309526aedc2557",
+      "bytes": 2942
+    },
+    {
+      "arquivo": "docs/ingles/INVENTARIO_CODEX.md",
+      "sha256": "174b9565dffba02cfce7a45e8dce7a0f3b8f5d10ab707b1aa70257c30147ed77",
+      "bytes": 2794
+    },
+    {
+      "arquivo": "docs/PLANO_DE_MUDANCAS.md",
+      "sha256": "b5e2ea152682738c6dae36e2bc512cc94e808bb02145a880e59897d8f854d817",
+      "bytes": 2301
+    },
+    {
+      "arquivo": "docs/ingles/PLANO_DE_MUDANCAS.md",
+      "sha256": "c280dc65010748988659939238cbb64b2dee248a97d078ae832dfd3126b9d703",
+      "bytes": 2151
+    },
+    {
+      "arquivo": "docs/SETUP_LOG.md",
+      "sha256": "3fb6ff9b30a8228ece02a841ace9c5f1c37e0d9df034817f62b9ce8ecff8eb2e",
+      "bytes": 5312
+    },
+    {
+      "arquivo": "docs/ingles/SETUP_LOG.md",
+      "sha256": "9cdc4a38f62a817ec57a5d3b4fd9d649fbcad59243fd054b3847cb394eec67f6",
+      "bytes": 4761
+    },
+    {
+      "arquivo": "docs/MATRIZ_SKILLS.md",
+      "sha256": "40e8d42026c85903a710b6da46a9c28b5676cbe5e760a4430fe60761c5eb4f48",
+      "bytes": 5054
+    },
+    {
+      "arquivo": "docs/ingles/MATRIZ_SKILLS.md",
+      "sha256": "d36b18abafc2749281ee7a204f81094f5e94ff4b68eb296fadfdfeaa33c8f0a3",
+      "bytes": 4345
+    },
+    {
+      "arquivo": "docs/ARQUITETURA_FINAL.md",
+      "sha256": "8c0385f4bf4652c1dbf3f2bdb45d8b68581e1b22de53842f3087752ad9ee068f",
+      "bytes": 3946
+    },
+    {
+      "arquivo": "docs/ingles/ARQUITETURA_FINAL.md",
+      "sha256": "c74505d4713b802d8981f3596fe46a48a565ca5597fe2d5bab302c331d61d811",
+      "bytes": 3688
+    },
+    {
+      "arquivo": "docs/FLUXOS_CIENTIFICOS.md",
+      "sha256": "7cf6cc88a8321eb16a927123b653d6602e066d4bd77b420c7201d5558a984169",
+      "bytes": 5082
+    },
+    {
+      "arquivo": "docs/ingles/FLUXOS_CIENTIFICOS.md",
+      "sha256": "46919ec330b9a27c4a1e085edd4099c3b3722892faa70bc87bd7314fb2b5052f",
+      "bytes": 4830
+    },
+    {
+      "arquivo": "docs/ORGANIZACAO_DAS_PUBLICACOES.md",
+      "sha256": "9fdaa37d007bba5c9c60de0b927fccdbc9a7c0e5c33efe74361c3be5ae7fa23f",
+      "bytes": 3068
+    },
+    {
+      "arquivo": "docs/ingles/ORGANIZACAO_DAS_PUBLICACOES.md",
+      "sha256": "07b81794fc922d109a8e3b77fb8f2f5627b3963c57804d8c68f221ee5df65e82",
+      "bytes": 998
+    },
+    {
+      "arquivo": "modelos/aprendizado_de_maquina_clinico/compute.yaml",
+      "sha256": "f5b92d775171ff6be89b892885cd450cedf97857f80b1cff32edd8ebc85b7ff8",
+      "bytes": 895
+    },
+    {
+      "arquivo": "modelos/aprendizado_de_maquina_clinico/project.yaml",
+      "sha256": "f84d546d1356eaf1a9cae10eae6867628283162fe34c9740719264e63c073289",
+      "bytes": 372
+    },
+    {
+      "arquivo": "modelos/aprendizado_de_maquina_clinico/protocol.yaml",
+      "sha256": "4479c88071bb6f2cdc224259a1159a48db9bd02e7e465e4f30ecd2816fb38f54",
+      "bytes": 370
+    },
+    {
+      "arquivo": "modelos/aprendizado_de_maquina_clinico/pyproject.toml",
+      "sha256": "a215b5d1caab75eb6aa26499e4c2c75a1bc3a2e5d681c96ea48f95ac5560b9a9",
+      "bytes": 177
+    },
+    {
+      "arquivo": "modelos/aprendizado_de_maquina_clinico/standards.yaml",
+      "sha256": "9d42310eec7b209dc2c7c8ed2d150b45c22c4d56777b427c4bd69d12357e52b4",
+      "bytes": 371
+    },
+    {
+      "arquivo": "modelos/aprendizado_de_maquina_clinico/uv.lock",
+      "sha256": "93461c1002d438be50feb43acab371def1d7fd5a993b164a2805d509f8a16ec9",
+      "bytes": 43541
+    },
+    {
+      "arquivo": "modelos/manuscrito/compute.yaml",
+      "sha256": "73203d44ffcf6ef117da81d50bdfecdd7a816377c5bf8cfe885d5c043e502ff7",
+      "bytes": 896
+    },
+    {
+      "arquivo": "modelos/manuscrito/project.yaml",
+      "sha256": "cb3cc0aafe810f69ade4554d1d820a9f838a64a1a441a35dede9f9cb589b27c4",
+      "bytes": 335
+    },
+    {
+      "arquivo": "modelos/manuscrito/protocol.yaml",
+      "sha256": "f9e86fbe5e167cfc472d9f6232832040e4589ec28bbfc1fdbeb49be533b11e6d",
+      "bytes": 373
+    },
+    {
+      "arquivo": "modelos/manuscrito/standards.yaml",
+      "sha256": "5dd0bb2483f19d6816907d3e2f60598d46b5c7651f96eeadfe0c74fdb891ad41",
+      "bytes": 367
+    },
+    {
+      "arquivo": "modelos/meta_analise_em_r/compute.yaml",
+      "sha256": "5495ceb05f9f62a834a623886c604c4e0671d34660a9125a52ffca20810e4dc3",
+      "bytes": 898
+    },
+    {
+      "arquivo": "modelos/meta_analise_em_r/project.yaml",
+      "sha256": "8ffca9343d6c1437acfc616400392cd834f35bc2d66e91c3c5c896436b6a2d37",
+      "bytes": 347
+    },
+    {
+      "arquivo": "modelos/meta_analise_em_r/protocol.yaml",
+      "sha256": "3901670ebbb54a82762aec419d43b93b6028b8295f12f78e87fef832021eb74d",
+      "bytes": 363
+    },
+    {
+      "arquivo": "modelos/meta_analise_em_r/renv.lock",
+      "sha256": "826edbf34293d162066e33f6e6e014c881556d89ae8da99d8a6f6a8e1c4f45e4",
+      "bytes": 49135
+    },
+    {
+      "arquivo": "modelos/meta_analise_em_r/standards.yaml",
+      "sha256": "e2b1e9690563d3137506db4ba2384de454e45cd3bbf64f574819769084dd138d",
+      "bytes": 872
+    },
+    {
+      "arquivo": "modelos/meta_analise_em_r/ambiente/renv.lock",
+      "sha256": "826edbf34293d162066e33f6e6e014c881556d89ae8da99d8a6f6a8e1c4f45e4",
+      "bytes": 49135
+    },
+    {
+      "arquivo": "modelos/meta_analise_em_r/ingles/LEIA-ME.md",
+      "sha256": "7cc40dd45c5285f13cc9321aaafcb0c88528e670001081a6858fab3b1694375f",
+      "bytes": 387
+    },
+    {
+      "arquivo": "modelos/meta_analise_em_r/ingles/PROTOCOLO.md",
+      "sha256": "2beddbdcb5f6afbc0da209db68f797d4adefca7aa3a58d6cee19d6a426358c4e",
+      "bytes": 421
+    },
+    {
+      "arquivo": "modelos/meta_analise_em_r/portugues/LEIA-ME.md",
+      "sha256": "9a96814e133c4d7811e4739d14603e153c9995d46519df7b7206bef137022a87",
+      "bytes": 412
+    },
+    {
+      "arquivo": "modelos/meta_analise_em_r/portugues/PROTOCOLO.md",
+      "sha256": "2bc7445e32cdb9b84df1c42cbc0182aaaa51a3910a952ee1fe08872158ac7f18",
+      "bytes": 414
+    },
+    {
+      "arquivo": "modelos/manuscrito/ingles/LEIA-ME.md",
+      "sha256": "2c08b4ded15e491e5d7ed2e37e9344735a4809d8c06463e5652610b14723f1ea",
+      "bytes": 387
+    },
+    {
+      "arquivo": "modelos/manuscrito/ingles/PROTOCOLO.md",
+      "sha256": "00cf35f6fd0b897001e40b800ec8403e72d4af9e6224bd7cce113b9f21a0c539",
+      "bytes": 424
+    },
+    {
+      "arquivo": "modelos/manuscrito/portugues/LEIA-ME.md",
+      "sha256": "348a899d7b05ac6dde9566561154cab15dcfa2ac7ab9b172755c6225cc8ec8e7",
+      "bytes": 412
+    },
+    {
+      "arquivo": "modelos/manuscrito/portugues/PROTOCOLO.md",
+      "sha256": "6e5cdfbddf26f49bcf8bdf59e5884adf759a6471692777ba75f73d039b17821c",
+      "bytes": 416
+    },
+    {
+      "arquivo": "modelos/aprendizado_de_maquina_clinico/ingles/LEIA-ME.md",
+      "sha256": "da6a00a5b239ee99c0737db306d169a1e4ce30c5a2612b2283fe5bd3dda2617e",
+      "bytes": 380
+    },
+    {
+      "arquivo": "modelos/aprendizado_de_maquina_clinico/ingles/PROTOCOLO.md",
+      "sha256": "1d8a160e4f9459f4ac2a66706008bef5708c807578e09a6c176c5ba8f9b1840c",
+      "bytes": 428
+    },
+    {
+      "arquivo": "modelos/aprendizado_de_maquina_clinico/portugues/LEIA-ME.md",
+      "sha256": "92db8f482ad6648203cf00c8fde868a1409d55f86e91424086b7d9ce9aa0bc90",
+      "bytes": 405
+    },
+    {
+      "arquivo": "modelos/aprendizado_de_maquina_clinico/portugues/PROTOCOLO.md",
+      "sha256": "9a07d625dd6190877335ed3e61b33e8795f95d3f743c1660a5e168cf1a1d9996",
+      "bytes": 429
+    },
+    {
+      "arquivo": "modelos/aprendizado_de_maquina_clinico/ambientes/aprendizado_maquina/pyproject.toml",
+      "sha256": "a215b5d1caab75eb6aa26499e4c2c75a1bc3a2e5d681c96ea48f95ac5560b9a9",
+      "bytes": 177
+    },
+    {
+      "arquivo": "modelos/aprendizado_de_maquina_clinico/ambientes/aprendizado_maquina/uv.lock",
+      "sha256": "93461c1002d438be50feb43acab371def1d7fd5a993b164a2805d509f8a16ec9",
+      "bytes": 43541
+    },
+    {
+      "arquivo": "modelos/aprendizado_de_maquina_clinico/ambientes/aprendizado_profundo/pyproject.toml",
+      "sha256": "672f2b941103703906eaa8e3f4a7fa4674a5a0035f7e6ee0ed2c466fe248047e",
+      "bytes": 143
+    },
+    {
+      "arquivo": "modelos/aprendizado_de_maquina_clinico/ambientes/aprendizado_profundo/uv.lock",
+      "sha256": "c8200dabc197f1a3e7c66afe767b103d2664e1366c11e61b4a7ad214d83449ec",
+      "bytes": 31771
+    },
+    {
+      "arquivo": "LEIA-ME_PRIMEIRO.md",
+      "sha256": "65928d69220997201424971adae4a60eb6fbd7027128cfb2b968aa28a2c49de3",
+      "bytes": 1521
+    },
+    {
+      "arquivo": "docs/ingles/LEIA-ME_PRIMEIRO.md",
+      "sha256": "bb5e29086c0288014df1e9d9f98f0a1ca10bca5257275caac958a80cf210fcdd",
+      "bytes": 1221
+    },
+    {
+      "arquivo": "iniciar_maquina.ps1",
+      "sha256": "eada6bfaa73b999636caa6bc75e7cabc2599092d691a5f09b7e732b5d94e06a4",
+      "bytes": 265
+    },
+    {
+      "arquivo": "abrir_codex.cmd",
+      "sha256": "e005d5233dc69ba208ad280daf6deada6d8477ca0c15293cedc57fc728964b1a",
+      "bytes": 49
+    },
+    {
+      "arquivo": "maquina_canonica.json",
+      "sha256": "3012209e81cfa28e65f008cdb5753098709d0a5e4753209dbc1d0223178c5317",
+      "bytes": 484
+    }
+  ],
+  "pendencias": [
+    "Zotero API indisponivel",
+    "BYOK sujo nao atualizado nem acionado",
+    "Lightning pacote/treino nao instalado",
+    "browser Playwright/QA visual HTML pendentes",
+    "sem CI remoto ou clean-clone proof",
+    "sem validacao clinica externa ou manuscrito submetido"
+  ],
+  "fonte_original_preservada": true,
+  "dados_sinteticos_apenas": true,
+  "validacao_final": {
+    "testes_completos": {
+      "passed": 275,
+      "skipped": 1,
+      "failed": 0,
+      "evidencia": "projects/article-machine-governance-2026/analysis/codex-first-2026-11-01/verificacao_final/testes_completos_apos_templates.log"
+    },
+    "organizador": {
+      "passed": 9,
+      "failed": 0
+    },
+    "grafo": {
+      "nodes": 1071,
+      "edges": 2157
+    },
+    "paridade_relatorio": "PASS lexical; semantic review required"
+  }
+}

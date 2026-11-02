@@ -33,6 +33,7 @@ def build_task_packet(project_dir: Path, mode: str, active_hypothesis: str | Non
     standards = load_structured_file(project_dir / "standards.yaml")
     from .zero_trust import audit_stage
     from .commands.governance import record_blocked_attempt
+    from .services.workspace_hygiene import write_active_mode_guide
 
     gate = audit_stage(project_dir, target_mode=mode)
     current_mode = project.get("state", {}).get("current_mode")
@@ -65,6 +66,7 @@ def build_task_packet(project_dir: Path, mode: str, active_hypothesis: str | Non
             "registration_policy": standards.get("registration_policy", {}),
         },
         "deliverables": MODE_DELIVERABLES.get(mode, ["analysis"]),
+        "real_flow_bindings": write_active_mode_guide(project_dir, mode),
         "criteria": {
             "block_if": [
                 "Evidence is unsupported or missing.",

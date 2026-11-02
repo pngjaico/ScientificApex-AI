@@ -35,3 +35,16 @@ agents only for independent, verifiable work with explicit file ownership.
 Escalate ambiguous or failed Luna work to Sol. Do not select Astra, Fast, max
 or ultra automatically. The user may override a session's settings. Editing
 these defaults does not change a running session; record its actual runtime.
+
+## Sequential Multi-Agent Operation (Antigravity / Codex / OpenCode)
+This workspace is operated sequentially by three agent environments:
+1. **Google Antigravity** (interactive pair-programming assistant)
+2. **OpenAI Codex** (Sol/Luna multi-agent CLI/IDE)
+3. **OpenCode** (open-source desktop & CLI assistant via `opencode.json` / `abrir_opencode.cmd`)
+
+**Handoff Protocol:**
+- Operation is strictly sequential: never run multiple agents concurrently.
+- On entry: inspect `git status`, `git log -1`, `.machine/handoff_sessao.json`, and the latest entry in `docs/HANDOFF_ENTRE_AGENTES.md`.
+- Run `.\.venv\Scripts\python.exe -m article_machine machine audit --workspace-root . --strict` before starting.
+- On exit: validate tests, update `.machine/handoff_sessao.json`, append a log entry to `docs/HANDOFF_ENTRE_AGENTES.md`, and make a clean git commit.
+

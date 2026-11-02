@@ -1,13 +1,31 @@
 # AGENTS: ARTICLE MACHINE OPERATIONS
 
 ## Start Here
-- Workspace root: `C:\Users\Usuario-pc\Desktop\Doutorado`.
+- Read `.AGENTES` for the current five-catalog, bilingual, publication and mandatory protocol-registration policy; English counterpart: `docs/ingles/AGENTES_DA_MAQUINA.md`.
+- Read `docs/HANDOFF_ENTRE_AGENTES.md` and `.machine/handoff_sessao.json` for sequential multi-agent handoff state across Antigravity, Codex, and OpenCode.
+- Workspace root: `D:\Usuario-pc\Projetos\Doutorado`.
 - First read `docs/AGENT_START_HERE.md` when entering a new conversation.
 - Use `.\.venv\Scripts\python.exe -m article_machine ...` as the reliable CLI path.
 - Use `python scripts\generate_workspace_graph.py` to refresh the operational graph.
 - Open/read `graphify-out/GRAPH_REPORT.md` before broad workspace navigation.
 - Do not assume `article-machine` is on PATH unless you have installed the package in editable mode.
 - Graphifyy 0.9.23 is pinned in the workspace dev dependencies and available through the local venv after `uv sync --locked --all-extras --dev`; global Python remains a diagnosed fallback.
+
+## Intercâmbio Multiagente (Antigravity / Codex / OpenCode)
+- **Operação Estritamente Sequencial:** os três agentes (Google Antigravity, OpenAI Codex, OpenCode CLI/Desktop) operam a máquina de forma alternada, nunca concorrente ("um agente por vez").
+- **Protocolo de Entrada:**
+  1. Verificar `git status` e `git log -1 --stat` para ver o último commit do agente anterior.
+  2. Ler `.machine/handoff_sessao.json` e a última transição em `docs/HANDOFF_ENTRE_AGENTES.md`.
+  3. Rodar `.\.venv\Scripts\python.exe -m article_machine machine audit --workspace-root . --strict`.
+  4. Manter o trabalho contido em `projects/<project_id>/`.
+- **Protocolo de Saída:**
+  1. Validar testes (`pytest tests/`) e integridade.
+  2. Atualizar `.machine/handoff_sessao.json` e registrar o bloco no histórico de `docs/HANDOFF_ENTRE_AGENTES.md`.
+  3. Realizar commit checkpoint (`git commit -m "handoff(<agente>): <resumo>"`) para o próximo agente encontrar a árvore limpa.
+- **Configurações dos 3 Ambientes:**
+  - Antigravity: lê `AGENTS.md`, `.agents/AGENTS.md`, skills em `.agents/skills/`.
+  - Codex: lançado via `abrir_codex.cmd`, configurado em `.codex/config.toml` e `.codex/agents/*.toml`.
+  - OpenCode: lançado via `abrir_opencode.cmd`, configurado em `opencode.json`.
 
 ## Graph-First Rule
 - Quando a tarefa envolver navegação, arquitetura, relações entre arquivos/código, seleção de projeto, roteamento de skills, limpeza, staging, caminho desconhecido ou handoff, use o grafo primeiro mesmo que o usuário não peça.
@@ -131,3 +149,35 @@
 - Do not use database lookups from Life Science Research as final proof without Evidence Lock and explicit caveats.
 - Do not bypass an applicable skill for a task already covered by the skill index.
 - Do not claim the system is perfect, world-best, or production-grade without `agent-benchmark-harness` evidence.
+
+
+## Política canônica a partir de novembro de 2026
+- Workspace operacional: `D:\Usuario-pc\Projetos\Doutorado`. C: é backup/histórico; não reorganizar o antigo.
+- Leia `LEIA-ME_PRIMEIRO.md`, `docs/ARQUITETURA_FINAL.md` e `docs/ORGANIZACAO_DAS_PUBLICACOES.md` para trabalhos novos.
+- Entregas novas: `projects/<id>/publicacoes/<revista>/<identificador>/`, nove áreas numeradas em português. Use nomes `tipo_assunto_YYYY-MM-DD_vNN.ext`. Contratos técnicos, locks e Evidence Lock preservam nomes exigidos pelo runtime.
+- Meta-análises: skill `meta-analise-medica`. ML/DL clínico: `metodos-ml-clinico`. Pacotes editoriais: `publicacao-medica-organizada`. Elas complementam as skills científicas existentes, não substituem revisão humana.
+- Português científico natural é padrão; escrever primeiro em pt-BR, preservar números, referências, incerteza e disclosure. Não traduzir molde inglês automaticamente.
+- K-Dense continua separado: apenas troca de artefatos aprovados via manifesto, nunca credenciais ou dados humanos por padrão.
+- Instalações novas são por projeto com lock e teste. Modelos, esforço e disponibilidade devem ser verificados no runtime; configuração local não transforma sessão já aberta.
+
+## Entregas bilíngues obrigatórias
+Toda entrega científica/editorial nova deve existir em português brasileiro e inglês, em subpastas `portugues/` e `ingles/`, com nomes base em português. Isso inclui manuscritos, relatórios, tabelas, figuras e documentos de submissão. Compartilhar código, dados e lockfiles entre as duas versões. Verificar paridade de números/citações/claims e obter revisão semântica humana. Ler `docs/FLUXOS_CIENTIFICOS.md`.
+
+## Ambiente R Cient?fico Consolidado (R 4.6.1 / renv 1.3.1)
+- **Execut?vel can?nico:** `C:/Users/Usuario-pc/AppData/Local/Programs/R/R-4.6.1/bin/x64/Rscript.exe` (resolvido automaticamente por `article_machine` quando `compute.yaml` declara `version: 4.6.1`). N?o depender de R antigo no PATH.
+- **Modelo e lockfile de refer?ncia:** `modelos/meta_analise_em_r/renv.lock` (e c?pia sincronizada em `modelos/meta_analise_em_r/ambiente/renv.lock`), com **69 pacotes principais** e **302 pacotes no fecho transitivo CRAN** j? instalados tamb?m na biblioteca local do R 4.6.1:
+  1. **Machine Learning Cl?nico, Calibra??o, Decis?o e XAI (`metodos-ml-clinico`):** `tidymodels` (`parsnip`, `recipes`, `rsample`, `tune`, `workflows`, `yardstick`, `dials`), `probably` (calibra??o/Brier), `dcurves` (Decision Curve Analysis), `xgboost`, `lightgbm`, `glmnet`, `ranger`, `pROC`, `rms`, `DALEX`, `DALEXtra`, `ingredients`, `iBreakDown`, `pdp`, `kernelshap`, `shapviz`.
+  2. **Meta-An?lise Pairwise, Multin?vel, em Rede (NMA), Diagn?stica (DTA) e Dose-Resposta (`meta-analise-medica`):** `metafor` (REML, HKSJ `test="knha"`, `rma.mv`), `meta`, `netmeta` (NMA frequentista, `decomp.design`, `netsplit`, `netrank`), `clubSandwich` (vari?ncia robusta a clusters), `mada` (DTA Reitsma/HSROC), `dosresmeta`, `robvis`, `PRISMA2020`, `metadat`.
+  3. **Gr?ficos Cient?ficos, Sobrevida e Interatividade (`scientific-visualization`):** `ggplot2`, `patchwork` (`+`, `/`), `ggpubr`, `survminer` (`ggsurvplot`), `cowplot`, `ggridges`, `ggrepel`, `viridis`, `scales`, `RColorBrewer`, `ragg` (PNG 300 dpi anti-aliasing), `svglite` (SVG vetorial), `plotly` (HTML interativo MIT via `ggplotly()`).
+  4. **Manipula??o de Dados, Imputa??o, Tabelas Cl?nicas e Relat?rios:** `dplyr`, `tidyr`, `readr`, `purrr`, `tibble`, `stringr`, `forcats`, `lubridate`, `data.table`, `janitor`, `skimr`, `readxl`, `writexl`, `mice` (imputa??o m?ltipla MAR/MNAR), `gtsummary` (Tabela 1 sem `add_p()` autom?tico e regress?es), `gt` (HTML), `flextable` + `officer` (DOCX edit?vel), `broom`, `broom.mixed`, `parameters`, `performance`, `effectsize`, `emmeans`, `marginaleffects`, `rmarkdown`, `knitr`, `quarto` (CLI port?til em `ferramentas/quarto-1.10.20`), `shiny`, `DT`, `jsonlite`.
+- **Exclus?es deliberadas de governan?a (n?o instalar no lock base):**
+  - `dmetar`: pacote fora do CRAN (apenas GitHub); usar fun??es nativas de `metafor` (`influence`, `baujat`, `leave1out`, `regtest`, `trimfill`, `gosh`) e `meta` (`metainf`, `metabias`, `drapery`).
+  - `gemtc` / `BUGSnet`: exigem bin?rio externo JAGS/Stan no SO (`rjags`); usar `netmeta` e `metafor::rma.mv` por padr?o.
+  - `highcharter`: depende da biblioteca JS Highcharts com licen?a comercial propriet?ria; usar `plotly` (MIT).
+  - `chattr` / `ellmer`: proibidos dentro de scripts R (quebram reprodutibilidade batch e prote??o zero-trust de dados).
+  - `keras` / `tensorflow` / `torch`: Deep Learning roda no ambiente Python isolado (`PyTorch 2.15.0+cpu` em `modelos/aprendizado_de_maquina_clinico/ambientes/aprendizado_profundo/`).
+- **Comandos operacionais do ambiente R:**
+  - Verificar os 69 pacotes principais: `"C:/Users/Usuario-pc/AppData/Local/Programs/R/R-4.6.1/bin/x64/Rscript.exe" --vanilla modelos/meta_analise_em_r/analysis/00_pacotes_do_ambiente.R`
+  - Sincronizar/atualizar o ambiente e lockfile: `"C:/Users/Usuario-pc/AppData/Local/Programs/R/R-4.6.1/bin/x64/Rscript.exe" --vanilla scripts/atualizar_ambiente_meta_analise.R`
+  - Executar script R em projeto ativo (requer registro PROSPERO/OSF final verificado): `.\.venv\Scripts\python.exe -m article_machine run-r projects/<project_id> projects/<project_id>/analysis/<script>.R`
+

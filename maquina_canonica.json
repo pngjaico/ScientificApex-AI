@@ -1,0 +1,30 @@
+{
+  "raiz_canonica": "D:\\Usuario-pc\\Projetos\\Doutorado",
+  "origem_preservada": "C:\\Users\\Usuario-pc\\Desktop\\Doutorado",
+  "idiomas_de_entrega": [
+    "pt-BR",
+    "en"
+  ],
+  "nomes_arquivos": "pt-BR",
+  "data": "2026-11-02",
+  "estado": "operacional-localmente-no-escopo-testado; sem validacao clinica",
+  "limites": [
+    "sem validacao clinica ou estudo real ponta a ponta",
+    "sem restauracao integral em checkout limpo/CI remoto",
+    "Zotero API local indisponivel; sem importacao real",
+    "BYOK sem teste autenticado, build completo ou migracao de credenciais",
+    "QA visual HTML bloqueado pelo navegador local",
+    "catalogos externos majoritariamente tree-only, sem execucao/validacao integral",
+    "revisao semantica humana dos pares e layout final pendentes"
+  ],
+  "skills_locais": 268,
+  "catalogos_externos": 5,
+  "politica_registro": "PROSPERO/OSF final revisado antes da execucao cientifica",
+  "guia_portugues": "docs/portugues/GUIA_DA_MAQUINA.md",
+  "guia_ingles": "docs/ingles/GUIA_DA_MAQUINA.md",
+  "byok": {
+    "estado": "candidato-atualizado-testado-offline-nao-iniciado",
+    "sha": "6a55f5ce6f4bd9ac7ff75d01ec20d7f27073a9f0",
+    "launcher": "projects/article-machine-governance-2026/analysis/continuacao-2026-11-02/byok/launcher_candidato.cmd"
+  }
+}

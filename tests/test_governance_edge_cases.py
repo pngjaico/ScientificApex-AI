@@ -73,7 +73,9 @@ def test_registration_requirements_block_extraction_until_registered(tmp_path: P
     project_payload["state"]["current_mode"] = "screening"
     project_payload["state"]["allowed_next_modes"] = ["extraction"]
     save_structured_file(project / "project.yaml", project_payload)
-    (project / "sources" / "registry.jsonl").write_text('{"id":"source-1"}\n', encoding="utf-8")
+    (project / "sources" / "registry.jsonl").write_text(
+        '{"id":"source-1","registered_at":"2021-01-01"}\n', encoding="utf-8"
+    )
 
     protocol = load_structured_file(project / "protocol.yaml")
     protocol["registration"]["required"] = True
@@ -85,6 +87,9 @@ def test_registration_requirements_block_extraction_until_registered(tmp_path: P
     register_review_protocol(
         project, "OSF", "osf-123", "https://osf.io/osf-123", "2026-01-01", notes="preregistered"
     )
+    assert gate_mode(project, "extraction")["status"] == "blocked"
+    from registration_fixtures import reviewed_registration_fixture
+    reviewed_registration_fixture(project)
     extraction = gate_mode(project, "extraction")
     assert extraction["status"] == "passed"
 
