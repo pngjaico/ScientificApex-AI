@@ -1,6 +1,6 @@
 {
   "contract": "AgentHandoffStateV1",
-  "updated_at": "2026-11-02T17:23:00-03:00",
+  "updated_at": "2026-11-02T17:27:30-03:00",
   "supported_agents": [
     "Antigravity",
     "Codex",
@@ -12,12 +12,12 @@
   "current_mode": "analysis",
   "last_session": {
     "agent": "Antigravity",
-    "timestamp": "2026-11-02T17:23:00-03:00",
+    "timestamp": "2026-11-02T17:27:30-03:00",
     "summary": "Revisao e estruturacao completa do protocolo de intercambiacao sequencial entre Codex, Antigravity e OpenCode. Validacao dos 328 testes unitarios e auditoria estrita de governanca.",
     "tests_status": "328 passed, 1 skipped",
     "machine_audit": "pass (strict)",
-    "branch": "main",
-    "git_commit": "HEAD"
+    "branch": "codex/article-machine-complete-56-ultra",
+    "git_commit": "e41e450"
   },
   "operational_entry_checklist": [
     "1. Verificar git status e git log -1 para entender a transicao anterior.",
