@@ -1,0 +1,32 @@
+{
+  "project_type": "systematic-review",
+  "status": "frozen",
+  "research_question": "Among cleft/VPI patients undergoing velopharyngeal surgery, what is the postoperative proportion of OSA when restricted to PSG-confirmed evidence?",
+  "hypothesis": "OSA ascertainment varies by technique and by outcome definition; single-arm synthesis is appropriate.",
+  "objectives": [
+    "Estimate PSG-confirmed postoperative OSA proportions by surgical technique.",
+    "Separate claims and screening-only evidence as sensitivity/narrative evidence.",
+    "Prepare a conservative SIICUSP abstract package without causal or network-comparison claims."
+  ],
+  "inclusion_criteria": [
+    "Cleft/VPI surgical cohorts with postoperative OSA outcome.",
+    "Primary analysis requires PSG-confirmed OSA and non-ambiguous technique denominator."
+  ],
+  "exclusion_criteria": [
+    "Rescue-treatment cohorts for pre-existing OSA after flap.",
+    "Adult sleep-surgery cohorts outside cleft/VPI.",
+    "Single-patient case reports.",
+    "Technique arms with ambiguous denominator excluded from the primary per-technique model."
+  ],
+  "registration": {
+    "required": true,
+    "status": "prepared-not-submitted",
+    "registry": "PROSPERO",
+    "registry_id": "",
+    "registry_url": "",
+    "registered_at": "",
+    "registered_before_extraction": false,
+    "notes": "Use as a transparency limitation; do not claim prospective registration until completed."
+  },
+  "notes": "Protocol frozen for SIICUSP package after corrected extraction on 2026-05-14."
+}

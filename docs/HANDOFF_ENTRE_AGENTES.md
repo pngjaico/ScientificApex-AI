@@ -204,3 +204,11 @@ Copie e preencha este bloco ao final de cada intervencao:
 - Limite: corpus-build BLOCK esperado; nenhum corpus formal/dado humano/resultado clinico/submissao.
 - Proximo passo: viabilidade local, laboratorio/custos, estimandos e registro final.
 - Arquivos externos ao escopo e originais de C: preservados; nao declarar worktree global limpo.
+
+
+### [2026-11-03] Handoff: Codex, preparacao de recuperacao OSA/IVF
+- Autor informou PROSPERO submetido aguardando confirmacao; comprovante indisponivel hoje. Nao criar novo cadastro nem afirmar que nunca houve submissao.
+- `protocol.yaml` passou a `submitted-pending-verification`; backup e fingerprint substantivo preservados em `context/recuperacao_20261103/`. Registro nao verificado.
+- Preparados plano/emenda PT/EN, propostas de substituicao P01-P13 e esquema de extracao com 42 campos. Nenhum novo dado extraido nem nova sintese.
+- Gate real BLOCK; os DOCX e as fontes cientificas anteriores permanecem preservados. Antes de executar ciencia, reconciliar protocolo submetido e datas.
+- English: Recovery preparation completed; reported pending PROSPERO submission remains unverified. No duplicate registration, new extraction, synthesis or external submission. Proposed text changes have not been propagated into original manuscripts/DOCX.

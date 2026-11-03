@@ -1,0 +1,32 @@
+{
+  "date": "2026-11-03",
+  "scope": "Protocol amendment preparation and metadata correction only",
+  "user_reported_registration": "PROSPERO submitted; awaiting confirmation for publication",
+  "registry_verified": false,
+  "new_registration_created": false,
+  "new_scientific_execution": false,
+  "scientific_gate": "blocked",
+  "protocol_substantive_fingerprint_unchanged": true,
+  "protocol_fingerprint": "47b1f81e5af70c868ba52d0dd28e42bc4c8fb27e23a4827b9c7b1614ba6deca3",
+  "old_protocol_sha256": "74d0246ec10bd43b3dd5b8e90d1429aa8947c68c5cb61149ddccd8407abae642",
+  "original_scientific_inputs_and_docx_unchanged": true,
+  "bilingual_pairs_present": true,
+  "extraction_schema_columns": 42,
+  "extracted_rows": 0,
+  "pending": [
+    "Registration identifier, receipt, submission date and submitted protocol",
+    "Documented resolution of final-registration and chronology gate",
+    "Full-text eligibility adjudication and independent extraction",
+    "Rebuilt selection, justified synthesis, bias and certainty assessment",
+    "Canonical manuscript and DOCX regeneration after scientific verification"
+  ],
+  "files": {
+    "esquema_extracao.csv": "3e338bd4f2073beb4faef3e5dad7029bfbf236be907d098a3602094c5a50dc03",
+    "protocol_anterior.json": "74d0246ec10bd43b3dd5b8e90d1429aa8947c68c5cb61149ddccd8407abae642",
+    "registro_gate.json": "1b0b9d3bb67a725c1aed95abe108ad69a3939106987af98f1d9134b50ee5a3ab",
+    "ingles\\plano_de_recuperacao.md": "3ad5421db50852d6e0d13b20a4a1800106246e2c0eff8395d1c4a610163013fa",
+    "ingles\\substituicoes_textuais.md": "341fc8452e53509694139a2de85248f32e532b0f56aa40423119912477a59cf9",
+    "portugues\\plano_de_recuperacao.md": "791bcb7172a51ee3bf10ac5ffe713795b7c753e24374e7c73143e4195d7b0766",
+    "portugues\\substituicoes_textuais.md": "681a7f60c8032581fcb0c2a5f29d1fcb53cf8327fbe92ba0b5019abffefdbf15"
+  }
+}

@@ -1,6 +1,6 @@
 {
   "contract": "AgentHandoffStateV1",
-  "updated_at": "2026-11-03T06:51:17.475061-03:00",
+  "updated_at": "2026-11-03T06:54:51-03:00",
   "supported_agents": [
     "Antigravity",
     "Codex",
@@ -12,12 +12,11 @@
   "current_mode": "bootstrap",
   "last_session": {
     "agent": "Codex",
-    "timestamp": "2026-11-03T06:51:17.475061-03:00",
-    "summary": "Preparacao em D: de programa I-FABP Mandaqui: doutorado, mestrado e 30 candidatas P/C/I; pares PT/EN, critica independente, skill FAPESP/CNPq copiada e integrada com hashes/backups. Registro pendente; sem corpus formal, dados humanos ou submissao.",
-    "tests_status": "417 passed, 1 skipped",
-    "machine_audit": "Skill provenance pass; final strict machine audit follows scoped checkpoint",
-    "scientific_readiness": "Planning only; execution blocked pending frozen protocol and verified final registration",
-    "branch": "codex/article-machine-complete-56-ultra",
+    "timestamp": "2026-11-03T06:54:51-03:00",
+    "summary": "Preparacao de recuperacao metodologica NMA_OSA_VPI. Autor informou submissao PROSPERO pendente; nao presumir inexistencia de submissao nem registro final. Metadados corrigidos em protocol.yaml com backup e fingerprint substantivo preservado. Plano PT/EN, propostas para P01-P13, esquema de extracao e gate real em context/recuperacao_20261103. Sem nova sintese, extracao ou alteracao dos DOCX.",
+    "tests_status": "Local integrity checks passed; no runtime code changed",
+    "registration_gate": "blocked: final verified registration evidence absent",
+    "scientific_readiness": "not ready for submission",
     "git_commit": "see scoped checkpoint commit"
   },
   "operational_entry_checklist": [
@@ -29,8 +28,9 @@
     "6. Ao finalizar a sessao: registrar no handoff e realizar commit checkpoint."
   ],
   "next_recommended_actions": [
-    "Obter fluxo agregado autorizado, eventos e compromissos locais.",
-    "Dimensionar os estimandos, concluir protocolo e registro final verificado.",
-    "Nao executar corpus/analise clinica nem prometer publicacoes antes dos gates."
+    "Obter CRD/link/recibo e versao do protocolo efetivamente submetido quando o usuario puder; nao criar registro duplicado.",
+    "Reconciliar emenda proposta com protocolo submetido e cronologia; nao simular registro prospectivo.",
+    "Resolver gate de registro documentadamente antes de adjudicacao/extracao/sintese.",
+    "Aplicar propostas P01-P13 nas fontes canonicas apos verificacao; nao tratar propostas como correcoes ja propagadas."
   ]
 }

@@ -1,0 +1,11 @@
+{
+  "contract": "ProtocolRegistrationGateV1",
+  "status": "blocked",
+  "required": true,
+  "action": "methodological-repair",
+  "issues": [
+    "protocol.yaml registration.status must be registered AND verified before scientific work.",
+    "Verified PROSPERO/OSF evidence is required before corpus, screening, extraction, analysis or manuscript execution."
+  ],
+  "policy": "user-required-registration-before-scientific-work"
+}

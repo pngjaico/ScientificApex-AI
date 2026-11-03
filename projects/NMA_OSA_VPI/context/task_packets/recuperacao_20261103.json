@@ -1,0 +1,11 @@
+{
+  "task": "Prepare methodological recovery of the existing OSA/VPI review",
+  "date": "2026-11-03",
+  "project": "NMA_OSA_VPI",
+  "authorization": "User requested necessary repairs; author-reported PROSPERO submission pending confirmation; supporting identifier/record unavailable today",
+  "current_scope": "Protocol/amendment preparation, proposed corrections and accurate administrative metadata",
+  "forbidden_in_this_phase": ["Fabricating registry evidence or chronology", "Changing global validators", "Declaring final eligibility or independent double extraction", "New synthesis before resolving the registration gate", "External submission or duplicate registration"],
+  "output": "context/recuperacao_20261103/",
+  "status": "Preparation complete; scientific execution blocked by unverified pending registration",
+  "data_limits": "No patient data inspected; no candidate numerical extraction added; no previous manuscripts or DOCX overwritten"
+}
