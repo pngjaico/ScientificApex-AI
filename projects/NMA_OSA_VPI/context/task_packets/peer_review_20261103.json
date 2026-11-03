@@ -1,0 +1,16 @@
+{
+  "task": "Internal adversarial peer-review audit of the JCS documents generated on 2026-11-02",
+  "date": "2026-11-03",
+  "authorization": "User explicitly requested review of their own previously prepared work with Professor Nivaldo Alonso in this assistant session",
+  "project": "NMA_OSA_VPI",
+  "target": "drafts/ingles/manuscrito_completo.md and JCS v01 DOCX artifacts",
+  "scope": ["primary-source spot checks", "corpus coverage challenge", "statistical and reporting integrity", "prior hostile-review resolution matrix", "DOCX-source consistency"],
+  "limits": ["Internal working assessment, not an assigned journal review or editorial decision", "Hosted assistant processing expressly requested by user; no manuscript text sent to web searches", "No new extraction, synthesis, registration or submission", "Protocol records prepared-not-submitted; new scientific execution remains blocked by local registration rule", "Current workflow planner blocks legacy non-V2 contracts", "No live Google Docs inspection", "No patient records inspected"],
+  "output": "reviews/peer_review_20261103/",
+  "languages": ["pt-BR", "en"],
+  "skills": ["peer-review", "scientific-red-team-reviewer", "manuscript-integrity-response-governor", "deep-thinking-governor", "meta-analise-medica", "risk-of-bias-assistant", "grade-sof-table-builder"],
+  "accountability": "Author-requested internal reader; prior assistant involvement means this is not independent blinded review. Authors must verify and approve all review findings before editorial use.",
+  "retention": "Keep only project audit derivatives in the authorized project folder. No reuse for unrelated research.",
+  "venue_policy": "Not an editorial assignment. Current JCS author-policy page could not be retrieved. No journal-policy compliance claim is made.",
+  "intake_validator": "The peer-review local-only journal-intake validator is not represented as passed for this hosted internal author-requested assessment. Its authorization, accountability, scope and confidentiality criteria are documented here without inventing an editor invitation or clearance."
+}

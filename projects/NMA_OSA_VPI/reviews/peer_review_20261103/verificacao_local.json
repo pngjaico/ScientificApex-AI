@@ -1,0 +1,227 @@
+{
+  "review_date": "2026-11-03",
+  "scope": "Internal author-requested artifact integrity review",
+  "datasets": {
+    "primary_psg_dataset.csv": {
+      "rows": 5,
+      "unique_dois": 3,
+      "participants": 129,
+      "events": 53,
+      "dois": [
+        "10.1597/09-178",
+        "10.1597/12-049",
+        "10.7518/hxkq.2021.05.011"
+      ],
+      "sha256": "45b53767b6fd2270af2fe28f14786b98de565c8b4be08e40066e159d4e2e6927"
+    },
+    "sensitivity_all_pico_dataset.csv": {
+      "rows": 10,
+      "unique_dois": 5,
+      "participants": 1274,
+      "events": 138,
+      "dois": [
+        "10.1016/j.bjorl.2017.08.006",
+        "10.1097/PRS.0000000000008193",
+        "10.1597/09-178",
+        "10.1597/12-049",
+        "10.7518/hxkq.2021.05.011"
+      ],
+      "sha256": "5809c547306f79ed60e5f39d9e44ebe1599c0ffdb376f2631d3364170bebe31b"
+    },
+    "corrected_extraction.csv": {
+      "rows": 20,
+      "unique_dois": 13,
+      "participants": 1572,
+      "events": 214,
+      "dois": [
+        "10.1001/jamaoto.2019.0006",
+        "10.1002/lary.20850",
+        "10.1007/s00405-019-05633-z",
+        "10.1016/j.anl.2017.06.005",
+        "10.1016/j.bjorl.2017.08.006",
+        "10.1097/PRS.0000000000008193",
+        "10.1177/0194599813496044a378",
+        "10.1177/1055665620919326",
+        "10.1186/s40902-025-00464-x",
+        "10.1597/09-178",
+        "10.1597/12-049",
+        "10.7518/hxkq.2021.05.011",
+        "10.7518/hxkq.2024.2024218"
+      ],
+      "sha256": "83e808766d58dfaae365f1254ab9efa8b4f0b4efba0c5ace9d575063da6908c5"
+    }
+  },
+  "docx": [
+    {
+      "path": "publicacoes\\journal-of-craniofacial-surgery\\v01\\09_submissao\\ingles\\Blinded_Main_Manuscript_JCS.docx",
+      "sha256": "5912408c83d0f3c68a1a31a3d21d42bb0f5c9e87903cf057221a380bff442af3",
+      "paragraphs": 353,
+      "tables": 4,
+      "embedded_images": 4,
+      "replacement_characters": 0,
+      "probe_locations": {
+        "6 to 12": [
+          9,
+          13
+        ],
+        "6 a 12": [],
+        "1.5": [
+          9
+        ],
+        "09-082": [
+          19
+        ],
+        "09-178": [],
+        "Claude Opus 5.5": [
+          17
+        ],
+        "4- to 8-fold": [
+          13
+        ],
+        "4 to 8": [],
+        "10 studies (20 surgical arms": [
+          3
+        ],
+        "ausência": [],
+        "apenas 10": [],
+        "Colombia": [
+          13
+        ],
+        "Colômbia": [],
+        "single center": [
+          13
+        ]
+      }
+    },
+    {
+      "path": "publicacoes\\journal-of-craniofacial-surgery\\v01\\09_submissao\\ingles\\Cover_Letter_JCS.docx",
+      "sha256": "1600e3b101e4a034e1d14e24b644b15c9dd16d81d05a7e7d78e36cf86b025141",
+      "paragraphs": 2,
+      "tables": 0,
+      "embedded_images": 0,
+      "replacement_characters": 0,
+      "probe_locations": {
+        "6 to 12": [],
+        "6 a 12": [],
+        "1.5": [],
+        "09-082": [],
+        "09-178": [],
+        "Claude Opus 5.5": [
+          2
+        ],
+        "4- to 8-fold": [],
+        "4 to 8": [
+          2
+        ],
+        "10 studies (20 surgical arms": [],
+        "ausência": [],
+        "apenas 10": [],
+        "Colombia": [],
+        "Colômbia": [],
+        "single center": []
+      }
+    },
+    {
+      "path": "publicacoes\\journal-of-craniofacial-surgery\\v01\\09_submissao\\ingles\\PRISMA_2020_Checklist_JCS.docx",
+      "sha256": "daf71abe2a0038ceb69bac85e03a5064195a63ef7fd18e970917340bde8aecfc",
+      "paragraphs": 113,
+      "tables": 1,
+      "embedded_images": 0,
+      "replacement_characters": 0,
+      "probe_locations": {
+        "6 to 12": [],
+        "6 a 12": [],
+        "1.5": [],
+        "09-082": [],
+        "09-178": [],
+        "Claude Opus 5.5": [],
+        "4- to 8-fold": [],
+        "4 to 8": [],
+        "10 studies (20 surgical arms": [],
+        "ausência": [],
+        "apenas 10": [],
+        "Colombia": [],
+        "Colômbia": [],
+        "single center": []
+      }
+    },
+    {
+      "path": "publicacoes\\journal-of-craniofacial-surgery\\v01\\09_submissao\\ingles\\Title_Page_JCS.docx",
+      "sha256": "71fa03fad854ca5108b19e62bf56b8e5f6b04e464cd9e2814edc3e3556b003b5",
+      "paragraphs": 3,
+      "tables": 0,
+      "embedded_images": 0,
+      "replacement_characters": 0,
+      "probe_locations": {
+        "6 to 12": [],
+        "6 a 12": [],
+        "1.5": [],
+        "09-082": [],
+        "09-178": [],
+        "Claude Opus 5.5": [
+          3
+        ],
+        "4- to 8-fold": [],
+        "4 to 8": [],
+        "10 studies (20 surgical arms": [],
+        "ausência": [],
+        "apenas 10": [],
+        "Colombia": [],
+        "Colômbia": [],
+        "single center": []
+      }
+    },
+    {
+      "path": "publicacoes\\journal-of-craniofacial-surgery\\v01\\09_submissao\\portugues\\Manuscrito_OSA_IVF_Fissurados_Pacote_Orientador_Prof_Nivaldo_Alonso_JCS.docx",
+      "sha256": "45d633b2593e5ff1ef7d935dfdded934db5f4eeb486d0574207988053bcecdd0",
+      "paragraphs": 354,
+      "tables": 4,
+      "embedded_images": 4,
+      "replacement_characters": 0,
+      "probe_locations": {
+        "6 to 12": [],
+        "6 a 12": [
+          24
+        ],
+        "1.5": [],
+        "09-082": [
+          30
+        ],
+        "09-178": [],
+        "Claude Opus 5.5": [
+          28
+        ],
+        "4- to 8-fold": [],
+        "4 to 8": [],
+        "10 studies (20 surgical arms": [],
+        "ausência": [
+          17
+        ],
+        "apenas 10": [],
+        "Colombia": [],
+        "Colômbia": [],
+        "single center": []
+      }
+    }
+  ],
+  "input_sha256": {
+    "drafts/ingles/manuscrito_completo.md": "4c49cbdf59b2450c5ec856c1730fde4d5ae9ff0b214907db325216f1ba8c323c",
+    "reviews/red_team_hostile_review_jcs.md": "eaa6ea554d08db38bb7dfb068395331734fd9f27c7793a942e787dac624b73c0",
+    "scripts/gerar_analises_e_figuras_publicacao.R": "1cb1995654ef53dad044db56d8f402ac1b3759cfe9e25083e52595435420def8",
+    "scripts/build_submission_docx_jcs.py": "be95f6ad3f813563fba53e9a35b1b90c6953a262487071a1597494d330cb1c9b",
+    "analysis/r_metaprop_summary.txt": "c02b29351cb13a9965ee61cee1786f83a79e0dcc16b184d5868b569d148bba1e",
+    "analysis/table3_grade_sof_certainty_en.csv": "afbea0d6bd5e0ae05e8f87119ca988528ae8aae0ad5f8cc750591b535a6dee12",
+    "evidence/claim_map.jsonl": "5c562ab9ac393af4f6092adaed0f286eff13c859643c4139b593be4658925aa0",
+    "drafts/references.bib": "3c0a24008311b16ebeb80c8dfad2e797932aeb62a8f58108f88e89590c34aebb",
+    "protocol.yaml": "74d0246ec10bd43b3dd5b8e90d1429aa8947c68c5cb61149ddccd8407abae642",
+    "publicacoes/journal-of-craniofacial-surgery/v01/07_manuscrito/ingles/manuscript_journal_of_craniofacial_surgery_en.md": "7a19fac88d219fc90f136107ebe2d6a29f0cc2f9f5f229fe825555f443e5716a",
+    "publicacoes/journal-of-craniofacial-surgery/v01/07_manuscrito/ingles/manuscript_jcs_gdocs_en.md": "4c49cbdf59b2450c5ec856c1730fde4d5ae9ff0b214907db325216f1ba8c323c",
+    "publicacoes/journal-of-craniofacial-surgery/v01/07_manuscrito/portugues/pacote_orientador_gdocs_pt.md": "9a8f88b31797159228f6d65caadb94dc1d502404b6b7cdb5d2d5537d8a1d29df"
+  },
+  "limits": [
+    "No source-data re-extraction or meta-analysis rerun",
+    "DOCX XML inspection, not rendered layout QA",
+    "Google Docs live content not inspected",
+    "DOI counts identify reports, not proven independent cohorts"
+  ]
+}

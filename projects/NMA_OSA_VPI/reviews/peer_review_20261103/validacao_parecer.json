@@ -1,0 +1,50 @@
+{
+  "portugues": {
+    "issues": [
+      "P01",
+      "P02",
+      "P03",
+      "P04",
+      "P05",
+      "P06",
+      "P07",
+      "P08",
+      "P09",
+      "P10",
+      "P11",
+      "P12",
+      "P13"
+    ],
+    "issue_count": 13,
+    "replacement_characters": 0,
+    "sha256": "0c5a484a15d35028be22105b614cc83cc6c855d385068477d93bda7860494469"
+  },
+  "ingles": {
+    "issues": [
+      "P01",
+      "P02",
+      "P03",
+      "P04",
+      "P05",
+      "P06",
+      "P07",
+      "P08",
+      "P09",
+      "P10",
+      "P11",
+      "P12",
+      "P13"
+    ],
+    "issue_count": 13,
+    "replacement_characters": 0,
+    "sha256": "2332ae8f535f5b083fc6dfec292fdae788d04f374779f84c822dd07f8a24d04f"
+  },
+  "input_files_unchanged": true,
+  "docx_unchanged": true,
+  "scientific_reproduction": "NOT_RUN",
+  "editorial_submission": "NOT_PERFORMED",
+  "bilingual_lexical_audit": "BLOCK_numeric_signature_difference",
+  "workflow_planner": "BLOCK_legacy_non_V2_contracts",
+  "machine_audit_strict": "PASS_executed_2026-11-03",
+  "operational_graph": "REFRESHED_1338_nodes_2691_edges"
+}

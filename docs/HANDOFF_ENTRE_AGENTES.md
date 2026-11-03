@@ -185,3 +185,12 @@ Copie e preencha este bloco ao final de cada intervencao:
   - [ ] Confirmar o e-mail e ORCID do Dr. Marcel Gutierrez antes da submissao formal.
   - [ ] Prosseguir para submissao no Editorial Manager do *The Journal of Craniofacial Surgery*.
 
+
+
+### [2026-11-03] Handoff: Codex -> proximo agente
+- Projeto: `projects/NMA_OSA_VPI`. Auditoria interna dos documentos JCS de 02/11, por pedido do autor.
+- Parecer PT/EN: `reviews/peer_review_20261103/{portugues,ingles}/parecer_peer_review.md`; 13 achados, 4 bloqueios centrais. Nao tratar como pronto para submissao.
+- Verificados: discrepancias de limiar/seguimento Zhao; contagens CSV/DOI; texto/XML de cinco DOCX; candidatos bibliograficos e ensaio randomizado que contradizem declaracoes do texto. Sem nova extracao/sintese; originais preservados por hash.
+- Machine audit strict PASS; workflow planner BLOCK por contratos legados; audit-language BLOCK por assinatura numerica lexical. Nao alegar reproducao cientifica ou equivalencia bilingue certificada.
+- Grafo operacional atualizado; suas alteracoes geradas permanecem fora do checkpoint para nao versionar mistura de superficies alheias. Arquivos untracked preexistentes de implementacao/testes preservados. Suite completa nao reexecutada: tarefa documental, sem mudanca no runtime da maquina.
+- English: Internal author-requested review found 13 issues and 4 central blockers. Read the paired review before further work. No manuscript edits, new synthesis, live Docs check or submission. Existing PASS artifacts do not establish scientific readiness.
