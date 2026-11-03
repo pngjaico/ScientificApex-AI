@@ -1,0 +1,209 @@
+{
+  "contract": "ScientificWorkflowPlanV1",
+  "status": "planned",
+  "gate_eligible": false,
+  "created_at": "2026-11-03T09:42:37.948766+00:00",
+  "project_id": "mandaqui-ifabp-programa-2026",
+  "project_type": "observational-study",
+  "query": "Torneio de hipoteses para programa I-FABP TC Mandaqui doutorado mestrado publicacoes, preparar protocolos sem execucao preregistro",
+  "language": "pt-BR",
+  "current_mode": "bootstrap",
+  "allowed_next_modes": [
+    "protocol-freeze"
+  ],
+  "guidelines": [
+    "STROBE"
+  ],
+  "selected_skills": [
+    {
+      "skill": "hypothesis-tournament",
+      "matched_triggers": [
+        "hipoteses"
+      ],
+      "reason": "Generate, critique, rank, and evolve testable scientific hypotheses.",
+      "skill_file": "D:\\Usuario-pc\\Projetos\\Doutorado\\skills\\hypothesis-tournament\\SKILL.md",
+      "registry_status": "active",
+      "promotion_requires_review": false
+    }
+  ],
+  "mandatory_mode_skills": [
+    {
+      "skill": "workspace-graph-navigator",
+      "skill_file": ".agents/skills/workspace-graph-navigator/SKILL.md",
+      "exists": "true"
+    },
+    {
+      "skill": "project-entry-navigator",
+      "skill_file": ".agents/skills/project-entry-navigator/SKILL.md",
+      "exists": "true"
+    },
+    {
+      "skill": "scientific-workflow-orchestrator",
+      "skill_file": ".agents/skills/scientific-workflow-orchestrator/SKILL.md",
+      "exists": "true"
+    },
+    {
+      "skill": "hypothesis-tournament",
+      "skill_file": "skills/hypothesis-tournament/SKILL.md",
+      "exists": "true"
+    },
+    {
+      "skill": "scientific-novelty-checker",
+      "skill_file": "skills/scientific-novelty-checker/SKILL.md",
+      "exists": "true"
+    },
+    {
+      "skill": "guideline-router",
+      "skill_file": "skills/guideline-router/SKILL.md",
+      "exists": "true"
+    },
+    {
+      "skill": "deep-thinking-governor",
+      "skill_file": "skills/deep-thinking-governor/SKILL.md",
+      "exists": "true"
+    },
+    {
+      "skill": "tooluniverse-epidemiological-analysis",
+      "skill_file": "skills/tooluniverse-epidemiological-analysis/SKILL.md",
+      "exists": "true"
+    },
+    {
+      "skill": "datasus-research-engine",
+      "skill_file": "skills/datasus-research-engine/SKILL.md",
+      "exists": "true"
+    }
+  ],
+  "canonical_mode_commands": [
+    "python -m article_machine methodology validate-protocol projects/mandaqui-ifabp-programa-2026",
+    "python -m article_machine workflow plan projects/mandaqui-ifabp-programa-2026 --query \"...\" --language pt-BR",
+    "python -m article_machine study build projects/mandaqui-ifabp-programa-2026"
+  ],
+  "allowed_write_paths": [
+    "projects/mandaqui-ifabp-programa-2026/project.yaml",
+    "projects/mandaqui-ifabp-programa-2026/protocol.yaml",
+    "projects/mandaqui-ifabp-programa-2026/standards.yaml",
+    "projects/mandaqui-ifabp-programa-2026/compute.yaml",
+    "projects/mandaqui-ifabp-programa-2026/context/"
+  ],
+  "coordination": {
+    "model": "gpt-6.1-sol",
+    "effort": "medium",
+    "service": "standard",
+    "verify_actual_runtime": true
+  },
+  "delegation": {
+    "exploration": {
+      "model": "gpt-6-luna",
+      "effort": "low"
+    },
+    "implementation": {
+      "model": "gpt-6-luna",
+      "effort": "medium"
+    },
+    "focused_analysis": {
+      "model": "gpt-6-luna",
+      "effort": "high"
+    },
+    "scientific_review": {
+      "model": "gpt-6.1-sol",
+      "effort": "high"
+    },
+    "start_with_workers": 1,
+    "max_subagents": 3,
+    "packet_required_fields": [
+      "objective",
+      "inputs",
+      "allowed_tools",
+      "owned_files",
+      "expected_artifacts",
+      "verification",
+      "stop_conditions"
+    ]
+  },
+  "phases": [
+    {
+      "id": "question",
+      "owner": "Sol",
+      "artifact": "context/question_and_alternatives.md",
+      "acceptance": "Protocol question, competing hypotheses, feasibility"
+    },
+    {
+      "id": "protocol",
+      "owner": "Sol",
+      "artifact": "protocol.yaml",
+      "acceptance": "Design, endpoints, estimand, registration, deviations"
+    },
+    {
+      "id": "retrieval",
+      "owner": "Luna",
+      "artifact": "context/retrieval/",
+      "acceptance": "Dated queries, source identifiers, deduplication, provider caveats"
+    },
+    {
+      "id": "screening",
+      "owner": "Luna",
+      "artifact": "evidence/screening/",
+      "acceptance": "Traceable decisions; ambiguous eligibility returns to Sol"
+    },
+    {
+      "id": "extraction",
+      "owner": "Luna",
+      "artifact": "evidence/extraction_manifest.json",
+      "acceptance": "Schema validation, locators, units, missing data"
+    },
+    {
+      "id": "methods",
+      "owner": "Sol",
+      "artifact": "reviews/methods_review.json",
+      "acceptance": "Bias, confounding, transitivity, sensitivity assumptions"
+    },
+    {
+      "id": "analysis",
+      "owner": "Luna",
+      "artifact": "analysis/manifest.json",
+      "acceptance": "Execute approved plan with locked runtime and hashes"
+    },
+    {
+      "id": "interpretation",
+      "owner": "Sol",
+      "artifact": "evidence/claim_map.jsonl",
+      "acceptance": "Support assessment, counterevidence, claim calibration"
+    },
+    {
+      "id": "writing",
+      "owner": "Sol",
+      "artifact": "drafts/manuscript.md",
+      "acceptance": "Native target-language prose and preserved claim/reference keys"
+    },
+    {
+      "id": "review",
+      "owner": "Sol",
+      "artifact": "reviews/review_report.json",
+      "acceptance": "Methodological, quantitative, editorial, independent red-team"
+    }
+  ],
+  "language_contract": {
+    "target": "pt-BR",
+    "glossary": "context/terminology_glossary.json",
+    "preserve": [
+      "claim_ids",
+      "reference_keys",
+      "study_ids",
+      "numeric_values",
+      "uncertainty",
+      "disclosure"
+    ]
+  },
+  "gates": [
+    "protocol registration when required",
+    "locked runtime preflight",
+    "Evidence Lock V2",
+    "Review Trinity V2",
+    "independent red-team"
+  ],
+  "limits": [
+    "planning does not advance lifecycle",
+    "scientific judgment remains with coordinator",
+    "plugins are optional retrieval aids"
+  ]
+}

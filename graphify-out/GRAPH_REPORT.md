@@ -1,4 +1,4 @@
-# Graph Report - D:\Usuario-pc\Projetos\Doutorado  (2026-11-02)
+# Graph Report - D:\Usuario-pc\Projetos\Doutorado  (2026-11-03)
 
 > **Start here:** [`graphify-out/LEIA-ME.md`](LEIA-ME.md) maps every generated file.
 > The agent quickstart and query recipes are at the end of this report.
@@ -7,8 +7,8 @@
 - Root semantic graph was not run: the workspace is too broad and detection timed out. This is an operational navigation graph.
 
 ## Summary
-- 1325 nodes · 2662 edges · 8 communities (7 shown, 1 thin omitted)
-- Extraction: 90% EXTRACTED · 10% INFERRED · 0% AMBIGUOUS · INFERRED: 264 edges (avg confidence: 0.75)
+- 1343 nodes · 2700 edges · 8 communities (7 shown, 1 thin omitted)
+- Extraction: 90% EXTRACTED · 10% INFERRED · 0% AMBIGUOUS · INFERRED: 273 edges (avg confidence: 0.75)
 - Token cost: 0 input · 0 output
 
 ## Community Hubs (Navigation)
@@ -22,15 +22,15 @@
 - Git Hygiene
 
 ## God Nodes (most connected - your core abstractions)
-1. `Build context Task Packet` - 147 edges
+1. `Build context Task Packet` - 155 edges
 2. `Article Machine Package` - 102 edges
 3. `Runtime And Commands` - 95 edges
-4. `article_machine.cli` - 82 edges
-5. `Read project protocol standards compute files` - 79 edges
-6. `Critical Scientific Skills` - 72 edges
-7. `article_machine.agent_skills` - 71 edges
+4. `Read project protocol standards compute files` - 83 edges
+5. `article_machine.cli` - 82 edges
+6. `Critical Scientific Skills` - 73 edges
+7. `article_machine.agent_skills` - 72 edges
 8. `Agent Documentation` - 56 edges
-9. `Article Machine Projects` - 46 edges
+9. `Article Machine Projects` - 47 edges
 10. `Graphify Operational Map` - 38 edges
 
 ## Surprising Connections (you probably didn't know these)
@@ -60,11 +60,11 @@ Nodes (141): Article Machine Package, article_machine.__init__, Article Machine 
 
 ### Community 2 - "Projects And Modes"
 Cohesion: 0.01
-Nodes (187): Article Machine Projects, Article Machine Governance 2026, lane: machine-governance, mode: bootstrap, type: machine-governance, article-machine-governance-2026/context (5 direct items), article-machine-governance-2026/analysis (7 direct items), article-machine-governance-2026/reviews (3 direct items) (+179 more)
+Nodes (196): Article Machine Projects, Article Machine Governance 2026, lane: machine-governance, mode: bootstrap, type: machine-governance, article-machine-governance-2026/context (5 direct items), article-machine-governance-2026/analysis (7 direct items), article-machine-governance-2026/reviews (3 direct items) (+188 more)
 
 ### Community 3 - "Scientific Skills"
 Cohesion: 0.01
-Nodes (528): Critical Scientific Skills, hypothesis-tournament, hypothesis-tournament :: Hypothesis Tournament, hypothesis-tournament :: Workflow, hypothesis-tournament :: Output Contract, hypothesis-tournament :: Gates, scientific-novelty-checker, scientific-novelty-checker :: Scientific Novelty Checker (+520 more)
+Nodes (533): Critical Scientific Skills, hypothesis-tournament, hypothesis-tournament :: Hypothesis Tournament, hypothesis-tournament :: Workflow, hypothesis-tournament :: Output Contract, hypothesis-tournament :: Gates, scientific-novelty-checker, scientific-novelty-checker :: Scientific Novelty Checker (+525 more)
 
 ### Community 4 - "Agent Docs"
 Cohesion: 0.01
@@ -141,17 +141,17 @@ _Questions this graph is uniquely positioned to answer:_
 
 ## Detailed Navigation Layers
 - Markdown sections indexed: 250
-- Project contract files indexed: 76
-- Project artifact areas indexed: 144
-- Skill instruction sections indexed: 450
+- Project contract files indexed: 80
+- Project artifact areas indexed: 152
+- Skill instruction sections indexed: 454
 - Navigation/preservation skills installed: 3
 - Project-scoped Codex agent roles indexed: 5
 - Read-only Codex benchmark profiles indexed: 2
 
 ## Generation Provenance
-- Git HEAD: `ca22b9c311bc5c7c89629479b64785c1463776d4`
+- Git HEAD: `416250a795a47f088cc9850fc6718d674e9f2957`
 - Dirty worktree at generation: `true`
-- Porcelain status entries at generation: 43
+- Porcelain status entries at generation: 17
 
 ## Natural Language Gateway Phrases
 These nodes make Portuguese and operational user phrasing easier for `graphify query` to match.

@@ -215,6 +215,7 @@ Generated from `skills/registry.json`; do not edit this section manually.
 - `experimental-design-planner` — active — Article Machine curated layer — `workspace-2026-10-12`
 - `exploratory-data-analysis` — hold — local unverified skill tree — `local-unverified`
 - `extraction-schema-governor` — active — Article Machine curated layer — `workspace-2026-10-12`
+- `fapesp-cnpq-projects` — active — Article Machine curated layer — `workspace-2026-11-03`
 - `flowio` — hold — local unverified skill tree — `local-unverified`
 - `fluidsim` — hold — local unverified skill tree — `local-unverified`
 - `form-cro` — hold — local unverified skill tree — `local-unverified`

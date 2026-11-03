@@ -1,0 +1,54 @@
+{
+  "contract": "StageGateReportV2",
+  "contract_version": 2,
+  "generated_at": "2026-11-03T09:48:58.391547+00:00",
+  "project_dir": "projects\\mandaqui-ifabp-programa-2026",
+  "target_mode": "bootstrap",
+  "commit": "416250a795a47f088cc9850fc6718d674e9f2957",
+  "worktree": "dirty",
+  "worktree_fingerprint": "sha256:3297197140e741b896c1893dbceb9f9aa0bda4f225715ae0fdcc5cd6aa945cc7",
+  "control_plane_hash": "sha256:759585ba4edf4db8663c3d6de71a6ecfbb5c9c54032d564c279cfb2a63cb55a5",
+  "input_hashes": {
+    "project.yaml": "04aa2253804e5904524362eba540958ee8f6f0f5d3171e232e6439d867e23518",
+    "protocol.yaml": "6fa0fda64f2a36e24cceb1ee4a538e3d00b317f9ed29a9e435cb13f8930c64c6",
+    "standards.yaml": "0d6a71cb4c7585cc89922607d6062fa47915c0168996022f29ba60dd80ca194e",
+    "compute.yaml": "2193221635ec29342523e722495d68e15aca56b003c43ed2f28c5c2231afc6f4",
+    "sources/registry.jsonl": null,
+    "evidence/claim_map.jsonl": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "analysis/manifest.json": null,
+    "drafts/manuscript.md": "d1618f1d5fba7122e4580e24d312cdf4baea9952960fbb2bf3173d7be5985e48",
+    "drafts/references.bib": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "checks": [
+    {
+      "mode": "bootstrap",
+      "check": "project.yaml",
+      "status": "pass",
+      "message": "project.yaml passed."
+    },
+    {
+      "mode": "bootstrap",
+      "check": "protocol.yaml",
+      "status": "pass",
+      "message": "protocol.yaml passed."
+    },
+    {
+      "mode": "bootstrap",
+      "check": "standards.yaml",
+      "status": "pass",
+      "message": "standards.yaml passed."
+    },
+    {
+      "mode": "bootstrap",
+      "check": "compute.yaml",
+      "status": "pass",
+      "message": "compute.yaml passed."
+    }
+  ],
+  "issues": [],
+  "status": "pass",
+  "gate_eligible": true,
+  "checked_modes": [
+    "bootstrap"
+  ]
+}

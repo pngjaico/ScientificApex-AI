@@ -143,7 +143,7 @@ Generated from `skills/registry.json`.
 - `alphafold-pdb-structure-router`: `sha256:c117c419f1deb1e2a852961a1ebda3ef617b1768853e1518af7ee8f7625cd246`
 - `analytics-tracking`: `sha256:b7c405a5c41ac65aca2ca0bc9057489630f68cb547a5da47b7f19ae6acbcb5d8`
 - `anndata`: `sha256:034006eb0551d28a278e197127268c417a09a78ee252fcefeab2992c70b68527`
-- `anti-ai-writing-governor`: `sha256:ff1838dc1dec088a85e0e84d238473d53ddd6bd061e8bf2851f09e5d31dedab4`
+- `anti-ai-writing-governor`: `sha256:788d1c0fac7260ba758da07f185f95588608ed930526cc6b67382ecd4d7c258c`
 - `arbor`: `sha256:52802901704e41aeb5c934bcd7ad99208371fbe420f1a1794289ef151f56f074`
 - `arboreto`: `sha256:338a46bda3c5d4cc9cbbee5db5f15315d07afae6db2ad8bef8a67fbb90735cea`
 - `asreview-screening-bridge`: `sha256:1344e46f68643b05038546afa99bf8529e90e2a43cd6b049d2a286911a151c22`
@@ -153,7 +153,7 @@ Generated from `skills/registry.json`.
 - `benchling-integration`: `sha256:6b970de3a24766512cd33c87414f228428de00a7fb6aab6286fc2a6e1553729d`
 - `bgpt-paper-search`: `sha256:511b33f75bb731adbb3250034567eb5afa9c869128032673e095e752c1c67bb8`
 - `bids`: `sha256:748d256fab9f9a1fa476ec9ca70b74824771dc8b831e17c9dacc7414c74d9a3a`
-- `bilingual-scientific-writing`: `sha256:65239cd38ae7b36d47d4a16333698ce60ac15fbed918a146381c1cb1c9af2e39`
+- `bilingual-scientific-writing`: `sha256:b6726cf4a7dd1a5dc7acec175f4b8fed514d08d36a7f7acc996c451d1b277f9c`
 - `biopython`: `sha256:a17ad5d90a0ca3e893791c53ae239557541b00a37843813d4b9647da98caf1b8`
 - `bioservices`: `sha256:b0cde0ab5f77d603425cdd16f82c7fe3e690a2c48a0b72f4ca7e88a6e9ccf305`
 - `bulk-rnaseq`: `sha256:a55bedb970a1b8528cc2d8bd841a454604e69e6658785ebaa3644a48eec59393`
@@ -203,6 +203,7 @@ Generated from `skills/registry.json`.
 - `experimental-design-planner`: `sha256:5951d495fa5b75f476f0fbdb223bd332730e4b6c5d8262fc56ef0b67dacc091d`
 - `exploratory-data-analysis`: `sha256:f34f297613401edba519e06239a5cd70193bff12aaef6bd3b47958a29519600a`
 - `extraction-schema-governor`: `sha256:d9ce758d3a4e5598cb961964cc6941a0a421cd6902d21d456da7defe40d518d1`
+- `fapesp-cnpq-projects`: `sha256:58b6d4a4bc5059ce65a4812fbf78c56fcf9a0ccd385782d44c39a3c842dde791`
 - `flowio`: `sha256:2fd9005a437114a247592fac28931e0a3a176182738fcabafebda0397290e801`
 - `fluidsim`: `sha256:5c7f40acb23b30715090e380e3eb1a9b49d42038367970cfa6160414f60f76a1`
 - `form-cro`: `sha256:09d8962a1dd42372cf0b4b5a70af05a3352f98e99bb90478f90644a8aa3d3b56`

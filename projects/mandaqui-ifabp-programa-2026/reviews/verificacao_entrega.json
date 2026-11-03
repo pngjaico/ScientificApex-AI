@@ -1,0 +1,56 @@
+{
+  "status": "pass-local-planning-checks",
+  "generated_at": "2026-11-03T09:50:32.646990+00:00",
+  "canonical_workspace": "D:\\Usuario-pc\\Projetos\\Doutorado",
+  "pairs": [
+    {
+      "name": "base_bibliografica_e_limites.md",
+      "portfolio_rows": 0,
+      "pt_sha256": "53ba5663d2c28fadf417791f4af3f89f53547a0ebdd1293030b96760dbe22ae8",
+      "en_sha256": "cecfa66122e39e815e9b423ad86327d4ce07f39c45e1e16002748aa1317c66c6"
+    },
+    {
+      "name": "carteira_de_30_estudos.md",
+      "portfolio_rows": 30,
+      "pt_sha256": "a3547140bc4d2079852702970a989fd795b64ab258eb8f628cade87b83d10875",
+      "en_sha256": "1e5cca9b95baa62f7b7b0229cbc52bb33e27fee1a343d910b05035b6639d2204"
+    },
+    {
+      "name": "leitura_do_torneio.md",
+      "portfolio_rows": 0,
+      "pt_sha256": "c32d3e4861cc09c3a20f865fe61bb57adadaf664cfdf51e412c433443140819f",
+      "en_sha256": "610e85c3530e91c346488ab1ec78448cf42b7dd0592b396a22f80f37505ab7c1"
+    },
+    {
+      "name": "programa_de_pesquisa.md",
+      "portfolio_rows": 0,
+      "pt_sha256": "db6c0f26e95e661a7231e4f4c635369149f91dd1e14a1a69528dcb9aaa94a28f",
+      "en_sha256": "946c670fd549847912bba98fda8b5736b4dd5a9934c2eaab6b4b6ed3ce8e6514"
+    },
+    {
+      "name": "revisao_critica_e_registro.md",
+      "portfolio_rows": 0,
+      "pt_sha256": "2a67b86e3afc77aaee2c082092e7726a2a489d459c1e25a18be8d58b58f96d2b",
+      "en_sha256": "2673dfd00a77e794e4becbec1c8e83736ca4df3206f323810bb24aec19f5898b"
+    },
+    {
+      "name": "validacao_e_handoff.md",
+      "portfolio_rows": 0,
+      "pt_sha256": "ae9b4d20a3a2115fff506be62c9b50074e7fb31906c5934d706eda72c778ed3b",
+      "en_sha256": "af947f78308bb39b5718930ec59e7f22e1e69a63fc0bb018a6756ab0285dee51"
+    }
+  ],
+  "portfolio_candidates": 30,
+  "main_degrees": 2,
+  "sources_promoted_to_formal_corpus": 0,
+  "clinical_data_processed": false,
+  "claims_promoted": 0,
+  "registration": "pending",
+  "scientific_execution": "blocked-until-verified-registration",
+  "skills_audit": "pass",
+  "skill_count": 269,
+  "limitations": [
+    "Structural checks and prior independent planning critique do not approve scientific merit, novelty, sample size, ethics or funding.",
+    "Bilingual numeric audit of the two main documents is separate; lexical equivalence is not semantic proof."
+  ]
+}

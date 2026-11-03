@@ -1,6 +1,6 @@
 {
   "contract": "AgentHandoffStateV1",
-  "updated_at": "2026-11-03T06:40:13-03:00",
+  "updated_at": "2026-11-03T06:51:17.475061-03:00",
   "supported_agents": [
     "Antigravity",
     "Codex",
@@ -8,18 +8,17 @@
   ],
   "concurrency_mode": "STRICT_SEQUENTIAL_EXCLUSIVE",
   "concurrency_policy": "Nenhum agente deve ser executado simultaneamente ao outro. Apenas uma sessao ativa por vez.",
-  "active_project": "projects/NMA_OSA_VPI",
-  "current_mode": "submission",
+  "active_project": "projects/mandaqui-ifabp-programa-2026",
+  "current_mode": "bootstrap",
   "last_session": {
     "agent": "Codex",
-    "timestamp": "2026-11-03T06:40:13-03:00",
-    "summary": "Revisao interna do pacote JCS de 02/11: 13 achados, 4 bloqueios centrais. Erros confirmados de limiar/seguimento Zhao; candidatos Liao 2002/2004 ausentes da extracao; ensaio randomizado de 2005 contradiz declaracao de ausencia; PRISMA e claims de subdeteccao nao sustentados. Parecer PT/EN e verificacao com hashes em reviews/peer_review_20261103. Manuscritos e DOCX preservados. Sem nova extracao, sintese ou submissao.",
-    "tests_status": "Not rerun: documentary review; audit script executed successfully",
-    "machine_audit": "pass (strict), executed this session",
-    "workflow_plan": "block: legacy non-V2 contracts",
-    "bilingual_audit": "block: numeric signatures differ; review limitations documented",
-    "scientific_readiness": "not ready for submission",
-    "git_commit": "see scoped checkpoint commit for this handoff"
+    "timestamp": "2026-11-03T06:51:17.475061-03:00",
+    "summary": "Preparacao em D: de programa I-FABP Mandaqui: doutorado, mestrado e 30 candidatas P/C/I; pares PT/EN, critica independente, skill FAPESP/CNPq copiada e integrada com hashes/backups. Registro pendente; sem corpus formal, dados humanos ou submissao.",
+    "tests_status": "417 passed, 1 skipped",
+    "machine_audit": "Skill provenance pass; final strict machine audit follows scoped checkpoint",
+    "scientific_readiness": "Planning only; execution blocked pending frozen protocol and verified final registration",
+    "branch": "codex/article-machine-complete-56-ultra",
+    "git_commit": "see scoped checkpoint commit"
   },
   "operational_entry_checklist": [
     "1. Verificar git status e git log -1 para entender a transicao anterior.",
@@ -30,9 +29,8 @@
     "6. Ao finalizar a sessao: registrar no handoff e realizar commit checkpoint."
   ],
   "next_recommended_actions": [
-    "Ler reviews/peer_review_20261103/portugues/parecer_peer_review.md e verificar os achados com os autores.",
-    "Corrigir erros factuais e remover subdeteccao quantificada e algoritmo mandatorio sem suporte.",
-    "Resolver registro final e contratos antes de nova execucao cientifica; adjudicar estudos candidatos e reconstruir PRISMA.",
-    "Rever unidade de sintese, RoB/GRADE e sincronizar fontes PT/EN e DOCX antes de repetir os gates."
+    "Obter fluxo agregado autorizado, eventos e compromissos locais.",
+    "Dimensionar os estimandos, concluir protocolo e registro final verificado.",
+    "Nao executar corpus/analise clinica nem prometer publicacoes antes dos gates."
   ]
 }

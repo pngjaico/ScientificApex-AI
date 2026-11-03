@@ -194,3 +194,13 @@ Copie e preencha este bloco ao final de cada intervencao:
 - Machine audit strict PASS; workflow planner BLOCK por contratos legados; audit-language BLOCK por assinatura numerica lexical. Nao alegar reproducao cientifica ou equivalencia bilingue certificada.
 - Grafo operacional atualizado; suas alteracoes geradas permanecem fora do checkpoint para nao versionar mistura de superficies alheias. Arquivos untracked preexistentes de implementacao/testes preservados. Suite completa nao reexecutada: tarefa documental, sem mudanca no runtime da maquina.
 - English: Internal author-requested review found 13 issues and 4 central blockers. Read the paired review before further work. No manuscript edits, new synthesis, live Docs check or submission. Existing PASS artifacts do not establish scientific readiness.
+
+
+### [2026-11-03] Handoff: Codex -> proxima sessao
+- Projeto ativo: `projects/mandaqui-ifabp-programa-2026`, raiz canonica D:.
+- Modo: bootstrap, preparacao de protocolos; registro pending.
+- Entrega: programa de doutorado/mestrado e carteira C01-C30 classificada P/C/I, com pares PT/EN e revisao critica. Skill FAPESP/CNPq preservada e integrada em D:.
+- Verificacao: 417 passed, 1 skipped; auditoria de proveniencia das 269 skills PASS; auditar maquina apos checkpoint.
+- Limite: corpus-build BLOCK esperado; nenhum corpus formal/dado humano/resultado clinico/submissao.
+- Proximo passo: viabilidade local, laboratorio/custos, estimandos e registro final.
+- Arquivos externos ao escopo e originais de C: preservados; nao declarar worktree global limpo.

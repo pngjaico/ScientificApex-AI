@@ -60,6 +60,8 @@ LOCAL_CURATED_SKILLS = {
 
 
 def _source_for(name: str) -> tuple[dict[str, str], str, str, str]:
+    if name == "fapesp-cnpq-projects":
+        return ({"provider": "Article Machine curated layer", "url": LOCAL_URL}, "workspace-2026-11-03", "LicenseRef-Local-Private", "active")
     if name.startswith("tooluniverse-"):
         return ({"provider": "ToolUniverse", "url": TOOLUNIVERSE_URL}, TOOLUNIVERSE_REVISION, "NOASSERTION", "hold")
     if name in PLUGIN_BRIDGES:
@@ -105,6 +107,8 @@ def build_registry(skills_dir: Path = ROOT / "skills") -> dict:
         meta = _parse_frontmatter(skill_file)
         origin, revision, license_name, status = _source_for(name)
         dependencies, credentials, domains = _observed_contract_fields(skill_file)
+        if name == "fapesp-cnpq-projects":
+            dependencies = sorted(set(dependencies) | {"pyyaml"})
         entries[name] = {
             "name": name,
             "description": meta.get("description", ""),

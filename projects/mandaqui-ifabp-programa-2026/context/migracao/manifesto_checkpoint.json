@@ -1,0 +1,279 @@
+{
+  "generated_at": "2026-11-03T06:51:17.475061-03:00",
+  "parent_commit": "416250a795a47f088cc9850fc6718d674e9f2957",
+  "preservation": "Only explicit task paths; no raw data, secrets, control backups or unrelated untracked files.",
+  "files": [
+    {
+      "path": ".machine/handoff_sessao.json",
+      "sha256": "dd4d89e4a1fbd1d3fcc924e5fead506d4aca94570d67815c07aa5d2115faa747"
+    },
+    {
+      "path": "AGENT_MANIFEST.md",
+      "sha256": "857f04b0fefc135dea4fcfd4e3abcb7274b5c1c05611a55ff87ce83cbd84b823"
+    },
+    {
+      "path": "article_machine/agent_skills.py",
+      "sha256": "f400de47a51adb3c01e977323a6bb2b17317184634a3c2bf911fdcabaf6471e9"
+    },
+    {
+      "path": "docs/HANDOFF_ENTRE_AGENTES.md",
+      "sha256": "eab98644d213ba096f041069e8ffadf879e23bd81e5c29b3a88db56a91254b9f"
+    },
+    {
+      "path": "graphify-out/graph.html",
+      "sha256": "bfb267969cd0bffc382918988bcb26540e0531b5657c29edd16f3a40308a95aa"
+    },
+    {
+      "path": "graphify-out/graph.json",
+      "sha256": "5500e2f0213f438adb00f8460ddf83990637ddcd696b4d0d9dcc6adf588b91fe"
+    },
+    {
+      "path": "graphify-out/GRAPH_REPORT.md",
+      "sha256": "854c7e1d64992a71444cf67b782e3d7e3e7447c20ce80646d9effe8bb62540db"
+    },
+    {
+      "path": "projects/mandaqui-ifabp-programa-2026/analysis/idea_tournament_report.json",
+      "sha256": "cef2480d714ae680865c9123785871f2a1b1d3278acdc50232600ddcf2c3fb90"
+    },
+    {
+      "path": "projects/mandaqui-ifabp-programa-2026/analysis/preflight.json",
+      "sha256": "c0134f149201c84b315cc8cf0e9a78228dc6767644b32d9f415f78666248be98"
+    },
+    {
+      "path": "projects/mandaqui-ifabp-programa-2026/analysis/README.md",
+      "sha256": "4e3dbbb3dcfbc71fff4a225829cadfd537659882d13dba711c4cc09cbdefef7f"
+    },
+    {
+      "path": "projects/mandaqui-ifabp-programa-2026/compute.yaml",
+      "sha256": "2193221635ec29342523e722495d68e15aca56b003c43ed2f28c5c2231afc6f4"
+    },
+    {
+      "path": "projects/mandaqui-ifabp-programa-2026/context/ideas/idea_candidates.json",
+      "sha256": "bedfd815d34813a962a4dda252107e4a961ac8b08399a873cb7051d25489f993"
+    },
+    {
+      "path": "projects/mandaqui-ifabp-programa-2026/context/migracao/manifesto_backups.json",
+      "sha256": "b37538e2857b8dde691ec310c85ba75a70a8f25bf2a53dbd4043681740fd802e"
+    },
+    {
+      "path": "projects/mandaqui-ifabp-programa-2026/context/migracao/manifesto_copia.json",
+      "sha256": "7032c64348779ff1fb5c412d31611894db3992f806383e86c737b75f7cf69393"
+    },
+    {
+      "path": "projects/mandaqui-ifabp-programa-2026/context/planejamento/ingles/base_bibliografica_e_limites.md",
+      "sha256": "cecfa66122e39e815e9b423ad86327d4ce07f39c45e1e16002748aa1317c66c6"
+    },
+    {
+      "path": "projects/mandaqui-ifabp-programa-2026/context/planejamento/ingles/carteira_de_30_estudos.md",
+      "sha256": "1e5cca9b95baa62f7b7b0229cbc52bb33e27fee1a343d910b05035b6639d2204"
+    },
+    {
+      "path": "projects/mandaqui-ifabp-programa-2026/context/planejamento/ingles/leitura_do_torneio.md",
+      "sha256": "610e85c3530e91c346488ab1ec78448cf42b7dd0592b396a22f80f37505ab7c1"
+    },
+    {
+      "path": "projects/mandaqui-ifabp-programa-2026/context/planejamento/ingles/programa_de_pesquisa.md",
+      "sha256": "946c670fd549847912bba98fda8b5736b4dd5a9934c2eaab6b4b6ed3ce8e6514"
+    },
+    {
+      "path": "projects/mandaqui-ifabp-programa-2026/context/planejamento/ingles/revisao_critica_e_registro.md",
+      "sha256": "2673dfd00a77e794e4becbec1c8e83736ca4df3206f323810bb24aec19f5898b"
+    },
+    {
+      "path": "projects/mandaqui-ifabp-programa-2026/context/planejamento/ingles/validacao_e_handoff.md",
+      "sha256": "af947f78308bb39b5718930ec59e7f22e1e69a63fc0bb018a6756ab0285dee51"
+    },
+    {
+      "path": "projects/mandaqui-ifabp-programa-2026/context/planejamento/portugues/base_bibliografica_e_limites.md",
+      "sha256": "53ba5663d2c28fadf417791f4af3f89f53547a0ebdd1293030b96760dbe22ae8"
+    },
+    {
+      "path": "projects/mandaqui-ifabp-programa-2026/context/planejamento/portugues/carteira_de_30_estudos.md",
+      "sha256": "a3547140bc4d2079852702970a989fd795b64ab258eb8f628cade87b83d10875"
+    },
+    {
+      "path": "projects/mandaqui-ifabp-programa-2026/context/planejamento/portugues/leitura_do_torneio.md",
+      "sha256": "c32d3e4861cc09c3a20f865fe61bb57adadaf664cfdf51e412c433443140819f"
+    },
+    {
+      "path": "projects/mandaqui-ifabp-programa-2026/context/planejamento/portugues/programa_de_pesquisa.md",
+      "sha256": "db6c0f26e95e661a7231e4f4c635369149f91dd1e14a1a69528dcb9aaa94a28f"
+    },
+    {
+      "path": "projects/mandaqui-ifabp-programa-2026/context/planejamento/portugues/revisao_critica_e_registro.md",
+      "sha256": "2a67b86e3afc77aaee2c082092e7726a2a489d459c1e25a18be8d58b58f96d2b"
+    },
+    {
+      "path": "projects/mandaqui-ifabp-programa-2026/context/planejamento/portugues/validacao_e_handoff.md",
+      "sha256": "ae9b4d20a3a2115fff506be62c9b50074e7fb31906c5934d706eda72c778ed3b"
+    },
+    {
+      "path": "projects/mandaqui-ifabp-programa-2026/context/project_brief.md",
+      "sha256": "ff94bc7183f03f621d20757906ed3ae06581b2552444c452b3911dfdb9427792"
+    },
+    {
+      "path": "projects/mandaqui-ifabp-programa-2026/context/retrieval/query_validation_report.json",
+      "sha256": "99259ea0966c5de96d8374c54df3c1e6dc5ca37756b2dda3819918066f0e494b"
+    },
+    {
+      "path": "projects/mandaqui-ifabp-programa-2026/context/scientific_workflow_packet.md",
+      "sha256": "e9ac09740ec6f41c14ba1485a38635fc66d417b11ab0ff8738ecbb537cfda2e2"
+    },
+    {
+      "path": "projects/mandaqui-ifabp-programa-2026/context/scientific_workflow_plan.json",
+      "sha256": "0b2393984ac190a3c436fbafbe4f749b31a2bfbc4a0843539bbf6b11bda05c8d"
+    },
+    {
+      "path": "projects/mandaqui-ifabp-programa-2026/context/task_packets/2026-11-03T09-42-35-984049+00-00_bootstrap.json",
+      "sha256": "c9ddfdb54311762e937b467db467f98a743329fe7248ed705c991ed385722790"
+    },
+    {
+      "path": "projects/mandaqui-ifabp-programa-2026/context/task_packets/2026-11-03T09-48-58-520688+00-00_bootstrap.json",
+      "sha256": "7e60108f589e0b81536b46bf3009197754e5671a827a14662a70f77b0a88b11b"
+    },
+    {
+      "path": "projects/mandaqui-ifabp-programa-2026/context/task_packets/ACTIVE_MODE_GUIDE.md",
+      "sha256": "5ded1a18f703f61583c191f501a75a1b40a82bcd99d656e2fe18ac4c5b59685c"
+    },
+    {
+      "path": "projects/mandaqui-ifabp-programa-2026/drafts/manuscript.md",
+      "sha256": "d1618f1d5fba7122e4580e24d312cdf4baea9952960fbb2bf3173d7be5985e48"
+    },
+    {
+      "path": "projects/mandaqui-ifabp-programa-2026/drafts/references.bib",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "projects/mandaqui-ifabp-programa-2026/evidence/claim_map.jsonl",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "projects/mandaqui-ifabp-programa-2026/project.yaml",
+      "sha256": "04aa2253804e5904524362eba540958ee8f6f0f5d3171e232e6439d867e23518"
+    },
+    {
+      "path": "projects/mandaqui-ifabp-programa-2026/protocol.yaml",
+      "sha256": "6fa0fda64f2a36e24cceb1ee4a538e3d00b317f9ed29a9e435cb13f8930c64c6"
+    },
+    {
+      "path": "projects/mandaqui-ifabp-programa-2026/reviews/language_audit_en.json",
+      "sha256": "a4914311a9804685e467147826ecd2ffa147aa4b92ead10db761e301ff112068"
+    },
+    {
+      "path": "projects/mandaqui-ifabp-programa-2026/reviews/review_report.json",
+      "sha256": "0fd569fb080f051abdfe490e8a232a0c6280195a22c791f54168b02241e8008d"
+    },
+    {
+      "path": "projects/mandaqui-ifabp-programa-2026/reviews/stage_audit_report.json",
+      "sha256": "582ab90dcb9ca0b0b4818c959de2c58fbf57431c40de2c6c88d808a4edc9cb7c"
+    },
+    {
+      "path": "projects/mandaqui-ifabp-programa-2026/reviews/stage_gate_report_v2.json",
+      "sha256": "cd33ecd5c2a5c380b38118e271b8646f2194664f9c7b4488a3cc0c034bab9bad"
+    },
+    {
+      "path": "projects/mandaqui-ifabp-programa-2026/reviews/verificacao_entrega.json",
+      "sha256": "bda55331a70758e51c7c4c920963e24da5dea60566798a670b984471da0733e3"
+    },
+    {
+      "path": "projects/mandaqui-ifabp-programa-2026/scripts/checkpoint_entrega.py",
+      "sha256": "3494ff43172a4c452d17a6ae00ba7dcaafa0a79d13442ebdc9746cd89a3d4669"
+    },
+    {
+      "path": "projects/mandaqui-ifabp-programa-2026/scripts/preservar_skill_e_planejamento.py",
+      "sha256": "4cd04d9222d13f16bcb9838c20e818888e7d38bee6bb324eaf3a065777c08d14"
+    },
+    {
+      "path": "projects/mandaqui-ifabp-programa-2026/scripts/verificar_entrega.py",
+      "sha256": "d35d593fd135919e983db5b7134111510bf6375330e7df8f53c5adeae3e2bbce"
+    },
+    {
+      "path": "projects/mandaqui-ifabp-programa-2026/standards.yaml",
+      "sha256": "0d6a71cb4c7585cc89922607d6062fa47915c0168996022f29ba60dd80ca194e"
+    },
+    {
+      "path": "scripts/generate_skill_registry.py",
+      "sha256": "bdafe840a3715706016036920761890d12af92cc639cc4cb8ac0e29d09610771"
+    },
+    {
+      "path": "scripts/publish_workspace_skills.py",
+      "sha256": "d17042640818343bed5ccaff14ccd6a05f2a3791b69e310005cc490448a4fc98"
+    },
+    {
+      "path": "SKILL_INDEX.md",
+      "sha256": "a038e745588752ec60942d49b746118b5ed2a7c8b2ca25e202a1b6e48f51e0f5"
+    },
+    {
+      "path": "skills/fapesp-cnpq-projects/agents/openai.yaml",
+      "sha256": "57ec8216771f653afaa5edf78cf3ba035d868f91c530188cb3b8adbe947186bd"
+    },
+    {
+      "path": "skills/fapesp-cnpq-projects/assets/bolsa.md",
+      "sha256": "6e5b5fe16ff4c6f0ed32cc6e8f770da3a36fd36ef70bedbfa783c15455caa67b"
+    },
+    {
+      "path": "skills/fapesp-cnpq-projects/assets/budget.csv",
+      "sha256": "0af4b72833188b683a63a8eda43989896f68c9cd8890ce52d7f01a2dc0b4f765"
+    },
+    {
+      "path": "skills/fapesp-cnpq-projects/assets/cnpq-fields.md",
+      "sha256": "b3d482d4b563a509aaa615eb165bd4e625e1a94a1020ca860c01a1c921166889"
+    },
+    {
+      "path": "skills/fapesp-cnpq-projects/assets/data-management.md",
+      "sha256": "4e7c6b5955b66d47903f01ef3b759f8ee3e80c00102124a1539e157bdd9449ba"
+    },
+    {
+      "path": "skills/fapesp-cnpq-projects/assets/regular.md",
+      "sha256": "bebb58859f88d67066b16adf9f81d7e8fdefa6f5780b545f3b25a968a45fc013"
+    },
+    {
+      "path": "skills/fapesp-cnpq-projects/assets/requirements.yaml",
+      "sha256": "5b26284f55dab467fc4d879780486362c3e6cec5d3740cec0007135d12a25a56"
+    },
+    {
+      "path": "skills/fapesp-cnpq-projects/assets/timeline.csv",
+      "sha256": "9cef27c9fd3bd27e9a7c7d0d36f6d02751303a6a64b654b3fd4a5382f5567fd8"
+    },
+    {
+      "path": "skills/fapesp-cnpq-projects/references/cnpq.md",
+      "sha256": "d35b9d76b4c5b3bf7bebc6cb775e427a0dda937cc63d91240b8b8cf3de51343c"
+    },
+    {
+      "path": "skills/fapesp-cnpq-projects/references/fapesp.md",
+      "sha256": "48b89649162f72a4d06da080b02da99e262b1e4c9be31137c2bd5a13b01badd4"
+    },
+    {
+      "path": "skills/fapesp-cnpq-projects/references/review.md",
+      "sha256": "bab1d2fa48d43c1c737bca536d704b091984f914e74b6ba2ef53e0528f7dc9e1"
+    },
+    {
+      "path": "skills/fapesp-cnpq-projects/references/scientific-review.md",
+      "sha256": "7a268aa91051e92cc482d7b3df4a8adc19f1a829bf8572049799aba34bb20e89"
+    },
+    {
+      "path": "skills/fapesp-cnpq-projects/references/sources.md",
+      "sha256": "21da6e4f8481ca9ff6f5806399391268d228884cbc293de186f3bb5be608f539"
+    },
+    {
+      "path": "skills/fapesp-cnpq-projects/scripts/check_packet.py",
+      "sha256": "594db8929003b739f038d63730031b8ae25f30de67353b0095e701c20d3f650e"
+    },
+    {
+      "path": "skills/fapesp-cnpq-projects/SKILL.md",
+      "sha256": "1b75a0dd006c7509ded85706041465991c9c7717a2ab821af317da7d2bede4c6"
+    },
+    {
+      "path": "skills/registry.json",
+      "sha256": "9e44e3fb799da0f6122688ffe0e50f81a5dd8aed403117b98b40ae865a92e908"
+    },
+    {
+      "path": "SKILLS_CANON.md",
+      "sha256": "78a56be0c042fefdc0755d8363f5382ecdb79332ee5ed78809a3c1db0ca31742"
+    },
+    {
+      "path": "tests/test_fapesp_cnpq_skill.py",
+      "sha256": "5d28f5f54fb4bb302d1af09a7ad927e74d86cb206a4444fd9817154a388b9f02"
+    }
+  ]
+}

@@ -17,7 +17,7 @@ def publish(*, apply: bool = False) -> dict:
         name for name, entry in registry["skills"].items()
         if entry["status"] == "active" and (
             entry["origin"]["provider"] == "K-Dense AI"
-            or name in {"scientific-workflow-orchestrator", "bilingual-scientific-writing"}
+            or name in {"scientific-workflow-orchestrator", "bilingual-scientific-writing", "fapesp-cnpq-projects"}
         )
     }
     issues = []

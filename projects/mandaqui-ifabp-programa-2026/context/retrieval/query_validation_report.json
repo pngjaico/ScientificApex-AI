@@ -1,0 +1,11 @@
+{
+  "contract": "QueryPlanValidation",
+  "status": "block",
+  "project_dir": "projects\\mandaqui-ifabp-programa-2026",
+  "query_plan_path": "projects\\mandaqui-ifabp-programa-2026\\context\\query_plan.yaml",
+  "providers": [],
+  "issues": [
+    "context/query_plan.yaml is missing."
+  ],
+  "warnings": []
+}

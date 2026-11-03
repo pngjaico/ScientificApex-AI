@@ -1,0 +1,47 @@
+[
+  {
+    "path": "article_machine/agent_skills.py",
+    "sha256_before": "6ef4669be8d26f73a9605f4816038b61a12cd6833622efdcf64dd7aa9366eb25",
+    "backup": "context\\migracao\\backup_controle\\article_machine\\agent_skills.py"
+  },
+  {
+    "path": "scripts/generate_skill_registry.py",
+    "sha256_before": "0dd7f0ddd9795d10a5e69c1be5d24a0a4ac127c14bf7fff2121cb2fb33e91713",
+    "backup": "context\\migracao\\backup_controle\\scripts\\generate_skill_registry.py"
+  },
+  {
+    "path": "scripts/publish_workspace_skills.py",
+    "sha256_before": "67ed90618ff1110cc53ae33958d2d8b66bb5d8f775a72a8e23eaef5e0430bc93",
+    "backup": "context\\migracao\\backup_controle\\scripts\\publish_workspace_skills.py"
+  },
+  {
+    "path": "skills/registry.json",
+    "sha256_before": "63f4d17100b57f124ab22c6d5052cce28972328201cb7a43f609ecf274935889",
+    "backup": "context\\migracao\\backup_controle\\skills\\registry.json"
+  },
+  {
+    "path": "SKILL_INDEX.md",
+    "sha256_before": "fe2d5e65bf219e8194b4f202a17672d84cafc16ef88f07b529c7de9b696a8806",
+    "backup": "context\\migracao\\backup_controle\\SKILL_INDEX.md"
+  },
+  {
+    "path": "SKILLS_CANON.md",
+    "sha256_before": "87d6d96bd87235ffcc5edbed03858712b813d698c50c049be79d0c544bdb8e5c",
+    "backup": "context\\migracao\\backup_controle\\SKILLS_CANON.md"
+  },
+  {
+    "path": "AGENT_MANIFEST.md",
+    "sha256_before": "b408b9688288517225979d3dee6a35549860f603142b2690078a9c7e4847a9b4",
+    "backup": "context\\migracao\\backup_controle\\AGENT_MANIFEST.md"
+  },
+  {
+    "path": ".machine/handoff_sessao.json",
+    "sha256_before": "83ee77cb7994381a98b84df76339528e265ecddff381cd6430677a0ed62017a5",
+    "backup": "context\\migracao\\backup_controle\\.machine\\handoff_sessao.json"
+  },
+  {
+    "path": "docs/HANDOFF_ENTRE_AGENTES.md",
+    "sha256_before": "8110757fe38223731fd5ae147319348d2fcec6501777ebc23db998d82f3fde48",
+    "backup": "context\\migracao\\backup_controle\\docs\\HANDOFF_ENTRE_AGENTES.md"
+  }
+]

@@ -1,0 +1,126 @@
+{
+  "generated_at": "2026-11-03T09:39:54.301365+00:00",
+  "authorization": "User explicitly directed current work to canonical D workspace",
+  "scope": "new skill, software test, planning hypotheses only; no raw clinical data or formal scientific corpus",
+  "files": [
+    {
+      "source": "C:\\Users\\Usuario-pc\\Desktop\\Doutorado\\skills\\fapesp-cnpq-projects\\agents\\openai.yaml",
+      "destination": "D:\\Usuario-pc\\Projetos\\Doutorado\\skills\\fapesp-cnpq-projects\\agents\\openai.yaml",
+      "sha256": "57ec8216771f653afaa5edf78cf3ba035d868f91c530188cb3b8adbe947186bd",
+      "action": "copy-new-or-verify-identical",
+      "rollback": "Original in C remains unchanged; no deletion needed."
+    },
+    {
+      "source": "C:\\Users\\Usuario-pc\\Desktop\\Doutorado\\skills\\fapesp-cnpq-projects\\assets\\bolsa.md",
+      "destination": "D:\\Usuario-pc\\Projetos\\Doutorado\\skills\\fapesp-cnpq-projects\\assets\\bolsa.md",
+      "sha256": "6e5b5fe16ff4c6f0ed32cc6e8f770da3a36fd36ef70bedbfa783c15455caa67b",
+      "action": "copy-new-or-verify-identical",
+      "rollback": "Original in C remains unchanged; no deletion needed."
+    },
+    {
+      "source": "C:\\Users\\Usuario-pc\\Desktop\\Doutorado\\skills\\fapesp-cnpq-projects\\assets\\budget.csv",
+      "destination": "D:\\Usuario-pc\\Projetos\\Doutorado\\skills\\fapesp-cnpq-projects\\assets\\budget.csv",
+      "sha256": "0af4b72833188b683a63a8eda43989896f68c9cd8890ce52d7f01a2dc0b4f765",
+      "action": "copy-new-or-verify-identical",
+      "rollback": "Original in C remains unchanged; no deletion needed."
+    },
+    {
+      "source": "C:\\Users\\Usuario-pc\\Desktop\\Doutorado\\skills\\fapesp-cnpq-projects\\assets\\cnpq-fields.md",
+      "destination": "D:\\Usuario-pc\\Projetos\\Doutorado\\skills\\fapesp-cnpq-projects\\assets\\cnpq-fields.md",
+      "sha256": "b3d482d4b563a509aaa615eb165bd4e625e1a94a1020ca860c01a1c921166889",
+      "action": "copy-new-or-verify-identical",
+      "rollback": "Original in C remains unchanged; no deletion needed."
+    },
+    {
+      "source": "C:\\Users\\Usuario-pc\\Desktop\\Doutorado\\skills\\fapesp-cnpq-projects\\assets\\data-management.md",
+      "destination": "D:\\Usuario-pc\\Projetos\\Doutorado\\skills\\fapesp-cnpq-projects\\assets\\data-management.md",
+      "sha256": "4e7c6b5955b66d47903f01ef3b759f8ee3e80c00102124a1539e157bdd9449ba",
+      "action": "copy-new-or-verify-identical",
+      "rollback": "Original in C remains unchanged; no deletion needed."
+    },
+    {
+      "source": "C:\\Users\\Usuario-pc\\Desktop\\Doutorado\\skills\\fapesp-cnpq-projects\\assets\\regular.md",
+      "destination": "D:\\Usuario-pc\\Projetos\\Doutorado\\skills\\fapesp-cnpq-projects\\assets\\regular.md",
+      "sha256": "bebb58859f88d67066b16adf9f81d7e8fdefa6f5780b545f3b25a968a45fc013",
+      "action": "copy-new-or-verify-identical",
+      "rollback": "Original in C remains unchanged; no deletion needed."
+    },
+    {
+      "source": "C:\\Users\\Usuario-pc\\Desktop\\Doutorado\\skills\\fapesp-cnpq-projects\\assets\\requirements.yaml",
+      "destination": "D:\\Usuario-pc\\Projetos\\Doutorado\\skills\\fapesp-cnpq-projects\\assets\\requirements.yaml",
+      "sha256": "5b26284f55dab467fc4d879780486362c3e6cec5d3740cec0007135d12a25a56",
+      "action": "copy-new-or-verify-identical",
+      "rollback": "Original in C remains unchanged; no deletion needed."
+    },
+    {
+      "source": "C:\\Users\\Usuario-pc\\Desktop\\Doutorado\\skills\\fapesp-cnpq-projects\\assets\\timeline.csv",
+      "destination": "D:\\Usuario-pc\\Projetos\\Doutorado\\skills\\fapesp-cnpq-projects\\assets\\timeline.csv",
+      "sha256": "9cef27c9fd3bd27e9a7c7d0d36f6d02751303a6a64b654b3fd4a5382f5567fd8",
+      "action": "copy-new-or-verify-identical",
+      "rollback": "Original in C remains unchanged; no deletion needed."
+    },
+    {
+      "source": "C:\\Users\\Usuario-pc\\Desktop\\Doutorado\\skills\\fapesp-cnpq-projects\\references\\cnpq.md",
+      "destination": "D:\\Usuario-pc\\Projetos\\Doutorado\\skills\\fapesp-cnpq-projects\\references\\cnpq.md",
+      "sha256": "d35b9d76b4c5b3bf7bebc6cb775e427a0dda937cc63d91240b8b8cf3de51343c",
+      "action": "copy-new-or-verify-identical",
+      "rollback": "Original in C remains unchanged; no deletion needed."
+    },
+    {
+      "source": "C:\\Users\\Usuario-pc\\Desktop\\Doutorado\\skills\\fapesp-cnpq-projects\\references\\fapesp.md",
+      "destination": "D:\\Usuario-pc\\Projetos\\Doutorado\\skills\\fapesp-cnpq-projects\\references\\fapesp.md",
+      "sha256": "48b89649162f72a4d06da080b02da99e262b1e4c9be31137c2bd5a13b01badd4",
+      "action": "copy-new-or-verify-identical",
+      "rollback": "Original in C remains unchanged; no deletion needed."
+    },
+    {
+      "source": "C:\\Users\\Usuario-pc\\Desktop\\Doutorado\\skills\\fapesp-cnpq-projects\\references\\review.md",
+      "destination": "D:\\Usuario-pc\\Projetos\\Doutorado\\skills\\fapesp-cnpq-projects\\references\\review.md",
+      "sha256": "bab1d2fa48d43c1c737bca536d704b091984f914e74b6ba2ef53e0528f7dc9e1",
+      "action": "copy-new-or-verify-identical",
+      "rollback": "Original in C remains unchanged; no deletion needed."
+    },
+    {
+      "source": "C:\\Users\\Usuario-pc\\Desktop\\Doutorado\\skills\\fapesp-cnpq-projects\\references\\scientific-review.md",
+      "destination": "D:\\Usuario-pc\\Projetos\\Doutorado\\skills\\fapesp-cnpq-projects\\references\\scientific-review.md",
+      "sha256": "7a268aa91051e92cc482d7b3df4a8adc19f1a829bf8572049799aba34bb20e89",
+      "action": "copy-new-or-verify-identical",
+      "rollback": "Original in C remains unchanged; no deletion needed."
+    },
+    {
+      "source": "C:\\Users\\Usuario-pc\\Desktop\\Doutorado\\skills\\fapesp-cnpq-projects\\references\\sources.md",
+      "destination": "D:\\Usuario-pc\\Projetos\\Doutorado\\skills\\fapesp-cnpq-projects\\references\\sources.md",
+      "sha256": "21da6e4f8481ca9ff6f5806399391268d228884cbc293de186f3bb5be608f539",
+      "action": "copy-new-or-verify-identical",
+      "rollback": "Original in C remains unchanged; no deletion needed."
+    },
+    {
+      "source": "C:\\Users\\Usuario-pc\\Desktop\\Doutorado\\skills\\fapesp-cnpq-projects\\scripts\\check_packet.py",
+      "destination": "D:\\Usuario-pc\\Projetos\\Doutorado\\skills\\fapesp-cnpq-projects\\scripts\\check_packet.py",
+      "sha256": "594db8929003b739f038d63730031b8ae25f30de67353b0095e701c20d3f650e",
+      "action": "copy-new-or-verify-identical",
+      "rollback": "Original in C remains unchanged; no deletion needed."
+    },
+    {
+      "source": "C:\\Users\\Usuario-pc\\Desktop\\Doutorado\\skills\\fapesp-cnpq-projects\\SKILL.md",
+      "destination": "D:\\Usuario-pc\\Projetos\\Doutorado\\skills\\fapesp-cnpq-projects\\SKILL.md",
+      "sha256": "d54fe9e444abda928871459462547a852933762835f05f7153637f8fe8cc328a",
+      "action": "copy-new-or-verify-identical",
+      "rollback": "Original in C remains unchanged; no deletion needed."
+    },
+    {
+      "source": "C:\\Users\\Usuario-pc\\Desktop\\Doutorado\\tests\\test_fapesp_cnpq_skill.py",
+      "destination": "D:\\Usuario-pc\\Projetos\\Doutorado\\tests\\test_fapesp_cnpq_skill.py",
+      "sha256": "5d28f5f54fb4bb302d1af09a7ad927e74d86cb206a4444fd9817154a388b9f02",
+      "action": "copy-new-or-verify-identical",
+      "rollback": "Original in C remains unchanged; no deletion needed."
+    },
+    {
+      "source": "C:\\Users\\Usuario-pc\\Desktop\\Doutorado\\projects\\mandaqui-ifabp-research-line-2026\\context\\ideas\\idea_candidates.json",
+      "destination": "D:\\Usuario-pc\\Projetos\\Doutorado\\projects\\mandaqui-ifabp-programa-2026\\context\\ideas\\idea_candidates.json",
+      "sha256": "bedfd815d34813a962a4dda252107e4a961ac8b08399a873cb7051d25489f993",
+      "action": "copy-new-or-verify-identical",
+      "rollback": "Original in C remains unchanged; no deletion needed."
+    }
+  ]
+}

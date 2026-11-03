@@ -110,6 +110,7 @@ Este manifesto define como qualquer agente deve operar esta máquina científica
 - `evidence-lock-hardener` (active)
 - `experimental-design-planner` (active)
 - `extraction-schema-governor` (active)
+- `fapesp-cnpq-projects` (active)
 - `grade-sof-table-builder` (active)
 - `guideline-router` (active)
 - `hypothesis-tournament` (active)

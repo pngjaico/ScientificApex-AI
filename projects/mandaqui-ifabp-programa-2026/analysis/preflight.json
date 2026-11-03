@@ -1,0 +1,102 @@
+{
+  "contract": "PreflightReportV2",
+  "status": "passed",
+  "project_dir": "projects\\mandaqui-ifabp-programa-2026",
+  "checks": {
+    "project.yaml": {
+      "status": "pass",
+      "issues": []
+    },
+    "protocol.yaml": {
+      "status": "pass",
+      "issues": []
+    },
+    "standards.yaml": {
+      "status": "pass",
+      "issues": []
+    },
+    "compute.yaml": {
+      "status": "pass",
+      "issues": []
+    },
+    "python": {
+      "contract": "EnvironmentCheckV2",
+      "status": "passed",
+      "runtime": "python",
+      "required": true,
+      "runner": ".venv/Scripts/python.exe",
+      "executable": "D:\\Usuario-pc\\Projetos\\Doutorado\\.venv\\Scripts\\python.exe",
+      "expected_version": "3.13",
+      "detected_version": "3.13.5",
+      "package_manager": "uv",
+      "expected_package_manager_version": "0.11.31",
+      "detected_package_manager_version": "0.11.31",
+      "browser_cache": null,
+      "browser_installed": null,
+      "lockfile": "D:\\Usuario-pc\\Projetos\\Doutorado\\uv.lock",
+      "lockfile_present": true,
+      "timeout_seconds": 600,
+      "allowed_directories": [
+        "analysis",
+        "scripts"
+      ],
+      "issues": [],
+      "checked_at": "2026-11-03T09:45:49.629890+00:00"
+    },
+    "r": {
+      "contract": "EnvironmentCheckV2",
+      "status": "passed",
+      "runtime": "r",
+      "required": false,
+      "runner": "Rscript",
+      "executable": "C:\\Program Files\\R\\R-4.5.0\\bin\\x64\\Rscript.EXE",
+      "expected_version": "4.6",
+      "detected_version": "4.5.0",
+      "package_manager": "renv",
+      "expected_package_manager_version": "1.3.1",
+      "detected_package_manager_version": null,
+      "browser_cache": null,
+      "browser_installed": null,
+      "lockfile": null,
+      "lockfile_present": false,
+      "timeout_seconds": 900,
+      "allowed_directories": [
+        "analysis",
+        "scripts"
+      ],
+      "issues": [],
+      "checked_at": "2026-11-03T09:45:50.288395+00:00"
+    },
+    "browser": {
+      "contract": "EnvironmentCheckV2",
+      "status": "passed",
+      "runtime": "browser",
+      "required": false,
+      "runner": "tools/playwright/node_modules/.bin/playwright.cmd",
+      "executable": "D:\\Usuario-pc\\Projetos\\Doutorado\\tools\\playwright\\node_modules\\.bin\\playwright.cmd",
+      "expected_version": "1.61.1",
+      "detected_version": "1.61.1",
+      "package_manager": "npm",
+      "expected_package_manager_version": "11.17.0",
+      "detected_package_manager_version": "11.17.0",
+      "browser_cache": "D:\\Usuario-pc\\Projetos\\Doutorado\\tools\\playwright\\.playwright",
+      "browser_installed": false,
+      "lockfile": null,
+      "lockfile_present": false,
+      "timeout_seconds": 180,
+      "allowed_directories": [
+        "analysis",
+        "scripts"
+      ],
+      "issues": [],
+      "checked_at": "2026-11-03T09:45:53.649256+00:00"
+    },
+    "plugins": {
+      "status": "pass",
+      "required": [],
+      "missing": []
+    }
+  },
+  "issues": [],
+  "checked_at": "2026-11-03T09:45:53.649336+00:00"
+}

@@ -40,6 +40,7 @@ WORLD_CLASS_SKILLS: tuple[str, ...] = (
     "anti-ai-writing-governor",
     "manuscript-integrity-response-governor",
     "academic-office-deliverables",
+    "fapesp-cnpq-projects",
     "deep-thinking-governor",
     "zotero-reference-manager",
     "life-science-router",
@@ -78,6 +79,11 @@ WORLD_CLASS_SKILLS: tuple[str, ...] = (
 
 
 ROUTE_RULES: tuple[dict[str, Any], ...] = (
+    {
+        "skill": "fapesp-cnpq-projects",
+        "triggers": ("fapesp", "cnpq", "projeto de fomento", "proposta de fomento", "bolsa de mestrado", "bolsa de doutorado", "auxilio regular", "sumula curricular"),
+        "reason": "Draft Brazilian funding proposals against the actual modality/call, verified registration policy, traceable requirements and feasibility.",
+    },
     {
         "skill": "catalogos-cientificos-sob-demanda",
         "triggers": ("catalogos cientificos", "catálogos científicos", "scientific skill catalogs", "DenDen047",

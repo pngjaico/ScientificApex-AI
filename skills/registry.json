@@ -9918,6 +9918,46 @@
       "required_for_clone": true,
       "next_review": "2027-01-12",
       "license_note": "Private workspace use; redistribution rights for inherited content require separate review."
+    },
+    "fapesp-cnpq-projects": {
+      "name": "fapesp-cnpq-projects",
+      "description": "Use when drafting, adapting or critically reviewing FAPESP or CNPq research proposals, postgraduate scholarship projects, budgets, data management plans, curricular summaries or responses to funding reviewers in Brazil.",
+      "origin": {
+        "provider": "Article Machine curated layer",
+        "url": "local://doutorado/article-machine"
+      },
+      "pinned_revision": "workspace-2026-11-03",
+      "license": "LicenseRef-Local-Private",
+      "tree_hash": "sha256:58b6d4a4bc5059ce65a4812fbf78c56fcf9a0ccd385782d44c39a3c842dde791",
+      "dependencies": [
+        "pyyaml"
+      ],
+      "credentials": [],
+      "network_domains": [
+        "fapesp.br",
+        "www.gov.br"
+      ],
+      "human_data_policy": "no-upload-without-explicit-permission",
+      "routes": {
+        "positive": [
+          "auxilio regular",
+          "bolsa de doutorado",
+          "bolsa de mestrado",
+          "cnpq",
+          "fapesp",
+          "projeto de fomento",
+          "proposta de fomento",
+          "sumula curricular"
+        ],
+        "negative": [
+          "unrelated request without an explicit capability trigger"
+        ]
+      },
+      "artifact_destination": "context/ or evidence/ as defined by the active project",
+      "status": "active",
+      "required_for_clone": true,
+      "next_review": "2027-01-12",
+      "license_note": "Private workspace use; redistribution rights for inherited content require separate review."
     }
   }
 }

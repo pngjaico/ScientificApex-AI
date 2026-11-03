@@ -9157,7 +9157,7 @@
     },
     {
       "operational_id": "project_artifact_gastrosp_gold_nma_biomarkers_reviews",
-      "label": "GastroSP_Gold_NMA_Biomarkers/reviews (2 direct items)",
+      "label": "GastroSP_Gold_NMA_Biomarkers/reviews (3 direct items)",
       "file_type": "document",
       "source_file": "projects/GastroSP_Gold_NMA_Biomarkers/reviews",
       "source_location": null,
@@ -9166,10 +9166,10 @@
       "author": null,
       "contributor": null,
       "artifact_purpose": "review reports and red-team notes",
-      "direct_child_count": 2,
+      "direct_child_count": 3,
       "id": "project_artifact_gastrosp_gold_nma_biomarkers_reviews",
       "community": 2,
-      "norm_label": "gastrosp_gold_nma_biomarkers/reviews (2 direct items)"
+      "norm_label": "gastrosp_gold_nma_biomarkers/reviews (3 direct items)"
     },
     {
       "operational_id": "project_artifact_gastrosp_gold_nma_biomarkers_figures",
@@ -10278,6 +10278,204 @@
       "norm_label": "liver-perfusion-hope-vs-nmp-nma-2027/deliverables (0 direct items)"
     },
     {
+      "operational_id": "project_mandaqui_ifabp_programa_2026",
+      "label": "Mandaqui IFABP Programa 2026",
+      "file_type": "document",
+      "source_file": "projects/mandaqui-ifabp-programa-2026/project.yaml",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "projects_mandaqui_ifabp_programa_2026_project_mandaqui_ifabp_programa_2026",
+      "community": 2,
+      "norm_label": "mandaqui ifabp programa 2026"
+    },
+    {
+      "operational_id": "project_contract_mandaqui_ifabp_programa_2026_project_yaml",
+      "label": "mandaqui-ifabp-programa-2026/project.yaml",
+      "file_type": "document",
+      "source_file": "projects/mandaqui-ifabp-programa-2026/project.yaml",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "projects_mandaqui_ifabp_programa_2026_project_contract_mandaqui_ifabp_programa_2026_project_yaml",
+      "community": 2,
+      "norm_label": "mandaqui-ifabp-programa-2026/project.yaml"
+    },
+    {
+      "operational_id": "project_contract_mandaqui_ifabp_programa_2026_protocol_yaml",
+      "label": "mandaqui-ifabp-programa-2026/protocol.yaml",
+      "file_type": "document",
+      "source_file": "projects/mandaqui-ifabp-programa-2026/protocol.yaml",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "project_contract_mandaqui_ifabp_programa_2026_protocol_yaml",
+      "community": 2,
+      "norm_label": "mandaqui-ifabp-programa-2026/protocol.yaml"
+    },
+    {
+      "operational_id": "project_contract_mandaqui_ifabp_programa_2026_standards_yaml",
+      "label": "mandaqui-ifabp-programa-2026/standards.yaml",
+      "file_type": "document",
+      "source_file": "projects/mandaqui-ifabp-programa-2026/standards.yaml",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "project_contract_mandaqui_ifabp_programa_2026_standards_yaml",
+      "community": 2,
+      "norm_label": "mandaqui-ifabp-programa-2026/standards.yaml"
+    },
+    {
+      "operational_id": "project_contract_mandaqui_ifabp_programa_2026_compute_yaml",
+      "label": "mandaqui-ifabp-programa-2026/compute.yaml",
+      "file_type": "document",
+      "source_file": "projects/mandaqui-ifabp-programa-2026/compute.yaml",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "project_contract_mandaqui_ifabp_programa_2026_compute_yaml",
+      "community": 2,
+      "norm_label": "mandaqui-ifabp-programa-2026/compute.yaml"
+    },
+    {
+      "operational_id": "project_artifact_mandaqui_ifabp_programa_2026_sources",
+      "label": "mandaqui-ifabp-programa-2026/sources (2 direct items)",
+      "file_type": "document",
+      "source_file": "projects/mandaqui-ifabp-programa-2026/sources",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "artifact_purpose": "source registry and raw/converted intake",
+      "direct_child_count": 2,
+      "id": "project_artifact_mandaqui_ifabp_programa_2026_sources",
+      "community": 2,
+      "norm_label": "mandaqui-ifabp-programa-2026/sources (2 direct items)"
+    },
+    {
+      "operational_id": "project_artifact_mandaqui_ifabp_programa_2026_context",
+      "label": "mandaqui-ifabp-programa-2026/context (9 direct items)",
+      "file_type": "document",
+      "source_file": "projects/mandaqui-ifabp-programa-2026/context",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "artifact_purpose": "briefs, retrieval plans, and task packets",
+      "direct_child_count": 9,
+      "id": "project_artifact_mandaqui_ifabp_programa_2026_context",
+      "community": 2,
+      "norm_label": "mandaqui-ifabp-programa-2026/context (9 direct items)"
+    },
+    {
+      "operational_id": "project_artifact_mandaqui_ifabp_programa_2026_evidence",
+      "label": "mandaqui-ifabp-programa-2026/evidence (2 direct items)",
+      "file_type": "document",
+      "source_file": "projects/mandaqui-ifabp-programa-2026/evidence",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "artifact_purpose": "claim maps and evidence locks",
+      "direct_child_count": 2,
+      "id": "project_artifact_mandaqui_ifabp_programa_2026_evidence",
+      "community": 2,
+      "norm_label": "mandaqui-ifabp-programa-2026/evidence (2 direct items)"
+    },
+    {
+      "operational_id": "project_artifact_mandaqui_ifabp_programa_2026_analysis",
+      "label": "mandaqui-ifabp-programa-2026/analysis (3 direct items)",
+      "file_type": "document",
+      "source_file": "projects/mandaqui-ifabp-programa-2026/analysis",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "artifact_purpose": "analysis outputs and run envelopes",
+      "direct_child_count": 3,
+      "id": "project_artifact_mandaqui_ifabp_programa_2026_analysis",
+      "community": 2,
+      "norm_label": "mandaqui-ifabp-programa-2026/analysis (3 direct items)"
+    },
+    {
+      "operational_id": "project_artifact_mandaqui_ifabp_programa_2026_drafts",
+      "label": "mandaqui-ifabp-programa-2026/drafts (3 direct items)",
+      "file_type": "document",
+      "source_file": "projects/mandaqui-ifabp-programa-2026/drafts",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "artifact_purpose": "manuscripts and references",
+      "direct_child_count": 3,
+      "id": "project_artifact_mandaqui_ifabp_programa_2026_drafts",
+      "community": 2,
+      "norm_label": "mandaqui-ifabp-programa-2026/drafts (3 direct items)"
+    },
+    {
+      "operational_id": "project_artifact_mandaqui_ifabp_programa_2026_reviews",
+      "label": "mandaqui-ifabp-programa-2026/reviews (5 direct items)",
+      "file_type": "document",
+      "source_file": "projects/mandaqui-ifabp-programa-2026/reviews",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "artifact_purpose": "review reports and red-team notes",
+      "direct_child_count": 5,
+      "id": "project_artifact_mandaqui_ifabp_programa_2026_reviews",
+      "community": 2,
+      "norm_label": "mandaqui-ifabp-programa-2026/reviews (5 direct items)"
+    },
+    {
+      "operational_id": "project_artifact_mandaqui_ifabp_programa_2026_figures",
+      "label": "mandaqui-ifabp-programa-2026/figures (0 direct items)",
+      "file_type": "document",
+      "source_file": "projects/mandaqui-ifabp-programa-2026/figures",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "artifact_purpose": "figures and visual assets",
+      "direct_child_count": 0,
+      "id": "project_artifact_mandaqui_ifabp_programa_2026_figures",
+      "community": 2,
+      "norm_label": "mandaqui-ifabp-programa-2026/figures (0 direct items)"
+    },
+    {
+      "operational_id": "project_artifact_mandaqui_ifabp_programa_2026_deliverables",
+      "label": "mandaqui-ifabp-programa-2026/deliverables (0 direct items)",
+      "file_type": "document",
+      "source_file": "projects/mandaqui-ifabp-programa-2026/deliverables",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "artifact_purpose": "conference decks posters and submission packs",
+      "direct_child_count": 0,
+      "id": "project_artifact_mandaqui_ifabp_programa_2026_deliverables",
+      "community": 2,
+      "norm_label": "mandaqui-ifabp-programa-2026/deliverables (0 direct items)"
+    },
+    {
       "operational_id": "project_nma_osa_vpi",
       "label": "NMA_OSA_VPI SIICUSP corrected package",
       "file_type": "document",
@@ -10443,7 +10641,7 @@
     },
     {
       "operational_id": "project_artifact_nma_osa_vpi_reviews",
-      "label": "NMA_OSA_VPI/reviews (9 direct items)",
+      "label": "NMA_OSA_VPI/reviews (11 direct items)",
       "file_type": "document",
       "source_file": "projects/NMA_OSA_VPI/reviews",
       "source_location": null,
@@ -10452,10 +10650,10 @@
       "author": null,
       "contributor": null,
       "artifact_purpose": "review reports and red-team notes",
-      "direct_child_count": 9,
+      "direct_child_count": 11,
       "id": "project_artifact_nma_osa_vpi_reviews",
       "community": 2,
-      "norm_label": "nma_osa_vpi/reviews (9 direct items)"
+      "norm_label": "nma_osa_vpi/reviews (11 direct items)"
     },
     {
       "operational_id": "project_artifact_nma_osa_vpi_figures",
@@ -14233,6 +14431,80 @@
       "id": "skills_academic_office_deliverables_skill_section_academic_office_deliverables_7_artifact_destinations",
       "community": 3,
       "norm_label": "academic-office-deliverables :: artifact destinations"
+    },
+    {
+      "operational_id": "skill_fapesp_cnpq_projects",
+      "label": "fapesp-cnpq-projects",
+      "file_type": "document",
+      "source_file": "skills/fapesp-cnpq-projects/SKILL.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "skills_fapesp_cnpq_projects_skill_fapesp_cnpq_projects",
+      "community": 3,
+      "norm_label": "fapesp-cnpq-projects"
+    },
+    {
+      "operational_id": "skill_section_fapesp_cnpq_projects_1_projetos_fapesp_e_cnpq",
+      "label": "fapesp-cnpq-projects :: Projetos FAPESP e CNPq",
+      "file_type": "document",
+      "source_file": "skills/fapesp-cnpq-projects/SKILL.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "section_level": 1,
+      "id": "skills_fapesp_cnpq_projects_skill_section_fapesp_cnpq_projects_1_projetos_fapesp_e_cnpq",
+      "community": 3,
+      "norm_label": "fapesp-cnpq-projects :: projetos fapesp e cnpq"
+    },
+    {
+      "operational_id": "skill_section_fapesp_cnpq_projects_2_entrada_e_selecao",
+      "label": "fapesp-cnpq-projects :: Entrada e sele\u00e7\u00e3o",
+      "file_type": "document",
+      "source_file": "skills/fapesp-cnpq-projects/SKILL.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "section_level": 2,
+      "id": "skills_fapesp_cnpq_projects_skill_section_fapesp_cnpq_projects_2_entrada_e_selecao",
+      "community": 3,
+      "norm_label": "fapesp-cnpq-projects :: entrada e selecao"
+    },
+    {
+      "operational_id": "skill_section_fapesp_cnpq_projects_3_escrita_e_adaptacao",
+      "label": "fapesp-cnpq-projects :: Escrita e adapta\u00e7\u00e3o",
+      "file_type": "document",
+      "source_file": "skills/fapesp-cnpq-projects/SKILL.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "section_level": 2,
+      "id": "skills_fapesp_cnpq_projects_skill_section_fapesp_cnpq_projects_3_escrita_e_adaptacao",
+      "community": 3,
+      "norm_label": "fapesp-cnpq-projects :: escrita e adaptacao"
+    },
+    {
+      "operational_id": "skill_section_fapesp_cnpq_projects_4_integridade_e_revisao",
+      "label": "fapesp-cnpq-projects :: Integridade e revis\u00e3o",
+      "file_type": "document",
+      "source_file": "skills/fapesp-cnpq-projects/SKILL.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "section_level": 2,
+      "id": "skills_fapesp_cnpq_projects_skill_section_fapesp_cnpq_projects_4_integridade_e_revisao",
+      "community": 3,
+      "norm_label": "fapesp-cnpq-projects :: integridade e revisao"
     },
     {
       "operational_id": "skill_skill_upgrade_governor",
@@ -22097,6 +22369,16 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
+      "source_file": "projects/mandaqui-ifabp-programa-2026/project.yaml",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "hub_projects",
+      "target": "projects_mandaqui_ifabp_programa_2026_project_mandaqui_ifabp_programa_2026"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
       "source_file": "projects/NMA_OSA_VPI/project.yaml",
       "source_location": null,
       "weight": 1.0,
@@ -22452,6 +22734,16 @@
       "weight": 1.0,
       "source": "hub_skills",
       "target": "skills_extraction_schema_governor_skill_extraction_schema_governor"
+    },
+    {
+      "relation": "routes_to",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "skills/fapesp-cnpq-projects/SKILL.md",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "hub_skills",
+      "target": "skills_fapesp_cnpq_projects_skill_fapesp_cnpq_projects"
     },
     {
       "relation": "routes_to",
@@ -26801,6 +27093,16 @@
       "source_location": null,
       "weight": 0.8,
       "source": "doc_skill_index_md",
+      "target": "skills_fapesp_cnpq_projects_skill_fapesp_cnpq_projects"
+    },
+    {
+      "relation": "references",
+      "confidence": "INFERRED",
+      "confidence_score": 0.75,
+      "source_file": "SKILL_INDEX.md",
+      "source_location": null,
+      "weight": 0.8,
+      "source": "doc_skill_index_md",
       "target": "skills_grade_sof_table_builder_skill_grade_sof_table_builder"
     },
     {
@@ -30787,6 +31089,36 @@
       "relation": "satisfies_entry_check",
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
+      "source_file": "projects/mandaqui-ifabp-programa-2026/compute.yaml",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "project_contract_mandaqui_ifabp_programa_2026_compute_yaml",
+      "target": "flow_project_contract"
+    },
+    {
+      "relation": "satisfies_entry_check",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "projects/mandaqui-ifabp-programa-2026/protocol.yaml",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "project_contract_mandaqui_ifabp_programa_2026_protocol_yaml",
+      "target": "flow_project_contract"
+    },
+    {
+      "relation": "satisfies_entry_check",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "projects/mandaqui-ifabp-programa-2026/standards.yaml",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "project_contract_mandaqui_ifabp_programa_2026_standards_yaml",
+      "target": "flow_project_contract"
+    },
+    {
+      "relation": "satisfies_entry_check",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
       "source_file": "projects/NMA_OSA_VPI/compute.yaml",
       "source_location": null,
       "weight": 1.0,
@@ -31071,6 +31403,16 @@
       "source_location": null,
       "weight": 1.0,
       "source": "projects_liver_perfusion_hope_vs_nmp_nma_2027_project_contract_liver_perfusion_hope_vs_nmp_nma_2027_project_yaml",
+      "target": "flow_project_contract"
+    },
+    {
+      "relation": "satisfies_entry_check",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "projects/mandaqui-ifabp-programa-2026/project.yaml",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "projects_mandaqui_ifabp_programa_2026_project_contract_mandaqui_ifabp_programa_2026_project_yaml",
       "target": "flow_project_contract"
     },
     {
@@ -32207,6 +32549,86 @@
       "relation": "feeds_or_records_context",
       "confidence": "INFERRED",
       "confidence_score": 0.75,
+      "source_file": "projects/mandaqui-ifabp-programa-2026/analysis",
+      "source_location": null,
+      "weight": 0.7,
+      "source": "project_artifact_mandaqui_ifabp_programa_2026_analysis",
+      "target": "flow_task_packet"
+    },
+    {
+      "relation": "feeds_or_records_context",
+      "confidence": "INFERRED",
+      "confidence_score": 0.75,
+      "source_file": "projects/mandaqui-ifabp-programa-2026/context",
+      "source_location": null,
+      "weight": 0.7,
+      "source": "project_artifact_mandaqui_ifabp_programa_2026_context",
+      "target": "flow_task_packet"
+    },
+    {
+      "relation": "feeds_or_records_context",
+      "confidence": "INFERRED",
+      "confidence_score": 0.75,
+      "source_file": "projects/mandaqui-ifabp-programa-2026/deliverables",
+      "source_location": null,
+      "weight": 0.7,
+      "source": "project_artifact_mandaqui_ifabp_programa_2026_deliverables",
+      "target": "flow_task_packet"
+    },
+    {
+      "relation": "feeds_or_records_context",
+      "confidence": "INFERRED",
+      "confidence_score": 0.75,
+      "source_file": "projects/mandaqui-ifabp-programa-2026/drafts",
+      "source_location": null,
+      "weight": 0.7,
+      "source": "project_artifact_mandaqui_ifabp_programa_2026_drafts",
+      "target": "flow_task_packet"
+    },
+    {
+      "relation": "feeds_or_records_context",
+      "confidence": "INFERRED",
+      "confidence_score": 0.75,
+      "source_file": "projects/mandaqui-ifabp-programa-2026/evidence",
+      "source_location": null,
+      "weight": 0.7,
+      "source": "project_artifact_mandaqui_ifabp_programa_2026_evidence",
+      "target": "flow_task_packet"
+    },
+    {
+      "relation": "feeds_or_records_context",
+      "confidence": "INFERRED",
+      "confidence_score": 0.75,
+      "source_file": "projects/mandaqui-ifabp-programa-2026/figures",
+      "source_location": null,
+      "weight": 0.7,
+      "source": "project_artifact_mandaqui_ifabp_programa_2026_figures",
+      "target": "flow_task_packet"
+    },
+    {
+      "relation": "feeds_or_records_context",
+      "confidence": "INFERRED",
+      "confidence_score": 0.75,
+      "source_file": "projects/mandaqui-ifabp-programa-2026/reviews",
+      "source_location": null,
+      "weight": 0.7,
+      "source": "project_artifact_mandaqui_ifabp_programa_2026_reviews",
+      "target": "flow_task_packet"
+    },
+    {
+      "relation": "feeds_or_records_context",
+      "confidence": "INFERRED",
+      "confidence_score": 0.75,
+      "source_file": "projects/mandaqui-ifabp-programa-2026/sources",
+      "source_location": null,
+      "weight": 0.7,
+      "source": "project_artifact_mandaqui_ifabp_programa_2026_sources",
+      "target": "flow_task_packet"
+    },
+    {
+      "relation": "feeds_or_records_context",
+      "confidence": "INFERRED",
+      "confidence_score": 0.75,
       "source_file": "projects/NMA_OSA_VPI/analysis",
       "source_location": null,
       "weight": 0.7,
@@ -32862,6 +33284,16 @@
       "weight": 1.0,
       "source": "module_agent_skills",
       "target": "skills_extraction_schema_governor_skill_extraction_schema_governor"
+    },
+    {
+      "relation": "routes_query_to",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "article_machine/agent_skills.py",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "module_agent_skills",
+      "target": "skills_fapesp_cnpq_projects_skill_fapesp_cnpq_projects"
     },
     {
       "relation": "routes_query_to",
@@ -34617,6 +35049,16 @@
       "relation": "current_mode",
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
+      "source_file": "projects/mandaqui-ifabp-programa-2026/project.yaml",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "projects_mandaqui_ifabp_programa_2026_project_mandaqui_ifabp_programa_2026",
+      "target": "mode_bootstrap"
+    },
+    {
+      "relation": "current_mode",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
       "source_file": "projects/sp-congress-idea-tournament-2026/project.yaml",
       "source_location": null,
       "weight": 1.0,
@@ -34861,6 +35303,16 @@
       "source_location": null,
       "weight": 1.0,
       "source": "projects_liver_perfusion_hope_vs_nmp_nma_2027_project_liver_perfusion_hope_vs_nmp_nma_2027",
+      "target": "lane_evidence_writing"
+    },
+    {
+      "relation": "uses_lane",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "projects/mandaqui-ifabp-programa-2026/project.yaml",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "projects_mandaqui_ifabp_programa_2026_project_mandaqui_ifabp_programa_2026",
       "target": "lane_evidence_writing"
     },
     {
@@ -35341,6 +35793,16 @@
       "source_location": null,
       "weight": 1.0,
       "source": "projects_clinmed_ugib_dynamic_risk_mimic_eicu_2026_project_clinmed_ugib_dynamic_risk_mimic_eicu_2026",
+      "target": "type_observational_study"
+    },
+    {
+      "relation": "project_type",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "projects/mandaqui-ifabp-programa-2026/project.yaml",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "projects_mandaqui_ifabp_programa_2026_project_mandaqui_ifabp_programa_2026",
       "target": "type_observational_study"
     },
     {
@@ -36562,6 +37024,126 @@
       "weight": 1.0,
       "source": "projects_liver_perfusion_hope_vs_nmp_nma_2027_project_liver_perfusion_hope_vs_nmp_nma_2027",
       "target": "type_network_meta_analysis"
+    },
+    {
+      "relation": "has_artifact_area",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "projects/mandaqui-ifabp-programa-2026/analysis",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "projects_mandaqui_ifabp_programa_2026_project_mandaqui_ifabp_programa_2026",
+      "target": "project_artifact_mandaqui_ifabp_programa_2026_analysis"
+    },
+    {
+      "relation": "has_artifact_area",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "projects/mandaqui-ifabp-programa-2026/context",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "projects_mandaqui_ifabp_programa_2026_project_mandaqui_ifabp_programa_2026",
+      "target": "project_artifact_mandaqui_ifabp_programa_2026_context"
+    },
+    {
+      "relation": "has_artifact_area",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "projects/mandaqui-ifabp-programa-2026/deliverables",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "projects_mandaqui_ifabp_programa_2026_project_mandaqui_ifabp_programa_2026",
+      "target": "project_artifact_mandaqui_ifabp_programa_2026_deliverables"
+    },
+    {
+      "relation": "has_artifact_area",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "projects/mandaqui-ifabp-programa-2026/drafts",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "projects_mandaqui_ifabp_programa_2026_project_mandaqui_ifabp_programa_2026",
+      "target": "project_artifact_mandaqui_ifabp_programa_2026_drafts"
+    },
+    {
+      "relation": "has_artifact_area",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "projects/mandaqui-ifabp-programa-2026/evidence",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "projects_mandaqui_ifabp_programa_2026_project_mandaqui_ifabp_programa_2026",
+      "target": "project_artifact_mandaqui_ifabp_programa_2026_evidence"
+    },
+    {
+      "relation": "has_artifact_area",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "projects/mandaqui-ifabp-programa-2026/figures",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "projects_mandaqui_ifabp_programa_2026_project_mandaqui_ifabp_programa_2026",
+      "target": "project_artifact_mandaqui_ifabp_programa_2026_figures"
+    },
+    {
+      "relation": "has_artifact_area",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "projects/mandaqui-ifabp-programa-2026/reviews",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "projects_mandaqui_ifabp_programa_2026_project_mandaqui_ifabp_programa_2026",
+      "target": "project_artifact_mandaqui_ifabp_programa_2026_reviews"
+    },
+    {
+      "relation": "has_artifact_area",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "projects/mandaqui-ifabp-programa-2026/sources",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "projects_mandaqui_ifabp_programa_2026_project_mandaqui_ifabp_programa_2026",
+      "target": "project_artifact_mandaqui_ifabp_programa_2026_sources"
+    },
+    {
+      "relation": "has_contract_file",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "projects/mandaqui-ifabp-programa-2026/compute.yaml",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "projects_mandaqui_ifabp_programa_2026_project_mandaqui_ifabp_programa_2026",
+      "target": "project_contract_mandaqui_ifabp_programa_2026_compute_yaml"
+    },
+    {
+      "relation": "has_contract_file",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "projects/mandaqui-ifabp-programa-2026/protocol.yaml",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "projects_mandaqui_ifabp_programa_2026_project_mandaqui_ifabp_programa_2026",
+      "target": "project_contract_mandaqui_ifabp_programa_2026_protocol_yaml"
+    },
+    {
+      "relation": "has_contract_file",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "projects/mandaqui-ifabp-programa-2026/standards.yaml",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "projects_mandaqui_ifabp_programa_2026_project_mandaqui_ifabp_programa_2026",
+      "target": "project_contract_mandaqui_ifabp_programa_2026_standards_yaml"
+    },
+    {
+      "relation": "has_contract_file",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "projects/mandaqui-ifabp-programa-2026/project.yaml",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "projects_mandaqui_ifabp_programa_2026_project_mandaqui_ifabp_programa_2026",
+      "target": "projects_mandaqui_ifabp_programa_2026_project_contract_mandaqui_ifabp_programa_2026_project_yaml"
     },
     {
       "relation": "current_mode",
@@ -40212,6 +40794,76 @@
       "weight": 1.0,
       "source": "skills_academic_office_deliverables_skill_section_academic_office_deliverables_6_claudeprism_boundary",
       "target": "skills_academic_office_deliverables_skill_section_academic_office_deliverables_7_artifact_destinations"
+    },
+    {
+      "relation": "has_instruction_section",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "skills/fapesp-cnpq-projects/SKILL.md",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "skills_fapesp_cnpq_projects_skill_fapesp_cnpq_projects",
+      "target": "skills_fapesp_cnpq_projects_skill_section_fapesp_cnpq_projects_1_projetos_fapesp_e_cnpq"
+    },
+    {
+      "relation": "has_instruction_section",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "skills/fapesp-cnpq-projects/SKILL.md",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "skills_fapesp_cnpq_projects_skill_fapesp_cnpq_projects",
+      "target": "skills_fapesp_cnpq_projects_skill_section_fapesp_cnpq_projects_2_entrada_e_selecao"
+    },
+    {
+      "relation": "has_instruction_section",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "skills/fapesp-cnpq-projects/SKILL.md",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "skills_fapesp_cnpq_projects_skill_fapesp_cnpq_projects",
+      "target": "skills_fapesp_cnpq_projects_skill_section_fapesp_cnpq_projects_3_escrita_e_adaptacao"
+    },
+    {
+      "relation": "has_instruction_section",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "skills/fapesp-cnpq-projects/SKILL.md",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "skills_fapesp_cnpq_projects_skill_fapesp_cnpq_projects",
+      "target": "skills_fapesp_cnpq_projects_skill_section_fapesp_cnpq_projects_4_integridade_e_revisao"
+    },
+    {
+      "relation": "next_section",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "skills/fapesp-cnpq-projects/SKILL.md",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "skills_fapesp_cnpq_projects_skill_section_fapesp_cnpq_projects_1_projetos_fapesp_e_cnpq",
+      "target": "skills_fapesp_cnpq_projects_skill_section_fapesp_cnpq_projects_2_entrada_e_selecao"
+    },
+    {
+      "relation": "next_section",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "skills/fapesp-cnpq-projects/SKILL.md",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "skills_fapesp_cnpq_projects_skill_section_fapesp_cnpq_projects_2_entrada_e_selecao",
+      "target": "skills_fapesp_cnpq_projects_skill_section_fapesp_cnpq_projects_3_escrita_e_adaptacao"
+    },
+    {
+      "relation": "next_section",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "skills/fapesp-cnpq-projects/SKILL.md",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "skills_fapesp_cnpq_projects_skill_section_fapesp_cnpq_projects_3_escrita_e_adaptacao",
+      "target": "skills_fapesp_cnpq_projects_skill_section_fapesp_cnpq_projects_4_integridade_e_revisao"
     },
     {
       "relation": "routes_to",
@@ -46165,5 +46817,5 @@
     }
   ],
   "hyperedges": [],
-  "built_at_commit": "ca22b9c311bc5c7c89629479b64785c1463776d4"
+  "built_at_commit": "416250a795a47f088cc9850fc6718d674e9f2957"
 }
