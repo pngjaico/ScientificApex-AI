@@ -17,7 +17,7 @@
     "tests_status": "400 passed, 1 skipped",
     "machine_audit": "pass (strict)",
     "branch": "codex/article-machine-complete-56-ultra",
-    "git_commit": "92aa791"
+    "git_commit": "27c5e2d"
   },
   "operational_entry_checklist": [
     "1. Verificar git status e git log -1 para entender a transicao anterior.",
