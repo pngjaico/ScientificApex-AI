@@ -137,11 +137,12 @@ def test_clinical_ml_metrics_and_cross_language_numerical_ledger(tmp_path: Path)
         [0, 0, 0, 1, 1, 1, 0, 1, 0, 1],
         [0.05, 0.12, 0.20, 0.82, 0.91, 0.76, 0.15, 0.88, 0.25, 0.79],
         patient_ids_train=["P1", "P2", "P3"],
-        patient_ids_test=["P4", "P5", "P6"],
+        patient_ids_test=[f"test-{i}" for i in range(10)],
     )
     assert valid_ml["status"] == "pass"
     assert valid_ml["discrimination"]["auroc"] > 0.95
-    assert len(valid_ml["decision_curve_analysis"]["clinically_useful_thresholds"]) > 0
+    assert len(valid_ml["decision_curve_analysis"]["thresholds_with_higher_net_benefit"]) > 0
+    assert valid_ml["decision_curve_analysis"]["clinical_benefit_established"] is False
 
     # 3. Cross-language numerical ledger check (dot vs comma equivalence)
     project = init_project(tmp_path, "Ledger Check", "prediction-model")
@@ -152,11 +153,11 @@ def test_clinical_ml_metrics_and_cross_language_numerical_ledger(tmp_path: Path)
     (project / "drafts" / "portugues").mkdir(parents=True, exist_ok=True)
     (project / "drafts" / "ingles").mkdir(parents=True, exist_ok=True)
     (project / "drafts" / "portugues" / "manuscrito.md").write_text(
-        "Na coorte de 1450 pacientes, a AUROC foi 0,892 com Brier de 0,114.\n",
+        "Coorte {{metric:n_cohort}} 1450; AUROC {{metric:auroc}} 0,892; Brier {{metric:brier}} 0,114.\n",
         encoding="utf-8",
     )
     (project / "drafts" / "ingles" / "manuscrito.md").write_text(
-        "In the cohort of 1450 patients, AUROC was 0.892 with a Brier score of 0.114.\n",
+        "Cohort {{metric:n_cohort}} 1450; AUROC {{metric:auroc}} 0.892; Brier {{metric:brier}} 0.114.\n",
         encoding="utf-8",
     )
     num_audit = audit_numerical_consistency(project)
@@ -235,9 +236,9 @@ def test_multi_database_search_embase_ris_pubmed_nbib_and_prisma_deduplication(t
     # Drop a Scopus .csv export with a title+year+author duplicate of Costa 2023 (missing DOI)
     scopus_csv = (
         "Title,Authors,Year,Source title,DOI,EID,Abstract\n"
-        "\"D-dimer kinetics in strangulated intestinal obstruction\",\"Costa, Maria; "
-        "Santos, P.\",2023,\"Intensive Care Medicine\",\"\",2-s2.0-851000999,\"Abstract "
-        "from Scopus.\"\n"
+        '"D-dimer kinetics in strangulated intestinal obstruction","Costa, Maria; '
+        'Santos, P.",2023,"Intensive Care Medicine","",2-s2.0-851000999,"Abstract '
+        'from Scopus."\n'
     )
     (project / "sources" / "manual_imports" / "scopus" / "scopus_export.csv").write_text(scopus_csv, encoding="utf-8")
 

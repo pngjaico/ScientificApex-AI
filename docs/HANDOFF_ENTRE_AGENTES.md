@@ -136,3 +136,52 @@ Copie e preencha este bloco ao final de cada intervencao:
 - **Alertas / Cuidados para o Proximo Agente:**
   - Manter operacao sequencial (nunca abrir dois agentes ao mesmo tempo).
   - Sempre consultar o grafo operacional com `graphify query` antes de navegar.
+
+
+### [2026-11-02 22:00] Handoff: Antigravity -> Codex / OpenCode
+- **Agente Responsavel:** Antigravity (Google DeepMind)
+- **Projeto Ativo:** `projects/NMA_OSA_VPI`
+- **Fase / Modo:** Adequação Editorial e Preparação de Publicação Internacional
+- **O que foi feito:**
+  - Auditoria completa metodológica e científica do trabalho de AOS após cirurgia para IVF em fissurados com Prof. Dr. Nivaldo Alonso (`NMA_OSA_VPI`), equivalente à NMA dos Biomarcadores.
+  - Demonstração da inadequação de NMA (ausência de RCTs head-to-head) e consolidação do desenho canônico como Metanálise de Proporções de Braço Único.
+  - Correção forense de dados: exclusão de Abdel-Aziz 2019 (resgate), correção de Prada-Madrid 2011 (Furlow 1/10 e faringoplastia mista 5/10), segregação de Denadai 2018 (triagem clínica) e Rochlin 2021 (claims/CID).
+  - Resultados da primária PSG estrita (5 braços, 129 pacientes, 53 eventos): Orticochea 81,1%, Flap Faríngeo 27,0%, Furlow 10,0%.
+  - Audição editorial comparando 6 revistas (CPCJ, JCS, IJPO, PRS, JCMS, RBCP) com seleção do *The Cleft Palate-Craniofacial Journal* (CPCJ, SAGE, ACPA, $0 APC).
+  - Estruturação canônica em `publicacoes/cleft-palate-craniofacial-journal/v01/` e espelho em `publicacoes/internacional_e_nacional/`.
+  - Execução de modelagem estatística em R 4.6.1 gerando 4 figuras em 300 DPI PNG e vetorial SVG em PT e EN.
+  - Geração de 4 tabelas científicas em CSV bilíngues.
+  - Compilação dos pacotes DOCX formatados: `Blinded_Main_Manuscript_CPCJ.docx`, `Title_Page_CPCJ.docx`, `Cover_Letter_CPCJ.docx`, `PRISMA_2020_Checklist_CPCJ.docx` e `Manuscrito_OSA_IVF_Fissurados_Pacote_Orientador_Prof_Nivaldo_Alonso.docx`.
+- **Testes / Auditoria:**
+  - `article_machine machine audit --strict`: PASS
+  - `pytest tests/`: 399 passed, 1 skipped (100% de integridade)
+- **Proximos Passos Recomendados:**
+  - [ ] Enviar pacote executivo ao Prof. Dr. Nivaldo Alonso (`Manuscrito_OSA_IVF_Fissurados_Pacote_Orientador_Prof_Nivaldo_Alonso.docx`).
+  - [ ] Realizar upload dos 4 arquivos em inglês no portal de submissão da SAGE (CPCJ) após chancela.
+
+
+### [2026-11-02 23:42] Handoff: Antigravity -> Codex / OpenCode
+- **Agente Responsavel:** Antigravity (Google DeepMind)
+- **Projeto Ativo:** `projects/NMA_OSA_VPI`
+- **Fase / Modo:** Calibracao Pos-Hostile Red Team Review e Sincronizacao Google Docs / Word JCS
+- **O que foi feito:**
+  - Conducao de revisao hostil Red Team formal (`projects/NMA_OSA_VPI/reviews/red_team_hostile_review_jcs.md`) sob a skill `scientific-red-team-reviewer`.
+  - Aplicacao de todas as correcoes pertinentes no manuscrito em ingles e portugues:
+    * Calibracao epistemologica do titulo: substituicao de "Incidence" por "Frequency and Detection Rate" em razao da ausencia de polissonografia basal pre-operatoria universal de novo na literatura primaria.
+    * Expurgo integral de adjetivacoes infladas e marcas de IA ("forensic", "crucially", "critical insights", "perilous illusion") e remocao da discussao defensiva sobre NMA da Introducao.
+    * Adicao dos criterios formais da AASM na secao de Metodos: IAH >= 1,5 eventos/h para coortes pediatricas, IAH >= 5,0 eventos/h para adultos, e seguimento estavel de 6 a 12 meses.
+    * Insercao de ressalvas de imprecisao amostral severa em Furlow (k=1, N=10, IC 95%: 1,8% a 40,4%) como hipotese geradora preliminar e alerta de validade externa para Orticochea (serie de centro unico em Bogota).
+    * Reestruturacao pragmatica das recomendacoes clinicas para algoritmo estratificado por risco (PSG mandatria para Orticochea, retrognatismo grave, Robin ou sindromes; triagem clinica e oximetria noturna para retalho faringeo e palatoplastia padrao).
+  - Eliminacao de sobreposicoes visuais e esteticas nos scripts R (`gerar_analises_e_figuras_publicacao.R`), realocando rotulos da Tabela Forest para coluna independente (`x = 106%`), ajustando caixas PRISMA (espacamento horizontal de 0,3 unidades) e margens do ROBINS-I.
+  - Sincronizacao completa do Google Docs em ingles (`15njWq0Los5BExW6EwqORbAABiIHGfB6-HJPh6Jf0DOg`) e portugues (`1vtckKNiceaQ4EaYIYdSsViBitdbtWa7fd0YS7jUjvKk`): insercao inline de todas as 4 figuras em 300 DPI na secao de Resultados, tabelas com largura auto-ajustada e reposicionamento do memorando executivo para o final na versao em portugues.
+  - Recompilacao dos 5 pacotes Word `.docx` de submissao e orientador com as correcoes integradas (`build_submission_docx_jcs.py`).
+  - Reindexacao do grafo operacional (1.325 nos, 2.662 arestas).
+  - Ausencia absoluta de travessoes (`—` ou `–`) em todos os documentos.
+- **Testes / Auditoria:**
+  - `article_machine machine audit --strict`: PASS (100% de conformidade)
+  - `pytest tests/`: 400 passed, 1 skipped (100% de integridade)
+- **Proximos Passos Recomendados:**
+  - [ ] Enviar o link do Google Docs ou o `.docx` atualizado ao Prof. Dr. Nivaldo Alonso para revisao final.
+  - [ ] Confirmar o e-mail e ORCID do Dr. Marcel Gutierrez antes da submissao formal.
+  - [ ] Prosseguir para submissao no Editorial Manager do *The Journal of Craniofacial Surgery*.
+

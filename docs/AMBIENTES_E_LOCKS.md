@@ -23,8 +23,8 @@ vigente; este documento é o mapa operacional.
 - Executável canônico:
   `C:/Users/Usuario-pc/AppData/Local/Programs/R/R-4.6.1/bin/x64/Rscript.exe`.
 - Não usar o R 4.5.0 que aparece no PATH.
-- O lock de referência tem 69 pacotes principais e mais de 300 no fecho
-  transitivo. O número exato é volátil; consulte `AGENTS.md` e o próprio
+- O lock de referência tem 85 pacotes principais e 342 no fecho
+  transitivo CRAN. O número exato é auditado; consulte `AGENTS.md` e o próprio
   `renv.lock`.
 - O script `scripts/atualizar_ambiente_meta_analise.R` instala binários,
   sincroniza a biblioteca local do R, grava o snapshot com
@@ -57,6 +57,13 @@ vigente; este documento é o mapa operacional.
   `.\.venv\Scripts\python.exe -m article_machine ...`.
 - O extra `analysis` não entra no `uv sync` padrão; use
   `uv sync --locked --all-extras --dev` para instalá-lo.
+
+### ML Clínico e Deep Learning (`modelos/aprendizado_de_maquina_clinico`)
+- **Python 3.13 isolado com `uv.lock` sincronizado.**
+- **Stack Tabular e Conformal:** `scikit-learn` (1.9.1), `xgboost` (3.4.1), `lightgbm` (4.7.0), `mapie` (1.6.0), `lifelines` (0.30.3), `optuna` (4.9.0), `shap` (0.54.1), `pandera` (0.35.0), `pandas` (2.3.3), `statsmodels` (0.15.0), `matplotlib` (3.11.2), `seaborn` (0.13.2), `plotly` (6.9.0).
+- **Subambiente de Deep Learning (`ambientes/aprendizado_profundo`):** `torch` (2.15.0+cpu), `torchvision`, `torchmetrics` com `uv.lock` dedicado.
+- **Restauração:** `uv sync --directory modelos/aprendizado_de_maquina_clinico` e `uv sync --directory modelos/aprendizado_de_maquina_clinico/ambientes/aprendizado_profundo`.
+- **Execução canônica:** `modelos/aprendizado_de_maquina_clinico/.venv/Scripts/python.exe <script.py>`.
 
 ## Quarto e relatórios
 

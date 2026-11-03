@@ -1890,6 +1890,36 @@
       "norm_label": ".agents/agents.md :: r environment (r 4.6.1 / renv 1.3.1)"
     },
     {
+      "operational_id": "doc_section_agents_agents_md_8_python_clinical_machine_learning_ai_python_3_13_uv",
+      "label": ".agents/AGENTS.md :: Python Clinical Machine Learning & AI (Python 3.13 / uv)",
+      "file_type": "document",
+      "source_file": ".agents/AGENTS.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "section_level": 2,
+      "id": "doc_section_agents_agents_md_8_python_clinical_machine_learning_ai_python_3_13_uv",
+      "community": 4,
+      "norm_label": ".agents/agents.md :: python clinical machine learning & ai (python 3.13 / uv)"
+    },
+    {
+      "operational_id": "doc_section_agents_agents_md_9_writing_quality_ai_disclosure_policy",
+      "label": ".agents/AGENTS.md :: Writing Quality & AI Disclosure Policy",
+      "file_type": "document",
+      "source_file": ".agents/AGENTS.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "section_level": 2,
+      "id": "doc_section_agents_agents_md_9_writing_quality_ai_disclosure_policy",
+      "community": 4,
+      "norm_label": ".agents/agents.md :: writing quality & ai disclosure policy"
+    },
+    {
       "operational_id": "doc_agents_graph_first_md",
       "label": ".agents/GRAPH_FIRST.md",
       "file_type": "document",
@@ -2291,8 +2321,8 @@
       "norm_label": "agents.md :: politica canonica a partir de novembro de 2026"
     },
     {
-      "operational_id": "doc_section_agents_md_15_entregas_bilingues_obrigatorias",
-      "label": "AGENTS.md :: Entregas bil\u00edngues obrigat\u00f3rias",
+      "operational_id": "doc_section_agents_md_15_entregas_bilingues_obrigatorias_e_politicas_de_escrita",
+      "label": "AGENTS.md :: Entregas bil\u00edngues obrigat\u00f3rias e Pol\u00edticas de Escrita",
       "file_type": "document",
       "source_file": "AGENTS.md",
       "source_location": null,
@@ -2301,13 +2331,13 @@
       "author": null,
       "contributor": null,
       "section_level": 2,
-      "id": "doc_section_agents_md_15_entregas_bilingues_obrigatorias",
+      "id": "doc_section_agents_md_15_entregas_bilingues_obrigatorias_e_politicas_de_escrita",
       "community": 4,
-      "norm_label": "agents.md :: entregas bilingues obrigatorias"
+      "norm_label": "agents.md :: entregas bilingues obrigatorias e politicas de escrita"
     },
     {
-      "operational_id": "doc_section_agents_md_16_ambiente_r_cient_fico_consolidado_r_4_6_1_renv_1_3_1",
-      "label": "AGENTS.md :: Ambiente R Cient?fico Consolidado (R 4.6.1 / renv 1.3.1)",
+      "operational_id": "doc_section_agents_md_16_ambiente_r_cientifico_consolidado_r_4_6_1_renv_1_3_1",
+      "label": "AGENTS.md :: Ambiente R Cient\u00edfico Consolidado (R 4.6.1 / renv 1.3.1)",
       "file_type": "document",
       "source_file": "AGENTS.md",
       "source_location": null,
@@ -2316,9 +2346,24 @@
       "author": null,
       "contributor": null,
       "section_level": 2,
-      "id": "doc_section_agents_md_16_ambiente_r_cient_fico_consolidado_r_4_6_1_renv_1_3_1",
+      "id": "doc_section_agents_md_16_ambiente_r_cientifico_consolidado_r_4_6_1_renv_1_3_1",
       "community": 4,
-      "norm_label": "agents.md :: ambiente r cient?fico consolidado (r 4.6.1 / renv 1.3.1)"
+      "norm_label": "agents.md :: ambiente r cientifico consolidado (r 4.6.1 / renv 1.3.1)"
+    },
+    {
+      "operational_id": "doc_section_agents_md_17_ambiente_python_de_machine_learning_clinico_e_ia_medica_python_3_13_uv",
+      "label": "AGENTS.md :: Ambiente Python de Machine Learning Cl\u00ednico e IA M\u00e9dica (Python 3.13 / uv)",
+      "file_type": "document",
+      "source_file": "AGENTS.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "section_level": 2,
+      "id": "doc_section_agents_md_17_ambiente_python_de_machine_learning_clinico_e_ia_medica_python_3_13_uv",
+      "community": 4,
+      "norm_label": "agents.md :: ambiente python de machine learning clinico e ia medica (python 3.13 / uv)"
     },
     {
       "operational_id": "doc_agent_manifest_md",
@@ -4138,7 +4183,22 @@
       "norm_label": "docs/ambientes_e_locks.md :: python"
     },
     {
-      "operational_id": "doc_section_docs_ambientes_e_locks_md_5_quarto_e_relatorios",
+      "operational_id": "doc_section_docs_ambientes_e_locks_md_5_ml_clinico_e_deep_learning_modelos_aprendizado_de_maquina_clinico",
+      "label": "docs/AMBIENTES_E_LOCKS.md :: ML Cl\u00ednico e Deep Learning (`modelos/aprendizado_de_maquina_clinico`)",
+      "file_type": "document",
+      "source_file": "docs/AMBIENTES_E_LOCKS.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "section_level": 3,
+      "id": "doc_section_docs_ambientes_e_locks_md_5_ml_clinico_e_deep_learning_modelos_aprendizado_de_maquina_clinico",
+      "community": 4,
+      "norm_label": "docs/ambientes_e_locks.md :: ml clinico e deep learning (`modelos/aprendizado_de_maquina_clinico`)"
+    },
+    {
+      "operational_id": "doc_section_docs_ambientes_e_locks_md_6_quarto_e_relatorios",
       "label": "docs/AMBIENTES_E_LOCKS.md :: Quarto e relat\u00f3rios",
       "file_type": "document",
       "source_file": "docs/AMBIENTES_E_LOCKS.md",
@@ -4148,12 +4208,12 @@
       "author": null,
       "contributor": null,
       "section_level": 2,
-      "id": "doc_section_docs_ambientes_e_locks_md_5_quarto_e_relatorios",
+      "id": "doc_section_docs_ambientes_e_locks_md_6_quarto_e_relatorios",
       "community": 4,
       "norm_label": "docs/ambientes_e_locks.md :: quarto e relatorios"
     },
     {
-      "operational_id": "doc_section_docs_ambientes_e_locks_md_6_navegador",
+      "operational_id": "doc_section_docs_ambientes_e_locks_md_7_navegador",
       "label": "docs/AMBIENTES_E_LOCKS.md :: Navegador",
       "file_type": "document",
       "source_file": "docs/AMBIENTES_E_LOCKS.md",
@@ -4163,12 +4223,12 @@
       "author": null,
       "contributor": null,
       "section_level": 2,
-      "id": "doc_section_docs_ambientes_e_locks_md_6_navegador",
+      "id": "doc_section_docs_ambientes_e_locks_md_7_navegador",
       "community": 4,
       "norm_label": "docs/ambientes_e_locks.md :: navegador"
     },
     {
-      "operational_id": "doc_section_docs_ambientes_e_locks_md_7_lacunas_conhecidas",
+      "operational_id": "doc_section_docs_ambientes_e_locks_md_8_lacunas_conhecidas",
       "label": "docs/AMBIENTES_E_LOCKS.md :: Lacunas conhecidas",
       "file_type": "document",
       "source_file": "docs/AMBIENTES_E_LOCKS.md",
@@ -4178,12 +4238,12 @@
       "author": null,
       "contributor": null,
       "section_level": 2,
-      "id": "doc_section_docs_ambientes_e_locks_md_7_lacunas_conhecidas",
+      "id": "doc_section_docs_ambientes_e_locks_md_8_lacunas_conhecidas",
       "community": 4,
       "norm_label": "docs/ambientes_e_locks.md :: lacunas conhecidas"
     },
     {
-      "operational_id": "doc_section_docs_ambientes_e_locks_md_8_regras",
+      "operational_id": "doc_section_docs_ambientes_e_locks_md_9_regras",
       "label": "docs/AMBIENTES_E_LOCKS.md :: Regras",
       "file_type": "document",
       "source_file": "docs/AMBIENTES_E_LOCKS.md",
@@ -4193,7 +4253,7 @@
       "author": null,
       "contributor": null,
       "section_level": 2,
-      "id": "doc_section_docs_ambientes_e_locks_md_8_regras",
+      "id": "doc_section_docs_ambientes_e_locks_md_9_regras",
       "community": 4,
       "norm_label": "docs/ambientes_e_locks.md :: regras"
     },
@@ -6060,6 +6120,20 @@
       "norm_label": "article_machine.services.runners"
     },
     {
+      "operational_id": "module_services_scientific_execution",
+      "label": "article_machine.services.scientific_execution",
+      "file_type": "code",
+      "source_file": "article_machine/services/scientific_execution.py",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "module_services_scientific_execution",
+      "community": 1,
+      "norm_label": "article_machine.services.scientific_execution"
+    },
+    {
       "operational_id": "module_services_scientific_workflows",
       "label": "article_machine.services.scientific_workflows",
       "file_type": "code",
@@ -6466,6 +6540,20 @@
       "norm_label": "article-machine doctor"
     },
     {
+      "operational_id": "cli_document",
+      "label": "article-machine document",
+      "file_type": "code",
+      "source_file": "article_machine/cli.py",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "article_machine_cli_document",
+      "community": 1,
+      "norm_label": "article-machine document"
+    },
+    {
       "operational_id": "cli_draft",
       "label": "article-machine draft",
       "file_type": "code",
@@ -6506,6 +6594,20 @@
       "id": "article_machine_cli_export",
       "community": 1,
       "norm_label": "article-machine export"
+    },
+    {
+      "operational_id": "cli_extract",
+      "label": "article-machine extract",
+      "file_type": "code",
+      "source_file": "article_machine/cli.py",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "article_machine_cli_extract",
+      "community": 1,
+      "norm_label": "article-machine extract"
     },
     {
       "operational_id": "cli_fetch",
@@ -6830,6 +6932,20 @@
       "norm_label": "article-machine prepare"
     },
     {
+      "operational_id": "cli_project_extract",
+      "label": "article-machine project-extract",
+      "file_type": "code",
+      "source_file": "article_machine/cli.py",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "article_machine_cli_project_extract",
+      "community": 1,
+      "norm_label": "article-machine project-extract"
+    },
+    {
       "operational_id": "cli_prospero",
       "label": "article-machine prospero",
       "file_type": "code",
@@ -7110,6 +7226,20 @@
       "norm_label": "article-machine templates"
     },
     {
+      "operational_id": "cli_test_tesseract",
+      "label": "article-machine test-tesseract",
+      "file_type": "code",
+      "source_file": "article_machine/cli.py",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "article_machine_cli_test_tesseract",
+      "community": 1,
+      "norm_label": "article-machine test-tesseract"
+    },
+    {
       "operational_id": "cli_tournament",
       "label": "article-machine tournament",
       "file_type": "code",
@@ -7351,7 +7481,7 @@
     },
     {
       "operational_id": "project_artifact_article_machine_governance_2026_analysis",
-      "label": "article-machine-governance-2026/analysis (6 direct items)",
+      "label": "article-machine-governance-2026/analysis (7 direct items)",
       "file_type": "document",
       "source_file": "projects/article-machine-governance-2026/analysis",
       "source_location": null,
@@ -7360,14 +7490,14 @@
       "author": null,
       "contributor": null,
       "artifact_purpose": "analysis outputs and run envelopes",
-      "direct_child_count": 6,
+      "direct_child_count": 7,
       "id": "project_artifact_article_machine_governance_2026_analysis",
       "community": 2,
-      "norm_label": "article-machine-governance-2026/analysis (6 direct items)"
+      "norm_label": "article-machine-governance-2026/analysis (7 direct items)"
     },
     {
       "operational_id": "project_artifact_article_machine_governance_2026_reviews",
-      "label": "article-machine-governance-2026/reviews (2 direct items)",
+      "label": "article-machine-governance-2026/reviews (3 direct items)",
       "file_type": "document",
       "source_file": "projects/article-machine-governance-2026/reviews",
       "source_location": null,
@@ -7376,10 +7506,10 @@
       "author": null,
       "contributor": null,
       "artifact_purpose": "review reports and red-team notes",
-      "direct_child_count": 2,
+      "direct_child_count": 3,
       "id": "project_artifact_article_machine_governance_2026_reviews",
       "community": 2,
-      "norm_label": "article-machine-governance-2026/reviews (2 direct items)"
+      "norm_label": "article-machine-governance-2026/reviews (3 direct items)"
     },
     {
       "operational_id": "project_article_machine_upgrade_2026",
@@ -8671,7 +8801,7 @@
       "operational_id": "mode_unknown",
       "label": "mode: unknown",
       "file_type": "rationale",
-      "source_file": "projects/GastroSP_Gold_NMA_Biomarkers/project.yaml",
+      "source_file": "projects/congress-winners-2026/project.yaml",
       "source_location": null,
       "source_url": null,
       "captured_at": null,
@@ -8876,6 +9006,20 @@
       "norm_label": "lane: clinical-meta-analysis"
     },
     {
+      "operational_id": "mode_review_trinity",
+      "label": "mode: review-trinity",
+      "file_type": "rationale",
+      "source_file": "projects/pct-e-d-dimero-na-necrose-intestinal-transmural-2026/project.yaml",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "mode_review_trinity",
+      "community": 2,
+      "norm_label": "mode: review-trinity"
+    },
+    {
       "operational_id": "project_contract_gastrosp_gold_nma_biomarkers_project_yaml",
       "label": "GastroSP_Gold_NMA_Biomarkers/project.yaml",
       "file_type": "document",
@@ -8981,7 +9125,7 @@
     },
     {
       "operational_id": "project_artifact_gastrosp_gold_nma_biomarkers_analysis",
-      "label": "GastroSP_Gold_NMA_Biomarkers/analysis (28 direct items)",
+      "label": "GastroSP_Gold_NMA_Biomarkers/analysis (30 direct items)",
       "file_type": "document",
       "source_file": "projects/GastroSP_Gold_NMA_Biomarkers/analysis",
       "source_location": null,
@@ -8990,10 +9134,10 @@
       "author": null,
       "contributor": null,
       "artifact_purpose": "analysis outputs and run envelopes",
-      "direct_child_count": 28,
+      "direct_child_count": 30,
       "id": "project_artifact_gastrosp_gold_nma_biomarkers_analysis",
       "community": 2,
-      "norm_label": "gastrosp_gold_nma_biomarkers/analysis (28 direct items)"
+      "norm_label": "gastrosp_gold_nma_biomarkers/analysis (30 direct items)"
     },
     {
       "operational_id": "project_artifact_gastrosp_gold_nma_biomarkers_drafts",
@@ -9029,7 +9173,7 @@
     },
     {
       "operational_id": "project_artifact_gastrosp_gold_nma_biomarkers_figures",
-      "label": "GastroSP_Gold_NMA_Biomarkers/figures (10 direct items)",
+      "label": "GastroSP_Gold_NMA_Biomarkers/figures (26 direct items)",
       "file_type": "document",
       "source_file": "projects/GastroSP_Gold_NMA_Biomarkers/figures",
       "source_location": null,
@@ -9038,10 +9182,10 @@
       "author": null,
       "contributor": null,
       "artifact_purpose": "figures and visual assets",
-      "direct_child_count": 10,
+      "direct_child_count": 26,
       "id": "project_artifact_gastrosp_gold_nma_biomarkers_figures",
       "community": 2,
-      "norm_label": "gastrosp_gold_nma_biomarkers/figures (10 direct items)"
+      "norm_label": "gastrosp_gold_nma_biomarkers/figures (26 direct items)"
     },
     {
       "operational_id": "project_artifact_gastrosp_gold_nma_biomarkers_deliverables",
@@ -9908,6 +10052,232 @@
       "norm_label": "intestinal-transplant-research-program-2026/deliverables (0 direct items)"
     },
     {
+      "operational_id": "project_liver_perfusion_hope_vs_nmp_nma_2027",
+      "label": "Liver Perfusion HOPE vs NMP NMA 2027",
+      "file_type": "document",
+      "source_file": "projects/liver-perfusion-hope-vs-nmp-nma-2027/project.yaml",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "projects_liver_perfusion_hope_vs_nmp_nma_2027_project_liver_perfusion_hope_vs_nmp_nma_2027",
+      "community": 2,
+      "norm_label": "liver perfusion hope vs nmp nma 2027"
+    },
+    {
+      "operational_id": "mode_screening",
+      "label": "mode: screening",
+      "file_type": "rationale",
+      "source_file": "projects/liver-perfusion-hope-vs-nmp-nma-2027/project.yaml",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "mode_screening",
+      "community": 2,
+      "norm_label": "mode: screening"
+    },
+    {
+      "operational_id": "type_network_meta_analysis",
+      "label": "type: network-meta-analysis",
+      "file_type": "rationale",
+      "source_file": "projects/liver-perfusion-hope-vs-nmp-nma-2027/project.yaml",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "type_network_meta_analysis",
+      "community": 2,
+      "norm_label": "type: network-meta-analysis"
+    },
+    {
+      "operational_id": "project_contract_liver_perfusion_hope_vs_nmp_nma_2027_project_yaml",
+      "label": "liver-perfusion-hope-vs-nmp-nma-2027/project.yaml",
+      "file_type": "document",
+      "source_file": "projects/liver-perfusion-hope-vs-nmp-nma-2027/project.yaml",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "projects_liver_perfusion_hope_vs_nmp_nma_2027_project_contract_liver_perfusion_hope_vs_nmp_nma_2027_project_yaml",
+      "community": 2,
+      "norm_label": "liver-perfusion-hope-vs-nmp-nma-2027/project.yaml"
+    },
+    {
+      "operational_id": "project_contract_liver_perfusion_hope_vs_nmp_nma_2027_protocol_yaml",
+      "label": "liver-perfusion-hope-vs-nmp-nma-2027/protocol.yaml",
+      "file_type": "document",
+      "source_file": "projects/liver-perfusion-hope-vs-nmp-nma-2027/protocol.yaml",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "project_contract_liver_perfusion_hope_vs_nmp_nma_2027_protocol_yaml",
+      "community": 2,
+      "norm_label": "liver-perfusion-hope-vs-nmp-nma-2027/protocol.yaml"
+    },
+    {
+      "operational_id": "project_contract_liver_perfusion_hope_vs_nmp_nma_2027_standards_yaml",
+      "label": "liver-perfusion-hope-vs-nmp-nma-2027/standards.yaml",
+      "file_type": "document",
+      "source_file": "projects/liver-perfusion-hope-vs-nmp-nma-2027/standards.yaml",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "project_contract_liver_perfusion_hope_vs_nmp_nma_2027_standards_yaml",
+      "community": 2,
+      "norm_label": "liver-perfusion-hope-vs-nmp-nma-2027/standards.yaml"
+    },
+    {
+      "operational_id": "project_contract_liver_perfusion_hope_vs_nmp_nma_2027_compute_yaml",
+      "label": "liver-perfusion-hope-vs-nmp-nma-2027/compute.yaml",
+      "file_type": "document",
+      "source_file": "projects/liver-perfusion-hope-vs-nmp-nma-2027/compute.yaml",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "project_contract_liver_perfusion_hope_vs_nmp_nma_2027_compute_yaml",
+      "community": 2,
+      "norm_label": "liver-perfusion-hope-vs-nmp-nma-2027/compute.yaml"
+    },
+    {
+      "operational_id": "project_artifact_liver_perfusion_hope_vs_nmp_nma_2027_sources",
+      "label": "liver-perfusion-hope-vs-nmp-nma-2027/sources (7 direct items)",
+      "file_type": "document",
+      "source_file": "projects/liver-perfusion-hope-vs-nmp-nma-2027/sources",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "artifact_purpose": "source registry and raw/converted intake",
+      "direct_child_count": 7,
+      "id": "project_artifact_liver_perfusion_hope_vs_nmp_nma_2027_sources",
+      "community": 2,
+      "norm_label": "liver-perfusion-hope-vs-nmp-nma-2027/sources (7 direct items)"
+    },
+    {
+      "operational_id": "project_artifact_liver_perfusion_hope_vs_nmp_nma_2027_context",
+      "label": "liver-perfusion-hope-vs-nmp-nma-2027/context (6 direct items)",
+      "file_type": "document",
+      "source_file": "projects/liver-perfusion-hope-vs-nmp-nma-2027/context",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "artifact_purpose": "briefs, retrieval plans, and task packets",
+      "direct_child_count": 6,
+      "id": "project_artifact_liver_perfusion_hope_vs_nmp_nma_2027_context",
+      "community": 2,
+      "norm_label": "liver-perfusion-hope-vs-nmp-nma-2027/context (6 direct items)"
+    },
+    {
+      "operational_id": "project_artifact_liver_perfusion_hope_vs_nmp_nma_2027_evidence",
+      "label": "liver-perfusion-hope-vs-nmp-nma-2027/evidence (6 direct items)",
+      "file_type": "document",
+      "source_file": "projects/liver-perfusion-hope-vs-nmp-nma-2027/evidence",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "artifact_purpose": "claim maps and evidence locks",
+      "direct_child_count": 6,
+      "id": "project_artifact_liver_perfusion_hope_vs_nmp_nma_2027_evidence",
+      "community": 2,
+      "norm_label": "liver-perfusion-hope-vs-nmp-nma-2027/evidence (6 direct items)"
+    },
+    {
+      "operational_id": "project_artifact_liver_perfusion_hope_vs_nmp_nma_2027_analysis",
+      "label": "liver-perfusion-hope-vs-nmp-nma-2027/analysis (2 direct items)",
+      "file_type": "document",
+      "source_file": "projects/liver-perfusion-hope-vs-nmp-nma-2027/analysis",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "artifact_purpose": "analysis outputs and run envelopes",
+      "direct_child_count": 2,
+      "id": "project_artifact_liver_perfusion_hope_vs_nmp_nma_2027_analysis",
+      "community": 2,
+      "norm_label": "liver-perfusion-hope-vs-nmp-nma-2027/analysis (2 direct items)"
+    },
+    {
+      "operational_id": "project_artifact_liver_perfusion_hope_vs_nmp_nma_2027_drafts",
+      "label": "liver-perfusion-hope-vs-nmp-nma-2027/drafts (3 direct items)",
+      "file_type": "document",
+      "source_file": "projects/liver-perfusion-hope-vs-nmp-nma-2027/drafts",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "artifact_purpose": "manuscripts and references",
+      "direct_child_count": 3,
+      "id": "project_artifact_liver_perfusion_hope_vs_nmp_nma_2027_drafts",
+      "community": 2,
+      "norm_label": "liver-perfusion-hope-vs-nmp-nma-2027/drafts (3 direct items)"
+    },
+    {
+      "operational_id": "project_artifact_liver_perfusion_hope_vs_nmp_nma_2027_reviews",
+      "label": "liver-perfusion-hope-vs-nmp-nma-2027/reviews (4 direct items)",
+      "file_type": "document",
+      "source_file": "projects/liver-perfusion-hope-vs-nmp-nma-2027/reviews",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "artifact_purpose": "review reports and red-team notes",
+      "direct_child_count": 4,
+      "id": "project_artifact_liver_perfusion_hope_vs_nmp_nma_2027_reviews",
+      "community": 2,
+      "norm_label": "liver-perfusion-hope-vs-nmp-nma-2027/reviews (4 direct items)"
+    },
+    {
+      "operational_id": "project_artifact_liver_perfusion_hope_vs_nmp_nma_2027_figures",
+      "label": "liver-perfusion-hope-vs-nmp-nma-2027/figures (2 direct items)",
+      "file_type": "document",
+      "source_file": "projects/liver-perfusion-hope-vs-nmp-nma-2027/figures",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "artifact_purpose": "figures and visual assets",
+      "direct_child_count": 2,
+      "id": "project_artifact_liver_perfusion_hope_vs_nmp_nma_2027_figures",
+      "community": 2,
+      "norm_label": "liver-perfusion-hope-vs-nmp-nma-2027/figures (2 direct items)"
+    },
+    {
+      "operational_id": "project_artifact_liver_perfusion_hope_vs_nmp_nma_2027_deliverables",
+      "label": "liver-perfusion-hope-vs-nmp-nma-2027/deliverables (0 direct items)",
+      "file_type": "document",
+      "source_file": "projects/liver-perfusion-hope-vs-nmp-nma-2027/deliverables",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "artifact_purpose": "conference decks posters and submission packs",
+      "direct_child_count": 0,
+      "id": "project_artifact_liver_perfusion_hope_vs_nmp_nma_2027_deliverables",
+      "community": 2,
+      "norm_label": "liver-perfusion-hope-vs-nmp-nma-2027/deliverables (0 direct items)"
+    },
+    {
       "operational_id": "project_nma_osa_vpi",
       "label": "NMA_OSA_VPI SIICUSP corrected package",
       "file_type": "document",
@@ -10025,7 +10395,7 @@
     },
     {
       "operational_id": "project_artifact_nma_osa_vpi_evidence",
-      "label": "NMA_OSA_VPI/evidence (5 direct items)",
+      "label": "NMA_OSA_VPI/evidence (6 direct items)",
       "file_type": "document",
       "source_file": "projects/NMA_OSA_VPI/evidence",
       "source_location": null,
@@ -10034,14 +10404,14 @@
       "author": null,
       "contributor": null,
       "artifact_purpose": "claim maps and evidence locks",
-      "direct_child_count": 5,
+      "direct_child_count": 6,
       "id": "project_artifact_nma_osa_vpi_evidence",
       "community": 2,
-      "norm_label": "nma_osa_vpi/evidence (5 direct items)"
+      "norm_label": "nma_osa_vpi/evidence (6 direct items)"
     },
     {
       "operational_id": "project_artifact_nma_osa_vpi_analysis",
-      "label": "NMA_OSA_VPI/analysis (19 direct items)",
+      "label": "NMA_OSA_VPI/analysis (28 direct items)",
       "file_type": "document",
       "source_file": "projects/NMA_OSA_VPI/analysis",
       "source_location": null,
@@ -10050,14 +10420,14 @@
       "author": null,
       "contributor": null,
       "artifact_purpose": "analysis outputs and run envelopes",
-      "direct_child_count": 19,
+      "direct_child_count": 28,
       "id": "project_artifact_nma_osa_vpi_analysis",
       "community": 2,
-      "norm_label": "nma_osa_vpi/analysis (19 direct items)"
+      "norm_label": "nma_osa_vpi/analysis (28 direct items)"
     },
     {
       "operational_id": "project_artifact_nma_osa_vpi_drafts",
-      "label": "NMA_OSA_VPI/drafts (2 direct items)",
+      "label": "NMA_OSA_VPI/drafts (3 direct items)",
       "file_type": "document",
       "source_file": "projects/NMA_OSA_VPI/drafts",
       "source_location": null,
@@ -10066,14 +10436,14 @@
       "author": null,
       "contributor": null,
       "artifact_purpose": "manuscripts and references",
-      "direct_child_count": 2,
+      "direct_child_count": 3,
       "id": "project_artifact_nma_osa_vpi_drafts",
       "community": 2,
-      "norm_label": "nma_osa_vpi/drafts (2 direct items)"
+      "norm_label": "nma_osa_vpi/drafts (3 direct items)"
     },
     {
       "operational_id": "project_artifact_nma_osa_vpi_reviews",
-      "label": "NMA_OSA_VPI/reviews (6 direct items)",
+      "label": "NMA_OSA_VPI/reviews (9 direct items)",
       "file_type": "document",
       "source_file": "projects/NMA_OSA_VPI/reviews",
       "source_location": null,
@@ -10082,14 +10452,14 @@
       "author": null,
       "contributor": null,
       "artifact_purpose": "review reports and red-team notes",
-      "direct_child_count": 6,
+      "direct_child_count": 9,
       "id": "project_artifact_nma_osa_vpi_reviews",
       "community": 2,
-      "norm_label": "nma_osa_vpi/reviews (6 direct items)"
+      "norm_label": "nma_osa_vpi/reviews (9 direct items)"
     },
     {
       "operational_id": "project_artifact_nma_osa_vpi_figures",
-      "label": "NMA_OSA_VPI/figures (0 direct items)",
+      "label": "NMA_OSA_VPI/figures (16 direct items)",
       "file_type": "document",
       "source_file": "projects/NMA_OSA_VPI/figures",
       "source_location": null,
@@ -10098,10 +10468,10 @@
       "author": null,
       "contributor": null,
       "artifact_purpose": "figures and visual assets",
-      "direct_child_count": 0,
+      "direct_child_count": 16,
       "id": "project_artifact_nma_osa_vpi_figures",
       "community": 2,
-      "norm_label": "nma_osa_vpi/figures (0 direct items)"
+      "norm_label": "nma_osa_vpi/figures (16 direct items)"
     },
     {
       "operational_id": "project_artifact_nma_osa_vpi_deliverables",
@@ -10328,20 +10698,6 @@
       "id": "projects_pct_e_d_dimero_na_necrose_intestinal_transmural_2026_project_pct_e_d_dimero_na_necrose_intestinal_transmural_2026",
       "community": 2,
       "norm_label": "pct e d-dimero na necrose intestinal transmural 2026"
-    },
-    {
-      "operational_id": "mode_review_trinity",
-      "label": "mode: review-trinity",
-      "file_type": "rationale",
-      "source_file": "projects/pct-e-d-dimero-na-necrose-intestinal-transmural-2026/project.yaml",
-      "source_location": null,
-      "source_url": null,
-      "captured_at": null,
-      "author": null,
-      "contributor": null,
-      "id": "mode_review_trinity",
-      "community": 2,
-      "norm_label": "mode: review-trinity"
     },
     {
       "operational_id": "project_contract_pct_e_d_dimero_na_necrose_intestinal_transmural_2026_project_yaml",
@@ -13534,6 +13890,111 @@
       "id": "skills_bilingual_scientific_writing_skill_section_bilingual_scientific_writing_1_bilingual_scientific_writing",
       "community": 3,
       "norm_label": "bilingual-scientific-writing :: bilingual scientific writing"
+    },
+    {
+      "operational_id": "skill_section_bilingual_scientific_writing_2_english_scientific_writing_rules_anti_llm_journal_ready",
+      "label": "bilingual-scientific-writing :: English Scientific Writing Rules (Anti-LLM & Journal-Ready)",
+      "file_type": "document",
+      "source_file": "skills/bilingual-scientific-writing/SKILL.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "section_level": 2,
+      "id": "skills_bilingual_scientific_writing_skill_section_bilingual_scientific_writing_2_english_scientific_writing_rules_anti_llm_journal_ready",
+      "community": 3,
+      "norm_label": "bilingual-scientific-writing :: english scientific writing rules (anti-llm & journal-ready)"
+    },
+    {
+      "operational_id": "skill_section_bilingual_scientific_writing_3_mandatory_ai_disclosure_statement",
+      "label": "bilingual-scientific-writing :: Mandatory AI Disclosure Statement",
+      "file_type": "document",
+      "source_file": "skills/bilingual-scientific-writing/SKILL.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "section_level": 2,
+      "id": "skills_bilingual_scientific_writing_skill_section_bilingual_scientific_writing_3_mandatory_ai_disclosure_statement",
+      "community": 3,
+      "norm_label": "bilingual-scientific-writing :: mandatory ai disclosure statement"
+    },
+    {
+      "operational_id": "skill_section_bilingual_scientific_writing_4_english_manuscript_version",
+      "label": "bilingual-scientific-writing :: English Manuscript Version:",
+      "file_type": "document",
+      "source_file": "skills/bilingual-scientific-writing/SKILL.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "section_level": 3,
+      "id": "skills_bilingual_scientific_writing_skill_section_bilingual_scientific_writing_4_english_manuscript_version",
+      "community": 3,
+      "norm_label": "bilingual-scientific-writing :: english manuscript version:"
+    },
+    {
+      "operational_id": "skill_section_bilingual_scientific_writing_5_use_of_artificial_intelligence_and_ai_assisted_technologies_in_scientific_writing",
+      "label": "bilingual-scientific-writing :: Use of Artificial Intelligence and AI-Assisted Technologies in Scientific Writing",
+      "file_type": "document",
+      "source_file": "skills/bilingual-scientific-writing/SKILL.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "section_level": 3,
+      "id": "skills_bilingual_scientific_writing_skill_section_bilingual_scientific_writing_5_use_of_artificial_intelligence_and_ai_assisted_technologies_in_scientific_writing",
+      "community": 3,
+      "norm_label": "bilingual-scientific-writing :: use of artificial intelligence and ai-assisted technologies in scientific writing"
+    },
+    {
+      "operational_id": "skill_section_bilingual_scientific_writing_6_portuguese_manuscript_version_pt_br",
+      "label": "bilingual-scientific-writing :: Portuguese Manuscript Version (pt-BR):",
+      "file_type": "document",
+      "source_file": "skills/bilingual-scientific-writing/SKILL.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "section_level": 3,
+      "id": "skills_bilingual_scientific_writing_skill_section_bilingual_scientific_writing_6_portuguese_manuscript_version_pt_br",
+      "community": 3,
+      "norm_label": "bilingual-scientific-writing :: portuguese manuscript version (pt-br):"
+    },
+    {
+      "operational_id": "skill_section_bilingual_scientific_writing_7_uso_de_inteligencia_artificial_e_tecnologias_assistidas_por_ia_na_redacao_cientifica",
+      "label": "bilingual-scientific-writing :: Uso de Intelig\u00eancia Artificial e Tecnologias Assistidas por IA na Reda\u00e7\u00e3o Cient\u00edfica",
+      "file_type": "document",
+      "source_file": "skills/bilingual-scientific-writing/SKILL.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "section_level": 3,
+      "id": "skills_bilingual_scientific_writing_skill_section_bilingual_scientific_writing_7_uso_de_inteligencia_artificial_e_tecnologias_assistidas_por_ia_na_redacao_cientifica",
+      "community": 3,
+      "norm_label": "bilingual-scientific-writing :: uso de inteligencia artificial e tecnologias assistidas por ia na redacao cientifica"
+    },
+    {
+      "operational_id": "skill_section_bilingual_scientific_writing_8_bilingual_glossary_and_invariance_rules",
+      "label": "bilingual-scientific-writing :: Bilingual Glossary and Invariance Rules",
+      "file_type": "document",
+      "source_file": "skills/bilingual-scientific-writing/SKILL.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "section_level": 2,
+      "id": "skills_bilingual_scientific_writing_skill_section_bilingual_scientific_writing_8_bilingual_glossary_and_invariance_rules",
+      "community": 3,
+      "norm_label": "bilingual-scientific-writing :: bilingual glossary and invariance rules"
     },
     {
       "operational_id": "skill_manuscript_integrity_response_governor",
@@ -19630,6 +20091,16 @@
       "source_location": null,
       "weight": 1.0,
       "source": "hub_runtime",
+      "target": "article_machine_cli_document"
+    },
+    {
+      "relation": "exposes",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "article_machine/cli.py",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "hub_runtime",
       "target": "article_machine_cli_draft"
     },
     {
@@ -19651,6 +20122,16 @@
       "weight": 1.0,
       "source": "hub_runtime",
       "target": "article_machine_cli_export"
+    },
+    {
+      "relation": "exposes",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "article_machine/cli.py",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "hub_runtime",
+      "target": "article_machine_cli_extract"
     },
     {
       "relation": "exposes",
@@ -19890,6 +20371,16 @@
       "source_location": null,
       "weight": 1.0,
       "source": "hub_runtime",
+      "target": "article_machine_cli_project_extract"
+    },
+    {
+      "relation": "exposes",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "article_machine/cli.py",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "hub_runtime",
       "target": "article_machine_cli_prospero"
     },
     {
@@ -20081,6 +20572,16 @@
       "weight": 1.0,
       "source": "hub_runtime",
       "target": "article_machine_cli_templates"
+    },
+    {
+      "relation": "exposes",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "article_machine/cli.py",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "hub_runtime",
+      "target": "article_machine_cli_test_tesseract"
     },
     {
       "relation": "exposes",
@@ -21196,6 +21697,16 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
+      "source_file": "article_machine/services/scientific_execution.py",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "hub_article_machine",
+      "target": "module_services_scientific_execution"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
       "source_file": "article_machine/services/scientific_workflows.py",
       "source_location": null,
       "weight": 1.0,
@@ -21416,6 +21927,16 @@
       "relation": "catalogs_mode",
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
+      "source_file": "projects/liver-perfusion-hope-vs-nmp-nma-2027/project.yaml",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "hub_projects",
+      "target": "mode_screening"
+    },
+    {
+      "relation": "catalogs_mode",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
       "source_file": "projects/NMA_OSA_VPI/project.yaml",
       "source_location": null,
       "weight": 1.0,
@@ -21426,7 +21947,7 @@
       "relation": "catalogs_mode",
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
-      "source_file": "projects/GastroSP_Gold_NMA_Biomarkers/project.yaml",
+      "source_file": "projects/congress-winners-2026/project.yaml",
       "source_location": null,
       "weight": 1.0,
       "source": "hub_projects",
@@ -21566,6 +22087,16 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
+      "source_file": "projects/liver-perfusion-hope-vs-nmp-nma-2027/project.yaml",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "hub_projects",
+      "target": "projects_liver_perfusion_hope_vs_nmp_nma_2027_project_liver_perfusion_hope_vs_nmp_nma_2027"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
       "source_file": "projects/NMA_OSA_VPI/project.yaml",
       "source_location": null,
       "weight": 1.0,
@@ -21651,6 +22182,16 @@
       "weight": 1.0,
       "source": "hub_projects",
       "target": "type_machine_governance"
+    },
+    {
+      "relation": "catalogs_type",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "projects/liver-perfusion-hope-vs-nmp-nma-2027/project.yaml",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "hub_projects",
+      "target": "type_network_meta_analysis"
     },
     {
       "relation": "catalogs_type",
@@ -24843,6 +25384,26 @@
       "target": "doc_section_agents_agents_md_7_r_environment_r_4_6_1_renv_1_3_1"
     },
     {
+      "relation": "has_section",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": ".agents/AGENTS.md",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "doc_agents_agents_md",
+      "target": "doc_section_agents_agents_md_8_python_clinical_machine_learning_ai_python_3_13_uv"
+    },
+    {
+      "relation": "has_section",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": ".agents/AGENTS.md",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "doc_agents_agents_md",
+      "target": "doc_section_agents_agents_md_9_writing_quality_ai_disclosure_policy"
+    },
+    {
       "relation": "next_section",
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
@@ -24901,6 +25462,26 @@
       "weight": 1.0,
       "source": "doc_section_agents_agents_md_6_hard_rules",
       "target": "doc_section_agents_agents_md_7_r_environment_r_4_6_1_renv_1_3_1"
+    },
+    {
+      "relation": "next_section",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": ".agents/AGENTS.md",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "doc_section_agents_agents_md_7_r_environment_r_4_6_1_renv_1_3_1",
+      "target": "doc_section_agents_agents_md_8_python_clinical_machine_learning_ai_python_3_13_uv"
+    },
+    {
+      "relation": "next_section",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": ".agents/AGENTS.md",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "doc_section_agents_agents_md_8_python_clinical_machine_learning_ai_python_3_13_uv",
+      "target": "doc_section_agents_agents_md_9_writing_quality_ai_disclosure_policy"
     },
     {
       "relation": "has_section",
@@ -25140,7 +25721,7 @@
       "source_location": null,
       "weight": 1.0,
       "source": "doc_agents_md",
-      "target": "doc_section_agents_md_15_entregas_bilingues_obrigatorias"
+      "target": "doc_section_agents_md_15_entregas_bilingues_obrigatorias_e_politicas_de_escrita"
     },
     {
       "relation": "has_section",
@@ -25150,7 +25731,17 @@
       "source_location": null,
       "weight": 1.0,
       "source": "doc_agents_md",
-      "target": "doc_section_agents_md_16_ambiente_r_cient_fico_consolidado_r_4_6_1_renv_1_3_1"
+      "target": "doc_section_agents_md_16_ambiente_r_cientifico_consolidado_r_4_6_1_renv_1_3_1"
+    },
+    {
+      "relation": "has_section",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "AGENTS.md",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "doc_agents_md",
+      "target": "doc_section_agents_md_17_ambiente_python_de_machine_learning_clinico_e_ia_medica_python_3_13_uv"
     },
     {
       "relation": "has_section",
@@ -25380,7 +25971,7 @@
       "source_location": null,
       "weight": 1.0,
       "source": "doc_section_agents_md_14_politica_canonica_a_partir_de_novembro_de_2026",
-      "target": "doc_section_agents_md_15_entregas_bilingues_obrigatorias"
+      "target": "doc_section_agents_md_15_entregas_bilingues_obrigatorias_e_politicas_de_escrita"
     },
     {
       "relation": "next_section",
@@ -25389,8 +25980,18 @@
       "source_file": "AGENTS.md",
       "source_location": null,
       "weight": 1.0,
-      "source": "doc_section_agents_md_15_entregas_bilingues_obrigatorias",
-      "target": "doc_section_agents_md_16_ambiente_r_cient_fico_consolidado_r_4_6_1_renv_1_3_1"
+      "source": "doc_section_agents_md_15_entregas_bilingues_obrigatorias_e_politicas_de_escrita",
+      "target": "doc_section_agents_md_16_ambiente_r_cientifico_consolidado_r_4_6_1_renv_1_3_1"
+    },
+    {
+      "relation": "next_section",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "AGENTS.md",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "doc_section_agents_md_16_ambiente_r_cientifico_consolidado_r_4_6_1_renv_1_3_1",
+      "target": "doc_section_agents_md_17_ambiente_python_de_machine_learning_clinico_e_ia_medica_python_3_13_uv"
     },
     {
       "relation": "has_section",
@@ -28210,7 +28811,7 @@
       "source_location": null,
       "weight": 1.0,
       "source": "doc_docs_ambientes_e_locks_md",
-      "target": "doc_section_docs_ambientes_e_locks_md_5_quarto_e_relatorios"
+      "target": "doc_section_docs_ambientes_e_locks_md_5_ml_clinico_e_deep_learning_modelos_aprendizado_de_maquina_clinico"
     },
     {
       "relation": "has_section",
@@ -28220,7 +28821,7 @@
       "source_location": null,
       "weight": 1.0,
       "source": "doc_docs_ambientes_e_locks_md",
-      "target": "doc_section_docs_ambientes_e_locks_md_6_navegador"
+      "target": "doc_section_docs_ambientes_e_locks_md_6_quarto_e_relatorios"
     },
     {
       "relation": "has_section",
@@ -28230,7 +28831,7 @@
       "source_location": null,
       "weight": 1.0,
       "source": "doc_docs_ambientes_e_locks_md",
-      "target": "doc_section_docs_ambientes_e_locks_md_7_lacunas_conhecidas"
+      "target": "doc_section_docs_ambientes_e_locks_md_7_navegador"
     },
     {
       "relation": "has_section",
@@ -28240,7 +28841,17 @@
       "source_location": null,
       "weight": 1.0,
       "source": "doc_docs_ambientes_e_locks_md",
-      "target": "doc_section_docs_ambientes_e_locks_md_8_regras"
+      "target": "doc_section_docs_ambientes_e_locks_md_8_lacunas_conhecidas"
+    },
+    {
+      "relation": "has_section",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "docs/AMBIENTES_E_LOCKS.md",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "doc_docs_ambientes_e_locks_md",
+      "target": "doc_section_docs_ambientes_e_locks_md_9_regras"
     },
     {
       "relation": "routes_to",
@@ -28340,7 +28951,7 @@
       "source_location": null,
       "weight": 1.0,
       "source": "doc_section_docs_ambientes_e_locks_md_4_python",
-      "target": "doc_section_docs_ambientes_e_locks_md_5_quarto_e_relatorios"
+      "target": "doc_section_docs_ambientes_e_locks_md_5_ml_clinico_e_deep_learning_modelos_aprendizado_de_maquina_clinico"
     },
     {
       "relation": "next_section",
@@ -28349,8 +28960,8 @@
       "source_file": "docs/AMBIENTES_E_LOCKS.md",
       "source_location": null,
       "weight": 1.0,
-      "source": "doc_section_docs_ambientes_e_locks_md_5_quarto_e_relatorios",
-      "target": "doc_section_docs_ambientes_e_locks_md_6_navegador"
+      "source": "doc_section_docs_ambientes_e_locks_md_5_ml_clinico_e_deep_learning_modelos_aprendizado_de_maquina_clinico",
+      "target": "doc_section_docs_ambientes_e_locks_md_6_quarto_e_relatorios"
     },
     {
       "relation": "next_section",
@@ -28359,8 +28970,8 @@
       "source_file": "docs/AMBIENTES_E_LOCKS.md",
       "source_location": null,
       "weight": 1.0,
-      "source": "doc_section_docs_ambientes_e_locks_md_6_navegador",
-      "target": "doc_section_docs_ambientes_e_locks_md_7_lacunas_conhecidas"
+      "source": "doc_section_docs_ambientes_e_locks_md_6_quarto_e_relatorios",
+      "target": "doc_section_docs_ambientes_e_locks_md_7_navegador"
     },
     {
       "relation": "next_section",
@@ -28369,8 +28980,18 @@
       "source_file": "docs/AMBIENTES_E_LOCKS.md",
       "source_location": null,
       "weight": 1.0,
-      "source": "doc_section_docs_ambientes_e_locks_md_7_lacunas_conhecidas",
-      "target": "doc_section_docs_ambientes_e_locks_md_8_regras"
+      "source": "doc_section_docs_ambientes_e_locks_md_7_navegador",
+      "target": "doc_section_docs_ambientes_e_locks_md_8_lacunas_conhecidas"
+    },
+    {
+      "relation": "next_section",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "docs/AMBIENTES_E_LOCKS.md",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "doc_section_docs_ambientes_e_locks_md_8_lacunas_conhecidas",
+      "target": "doc_section_docs_ambientes_e_locks_md_9_regras"
     },
     {
       "relation": "routes_to",
@@ -30136,6 +30757,36 @@
       "relation": "satisfies_entry_check",
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
+      "source_file": "projects/liver-perfusion-hope-vs-nmp-nma-2027/compute.yaml",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "project_contract_liver_perfusion_hope_vs_nmp_nma_2027_compute_yaml",
+      "target": "flow_project_contract"
+    },
+    {
+      "relation": "satisfies_entry_check",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "projects/liver-perfusion-hope-vs-nmp-nma-2027/protocol.yaml",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "project_contract_liver_perfusion_hope_vs_nmp_nma_2027_protocol_yaml",
+      "target": "flow_project_contract"
+    },
+    {
+      "relation": "satisfies_entry_check",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "projects/liver-perfusion-hope-vs-nmp-nma-2027/standards.yaml",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "project_contract_liver_perfusion_hope_vs_nmp_nma_2027_standards_yaml",
+      "target": "flow_project_contract"
+    },
+    {
+      "relation": "satisfies_entry_check",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
       "source_file": "projects/NMA_OSA_VPI/compute.yaml",
       "source_location": null,
       "weight": 1.0,
@@ -30410,6 +31061,16 @@
       "source_location": null,
       "weight": 1.0,
       "source": "projects_intestinal_transplant_research_program_2026_project_contract_intestinal_transplant_research_program_2026_project_yaml",
+      "target": "flow_project_contract"
+    },
+    {
+      "relation": "satisfies_entry_check",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "projects/liver-perfusion-hope-vs-nmp-nma-2027/project.yaml",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "projects_liver_perfusion_hope_vs_nmp_nma_2027_project_contract_liver_perfusion_hope_vs_nmp_nma_2027_project_yaml",
       "target": "flow_project_contract"
     },
     {
@@ -31460,6 +32121,86 @@
       "source_location": null,
       "weight": 0.7,
       "source": "project_artifact_intestinal_transplant_research_program_2026_sources",
+      "target": "flow_task_packet"
+    },
+    {
+      "relation": "feeds_or_records_context",
+      "confidence": "INFERRED",
+      "confidence_score": 0.75,
+      "source_file": "projects/liver-perfusion-hope-vs-nmp-nma-2027/analysis",
+      "source_location": null,
+      "weight": 0.7,
+      "source": "project_artifact_liver_perfusion_hope_vs_nmp_nma_2027_analysis",
+      "target": "flow_task_packet"
+    },
+    {
+      "relation": "feeds_or_records_context",
+      "confidence": "INFERRED",
+      "confidence_score": 0.75,
+      "source_file": "projects/liver-perfusion-hope-vs-nmp-nma-2027/context",
+      "source_location": null,
+      "weight": 0.7,
+      "source": "project_artifact_liver_perfusion_hope_vs_nmp_nma_2027_context",
+      "target": "flow_task_packet"
+    },
+    {
+      "relation": "feeds_or_records_context",
+      "confidence": "INFERRED",
+      "confidence_score": 0.75,
+      "source_file": "projects/liver-perfusion-hope-vs-nmp-nma-2027/deliverables",
+      "source_location": null,
+      "weight": 0.7,
+      "source": "project_artifact_liver_perfusion_hope_vs_nmp_nma_2027_deliverables",
+      "target": "flow_task_packet"
+    },
+    {
+      "relation": "feeds_or_records_context",
+      "confidence": "INFERRED",
+      "confidence_score": 0.75,
+      "source_file": "projects/liver-perfusion-hope-vs-nmp-nma-2027/drafts",
+      "source_location": null,
+      "weight": 0.7,
+      "source": "project_artifact_liver_perfusion_hope_vs_nmp_nma_2027_drafts",
+      "target": "flow_task_packet"
+    },
+    {
+      "relation": "feeds_or_records_context",
+      "confidence": "INFERRED",
+      "confidence_score": 0.75,
+      "source_file": "projects/liver-perfusion-hope-vs-nmp-nma-2027/evidence",
+      "source_location": null,
+      "weight": 0.7,
+      "source": "project_artifact_liver_perfusion_hope_vs_nmp_nma_2027_evidence",
+      "target": "flow_task_packet"
+    },
+    {
+      "relation": "feeds_or_records_context",
+      "confidence": "INFERRED",
+      "confidence_score": 0.75,
+      "source_file": "projects/liver-perfusion-hope-vs-nmp-nma-2027/figures",
+      "source_location": null,
+      "weight": 0.7,
+      "source": "project_artifact_liver_perfusion_hope_vs_nmp_nma_2027_figures",
+      "target": "flow_task_packet"
+    },
+    {
+      "relation": "feeds_or_records_context",
+      "confidence": "INFERRED",
+      "confidence_score": 0.75,
+      "source_file": "projects/liver-perfusion-hope-vs-nmp-nma-2027/reviews",
+      "source_location": null,
+      "weight": 0.7,
+      "source": "project_artifact_liver_perfusion_hope_vs_nmp_nma_2027_reviews",
+      "target": "flow_task_packet"
+    },
+    {
+      "relation": "feeds_or_records_context",
+      "confidence": "INFERRED",
+      "confidence_score": 0.75,
+      "source_file": "projects/liver-perfusion-hope-vs-nmp-nma-2027/sources",
+      "source_location": null,
+      "weight": 0.7,
+      "source": "project_artifact_liver_perfusion_hope_vs_nmp_nma_2027_sources",
       "target": "flow_task_packet"
     },
     {
@@ -32960,6 +33701,16 @@
       "source_location": null,
       "weight": 1.0,
       "source": "module_cli",
+      "target": "article_machine_cli_document"
+    },
+    {
+      "relation": "defines_cli",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "article_machine/cli.py",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "module_cli",
       "target": "article_machine_cli_draft"
     },
     {
@@ -32981,6 +33732,16 @@
       "weight": 1.0,
       "source": "module_cli",
       "target": "article_machine_cli_export"
+    },
+    {
+      "relation": "defines_cli",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "article_machine/cli.py",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "module_cli",
+      "target": "article_machine_cli_extract"
     },
     {
       "relation": "defines_cli",
@@ -33220,6 +33981,16 @@
       "source_location": null,
       "weight": 1.0,
       "source": "module_cli",
+      "target": "article_machine_cli_project_extract"
+    },
+    {
+      "relation": "defines_cli",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "article_machine/cli.py",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "module_cli",
       "target": "article_machine_cli_prospero"
     },
     {
@@ -33411,6 +34182,16 @@
       "weight": 1.0,
       "source": "module_cli",
       "target": "article_machine_cli_templates"
+    },
+    {
+      "relation": "defines_cli",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "article_machine/cli.py",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "module_cli",
+      "target": "article_machine_cli_test_tesseract"
     },
     {
       "relation": "defines_cli",
@@ -34070,6 +34851,16 @@
       "source_location": null,
       "weight": 1.0,
       "source": "projects_intestinal_transplant_research_program_2026_project_intestinal_transplant_research_program_2026",
+      "target": "lane_evidence_writing"
+    },
+    {
+      "relation": "uses_lane",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "projects/liver-perfusion-hope-vs-nmp-nma-2027/project.yaml",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "projects_liver_perfusion_hope_vs_nmp_nma_2027_project_liver_perfusion_hope_vs_nmp_nma_2027",
       "target": "lane_evidence_writing"
     },
     {
@@ -34933,16 +35724,6 @@
       "target": "type_unknown"
     },
     {
-      "relation": "current_mode",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "projects/GastroSP_Gold_NMA_Biomarkers/project.yaml",
-      "source_location": null,
-      "weight": 1.0,
-      "source": "projects_gastrosp_gold_nma_biomarkers_project_gastrosp_gold_nma_biomarkers",
-      "target": "mode_unknown"
-    },
-    {
       "relation": "project_type",
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
@@ -34971,6 +35752,16 @@
       "weight": 1.0,
       "source": "projects_gastrosp_gold_nma_biomarkers_project_gastrosp_gold_nma_biomarkers",
       "target": "lane_clinical_meta_analysis"
+    },
+    {
+      "relation": "current_mode",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "projects/GastroSP_Gold_NMA_Biomarkers/project.yaml",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "projects_gastrosp_gold_nma_biomarkers_project_gastrosp_gold_nma_biomarkers",
+      "target": "mode_review_trinity"
     },
     {
       "relation": "has_artifact_area",
@@ -35101,6 +35892,16 @@
       "weight": 1.0,
       "source": "projects_oncometabolic_crc_nma_project_oncometabolic_crc_nma",
       "target": "lane_clinical_meta_analysis"
+    },
+    {
+      "relation": "current_mode",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "projects/pct-e-d-dimero-na-necrose-intestinal-transmural-2026/project.yaml",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "projects_pct_e_d_dimero_na_necrose_intestinal_transmural_2026_project_pct_e_d_dimero_na_necrose_intestinal_transmural_2026",
+      "target": "mode_review_trinity"
     },
     {
       "relation": "has_artifact_area",
@@ -35626,6 +36427,146 @@
       "relation": "current_mode",
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
+      "source_file": "projects/liver-perfusion-hope-vs-nmp-nma-2027/project.yaml",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "projects_liver_perfusion_hope_vs_nmp_nma_2027_project_liver_perfusion_hope_vs_nmp_nma_2027",
+      "target": "mode_screening"
+    },
+    {
+      "relation": "has_artifact_area",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "projects/liver-perfusion-hope-vs-nmp-nma-2027/analysis",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "projects_liver_perfusion_hope_vs_nmp_nma_2027_project_liver_perfusion_hope_vs_nmp_nma_2027",
+      "target": "project_artifact_liver_perfusion_hope_vs_nmp_nma_2027_analysis"
+    },
+    {
+      "relation": "has_artifact_area",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "projects/liver-perfusion-hope-vs-nmp-nma-2027/context",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "projects_liver_perfusion_hope_vs_nmp_nma_2027_project_liver_perfusion_hope_vs_nmp_nma_2027",
+      "target": "project_artifact_liver_perfusion_hope_vs_nmp_nma_2027_context"
+    },
+    {
+      "relation": "has_artifact_area",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "projects/liver-perfusion-hope-vs-nmp-nma-2027/deliverables",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "projects_liver_perfusion_hope_vs_nmp_nma_2027_project_liver_perfusion_hope_vs_nmp_nma_2027",
+      "target": "project_artifact_liver_perfusion_hope_vs_nmp_nma_2027_deliverables"
+    },
+    {
+      "relation": "has_artifact_area",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "projects/liver-perfusion-hope-vs-nmp-nma-2027/drafts",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "projects_liver_perfusion_hope_vs_nmp_nma_2027_project_liver_perfusion_hope_vs_nmp_nma_2027",
+      "target": "project_artifact_liver_perfusion_hope_vs_nmp_nma_2027_drafts"
+    },
+    {
+      "relation": "has_artifact_area",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "projects/liver-perfusion-hope-vs-nmp-nma-2027/evidence",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "projects_liver_perfusion_hope_vs_nmp_nma_2027_project_liver_perfusion_hope_vs_nmp_nma_2027",
+      "target": "project_artifact_liver_perfusion_hope_vs_nmp_nma_2027_evidence"
+    },
+    {
+      "relation": "has_artifact_area",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "projects/liver-perfusion-hope-vs-nmp-nma-2027/figures",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "projects_liver_perfusion_hope_vs_nmp_nma_2027_project_liver_perfusion_hope_vs_nmp_nma_2027",
+      "target": "project_artifact_liver_perfusion_hope_vs_nmp_nma_2027_figures"
+    },
+    {
+      "relation": "has_artifact_area",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "projects/liver-perfusion-hope-vs-nmp-nma-2027/reviews",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "projects_liver_perfusion_hope_vs_nmp_nma_2027_project_liver_perfusion_hope_vs_nmp_nma_2027",
+      "target": "project_artifact_liver_perfusion_hope_vs_nmp_nma_2027_reviews"
+    },
+    {
+      "relation": "has_artifact_area",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "projects/liver-perfusion-hope-vs-nmp-nma-2027/sources",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "projects_liver_perfusion_hope_vs_nmp_nma_2027_project_liver_perfusion_hope_vs_nmp_nma_2027",
+      "target": "project_artifact_liver_perfusion_hope_vs_nmp_nma_2027_sources"
+    },
+    {
+      "relation": "has_contract_file",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "projects/liver-perfusion-hope-vs-nmp-nma-2027/compute.yaml",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "projects_liver_perfusion_hope_vs_nmp_nma_2027_project_liver_perfusion_hope_vs_nmp_nma_2027",
+      "target": "project_contract_liver_perfusion_hope_vs_nmp_nma_2027_compute_yaml"
+    },
+    {
+      "relation": "has_contract_file",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "projects/liver-perfusion-hope-vs-nmp-nma-2027/protocol.yaml",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "projects_liver_perfusion_hope_vs_nmp_nma_2027_project_liver_perfusion_hope_vs_nmp_nma_2027",
+      "target": "project_contract_liver_perfusion_hope_vs_nmp_nma_2027_protocol_yaml"
+    },
+    {
+      "relation": "has_contract_file",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "projects/liver-perfusion-hope-vs-nmp-nma-2027/standards.yaml",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "projects_liver_perfusion_hope_vs_nmp_nma_2027_project_liver_perfusion_hope_vs_nmp_nma_2027",
+      "target": "project_contract_liver_perfusion_hope_vs_nmp_nma_2027_standards_yaml"
+    },
+    {
+      "relation": "has_contract_file",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "projects/liver-perfusion-hope-vs-nmp-nma-2027/project.yaml",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "projects_liver_perfusion_hope_vs_nmp_nma_2027_project_liver_perfusion_hope_vs_nmp_nma_2027",
+      "target": "projects_liver_perfusion_hope_vs_nmp_nma_2027_project_contract_liver_perfusion_hope_vs_nmp_nma_2027_project_yaml"
+    },
+    {
+      "relation": "project_type",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "projects/liver-perfusion-hope-vs-nmp-nma-2027/project.yaml",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "projects_liver_perfusion_hope_vs_nmp_nma_2027_project_liver_perfusion_hope_vs_nmp_nma_2027",
+      "target": "type_network_meta_analysis"
+    },
+    {
+      "relation": "current_mode",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
       "source_file": "projects/NMA_OSA_VPI/project.yaml",
       "source_location": null,
       "weight": 1.0,
@@ -35871,16 +36812,6 @@
       "weight": 1.0,
       "source": "projects_oncometabolic_crc_nma_project_oncometabolic_crc_nma",
       "target": "projects_oncometabolic_crc_nma_project_contract_oncometabolic_crc_nma_project_yaml"
-    },
-    {
-      "relation": "current_mode",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "projects/pct-e-d-dimero-na-necrose-intestinal-transmural-2026/project.yaml",
-      "source_location": null,
-      "weight": 1.0,
-      "source": "projects_pct_e_d_dimero_na_necrose_intestinal_transmural_2026_project_pct_e_d_dimero_na_necrose_intestinal_transmural_2026",
-      "target": "mode_review_trinity"
     },
     {
       "relation": "has_artifact_area",
@@ -38881,6 +39812,146 @@
       "weight": 1.0,
       "source": "skills_bilingual_scientific_writing_skill_bilingual_scientific_writing",
       "target": "skills_bilingual_scientific_writing_skill_section_bilingual_scientific_writing_1_bilingual_scientific_writing"
+    },
+    {
+      "relation": "has_instruction_section",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "skills/bilingual-scientific-writing/SKILL.md",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "skills_bilingual_scientific_writing_skill_bilingual_scientific_writing",
+      "target": "skills_bilingual_scientific_writing_skill_section_bilingual_scientific_writing_2_english_scientific_writing_rules_anti_llm_journal_ready"
+    },
+    {
+      "relation": "has_instruction_section",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "skills/bilingual-scientific-writing/SKILL.md",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "skills_bilingual_scientific_writing_skill_bilingual_scientific_writing",
+      "target": "skills_bilingual_scientific_writing_skill_section_bilingual_scientific_writing_3_mandatory_ai_disclosure_statement"
+    },
+    {
+      "relation": "has_instruction_section",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "skills/bilingual-scientific-writing/SKILL.md",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "skills_bilingual_scientific_writing_skill_bilingual_scientific_writing",
+      "target": "skills_bilingual_scientific_writing_skill_section_bilingual_scientific_writing_4_english_manuscript_version"
+    },
+    {
+      "relation": "has_instruction_section",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "skills/bilingual-scientific-writing/SKILL.md",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "skills_bilingual_scientific_writing_skill_bilingual_scientific_writing",
+      "target": "skills_bilingual_scientific_writing_skill_section_bilingual_scientific_writing_5_use_of_artificial_intelligence_and_ai_assisted_technologies_in_scientific_writing"
+    },
+    {
+      "relation": "has_instruction_section",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "skills/bilingual-scientific-writing/SKILL.md",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "skills_bilingual_scientific_writing_skill_bilingual_scientific_writing",
+      "target": "skills_bilingual_scientific_writing_skill_section_bilingual_scientific_writing_6_portuguese_manuscript_version_pt_br"
+    },
+    {
+      "relation": "has_instruction_section",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "skills/bilingual-scientific-writing/SKILL.md",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "skills_bilingual_scientific_writing_skill_bilingual_scientific_writing",
+      "target": "skills_bilingual_scientific_writing_skill_section_bilingual_scientific_writing_7_uso_de_inteligencia_artificial_e_tecnologias_assistidas_por_ia_na_redacao_cientifica"
+    },
+    {
+      "relation": "has_instruction_section",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "skills/bilingual-scientific-writing/SKILL.md",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "skills_bilingual_scientific_writing_skill_bilingual_scientific_writing",
+      "target": "skills_bilingual_scientific_writing_skill_section_bilingual_scientific_writing_8_bilingual_glossary_and_invariance_rules"
+    },
+    {
+      "relation": "next_section",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "skills/bilingual-scientific-writing/SKILL.md",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "skills_bilingual_scientific_writing_skill_section_bilingual_scientific_writing_1_bilingual_scientific_writing",
+      "target": "skills_bilingual_scientific_writing_skill_section_bilingual_scientific_writing_2_english_scientific_writing_rules_anti_llm_journal_ready"
+    },
+    {
+      "relation": "next_section",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "skills/bilingual-scientific-writing/SKILL.md",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "skills_bilingual_scientific_writing_skill_section_bilingual_scientific_writing_2_english_scientific_writing_rules_anti_llm_journal_ready",
+      "target": "skills_bilingual_scientific_writing_skill_section_bilingual_scientific_writing_3_mandatory_ai_disclosure_statement"
+    },
+    {
+      "relation": "next_section",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "skills/bilingual-scientific-writing/SKILL.md",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "skills_bilingual_scientific_writing_skill_section_bilingual_scientific_writing_3_mandatory_ai_disclosure_statement",
+      "target": "skills_bilingual_scientific_writing_skill_section_bilingual_scientific_writing_4_english_manuscript_version"
+    },
+    {
+      "relation": "next_section",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "skills/bilingual-scientific-writing/SKILL.md",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "skills_bilingual_scientific_writing_skill_section_bilingual_scientific_writing_4_english_manuscript_version",
+      "target": "skills_bilingual_scientific_writing_skill_section_bilingual_scientific_writing_5_use_of_artificial_intelligence_and_ai_assisted_technologies_in_scientific_writing"
+    },
+    {
+      "relation": "next_section",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "skills/bilingual-scientific-writing/SKILL.md",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "skills_bilingual_scientific_writing_skill_section_bilingual_scientific_writing_5_use_of_artificial_intelligence_and_ai_assisted_technologies_in_scientific_writing",
+      "target": "skills_bilingual_scientific_writing_skill_section_bilingual_scientific_writing_6_portuguese_manuscript_version_pt_br"
+    },
+    {
+      "relation": "next_section",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "skills/bilingual-scientific-writing/SKILL.md",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "skills_bilingual_scientific_writing_skill_section_bilingual_scientific_writing_6_portuguese_manuscript_version_pt_br",
+      "target": "skills_bilingual_scientific_writing_skill_section_bilingual_scientific_writing_7_uso_de_inteligencia_artificial_e_tecnologias_assistidas_por_ia_na_redacao_cientifica"
+    },
+    {
+      "relation": "next_section",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "skills/bilingual-scientific-writing/SKILL.md",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "skills_bilingual_scientific_writing_skill_section_bilingual_scientific_writing_7_uso_de_inteligencia_artificial_e_tecnologias_assistidas_por_ia_na_redacao_cientifica",
+      "target": "skills_bilingual_scientific_writing_skill_section_bilingual_scientific_writing_8_bilingual_glossary_and_invariance_rules"
     },
     {
       "relation": "has_instruction_section",
@@ -45094,5 +46165,5 @@
     }
   ],
   "hyperedges": [],
-  "built_at_commit": "8401756d9b90cf922416c155f55a1fd287c65027"
+  "built_at_commit": "ca22b9c311bc5c7c89629479b64785c1463776d4"
 }

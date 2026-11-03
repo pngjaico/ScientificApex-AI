@@ -50,7 +50,20 @@ This `.agents` directory is the local handoff layer for agents entering
   `projects/<project_id>/`.
 
 ## R Environment (R 4.6.1 / renv 1.3.1)
-- Canonical template & lockfile: `modelos/meta_analise_em_r/renv.lock` (69 direct packages, 302 in CRAN closure: `tidymodels`, `xgboost`, `lightgbm`, `glmnet`, `ranger`, `probably`, `dcurves`, `DALEX`, `DALEXtra`, `kernelshap`, `shapviz`, `metafor`, `meta`, `netmeta`, `clubSandwich`, `mada`, `dosresmeta`, `robvis`, `PRISMA2020`, `ggplot2`, `patchwork`, `ggpubr`, `survminer`, `plotly`, `gtsummary`, `gt`, `flextable`, `mice`, `data.table`, `janitor`, `skimr`, `broom`, `parameters`, `performance`, `effectsize`, `emmeans`, `marginaleffects`, `quarto`, `shiny`).
+- Canonical template & lockfile: `modelos/meta_analise_em_r/renv.lock` (85 direct packages, 342 in CRAN closure: `tidymodels`, `bonsai`, `censored`, `finetune`, `themis`, `xgboost`, `lightgbm`, `glmnet`, `ranger`, `probably`, `dcurves`, `DALEX`, `DALEXtra`, `kernelshap`, `shapviz`, `metafor`, `meta`, `netmeta`, `clubSandwich`, `mada`, `dosresmeta`, `robvis`, `PRISMA2020`, `MatchIt`, `WeightIt`, `cobalt`, `tidycmprsk`, `ggsurvfit`, `ggplot2`, `patchwork`, `ggpubr`, `survminer`, `plotly`, `gtsummary`, `gt`, `flextable`, `mice`, `data.table`, `janitor`, `skimr`, `broom`, `parameters`, `performance`, `effectsize`, `emmeans`, `marginaleffects`, `quarto`, `shiny`, `pwr`, `epiR`).
 - Verify stack: `"C:/Users/Usuario-pc/AppData/Local/Programs/R/R-4.6.1/bin/x64/Rscript.exe" --vanilla modelos/meta_analise_em_r/analysis/00_pacotes_do_ambiente.R`
 - Refresh lockfile: `"C:/Users/Usuario-pc/AppData/Local/Programs/R/R-4.6.1/bin/x64/Rscript.exe" --vanilla scripts/atualizar_ambiente_meta_analise.R`
 - Run inside active project: `.\.venv\Scripts\python.exe -m article_machine run-r projects/<project_id> projects/<project_id>/analysis/<script>.R`
+
+## Python Clinical Machine Learning & AI (Python 3.13 / uv)
+- Canonical environment: `modelos/aprendizado_de_maquina_clinico/`
+- Direct python: `modelos/aprendizado_de_maquina_clinico/.venv/Scripts/python.exe`
+- Stack: `scikit-learn` (1.9.1), `xgboost` (3.4.1), `lightgbm` (4.7.0), `mapie` (1.6.0), `lifelines` (0.30.3), `optuna` (4.9.0), `shap` (0.54.1), `pandera` (0.35.0), `pandas` (2.3.3), `statsmodels` (0.15.0), `matplotlib` (3.11.2), `seaborn` (0.13.2), `plotly` (6.9.0).
+- Deep Learning: `modelos/aprendizado_de_maquina_clinico/ambientes/aprendizado_profundo/` (`torch 2.15.0+cpu`, `torchvision`, `torchmetrics`).
+- Restore: `uv sync --directory modelos/aprendizado_de_maquina_clinico`
+- Run ML script: `modelos/aprendizado_de_maquina_clinico/.venv/Scripts/python.exe projects/<project_id>/analysis/<script>.py`
+
+## Writing Quality & AI Disclosure Policy
+- **Mandatory AI Disclosure:** All manuscripts must include the canonical Claude Opus 5.5 AI disclosure under Declarations (in both EN and PT-BR).
+- **Prohibition of Em-Dashes (`—`):** In English academic writing, avoid conversational em-dashes (`—`); use parentheses, commas, or direct declarative sentences to maintain natural scientific style.
+- **Mandatory Writing Skills:** Always route text preparation through `bilingual-scientific-writing`, `ptbr-article-writing`, and `anti-ai-writing-governor`.

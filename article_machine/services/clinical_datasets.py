@@ -36,7 +36,7 @@ from typing import Any
 
 from ..ingest import register_source
 from ..serialization import save_structured_file
-from .protocol_registration import registration_gate
+from .scientific_execution import scientific_execution_gate
 
 CANONICAL_RSCRIPT = Path("C:/Users/Usuario-pc/AppData/Local/Programs/R/R-4.6.1/bin/x64/Rscript.exe")
 
@@ -127,6 +127,7 @@ CLINICAL_DATASETS_CATALOG: list[dict[str, Any]] = [
     },
     {
         "id": "mimic-iv-demo-open",
+        "methodological_limits": ["100-patient demo: pipeline engineering, not evidence of generalizable model performance"],
         "name": "MIMIC-IV Clinical Database Demo v2.2 (100 Patients Exact Schema Open Subset)",
         "domain": "icu-emergency-ehr",
         "modality": ["tabular-ehr", "labs", "icu-stays", "prescriptions", "diagnoses-icd"],
@@ -155,12 +156,16 @@ CLINICAL_DATASETS_CATALOG: list[dict[str, Any]] = [
         "download_url": "https://physionet.org/files/eicu-crd-demo/2.0.1/",
         "provider": "PhysioNet Open Access / MIT LCP & Philips",
         "url": "https://physionet.org/content/eicu-crd-demo/2.0.1/",
-        "sample_size": "2,520 ICU stays across 20+ US hospitals with exact eICU relational schema",
+        "sample_size": "Over 2,500 ICU stays selected from 20 hospitals; hospital and unit identifiers removed",
+        "methodological_limits": [
+            "Demo intended for feasibility and pipeline checks",
+            "Hospital/unit identifiers removed: cannot assume center-held-out validation is feasible",
+        ],
         "license": "Open Database License (ODbL) — Immediate download without CITI credentialing!",
         "open_alternative_while_waiting": None,
         "clinical_tasks": [
-            "multi-center ICU external validation pipeline engineering",
-            "APACHE IV vs ML mortality & LOS benchmarking",
+            "ICU relational pipeline and schema engineering",
+            "Exploratory APACHE/ML comparison; cohort suitability and bias require separate review",
         ],
     },
     {
@@ -172,6 +177,7 @@ CLINICAL_DATASETS_CATALOG: list[dict[str, Any]] = [
         "fetch_method": "physionet-open-http",
         "auto_fetchable": True,
         "download_url": "https://physionet.org/files/challenge-2012/1.0.0/Outcomes-a.txt",
+        "fetch_scope": "outcomes-only-not-the-48h-predictor-cohort",
         "provider": "PhysioNet Open Access",
         "url": "https://physionet.org/content/challenge-2012/1.0.0/",
         "sample_size": "4,000 (Set A) to 12,000 ICU admissions with 48h lactate, creatinine, bilirubin, WBC, GCS, SOFA, SAPS-I & death",
@@ -684,6 +690,24 @@ CLINICAL_DATASETS_CATALOG: list[dict[str, Any]] = [
         ],
     },
     {
+        "id": "world-bank-health-indicators",
+        "name": "World Bank Global Health & Healthcare System Indicators Live API",
+        "domain": "epidemiology-biomarkers",
+        "modality": ["global-epidemiology", "healthcare-expenditure", "hospital-capacity", "rest-api"],
+        "access_tier": "open-direct",
+        "fetch_method": "world-bank-fetch",
+        "auto_fetchable": True,
+        "provider": "The World Bank Open Data API",
+        "url": "https://data.worldbank.org/indicator",
+        "sample_size": "Time series (2015-2023) across major global nations covering life expectancy, health exp % GDP, hospital beds per 1,000, and physicians per 1,000",
+        "license": "CC BY 4.0 World Bank Open Data",
+        "open_alternative_while_waiting": None,
+        "clinical_tasks": [
+            "macro-level healthcare capacity modeling",
+            "international surgical and public health benchmarking",
+        ],
+    },
+    {
         "id": "who-gho-odata-api",
         "name": "WHO Global Health Observatory (GHO) Live OData REST API",
         "domain": "epidemiology-biomarkers",
@@ -717,16 +741,16 @@ CLINICAL_DATASETS_CATALOG: list[dict[str, Any]] = [
     },
     {
         "id": "nhanes-cdc",
-        "name": "CDC NHANES (National Health and Nutrition Examination Survey)",
+        "name": "CDC NHANES Continuous Cohort (Demographics + Biochemistry + CBC Laboratory Panel)",
         "domain": "epidemiology-biomarkers",
-        "modality": ["tabular-clinical", "laboratory-biomarkers", "anthropometry", "mortality-linkage"],
+        "modality": ["tabular-clinical", "laboratory-biomarkers", "demographics", "cbc-biochemistry"],
         "access_tier": "open-direct",
-        "fetch_method": "manual-portal",
-        "auto_fetchable": False,
-        "provider": "US CDC / NCHS",
+        "fetch_method": "nhanes-r-fetch",
+        "auto_fetchable": True,
+        "provider": "US CDC / NCHS & Article Machine Automated Pipeline",
         "url": "https://wwwn.cdc.gov/nchs/nhanes/",
-        "sample_size": "100,000+ participants across continuous 2-year cycles with NDI mortality linkage",
-        "license": "US Public Domain (100% Open Direct Access)",
+        "sample_size": "9,254 participants with demographics, 6,401 with standard biochemistry panel (ALT, AST, albumin, bilirubin, creatinine, BUN, glucose), 8,366 with complete blood count",
+        "license": "US Public Domain (100% Open Direct R Fetch — Zero credentials required!)",
         "open_alternative_while_waiting": None,
         "clinical_tasks": ["metabolic/inflammatory biomarkers", "organ dysfunction", "survival & prediction models"],
     },
@@ -983,6 +1007,8 @@ DATASET_SPECIALTY_PACKS: dict[str, dict[str, Any]] = {
             "cbioportal-urology-kirc-blca-prad",
             "isic-archive-rest-api",
             "openfda-faers",
+            "nhanes-cdc",
+            "world-bank-health-indicators",
         ],
     },
     "icu-sepsis-surgery": {
@@ -1189,7 +1215,23 @@ def _http_get_bytes(url: str, timeout: int = 45) -> bytes:
         },
     )
     with urllib.request.urlopen(req, timeout=timeout) as resp:  # nosec B310
-        return bytes(resp.read())
+        limit = 256 * 1024 * 1024
+        payload = bytes(resp.read(limit + 1))
+        if len(payload) > limit:
+            raise ValueError("Download exceeds the 256 MiB per-response limit; use a reviewed streaming plan.")
+        content_type = str(resp.headers.get("Content-Type", "")).lower()
+        if "text/html" in content_type or payload.lstrip().lower().startswith((b"<!doctype html", b"<html")):
+            raise ValueError("Provider returned HTML rather than dataset content.")
+        return payload
+
+
+def _bounded_gzip(payload: bytes) -> bytes:
+    """Bound expansion before allocating a full decompressed dataset."""
+    with gzip.GzipFile(fileobj=io.BytesIO(payload)) as stream:
+        result = stream.read(512 * 1024 * 1024 + 1)
+    if len(result) > 512 * 1024 * 1024:
+        raise ValueError("GZIP expansion exceeds 512 MiB; explicit streaming ingestion is required.")
+    return result
 
 
 def _export_r_clinical_suite(target_dir: Path) -> list[str]:
@@ -1212,7 +1254,8 @@ def _export_r_clinical_suite(target_dir: Path) -> list[str]:
     if (requireNamespace("metadat", quietly = TRUE)) {{
       suppressPackageStartupMessages(library(metadat))
       write.csv(metadat::dat.bcg, file.path(out_dir, "metadat_bcg_13_rcts.csv"), row.names = FALSE)
-      write.csv(metadat::dat.colditz1994, file.path(out_dir, "metadat_colditz1994_rcts.csv"), row.names = FALSE)
+      write.csv(metadat::dat.haddock2011, file.path(out_dir, "metadat_haddock2011_surgical_recovery_rcts.csv"), row.names = FALSE)
+      write.csv(metadat::dat.gibson2002, file.path(out_dir, "metadat_gibson2002_clinical_trials.csv"), row.names = FALSE)
       write.csv(metadat::dat.hart1999, file.path(out_dir, "metadat_hart1999_warfarin_stroke_rcts.csv"), row.names = FALSE)
       write.csv(metadat::dat.normand1999, file.path(out_dir, "metadat_normand1999_stroke_los.csv"), row.names = FALSE)
     }}
@@ -1255,6 +1298,92 @@ def _fetch_cbioportal_studies(target_dir: Path, study_ids: list[str], timeout: i
     return written
 
 
+def _fetch_nhanes_via_r(target_dir: Path, timeout: int = 60) -> list[str]:
+    """Download official CDC NHANES 2017-2018 Demographics, Biochemistry, and CBC via R and merge into a cohort."""
+    target_dir.mkdir(parents=True, exist_ok=True)
+    r_exe = str(CANONICAL_RSCRIPT) if CANONICAL_RSCRIPT.exists() else "Rscript"
+    out_posix = target_dir.as_posix()
+    r_code = f"""
+    suppressPackageStartupMessages(library(foreign))
+    out_dir <- "{out_posix}"
+    dir.create(out_dir, recursive = TRUE, showWarnings = FALSE)
+
+    # 1. Demographics
+    tf_demo <- tempfile(fileext=".xpt")
+    download.file("https://wwwn.cdc.gov/Nchs/Data/Nhanes/Public/2017/DataFiles/DEMO_J.xpt", tf_demo, mode="wb", quiet=TRUE)
+    d_demo <- foreign::read.xport(tf_demo)
+    write.csv(d_demo, file.path(out_dir, "nhanes_2017_2018_demographics.csv"), row.names = FALSE)
+
+    # 2. Standard Biochemistry Profile
+    tf_bio <- tempfile(fileext=".xpt")
+    download.file("https://wwwn.cdc.gov/Nchs/Data/Nhanes/Public/2017/DataFiles/BIOPRO_J.xpt", tf_bio, mode="wb", quiet=TRUE)
+    d_bio <- foreign::read.xport(tf_bio)
+    write.csv(d_bio, file.path(out_dir, "nhanes_2017_2018_biochemistry.csv"), row.names = FALSE)
+
+    # 3. Complete Blood Count
+    tf_cbc <- tempfile(fileext=".xpt")
+    download.file("https://wwwn.cdc.gov/Nchs/Data/Nhanes/Public/2017/DataFiles/CBC_J.xpt", tf_cbc, mode="wb", quiet=TRUE)
+    d_cbc <- foreign::read.xport(tf_cbc)
+    write.csv(d_cbc, file.path(out_dir, "nhanes_2017_2018_complete_blood_count.csv"), row.names = FALSE)
+
+    # 4. Merged Clinical Cohort
+    m <- merge(d_demo, d_bio, by="SEQN", all.x=FALSE, all.y=FALSE)
+    m <- merge(m, d_cbc, by="SEQN", all.x=TRUE, all.y=FALSE)
+    write.csv(m, file.path(out_dir, "nhanes_2017_2018_merged_clinical_cohort.csv"), row.names = FALSE)
+    """
+    subprocess.run([r_exe, "--vanilla", "-e", r_code], check=True, capture_output=True, text=True, timeout=timeout)
+    return sorted(p.name for p in target_dir.glob("*.csv"))
+
+
+def _fetch_world_bank_health_indicators(target_dir: Path, timeout: int = 45) -> str:
+    """Download World Bank Global Health Indicators (Life expectancy, Health exp % GDP, Beds, Physicians, Infant Mort)."""
+    target_dir.mkdir(parents=True, exist_ok=True)
+    indicators = [
+        ("SP.DYN.LE00.IN", "life_expectancy_at_birth_years"),
+        ("SH.XPD.CHEX.GD.ZS", "current_health_expenditure_pct_gdp"),
+        ("SH.MED.BEDS.ZS", "hospital_beds_per_1000"),
+        ("SH.MED.PHYS.ZS", "physicians_per_1000"),
+        ("SP.DYN.IMRT.IN", "infant_mortality_rate_per_1000"),
+    ]
+    countries = "BRA;USA;GBR;DEU;FRA;ITA;ESP;CAN;JPN;AUS;CHN;IND;ZAF;ARG;CHL;COL;MEX"
+    all_records: dict[tuple[str, str], dict[str, Any]] = {}
+    for ind_code, ind_name in indicators:
+        url = f"https://api.worldbank.org/v2/country/{countries}/indicator/{ind_code}?format=json&date=2015:2023&per_page=1000"
+        raw = _http_get_bytes(url, timeout=timeout)
+        data = json.loads(raw.decode("utf-8", errors="replace"))
+        rows = data[1] if isinstance(data, list) and len(data) > 1 and isinstance(data[1], list) else []
+        for r in rows:
+            if not isinstance(r, dict):
+                continue
+            cid = r.get("countryiso3code") or r.get("country", {}).get("id")
+            cname = r.get("country", {}).get("value")
+            year = r.get("date")
+            val = r.get("value")
+            if not cid or not year:
+                continue
+            key = (str(cid), str(year))
+            entry = all_records.setdefault(key, {"country_code": cid, "country_name": cname, "year": year})
+            entry[ind_name] = val
+
+    csv_path = target_dir / "world_bank_global_health_indicators.csv"
+    cols = [
+        "country_code",
+        "country_name",
+        "year",
+        "life_expectancy_at_birth_years",
+        "current_health_expenditure_pct_gdp",
+        "hospital_beds_per_1000",
+        "physicians_per_1000",
+        "infant_mortality_rate_per_1000",
+    ]
+    with csv_path.open("w", encoding="utf-8", newline="") as handle:
+        writer = csv.DictWriter(handle, fieldnames=cols)
+        writer.writeheader()
+        for key in sorted(all_records):
+            writer.writerow(all_records[key])
+    return csv_path.name
+
+
 def fetch_open_dataset(
     project_dir: Path,
     dataset_id: str,
@@ -1263,6 +1392,9 @@ def fetch_open_dataset(
 ) -> dict[str, Any]:
     """Automatically download/extract an open-direct dataset via REST API, HTTP/ZIP/GZIP, or R 4.6.1 and verify its SHA-256 manifest."""
     root = Path(project_dir).resolve()
+    gate = scientific_execution_gate(root, "dataset-fetch")
+    if gate["status"] != "pass":
+        return gate
     catalog_by_id = {str(item["id"]): item for item in CLINICAL_DATASETS_CATALOG}
     ds_meta = catalog_by_id.get(dataset_id)
     if not ds_meta:
@@ -1278,7 +1410,16 @@ def fetch_open_dataset(
             ],
         }
 
+    gate = scientific_execution_gate(root, "dataset-fetch", mark_started=True)
+    if gate["status"] != "pass":
+        return gate
     ds_dir = root / "sources" / "datasets" / dataset_id
+    if ds_dir.exists() and any(ds_dir.iterdir()):
+        return {
+            "status": "blocked",
+            "dataset_id": dataset_id,
+            "issues": ["Dataset destination is nonempty; preserve it and select a reviewed new release directory."],
+        }
     ds_dir.mkdir(parents=True, exist_ok=True)
     method = str(ds_meta.get("fetch_method") or "")
 
@@ -1286,10 +1427,16 @@ def fetch_open_dataset(
         if method == "r-clinical-export":
             _export_r_clinical_suite(ds_dir)
 
+        elif method == "nhanes-r-fetch":
+            _fetch_nhanes_via_r(ds_dir, timeout=timeout)
+
+        elif method == "world-bank-fetch":
+            _fetch_world_bank_health_indicators(ds_dir, timeout=timeout)
+
         elif method == "direct-http-gzip":
             raw = _http_get_bytes(str(ds_meta["download_url"]), timeout=timeout)
             try:
-                decompressed = gzip.decompress(raw)
+                decompressed = _bounded_gzip(raw)
             except OSError:
                 decompressed = raw
             out_file = ds_dir / f"{dataset_id}_clinical_cases.csv"
@@ -1298,6 +1445,14 @@ def fetch_open_dataset(
         elif method == "direct-http-zip":
             raw = _http_get_bytes(str(ds_meta["download_url"]), timeout=timeout)
             with zipfile.ZipFile(io.BytesIO(raw)) as zf:
+                members = [m for m in zf.infolist() if not m.is_dir()]
+                names = [Path(m.filename).name.casefold() for m in members]
+                if len(members) > 512 or sum(m.file_size for m in members) > 512 * 1024 * 1024:
+                    raise ValueError("ZIP exceeds reviewed member/expansion limits.")
+                if len(names) != len(set(names)):
+                    raise ValueError("ZIP has colliding flattened filenames; no files were extracted.")
+                if any(m.file_size / max(1, m.compress_size) > 1000 for m in members):
+                    raise ValueError("ZIP expansion ratio exceeds 1000; no files were extracted.")
                 for member in zf.infolist():
                     if member.is_dir():
                         continue
@@ -1310,7 +1465,9 @@ def fetch_open_dataset(
                     if target_file.suffix.lower() == ".gz":
                         try:
                             csv_target = ds_dir / target_file.stem
-                            csv_target.write_bytes(gzip.decompress(target_file.read_bytes()))
+                            if csv_target.exists():
+                                raise ValueError("Nested GZIP filename collides with a dataset file.")
+                            csv_target.write_bytes(_bounded_gzip(target_file.read_bytes()))
                         except OSError:
                             pass
 
@@ -1321,24 +1478,33 @@ def fetch_open_dataset(
                     ("hosp/patients.csv.gz", "patients.csv"),
                     ("hosp/admissions.csv.gz", "admissions.csv"),
                     ("icu/icustays.csv.gz", "icustays.csv"),
+                    ("hosp/diagnoses_icd.csv.gz", "diagnoses_icd.csv"),
+                    ("hosp/procedures_icd.csv.gz", "procedures_icd.csv"),
                     ("hosp/d_labitems.csv.gz", "d_labitems.csv"),
+                    ("hosp/labevents.csv.gz", "labevents.csv"),
+                    ("hosp/prescriptions.csv.gz", "prescriptions.csv"),
+                    ("hosp/services.csv.gz", "services.csv"),
+                    ("hosp/transfers.csv.gz", "transfers.csv"),
                 ]
                 for rel_url, out_name in tables:
                     raw = _http_get_bytes(base_url.rstrip("/") + "/" + rel_url, timeout=timeout)
-                    (ds_dir / out_name).write_bytes(gzip.decompress(raw))
+                    (ds_dir / out_name).write_bytes(_bounded_gzip(raw))
             elif dataset_id == "eicu-crd-demo-open":
                 tables = [
                     ("patient.csv.gz", "patient.csv"),
-                    ("apachePatientResult.csv.gz", "apachePatientResult.csv"),
                     ("hospital.csv.gz", "hospital.csv"),
+                    ("apachePatientResult.csv.gz", "apachePatientResult.csv"),
+                    ("apacheApsVar.csv.gz", "apacheApsVar.csv"),
+                    ("apachePredVar.csv.gz", "apachePredVar.csv"),
+                    ("diagnosis.csv.gz", "diagnosis.csv"),
+                    ("lab.csv.gz", "lab.csv"),
+                    ("medication.csv.gz", "medication.csv"),
                 ]
                 for rel_url, out_name in tables:
                     raw = _http_get_bytes(base_url.rstrip("/") + "/" + rel_url, timeout=timeout)
-                    (ds_dir / out_name).write_bytes(gzip.decompress(raw))
+                    (ds_dir / out_name).write_bytes(_bounded_gzip(raw))
             else:
                 out_name = Path(base_url).name or f"{dataset_id}.csv"
-                if out_name.endswith(".txt"):
-                    out_name = out_name[:-4] + ".csv"
                 raw = _http_get_bytes(base_url, timeout=timeout)
                 (ds_dir / out_name).write_bytes(raw)
 
@@ -1472,7 +1638,7 @@ def fetch_open_dataset(
             "issues": [f"Failed to fetch '{dataset_id}' ({method}): {exc}"],
         }
 
-    verified = ingest_and_verify_dataset(root, dataset_id, enforce_registration_gate=False)
+    verified = ingest_and_verify_dataset(root, dataset_id)
     verified["fetch_method"] = method
     return verified
 
@@ -1485,6 +1651,9 @@ def fetch_specialty_pack(
 ) -> dict[str, Any]:
     """Stage and automatically download all open datasets in a specialty pack."""
     root = Path(project_dir).resolve()
+    gate = scientific_execution_gate(root, "dataset-pack-fetch")
+    if gate["status"] != "pass":
+        return gate
     pack = DATASET_SPECIALTY_PACKS.get(pack_id)
     if not pack:
         return {
@@ -1509,7 +1678,7 @@ def fetch_specialty_pack(
     summary_path = root / "evidence" / "datasets" / f"pack_{pack_id}_summary.json"
     summary_payload = {
         "contract": "ClinicalDatasetPackFetchV1",
-        "status": "pass" if succeeded else "blocked",
+        "status": "pass" if succeeded and not failed else "partial" if succeeded else "blocked",
         "pack_id": pack_id,
         "pack_name": pack["name"],
         "fetched_at": datetime.now(UTC).isoformat(),
@@ -1528,14 +1697,14 @@ def ingest_and_verify_dataset(
     project_dir: Path,
     dataset_id: str,
     *,
-    enforce_registration_gate: bool = False,
+    enforce_registration_gate: bool = True,
 ) -> dict[str, Any]:
     """Verify local dataset files in sources/datasets/<dataset_id>/, compute hashes, and write manifest."""
     root = Path(project_dir).resolve()
-    if enforce_registration_gate:
-        gate = registration_gate(root, "dataset-ingest", mark_started=False)
-        if gate["status"] != "pass":
-            return gate
+    # Legacy callers cannot disable the user-mandated policy with a flag.
+    gate = scientific_execution_gate(root, "dataset-ingest")
+    if gate["status"] != "pass":
+        return gate
 
     catalog_by_id = {str(item["id"]): item for item in CLINICAL_DATASETS_CATALOG}
     ds_meta = catalog_by_id.get(dataset_id)
@@ -1556,6 +1725,9 @@ def ingest_and_verify_dataset(
         }
 
     file_manifests: list[dict[str, Any]] = []
+    gate = scientific_execution_gate(root, "dataset-ingest", mark_started=True)
+    if gate["status"] != "pass":
+        return gate
     for fpath in files:
         register_source(root, str(fpath), "file")
         sha = hashlib.sha256(fpath.read_bytes()).hexdigest()
@@ -1591,6 +1763,13 @@ def ingest_and_verify_dataset(
         "dataset_name": ds_meta["name"],
         "access_tier": ds_meta["access_tier"],
         "license": ds_meta["license"],
+        "verification_scope": "local-file-integrity-and-tabular-inspection-only",
+        "catalog_metadata_verified": False,
+        "cohort_identity_verified": False,
+        "license_verified": False,
+        "fetch_scope": ds_meta.get("fetch_scope", "provider-content-not-schema-validated"),
+        "scientific_use_eligible": False,
+        "required_reviews": ["license-and-access", "source-and-release", "patient-and-time-unit", "outcome-and-design"],
         "verified_at": datetime.now(UTC).isoformat(),
         "file_count": len(file_manifests),
         "files": file_manifests,
@@ -1600,6 +1779,8 @@ def ingest_and_verify_dataset(
     return {
         "contract": "ClinicalDatasetManifestV1",
         "status": "pass",
+        "verification_scope": "local-file-integrity-and-tabular-inspection-only",
+        "scientific_use_eligible": False,
         "dataset_id": dataset_id,
         "file_count": len(file_manifests),
         "manifest_path": manifest_path.relative_to(root).as_posix(),

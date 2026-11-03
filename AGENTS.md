@@ -160,24 +160,48 @@
 - K-Dense continua separado: apenas troca de artefatos aprovados via manifesto, nunca credenciais ou dados humanos por padrão.
 - Instalações novas são por projeto com lock e teste. Modelos, esforço e disponibilidade devem ser verificados no runtime; configuração local não transforma sessão já aberta.
 
-## Entregas bilíngues obrigatórias
-Toda entrega científica/editorial nova deve existir em português brasileiro e inglês, em subpastas `portugues/` e `ingles/`, com nomes base em português. Isso inclui manuscritos, relatórios, tabelas, figuras e documentos de submissão. Compartilhar código, dados e lockfiles entre as duas versões. Verificar paridade de números/citações/claims e obter revisão semântica humana. Ler `docs/FLUXOS_CIENTIFICOS.md`.
+## Entregas bilíngues obrigatórias e Políticas de Escrita
+- **Paridade Bilíngue:** Toda entrega científica/editorial nova deve existir em português brasileiro e inglês, em subpastas `portugues/` e `ingles/`, com nomes base em português. Isso inclui manuscritos, relatórios, tabelas, figuras e documentos de submissão. Compartilhar código, dados e lockfiles entre as duas versões. Verificar paridade de números/citações/claims e obter revisão semântica humana. Ler `docs/FLUXOS_CIENTIFICOS.md`.
+- **Declaração Canônica de Uso de IA Obrigatória nos Manuscritos:**
+  Todo manuscrito em inglês e português deve conter sob Declarations a seção oficial de disclosure de IA:
+  - *Inglês:* `Use of Artificial Intelligence and AI-Assisted Technologies in Scientific Writing: During the preparation of this work, the authors used Claude Opus 5.5 (Anthropic) to assist with English language polishing, grammatical refinement, typographical corrections, and table layout formatting. Following the use of this tool, the authors critically reviewed, verified, and edited all generated content and take full responsibility for the scientific integrity, factual accuracy, and conclusions presented in this manuscript. In accordance with [target journal name] authorship criteria, generative AI technologies are not listed as authors.`
+  - *Português:* `Uso de Inteligência Artificial e Tecnologias Assistidas por IA na Redação Científica: Durante a preparação deste trabalho, os autores utilizaram Claude Opus 5.5 (Anthropic) para auxiliar no polimento do idioma inglês, refinamento gramatical, correções tipográficas e formatação do layout de tabelas. Após o uso desta ferramenta, os autores revisaram criticamente, verificaram e editaram todo o conteúdo gerado e assumem total responsabilidade pela integridade científica, precisão factual e conclusões apresentadas neste manuscrito. Em conformidade com os critérios de autoria da [nome da revista], tecnologias de IA generativa não são listadas como autores.`
+- **Estilo de Escrita em Inglês (Proibição de Travessões e Cara de IA):**
+  - **Evitar Travessões (`—` / `–` / em-dashes):** O uso frequente de travessões é um dos traços mais reconhecíveis de texto artificial gerado por LLMs. Substitua travessões por parênteses, vírgulas, dois-pontos ou frases divididas.
+  - **Roteamento Obrigatório de Skills de Escrita:** Sempre acionar `bilingual-scientific-writing`, `ptbr-article-writing` e `anti-ai-writing-governor` na redação e revisão de manuscritos, mantendo rigor terminológico e sobriedade acadêmica.
 
-## Ambiente R Cient?fico Consolidado (R 4.6.1 / renv 1.3.1)
-- **Execut?vel can?nico:** `C:/Users/Usuario-pc/AppData/Local/Programs/R/R-4.6.1/bin/x64/Rscript.exe` (resolvido automaticamente por `article_machine` quando `compute.yaml` declara `version: 4.6.1`). N?o depender de R antigo no PATH.
-- **Modelo e lockfile de refer?ncia:** `modelos/meta_analise_em_r/renv.lock` (e c?pia sincronizada em `modelos/meta_analise_em_r/ambiente/renv.lock`), com **69 pacotes principais** e **302 pacotes no fecho transitivo CRAN** j? instalados tamb?m na biblioteca local do R 4.6.1:
-  1. **Machine Learning Cl?nico, Calibra??o, Decis?o e XAI (`metodos-ml-clinico`):** `tidymodels` (`parsnip`, `recipes`, `rsample`, `tune`, `workflows`, `yardstick`, `dials`), `probably` (calibra??o/Brier), `dcurves` (Decision Curve Analysis), `xgboost`, `lightgbm`, `glmnet`, `ranger`, `pROC`, `rms`, `DALEX`, `DALEXtra`, `ingredients`, `iBreakDown`, `pdp`, `kernelshap`, `shapviz`.
-  2. **Meta-An?lise Pairwise, Multin?vel, em Rede (NMA), Diagn?stica (DTA) e Dose-Resposta (`meta-analise-medica`):** `metafor` (REML, HKSJ `test="knha"`, `rma.mv`), `meta`, `netmeta` (NMA frequentista, `decomp.design`, `netsplit`, `netrank`), `clubSandwich` (vari?ncia robusta a clusters), `mada` (DTA Reitsma/HSROC), `dosresmeta`, `robvis`, `PRISMA2020`, `metadat`.
-  3. **Gr?ficos Cient?ficos, Sobrevida e Interatividade (`scientific-visualization`):** `ggplot2`, `patchwork` (`+`, `/`), `ggpubr`, `survminer` (`ggsurvplot`), `cowplot`, `ggridges`, `ggrepel`, `viridis`, `scales`, `RColorBrewer`, `ragg` (PNG 300 dpi anti-aliasing), `svglite` (SVG vetorial), `plotly` (HTML interativo MIT via `ggplotly()`).
-  4. **Manipula??o de Dados, Imputa??o, Tabelas Cl?nicas e Relat?rios:** `dplyr`, `tidyr`, `readr`, `purrr`, `tibble`, `stringr`, `forcats`, `lubridate`, `data.table`, `janitor`, `skimr`, `readxl`, `writexl`, `mice` (imputa??o m?ltipla MAR/MNAR), `gtsummary` (Tabela 1 sem `add_p()` autom?tico e regress?es), `gt` (HTML), `flextable` + `officer` (DOCX edit?vel), `broom`, `broom.mixed`, `parameters`, `performance`, `effectsize`, `emmeans`, `marginaleffects`, `rmarkdown`, `knitr`, `quarto` (CLI port?til em `ferramentas/quarto-1.10.20`), `shiny`, `DT`, `jsonlite`.
-- **Exclus?es deliberadas de governan?a (n?o instalar no lock base):**
-  - `dmetar`: pacote fora do CRAN (apenas GitHub); usar fun??es nativas de `metafor` (`influence`, `baujat`, `leave1out`, `regtest`, `trimfill`, `gosh`) e `meta` (`metainf`, `metabias`, `drapery`).
-  - `gemtc` / `BUGSnet`: exigem bin?rio externo JAGS/Stan no SO (`rjags`); usar `netmeta` e `metafor::rma.mv` por padr?o.
-  - `highcharter`: depende da biblioteca JS Highcharts com licen?a comercial propriet?ria; usar `plotly` (MIT).
-  - `chattr` / `ellmer`: proibidos dentro de scripts R (quebram reprodutibilidade batch e prote??o zero-trust de dados).
+## Ambiente R Científico Consolidado (R 4.6.1 / renv 1.3.1)
+- **Executável canônico:** `C:/Users/Usuario-pc/AppData/Local/Programs/R/R-4.6.1/bin/x64/Rscript.exe` (resolvido automaticamente por `article_machine` quando `compute.yaml` declara `version: 4.6.1`). Não depender de R antigo no PATH.
+- **Modelo e lockfile de referência:** `modelos/meta_analise_em_r/renv.lock` (e cópias sincronizadas em `modelos/estatistica_e_figuras/ambiente/renv.lock` e `modelos/manuscrito/renv.lock`), com **85 pacotes principais** e **342 pacotes no fecho transitivo CRAN** instalados e sincronizados:
+  1. **Machine Learning Clínico, Calibração, Decisão e XAI (`metodos-ml-clinico`):** `tidymodels` (`parsnip`, `recipes`, `rsample`, `tune`, `workflows`, `yardstick`, `dials`), `bonsai` (suporte LightGBM nativo), `censored` (sobrevida em tidymodels), `finetune` (tuning avançado racing), `themis` (balanceamento/resampling), `probably` (calibração/Brier), `dcurves` (Decision Curve Analysis), `xgboost`, `lightgbm`, `glmnet`, `ranger`, `pROC`, `rms`, `DALEX`, `DALEXtra`, `ingredients`, `iBreakDown`, `pdp`, `kernelshap`, `shapviz`.
+  2. **Meta-Análise Pairwise, Multinível, em Rede (NMA), Diagnóstica (DTA) e Dose-Resposta (`meta-analise-medica`):** `metafor` (REML, HKSJ `test="knha"`, `rma.mv`), `meta`, `netmeta` (NMA frequentista, `decomp.design`, `netsplit`, `netrank`), `clubSandwich` (variância robusta a clusters), `mada` (DTA Reitsma/HSROC), `dosresmeta`, `robvis`, `PRISMA2020`, `metadat`.
+  3. **Inferência Causal, Riscos Competitivos e Sobrevida:** `MatchIt`, `WeightIt`, `cobalt` (Love plots e balanço de covariáveis), `tidycmprsk` e `ggsurvfit` (riscos competitivos de Fine-Gray e sobrevida acumulada), `survminer` (`ggsurvplot`).
+  4. **Fluxogramas PRISMA 2020 e Visualização Gráfica:** `PRISMA2020`, `DiagrammeR`, `DiagrammeRsvg`, `rsvg`, `webshot2`, `ggplot2`, `patchwork` (`+`, `/`), `ggpubr`, `cowplot`, `ggridges`, `ggrepel`, `viridis`, `scales`, `RColorBrewer`, `ragg` (PNG 300 dpi anti-aliasing), `svglite` (SVG vetorial), `plotly` (HTML interativo MIT via `ggplotly()`).
+  5. **Manipulação de Dados, Imputação, Tabelas Clínicas e Relatórios:** `dplyr`, `tidyr`, `readr`, `purrr`, `tibble`, `stringr`, `forcats`, `lubridate`, `data.table`, `janitor`, `skimr`, `readxl`, `writexl`, `mice` (imputação múltipla MAR/MNAR), `gtsummary` (Tabela 1 e modelos), `gt` (HTML), `flextable` + `officer` (DOCX editável), `broom`, `broom.mixed`, `parameters`, `performance`, `effectsize`, `emmeans`, `marginaleffects`, `rmarkdown`, `knitr`, `quarto` (CLI portátil em `ferramentas/quarto-1.10.20`), `shiny`, `DT`, `jsonlite`, `pwr`, `epiR`.
+- **Exclusões deliberadas de governança (não instalar no lock base):**
+  - `dmetar`: pacote fora do CRAN (apenas GitHub); usar funções nativas de `metafor` e `meta`.
+  - `gemtc` / `BUGSnet`: exigem binário externo JAGS/Stan no SO (`rjags`); usar `netmeta` e `metafor::rma.mv` por padrão.
+  - `highcharter`: licença comercial proprietária; usar `plotly` (MIT).
+  - `chattr` / `ellmer`: proibidos dentro de scripts R de execução científica batch.
   - `keras` / `tensorflow` / `torch`: Deep Learning roda no ambiente Python isolado (`PyTorch 2.15.0+cpu` em `modelos/aprendizado_de_maquina_clinico/ambientes/aprendizado_profundo/`).
 - **Comandos operacionais do ambiente R:**
-  - Verificar os 69 pacotes principais: `"C:/Users/Usuario-pc/AppData/Local/Programs/R/R-4.6.1/bin/x64/Rscript.exe" --vanilla modelos/meta_analise_em_r/analysis/00_pacotes_do_ambiente.R`
+  - Verificar os 85 pacotes principais: `"C:/Users/Usuario-pc/AppData/Local/Programs/R/R-4.6.1/bin/x64/Rscript.exe" --vanilla modelos/meta_analise_em_r/analysis/00_pacotes_do_ambiente.R`
   - Sincronizar/atualizar o ambiente e lockfile: `"C:/Users/Usuario-pc/AppData/Local/Programs/R/R-4.6.1/bin/x64/Rscript.exe" --vanilla scripts/atualizar_ambiente_meta_analise.R`
-  - Executar script R em projeto ativo (requer registro PROSPERO/OSF final verificado): `.\.venv\Scripts\python.exe -m article_machine run-r projects/<project_id> projects/<project_id>/analysis/<script>.R`
+  - Executar script R em projeto ativo: `.\.venv\Scripts\python.exe -m article_machine run-r projects/<project_id> projects/<project_id>/analysis/<script>.R`
 
+## Ambiente Python de Machine Learning Clínico e IA Médica (Python 3.13 / uv)
+- **Diretório canônico:** `modelos/aprendizado_de_maquina_clinico/` (e subambiente `ambientes/aprendizado_profundo/`).
+- **Executável canônico:** `modelos/aprendizado_de_maquina_clinico/.venv/Scripts/python.exe`.
+- **Stack Consolidado (54 pacotes instalados com lockfile `uv.lock` sincronizado):**
+  1. **Modelos Supervisionados e Ensembles:** `scikit-learn` (1.9.1), `xgboost` (3.4.1), `lightgbm` (4.7.0).
+  2. **Predição Conformal e Incerteza Finita (MAPIE):** `mapie` (1.6.0) com `SplitConformalClassifier` e `CrossConformalClassifier` para conjuntos preditivos com garantia marginal finita (ex: 90% ou 95% de cobertura).
+  3. **Análise de Sobrevida e Riscos Proporcionais:** `lifelines` (0.30.3) para curvas de Kaplan-Meier, testes de log-rank e modelos multivariáveis de Cox (`CoxPHFitter`).
+  4. **Otimização de Hiperparâmetros:** `optuna` (4.9.0) para busca Bayesiana e pruning de experimentos.
+  5. **Explicabilidade e Interpretabilidade (XAI):** `shap` (0.54.1) com `TreeExplainer` para valores de Shapley locais e gráficos globais (beeswarm e importância).
+  6. **Contratos e Validação de Dados:** `pandera` (0.35.0) para validação de esquemas e limites fisiológicos.
+  7. **Processamento e Gráficos:** `pandas` (2.3.3), `numpy` (2.5.4), `scipy` (1.18.1), `statsmodels` (0.15.0), `matplotlib` (3.11.2), `seaborn` (0.13.2), `plotly` (6.9.0), `openpyxl` (3.1.5).
+  8. **Deep Learning Clínico (`ambientes/aprendizado_profundo`):** `torch` (2.15.0+cpu), `torchvision`, `torchmetrics` com `uv.lock` próprio.
+- **Restauração e Execução:**
+  - Restaurar ambiente ML tabular: `uv sync --directory modelos/aprendizado_de_maquina_clinico`
+  - Restaurar ambiente Deep Learning: `uv sync --directory modelos/aprendizado_de_maquina_clinico/ambientes/aprendizado_profundo`
+  - Executar script de ML no projeto: `modelos/aprendizado_de_maquina_clinico/.venv/Scripts/python.exe projects/<project_id>/analysis/<script>.py`

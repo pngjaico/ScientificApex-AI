@@ -4,6 +4,9 @@ from __future__ import annotations
 
 from pathlib import Path
 
+from registration_fixtures import reviewed_registration_fixture
+from scientific_fixtures import supported_synthetic_claim
+
 from article_machine.projects import init_project
 from article_machine.serialization import load_structured_file, save_structured_file
 from article_machine.services.study_and_synthesis import (
@@ -30,13 +33,9 @@ def test_harvest_r_outputs_and_synthesize_bilingual_deliverables(tmp_path: Path)
         "Which serum biomarker (D-dimer, Procalcitonin, I-FABP, L-lactate) has the highest "
         "accuracy for transmural bowel necrosis?"
     )
-    protocol["registration"] = {
-        "required": True,
-        "status": "registered",
-        "registry": "PROSPERO",
-        "registry_id": "CRD42026998877",
-    }
     save_structured_file(project / "protocol.yaml", protocol)
+    reviewed_registration_fixture(project)
+    claim_id = supported_synthetic_claim(project)
 
     # Simulate R script outputs in analysis/ and figures/
     (project / "analysis" / "01_nma_model.R").write_text("# R script\n", encoding="utf-8")
@@ -59,6 +58,9 @@ def test_harvest_r_outputs_and_synthesize_bilingual_deliverables(tmp_path: Path)
     assert len(harvest["tables"]) == 1
     assert len(harvest["figures"]) == 1
     assert (project / "analysis" / "results_ledger.json").is_file()
+    ledger = load_structured_file(project / "analysis/results_ledger.json")
+    ledger["metric_claims"] = {key: claim_id for key in ledger["metrics"]}
+    save_structured_file(project / "analysis/results_ledger.json", ledger)
 
     # Build Study Companion
     study = build_project_study_guide(project)
@@ -78,14 +80,17 @@ def test_harvest_r_outputs_and_synthesize_bilingual_deliverables(tmp_path: Path)
         poster_template_id="a0-retrato-classico",
         slug="wses-2026",
     )
-    assert synth["status"] == "pass"
+    assert synth["status"] == "pass", synth
+    assert synth["submission_eligible"] is False
+    assert synth["human_review_verified"] is False
+    manuscript = (project / synth["manuscripts"]["portugues"]).read_text(encoding="utf-8")
+    assert "verificação humana integral" not in manuscript
+    assert "RASCUNHO AUTOMÁTICO" in manuscript
     assert (project / synth["manuscripts"]["portugues"]).is_file()
     assert (project / synth["manuscripts"]["ingles"]).is_file()
     assert (project / synth["abstracts"]["portugues"]).is_file()
     assert (project / synth["abstracts"]["ingles"]).is_file()
-    assert (project / synth["slides"]["portugues"]).is_file()
-    assert (project / synth["slides"]["ingles"]).is_file()
-    assert (project / synth["slides"]["speaker_notes_pt"]).is_file()
-    assert (project / synth["slides"]["speaker_notes_en"]).is_file()
-    assert (project / synth["posters"]["portugues"]).is_file()
-    assert (project / synth["posters"]["ingles"]).is_file()
+    assert synth["conference_outputs"]["status"] == "not-generated-dedicated-pipeline-required"
+    for language in ("portugues", "ingles"):
+        assert (project / synth["conference_outputs"]["routing_guides"][language]).is_file()
+    assert not (project / "deliverables/wses-2026").exists()

@@ -163,16 +163,14 @@ EQUATOR_SCHEMAS: dict[str, dict[str, Any]] = {
                 "id": "TRIPOD-06",
                 "section": "Methods",
                 "requirement": (
-                    "Define time zero (T0), prediction horizon, and outcome assessment blinded to "
-                    "predictors."
+                    "Define time zero (T0), prediction horizon, and outcome assessment blinded to predictors."
                 ),
             },
             {
                 "id": "TRIPOD-09",
                 "section": "Methods",
                 "requirement": (
-                    "Specify handling of missing data inside training partitions only (no train-test "
-                    "leakage)."
+                    "Specify handling of missing data inside training partitions only (no train-test leakage)."
                 ),
             },
             {
@@ -281,24 +279,21 @@ EQUATOR_SCHEMAS: dict[str, dict[str, Any]] = {
                 "id": "STROBE-04",
                 "section": "Methods",
                 "requirement": (
-                    "Present key elements of study design and time-zero alignment (avoid immortal time "
-                    "bias)."
+                    "Present key elements of study design and time-zero alignment (avoid immortal time bias)."
                 ),
             },
             {
                 "id": "STROBE-07",
                 "section": "Methods",
                 "requirement": (
-                    "Clearly define all outcomes, exposures, predictors, potential confounders, and "
-                    "effect modifiers."
+                    "Clearly define all outcomes, exposures, predictors, potential confounders, and effect modifiers."
                 ),
             },
             {
                 "id": "STROBE-12",
                 "section": "Methods",
                 "requirement": (
-                    "Describe statistical methods, confounding adjustment (DAG/IPTW/multivariable), and "
-                    "missing data."
+                    "Describe statistical methods, confounding adjustment (DAG/IPTW/multivariable), and missing data."
                 ),
             },
         ],
@@ -322,16 +317,14 @@ EQUATOR_SCHEMAS: dict[str, dict[str, Any]] = {
                 "id": "CONSORT-06",
                 "section": "Methods",
                 "requirement": (
-                    "Completely define pre-specified primary and secondary outcomes, including how and "
-                    "when assessed."
+                    "Completely define pre-specified primary and secondary outcomes, including how and when assessed."
                 ),
             },
             {
                 "id": "CONSORT-07",
                 "section": "Methods",
                 "requirement": (
-                    "How sample size was determined and explanation of any interim analyses and "
-                    "stopping guidelines."
+                    "How sample size was determined and explanation of any interim analyses and stopping guidelines."
                 ),
             },
             {
@@ -423,6 +416,9 @@ def validate_protocol_methodology(project_dir: Path) -> dict[str, Any]:
         "required_fields": required_fields,
         "missing_fields": missing_fields,
         "protocol_sha256": protocol_fingerprint(root),
+        "gate_eligible": False,
+        "human_review_required": True,
+        "scope": "Required-field presence and limited structural checks; not scientific design approval.",
         "issues": issues,
     }
 
@@ -598,7 +594,7 @@ def compile_registration_packet(project_dir: Path) -> dict[str, Any]:
     }
 
 
-def audit_equator_compliance(project_dir: Path, update_standards: bool = True) -> dict[str, Any]:
+def audit_equator_compliance(project_dir: Path, update_standards: bool = False) -> dict[str, Any]:
     """Audit protocol and manuscript drafts against machine-readable EQUATOR checklists."""
     root = Path(project_dir).resolve()
     project = load_structured_file(root / "project.yaml")
@@ -638,7 +634,7 @@ def audit_equator_compliance(project_dir: Path, update_standards: bool = True) -
         if not combined_text.strip():
             status = "protocol-ready" if proto_audit["status"] == "pass" else "blocked"
         elif not missing_markers and proto_audit["status"] == "pass":
-            status = "completed"
+            status = "markers-present-review-required"
         else:
             status = "incomplete"
             if missing_markers:
@@ -646,6 +642,8 @@ def audit_equator_compliance(project_dir: Path, update_standards: bool = True) -
 
         checklist_reports[gname] = {
             "status": status,
+            "human_review_required": True,
+            "methodological_approval": False,
             "items": schema["items"],
             "missing_manuscript_markers": missing_markers,
         }
@@ -665,6 +663,9 @@ def audit_equator_compliance(project_dir: Path, update_standards: bool = True) -
     return {
         "contract": "EquatorComplianceAuditV1",
         "status": "pass" if not issues else "blocked",
+        "scope": "structural protocol fields and textual markers only; not methodological certification",
+        "gate_eligible": False,
+        "human_review_required": True,
         "project_type": project_type,
         "protocol_status": proto_audit["status"],
         "checklists": checklist_reports,

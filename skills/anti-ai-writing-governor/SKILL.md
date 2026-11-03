@@ -32,10 +32,12 @@ Remove generic LLM style from scientific writing without fraud, detector bypass,
 ## What To Fix
 
 - Replace generic transitions with article-specific logic: study design, population, data source, endpoint, result, limitation.
+- Eliminate em-dashes (`—` / `–`): excessive em-dashes are one of the most prominent LLM markers scrutinized by reviewers. Replace with standard academic punctuation (parentheses, commas, colons, or clean separate sentences).
 - Cut ornamental intensifiers: "crucial", "notably", "comprehensive", "meticulous", "robust", "transformative", "insights", and PT-BR equivalents when they do not add measurable information.
 - Break symmetrical or overlong paragraphs that read like a model-generated template.
 - Replace vague conclusions with bounded claims tied to the objective and evidence.
 - Keep methodologic uncertainty visible. A cautious sentence is not a style defect.
+- Verify mandatory AI disclosure: every manuscript must include the standardized Claude Opus 5.5 AI disclosure statement under Declarations.
 
 ## Hard Stops
 

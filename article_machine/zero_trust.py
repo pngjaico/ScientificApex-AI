@@ -721,6 +721,29 @@ def _language_filter(provider: str, languages: list[Any]) -> str:
 
 
 def _compile_provider_query(query_plan: dict[str, Any], provider: str) -> dict[str, Any]:
+    if isinstance(query_plan.get("provider_queries"), dict) and query_plan["provider_queries"].get(provider):
+        query = re.sub(r"\s+", " ", str(query_plan["provider_queries"][provider])).strip()
+        limits = dict(query_plan.get("limits") or {})
+        provider_payload = {
+            "contract": "CompiledQuery",
+            "contract_version": QUERY_CONTRACT_VERSION,
+            "provider": provider,
+            "query": query,
+            "syntax_errors": [],
+            "limits": limits,
+            "rationale": query_plan.get("rationale", ""),
+            "compiled_at": _now_iso(),
+        }
+        provider_payload["query_hash"] = _sha256_payload(
+            {
+                "contract_version": QUERY_CONTRACT_VERSION,
+                "provider": provider,
+                "query": query,
+                "limits": limits,
+            }
+        )
+        return provider_payload
+
     concepts = [item for item in query_plan.get("concepts", []) if isinstance(item, dict)]
     boolean = str(query_plan.get("boolean") or "AND").upper()
     clauses = [_compile_clause(provider, concept) for concept in concepts]
@@ -747,7 +770,10 @@ def _compile_provider_query(query_plan: dict[str, Any], provider: str) -> dict[s
     query_parts.extend(filters)
     query = " AND ".join(query_parts)
     for exclusion in exclusions:
-        query += f" NOT {exclusion}"
+        if provider in {"scopus", "embase", "cochrane_central"}:
+            query += f" AND NOT {exclusion}"
+        else:
+            query += f" NOT {exclusion}"
     query = re.sub(r"\s+", " ", query).strip()
 
     limits = dict(query_plan.get("limits") or {})

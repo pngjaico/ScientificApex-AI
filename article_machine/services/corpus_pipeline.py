@@ -446,11 +446,12 @@ def execute_pubmed_api_search(project_dir: Path, max_records: int = 200, timeout
     total_hits = int(esearch_res.get("count") or len(id_list))
 
     records: list[dict[str, Any]] = []
-    if id_list:
-        # Try EFetch MEDLINE (.nbib) first for full abstracts, MeSH headings, and DOIs
+    chunk_size = 150
+    for chunk_start in range(0, len(id_list), chunk_size):
+        chunk_ids = id_list[chunk_start : chunk_start + chunk_size]
         efetch_params: dict[str, Any] = {
             "db": "pubmed",
-            "id": ",".join(id_list),
+            "id": ",".join(chunk_ids),
             "rettype": "medline",
             "retmode": "text",
         }
@@ -458,17 +459,18 @@ def execute_pubmed_api_search(project_dir: Path, max_records: int = 200, timeout
             efetch_params["api_key"] = api_key
         efetch_url = f"{NCBI_EUTILS_BASE}/efetch.fcgi?{urllib.parse.urlencode(efetch_params)}"
         efetch_req = urllib.request.Request(efetch_url, headers={"User-Agent": USER_AGENT})
+        chunk_records: list[dict[str, Any]] = []
         try:
             with urllib.request.urlopen(efetch_req, timeout=timeout) as resp:
                 medline_text = resp.read().decode("utf-8", errors="replace")
-            records = parse_nbib_text(medline_text, provider="pubmed")
+            chunk_records = parse_nbib_text(medline_text, provider="pubmed")
         except (urllib.error.URLError, OSError):
-            records = []
+            chunk_records = []
 
-        if not records:
+        if not chunk_records:
             sum_params: dict[str, Any] = {
                 "db": "pubmed",
-                "id": ",".join(id_list),
+                "id": ",".join(chunk_ids),
                 "retmode": "json",
             }
             if api_key:
@@ -478,7 +480,7 @@ def execute_pubmed_api_search(project_dir: Path, max_records: int = 200, timeout
             try:
                 with urllib.request.urlopen(sum_req, timeout=timeout) as resp:
                     esum_data = json.loads(resp.read().decode("utf-8")).get("result", {})
-                for pmid in id_list:
+                for pmid in chunk_ids:
                     item = esum_data.get(pmid)
                     if not isinstance(item, dict):
                         continue
@@ -489,7 +491,7 @@ def execute_pubmed_api_search(project_dir: Path, max_records: int = 200, timeout
                             break
                     pubdate = str(item.get("pubdate") or "")
                     ym = re.search(r"\b(19\d{2}|20\d{2})\b", pubdate)
-                    records.append(
+                    chunk_records.append(
                         {
                             "source_database": "pubmed",
                             "title": str(item.get("title") or "").strip(),
@@ -512,6 +514,7 @@ def execute_pubmed_api_search(project_dir: Path, max_records: int = 200, timeout
                     )
             except (urllib.error.URLError, OSError, json.JSONDecodeError) as exc:
                 return {"status": "blocked", "issues": [f"PubMed ESummary failed: {exc}"]}
+        records.extend(chunk_records)
 
     drop_dir = root / "sources" / "manual_imports" / "pubmed"
     drop_dir.mkdir(parents=True, exist_ok=True)
@@ -582,56 +585,73 @@ def execute_scopus_api_search(project_dir: Path, max_records: int = 200, timeout
 
     query_str = str(scopus_q["query"])
     query_hash = str(scopus_q["query_hash"])
-    count_per_page = min(25, max(1, max_records))
-    params = {"query": query_str, "count": count_per_page, "httpAccept": "application/json"}
-    url = f"https://api.elsevier.com/content/search/scopus?{urllib.parse.urlencode(params)}"
+    page_size = 25
     headers = {"X-ELS-APIKey": api_key, "Accept": "application/json", "User-Agent": USER_AGENT}
     inst_token = _get_env_secret("SCOPUS_INST_TOKEN", root)
     if inst_token:
         headers["X-ELS-Insttoken"] = inst_token
 
-    req = urllib.request.Request(url, headers=headers)
-    try:
-        with urllib.request.urlopen(req, timeout=timeout) as resp:
-            data = json.loads(resp.read().decode("utf-8"))
-    except (urllib.error.URLError, OSError, json.JSONDecodeError) as exc:
-        return {"status": "blocked", "issues": [f"Scopus API search failed: {exc}"]}
-
-    sr = data.get("search-results", {})
-    total_hits = int(sr.get("opensearch:totalResults") or 0)
-    entries = sr.get("entry", [])
+    start = 0
     records: list[dict[str, Any]] = []
-    for entry in entries:
-        if not isinstance(entry, dict) or entry.get("error"):
-            continue
-        title = str(entry.get("dc:title") or "").strip()
-        creator = str(entry.get("dc:creator") or "").strip()
-        cover_date = str(entry.get("prism:coverDate") or "")
-        ym = re.search(r"\b(19\d{2}|20\d{2})\b", cover_date)
-        eid = str(entry.get("eid") or "").strip()
-        pmid = str(entry.get("pubmed-id") or "").strip()
-        doi = normalize_doi(entry.get("prism:doi"))
-        records.append(
-            {
-                "source_database": "scopus",
-                "title": title,
-                "abstract": str(entry.get("dc:description") or "").strip(),
-                "authors": [creator] if creator else [],
-                "year": ym.group(1) if ym else "",
-                "journal": str(entry.get("prism:publicationName") or "").strip(),
-                "doi": doi,
-                "pmid": pmid,
-                "embase_id": "",
-                "scopus_eid": eid,
-                "accession_number": eid or pmid,
-                "keywords": [],
-                "publication_type": str(entry.get("prism:aggregationType") or ""),
-                "volume": str(entry.get("prism:volume") or ""),
-                "issue": str(entry.get("prism:issueIdentifier") or ""),
-                "pages": str(entry.get("prism:pageRange") or ""),
-                "raw_fields": entry,
-            }
-        )
+    total_hits = 0
+
+    while len(records) < max_records:
+        fetch_count = min(page_size, max_records - len(records))
+        params = {"query": query_str, "count": fetch_count, "start": start, "httpAccept": "application/json"}
+        url = f"https://api.elsevier.com/content/search/scopus?{urllib.parse.urlencode(params)}"
+        req = urllib.request.Request(url, headers=headers)
+        try:
+            with urllib.request.urlopen(req, timeout=timeout) as resp:
+                data = json.loads(resp.read().decode("utf-8"))
+        except (urllib.error.URLError, OSError, json.JSONDecodeError) as exc:
+            if not records:
+                return {"status": "blocked", "issues": [f"Scopus API search failed: {exc}"]}
+            break
+
+        sr = data.get("search-results", {})
+        if not total_hits:
+            total_hits = int(sr.get("opensearch:totalResults") or 0)
+        entries = sr.get("entry", [])
+        if not entries:
+            break
+
+        for entry in entries:
+            if not isinstance(entry, dict) or entry.get("error"):
+                continue
+            title = str(entry.get("dc:title") or "").strip()
+            creator = str(entry.get("dc:creator") or "").strip()
+            cover_date = str(entry.get("prism:coverDate") or "")
+            ym = re.search(r"\b(19\d{2}|20\d{2})\b", cover_date)
+            eid = str(entry.get("eid") or "").strip()
+            pmid = str(entry.get("pubmed-id") or "").strip()
+            doi = normalize_doi(entry.get("prism:doi"))
+            records.append(
+                {
+                    "source_database": "scopus",
+                    "title": title,
+                    "abstract": str(entry.get("dc:description") or "").strip(),
+                    "authors": [creator] if creator else [],
+                    "year": ym.group(1) if ym else "",
+                    "journal": str(entry.get("prism:publicationName") or "").strip(),
+                    "doi": doi,
+                    "pmid": pmid,
+                    "embase_id": "",
+                    "scopus_eid": eid,
+                    "accession_number": eid or pmid,
+                    "keywords": [],
+                    "publication_type": str(entry.get("prism:aggregationType") or ""),
+                    "volume": str(entry.get("prism:volume") or ""),
+                    "issue": str(entry.get("prism:issueIdentifier") or ""),
+                    "pages": str(entry.get("prism:pageRange") or ""),
+                    "raw_fields": entry,
+                }
+            )
+
+        start += len(entries)
+        if start >= total_hits or len(entries) < fetch_count:
+            break
+        import time
+        time.sleep(0.05)
 
     drop_dir = root / "sources" / "manual_imports" / "scopus"
     drop_dir.mkdir(parents=True, exist_ok=True)

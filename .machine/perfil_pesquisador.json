@@ -38,16 +38,56 @@
   },
   "collaborators_and_advisors": [
     {
+      "name": "Dr. Flávio Abrão Neto",
+      "role": "Senior Advisor / Orientador (Cirurgia Geral — Complexo Hospitalar do Mandaqui)",
+      "email": "fabraoneto@gmail.com",
+      "orcid": "0000-0003-1816-9958",
+      "affiliation_pt": "Programa de Residência Médica em Cirurgia Geral, Complexo Hospitalar do Mandaqui, São Paulo, SP, Brasil",
+      "affiliation_en": "Department of General Surgery, Complexo Hospitalar do Mandaqui, São Paulo, SP, Brazil"
+    },
+    {
       "name": "Prof. Dr. Nivaldo Alonso",
-      "role": "Senior Advisor / Orientador (USP / FMUSP — Cirurgia Plástica e Craniomaxilofacial)"
+      "role": "Senior Advisor / Orientador (USP / FMUSP — Cirurgia Plástica e Craniomaxilofacial)",
+      "email": "nivaldo.alonso@hc.fm.usp.br",
+      "orcid": "0000-0003-1532-9610"
     },
     {
       "name": "Diego Emil Arbaje Cerda",
-      "role": "Co-researcher / Colaborador (USP)"
+      "role": "Co-researcher / Colaborador (USP)",
+      "orcid": "0000-0002-4988-2310"
     },
     {
       "name": "Marcel Gutierrez",
       "role": "Co-researcher / Colaborador (USP)"
+    },
+    {
+      "name": "Antonio Bernardo Leite Rocha",
+      "citation_name": "Rocha, A. B. L.",
+      "role": "Co-author / Pesquisador Colaborador (UNINOVE)",
+      "email": "bernardo.rocha@uni9.edu.br",
+      "orcid": "0009-0006-5972-9789",
+      "affiliation_pt": "Curso de Medicina, Universidade Nove de Julho (UNINOVE), Campus Vergueiro, São Paulo, SP, Brasil",
+      "affiliation_en": "School of Medicine, Universidade Nove de Julho (UNINOVE), São Paulo, SP, Brazil"
+    },
+    {
+      "name": "Eliezer Luciano da Silva Soares",
+      "citation_name": "Soares, E.",
+      "preferred_pubmed_name": "Soares, Eliezer",
+      "role": "Co-author / Pesquisador Colaborador (UNINOVE)",
+      "email": "eliezerluciano@uni9.edu.br",
+      "orcid": "0009-0005-0670-6172",
+      "affiliation_pt": "Curso de Medicina, Universidade Nove de Julho (UNINOVE), São Paulo, SP, Brasil",
+      "affiliation_en": "School of Medicine, Universidade Nove de Julho (UNINOVE), São Paulo, SP, Brazil"
+    },
+    {
+      "name": "Lucas Monteiro dos Santos",
+      "citation_name": "Santos, L. M.",
+      "preferred_pubmed_name": "Santos, Lucas Monteiro dos",
+      "role": "Co-author / Pesquisador Colaborador (UNINOVE)",
+      "email": "lucasmonteiros2002@uni9.edu.br",
+      "orcid": "0009-0003-3081-0143",
+      "affiliation_pt": "Curso de Medicina, Universidade Nove de Julho (UNINOVE), São Paulo, SP, Brasil",
+      "affiliation_en": "School of Medicine, Universidade Nove de Julho (UNINOVE), São Paulo, SP, Brazil"
     }
   ],
   "selected_certificates": [
@@ -134,5 +174,9 @@
       "note": "PDF é imagem: título, carga horária, data e código NÃO foram lidos do documento; confirmar manualmente."
     }
   ],
-  "verification_note": "Campos marcados A_CONFIRMAR ou verified_from_pdf=false não podem ser usados em submissões sem confirmação do pesquisador."
+  "verification_note": "Campos marcados A_CONFIRMAR ou verified_from_pdf=false não podem ser usados em submissões sem confirmação do pesquisador.",
+  "phones": {
+    "mobile": "+55 19 99730-0505",
+    "raw": "19 997300505"
+  }
 }

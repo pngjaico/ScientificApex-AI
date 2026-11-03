@@ -200,6 +200,8 @@ def registration_gate(project_dir: Path, action: str, *, mark_started: bool = Fa
             "issues": ["Registration declaration must be an object."],
         }
     issues = []
+    if protocol.get("status") not in {"frozen", "approved", "locked"}:
+        issues.append("The scientific protocol must be explicitly frozen before execution.")
     if registration.get("status") != "registered":
         issues.append("protocol.yaml registration.status must be registered AND verified before scientific work.")
     try:

@@ -9,6 +9,10 @@ from article_machine.services.protocol_registration import protocol_fingerprint,
 
 
 def reviewed_registration_fixture(project: Path) -> dict:
+    from article_machine.serialization import load_structured_file, save_structured_file
+    protocol = load_structured_file(project / "protocol.yaml")
+    protocol["status"] = "frozen"
+    save_structured_file(project / "protocol.yaml", protocol)
     register_review_protocol(project, "OSF", "abc12", "https://osf.io/abc12/", "2020-01-01")
     folder = project / "evidence" / "protocol_registration"
     folder.mkdir(parents=True, exist_ok=True)

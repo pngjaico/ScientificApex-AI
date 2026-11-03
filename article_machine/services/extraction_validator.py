@@ -8,6 +8,7 @@ from __future__ import annotations
 
 import csv
 import json
+import math
 from collections import defaultdict, deque
 from pathlib import Path
 from typing import Any
@@ -34,11 +35,12 @@ def load_extraction_records(path: Path) -> list[dict[str, Any]]:
 
 
 def _to_float(val: Any) -> float | None:
-    if val is None or val == "":
+    if val is None or val == "" or isinstance(val, bool):
         return None
     try:
-        return float(val)
-    except (TypeError, ValueError):
+        result = float(val)
+        return result if math.isfinite(result) else None
+    except (TypeError, ValueError, OverflowError):
         return None
 
 
@@ -67,6 +69,17 @@ def validate_extraction_records(
     warnings: list[str] = []
     normalized_mode = mode.strip().lower()
 
+    if normalized_mode not in {"pairwise", "nma", "diagnostic"}:
+        return {
+            "contract": "ExtractionValidationReportV1",
+            "status": "blocked",
+            "mode": normalized_mode,
+            "record_count": len(records),
+            "issues": ["Unknown extraction validation mode."],
+            "warnings": [],
+            "gate_eligible": False,
+        }
+
     if not records:
         return {
             "contract": "ExtractionValidationReportV1",
@@ -81,8 +94,70 @@ def validate_extraction_records(
     raw_treatments: set[str] = set()
 
     for idx, row in enumerate(records, start=1):
+        if not isinstance(row, dict) or not row:
+            issues.append(f"Row {idx}: a nonempty structured extraction record is required.")
+            continue
         study_id = str(row.get("study_id") or row.get("study") or f"row_{idx}").strip()
         label = f"Row {idx} ({study_id})"
+        count_fields = {
+            "events",
+            "total",
+            "n",
+            "events_intervention",
+            "n_intervention",
+            "events_control",
+            "n_control",
+            "e_i",
+            "n_i",
+            "e_c",
+            "n_c",
+            "tp",
+            "fp",
+            "fn",
+            "tn",
+        }
+        numeric_fields = count_fields | {
+            "mean",
+            "mean_intervention",
+            "mean_control",
+            "mean_i",
+            "mean_c",
+            "sd",
+            "sd_intervention",
+            "sd_control",
+            "sd_i",
+            "sd_c",
+            "sensitivity",
+            "specificity",
+            "subgroup_n_sum",
+        }
+        for key in numeric_fields & row.keys():
+            value = _to_int(row[key]) if key in count_fields else _to_float(row[key])
+            if value is None:
+                issues.append(f"{label}: present field '{key}' must be a finite valid numeric value.")
+            elif key in count_fields and value < (
+                1 if key in {"total", "n", "n_i", "n_c", "n_intervention", "n_control"} else 0
+            ):
+                issues.append(f"{label}: count/denominator '{key}' is outside its valid range.")
+            elif key in {"sensitivity", "specificity"} and not 0 <= value <= 1:
+                issues.append(f"{label}: '{key}' must be a proportion between 0 and 1.")
+        for event, denominators in [
+            ("events", {"total", "n"}),
+            ("events_intervention", {"n_intervention"}),
+            ("events_control", {"n_control"}),
+            ("e_i", {"n_i"}),
+            ("e_c", {"n_c"}),
+        ]:
+            if event in row and not denominators.intersection(row):
+                issues.append(f"{label}: '{event}' requires its denominator.")
+        if not (
+            set(row)
+            & (
+                count_fields
+                | {"mean", "mean_intervention", "mean_control", "mean_i", "mean_c", "treatment", "arm", "treat1"}
+            )
+        ):
+            issues.append(f"{label}: no supported outcome/count or network arm schema was identified.")
 
         # 1. Binary denominator & event checks
         for ev_key, n_key in [
@@ -242,4 +317,6 @@ def validate_extraction_records(
         "network_summary": network_summary,
         "issues": issues,
         "warnings": warnings,
+        "gate_eligible": False,
+        "scope": "Arithmetic and topology checks only; source verification and methodological review remain required.",
     }

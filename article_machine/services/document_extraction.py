@@ -13,20 +13,22 @@ Design rules (to avoid future conflicts):
 
 from __future__ import annotations
 
-from datetime import UTC, datetime
 import csv
 import hashlib
 import json
 import os
-from pathlib import Path
 import re
 import shutil
 import subprocess
 import tempfile
-from typing import Any
 import unicodedata
+from datetime import UTC, datetime
+from pathlib import Path
+from typing import Any
 
-EXTRACTOR_VERSION = "document-extraction/1.0"
+from .scientific_execution import project_ancestor, scientific_execution_gate
+
+EXTRACTOR_VERSION = "document-extraction/1.1"
 PDF_SUFFIXES = {".pdf"}
 IMAGE_SUFFIXES = {".png", ".jpg", ".jpeg", ".tif", ".tiff", ".bmp", ".webp"}
 DOCX_SUFFIXES = {".docx"}
@@ -87,12 +89,8 @@ def resolve_tesseract() -> dict[str, Any]:
     if tessdata:
         args += ["--tessdata-dir", str(tessdata)]
     try:
-        version_out = subprocess.run(
-            [str(cmd), "--version"], capture_output=True, text=True, timeout=20, check=False
-        )
-        langs_out = subprocess.run(
-            [*args, "--list-langs"], capture_output=True, text=True, timeout=20, check=False
-        )
+        version_out = subprocess.run([str(cmd), "--version"], capture_output=True, text=True, timeout=20, check=False)
+        langs_out = subprocess.run([*args, "--list-langs"], capture_output=True, text=True, timeout=20, check=False)
     except (OSError, subprocess.TimeoutExpired) as exc:
         return {"available": False, "cmd": str(cmd), "issues": [f"Tesseract failed to start: {exc}"]}
 
@@ -121,7 +119,7 @@ def _ocr_image_file(image_path: Path, tess: dict[str, Any], lang: str, psm: int 
     args = [tess["cmd"]]
     if tess.get("tessdata_dir"):
         args += ["--tessdata-dir", tess["tessdata_dir"]]
-    args += [str(image_path), "stdout", "-l", lang, "--psm", str(psm), "tsv"]
+    args += [str(image_path), "stdout", "-l", lang, "--psm", str(psm), "-c", "tessedit_create_tsv=1"]
     proc = subprocess.run(
         args, capture_output=True, timeout=OCR_TIMEOUT_SECONDS, check=False, encoding="utf-8", errors="replace"
     )
@@ -211,7 +209,7 @@ def text_quality(text: str) -> dict[str, Any]:
 
 
 def _needs_ocr(quality: dict[str, Any]) -> bool:
-    return quality["chars"] < MIN_NATIVE_CHARS or quality["score"] < 0.45 or quality["single_char_ratio"] > 0.25
+    return bool(quality["chars"] < MIN_NATIVE_CHARS or quality["score"] < 0.45 or quality["single_char_ratio"] > 0.25)
 
 
 # --------------------------------------------------------------------------- Tables
@@ -258,13 +256,14 @@ def _extract_pdf(
     max_pages: int | None,
 ) -> dict[str, Any]:
     import pdfplumber
-    import pypdfium2 as pdfium
+    import pypdfium2 as pdfium  # type: ignore[import-untyped]
 
     tess = resolve_tesseract() if ocr != "off" else {"available": False, "issues": ["OCR disabled."]}
     ocr_lang = lang or tess.get("default_lang", "eng")
     pages: list[dict[str, Any]] = []
     tables_meta: list[dict[str, Any]] = []
-    warnings: list[str] = list(tess.get("issues", [])) if ocr != "off" else []
+    raw_issues = tess.get("issues")
+    warnings: list[str] = [str(x) for x in raw_issues] if ocr != "off" and isinstance(raw_issues, list) else []
 
     with pdfplumber.open(str(source)) as pdf:
         pdf_doc = pdfium.PdfDocument(str(source))
@@ -280,7 +279,7 @@ def _extract_pdf(
                 if do_ocr and tess.get("available"):
                     try:
                         bitmap = pdf_doc[idx].render(scale=dpi / 72)
-                        ocr_text, conf = _ocr_pil_image(bitmap.to_pil(), tess, ocr_lang)
+                        ocr_text, conf = _ocr_pil_image(bitmap.to_pil(), tess, str(ocr_lang))
                         ocr_q = text_quality(ocr_text)
                         if ocr == "force" or ocr_q["score"] >= native_q["score"]:
                             method, text = "ocr", ocr_text
@@ -413,6 +412,12 @@ def extract_document(
 ) -> dict[str, Any]:
     """Extract one document into ``output_root/<slug>_<sha8>/`` (text.md, pages.jsonl, tables/, manifest.json)."""
     source = Path(source).resolve()
+    for project in {project_ancestor(source), project_ancestor(output_root)} - {None}:
+        if project is None:
+            continue
+        gate = scientific_execution_gate(project, "document-extraction", mark_started=True)
+        if gate["status"] != "pass":
+            return gate
     if ocr not in {"auto", "force", "off"}:
         raise ValueError("ocr must be auto|force|off")
     if table_strategy not in {"lines", "text", "both", "off"}:
@@ -435,19 +440,51 @@ def extract_document(
 
     if manifest_path.is_file() and not force:
         try:
-            cached = json.loads(manifest_path.read_text(encoding="utf-8"))
+            cached: dict[str, Any] = json.loads(manifest_path.read_text(encoding="utf-8"))
             if (
                 cached.get("source_sha256") == sha
                 and cached.get("extractor_version") == EXTRACTOR_VERSION
                 and cached.get("options") == options
+                and isinstance(cached.get("derived_sha256"), dict)
+                and bool(cached["derived_sha256"])
+                and {"text.md", "pages.jsonl"}.issubset(cached["derived_sha256"])
+                and set(cached["derived_sha256"])
+                == {p.relative_to(out_dir).as_posix() for p in out_dir.rglob("*") if p.is_file() and p != manifest_path}
+                and all(
+                    (out_dir / rel).resolve().is_relative_to(out_dir)
+                    and (out_dir / rel).is_file()
+                    and _sha256(out_dir / rel) == digest
+                    for rel, digest in cached["derived_sha256"].items()
+                )
             ):
                 cached["cached"] = True
                 return cached
         except (OSError, json.JSONDecodeError):
             pass
 
+    archived_output = None
     if out_dir.exists():
-        shutil.rmtree(out_dir)  # only our own derived folder; originals untouched
+        if source.is_relative_to(out_dir) or out_dir.is_symlink() or out_dir.is_junction():
+            return {
+                "contract": "DocumentExtractionV1",
+                "status": "blocked",
+                "issues": ["Unsafe derived output path; originals and links are preserved."],
+            }
+        try:
+            previous = json.loads(manifest_path.read_text(encoding="utf-8"))
+        except (OSError, ValueError):
+            previous = {}
+        if not isinstance(previous, dict) or previous.get("source_sha256") != sha:
+            return {
+                "contract": "DocumentExtractionV1",
+                "status": "blocked",
+                "issues": ["Existing output is not identifiable as this extractor's artifact; preserved."],
+            }
+        archived = out_dir.with_name(out_dir.name + "_anterior_" + datetime.now(UTC).strftime("%Y%m%dT%H%M%S%f"))
+        if not archived.resolve().is_relative_to(Path(output_root).resolve()):
+            raise ValueError("Archive must remain within the explicit output root")
+        out_dir.rename(archived)
+        archived_output = str(archived)
     out_dir.mkdir(parents=True, exist_ok=True)
 
     try:
@@ -466,12 +503,13 @@ def extract_document(
         else:
             result = _extract_docx(source, out_dir)
     except Exception as exc:  # encrypted/corrupted files must not abort a batch
-        shutil.rmtree(out_dir, ignore_errors=True)
+        # Preserve partial derived artifacts for diagnosis; no recursive deletion.
         return {
             "contract": "DocumentExtractionV1",
             "status": "blocked",
             "source": str(source),
             "source_sha256": sha,
+            "failed_output_dir": str(out_dir),
             "issues": [f"{type(exc).__name__}: {exc}"],
         }
 
@@ -493,6 +531,7 @@ def extract_document(
         "contract": "DocumentExtractionV1",
         "status": "pass",
         "cached": False,
+        "archived_previous_output": archived_output,
         "extractor_version": EXTRACTOR_VERSION,
         "extracted_at": datetime.now(UTC).isoformat(),
         "source": str(source),
@@ -509,6 +548,11 @@ def extract_document(
         "tables": result["tables"],
         "ocr_engine": result["ocr_engine"],
         "warnings": result["warnings"],
+        "derived_sha256": {
+            p.relative_to(out_dir).as_posix(): _sha256(p)
+            for p in sorted(out_dir.rglob("*"))
+            if p.is_file() and p != manifest_path
+        },
         "evidence_policy": (
             "Derived text. OCR pages and all PDF tables must be checked against the original before any "
             "number enters extraction sheets or claim_map (Evidence Lock)."
@@ -525,6 +569,12 @@ def extract_documents(
 ) -> dict[str, Any]:
     """Extract a file or every supported file in a folder (recursive); writes an index.json."""
     input_path = Path(input_path).resolve()
+    for project in {project_ancestor(input_path), project_ancestor(output_root)} - {None}:
+        if project is None:
+            continue
+        gate = scientific_execution_gate(project, "document-batch-extraction")
+        if gate["status"] != "pass":
+            return gate
     if input_path.is_dir():
         files = sorted(p for p in input_path.rglob("*") if p.is_file() and p.suffix.lower() in SUPPORTED_SUFFIXES)
     else:
@@ -545,7 +595,7 @@ def extract_documents(
         }
         for r in results
     ]
-    index = {
+    index: dict[str, Any] = {
         "contract": "DocumentExtractionIndexV1",
         "status": "pass" if results and all(r.get("status") in {"pass", "skipped"} for r in results) else "blocked",
         "generated_at": datetime.now(UTC).isoformat(),
@@ -565,6 +615,9 @@ def extract_documents(
 def extract_project_documents(project_dir: Path, input_path: Path | None = None, **kwargs: Any) -> dict[str, Any]:
     """Project wrapper: default input ``sources/fulltext`` (or sources/), output ``sources/extracted/``."""
     root = Path(project_dir).resolve()
+    gate = scientific_execution_gate(root, "project-document-extraction")
+    if gate["status"] != "pass":
+        return gate
     if not (root / "project.yaml").is_file():
         return {"contract": "DocumentExtractionIndexV1", "status": "blocked", "issues": [f"Not a project: {root}"]}
     if input_path is None:
@@ -593,7 +646,7 @@ def extract_project_documents(project_dir: Path, input_path: Path | None = None,
         ]
         output_root.mkdir(parents=True, exist_ok=True)
         results = [extract_document(f, output_root, **kwargs) for f in sorted(files)]
-        index = {
+        index: dict[str, Any] = {
             "contract": "DocumentExtractionIndexV1",
             "status": "pass" if results and all(r.get("status") in {"pass", "skipped"} for r in results) else "blocked",
             "generated_at": datetime.now(UTC).isoformat(),

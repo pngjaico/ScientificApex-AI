@@ -310,6 +310,72 @@ def build_parser() -> argparse.ArgumentParser:
     prospero_assist.add_argument("--dry-run", action="store_true", dest="dry_run")
     prospero_assist.add_argument("--headless", action="store_true")
 
+    doc_parser = subparsers.add_parser(
+        "document",
+        help="Extract PDF/DOCX/images to text and tables with OCR fallback (Tesseract)",
+    )
+    doc_sub = doc_parser.add_subparsers(dest="document_command", required=True)
+    doc_sub.add_parser(
+        "test-tesseract",
+        help="Check Tesseract binary, tessdata directory, and available language models",
+    )
+    doc_extract = doc_sub.add_parser(
+        "extract",
+        help="Extract a single document or directory of documents to markdown, jsonl, and tables",
+    )
+    doc_extract.add_argument("input_path")
+    doc_extract.add_argument("--output", default=None, dest="output_root")
+    doc_extract.add_argument(
+        "--ocr",
+        default="auto",
+        choices=["auto", "force", "off"],
+        help="auto (default, OCR on low-quality/scanned pages), force, or off",
+    )
+    doc_extract.add_argument(
+        "--lang",
+        default=None,
+        help="Tesseract language string (e.g. por+eng)",
+    )
+    doc_extract.add_argument(
+        "--dpi",
+        type=int,
+        default=300,
+        help="Rendering resolution for OCR (default 300)",
+    )
+    doc_extract.add_argument(
+        "--tables",
+        default="lines",
+        choices=["lines", "text", "both", "off"],
+        dest="table_strategy",
+    )
+    doc_extract.add_argument(
+        "--max-pages",
+        type=int,
+        default=None,
+        dest="max_pages",
+    )
+    doc_extract.add_argument("--force", action="store_true")
+
+    doc_proj = doc_sub.add_parser(
+        "project-extract",
+        help="Extract all project sources to sources/extracted/ with provenance index",
+    )
+    doc_proj.add_argument("project_dir")
+    doc_proj.add_argument("--input", default=None, dest="input_path")
+    doc_proj.add_argument(
+        "--ocr",
+        default="auto",
+        choices=["auto", "force", "off"],
+    )
+    doc_proj.add_argument("--lang", default=None)
+    doc_proj.add_argument(
+        "--tables",
+        default="lines",
+        choices=["lines", "text", "both", "off"],
+        dest="table_strategy",
+    )
+    doc_proj.add_argument("--force", action="store_true")
+
     context_parser = subparsers.add_parser("context")
     context_sub = context_parser.add_subparsers(dest="context_command", required=True)
     context_build = context_sub.add_parser("build")
@@ -719,6 +785,52 @@ def main(argv: list[str] | None = None) -> int:
             )
         _print(payload)
         return 0 if payload.get("status") == "pass" else 1
+    if args.command == "document":
+        from .services.document_extraction import (
+            extract_document,
+            extract_documents,
+            extract_project_documents,
+            resolve_tesseract,
+        )
+
+        if args.document_command == "test-tesseract":
+            payload = resolve_tesseract()
+        elif args.document_command == "project-extract":
+            payload = extract_project_documents(
+                Path(args.project_dir),
+                input_path=Path(args.input_path) if args.input_path else None,
+                ocr=args.ocr,
+                lang=args.lang,
+                table_strategy=args.table_strategy,
+                force=bool(args.force),
+            )
+        else:
+            in_p = Path(args.input_path)
+            out_p = Path(args.output_root) if args.output_root else in_p.parent
+            if in_p.is_file():
+                payload = extract_document(
+                    in_p,
+                    out_p,
+                    ocr=args.ocr,
+                    lang=args.lang,
+                    dpi=args.dpi,
+                    table_strategy=args.table_strategy,
+                    max_pages=args.max_pages,
+                    force=bool(args.force),
+                )
+            else:
+                payload = extract_documents(
+                    in_p,
+                    out_p,
+                    ocr=args.ocr,
+                    lang=args.lang,
+                    dpi=args.dpi,
+                    table_strategy=args.table_strategy,
+                    max_pages=args.max_pages,
+                    force=bool(args.force),
+                )
+        _print(payload)
+        return 0 if payload.get("status") in {"pass", True} or payload.get("available") is True else 1
     if args.command == "prospero":
         from .services.prospero_assistant import (
             compile_prospero_40_fields,

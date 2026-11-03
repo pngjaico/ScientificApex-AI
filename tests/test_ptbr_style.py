@@ -326,3 +326,13 @@ def test_cli_anti_ai_naturalize_writes_revised_text_and_report(tmp_path: Path) -
     assert "insights valiosos" not in output_text
     payload = json.loads(report_path.read_text(encoding="utf-8"))
     assert payload["original_report"]["profile"] == "anti_ai"
+
+
+def test_anti_ai_audit_flags_em_dash_llm_marker() -> None:
+    text = (
+        "The diagnostic accuracy of procalcitonin — which was measured in emergency — "
+        "proved clinically informative for transmural necrosis."
+    )
+    report = audit_text(text, profile="anti_ai")
+    codes = {issue["code"] for issue in report["issues"]}
+    assert "em_dash_llm_marker" in codes

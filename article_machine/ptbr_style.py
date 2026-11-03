@@ -695,6 +695,23 @@ def _append_anti_ai_issues(text: str, issues: list[dict[str, Any]], *, path_str:
                 )
             )
 
+    for idx, line_text in enumerate(text.splitlines(), start=1):
+        if "—" in line_text or " – " in line_text:
+            if _looks_like_reference_line(line_text) or line_text.strip().startswith("#"):
+                continue
+            issues.append(
+                _issue(
+                    code="em_dash_llm_marker",
+                    severity="warn",
+                    term="—" if "—" in line_text else " – ",
+                    line=idx,
+                    message="Uso de travessão (em-dash '—' ou ' – '): Marcador frequente de estilo de LLM.",
+                    suggestion="Evite travessões na escrita científica em inglês e português; substitua por parênteses, vírgulas, dois-pontos ou frases divididas.",
+                    excerpt=_line_excerpt(text, idx),
+                    path=path_str,
+                )
+            )
+
     headings = _document_headings(text)
     if len(text) > 1500 and headings and {"metodos", "resultados"} - headings:
         missing = ", ".join(sorted({"metodos", "resultados"} - headings))

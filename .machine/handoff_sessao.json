@@ -1,6 +1,6 @@
 {
   "contract": "AgentHandoffStateV1",
-  "updated_at": "2026-11-02T17:27:30-03:00",
+  "updated_at": "2026-11-02T23:42:00-03:00",
   "supported_agents": [
     "Antigravity",
     "Codex",
@@ -8,16 +8,16 @@
   ],
   "concurrency_mode": "STRICT_SEQUENTIAL_EXCLUSIVE",
   "concurrency_policy": "Nenhum agente deve ser executado simultaneamente ao outro. Apenas uma sessao ativa por vez.",
-  "active_project": "projects/article-machine-governance-2026",
-  "current_mode": "analysis",
+  "active_project": "projects/NMA_OSA_VPI",
+  "current_mode": "drafting",
   "last_session": {
     "agent": "Antigravity",
-    "timestamp": "2026-11-02T17:27:30-03:00",
-    "summary": "Revisao e estruturacao completa do protocolo de intercambiacao sequencial entre Codex, Antigravity e OpenCode. Validacao dos 328 testes unitarios e auditoria estrita de governanca.",
-    "tests_status": "328 passed, 1 skipped",
+    "timestamp": "2026-11-02T23:42:00-03:00",
+    "summary": "Aplicacao integral das correcoes pertinentes da revisao hostil Red Team (JCS Q1) no manuscrito em ingles e portugues: calibracao do titulo para 'Frequency and Detection Rate' (eliminando extrapolacao causal), expurgo de marcadores de IA, adicao dos limiares de IAH da AASM (>=1.5 criancas, >=5.0 adultos), ressalvas de imprecisao em Furlow (N=10) e centro unico em Orticochea (Bogota), e estratificacao da recomendacao clinica por risco. Sincronizacao completa do Google Docs em ingles e portugues com figuras de 300 DPI inseridas inline no texto e tabelas auto-ajustadas. Regeneracao de todos os pacotes Word .docx (Cover Letter, Title Page, Blinded Manuscript, PRISMA Checklist e Pacote do Orientador). Testes (400 passed) e machine audit strict 100% pass.",
+    "tests_status": "400 passed, 1 skipped",
     "machine_audit": "pass (strict)",
     "branch": "codex/article-machine-complete-56-ultra",
-    "git_commit": "e41e450"
+    "git_commit": "92aa791"
   },
   "operational_entry_checklist": [
     "1. Verificar git status e git log -1 para entender a transicao anterior.",
@@ -28,7 +28,9 @@
     "6. Ao finalizar a sessao: registrar no handoff e realizar commit checkpoint."
   ],
   "next_recommended_actions": [
-    "Retomar o projeto ativo projects/article-machine-governance-2026 ou definir novo projeto em projects/<project_id>/.",
-    "Manter commits regulares para preservar historico limpo entre os agentes."
+    "Ingerir PDFs adicionais salvos pelo usuario via painel 1-click na pasta sources/full_texts/.",
+    "Avancar o modo de screening para extraction em project.yaml.",
+    "Executar a extracao quantitativa estruturada dos desfechos 2x2 (EAD Olthoff e NAS/colangiopatia isquêmica) com foco prioritario nos RCTs marcos.",
+    "Rodar a sintese em rede com netmeta em R 4.6.1 e gerar a matriz de transitividade e o ranking P-score."
   ]
 }

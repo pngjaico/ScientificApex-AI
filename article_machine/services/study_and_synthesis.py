@@ -21,13 +21,17 @@ Provides:
 from __future__ import annotations
 
 import csv
+import hashlib
 import html
 import json
+import re
 from datetime import UTC, datetime
+from decimal import Decimal, InvalidOperation
 from pathlib import Path
 from typing import Any
 
 from ..serialization import load_structured_file, save_structured_file
+from .scientific_execution import scientific_execution_gate
 
 PUBLICATION_TEMPLATES: dict[str, dict[str, Any]] = {
     "jama-lancet-nejm-high-impact": {
@@ -405,6 +409,9 @@ def _csv_to_markdown_table(csv_path: Path, max_rows: int = 12) -> tuple[str, lis
 def harvest_analysis_outputs(project_dir: Path) -> dict[str, Any]:
     """Scan analysis/ and figures/ for R and Python outputs and sync analysis/results_ledger.json."""
     root = Path(project_dir).resolve()
+    gate = scientific_execution_gate(root, "results-harvest", mark_started=True)
+    if gate["status"] != "pass":
+        return gate
     analysis_dir = root / "analysis"
     figures_dir = root / "figures"
 
@@ -412,24 +419,107 @@ def harvest_analysis_outputs(project_dir: Path) -> dict[str, Any]:
     figures: list[dict[str, Any]] = []
     json_summaries: list[dict[str, Any]] = []
     merged_metrics: dict[str, Any] = {}
+    metric_claims: dict[str, str] = {}
+    issues: list[str] = []
+    metric_sources: dict[str, list[dict[str, str]]] = {}
+
+    def add_metric(key: str, value: Any, source: Path) -> None:
+        try:
+            if isinstance(value, bool):
+                raise ValueError("Boolean is not a result")
+            number = Decimal(str(value).replace(",", "."))
+            if not number.is_finite():
+                raise ValueError("Nonfinite result")
+        except (InvalidOperation, ValueError):
+            issues.append(f"Metric '{key}' is not a finite numeric result: {source.relative_to(root).as_posix()}")
+            return
+        if key in merged_metrics and Decimal(str(merged_metrics[key]).replace(",", ".")) != number:
+            issues.append(f"Conflicting values for metric '{key}'; canonical ledger preserved.")
+            return
+        merged_metrics[key] = value
+        if source != ledger_path:
+            record = {
+                "path": source.relative_to(root).as_posix(),
+                "sha256": hashlib.sha256(source.read_bytes()).hexdigest(),
+            }
+            if record not in metric_sources.setdefault(key, []):
+                metric_sources[key].append(record)
+
+    def add_claims(mapping: Any) -> None:
+        if not isinstance(mapping, dict):
+            issues.append("metric_claims must be an object.")
+            return
+        for key, claim in mapping.items():
+            if not isinstance(claim, str) or not claim.strip():
+                issues.append(f"Invalid claim binding for metric '{key}'.")
+            elif key in metric_claims and metric_claims[key] != claim:
+                issues.append(f"Conflicting claim bindings for metric '{key}'.")
+            else:
+                metric_claims[key] = claim
+
+    def strict_json(path: Path) -> Any:
+        def unique(pairs: list[tuple[str, Any]]) -> dict[str, Any]:
+            result: dict[str, Any] = {}
+            for key, value in pairs:
+                if key in result:
+                    raise ValueError("Duplicate JSON key")
+                result[key] = value
+            return result
+
+        return json.loads(path.read_text(encoding="utf-8-sig"), object_pairs_hook=unique)
 
     # 1. Existing results_ledger.json if present
     ledger_path = analysis_dir / "results_ledger.json"
     if ledger_path.is_file():
         try:
-            existing = json.loads(ledger_path.read_text(encoding="utf-8"))
+            existing = strict_json(ledger_path)
             if isinstance(existing, dict):
-                raw_m = existing.get("metrics", existing)
+                historical = existing.get("metric_sources", {})
+                if not isinstance(historical, dict):
+                    issues.append("Metric source provenance must be an object.")
+                else:
+                    for key, sources in historical.items():
+                        if not isinstance(sources, list):
+                            issues.append(f"Invalid source provenance for '{key}'.")
+                            continue
+                        for record in sources:
+                            if not isinstance(record, dict) or not isinstance(record.get("path"), str):
+                                issues.append(f"Invalid source record for '{key}'.")
+                                continue
+                            source_path = root / record["path"]
+                            if (
+                                not source_path.resolve().is_relative_to(root)
+                                or source_path.resolve() == ledger_path
+                                or not source_path.is_file()
+                                or hashlib.sha256(source_path.read_bytes()).hexdigest() != record.get("sha256")
+                            ):
+                                issues.append(
+                                    f"Missing, changed or unsafe original source for '{key}'; ledger preserved."
+                                )
+                            else:
+                                metric_sources.setdefault(key, []).append(record)
+                add_claims(existing.get("metric_claims", {}))
+                raw_m = existing.get("metrics", {})
                 if isinstance(raw_m, dict):
-                    merged_metrics.update(raw_m)
-        except (OSError, json.JSONDecodeError):
-            pass
+                    for key, value in raw_m.items():
+                        add_metric(str(key), value, ledger_path)
+                else:
+                    issues.append("Canonical metrics must be an object.")
+            else:
+                issues.append("Canonical ledger must be an object.")
+        except (OSError, ValueError):
+            issues.append("Canonical ledger is unreadable or ambiguous; preserved.")
 
     # 2. Scan analysis/ for JSON, CSV, TSV, and R/Python scripts
     r_scripts: list[str] = []
     if analysis_dir.is_dir():
         for path in sorted(analysis_dir.rglob("*")):
             if not path.is_file():
+                continue
+            if path == ledger_path or any(
+                part in {".venv", "biblioteca", "node_modules", "__pycache__"} or part.startswith("backup")
+                for part in path.relative_to(analysis_dir).parts
+            ):
                 continue
             rel = path.relative_to(root).as_posix()
             suf = path.suffix.lower()
@@ -449,26 +539,32 @@ def harvest_analysis_outputs(project_dir: Path) -> dict[str, Any]:
                 # Extract key-value metrics if table has metric/value columns or single summary row
                 if len(parsed_rows) == 1:
                     for k, v in parsed_rows[0].items():
-                        if v and k not in merged_metrics:
-                            merged_metrics[f"{path.stem}.{k}"] = v
+                        if v:
+                            try:
+                                Decimal(str(v).replace(",", "."))
+                            except InvalidOperation:
+                                continue  # textual labels are table content, never numeric metrics
+                            add_metric(f"{path.stem}.{k}", v, path)
                 else:
                     for r in parsed_rows:
                         m_key = r.get("metric") or r.get("term") or r.get("outcome") or r.get("comparison")
                         m_val = r.get("estimate") or r.get("value") or r.get("pooled_effect") or r.get("auroc")
                         if m_key and m_val:
-                            merged_metrics[f"{path.stem}.{m_key}"] = m_val
+                            add_metric(f"{path.stem}.{m_key}", m_val, path)
             elif suf == ".json" and path.name != "results_ledger.json":
                 try:
-                    data = json.loads(path.read_text(encoding="utf-8"))
+                    data = strict_json(path)
                     if isinstance(data, dict):
                         json_summaries.append({"name": path.stem, "path": rel, "data": data})
-                        flat_source = data.get("metrics", data)
+                        if isinstance(data.get("metric_claims"), dict):
+                            add_claims(data["metric_claims"])
+                        flat_source = data.get("metrics", data if path.stem.endswith("metrics") else {})
                         if isinstance(flat_source, dict):
                             for k, v in flat_source.items():
                                 if isinstance(v, (int, float, str)) and not isinstance(v, bool):
-                                    merged_metrics[str(k)] = v
-                except (OSError, json.JSONDecodeError):
-                    pass
+                                    add_metric(str(k), v, path)
+                except (OSError, ValueError):
+                    issues.append(f"Unreadable or ambiguous JSON summary: {rel}")
             elif suf in {".png", ".svg", ".pdf"}:
                 figures.append({"name": path.stem, "path": rel, "format": suf.lstrip(".")})
 
@@ -488,11 +584,20 @@ def harvest_analysis_outputs(project_dir: Path) -> dict[str, Any]:
         ident = prisma_data.get("identification", {})
         scr = prisma_data.get("screening", {})
         if ident.get("total_records_identified") is not None:
-            merged_metrics.setdefault("prisma_identified", ident["total_records_identified"])
+            add_metric("prisma_identified", ident["total_records_identified"], prisma_path)
         if ident.get("total_duplicates_removed") is not None:
-            merged_metrics.setdefault("prisma_duplicates_removed", ident["total_duplicates_removed"])
+            add_metric("prisma_duplicates_removed", ident["total_duplicates_removed"], prisma_path)
         if scr.get("records_screened") is not None:
-            merged_metrics.setdefault("prisma_records_screened", scr["records_screened"])
+            add_metric("prisma_records_screened", scr["records_screened"], prisma_path)
+
+    if issues:
+        return {
+            "contract": "AnalysisHarvestV2",
+            "status": "blocked",
+            "issues": issues,
+            "gate_eligible": False,
+            "ledger_preserved": True,
+        }
 
     # Save updated results_ledger.json if we harvested any metrics
     if merged_metrics:
@@ -503,6 +608,9 @@ def harvest_analysis_outputs(project_dir: Path) -> dict[str, Any]:
                 "contract": "ResultsLedgerV1",
                 "updated_at": datetime.now(UTC).isoformat(),
                 "metrics": merged_metrics,
+                "metric_claims": metric_claims,
+                "metric_sources": metric_sources,
+                "metrics_without_source_provenance": sorted(set(merged_metrics) - set(metric_sources)),
                 "tables_harvested": [t["path"] for t in tables],
                 "figures_harvested": [f["path"] for f in figures],
             },
@@ -616,15 +724,17 @@ def _didactic_methodology_lesson(project_type: str) -> tuple[str, str, list[dict
             {
                 "q_pt": "Como foi evitada a perda de estudos ou viés de seleção na busca bibliográfica?",
                 "a_pt": (
-                    "Compilamos strings auditadas por SHA-256 para PubMed, Scopus, Embase, Cochrane "
+                    "Resposta depende dos logs do estudo. Verificar strings, datas e cobertura de PubMed, "
+                    "Scopus, Embase, Cochrane "
                     "CENTRAL e LILACS segundo o PRISMA-S, com deduplicação determinística em 3 estágios "
                     "(DOI, PMID/PUI/EID e Título+Ano+Autor) que funde metadados sem descartar "
                     "informações."
                 ),
                 "q_en": "How did you prevent study loss or selection bias during the bibliographic search?",
                 "a_en": (
-                    "We compiled SHA-256 audited search strings across PubMed, Scopus, Embase, Cochrane "
-                    "CENTRAL, and LILACS per PRISMA-S, followed by 3-stage deterministic zero-loss "
+                    "Answer requires this study's search logs. Verify queries, dates and coverage of "
+                    "PubMed, Scopus, Embase, Cochrane "
+                    "CENTRAL and LILACS where appropriate under PRISMA-S; audit recall and "
                     "deduplication."
                 ),
             },
@@ -700,20 +810,21 @@ def _didactic_methodology_lesson(project_type: str) -> tuple[str, str, list[dict
                 "q_en": "Why is reporting only AUROC and F1-score insufficient for Q1 clinical prediction journals?",
                 "a_en": (
                     "AUROC only assesses rank discrimination and F1 uses an arbitrary threshold. "
-                    "TRIPOD+AI and PROBAST+AI mandate probability calibration (intercept, slope, Brier) "
-                    "and Decision Curve Analysis (DCA Net Benefit)."
+                    "Assess probability calibration (intercept, slope, Brier) and clinical relevance "
+                    "under TRIPOD+AI/PROBAST+AI; "
+                    "use decision-curve analysis only with justified thresholds and an appropriate clinical decision."
                 ),
             },
             {
                 "q_pt": "Como vocês garantiram ausência de data leakage no pré-processamento e validação?",
                 "a_pt": (
-                    "Particionamos os dados agrupados por paciente (patient_id) antes de qualquer "
+                    "Verificar nos manifests se os dados foram agrupados por paciente (patient_id) antes de qualquer "
                     "transformação, ajustando imputação e hiperparâmetros exclusivamente dentro das "
                     "partições de treino."
                 ),
                 "q_en": "How did you guarantee zero data leakage during preprocessing and validation?",
                 "a_en": (
-                    "We partitioned at the patient level (patient_id) prior to any transformation, "
+                    "Verify in partition manifests whether patients were separated before any transformation, "
                     "fitting imputation and hyperparameters strictly inside training folds."
                 ),
             },
@@ -723,30 +834,32 @@ def _didactic_methodology_lesson(project_type: str) -> tuple[str, str, list[dict
     pt_lesson = (
         "### Aula Didática: Metodologia Científica e Governança de Evidências deste Estudo\n\n"
         "- **Protocolo Congelado e Pré-Registrado:** Toda hipótese, estimando, critério de "
-        "elegibilidade e plano analítico foi travado "
+        "elegibilidade e plano analítico deve ser congelado e conferido "
         "com hash SHA-256 antes da extração/modelagem.\n"
         "- **Rastreabilidade Evidence Lock:** Cada afirmação factual no manuscrito e nos "
-        "slides referencia um `{{claim:id}}` validado.\n"
+        "slides deve apontar para um `{{claim:id}}` validado; conferir cada ocorrência.\n"
     )
     en_lesson = (
         "### Didactic Lesson: Scientific Methodology & Evidence Governance of This Study\n\n"
         "- **Frozen Preregistered Protocol:** Every hypothesis, estimand, eligibility "
-        "criterion, and analysis plan was locked with SHA-256 "
+        "criterion and analysis plan must be locked and verified with SHA-256 "
         "prior to extraction or modeling.\n"
         "- **Evidence Lock Traceability:** Every factual assertion in manuscripts and "
-        "slides links to a verified `{{claim:id}}`.\n"
+        "slides must link to a verified `{{claim:id}}`; check each occurrence.\n"
     )
     flashcards = [
         {
             "q_pt": "Como a reprodutibilidade computacional e a integridade dos números foram garantidas?",
             "a_pt": (
-                "Todos os outputs estatísticos do R/Python são auditados contra o "
-                "analysis/results_ledger.json e verificados entre as versões em português e inglês."
+                "É necessário auditar os outputs estatísticos do R/Python contra o "
+                "analysis/results_ledger.json e verificar as versões em português e inglês; esta aula "
+                "não executa essa revisão."
             ),
             "q_en": "How were computational reproducibility and numerical integrity guaranteed?",
             "a_en": (
-                "All R/Python statistical outputs are audited against analysis/results_ledger.json "
-                "and cross-checked across Portuguese and English deliverables."
+                "R/Python statistical outputs require an audit against analysis/results_ledger.json "
+                "and cross-checking across Portuguese and English deliverables; this lesson does not "
+                "perform that review."
             ),
         }
     ]
@@ -756,10 +869,15 @@ def _didactic_methodology_lesson(project_type: str) -> tuple[str, str, list[dict
 def build_project_study_guide(project_dir: Path) -> dict[str, Any]:
     """Generate paired PT-BR/EN Markdown study guides and an interactive HTML5 Study & Defense Dashboard."""
     root = Path(project_dir).resolve()
+    gate = scientific_execution_gate(root, "study-guide")
+    if gate["status"] != "pass":
+        return gate
     project = load_structured_file(root / "project.yaml")
     protocol = load_structured_file(root / "protocol.yaml")
     standards = load_structured_file(root / "standards.yaml")
     harvest = harvest_analysis_outputs(root)
+    if harvest.get("status") != "pass":
+        return harvest
 
     title = str(protocol.get("title") or project.get("name") or root.name)
     project_type = str(project.get("project_type") or protocol.get("project_type") or "systematic-review")
@@ -970,9 +1088,34 @@ def synthesize_from_r_outputs(
 ) -> dict[str, Any]:
     """Generate complete paired PT-BR/EN manuscripts, abstracts, slides, and posters from R outputs."""
     root = Path(project_dir).resolve()
+    gate = scientific_execution_gate(root, "scientific-synthesis")
+    if gate["status"] != "pass":
+        return gate
+    from ..evidence import validate_evidence_lock
+
+    evidence = validate_evidence_lock(root)
+    if evidence.get("gate_eligible") is not True:
+        return {
+            "contract": "ROutputBilingualSynthesisV2",
+            "status": "blocked",
+            "issues": ["Evidence Lock must approve canonical claims before scientific synthesis."],
+            "evidence_issues": evidence.get("issues", []),
+            "submission_eligible": False,
+        }
+    if not re.fullmatch(r"[A-Za-z0-9][A-Za-z0-9_-]{0,79}", slug):
+        return {"status": "blocked", "issues": ["Synthesis slug must be a simple project-local identifier."]}
+    destinations = [root / "drafts" / lang / slug for lang in ("portugues", "ingles")]
+    destinations.append(root / "deliverables" / slug)
+    if any(path.exists() for path in destinations):
+        return {
+            "status": "blocked",
+            "issues": ["Version already exists; choose a new slug. Earlier artifacts preserved."],
+        }
     project = load_structured_file(root / "project.yaml")
     protocol = load_structured_file(root / "protocol.yaml")
     harvest = harvest_analysis_outputs(root)
+    if harvest.get("status") != "pass":
+        return harvest
 
     pub_tpl = (
         PUBLICATION_TEMPLATES.get(publication_template_id) or PUBLICATION_TEMPLATES["jama-lancet-nejm-high-impact"]
@@ -991,23 +1134,52 @@ def synthesize_from_r_outputs(
     claims_path = root / "evidence" / "claim_map.jsonl"
     claims: list[dict[str, Any]] = []
     if claims_path.is_file():
-        for line in claims_path.read_text(encoding="utf-8", errors="replace").splitlines():
+        for line in claims_path.read_text(encoding="utf-8-sig").splitlines():
             if line.strip():
                 try:
                     c = json.loads(line)
-                    if isinstance(c, dict) and c.get("id"):
+                    if (
+                        isinstance(c, dict)
+                        and c.get("claim_id") in evidence.get("claims_checked", [])
+                        and c.get("status") == "supported"
+                    ):
                         claims.append(c)
                 except json.JSONDecodeError:
                     pass
 
-    claim_tag = f"{{{{claim:{claims[0]['id']}}}}}" if claims else "{{claim:primary-finding}}"
+    if not claims:
+        return {
+            "contract": "ROutputBilingualSynthesisV2",
+            "status": "blocked",
+            "issues": ["No supported claim_id is available for synthesis."],
+            "submission_eligible": False,
+        }
+    claim_tag = f"{{{{claim:{claims[0]['claim_id']}}}}}"
     metrics = harvest["metrics"]
-    metrics_bullet_pt = "\n".join(f"- **{k}:** {str(v).replace('.', ',')}" for k, v in sorted(metrics.items())) or (
-        "- Métricas aguardando execução de scripts em `analysis/`."
-    )
-    metrics_bullet_en = "\n".join(f"- **{k}:** {v}" for k, v in sorted(metrics.items())) or (
-        "- Metrics awaiting script execution in `analysis/`."
-    )
+    ledger = load_structured_file(root / "analysis" / "results_ledger.json")
+    if ledger.get("metrics_without_source_provenance"):
+        return {
+            "contract": "BilingualSynthesisV2",
+            "status": "blocked",
+            "issues": ["Canonical results lack original output provenance; verify sources before drafting."],
+        }
+    metric_claims = ledger.get("metric_claims", {})
+    unsupported = [key for key in metrics if metric_claims.get(key) not in evidence.get("claims_checked", [])]
+    if not metrics or unsupported:
+        return {
+            "contract": "ROutputBilingualSynthesisV2",
+            "status": "blocked",
+            "submission_eligible": False,
+            "issues": ["Each canonical result must link to a validated claim_id via metric_claims."],
+            "unbound_metrics": unsupported,
+        }
+    metrics_bullet_pt = "\n".join(
+        f"- **{k}:** {{{{metric:{k}}}}} {str(v).replace('.', ',')} {{{{claim:{metric_claims[k]}}}}}"
+        for k, v in sorted(metrics.items())
+    ) or ("- Métricas aguardando execução de scripts em `analysis/`.")
+    metrics_bullet_en = "\n".join(
+        f"- **{k}:** {{{{metric:{k}}}}} {v} {{{{claim:{metric_claims[k]}}}}}" for k, v in sorted(metrics.items())
+    ) or ("- Metrics awaiting script execution in `analysis/`.")
 
     tables_md_pt = (
         "\n\n".join(f"### Tabela: {t['name']} (Fonte: `{t['path']}`)\n\n{t['markdown']}" for t in harvest["tables"])
@@ -1019,15 +1191,15 @@ def synthesize_from_r_outputs(
     )
 
     figs_md_pt = "\n".join(
-        f"- Figura `{f['name']}`: ![{f['name']}](../../{f['path']})" for f in harvest["figures"]
+        f"- Figura `{f['name']}`: ![{f['name']}](../../../{f['path']})" for f in harvest["figures"]
     ) or ("- _Nenhuma figura colhida ainda em `figures/` ou `analysis/`._")
     figs_md_en = "\n".join(
-        f"- Figure `{f['name']}`: ![{f['name']}](../../{f['path']})" for f in harvest["figures"]
+        f"- Figure `{f['name']}`: ![{f['name']}](../../../{f['path']})" for f in harvest["figures"]
     ) or ("- _No figures harvested yet in `figures/` or `analysis/`._")
 
     # 1. Paired Manuscripts (PT-BR & EN)
-    drafts_pt_dir = root / "drafts" / "portugues"
-    drafts_en_dir = root / "drafts" / "ingles"
+    drafts_pt_dir = root / "drafts" / "portugues" / slug
+    drafts_en_dir = root / "drafts" / "ingles" / slug
     drafts_pt_dir.mkdir(parents=True, exist_ok=True)
     drafts_en_dir.mkdir(parents=True, exist_ok=True)
 
@@ -1044,9 +1216,13 @@ def synthesize_from_r_outputs(
         f"{sec_pt}\n"
         f"## Tabelas Integradas dos Outputs em R\n\n{tables_md_pt}\n\n"
         f"## Figuras Geradas pelos Scripts em R\n\n{figs_md_pt}\n\n"
-        f"## Declaração de Uso de Ferramentas Computacionais e IA\n\n"
-        f"As análises estatísticas foram executadas de forma reprodutível em R 4.6.1 (`renv.lock`) e Python 3.13, "
-        f"com verificação humana integral dos dados, código, inferências e redação científica.\n"
+        f"## Uso de Inteligência Artificial e Tecnologias Assistidas por IA na Redação Científica\n\n"
+        "RASCUNHO AUTOMÁTICO — Durante a preparação deste trabalho, os autores utilizaram Claude Opus 5.5 "
+        "(Anthropic) para auxiliar no polimento do idioma inglês, refinamento gramatical, correções tipográficas "
+        "e formatação do layout de tabelas. Após o uso desta ferramenta, os autores revisaram criticamente, "
+        "verificaram e editaram todo o conteúdo gerado e assumem total responsabilidade pela integridade científica, "
+        "precisão factual e conclusões apresentadas neste manuscrito. Em conformidade com os critérios de autoria "
+        "da revista-alvo, tecnologias de IA generativa não são listadas como autores.\n"
     )
 
     manuscript_en = (
@@ -1059,9 +1235,13 @@ def synthesize_from_r_outputs(
         f"{sec_en}\n"
         f"## Integrated R Output Tables\n\n{tables_md_en}\n\n"
         f"## Figures Generated by R Scripts\n\n{figs_md_en}\n\n"
-        f"## Computational Reproducibility & AI Disclosure\n\n"
-        f"Statistical analyses were executed reproducibly in R 4.6.1 (`renv.lock`) and Python 3.13, "
-        f"with full human verification of data extraction, code, statistical inference, and manuscript text.\n"
+        f"## Use of Artificial Intelligence and AI-Assisted Technologies in Scientific Writing\n\n"
+        "AUTOMATED DRAFT — During the preparation of this work, the authors used Claude Opus 5.5 (Anthropic) "
+        "to assist with English language polishing, grammatical refinement, typographical corrections, and table "
+        "layout formatting. Following the use of this tool, the authors critically reviewed, verified, and edited "
+        "all generated content and take full responsibility for the scientific integrity, factual accuracy, and "
+        "conclusions presented in this manuscript. In accordance with target journal authorship criteria, generative "
+        "AI technologies are not listed as authors.\n"
     )
 
     ms_pt_path = drafts_pt_dir / "manuscrito_completo.md"
@@ -1081,19 +1261,13 @@ def synthesize_from_r_outputs(
         f"- **Introdução/Importância:** {question}\n"
         "- **Objetivo:** Avaliar quantitativamente os desfechos clínicos segundo protocolo "
         f"pré-registrado ({reg_name}: `{reg_id}`).\n"
-        f"- **Métodos:** Estudo do tipo `{project_type}` conduzido segundo diretrizes "
-        "EQUATOR, com modelagem em R 4.6.1.\n"
+        f"- **Métodos:** Estudo do tipo `{project_type}` a documentar com a checklist aplicável "
+        "EQUATOR e versões comprovadas nos logs de execução.\n"
         f"- **Resultados:** Síntese dos outputs analíticos: {inline_metrics_pt}. {claim_tag}\n"
-        f"- **Conclusão:** Os achados fornecem estimativas calibradas e reprodutíveis para suporte à decisão clínica.\n"
+        f"- **Conclusão:** [PENDENTE: interpretar apenas achados verificados, incerteza e "
+        f"limitações; não presumir utilidade clínica.]\n"
         f"- **Registro:** {reg_name} `{reg_id}`.\n\n"
-        f"## 2. Resumo para Congresso Brasileiro (CBC / CBCD / SBAD — 250 palavras)\n"
-        f"- **Introdução:** {question}\n"
-        f"- **Objetivo:** Sintetizar a evidência quantitativa e aplicabilidade cirúrgica/clínica.\n"
-        f"- **Método:** Modelagem estatística reprodutível em R (`{project_type}`, protocolo `{reg_id}`).\n"
-        f"- **Resultados:** {inline_metrics_pt} ({len(harvest['tables'])} tabelas e "
-        f"{len(harvest['figures'])} figuras geradas).\n"
-        f"- **Conclusão:** Evidência estruturada com controle rigoroso de viés e incerteza.\n\n"
-        f"## 3. Roteiro de Visual / Graphical Abstract (3 Painéis)\n"
+        f"## 2. Roteiro de Visual / Graphical Abstract (3 Painéis)\n"
         f"- **Painel 1 (População & Pergunta):** {question}\n"
         f"- **Painel 2 (Metodologia & R Engine):** `{project_type}` | Registro `{reg_id}`\n"
         f"- **Painel 3 (Achado Quantitativo Principal):** {inline_metrics_pt}\n"
@@ -1105,20 +1279,13 @@ def synthesize_from_r_outputs(
         f"- **Background/Importance:** {question}\n"
         "- **Objective:** To quantitatively evaluate clinical outcomes under a "
         f"preregistered protocol ({reg_name}: `{reg_id}`).\n"
-        f"- **Methods:** `{project_type}` conducted in accordance with EQUATOR guidelines "
-        "and R 4.6.1 statistical modeling.\n"
+        f"- **Methods:** `{project_type}` requiring the applicable reporting checklist "
+        "and software versions established from execution logs.\n"
         f"- **Results:** Quantitative synthesis from R outputs: {inline_metrics_en}. {claim_tag}\n"
-        "- **Conclusions:** These findings provide calibrated, reproducible estimates to "
-        "inform clinical decision-making.\n"
+        "- **Conclusions:** [PENDING: interpret verified findings, uncertainty and limitations; do not presume "
+        "clinical utility.]\n"
         f"- **Registration:** {reg_name} `{reg_id}`.\n\n"
-        f"## 2. International Congress Abstract (ESICM / WSES / ACS / DDW — 300 words)\n"
-        f"- **Introduction:** {question}\n"
-        f"- **Objectives:** To establish robust quantitative estimates and clinical utility.\n"
-        f"- **Methods:** Reproducible R 4.6.1 pipeline (`{project_type}`, registration `{reg_id}`).\n"
-        f"- **Results:** {inline_metrics_en} ({len(harvest['tables'])} tables and "
-        f"{len(harvest['figures'])} figures generated).\n"
-        f"- **Conclusions:** Protocol-locked synthesis with rigorous bias and uncertainty quantification.\n\n"
-        f"## 3. Visual / Graphical Abstract Blueprint (3 Panels)\n"
+        f"## 2. Visual / Graphical Abstract Blueprint (3 Panels)\n"
         f"- **Panel 1 (Population & Question):** {question}\n"
         f"- **Panel 2 (Methods & R Engine):** `{project_type}` | Registry `{reg_id}`\n"
         f"- **Panel 3 (Primary Quantitative Finding):** {inline_metrics_en}\n"
@@ -1129,123 +1296,40 @@ def synthesize_from_r_outputs(
     abs_pt_path.write_text(abstracts_pt, encoding="utf-8")
     abs_en_path.write_text(abstracts_en, encoding="utf-8")
 
-    # 3. Paired Bilingual HTML5 Slide Decks + Speaker Notes & HTML5 Posters in deliverables/<slug>/
-    deliv_root = root / "deliverables" / slug
-    deliv_pt = deliv_root / "portugues"
-    deliv_en = deliv_root / "ingles"
-    deliv_pt.mkdir(parents=True, exist_ok=True)
-    deliv_en.mkdir(parents=True, exist_ok=True)
-
-    first_table_html = ""
-    if harvest["tables"]:
-        sample = harvest["tables"][0]["sample_rows"]
-        if sample:
-            cols = list(sample[0].keys())
-            th = "".join(f"<th>{html.escape(c)}</th>" for c in cols)
-            trs = "".join(
-                "<tr>" + "".join(f"<td>{html.escape(str(r.get(c, '')))}</td>" for c in cols) + "</tr>"
-                for r in sample[:6]
-            )
-            first_table_html = f"<table><thead><tr>{th}</tr></thead><tbody>{trs}</tbody></table>"
-
-    figs_gallery_html = (
-        "".join(
-            f"<div class='fig-box'><strong>{html.escape(f['name'])}</strong>"
-            f"<br><code>{html.escape(f['path'])}</code></div>"
-            for f in harvest["figures"][:4]
-        )
-        or "<div class='fig-box'>Figuras do R serão listadas aqui após execução de analysis/*.R</div>"
-    )
-
-    slides_pt_html = _render_bilingual_slides_html(
-        lang="pt-BR",
-        title=title,
-        question=question,
-        project_type=project_type,
-        reg_label=f"{reg_name} ({reg_id})",
-        template_name=slide_tpl["name_pt"],
-        metrics=metrics,
-        table_html=first_table_html,
-        figs_html=figs_gallery_html,
-    )
-    slides_en_html = _render_bilingual_slides_html(
-        lang="en",
-        title=title,
-        question=question,
-        project_type=project_type,
-        reg_label=f"{reg_name} ({reg_id})",
-        template_name=slide_tpl["name_en"],
-        metrics=metrics,
-        table_html=first_table_html,
-        figs_html=figs_gallery_html,
-    )
-
-    poster_pt_html = _render_bilingual_poster_html(
-        lang="pt-BR",
-        title=title,
-        question=question,
-        project_type=project_type,
-        reg_label=f"{reg_name} ({reg_id})",
-        template_name=poster_tpl["name_pt"],
-        metrics=metrics,
-        table_html=first_table_html,
-        figs_html=figs_gallery_html,
-    )
-    poster_en_html = _render_bilingual_poster_html(
-        lang="en",
-        title=title,
-        question=question,
-        project_type=project_type,
-        reg_label=f"{reg_name} ({reg_id})",
-        template_name=poster_tpl["name_en"],
-        metrics=metrics,
-        table_html=first_table_html,
-        figs_html=figs_gallery_html,
-    )
-
-    slides_pt_file = deliv_pt / "slides_apresentacao.html"
-    slides_en_file = deliv_en / "slides_apresentacao.html"
-    poster_pt_file = deliv_pt / "poster_cientifico.html"
-    poster_en_file = deliv_en / "poster_cientifico.html"
-    notes_pt_file = deliv_pt / "roteiro_fala_slides.md"
-    notes_en_file = deliv_en / "roteiro_fala_slides.md"
-
-    slides_pt_file.write_text(slides_pt_html, encoding="utf-8")
-    slides_en_file.write_text(slides_en_html, encoding="utf-8")
-    poster_pt_file.write_text(poster_pt_html, encoding="utf-8")
-    poster_en_file.write_text(poster_en_html, encoding="utf-8")
-
-    notes_pt_file.write_text(
-        f"# Roteiro de Fala Slide a Slide (PT-BR) — {slide_tpl['name_pt']}\n\n"
-        f"1. **Slide 1 (Título & Registro):** Apresentar o título '{title}' e destacar o "
-        f"registro prospectivo em {reg_name} (`{reg_id}`).\n"
-        f"2. **Slide 2 (Racional Clínico & Pergunta):** Explicar a lacuna clínica: {question}\n"
-        "3. **Slide 3 (Metodologia e Engine R 4.6.1):** Destacar o rigor metodológico "
-        f"(`{project_type}`) e reprodutibilidade.\n"
-        f"4. **Slide 4 (Resultados Principais do R):** Apresentar as estimativas canônicas ({inline_metrics_pt}).\n"
-        f"5. **Slide 5 (Tabelas e Figuras em R):** Guiar a audiência pelas figuras e tabelas.\n"
-        "6. **Slide 6 (Limitações e Mensagem Final):** Concluir com recomendação calibrada.\n",
-        encoding="utf-8",
-    )
-    notes_en_file.write_text(
-        f"# Slide-by-Slide Speaker Notes (EN) — {slide_tpl['name_en']}\n\n"
-        f"1. **Slide 1 (Title & Registration):** Introduce '{title}' and highlight "
-        f"prospective registration in {reg_name} (`{reg_id}`).\n"
-        f"2. **Slide 2 (Clinical Rationale & Question):** State the clinical gap: {question}\n"
-        "3. **Slide 3 (Methodology & R 4.6.1 Engine):** Emphasize methodological rigor "
-        f"(`{project_type}`) and lockfile reproducibility.\n"
-        f"4. **Slide 4 (Primary R Outputs):** Walk through canonical estimates ({inline_metrics_en}).\n"
-        f"5. **Slide 5 (R Tables & Figures):** Highlight key plots and summary tables.\n"
-        "6. **Slide 6 (Limitations & Take-Home Message):** Conclude with clinical implications.\n",
-        encoding="utf-8",
-    )
+    # Congress artifacts require the dedicated requirements/storyboard/QA pipeline.
+    # This synthesis route produces journal drafts only; it cannot bypass that pipeline.
+    routing = {}
+    for language, message in {
+        "portugues": (
+            "# Encaminhamento para congresso\n\n"
+            "Não foram gerados slides, pôster ou resumo de congresso nesta rota. "
+            "Importar as regras oficiais do evento com `article-machine congress import`; "
+            "depois executar `deck/poster plan`, `build`, `qa` e `export`. "
+            "Somente claims validados podem entrar no storyboard. "
+            "Submissão exige confirmação explícita e snapshot recente do portal.\n"
+        ),
+        "ingles": (
+            "# Conference routing\n\n"
+            "No slides, poster or conference abstract were generated by this route. "
+            "Import official event requirements with `article-machine congress import`; "
+            "then run `deck/poster plan`, `build`, `qa` and `export`. "
+            "Only validated claims may enter the storyboard. "
+            "Submission requires explicit confirmation and a fresh portal snapshot.\n"
+        ),
+    }.items():
+        target = (drafts_pt_dir if language == "portugues" else drafts_en_dir) / "encaminhamento_congresso.md"
+        target.write_text(message, encoding="utf-8")
+        routing[language] = target.relative_to(root).as_posix()
 
     # Also build/refresh the project study guide automatically so the user can always study the latest outputs!
     study_report = build_project_study_guide(root)
 
     return {
-        "contract": "ROutputBilingualSynthesisV1",
+        "contract": "ROutputBilingualSynthesisV2",
         "status": "pass",
+        "artifact_state": "draft-unreviewed",
+        "submission_eligible": False,
+        "human_review_verified": False,
         "project_id": root.name,
         "templates_used": {
             "publication": pub_tpl["id"],
@@ -1265,15 +1349,10 @@ def synthesize_from_r_outputs(
             "portugues": abs_pt_path.relative_to(root).as_posix(),
             "ingles": abs_en_path.relative_to(root).as_posix(),
         },
-        "slides": {
-            "portugues": slides_pt_file.relative_to(root).as_posix(),
-            "ingles": slides_en_file.relative_to(root).as_posix(),
-            "speaker_notes_pt": notes_pt_file.relative_to(root).as_posix(),
-            "speaker_notes_en": notes_en_file.relative_to(root).as_posix(),
-        },
-        "posters": {
-            "portugues": poster_pt_file.relative_to(root).as_posix(),
-            "ingles": poster_en_file.relative_to(root).as_posix(),
+        "conference_outputs": {
+            "status": "not-generated-dedicated-pipeline-required",
+            "routing_guides": routing,
+            "submission_eligible": False,
         },
         "study_guide": study_report["study_guides"],
     }

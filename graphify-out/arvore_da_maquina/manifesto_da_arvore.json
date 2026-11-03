@@ -1,9 +1,9 @@
 {
-  "created_at": "2026-11-02T19:32:32.021117+00:00",
+  "created_at": "2026-11-02T20:44:45.620390+00:00",
   "scope": "whole-root-structural-metadata",
   "content_files_read": 0,
-  "nodes": 26269,
-  "edges": 26268,
+  "nodes": 26427,
+  "edges": 26426,
   "opaque_leaves": [
     {
       "path": ".git",
@@ -264,6 +264,14 @@
     },
     {
       "path": "modelos/estatistica_e_figuras/ambiente/biblioteca",
+      "reason": "opaque-protected-or-generated"
+    },
+    {
+      "path": "modelos/aprendizado_de_maquina_clinico/.venv",
+      "reason": "opaque-protected-or-generated"
+    },
+    {
+      "path": "modelos/aprendizado_de_maquina_clinico/ambientes/aprendizado_profundo/.venv",
       "reason": "opaque-protected-or-generated"
     },
     {
@@ -538,6 +546,7 @@
     "SKILLS_CANON.md",
     "SKILL_INDEX.md",
     "abrir_codex.cmd",
+    "abrir_opencode.cmd",
     "acervo_de_referencia",
     "archive",
     "article_machine",
@@ -548,6 +557,7 @@
     "integracoes",
     "maquina_canonica.json",
     "modelos",
+    "opencode.json",
     "package.json",
     "projects",
     "pyproject.toml",

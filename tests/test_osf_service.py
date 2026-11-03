@@ -112,6 +112,11 @@ def test_fetch_osf_registration_rejects_pending_or_withdrawn() -> None:
 
 def test_fetch_and_save_osf_evidence_end_to_end(tmp_path: Path) -> None:
     project = init_project(tmp_path, "OSF Pipeline Test", "systematic-review")
+    from article_machine.serialization import load_structured_file, save_structured_file
+
+    protocol = load_structured_file(project / "protocol.yaml")
+    protocol["status"] = "frozen"
+    save_structured_file(project / "protocol.yaml", protocol)
 
     mock_payload = {
         "data": {
