@@ -1,0 +1,121 @@
+contract_version: 2
+project_type: prediction-model
+lane: evidence-writing
+guidelines:
+- TRIPOD+AI
+- PROBAST+AI
+risk_of_bias_tools:
+- PROBAST+AI
+policy_labels:
+- prediction
+- machine-learning-clinical
+- surgical-oncology
+- hepatocellular-carcinoma
+- liver-transplantation
+- high-rigor
+deliverables:
+- protocol
+- analysis
+- claim map
+- manuscript
+- review report
+registration_policy:
+  required: true
+  timing: before-scientific-work
+  accepted_registries:
+  - OSF
+  - Zenodo
+  verification_required: true
+  rationale: 'Clinical prediction models and machine learning protocols must be preregistered (e.g. on OSF) prior to model freezing to guarantee reproducibility and prevent analytical dredging.'
+checklist_status:
+  TRIPOD+AI:
+    status: in-progress
+    items:
+    - id: item_1_title
+      name: Title
+      description: Identification as a prediction model developed/validated using AI/ML, specifying target population and outcome.
+      status: addressed
+      location: protocol.yaml / drafts/
+    - id: item_2_abstract
+      name: Abstract
+      description: Structured summary covering Background, Objectives, Methods, Results, Conclusions.
+      status: planned
+      location: drafts/portugues/resumo.md & drafts/ingles/abstract.md
+    - id: item_3_rationale
+      name: Background and Rationale
+      description: Context of HCC surgical resection vs transplantation, failure of linear staging (TNM, Milan), need for explainable ML and conformal uncertainty quantification.
+      status: addressed
+      location: protocol.yaml / drafts/
+    - id: item_4_objectives
+      name: Objectives
+      description: Study objectives and intended clinical role (surgical decision support).
+      status: addressed
+      location: protocol.yaml / drafts/
+    - id: item_5a_study_design
+      name: Study Design and Data Source
+      description: Retrospective cohort based on NCI SEER population registry (2000-2021).
+      status: addressed
+      location: protocol.yaml / analysis/
+    - id: item_6_participants
+      name: Eligibility and Selection Criteria
+      description: Inclusion of adult primary HCC patients undergoing resection or transplantation.
+      status: addressed
+      location: protocol.yaml / sources/
+    - id: item_7_outcomes
+      name: Outcome Definitions
+      description: 5-year cancer-specific survival and overall survival, competing risk analysis.
+      status: addressed
+      location: protocol.yaml / analysis/
+    - id: item_8_predictors
+      name: Candidate Predictors
+      description: Demographic, histopathologic, tumor burden, and liver background features.
+      status: addressed
+      location: protocol.yaml / sources/
+    - id: item_9_sample_size
+      name: Sample Size and Power
+      description: Exceeds 60,000 cases (>7,000 events), EPV > 100.
+      status: addressed
+      location: protocol.yaml
+    - id: item_10_missing_data
+      name: Missing Data Strategy
+      description: MICE imputation and native gradient boosting missing value routing.
+      status: addressed
+      location: protocol.yaml / analysis/
+    - id: item_11_model_development
+      name: Model Architecture
+      description: LightGBM, XGBoost with monotonicity constraints, MAPIE split conformal prediction (95% coverage), TreeSHAP Lundberg interactions.
+      status: addressed
+      location: analysis/
+    - id: item_12_model_performance
+      name: Performance Metrics
+      description: Time-dependent AUROC, C-index, calibration slope, Brier score, DCA Net Benefit.
+      status: addressed
+      location: analysis/
+    - id: item_23_ai_transparency
+      name: AI Disclosure and Ethics
+      description: Official Claude Opus 5.5 declaration under Declarations, zero em-dashes.
+      status: addressed
+      location: drafts/
+  PROBAST+AI:
+    status: in-progress
+    domains:
+    - id: domain_1_participants
+      name: Domain 1 - Participants
+      risk_of_bias: low
+      concerns_applicability: low
+      rationale: Population-based multicenter cancer registry representing real-world clinical spectrum.
+    - id: domain_2_predictors
+      name: Domain 2 - Predictors
+      risk_of_bias: low
+      concerns_applicability: low
+      rationale: Predictors ascertained using standardized ICD-O-3 pathology and preoperative staging.
+    - id: domain_3_outcome
+      name: Domain 3 - Outcome
+      risk_of_bias: low
+      concerns_applicability: low
+      rationale: Cancer-specific mortality validated against national vital statistics with competing risk modeling.
+    - id: domain_4_analysis
+      name: Domain 4 - Analysis
+      risk_of_bias: low
+      concerns_applicability: low
+      rationale: Nested temporal holdout, strict anti-leakage architecture, and calibration curves with ICI.

@@ -1,7 +1,7 @@
 # Scientific workflow packet
 
 Language: pt-BR
-Task: Torneio de hipoteses para programa I-FABP TC Mandaqui doutorado mestrado publicacoes, preparar protocolos sem execucao preregistro
+Task: Torneio de temas de doutorado: I-FABP, lactato e CTA, comparando pergunta clínica, viabilidade e independência do mestrado
 
 ## Execution assignments
 - question: Sol -> `context/question_and_alternatives.md`; Protocol question, competing hypotheses, feasibility

@@ -1,4 +1,4 @@
-# Graph Report - D:\Usuario-pc\Projetos\Doutorado  (2026-11-03)
+# Graph Report - D:\Usuario-pc\Projetos\Doutorado  (2026-11-05)
 
 > **Start here:** [`graphify-out/LEIA-ME.md`](LEIA-ME.md) maps every generated file.
 > The agent quickstart and query recipes are at the end of this report.
@@ -7,8 +7,8 @@
 - Root semantic graph was not run: the workspace is too broad and detection timed out. This is an operational navigation graph.
 
 ## Summary
-- 1343 nodes · 2700 edges · 8 communities (7 shown, 1 thin omitted)
-- Extraction: 90% EXTRACTED · 10% INFERRED · 0% AMBIGUOUS · INFERRED: 273 edges (avg confidence: 0.75)
+- 1450 nodes · 2919 edges · 8 communities (7 shown, 1 thin omitted)
+- Extraction: 89% EXTRACTED · 11% INFERRED · 0% AMBIGUOUS · INFERRED: 316 edges (avg confidence: 0.75)
 - Token cost: 0 input · 0 output
 
 ## Community Hubs (Navigation)
@@ -22,16 +22,16 @@
 - Git Hygiene
 
 ## God Nodes (most connected - your core abstractions)
-1. `Build context Task Packet` - 155 edges
-2. `Article Machine Package` - 102 edges
-3. `Runtime And Commands` - 95 edges
-4. `Read project protocol standards compute files` - 83 edges
-5. `article_machine.cli` - 82 edges
+1. `Build context Task Packet` - 197 edges
+2. `Runtime And Commands` - 113 edges
+3. `Article Machine Package` - 110 edges
+4. `Read project protocol standards compute files` - 107 edges
+5. `article_machine.cli` - 100 edges
 6. `Critical Scientific Skills` - 73 edges
 7. `article_machine.agent_skills` - 72 edges
 8. `Agent Documentation` - 56 edges
-9. `Article Machine Projects` - 47 edges
-10. `Graphify Operational Map` - 38 edges
+9. `Article Machine Projects` - 53 edges
+10. `Graphify Operational Map` - 40 edges
 
 ## Surprising Connections (you probably didn't know these)
 - `Runtime And Commands` --exposes--> `article-machine aggregate`  [EXTRACTED]
@@ -55,12 +55,12 @@ Cohesion: 0.11
 Nodes (20): Doutorado Workspace, Runtime And Commands, .venv python -m article_machine, .venv python -m graphify, global python -m graphify, .venv python -m pytest, article_machine machine audit --strict, article_machine benchmark validate (+12 more)
 
 ### Community 1 - "Article Machine"
-Cohesion: 0.02
-Nodes (141): Article Machine Package, article_machine.__init__, Article Machine entrypoints and CLI, article_machine.__main__, article_machine.adapters.__init__, article_machine.adapters.runtime, article_machine.agent_skills, Skill routing and PT-BR style gates (+133 more)
+Cohesion: 0.01
+Nodes (167): Article Machine Package, article_machine.__init__, Article Machine entrypoints and CLI, article_machine.__main__, article_machine.adapters.__init__, article_machine.adapters.runtime, article_machine.agent_skills, Skill routing and PT-BR style gates (+159 more)
 
 ### Community 2 - "Projects And Modes"
 Cohesion: 0.01
-Nodes (196): Article Machine Projects, Article Machine Governance 2026, lane: machine-governance, mode: bootstrap, type: machine-governance, article-machine-governance-2026/context (5 direct items), article-machine-governance-2026/analysis (7 direct items), article-machine-governance-2026/reviews (3 direct items) (+188 more)
+Nodes (244): Article Machine Projects, Article Machine Governance 2026, lane: machine-governance, mode: bootstrap, type: machine-governance, article-machine-governance-2026/context (5 direct items), article-machine-governance-2026/analysis (7 direct items), article-machine-governance-2026/reviews (3 direct items) (+236 more)
 
 ### Community 3 - "Scientific Skills"
 Cohesion: 0.01
@@ -68,18 +68,18 @@ Nodes (533): Critical Scientific Skills, hypothesis-tournament, hypothesis-tourn
 
 ### Community 4 - "Agent Docs"
 Cohesion: 0.01
-Nodes (292): Agent Documentation, Workspace Navigation Index, .AGENTES :: Operação permanente da máquina científica, docs/ingles/AGENTES_DA_MAQUINA.md :: Permanent scientific-machine operations, docs/portugues/GUIA_DA_MAQUINA.md :: Guia da máquina científica, docs/portugues/GUIA_DA_MAQUINA.md :: Em uma frase, docs/portugues/GUIA_DA_MAQUINA.md :: Caminho normal, do pedido ao pacote revisável, docs/portugues/GUIA_DA_MAQUINA.md :: 1. Escolha o projeto e entenda os contratos (+284 more)
+Nodes (299): Agent Documentation, Workspace Navigation Index, .AGENTES :: Operação permanente da máquina científica, docs/ingles/AGENTES_DA_MAQUINA.md :: Permanent scientific-machine operations, docs/portugues/GUIA_DA_MAQUINA.md :: Guia da máquina científica, docs/portugues/GUIA_DA_MAQUINA.md :: Em uma frase, docs/portugues/GUIA_DA_MAQUINA.md :: Caminho normal, do pedido ao pacote revisável, docs/portugues/GUIA_DA_MAQUINA.md :: 1. Escolha o projeto e entenda os contratos (+291 more)
 
 ### Community 6 - "Graphify Map"
 Cohesion: 0.07
-Nodes (33): Graphify Operational Map, Área / Area: .agents, Área / Area: .codex, Área / Area: .git, Área / Area: .github, Área / Area: .machine, Área / Area: .mypy_cache, Área / Area: .pytest_cache (+25 more)
+Nodes (35): Graphify Operational Map, Área / Area: .agents, Área / Area: .codex, Área / Area: .git, Área / Area: .github, Área / Area: .machine, Área / Area: .mypy_cache, Área / Area: .pytest_cache (+27 more)
 
 ### Community 7 - "Git Hygiene"
 Cohesion: 0.33
 Nodes (6): Git Hygiene, local agent control plane; track only policy files and selected navigation skills, local virtual environment; never stage, pytest cache; generated, shared source intake; review before staging raw data, generated operational graph outputs
 
 ## Knowledge Gaps
-- **38 isolated node(s):** `.AGENTES :: Operação permanente da máquina científica`, `docs/ingles/AGENTES_DA_MAQUINA.md :: Permanent scientific-machine operations`, `docs/portugues/ESTADO_E_LIMITES_DA_MAQUINA.md :: Estado atual e limites verificáveis`, `docs/ingles/ESTADO_E_LIMITES_DA_MAQUINA.md :: Current state and verifiable limitations`, `LEIA-ME_PRIMEIRO.md :: Comece aqui — fábrica científica` (+33 more)
+- **46 isolated node(s):** `.AGENTES :: Operação permanente da máquina científica`, `docs/ingles/AGENTES_DA_MAQUINA.md :: Permanent scientific-machine operations`, `docs/portugues/ESTADO_E_LIMITES_DA_MAQUINA.md :: Estado atual e limites verificáveis`, `docs/ingles/ESTADO_E_LIMITES_DA_MAQUINA.md :: Current state and verifiable limitations`, `LEIA-ME_PRIMEIRO.md :: Comece aqui — fábrica científica` (+41 more)
   These have ≤1 connection - possible missing edges or undocumented components.
 - **1 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
 
@@ -140,18 +140,18 @@ _Questions this graph is uniquely positioned to answer:_
 - `content-preservation-guardian` -> `skills/content-preservation-guardian/SKILL.md`
 
 ## Detailed Navigation Layers
-- Markdown sections indexed: 250
-- Project contract files indexed: 80
-- Project artifact areas indexed: 152
+- Markdown sections indexed: 257
+- Project contract files indexed: 104
+- Project artifact areas indexed: 194
 - Skill instruction sections indexed: 454
 - Navigation/preservation skills installed: 3
 - Project-scoped Codex agent roles indexed: 5
 - Read-only Codex benchmark profiles indexed: 2
 
 ## Generation Provenance
-- Git HEAD: `416250a795a47f088cc9850fc6718d674e9f2957`
+- Git HEAD: `417dce556ea10344faf24fb52777930417259387`
 - Dirty worktree at generation: `true`
-- Porcelain status entries at generation: 17
+- Porcelain status entries at generation: 67
 
 ## Natural Language Gateway Phrases
 These nodes make Portuguese and operational user phrasing easier for `graphify query` to match.

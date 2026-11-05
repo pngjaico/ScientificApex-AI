@@ -1,0 +1,12 @@
+feature,mean_abs_shap,monotone_constraint
+vascular_invasion_code,0.53662,1
+tumor_size_cm,0.46658,1
+is_transplant,0.39134,-1
+afp_elevated,0.28956,1
+nodule_count,0.24191,1
+age_years,0.18835,1
+histologic_grade,0.10159,1
+fibrosis_ishak,0.08384,1
+lymph_node_positive,0.04419,1
+sex_male,0.03239,0
+is_cirrhotic,0.00054,1

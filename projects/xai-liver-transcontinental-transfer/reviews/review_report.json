@@ -1,0 +1,17 @@
+{
+  "aggregate_status": "pending",
+  "reviewers": {
+    "methodological": {
+      "status": "pending",
+      "issues": []
+    },
+    "quantitative": {
+      "status": "pending",
+      "issues": []
+    },
+    "editorial": {
+      "status": "pending",
+      "issues": []
+    }
+  }
+}

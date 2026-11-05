@@ -177,7 +177,9 @@ def init_project(workspace_root: Path, name: str, project_type: str) -> Path:
         "context/task_packets",
         "context/life_science",
         "evidence",
+        "evidence/prisma",
         "evidence/life_science",
+        "screening",
         "analysis",
         "drafts/thesis",
         "deliverables",
@@ -232,6 +234,119 @@ def init_project(workspace_root: Path, name: str, project_type: str) -> Path:
         project_dir / "analysis" / "README.md",
         "Place analysis scripts (.py, .R, .qmd) and generated reports in this directory.\n",
     )
+    if project_type in ("systematic-review", "network-meta-analysis", "scoping-review", "diagnostic-meta-analysis", "dose-response-meta-analysis"):
+        criteria_template = {
+            "contract_version": 2,
+            "project_id": slug,
+            "name": f"Criterios de Triagem Triplo-Cego ({name})",
+            "framework": f"PRISMA 2020 / Cochrane Handbook v6.4 ({project_type})",
+            "screening_architecture": {
+                "reviewer_1": {"role": "Revisor Clinico Independente", "focus": "PICO e elegibilidade clinica"},
+                "reviewer_2": {"role": "Revisor Metodologico Independente", "focus": "Desenho de estudo e filtros de vies"},
+                "reviewer_3": {"role": "Arbitro Senior de Consenso", "focus": "Adjudicacao formal de discrepancias"}
+            },
+            "study_designs": {
+                "tier_1": {"code": "TIER_1_RCT", "name": "Ensaio Clinico Randomizado (RCT)"},
+                "tier_2": {"code": "TIER_2_MATCHED_COHORT", "name": "Coorte Pareada por Escore de Propensao (PSM)"},
+                "tier_3": {"code": "TIER_3_COMPARATIVE_COHORT", "name": "Coorte Comparativa com Controle"}
+            }
+        }
+        save_structured_file(project_dir / "screening" / "screening_criteria.yaml", criteria_template)
+
+    if project_type == "diagnostic-meta-analysis":
+        diag_template = {
+            "contract_version": 2,
+            "model": "mada_reitsma_bivariate",
+            "required_fields": ["study", "year", "tp", "fp", "fn", "tn", "threshold", "index_test", "reference_standard"],
+            "data_file": "evidence/diagnostic_2x2_data.csv",
+        }
+        save_structured_file(project_dir / "analysis" / "diagnostic_config.yaml", diag_template)
+        _write_text(
+            project_dir / "evidence" / "diagnostic_2x2_data.csv",
+            "study,year,tp,fp,fn,tn,threshold,index_test,reference_standard\n"
+        )
+
+    elif project_type == "dose-response-meta-analysis":
+        dosres_template = {
+            "contract_version": 2,
+            "model": "dosresmeta_splines",
+            "required_fields": ["study", "dose", "cases", "total", "logrr", "se"],
+            "data_file": "evidence/dose_response_data.csv",
+        }
+        save_structured_file(project_dir / "analysis" / "dose_response_config.yaml", dosres_template)
+        _write_text(
+            project_dir / "evidence" / "dose_response_data.csv",
+            "study,dose,cases,total,logrr,se\n"
+        )
+
+    elif project_type == "case-report":
+        _write_text(
+            project_dir / "context" / "case_report_care_template.md",
+            "# CARE 2017 Case Report Structure\n\n1. Patient Information (de-identified)\n2. Clinical Findings\n3. Timeline\n4. Diagnostic Assessment\n5. Therapeutic Interventions\n6. Follow-up and Outcomes\n7. Discussion\n8. Patient Perspective & Informed Consent\n",
+        )
+
+    elif project_type == "case-series":
+        _write_text(
+            project_dir / "context" / "case_series_process_template.md",
+            "# PROCESS 2023 Surgical Case Series Checklist\n\n1. Protocol and Registration\n2. Study Design & Setting\n3. Patient Cohort & Eligibility\n4. Surgical Technique & Equipment\n5. Postoperative Care & Endpoints\n6. Complications (Clavien-Dindo)\n7. Follow-up Loss\n8. Statistical Analysis\n",
+        )
+
+    elif project_type == "delphi-consensus":
+        delphi_template = {
+            "contract_version": 2,
+            "guideline": "CREDES / AGREE II",
+            "planned_rounds": 3,
+            "consensus_threshold_percent": 80,
+            "expert_panel_target": 25,
+            "panel_composition": ["cirurgioes", "hepatologistas", "intensivistas", "pesquisadores_metodologicos"],
+        }
+        save_structured_file(project_dir / "context" / "delphi_protocol.yaml", delphi_template)
+
+    elif project_type == "grant-proposal":
+        _write_text(
+            project_dir / "context" / "grant_proposal_template.md",
+            "# Proposta de Fomento (FAPESP / CNPq)\n\n1. Resumo do Projeto (PT e EN)\n2. Enunciado do Problema e Hipótese\n3. Estado da Arte e Racionalidade Científica\n4. Objetivos Primários e Secundários\n5. Metodologia e Delineamento Experimental\n6. Cronograma de Execução e Metas (Milestones)\n7. Orçamento Detalhado e Justificativas\n8. Comitê de Ética em Pesquisa (CEP/CEUA)\n",
+        )
+
+    elif project_type == "omics-discovery":
+        omics_template = {
+            "contract_version": 2,
+            "discovery_lane": "computational-discovery",
+            "target_organisms": ["Homo sapiens"],
+            "data_sources": ["AlphaGenome", "OpenTargets", "ChEMBL", "STRING", "Reactome", "UniProt"],
+            "hypotheses_file": "context/discovery_hypotheses.yaml",
+        }
+        save_structured_file(project_dir / "context" / "omics_discovery_plan.yaml", omics_template)
+
+    elif project_type == "wet-lab-experiment":
+        exp_dirs = [
+            "experiments/protocols",
+            "experiments/checklists",
+            "experiments/data/raw",
+            "experiments/data/processed",
+            "experiments/samples",
+        ]
+        for ed in exp_dirs:
+            (project_dir / ed).mkdir(parents=True, exist_ok=True)
+
+        gate_template = {
+            "contract_version": 2,
+            "unit_of_experimentation": "animal_or_patient_donor",
+            "technical_replicates_policy": "Technical sub-samples (wells, slides, crypts) must be nested or averaged; treating them as independent N is strictly prohibited.",
+            "ceua_cep_approval_required": True,
+            "sample_manifest_file": "experiments/samples/sample_manifest.csv",
+            "preregistration_registry": "OSF",
+        }
+        save_structured_file(project_dir / "experiments" / "checklists" / "pre_execution_gate.yaml", gate_template)
+        _write_text(
+            project_dir / "experiments" / "samples" / "sample_manifest.csv",
+            "sample_id,subject_id,group,tissue,warm_ischemia_min,cold_ischemia_min,collection_time,centrifugation_time,storage_temp,freeze_thaw_cycles,freezer_location\n",
+        )
+        _write_text(
+            project_dir / "experiments" / "README.md",
+            "# Wet-Lab & Translational Experiment Environment\n\n- The biological subject (animal or patient) is the unit of experimentation.\n- Technical replicates (wells, fields, sections) are nested sub-samples.\n- Biobank tracking is mandatory in `experiments/samples/sample_manifest.csv`.\n",
+        )
+
     return project_dir
 
 

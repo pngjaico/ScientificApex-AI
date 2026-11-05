@@ -56,6 +56,14 @@ LOCAL_CURATED_SKILLS = {
     "metodos-ml-clinico",
     "meta-analise-medica",
     "publicacao-medica-organizada",
+    "machine-continuous-learner",
+    "analytical-method-validation",
+    "pkpd-modeling",
+    "relsa-severity-assessment",
+    "uncertainty-and-units",
+    "ontology-term-resolution",
+    "iso-standards-readiness",
+    "journal-selection-tournament",
 }
 
 

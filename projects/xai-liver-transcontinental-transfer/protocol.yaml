@@ -1,0 +1,27 @@
+contract_version: 2
+project_type: prediction-model
+status: frozen
+research_question: "How do explainable machine learning models trained on high-income vs middle-income public health registries transport across national boundaries, and can conformal prediction guarantee robust clinical safety in cross-system donor-recipient allocation?"
+hypothesis: "Cross-system domain adaptation and conformal prediction calibration will mitigate performance degradation when models derived in one national transplant system (US SEER or Brazil SP/SUS) are externally deployed in the opposite jurisdiction."
+objectives:
+  - "Evaluate geographic transportability (O/E ratio, ICI, AUROC degradation) of survival prediction models across US SEER (N>60,000) and Brazilian SUS/SP registries (N>25,000)."
+  - "Implement split conformal prediction to quantify distribution-free uncertainty in transcontinental transfer."
+  - "Assess clinical net benefit of domain adaptation across varying decision thresholds in Decision Curve Analysis."
+inclusion_criteria:
+  - "Adult patients (age >= 18 years) with primary hepatocellular carcinoma or end-stage liver disease undergoing liver transplantation or resection"
+  - "Documented follow-up time and vital status at 1, 3, and 5 years"
+  - "Records present in either NCI SEER (2000-2021) or Brazilian State/SUS Registries (2007-2022)"
+exclusion_criteria:
+  - "Pediatric cases (< 18 years)"
+  - "Multi-organ transplants (e.g., liver-kidney, liver-heart)"
+  - "Cases with unknown survival time or missing core clinical predictors"
+registration:
+  required: true
+  status: registered
+  registry: "Open Science Framework"
+  registry_id: "w9mnq"
+  registry_url: "https://osf.io/w9mnq/"
+  registered_at: "2026-11-05T15:20:00Z"
+  registered_before_extraction: true
+  notes: "Full 29-item OSF Preregistration schema registered via OSF API."
+notes: "Estudo 3 da Trilogia de Doutorado. Comitê TRIPOD+AI (2024) / PROBAST+AI (2025)."

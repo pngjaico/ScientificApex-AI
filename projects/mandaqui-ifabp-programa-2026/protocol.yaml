@@ -1,11 +1,18 @@
 contract_version: 2
 project_type: observational-study
 status: draft
-research_question: 'Qual o valor prognóstico adicional da I-FABP à clínica e TC para ressecção por necrose em adultos com obstrução intestinal delgada?'
-hypothesis: 'Planejamento: incremento e viabilidade locais são desconhecidos; resultado nulo é admissível.'
+research_question: 'Doutorado: comparação diagnóstica de I-FABP urinária/plasmática
+  na suspeita de IMA. Mestrado candidato v06: valor prognóstico adicional de I-FABP
+  urinária ao NOFA na obstrução adesiva inicialmente não operatória.'
+hypothesis: O desempenho entre matrizes e o incremento prognóstico urinário são desconhecidos;
+  resultados nulos/desfavoráveis são admissíveis. Mestrado pré-analítico não é mais
+  a prioridade.
 objectives:
-  - 'Doutorado de Flavio: incremento prognóstico e validação condicionados a capacidade, eventos e registro.'
-  - 'Mestrado do usuário: validade analítica/aplicabilidade pareada de urina/plasma; desempenho clínico secundário.'
+- 'D-IFABP v03: estimar diferença pareada de AUROC entre urina e plasma; L-lactato/clínica
+  e TC/CTA no percurso clínico e secundários definidos.'
+- 'Mestrado em reformulação v06: candidato M01, valor prognóstico adicional da I-FABP
+  urinária ao NOFA em obstrução adesiva inicialmente não operatória; sujeito a fluxo,
+  laboratório e N. M02 e M03 são alternativas.'
 inclusion_criteria: []
 exclusion_criteria: []
 registration:
@@ -17,4 +24,9 @@ registration:
   registered_at: ''
   registered_before_extraction: false
   notes: ''
-notes: 'BOOTSTRAP: protocolo não congelado. Ver context/planejamento/portugues/programa_de_pesquisa.md. T0, alvo, N, orçamento, ética e registro final pendentes.'
+notes: 'Prioridade solicitada pelo autor: dupla I-FABP v03. Protocolo DRAFT não congelado,
+  sem registro verificado. NOFA e leitores v02 preservados em deliverables/programa-fapesp-v02,
+  não excluídos. Não executar pesquisa antes de referência, N, laboratório, custos
+  e autorizações. Ver reviews/peer_review_final_20261103. Atualização v06: usuário
+  rejeitou o mestrado pré-analítico; preservar como histórico, sem executar. Ver deliverables/torneio-mestrado-v06.
+  Novo tema é recomendação em preparação, não protocolo congelado.'

@@ -1,0 +1,77 @@
+contract_version: 2
+project_type: prediction-model
+status: draft
+title: 'Machine Learning Explicavel (XAI) e Predicao Conformal para Resseccao Cirurgica
+  versus Transplante Hepatico no Carcinoma Hepatocelular: Superando os Criterios de
+  Milao e Estadiamento TNM 8a Edicao (Registro SEER, N > 60.000)'
+title_en: 'Explainable Machine Learning (XAI) and Conformal Prediction for Surgical
+  Resection versus Liver Transplantation in Hepatocellular Carcinoma: Benchmarking
+  against Milan Criteria and AJCC TNM 8th Edition (SEER Population Registry, N > 60,000)'
+research_question: Podem algoritmos de aprendizado de maquina explicavel (LightGBM/XGBoost
+  com TreeSHAP) e predicao conformal de incerteza (MAPIE), treinados no registro populacional
+  nacional SEER (N > 60.000), superar o estadiamento TNM (AJCC 8a Edicao) e os Criterios
+  de Milao na predicao de sobrevida cancer-especifica em 5 anos e na identificacao
+  individualizada do Beneficio Liquido de Tratamento (Net Benefit) entre resseccao
+  cirurgica e transplante hepatico em pacientes com Carcinoma Hepatocelular (HCC) primario?
+hypothesis: Modelos baseados em arvores de gradiente boosting com interacoes nao-lineares
+  aprendidas entre diametro tumoral, multifocalidade, AFP e fibrose hepatica superam
+  significativamente o TNM 8a Edicao e os Criterios de Milao em discriminacao (C-index
+  delta >= 0.07), calibracao e beneficio liquido clinico em Análise de Curva de Decisao
+  (DCA), permitindo identificar com seguranca subgrupos de pacientes fora dos Criterios
+  de Milao que alcancam excelente sobrevida com transplante hepatico.
+prediction_spec:
+  target_population: Pacientes adultos (idade >= 18 anos) com Carcinoma Hepatocelular
+    primario registrado no NCI SEER (2000-2021) submetidos a intervencao cirurgica
+    (resseccao hepatica parcial ou transplante hepatico).
+  time_zero: Momento do diagnostico histopatologico/clinico e tomada de decisao terapeutica
+    cirurgica inicial.
+  prediction_horizon: 5 anos e 3 anos de sobrevida cancer-especifica (desfecho primario)
+    e sobrevida global.
+  outcome_definition: Morte atribuivel a carcinoma hepatocelular em 5 anos (cancer-specific
+    mortality), com analise de risco competitivo para mortalidade por outras causas
+    (Fine-Gray model).
+  candidate_predictors:
+  - patient_age
+  - biological_sex
+  - race_ethnicity
+  - tumor_size_cm
+  - tumor_multifocality
+  - vascular_invasion_micro_macro
+  - alpha_fetoprotein_level
+  - histologic_grade
+  - ajcc_tnm_8th_stage
+  - liver_fibrosis_cirrhosis_score
+  - lymph_node_status
+  - surgical_procedure_type
+  - systemic_therapy_flag
+population:
+  setting: Registro populacional nacional do National Cancer Institute (NCI SEER,
+    Estados Unidos), cobrindo aproximadamente 48% da populacao norte-americana.
+  target_subgroup: Pacientes com HCC submetidos a cirurgia com intencao curativa (resseccao
+    vs transplante).
+inclusion_criteria:
+- Idade >= 18 anos no diagnostico de HCC.
+- 'Diagnostico microscopico confirmado de carcinoma hepatocelular primario (ICD-O-3: 8170 a 8175) no figado (C22.0).'
+- Submetidos a resseccao hepatica (wedge, segmentectomia, lobectomia) ou transplante
+  hepatico.
+- Transplantes e cirurgias realizadas entre 2000 e 2021 com seguimento documentado.
+exclusion_criteria:
+- Metastases hepaticas de outros sitios primarios.
+- Histologias raras nao-carcinoma (fibrolamelar, hepatoblastoma, sarcoma).
+- Casos sem dados de tempo de seguimento ou status vital.
+registration:
+  required: true
+  status: declared-unverified
+  registry: OSF
+  registry_id: uzwr2
+  registry_url: https://osf.io/uzwr2/
+  registered_at: '2026-11-05T15:27:10.000000Z'
+  registered_before_extraction: false
+  notes: Full OSF Preregistration (uzwr2, Schema 697b72f611a8e98484c6139b, 29 items).
+  registered_before_scientific_work: false
+target_venues:
+  journal: Annals of Surgery / Annals of Surgical Oncology / Journal of Hepatology
+    / Surgery / EJSO
+  congress: Gastrao 2027 (Sessao Plenaria de Cirurgia Hepatobiliopancreatica e Oncologia)
+notes: Paridade bilingue estrita em drafts/portugues/ e drafts/ingles/. Proibicao
+  de travessoes na redacao em ingles. Declaracao canonica de IA Claude Opus 5.5 obrigatoria.

@@ -73,6 +73,7 @@ ALLOWED_ROOT_DIRS: frozenset[str] = frozenset(
         "modelos",
         "projects",
         "scripts",
+        "scratch",
         "skills",
         "sources",
         "tests",

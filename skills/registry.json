@@ -304,6 +304,51 @@
       "next_review": "2027-01-12",
       "license_note": "Private workspace use; redistribution rights for inherited content require separate review."
     },
+    "analytical-method-validation": {
+      "name": "analytical-method-validation",
+      "description": "Plan, execute, and document validation, verification, and transfer of analytical procedures under the governing framework - ICH Q2(R2) and Q14, USP <1220>/<1225>/<1226>, ICH M10 bioanalytical, CLSI EP, or ISO/IEC 17025. Use for HPLC, LC-MS/MS, GC, CE, ICP-MS, dissolution, qNMR, qPCR, NIR, and ligand binding or cell-based assays whenever the question is whether a procedure is fit for its intended purpose. Triggers include \"method validation\", \"analytical method validation\", \"AMV\", \"validation protocol\", \"acceptance criteria\", \"linearity\", \"reportable range\", \"accuracy and precision\", \"repeatability\", \"intermediate precision\", \"recovery\", \"LOD\", \"LOQ\", \"detection limit\", \"quantitation limit\", \"specificity\", \"robustness\", \"method transfer\", \"method comparison\", \"Deming\", \"Passing-Bablok\", \"Bland-Altman\", \"equivalence testing\", \"OOS investigation\", \"ICH Q2\", \"Q2(R2)\", \"Q14\", \"USP 1225\", \"ICH M10\", \"incurred sample reanalysis\", \"ISR\", \"CLSI EP\", and any request to show that an assay works.",
+      "origin": {
+        "provider": "Article Machine curated layer",
+        "url": "local://doutorado/article-machine"
+      },
+      "pinned_revision": "workspace-2026-11-01",
+      "license": "LicenseRef-Local-Private",
+      "tree_hash": "sha256:809dbc40360d83514a5bebaca1c5197e493c48e902c90a669691ae3c9bd5f336",
+      "dependencies": [],
+      "credentials": [],
+      "network_domains": [],
+      "human_data_policy": "no-upload-without-explicit-permission",
+      "routes": {
+        "positive": [
+          "ICH M10",
+          "ICH Q2",
+          "ISR",
+          "LOD",
+          "LOQ",
+          "USP 1225",
+          "analytical method validation",
+          "deming",
+          "exatidao",
+          "exatidão",
+          "incurred sample reanalysis",
+          "linearidade",
+          "method validation",
+          "passing-bablok",
+          "precisao intra-ensaio",
+          "precisão",
+          "validacao de metodo analitico",
+          "validação de método analítico"
+        ],
+        "negative": [
+          "unrelated request without an explicit capability trigger"
+        ]
+      },
+      "artifact_destination": "context/ or evidence/ as defined by the active project",
+      "status": "active",
+      "required_for_clone": false,
+      "next_review": "2027-01-12",
+      "license_note": "Private workspace use; redistribution rights for inherited content require separate review."
+    },
     "analytics-tracking": {
       "name": "analytics-tracking",
       "description": "When the user wants to set up, improve, or audit analytics tracking and measurement. Also use when the user mentions \"set up tracking,\" \"GA4,\" \"Google Analytics,\" \"conversion tracking,\" \"event tracking,\" \"UTM parameters,\" \"tag manager,\" \"GTM,\" \"analytics implementation,\" \"tracking plan,\" \"how do I measure this,\" \"track conversions,\" \"attribution,\" \"Mixpanel,\" \"Segment,\" \"are my events firing,\" or \"analytics isn't working.\" Use this whenever someone asks how to know if something is working or wants to measure marketing results. For A/B test measurement, see ab-test-setup.",
@@ -1172,7 +1217,13 @@
       ],
       "human_data_policy": "no-upload-without-explicit-permission",
       "routes": {
-        "positive": [],
+        "positive": [
+          "bibtex cleanup",
+          "citation-management",
+          "formatar referencias",
+          "gerenciamento de citacoes",
+          "gerenciamento de citações"
+        ],
         "negative": [
           "unrelated request without an explicit capability trigger"
         ]
@@ -1232,7 +1283,13 @@
       ],
       "human_data_policy": "no-upload-without-explicit-permission",
       "routes": {
-        "positive": [],
+        "positive": [
+          "case series report",
+          "clinical study report",
+          "clinical-reports",
+          "relatorio clinico",
+          "relatório clínico"
+        ],
         "negative": [
           "unrelated request without an explicit capability trigger"
         ]
@@ -1843,7 +1900,11 @@
       ],
       "human_data_policy": "no-upload-without-explicit-permission",
       "routes": {
-        "positive": [],
+        "positive": [
+          "biomedical registry lookup",
+          "consulta de banco de dados",
+          "database-lookup"
+        ],
         "negative": [
           "unrelated request without an explicit capability trigger"
         ]
@@ -2507,17 +2568,29 @@
       "human_data_policy": "no-upload-without-explicit-permission",
       "routes": {
         "positive": [
+          "bancada",
+          "bench protocol",
+          "bench template",
+          "biobank",
           "blinding",
+          "chiu",
           "controles",
           "controls",
+          "elisa",
           "endpoint",
+          "ensaio de bancada",
           "experiment",
           "experimental design",
           "experimento",
           "randomization",
+          "rt-qpcr",
           "sample size",
+          "suzuki",
+          "teer",
           "validacao",
-          "validation experiment"
+          "validation experiment",
+          "western blot",
+          "wet-lab"
         ],
         "negative": [
           "unrelated request without an explicit capability trigger"
@@ -2587,6 +2660,46 @@
           "numeric outcome",
           "table extraction",
           "variable dictionary"
+        ],
+        "negative": [
+          "unrelated request without an explicit capability trigger"
+        ]
+      },
+      "artifact_destination": "context/ or evidence/ as defined by the active project",
+      "status": "active",
+      "required_for_clone": true,
+      "next_review": "2027-01-12",
+      "license_note": "Private workspace use; redistribution rights for inherited content require separate review."
+    },
+    "fapesp-cnpq-projects": {
+      "name": "fapesp-cnpq-projects",
+      "description": "Use when drafting, adapting or critically reviewing FAPESP or CNPq research proposals, postgraduate scholarship projects, budgets, data management plans, curricular summaries or responses to funding reviewers in Brazil.",
+      "origin": {
+        "provider": "Article Machine curated layer",
+        "url": "local://doutorado/article-machine"
+      },
+      "pinned_revision": "workspace-2026-11-03",
+      "license": "LicenseRef-Local-Private",
+      "tree_hash": "sha256:58b6d4a4bc5059ce65a4812fbf78c56fcf9a0ccd385782d44c39a3c842dde791",
+      "dependencies": [
+        "pyyaml"
+      ],
+      "credentials": [],
+      "network_domains": [
+        "fapesp.br",
+        "www.gov.br"
+      ],
+      "human_data_policy": "no-upload-without-explicit-permission",
+      "routes": {
+        "positive": [
+          "auxilio regular",
+          "bolsa de doutorado",
+          "bolsa de mestrado",
+          "cnpq",
+          "fapesp",
+          "projeto de fomento",
+          "proposta de fomento",
+          "sumula curricular"
         ],
         "negative": [
           "unrelated request without an explicit capability trigger"
@@ -3501,6 +3614,85 @@
       "next_review": "2027-01-12",
       "license_note": "Private workspace use; redistribution rights for inherited content require separate review."
     },
+    "iso-standards-readiness": {
+      "name": "iso-standards-readiness",
+      "description": "Prepares and structurally reviews readiness evidence for ISO management-system and laboratory-competence standards - ISO 13485 medical device QMS, ISO 14971 device risk management, ISO/IEC 17025 testing and calibration laboratories, and ISO 15189 medical laboratories. Use when organizing declared scope, controlled documents, risk-management files, scope of accreditation, traceability, CAPA, external-provider controls, or bounded local evidence manifests, and when separating ISO certification from laboratory accreditation, FDA QMSR inspection, CLIA certification, MDSAP, and EU MDR/IVDR evidence boundaries. Not for legal applicability, compliance, certification, or accreditation decisions; contains no clause text.",
+      "origin": {
+        "provider": "Article Machine curated layer",
+        "url": "local://doutorado/article-machine"
+      },
+      "pinned_revision": "workspace-2026-11-01",
+      "license": "LicenseRef-Local-Private",
+      "tree_hash": "sha256:a7003df05f1ca3fc138f5e0c443b52fbe48844f73010d9268badf35252b6ea24",
+      "dependencies": [],
+      "credentials": [],
+      "network_domains": [
+        "www.iso.org"
+      ],
+      "human_data_policy": "no-upload-without-explicit-permission",
+      "routes": {
+        "positive": [
+          "acreditacao de laboratorio",
+          "acreditação de laboratório",
+          "controle documental iso",
+          "gestao da qualidade laboratorial",
+          "iso 13485",
+          "iso 15189",
+          "iso 17025",
+          "laboratorio clinico iso"
+        ],
+        "negative": [
+          "unrelated request without an explicit capability trigger"
+        ]
+      },
+      "artifact_destination": "context/ or evidence/ as defined by the active project",
+      "status": "active",
+      "required_for_clone": false,
+      "next_review": "2027-01-12",
+      "license_note": "Private workspace use; redistribution rights for inherited content require separate review."
+    },
+    "journal-selection-tournament": {
+      "name": "journal-selection-tournament",
+      "description": "Use when selecting, ranking, or running a tournament of target academic journals for manuscript submission, enforcing mandatory PubMed/MEDLINE indexing and zero author fees via CAPES Transformative Agreements or Diamond Open Access.",
+      "origin": {
+        "provider": "Article Machine curated layer",
+        "url": "local://doutorado/article-machine"
+      },
+      "pinned_revision": "workspace-2026-11-01",
+      "license": "LicenseRef-Local-Private",
+      "tree_hash": "sha256:36a195594f9b799281b585047213c45afb5d4aee05d49a8138f81cbaecdd70b4",
+      "dependencies": [],
+      "credentials": [],
+      "network_domains": [],
+      "human_data_policy": "no-upload-without-explicit-permission",
+      "routes": {
+        "positive": [
+          "acordo capes",
+          "acordos transformativos",
+          "diamond open access",
+          "escolha de revista",
+          "journal tournament",
+          "publicacao gratuita",
+          "publicação gratuita",
+          "qual revista submeter",
+          "selecao de periodicos",
+          "seleção de periódicos",
+          "target journal tournament",
+          "torneio de periodicos",
+          "torneio de periódicos",
+          "torneio de revistas",
+          "zero apc"
+        ],
+        "negative": [
+          "unrelated request without an explicit capability trigger"
+        ]
+      },
+      "artifact_destination": "context/ or evidence/ as defined by the active project",
+      "status": "active",
+      "required_for_clone": false,
+      "next_review": "2027-01-12",
+      "license_note": "Private workspace use; redistribution rights for inherited content require separate review."
+    },
     "labarchive-integration": {
       "name": "labarchive-integration",
       "description": "Electronic lab notebook API integration. Access notebooks, manage entries/attachments, backup notebooks, integrate with Protocols.io/Jupyter/REDCap, for programmatic ELN workflows.",
@@ -3828,7 +4020,12 @@
       ],
       "human_data_policy": "no-upload-without-explicit-permission",
       "routes": {
-        "positive": [],
+        "positive": [
+          "evidence table synthesis",
+          "literature-review",
+          "revisao da literatura",
+          "revisão da literatura"
+        ],
         "negative": [
           "unrelated request without an explicit capability trigger"
         ]
@@ -4026,6 +4223,47 @@
       "artifact_destination": "context/ or evidence/ as defined by the active project",
       "status": "active",
       "required_for_clone": true,
+      "next_review": "2027-01-12",
+      "license_note": "Private workspace use; redistribution rights for inherited content require separate review."
+    },
+    "machine-continuous-learner": {
+      "name": "machine-continuous-learner",
+      "description": "Use when an agent needs to extract, distill, and persist reusable workflows, debugging fixes, laboratory protocols, or scientific best practices into the Article Machine from recent user sessions or corrections (equivalent to /learn).",
+      "origin": {
+        "provider": "Article Machine curated layer",
+        "url": "local://doutorado/article-machine"
+      },
+      "pinned_revision": "workspace-2026-11-01",
+      "license": "LicenseRef-Local-Private",
+      "tree_hash": "sha256:b89d297ab482b576d0f3c5a2f636b26e0341ceffe248fe64b70d57c695d7d053",
+      "dependencies": [],
+      "credentials": [],
+      "network_domains": [],
+      "human_data_policy": "no-upload-without-explicit-permission",
+      "routes": {
+        "positive": [
+          "/learn",
+          "aprender",
+          "aprender com o que fizemos",
+          "aprendizado continuo",
+          "consolidar aprendizado",
+          "continuous learner",
+          "continuous learning",
+          "heuristicas da sessao",
+          "heurísticas da sessão",
+          "learn",
+          "licoes aprendidas",
+          "lições aprendidas",
+          "registrar aprendizado",
+          "regras aprendidas"
+        ],
+        "negative": [
+          "unrelated request without an explicit capability trigger"
+        ]
+      },
+      "artifact_destination": "context/ or evidence/ as defined by the active project",
+      "status": "active",
+      "required_for_clone": false,
       "next_review": "2027-01-12",
       "license_note": "Private workspace use; redistribution rights for inherited content require separate review."
     },
@@ -4371,7 +4609,7 @@
       },
       "pinned_revision": "workspace-2026-11-01",
       "license": "LicenseRef-Local-Private",
-      "tree_hash": "sha256:129de26c0ed09758c6fb66ceafcdfa4e9898b24465a8fd37ec440d18708c7f40",
+      "tree_hash": "sha256:937a7a9bb907cbcac1b81fff436cbbe643975b474d0a5d06717f3a9408c5a8fc",
       "dependencies": [],
       "credentials": [],
       "network_domains": [
@@ -4416,7 +4654,7 @@
       },
       "pinned_revision": "workspace-2026-11-01",
       "license": "LicenseRef-Local-Private",
-      "tree_hash": "sha256:002a56d6e4e875691ce1699072ecca588ca5f4c33ec5fb0ef8ea5ef8aac8712c",
+      "tree_hash": "sha256:641a9f9e00890387f680c3da147a9c062e14df06d8c965cc12ad4bec397d5e3d",
       "dependencies": [],
       "credentials": [],
       "network_domains": [
@@ -4937,6 +5175,49 @@
       },
       "artifact_destination": "context/ or evidence/ as defined by the active project",
       "status": "hold",
+      "required_for_clone": false,
+      "next_review": "2027-01-12",
+      "license_note": "Private workspace use; redistribution rights for inherited content require separate review."
+    },
+    "ontology-term-resolution": {
+      "name": "ontology-term-resolution",
+      "description": "Resolve free-text scientific labels to ontology term IDs and validate existing CURIEs against the EBI Ontology Lookup Service (OLS4). Use whenever an ontology identifier must be produced or checked - annotating tissue, cell type, disease, phenotype, assay, chemical, organism, sex, or developmental stage fields; preparing metadata for GEO, ENA, BioSamples, CELLxGENE, HCA, or ISA-Tab submission; auditing a metadata table of term IDs; checking whether a term is obsolete and what replaced it; or mapping between ontologies. Triggers include \"ontology term\", \"ontology ID\", \"CURIE\", \"controlled vocabulary\", \"UBERON\", \"CL:\", \"MONDO\", \"HPO\", \"EFO\", \"ChEBI\", \"NCBITaxon\", \"GO term\", \"PATO\", \"annotate this tissue/cell type/disease\", and any request to emit or verify an identifier shaped like PREFIX:0001234.",
+      "origin": {
+        "provider": "Article Machine curated layer",
+        "url": "local://doutorado/article-machine"
+      },
+      "pinned_revision": "workspace-2026-11-01",
+      "license": "LicenseRef-Local-Private",
+      "tree_hash": "sha256:31b1f669dce6ae6c1c85c6e34be65d249cae3c4d9ce1dff50f727e6613d9a02c",
+      "dependencies": [
+        "each"
+      ],
+      "credentials": [],
+      "network_domains": [
+        "www.ebi.ac.uk"
+      ],
+      "human_data_policy": "no-upload-without-explicit-permission",
+      "routes": {
+        "positive": [
+          "CL:",
+          "CURIE",
+          "ChEBI",
+          "HPO",
+          "MONDO",
+          "OLS4",
+          "UBERON",
+          "controlled vocabulary",
+          "ontologia",
+          "ontology",
+          "resolver ontologia",
+          "validar termo ontologico"
+        ],
+        "negative": [
+          "unrelated request without an explicit capability trigger"
+        ]
+      },
+      "artifact_destination": "context/ or evidence/ as defined by the active project",
+      "status": "active",
       "required_for_clone": false,
       "next_review": "2027-01-12",
       "license_note": "Private workspace use; redistribution rights for inherited content require separate review."
@@ -5587,7 +5868,13 @@
       ],
       "human_data_policy": "no-upload-without-explicit-permission",
       "routes": {
-        "positive": [],
+        "positive": [
+          "avaliacao por pares",
+          "avaliação por pares",
+          "manuscript critique",
+          "parecer de revisor",
+          "peer-review"
+        ],
         "negative": [
           "unrelated request without an explicit capability trigger"
         ]
@@ -5750,6 +6037,52 @@
       },
       "artifact_destination": "context/ or evidence/ as defined by the active project",
       "status": "hold",
+      "required_for_clone": false,
+      "next_review": "2027-01-12",
+      "license_note": "Private workspace use; redistribution rights for inherited content require separate review."
+    },
+    "pkpd-modeling": {
+      "name": "pkpd-modeling",
+      "description": "Pharmacokinetic and pharmacodynamic modelling and simulation - non-compartmental analysis, compartmental and population PK, PK/PD and exposure-response, TMDD, PBPK orientation, bioequivalence, allometric scaling and first-in-human dose, drug interaction prediction, and Bayesian therapeutic drug monitoring. Use when analysing concentration-time data, deriving exposure metrics, fitting PK or PD models, or evaluating dosing regimens. Triggers include \"pharmacokinetics\", \"pharmacodynamics\", \"PK/PD\", \"NCA\", \"non-compartmental\", \"AUC\", \"Cmax\", \"lambda z\", \"half-life\", \"clearance\", \"volume of distribution\", \"compartmental model\", \"population PK\", \"popPK\", \"NONMEM\", \"nlmixr2\", \"Pharmpy\", \"Monolix\", \"exposure-response\", \"Emax\", \"EC50\", \"indirect response\", \"effect compartment\", \"TMDD\", \"PBPK\", \"bioequivalence\", \"RSABE\", \"ABEL\", \"allometric scaling\", \"first-in-human\", \"MABEL\", \"drug-drug interaction\", \"DDI\", \"ICH M12\", \"concentration-QTc\", \"therapeutic drug monitoring\", \"MIPD\", and \"dosing regimen\".",
+      "origin": {
+        "provider": "Article Machine curated layer",
+        "url": "local://doutorado/article-machine"
+      },
+      "pinned_revision": "workspace-2026-11-01",
+      "license": "LicenseRef-Local-Private",
+      "tree_hash": "sha256:7d08899d66e55d0bc832f06da96446a7a261a8b274bf0dbe54c54c18fa488c08",
+      "dependencies": [
+        "pkpy"
+      ],
+      "credentials": [],
+      "network_domains": [],
+      "human_data_policy": "no-upload-without-explicit-permission",
+      "routes": {
+        "positive": [
+          "MABEL",
+          "NCA",
+          "NOAEL",
+          "allometric scaling",
+          "clearance",
+          "escalonamento alometrico",
+          "farmacocinetica",
+          "farmacocinética",
+          "first-in-human",
+          "half-life",
+          "non-compartmental",
+          "pharmacodynamics",
+          "pharmacokinetics",
+          "pk/pd",
+          "pkpd",
+          "popPK",
+          "volume of distribution"
+        ],
+        "negative": [
+          "unrelated request without an explicit capability trigger"
+        ]
+      },
+      "artifact_destination": "context/ or evidence/ as defined by the active project",
+      "status": "active",
       "required_for_clone": false,
       "next_review": "2027-01-12",
       "license_note": "Private workspace use; redistribution rights for inherited content require separate review."
@@ -6263,6 +6596,7 @@
       "human_data_policy": "no-upload-without-explicit-permission",
       "routes": {
         "positive": [
+          "9 pastas",
           "checklist de submissão para revista médica",
           "journal-specific publication folders",
           "medical journal submission checklist",
@@ -6272,8 +6606,18 @@
           "organizar versões de manuscrito médico",
           "organizar_publicacoes.py",
           "organize medical manuscript versions",
+          "pacote de publicacao",
+          "pacote de publicação",
           "pasta de publicação médica por projeto e revista",
-          "prepare medical manuscript for journal submission"
+          "pastas de publicacao",
+          "pastas de publicação",
+          "preparar pacote de submissao",
+          "preparar pacote de submissão",
+          "preparar publicacao",
+          "preparar publicação",
+          "prepare medical manuscript for journal submission",
+          "publish prepare",
+          "submission package"
         ],
         "negative": [
           "unrelated request without an explicit capability trigger"
@@ -6306,16 +6650,25 @@
       "human_data_policy": "no-upload-without-explicit-permission",
       "routes": {
         "positive": [
+          "artigo seminal",
+          "artigos seminais",
           "biomedical abstract",
           "citation matching",
           "eutils",
+          "landmark",
+          "landmark dissect",
+          "landmark paper",
+          "landmark papers",
+          "landmark search",
           "medical spelling",
           "mesh",
           "ncbi e-utilities",
           "pmc",
           "pmid",
           "pubmed",
-          "pubmed central"
+          "pubmed central",
+          "seminal paper",
+          "seminal papers"
         ],
         "negative": [
           "unrelated request without an explicit capability trigger"
@@ -6803,7 +7156,13 @@
       ],
       "human_data_policy": "no-upload-without-explicit-permission",
       "routes": {
-        "positive": [],
+        "positive": [
+          "deep learning trainer",
+          "lightningmodule",
+          "pytorch lightning",
+          "pytorch-lightning",
+          "treinamento deep learning"
+        ],
         "negative": [
           "unrelated request without an explicit capability trigger"
         ]
@@ -7040,6 +7399,50 @@
       },
       "artifact_destination": "context/ or evidence/ as defined by the active project",
       "status": "hold",
+      "required_for_clone": false,
+      "next_review": "2027-01-12",
+      "license_note": "Private workspace use; redistribution rights for inherited content require separate review."
+    },
+    "relsa-severity-assessment": {
+      "name": "relsa-severity-assessment",
+      "description": "Multivariate severity assessment and humane endpoint prediction for laboratory animal studies using the RELSA (RELative Severity Assessment) score and ARIMA-based foRcast forecasting. Use when combining welfare readouts — body weight or weight loss, body temperature, clinical or nesting scores, biomarkers, activity, heart rate, burrowing, wheel running — into one severity score per animal per day, when asking which animals are at risk of reaching a humane endpoint or when one will be reached, when defining attention/danger zones or thresholds on a severity scale by kernel density estimation, or when reporting severity for a 3Rs, refinement, animal-welfare, or EU Directive 2010/63/EU severity-assessment context. Covers directionality (\"turned\" variables), baseline normalization, reference sets, RELSA weights, ARIMA prediction intervals, and RMSE/PICP/MPIW evaluation.",
+      "origin": {
+        "provider": "Article Machine curated layer",
+        "url": "local://doutorado/article-machine"
+      },
+      "pinned_revision": "workspace-2026-11-01",
+      "license": "LicenseRef-Local-Private",
+      "tree_hash": "sha256:15868b992a9db811135a3d0e69f8c0bf525ef9bcf1f70997b660e282467b27e2",
+      "dependencies": [
+        "prepare",
+        "read_relsa_table",
+        "sys"
+      ],
+      "credentials": [],
+      "network_domains": [
+        "github.com"
+      ],
+      "human_data_policy": "no-upload-without-explicit-permission",
+      "routes": {
+        "positive": [
+          "ARRIVE 2.0",
+          "CEUA",
+          "animal severity",
+          "animal welfare",
+          "bem-estar animal",
+          "desfecho humanitario",
+          "desfecho humanitário",
+          "gravidade animal",
+          "humane endpoint",
+          "refinement 3Rs",
+          "relsa"
+        ],
+        "negative": [
+          "unrelated request without an explicit capability trigger"
+        ]
+      },
+      "artifact_destination": "context/ or evidence/ as defined by the active project",
+      "status": "active",
       "required_for_clone": false,
       "next_review": "2027-01-12",
       "license_note": "Private workspace use; redistribution rights for inherited content require separate review."
@@ -7495,7 +7898,14 @@
       ],
       "human_data_policy": "no-upload-without-explicit-permission",
       "routes": {
-        "positive": [],
+        "positive": [
+          "collider bias",
+          "confounding dag",
+          "immortal time bias",
+          "pensamento critico cientifico",
+          "pensamento crítico científico",
+          "scientific-critical-thinking"
+        ],
         "negative": [
           "unrelated request without an explicit capability trigger"
         ]
@@ -7673,7 +8083,19 @@
       ],
       "human_data_policy": "no-upload-without-explicit-permission",
       "routes": {
-        "positive": [],
+        "positive": [
+          "calibration plot",
+          "curva de calibracao",
+          "figura multipainel",
+          "forest plot",
+          "funnel plot",
+          "ggplot2",
+          "multipanel figure",
+          "patchwork",
+          "scientific visualization",
+          "visualizacao cientifica",
+          "visualização científica"
+        ],
         "negative": [
           "unrelated request without an explicit capability trigger"
         ]
@@ -7743,7 +8165,13 @@
       ],
       "human_data_policy": "no-upload-without-explicit-permission",
       "routes": {
-        "positive": [],
+        "positive": [
+          "estrutura imrad",
+          "imrad structure",
+          "redacao cientifica",
+          "redação científica",
+          "scientific-writing"
+        ],
         "negative": [
           "unrelated request without an explicit capability trigger"
         ]
@@ -7839,7 +8267,15 @@
       ],
       "human_data_policy": "no-upload-without-explicit-permission",
       "routes": {
-        "positive": [],
+        "positive": [
+          "brierscoreloss",
+          "calibratedclassifiercv",
+          "gradientboosting",
+          "logisticregression",
+          "randomforestclassifier",
+          "scikit-learn",
+          "sklearn"
+        ],
         "negative": [
           "unrelated request without an explicit capability trigger"
         ]
@@ -8439,7 +8875,15 @@
       ],
       "human_data_policy": "no-upload-without-explicit-permission",
       "routes": {
-        "positive": [],
+        "positive": [
+          "analise estatistica",
+          "análise estatística",
+          "hypothesis testing",
+          "regressao multivariada",
+          "regression modeling",
+          "statistical-analysis",
+          "teste de hipotese"
+        ],
         "negative": [
           "unrelated request without an explicit capability trigger"
         ]
@@ -9560,6 +10004,53 @@
       "next_review": "2027-01-12",
       "license_note": "Private workspace use; redistribution rights for inherited content require separate review."
     },
+    "uncertainty-and-units": {
+      "name": "uncertainty-and-units",
+      "description": "Track physical units and propagate measurement uncertainty in scientific calculations using pint and uncertainties. Use for unit conversion and dimensional checking, GUM uncertainty budgets, Type A and Type B evaluation, coverage factors and expanded uncertainty, Monte Carlo propagation, significant-figure and plus-minus reporting, error propagation through curve fits, CODATA constants, auditing Python code for stripped units or broken uncertainty propagation, and order-of-magnitude plausibility checks using dimensionless groups (Reynolds, Peclet, Damkohler, Knudsen, Biot, Womersley), characteristic scales such as diffusion time or Debye length, and observed magnitude ranges. Trigger on \"is this number physically reasonable\", \"sanity check these units\", \"what regime is this flow in\", or a result that looks off by orders of magnitude.",
+      "origin": {
+        "provider": "Article Machine curated layer",
+        "url": "local://doutorado/article-machine"
+      },
+      "pinned_revision": "workspace-2026-11-01",
+      "license": "LicenseRef-Local-Private",
+      "tree_hash": "sha256:bfc2afd47cd020f79b4b31186e5021ad222760b21172fa2c1b9d731d90556335",
+      "dependencies": [
+        "scipy.constants"
+      ],
+      "credentials": [],
+      "network_domains": [
+        "docs.scipy.org",
+        "nvlpubs.nist.gov",
+        "physics.nist.gov",
+        "pint.readthedocs.io",
+        "pypi.org",
+        "uncertainties.readthedocs.io",
+        "www.bipm.org"
+      ],
+      "human_data_policy": "no-upload-without-explicit-permission",
+      "routes": {
+        "positive": [
+          "GUM",
+          "coverage factor k=2",
+          "dimensional analysis",
+          "incerteza",
+          "metrologia",
+          "pint",
+          "propagacao de incerteza",
+          "propagação de incerteza",
+          "uncertainty",
+          "unidades de medida"
+        ],
+        "negative": [
+          "unrelated request without an explicit capability trigger"
+        ]
+      },
+      "artifact_destination": "context/ or evidence/ as defined by the active project",
+      "status": "active",
+      "required_for_clone": false,
+      "next_review": "2027-01-12",
+      "license_note": "Private workspace use; redistribution rights for inherited content require separate review."
+    },
     "usfiscaldata": {
       "name": "usfiscaldata",
       "description": "Query the U.S. Treasury Fiscal Data REST API for federal financial data. No API key required. Use for national debt (Debt to the Penny), Daily Treasury Statements, Monthly Treasury Statements, Treasury securities auctions, interest rates, foreign exchange rates, savings bonds, or U.S. government revenue and spending statistics.",
@@ -9671,7 +10162,14 @@
       ],
       "human_data_policy": "no-upload-without-explicit-permission",
       "routes": {
-        "positive": [],
+        "positive": [
+          "author instructions",
+          "instrucoes aos autores",
+          "instruções aos autores",
+          "journal formatting rules",
+          "regras de formatacao da revista",
+          "venue-templates"
+        ],
         "negative": [
           "unrelated request without an explicit capability trigger"
         ]
@@ -9908,46 +10406,6 @@
           "references.bib",
           "ris",
           "zotero"
-        ],
-        "negative": [
-          "unrelated request without an explicit capability trigger"
-        ]
-      },
-      "artifact_destination": "context/ or evidence/ as defined by the active project",
-      "status": "active",
-      "required_for_clone": true,
-      "next_review": "2027-01-12",
-      "license_note": "Private workspace use; redistribution rights for inherited content require separate review."
-    },
-    "fapesp-cnpq-projects": {
-      "name": "fapesp-cnpq-projects",
-      "description": "Use when drafting, adapting or critically reviewing FAPESP or CNPq research proposals, postgraduate scholarship projects, budgets, data management plans, curricular summaries or responses to funding reviewers in Brazil.",
-      "origin": {
-        "provider": "Article Machine curated layer",
-        "url": "local://doutorado/article-machine"
-      },
-      "pinned_revision": "workspace-2026-11-03",
-      "license": "LicenseRef-Local-Private",
-      "tree_hash": "sha256:58b6d4a4bc5059ce65a4812fbf78c56fcf9a0ccd385782d44c39a3c842dde791",
-      "dependencies": [
-        "pyyaml"
-      ],
-      "credentials": [],
-      "network_domains": [
-        "fapesp.br",
-        "www.gov.br"
-      ],
-      "human_data_policy": "no-upload-without-explicit-permission",
-      "routes": {
-        "positive": [
-          "auxilio regular",
-          "bolsa de doutorado",
-          "bolsa de mestrado",
-          "cnpq",
-          "fapesp",
-          "projeto de fomento",
-          "proposta de fomento",
-          "sumula curricular"
         ],
         "negative": [
           "unrelated request without an explicit capability trigger"

@@ -1,0 +1,47 @@
+contract_version: 2
+session: "Plenaria de Transplante Hepatico - Gastrao 2027"
+format: "Apresentacao Oral (10 min apresentacao + 5 min discussao) e Pacote de Tema Livre"
+target_congress: "Gastrao 2027"
+submission_deadline_estimated: "2027-04-15"
+bilingual_parity: true
+sections:
+- slide: 1
+  type: title
+  title_pt: "Machine Learning Explicavel (XAI) e Predicao Conformal para Alocacao de Figados Marginais (ECD)"
+  title_en: "Explainable Machine Learning (XAI) and Conformal Prediction for Expanded Criteria Donor (ECD) Liver Allocation"
+  key_claim: "Superando o Donor Risk Index (DRI) no Registro UNOS/OPTN"
+- slide: 2
+  type: clinical_problem
+  title_pt: "O Dilema da Alocacao de Orgaos Marginais (ECD) e a Falha dos Escores Lineares"
+  title_en: "The Expanded Criteria Donor Dilemma and Failure of Linear Scores"
+  key_claim: "DRI, ET-DRI, BAR e D-MELD falham em capturar sinergias biologicas nao-lineares, induzindo descarte excessivo"
+- slide: 3
+  type: cohort_methods
+  title_pt: "Coorte UNOS/OPTN (2010-2025): Rigor TRIPOD+AI e Particao Anti-Leakage"
+  title_en: "UNOS/OPTN Cohort (2010-2025): TRIPOD+AI Rigor and Anti-Leakage Partition"
+  key_claim: "Split temporal congelado (2021-2025) e validacao cruzada interna-externa em 11 regioes"
+- slide: 4
+  type: discrimination_calibration
+  title_pt: "Superioridade Estatistica: Discriminacao (AUROC/PR-AUC) e Calibracao Flexivel"
+  title_en: "Statistical Superiority: Discrimination and Flexible Calibration"
+  key_claim: "LightGBM/XGBoost superam significativamente DRI, BAR e D-MELD sem superestimar risco"
+- slide: 5
+  type: xai_shap
+  title_pt: "Interpretabilidade Biologica (TreeSHAP): Matriz de Interacao de 2a Ordem"
+  title_en: "Biological Interpretability (TreeSHAP): Second-Order Interaction Matrix"
+  key_claim: "Receptores de baixo MELD toleram doadores idosos e com isquemia fria prolongada com desfechos comparaveis a doadores ideais"
+- slide: 6
+  type: conformal_uq
+  title_pt: "Quantificacao Conformal de Incerteza (MAPIE): Conjuntos com Cobertura a 95%"
+  title_en: "Conformal Uncertainty Quantification (MAPIE): 95% Coverage Prediction Sets"
+  key_claim: "Primeira aplicacao de predicao conformal em alocacao de enxertos com garantia matematica"
+- slide: 7
+  type: decision_curve_analysis
+  title_pt: "Utilidade Clinica (DCA) e Resgate de Orgaos Descartados"
+  title_en: "Clinical Utility (DCA) and Rescuing Discarded Organs"
+  key_claim: "Beneficio liquido superior que viabiliza o resgate seguro de 15% a 20% dos fígados atualmente descartados"
+- slide: 8
+  type: conclusion
+  title_pt: "Conclusoes e Translacao para a Pratica Clinica"
+  title_en: "Conclusions and Clinical Translation"
+  key_claim: "A integracao de XAI e predicao conformal estabelece um novo paradigma de alocacao personalizada"

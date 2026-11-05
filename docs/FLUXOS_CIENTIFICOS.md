@@ -19,11 +19,18 @@ Defina estimando, unidade experimental, desfechos, missingness, multiplicidade e
 
 ## C — Revisão sistemática, PRISMA, RoB/GRADE e meta-análise
 
-Use meta-analise-medica; protocolo registrado/congelado antes da triagem, buscas auditáveis, deduplicação, dupla triagem e extração independente. Separe estudos de relatos; reconcilie PRISMA e motivos de exclusão. Escolha RoB adequado ao desenho, GRADE por desfecho com justificativas e estimando/medida compatível. A síntese R depende de independência, efeito e variância corretos; REML/HKSJ não é escolha universal. Defina sensibilidades para poucos estudos, dependência, heterogeneidade e viés de publicação. Não inventar estudos nem preencher RoB por omissão. O exemplo de quatro efeitos sintéticos testa a mecânica REML/Knapp–Hartung; não representa uma revisão realizada. Texto, tabelas e figuras bilíngues passam Evidence Lock/revisão antes de uso editorial.
+Use meta-analise-medica; protocolo registrado/congelado antes da triagem, buscas auditáveis, deduplicação, dupla triagem cega independente via motor triplo-cego canônico `article-machine corpus screen` (dois revisores com resolução pelo árbitro sênior, exportação Rayyan e checklists PRISMA 2020 / PRISMA-NMA) e extração independente. Separe estudos de relatos; reconcilie PRISMA e motivos de exclusão. Escolha RoB adequado ao desenho, GRADE por desfecho com justificativas e estimando/medida compatível. A síntese R depende de independência, efeito e variância corretos; REML/HKSJ não é escolha universal. Defina sensibilidades para poucos estudos, dependência, heterogeneidade e viés de publicação. Não inventar estudos nem preencher RoB por omissão. O exemplo de quatro efeitos sintéticos testa a mecânica REML/Knapp–Hartung; não representa uma revisão realizada. Texto, tabelas e figuras bilíngues passam Evidence Lock/revisão antes de uso editorial.
 
 ## D — Dataset clínico, baseline, ML/DL e artigo
 
 Use metodos-ml-clinico e in-silico-validation-governor. Defina tempo zero/horizonte, preditores disponíveis e desfecho antes de treino. Separe pacientes/grupos/tempo/centros conforme objetivo. Ajuste imputação, seleção, balanceamento, hiperparâmetros e calibração somente no treino; validação interna aninhada e conjunto externo independente. Compare modelo simples, relate AUROC/AUPRC, prevalência, calibração, intervalos e utilidade quando justificável. DL depende da modalidade/pergunta e deve ser comparado com baseline, ablações e análise de erro. TRIPOD+AI é relato; PROBAST+AI julga qualidade/viés/aplicabilidade. Os smokes atuais cobrem 180 linhas independentes para ML e autograd/otimizador determinístico para DL; não validam coortes clínicas, divisão agrupada, benefício assistencial ou validação externa. Manuscrito segue revisão clínica e pacote por revista.
+
+### Recuperação Colaborativa de Textos Completos (Crowdsourcing Web / Firebase)
+Para estudos sob paywall ou restrição institucional de acesso, a máquina dispõe do subsistema canônico de portais colaborativos:
+1. `article-machine portal build projects/<id>`: Gera o portal web responsivo em `portal_recuperacao/public/index.html` com suporte a múltiplos projetos, visualização prioritária de estudos pendentes, cópia rápida de DOIs, links diretos para periódicos/PubMed e upload direto de PDFs para o Firebase Storage.
+2. `article-machine portal deploy projects/<id>`: Publica o portal e regras de Storage na nuvem (`pharosreader.web.app`).
+3. `article-machine portal sync projects/<id>`: Sincroniza e baixa novos PDFs enviados por colaboradores/coautores para `sources/full_texts/`, padroniza a nomenclatura canônica (`STUDY-XXXX_Ano_Autor.pdf`), extrai automaticamente texto para `sources/extracted/` e atualiza a triagem.
+4. `article-machine portal status projects/<id>`: Exibe o progresso de recuperação (total, concluídos, pendentes e porcentagem de cobertura).
 
 ## Pacote para revista
 

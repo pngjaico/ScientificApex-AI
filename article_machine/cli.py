@@ -175,6 +175,10 @@ def build_parser() -> argparse.ArgumentParser:
         "audit-numbers", help="Verify numerical consistency between analysis/results_ledger.json and PT/EN drafts"
     )
     meth_numbers.add_argument("project_dir")
+    meth_prisma = methodology_sub.add_parser(
+        "prisma-checklist", help="Generate comprehensive PRISMA 2020 & PRISMA-NMA checklist tables with exact anchors"
+    )
+    meth_prisma.add_argument("project_dir")
 
     corpus_parser = subparsers.add_parser(
         "corpus", help="Multi-database search compilation, drop-folders, PubMed API retrieval, and PRISMA deduplication"
@@ -200,6 +204,11 @@ def build_parser() -> argparse.ArgumentParser:
         help="Ingest drop-folders (.ris, .nbib, .csv, .json), write manifests, and run 3-stage PRISMA deduplication",
     )
     corpus_dedup.add_argument("project_dir")
+    corpus_screen = corpus_sub.add_parser(
+        "screen",
+        help="Run Cochrane gold-standard triple-reviewer screening (2 blind reviewers + 1 senior arbiter) and export native Rayyan CSV & PRISMA checklists",
+    )
+    corpus_screen.add_argument("project_dir")
 
     datasets_parser = subparsers.add_parser(
         "datasets", help="Clinical & Healthcare ML dataset catalog, staging, and SHA-256 verification"
@@ -581,6 +590,80 @@ def build_parser() -> argparse.ArgumentParser:
     anti_ai_naturalize.add_argument("--output", required=True)
     anti_ai_naturalize.add_argument("--json-output")
 
+    publish_parser = subparsers.add_parser("publish")
+    publish_sub = publish_parser.add_subparsers(dest="publish_command", required=True)
+    publish_prep = publish_sub.add_parser("prepare")
+    publish_prep.add_argument("project_dir")
+    publish_prep.add_argument("--journal", required=True, help="Target journal name or preset (e.g. Transplantation, Annals of Surgery)")
+    publish_prep.add_argument("--slug", default="artigo_principal", help="Package slug/identifier")
+    publish_prep.add_argument("--version", default="v01", help="Deliverable version (default v01)")
+    publish_rebuttal = publish_sub.add_parser("rebuttal", help="Motor de Resposta a Pareceristas e Rebuttal Ponto-a-Ponto")
+    publish_rebuttal.add_argument("project_dir")
+    publish_rebuttal.add_argument("--peer-review", required=True, help="Arquivo contendo a carta de parecer dos revisores")
+    publish_rebuttal.add_argument("--journal", default="", help="Revista de destino (ex: Transplantation, Annals of Surgery)")
+    publish_rebuttal.add_argument("--slug", default="artigo_principal", help="Identificador do pacote de submissao")
+
+    portal_parser = subparsers.add_parser("portal", help="Gerenciador de Portais Colaborativos de Recuperação de Artigos (Web / Firebase / Storage / Drive)")
+    portal_sub = portal_parser.add_subparsers(dest="portal_command", required=True)
+    
+    portal_build = portal_sub.add_parser("build")
+    portal_build.add_argument("project_dir")
+    portal_build.add_argument("--firebase-project", default="pharosreader")
+    portal_build.add_argument("--target-dir")
+    
+    portal_deploy = portal_sub.add_parser("deploy")
+    portal_deploy.add_argument("project_dir")
+    portal_deploy.add_argument("--firebase-project", default="pharosreader")
+    
+    portal_sync = portal_sub.add_parser("sync")
+    portal_sync.add_argument("project_dir")
+    portal_sync.add_argument("--bucket", default="pharosreader.firebasestorage.app")
+    
+    portal_status_cmd = portal_sub.add_parser("status")
+    portal_status_cmd.add_argument("project_dir")
+
+    bench_parser = subparsers.add_parser("bench", help="Protocolos de Bancada e Laboratório Pré-Clínico / Translacional")
+    bench_sub = bench_parser.add_subparsers(dest="bench_command", required=True)
+    bench_template = bench_sub.add_parser("template")
+    bench_template.add_argument("project_dir")
+    bench_template.add_argument("--assay", required=True, choices=["elisa", "western", "rt-qpcr", "chiu", "suzuki", "teer", "biobank"])
+    bench_template.add_argument("--name", default="")
+    bench_manifest = bench_sub.add_parser("sample-manifest")
+    bench_manifest.add_argument("project_dir")
+    bench_manifest.add_argument("--audit", action="store_true")
+
+    landmark_parser = subparsers.add_parser("landmark", help="Motor de Aprendizado e Dissecação de Artigos Seminais de Elite")
+    landmark_sub = landmark_parser.add_subparsers(dest="landmark_command", required=True)
+    landmark_search = landmark_sub.add_parser("search")
+    landmark_search.add_argument("--query", required=True)
+    landmark_search.add_argument("--limit", type=int, default=5)
+    landmark_dissect = landmark_sub.add_parser("dissect")
+    landmark_dissect.add_argument("project_dir")
+    landmark_dissect.add_argument("--title", required=True)
+    landmark_dissect.add_argument("--journal", required=True)
+    landmark_dissect.add_argument("--year", default="2024")
+    landmark_dissect.add_argument("--doi", required=True)
+    landmark_dissect.add_argument("--authors", default="Autores Principais")
+    landmark_dissect.add_argument("--endpoint", default="")
+    landmark_dissect.add_argument("--design", default="")
+    landmark_dissect.add_argument("--slug", default="")
+
+    landmark_corpus_plan = landmark_sub.add_parser("corpus-plan")
+    landmark_corpus_plan.add_argument("project_dir")
+    landmark_corpus_plan.add_argument("--count", type=int, default=1000)
+
+    landmark_corpus_mine = landmark_sub.add_parser("corpus-mine")
+    landmark_corpus_mine.add_argument("project_dir")
+
+    landmark_corpus_atlas = landmark_sub.add_parser("corpus-atlas")
+    landmark_corpus_atlas.add_argument("project_dir")
+
+    audit_parser = subparsers.add_parser("audit", help="Auditor Hostil de Incongruencias Texto-Tabela-Figura e Evidencias")
+    audit_sub = audit_parser.add_subparsers(dest="audit_command", required=True)
+    audit_numbers = audit_sub.add_parser("numbers", help="Audita consistencia matematica de ICs, p-valores, n amostrais e overclaims")
+    audit_numbers.add_argument("project_dir")
+    audit_numbers.add_argument("--strict", action="store_true", help="Falha se encontrar violacoes ou inconsistencias")
+
     return parser
 
 
@@ -591,6 +674,128 @@ def main(argv: list[str] | None = None) -> int:
     if args.command == "plugins":
         _print(audit_scientific_plugins(Path(args.workspace_root).resolve()))
         return 0
+
+    if args.command == "publish":
+        if args.publish_command == "prepare":
+            from .services.publication_packager import prepare_publication_package
+            payload = prepare_publication_package(
+                project_dir=Path(args.project_dir),
+                target_journal=args.journal,
+                package_slug=args.slug,
+                version=args.version,
+            )
+            _print(payload)
+            return 0
+        elif args.publish_command == "rebuttal":
+            from .services.peer_rebuttal_engine import generate_peer_rebuttal_package
+            payload = generate_peer_rebuttal_package(
+                project_dir=Path(args.project_dir),
+                peer_review_path=Path(args.peer_review),
+                target_journal=args.journal,
+                package_slug=args.slug,
+            )
+            _print(payload)
+            return 0 if payload.get("status") in {"pass", "created"} else 1
+
+    if args.command == "bench":
+        from .services.bench_protocols import generate_bench_template, validate_sample_manifest
+        project_dir = Path(args.project_dir)
+        if args.bench_command == "template":
+            res = generate_bench_template(project_dir, args.assay, args.name)
+            _print(res)
+            return 0
+        elif args.bench_command == "sample-manifest":
+            manifest_file = project_dir / "experiments" / "samples" / "sample_manifest.csv"
+            if args.audit:
+                res = validate_sample_manifest(manifest_file)
+                _print(res)
+                return 0 if res.get("status") in {"pass", "warning"} else 1
+            else:
+                res = generate_bench_template(project_dir, "biobank")
+                _print(res)
+                return 0
+
+    if args.command == "landmark":
+        from .services.landmark_learning import search_landmark_papers, dissect_landmark_paper
+        if args.landmark_command == "search":
+            res = search_landmark_papers(args.query, limit=args.limit)
+            _print(res)
+            return 0
+        elif args.landmark_command == "dissect":
+            res = dissect_landmark_paper(
+                project_dir=Path(args.project_dir),
+                title=args.title,
+                journal=args.journal,
+                year=args.year,
+                doi=args.doi,
+                authors=args.authors,
+                primary_endpoint=args.endpoint,
+                study_design=args.design,
+                slug=args.slug,
+            )
+            _print(res)
+            return 0
+        elif args.landmark_command == "corpus-plan":
+            from .services.landmark_corpus_engine import plan_landmark_corpus
+            res = plan_landmark_corpus(args.project_dir, target_count=args.count)
+            _print(res)
+            return 0
+        elif args.landmark_command == "corpus-mine":
+            from .services.landmark_corpus_engine import mine_landmark_corpus
+            res = mine_landmark_corpus(args.project_dir)
+            _print(res)
+            return 0
+        elif args.landmark_command == "corpus-atlas":
+            from .services.landmark_corpus_engine import generate_corpus_atlas
+            json_p, md_p = generate_corpus_atlas(args.project_dir)
+            _print({"status": "generated", "atlas_json": str(json_p), "atlas_markdown": str(md_p)})
+            return 0
+
+    if args.command == "audit":
+        from .services.numerical_consistency_auditor import audit_numerical_consistency
+        if args.audit_command == "numbers":
+            res = audit_numerical_consistency(Path(args.project_dir))
+            _print(res)
+            if args.strict and res.get("status") in {"block", "warning"}:
+                return 1
+            return 0 if res.get("status") != "block" else 1
+
+    if args.command == "portal":
+        from .services.retrieval_portal import build_portal, portal_status, sync_portal
+        import subprocess
+        if args.portal_command == "build":
+            payload = build_portal(
+                project_dir=Path(args.project_dir),
+                target_dir=Path(args.target_dir) if args.target_dir else None,
+                firebase_project=args.firebase_project,
+            )
+            _print(payload)
+            return 0 if payload.get("status") == "pass" else 1
+        if args.portal_command == "sync":
+            payload = sync_portal(
+                project_dir=Path(args.project_dir),
+                bucket=args.bucket,
+            )
+            _print(payload)
+            return 0 if payload.get("status") == "pass" else 1
+        if args.portal_command == "status":
+            payload = portal_status(Path(args.project_dir))
+            _print(payload)
+            return 0
+        if args.portal_command == "deploy":
+            portal_dir = Path(args.project_dir) / "portal_recuperacao"
+            if not portal_dir.is_dir():
+                build_portal(Path(args.project_dir), firebase_project=args.firebase_project)
+            cmd = f'firebase deploy --only "hosting,storage" --project {args.firebase_project}'
+            res = subprocess.run(cmd, cwd=str(portal_dir), shell=True, capture_output=True, text=True)
+            payload = {
+                "contract": "DeployPortalResult",
+                "status": "pass" if res.returncode == 0 else "error",
+                "output": res.stdout,
+                "error": res.stderr if res.returncode != 0 else ""
+            }
+            _print(payload)
+            return 0 if res.returncode == 0 else 1
 
     if args.command == "workflow":
         try:
@@ -679,6 +884,11 @@ def main(argv: list[str] | None = None) -> int:
         elif args.methodology_command == "validate-extraction":
             records = load_extraction_records(Path(args.file_path))
             payload = validate_extraction_records(records, mode=args.mode)
+        elif args.methodology_command == "prisma-checklist":
+            from .services.screening_engine import TripleReviewerScreeningEngine
+            engine = TripleReviewerScreeningEngine(Path(args.project_dir))
+            engine.generate_prisma_checklists()
+            payload = {"contract": "PRISMAChecklistReportV1", "status": "pass", "project_dir": str(args.project_dir)}
         else:
             payload = audit_numerical_consistency(Path(args.project_dir))
         _print(payload)
@@ -700,6 +910,9 @@ def main(argv: list[str] | None = None) -> int:
             payload = execute_scopus_api_search(Path(args.project_dir), max_records=args.max_records)
         elif args.corpus_command == "check-scopus":
             payload = verify_scopus_connection(Path(args.project_dir))
+        elif args.corpus_command == "screen":
+            from .services.screening_engine import run_triple_screening_command
+            payload = run_triple_screening_command(Path(args.project_dir))
         else:
             payload = ingest_drop_folders_and_deduplicate(Path(args.project_dir))
         _print(payload)

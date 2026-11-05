@@ -1,0 +1,335 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <title>Assistente de Solicitação de Dados UNOS/OPTN STAR & SRTR</title>
+  <style>
+    :root {
+      --bg: #0b132b;
+      --card-bg: #1c2541;
+      --accent: #38bdf8;
+      --accent-glow: rgba(56, 189, 248, 0.3);
+      --success: #10b981;
+      --text: #f8fafc;
+      --muted: #94a3b8;
+      --border: #334155;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.5;
+      padding: 30px 20px;
+    }
+    .container {
+      max-width: 1080px;
+      margin: 0 auto;
+    }
+    .header {
+      background: linear-gradient(135deg, #1e3a8a 0%, #0b132b 100%);
+      border: 1px solid var(--accent);
+      border-radius: 16px;
+      padding: 24px 28px;
+      margin-bottom: 24px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+    }
+    .badge {
+      display: inline-block;
+      background: rgba(56, 189, 248, 0.15);
+      color: var(--accent);
+      padding: 4px 10px;
+      border-radius: 6px;
+      font-size: 0.78rem;
+      font-weight: 700;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      margin-bottom: 8px;
+    }
+    h1 {
+      font-size: 1.6rem;
+      font-weight: 700;
+      color: #fff;
+      margin-bottom: 6px;
+    }
+    .subtitle {
+      color: var(--muted);
+      font-size: 0.92rem;
+      margin-bottom: 16px;
+    }
+    .portal-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 14px;
+    }
+    .portal-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: #0284c7;
+      color: #fff;
+      text-decoration: none;
+      padding: 10px 16px;
+      border-radius: 8px;
+      font-weight: 600;
+      font-size: 0.88rem;
+      transition: all 0.2s ease;
+    }
+    .portal-btn:hover {
+      background: #0369a1;
+      transform: translateY(-1px);
+    }
+    .portal-btn.secondary {
+      background: #334155;
+      color: #e2e8f0;
+    }
+    .portal-btn.secondary:hover {
+      background: #475569;
+    }
+    .section-title {
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: var(--accent);
+      margin: 24px 0 12px 0;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 16px 20px;
+      margin-bottom: 14px;
+      transition: border-color 0.2s ease;
+    }
+    .card:hover {
+      border-color: #475569;
+    }
+    .card-head {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 8px;
+    }
+    .field-label {
+      font-weight: 700;
+      font-size: 0.95rem;
+      color: #f1f5f9;
+    }
+    .field-tag {
+      font-size: 0.78rem;
+      color: var(--muted);
+      margin-left: 8px;
+    }
+    .copy-btn {
+      background: #2563eb;
+      color: #fff;
+      border: none;
+      padding: 6px 12px;
+      border-radius: 6px;
+      font-size: 0.82rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background 0.2s ease, transform 0.1s ease;
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+    }
+    .copy-btn:hover {
+      background: #1d4ed8;
+      transform: translateY(-1px);
+    }
+    .copy-btn.copied {
+      background: var(--success) !important;
+    }
+    textarea {
+      width: 100%;
+      background: #0f172a;
+      border: 1px solid #334155;
+      border-radius: 8px;
+      color: #e2e8f0;
+      padding: 10px 12px;
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+      font-size: 0.88rem;
+      resize: vertical;
+      min-height: 58px;
+      line-height: 1.4;
+    }
+    textarea:focus {
+      outline: none;
+      border-color: var(--accent);
+    }
+    .instruction-box {
+      background: rgba(56, 189, 248, 0.08);
+      border-left: 4px solid var(--accent);
+      padding: 14px 18px;
+      border-radius: 8px;
+      margin-bottom: 20px;
+      font-size: 0.9rem;
+      color: #cbd5e1;
+    }
+    .instruction-box strong {
+      color: #fff;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="header">
+      <div class="badge">Article Machine • Automação de Solicitação de Dados</div>
+      <h1>Painel de Solicitação UNOS/OPTN STAR & SRTR SAFs</h1>
+      <p class="subtitle">Projeto <code>xai-liver-ecd-allocation-unos</code> — Alocação de Órgãos Marginais (ECD) no Transplante Hepático</p>
+      
+      <div class="portal-links">
+        <a href="https://srtr.hrsa.gov/requesting-data/data-requests/" target="_blank" class="portal-btn">
+          🌐 1. Abrir Portal SRTR (Data Requests)
+        </a>
+        <a href="https://srtr.hrsa.gov/contact/" target="_blank" class="portal-btn secondary">
+          ✉️ 2. Formulário de Contato Direto SRTR
+        </a>
+        <a href="https://optn.transplant.hrsa.gov/data/request-data/" target="_blank" class="portal-btn secondary">
+          📋 3. Portal de Dados OPTN / UNOS
+        </a>
+      </div>
+    </div>
+
+    <div class="instruction-box">
+      <strong>Como utilizar este painel:</strong> Abra os links dos portais acima no navegador ao lado. Para cada campo solicitado no formulário da OPTN/SRTR, clique no botão <strong>Copiar</strong> correspondente abaixo e cole (Ctrl+V) diretamente no formulário web.
+    </div>
+
+    <div class="section-title">📌 1. Identificação do Projeto e Equipe</div>
+
+    <div class="card">
+      <div class="card-head">
+        <div>
+          <span class="field-label">Study Title (Título Oficial em Inglês)</span>
+          <span class="field-tag">Name of proposed research project</span>
+        </div>
+        <button class="copy-btn" onclick="copyText('title', this)">Copiar</button>
+      </div>
+      <textarea id="title" rows="2" readonly>Explainable Machine Learning (XAI) and Conformal Prediction for Expanded Criteria Donor (ECD) Allocation in Liver Transplantation: Outperforming the Donor Risk Index (DRI) using the UNOS/OPTN Population Registry</textarea>
+    </div>
+
+    <div class="card">
+      <div class="card-head">
+        <div>
+          <span class="field-label">Principal Investigator & Affiliation</span>
+          <span class="field-tag">Investigador Principal e Instituição</span>
+        </div>
+        <button class="copy-btn" onclick="copyText('pi', this)">Copiar</button>
+      </div>
+      <textarea id="pi" rows="2" readonly>Joao Vitor Fiches Machado (Principal Investigator) and Hepatic Transplantation Research Group</textarea>
+    </div>
+
+    <div class="card">
+      <div class="card-head">
+        <div>
+          <span class="field-label">Ethical Oversight & IRB Exemption Status</span>
+          <span class="field-tag">Base Regulamentatória Ética (45 CFR 46.104(d)(4))</span>
+        </div>
+        <button class="copy-btn" onclick="copyText('irb', this)">Copiar</button>
+      </div>
+      <textarea id="irb" rows="3" readonly>Secondary research involving de-identified national health registry data. Qualified for Institutional Review Board (IRB) exemption under United States Federal Regulation 45 CFR 46.104(d)(4) (publicly available or restricted secondary de-identified datasets without participant re-identification).</textarea>
+    </div>
+
+    <div class="section-title">📊 2. Especificação dos Arquivos e Tabelas Solicitadas</div>
+
+    <div class="card">
+      <div class="card-head">
+        <div>
+          <span class="field-label">Requested Datasets / STAR Files</span>
+          <span class="field-tag">Tabelas necessárias do STAR Release</span>
+        </div>
+        <button class="copy-btn" onclick="copyText('tables', this)">Copiar</button>
+      </div>
+      <textarea id="tables" rows="4" readonly>1. TX_LI (Liver Transplant File): All deceased-donor liver transplants performed between Jan 1, 2010 and Dec 31, 2025 with recipient baseline, operative, and longitudinal graft/patient survival follow-up.
+2. DONOR_DECEASED (Deceased Donor File): Complete donor demographics, cause of death, biopsy macrosteatosis, resuscitation history, hemodynamics, and preservation times.
+3. CAND_LI (Liver Candidate File): Waiting list trajectory, laboratory MELD/MELD-Na at allocation, and medical condition at transplant.</textarea>
+    </div>
+
+    <div class="card">
+      <div class="card-head">
+        <div>
+          <span class="field-label">Cohort Criteria & Timeframe</span>
+          <span class="field-tag">Período e Critérios de Inclusão</span>
+        </div>
+        <button class="copy-btn" onclick="copyText('cohort', this)">Copiar</button>
+      </div>
+      <textarea id="cohort" rows="3" readonly>Timeframe: January 1, 2010 to December 31, 2025.
+Inclusion: Adult deceased-donor liver transplant recipients (age >= 18) receiving DBD or DCD grafts.
+Exclusion: Pediatric recipients (age < 18), living-donor transplants (LDLT), domino transplants, and multi-organ transplants.</textarea>
+    </div>
+
+    <div class="section-title">🔬 3. Justificativa Científica e Objetivos</div>
+
+    <div class="card">
+      <div class="card-head">
+        <div>
+          <span class="field-label">Scientific Rationale & Hypotheses</span>
+          <span class="field-tag">Texto completo de justificativa para o comitê da OPTN/SRTR</span>
+        </div>
+        <button class="copy-btn" onclick="copyText('rationale', this)">Copiar</button>
+      </div>
+      <textarea id="rationale" rows="9" readonly>Orthotopic liver transplantation faces a persistent severe organ shortage, leading to the annual discard of hundreds of potentially viable deceased-donor livers categorized under Expanded Criteria Donors (ECD) or Donation after Circulatory Death (DCD). 
+
+Current allocation and risk stratification depend heavily on linear risk scores, particularly the Donor Risk Index (DRI, Feng et al., 2006) and the Balance of Risk (BAR score, Dutkowski et al., 2012). These scores are inherently additive and fail to capture critical non-linear donor-recipient interactions. For instance, younger or lower-acuity recipients (laboratory MELD < 20) may safely absorb marginal ECD grafts without compromising survival, whereas high-acuity recipients (laboratory MELD > 30) paired with prolonged cold ischemia experience compounded risk escalation.
+
+This project requests the complete national cohort of deceased-donor liver transplants performed between 2010 and 2025 to develop and validate explainable gradient boosted trees (LightGBM and XGBoost with clinical monotonicity constraints), split conformal prediction (MAPIE) with guaranteed 95% marginal coverage, and second-order TreeSHAP interaction metrics, benchmarking their clinical Net Benefit via Decision Curve Analysis (DCA) directly against the DRI and BAR scores.</textarea>
+    </div>
+
+    <div class="section-title">📋 4. Dicionário de Variáveis Mapeadas</div>
+
+    <div class="card">
+      <div class="card-head">
+        <div>
+          <span class="field-label">List of Specific Variables Requested</span>
+          <span class="field-tag">28 variáveis clínicas fundamentais</span>
+        </div>
+        <button class="copy-btn" onclick="copyText('variables', this)">Copiar</button>
+      </div>
+      <textarea id="variables" rows="6" readonly>Donor Variables (DONOR_DECEASED): DON_AGE, DON_TY, COD_CAD_DON, MACRO_FAT_LIV_DON, HIST_CARD_ARREST_DON, SODIUM_SERUM_DON, COLD_ISCH_TM, WARM_ISCH_TM, DON_HGT_CM, DON_WGT_KG, SGOT_DON, SGPT_DON, INOTROP_SUPPORT_DON.
+
+Recipient & Match Variables (TX_LI & CAND_LI): CAN_AGE_AT_TX, CAN_GENDER, CAN_ABO, DON_ABO, CAN_HGT_CM, CAN_WGT_KG, CAN_DGN, CAN_LAST_LAB_MELD, CAN_LAST_SRTR_LAB_MELD, CAN_PREV_ABDOM_SURG, CAN_PORTAL_VEIN_THROMB, CAN_VENTILATOR, CAN_DIAL, CAN_MED_COND, SHARE_TY, REGION.
+
+Outcomes (TX_LI): GSTATUS, GTIME, PSTATUS, PTIME, COD.</textarea>
+    </div>
+
+    <div class="card">
+      <div class="card-head">
+        <div>
+          <span class="field-label">Data Use Agreement (DUA) Compliance Pledge</span>
+          <span class="field-tag">Compromisso formal com as diretrizes da OPTN</span>
+        </div>
+        <button class="copy-btn" onclick="copyText('dua', this)">Copiar</button>
+      </div>
+      <textarea id="dua" rows="3" readonly>The research group explicitly commits to full compliance with the OPTN Data Use Agreement, guaranteeing zero re-identification attempts of donors, recipients, or transplant centers, strict data confidentiality, and publication only of aggregated statistical summaries.</textarea>
+    </div>
+  </div>
+
+  <script>
+    function copyText(id, btn) {
+      const el = document.getElementById(id);
+      navigator.clipboard.writeText(el.value).then(() => {
+        const originalText = btn.textContent;
+        btn.textContent = 'Copiado! ✓';
+        btn.classList.add('copied');
+        setTimeout(() => {
+          btn.textContent = originalText;
+          btn.classList.remove('copied');
+        }, 1800);
+      }).catch(err => {
+        el.select();
+        document.execCommand('copy');
+        btn.textContent = 'Copiado! ✓';
+        btn.classList.add('copied');
+        setTimeout(() => {
+          btn.textContent = 'Copiar';
+          btn.classList.remove('copied');
+        }, 1800);
+      });
+    }
+  </script>
+</body>
+</html>

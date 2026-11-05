@@ -1,0 +1,398 @@
+{
+  "data": {
+    "attributes": {
+      "access_requests_enabled": false,
+      "archiving": false,
+      "article_doi": null,
+      "category": "project",
+      "collection": false,
+      "current_user_can_comment": true,
+      "current_user_is_contributor": true,
+      "current_user_is_contributor_or_group_member": true,
+      "current_user_permissions": [
+        "admin",
+        "write",
+        "read"
+      ],
+      "custom_citation": "",
+      "date_created": "2026-11-05T03:42:17.117119",
+      "date_modified": "2026-11-05T03:40:20.534593",
+      "date_registered": "2026-11-05T03:42:17.104136",
+      "date_withdrawn": null,
+      "description": "Protocol and preregistration for a population-based clinical prediction model developed with TRIPOD+AI and PROBAST+AI standards using UNOS/OPTN STAR files.",
+      "embargo_end_date": null,
+      "embargoed": false,
+      "fork": false,
+      "has_analytic_code": false,
+      "has_data": false,
+      "has_materials": false,
+      "has_papers": false,
+      "has_project": true,
+      "has_supplements": false,
+      "ia_url": null,
+      "node_license": null,
+      "pending_embargo_approval": false,
+      "pending_embargo_termination_approval": false,
+      "pending_registration_approval": true,
+      "pending_withdrawal": false,
+      "preprint": false,
+      "provider_specific_metadata": [],
+      "public": false,
+      "registered_meta": {
+        "summary": {
+          "extra": [],
+          "value": "Protocol and preregistration for Explainable Machine Learning (XAI) and Conformal Prediction for Expanded Criteria Donor (ECD) Allocation in Liver Transplantation: UNOS/OPTN Registry Study (TRIPOD+AI &amp; PROBAST+AI compliant)."
+        },
+        "uploader": {
+          "extra": [],
+          "value": ""
+        }
+      },
+      "registration": true,
+      "registration_responses": {
+        "summary": "Protocol and preregistration for Explainable Machine Learning (XAI) and Conformal Prediction for Expanded Criteria Donor (ECD) Allocation in Liver Transplantation: UNOS/OPTN Registry Study (TRIPOD+AI &amp; PROBAST+AI compliant).",
+        "uploader": []
+      },
+      "registration_supplement": "Open-Ended Registration",
+      "reviews_state": "initial",
+      "revision_state": "unapproved",
+      "subjects": [
+        [
+          {
+            "id": "584240da54be81056cecaaaa",
+            "text": "Medicine and Health Sciences"
+          },
+          {
+            "id": "584240da54be81056cecab69",
+            "text": "Medical Specialties"
+          },
+          {
+            "id": "584240da54be81056cecacaf",
+            "text": "Surgery"
+          }
+        ]
+      ],
+      "tags": [],
+      "title": "Explainable Machine Learning (XAI) and Conformal Prediction for Expanded Criteria Donor (ECD) Allocation in Liver Transplantation: UNOS/OPTN Registry Study",
+      "wiki_enabled": true,
+      "withdrawal_justification": null,
+      "withdrawn": false
+    },
+    "id": "b8yac",
+    "links": {
+      "html": "https://osf.io/b8yac/",
+      "iri": "https://osf.io/b8yac",
+      "self": "https://api.osf.io/v2/registrations/b8yac/"
+    },
+    "relationships": {
+      "affiliated_institutions": {
+        "links": {
+          "related": {
+            "href": "https://api.osf.io/v2/registrations/b8yac/institutions/",
+            "meta": {}
+          },
+          "self": {
+            "href": "https://api.osf.io/v2/registrations/b8yac/relationships/institutions/",
+            "meta": {}
+          }
+        }
+      },
+      "bibliographic_contributors": {
+        "links": {
+          "related": {
+            "href": "https://api.osf.io/v2/registrations/b8yac/bibliographic_contributors/",
+            "meta": {}
+          }
+        }
+      },
+      "cedar_metadata_records": {
+        "links": {
+          "related": {
+            "href": "https://api.osf.io/v2/registrations/b8yac/cedar_metadata_records/",
+            "meta": {}
+          }
+        }
+      },
+      "children": {
+        "links": {
+          "related": {
+            "href": "https://api.osf.io/v2/registrations/b8yac/children/",
+            "meta": {}
+          }
+        }
+      },
+      "citation": {
+        "data": {
+          "id": "b8yac",
+          "type": "citation"
+        },
+        "links": {
+          "related": {
+            "href": "https://api.osf.io/v2/registrations/b8yac/citation/",
+            "meta": {}
+          }
+        }
+      },
+      "collected_in": {
+        "links": {
+          "related": {
+            "href": "https://api.osf.io/v2/nodes/b8yac/collections/",
+            "meta": {}
+          }
+        }
+      },
+      "comments": {
+        "links": {
+          "related": {
+            "href": "https://api.osf.io/v2/registrations/b8yac/comments/?filter%5Btarget%5D=b8yac",
+            "meta": {}
+          }
+        }
+      },
+      "contributors": {
+        "links": {
+          "related": {
+            "href": "https://api.osf.io/v2/registrations/b8yac/contributors/",
+            "meta": {}
+          }
+        }
+      },
+      "files": {
+        "links": {
+          "related": {
+            "href": "https://api.osf.io/v2/registrations/b8yac/files/",
+            "meta": {}
+          }
+        }
+      },
+      "forks": {
+        "links": {
+          "related": {
+            "href": "https://api.osf.io/v2/registrations/b8yac/forks/",
+            "meta": {}
+          }
+        }
+      },
+      "identifiers": {
+        "links": {
+          "related": {
+            "href": "https://api.osf.io/v2/registrations/b8yac/identifiers/",
+            "meta": {}
+          }
+        }
+      },
+      "implicit_contributors": {
+        "links": {
+          "related": {
+            "href": "https://api.osf.io/v2/registrations/b8yac/implicit_contributors/",
+            "meta": {}
+          }
+        }
+      },
+      "linked_by_nodes": {
+        "links": {
+          "related": {
+            "href": "https://api.osf.io/v2/registrations/b8yac/linked_by_nodes/",
+            "meta": {}
+          }
+        }
+      },
+      "linked_by_registrations": {
+        "links": {
+          "related": {
+            "href": "https://api.osf.io/v2/registrations/b8yac/linked_by_registrations/",
+            "meta": {}
+          }
+        }
+      },
+      "linked_nodes": {
+        "links": {
+          "related": {
+            "href": "https://api.osf.io/v2/registrations/b8yac/linked_nodes/",
+            "meta": {}
+          },
+          "self": {
+            "href": "https://api.osf.io/v2/registrations/b8yac/relationships/linked_nodes/",
+            "meta": {}
+          }
+        }
+      },
+      "linked_registrations": {
+        "links": {
+          "related": {
+            "href": "https://api.osf.io/v2/registrations/b8yac/linked_registrations/",
+            "meta": {}
+          },
+          "self": {
+            "href": "https://api.osf.io/v2/registrations/b8yac/relationships/linked_registrations/",
+            "meta": {}
+          }
+        }
+      },
+      "logs": {
+        "links": {
+          "related": {
+            "href": "https://api.osf.io/v2/registrations/b8yac/logs/",
+            "meta": {}
+          }
+        }
+      },
+      "node_links": {
+        "links": {
+          "related": {
+            "href": "https://api.osf.io/v2/registrations/b8yac/node_links/",
+            "meta": {}
+          }
+        }
+      },
+      "original_response": {
+        "data": {
+          "id": "6aebfb19bf2ce01e9bb69655",
+          "type": "schema_responses"
+        },
+        "links": {
+          "related": {
+            "href": "https://api.osf.io/v2/schema_responses/6aebfb19bf2ce01e9bb69655/",
+            "meta": {}
+          }
+        }
+      },
+      "provider": {
+        "data": {
+          "id": "osf",
+          "type": "registration-providers"
+        },
+        "links": {
+          "related": {
+            "href": "https://api.osf.io/v2/providers/registrations/osf/",
+            "meta": {}
+          }
+        }
+      },
+      "region": {
+        "data": {
+          "id": "us",
+          "type": "regions"
+        },
+        "links": {
+          "related": {
+            "href": "https://api.osf.io/v2/regions/us/",
+            "meta": {}
+          }
+        }
+      },
+      "registered_by": {
+        "data": {
+          "id": "p8js9",
+          "type": "users"
+        },
+        "links": {
+          "related": {
+            "href": "https://api.osf.io/v2/users/p8js9/",
+            "meta": {}
+          }
+        }
+      },
+      "registered_from": {
+        "data": {
+          "id": "ejw2v",
+          "type": "nodes"
+        },
+        "links": {
+          "related": {
+            "href": "https://api.osf.io/v2/nodes/ejw2v/",
+            "meta": {}
+          }
+        }
+      },
+      "registration_schema": {
+        "data": {
+          "id": "5df83f7dd28338001ac0ab0d",
+          "type": "registration-schemas"
+        },
+        "links": {
+          "related": {
+            "href": "https://api.osf.io/v2/schemas/registrations/5df83f7dd28338001ac0ab0d/",
+            "meta": {}
+          }
+        }
+      },
+      "requests": {
+        "links": {
+          "related": {
+            "href": "https://api.osf.io/v2/registrations/b8yac/requests/",
+            "meta": {}
+          }
+        }
+      },
+      "resources": {
+        "links": {
+          "related": {
+            "href": "https://api.osf.io/v2/registrations/b8yac/resources/",
+            "meta": {}
+          }
+        }
+      },
+      "review_actions": {
+        "links": {
+          "related": {
+            "href": "https://api.osf.io/v2/registrations/b8yac/actions/",
+            "meta": {}
+          }
+        }
+      },
+      "root": {
+        "data": {
+          "id": "b8yac",
+          "type": "registrations"
+        },
+        "links": {
+          "related": {
+            "href": "https://api.osf.io/v2/registrations/b8yac/",
+            "meta": {}
+          }
+        }
+      },
+      "schema_responses": {
+        "links": {
+          "related": {
+            "href": "https://api.osf.io/v2/registrations/b8yac/schema_responses/",
+            "meta": {}
+          }
+        }
+      },
+      "storage": {
+        "data": {
+          "id": "b8yac",
+          "type": "node-storage"
+        },
+        "links": {
+          "related": {
+            "href": "https://api.osf.io/v2/nodes/b8yac/storage/",
+            "meta": {}
+          }
+        }
+      },
+      "view_only_links": {
+        "links": {
+          "related": {
+            "href": "https://api.osf.io/v2/registrations/b8yac/view_only_links/",
+            "meta": {}
+          }
+        }
+      },
+      "wikis": {
+        "links": {
+          "related": {
+            "href": "https://api.osf.io/v2/registrations/b8yac/wikis/",
+            "meta": {}
+          }
+        }
+      }
+    },
+    "type": "registrations"
+  },
+  "meta": {
+    "version": "2.0"
+  }
+}

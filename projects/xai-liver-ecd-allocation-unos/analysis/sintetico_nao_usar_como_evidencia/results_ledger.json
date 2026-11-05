@@ -1,0 +1,115 @@
+{
+  "contract": "ResultsLedgerV2",
+  "study": "XAI & Conformal Prediction for ECD Liver Allocation (UNOS/OPTN)",
+  "cohort": {
+    "total_patients": 65000,
+    "development_n": 45007,
+    "temporal_holdout_n": 19993,
+    "development_events_1yr": 3241,
+    "temporal_holdout_events_1yr": 1606
+  },
+  "metrics": {
+    "auroc_xgboost": {
+      "value": 0.6864,
+      "model": "XGBoost (Monotone)"
+    },
+    "auroc_lightgbm": {
+      "value": 0.6794,
+      "model": "LightGBM"
+    },
+    "auroc_elasticnet": {
+      "value": 0.6934,
+      "model": "ElasticNet Baseline"
+    },
+    "auroc_dri_feng": {
+      "value": 0.5804,
+      "model": "Donor Risk Index (DRI)"
+    },
+    "auroc_bar_dutkowski": {
+      "value": 0.6401,
+      "model": "Balance of Risk (BAR)"
+    },
+    "calibration_slope_xgboost": {
+      "value": 0.9174,
+      "model": "XGBoost (Monotone)"
+    },
+    "calibration_intercept_xgboost": {
+      "value": 0.058,
+      "model": "XGBoost (Monotone)"
+    },
+    "brier_score_xgboost": {
+      "value": 0.0695,
+      "model": "XGBoost (Monotone)"
+    },
+    "brier_score_dri": {
+      "value": 0.0735,
+      "model": "Donor Risk Index (DRI)"
+    },
+    "conformal_empirical_coverage": {
+      "value": 94.95,
+      "nominal_target": "95.0%"
+    },
+    "conformal_mean_set_size": {
+      "value": 1.15,
+      "theoretical_max": 2.0
+    },
+    "conformal_uncertain_zone_pct": {
+      "value": 15.2,
+      "clinical_role": "Candidatos a Perfusão Hipotérmica (HOPE/NMP)"
+    },
+    "dca_net_benefit_thresh_15": {
+      "value": 0.0095,
+      "threshold": "15%"
+    },
+    "dca_net_benefit_dri_thresh_15": {
+      "value": -0.0007,
+      "threshold": "15%"
+    }
+  },
+  "top_shap_features": [
+    [
+      "recipient_lab_meld",
+      0.3422619700431824
+    ],
+    [
+      "donor_age",
+      0.25793954730033875
+    ],
+    [
+      "cold_ischemia_time_hours",
+      0.19094032049179077
+    ],
+    [
+      "recipient_meld_na",
+      0.10308171808719635
+    ],
+    [
+      "donor_macrosteatosis_pct",
+      0.09494291245937347
+    ],
+    [
+      "dcd_warm_ischemia_time_minutes",
+      0.057929541915655136
+    ],
+    [
+      "recipient_height_cm",
+      0.05553492158651352
+    ],
+    [
+      "donor_weight_kg",
+      0.05013822391629219
+    ],
+    [
+      "recipient_dialysis",
+      0.0489899218082428
+    ],
+    [
+      "donor_bmi",
+      0.04545469954609871
+    ]
+  ],
+  "patient_leakage_audit": false,
+  "partition_audit": {
+    "status": "checked-provided-identifiers"
+  }
+}

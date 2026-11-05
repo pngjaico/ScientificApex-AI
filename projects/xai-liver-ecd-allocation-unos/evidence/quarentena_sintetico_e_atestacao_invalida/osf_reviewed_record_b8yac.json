@@ -1,0 +1,16 @@
+{
+  "registry": "OSF",
+  "registry_id": "b8yac",
+  "registry_url": "https://osf.io/b8yac/",
+  "registered_at": "2026-11-05T03:42:17.104136",
+  "record_kind": "registration",
+  "registration_final": true,
+  "protocol_matches_record": true,
+  "protocol_sha256": "5f21b98281f13a6162fb5cf85b7ab40dab8c5e450624ff0dda6a666a2b5a4d01",
+  "reviewer": "João Vitor Fiches Machado",
+  "verified_at": "2026-11-05T03:44:00.000000+00:00",
+  "scientific_work_not_started_before_registration": true,
+  "verification_method": "reviewed-hashed-registry-record",
+  "source_record_path": "evidence/protocol_registration/osf_snapshot_b8yac.json",
+  "source_record_sha256": "1ab8a2a8e4e3940dd8b2846ed04d6b37750722372be84ebd7d58610e119108ef"
+}

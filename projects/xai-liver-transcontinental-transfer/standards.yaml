@@ -1,0 +1,76 @@
+contract_version: 2
+project_type: prediction-model
+lane: evidence-writing
+guidelines:
+- TRIPOD+AI
+- PROBAST+AI
+risk_of_bias_tools:
+- PROBAST+AI
+policy_labels:
+- prediction
+- machine-learning-clinical
+- transcontinental-transfer
+- external-validation
+- liver-transplantation
+- high-rigor
+deliverables:
+- protocol
+- analysis
+- claim map
+- manuscript
+- review report
+registration_policy:
+  required: true
+  timing: before-scientific-work
+  accepted_registries:
+  - OSF
+  - Zenodo
+  verification_required: true
+  rationale: 'Clinical prediction models and machine learning protocols must be preregistered (e.g. on OSF) prior to model freezing to guarantee reproducibility and prevent analytical dredging.'
+checklist_status:
+  TRIPOD+AI:
+    status: in-progress
+    items:
+    - id: item_1_title
+      name: Title
+      description: Identification as a prediction model developed/validated using AI/ML, specifying target population and outcome.
+      status: addressed
+      location: protocol.yaml / drafts/
+    - id: item_2_abstract
+      name: Abstract
+      description: Structured summary covering Background, Objectives, Methods, Results, Conclusions.
+      status: planned
+      location: drafts/portugues/resumo.md & drafts/ingles/abstract.md
+    - id: item_3_rationale
+      name: Background and Rationale
+      description: Context of cross-system transfer between Brazilian SUS and US SEER registries, need for domain adaptation and conformal uncertainty.
+      status: addressed
+      location: protocol.yaml / drafts/
+    - id: item_4_objectives
+      name: Objectives
+      description: Specific objectives including discrimination, calibration, transportability metrics, and clinical net benefit.
+      status: addressed
+      location: protocol.yaml
+  PROBAST+AI:
+    status: in-progress
+    domains:
+    - id: domain_1_participants
+      name: Participants
+      description: Selection of participants, data sources, study design.
+      status: addressed
+      location: protocol.yaml / sources/
+    - id: domain_2_predictors
+      name: Predictors
+      description: Definition and measurement of candidate predictors across both health systems.
+      status: addressed
+      location: protocol.yaml / analysis/
+    - id: domain_3_outcome
+      name: Outcome
+      description: Definition, measurement, and validation of primary survival endpoint.
+      status: addressed
+      location: protocol.yaml
+    - id: domain_4_analysis
+      name: Analysis
+      description: Sample size, missing data, non-linearity, model evaluation, and cross-system validation.
+      status: addressed
+      location: analysis/

@@ -22,6 +22,7 @@ import hashlib
 import html
 import json
 import os
+import re
 from datetime import UTC, datetime, timedelta
 from pathlib import Path
 from typing import Any
@@ -104,6 +105,83 @@ def _format_list_or_str(val: Any, default: str = "") -> str:
     return str(val)
 
 
+def _load_copy_pack_overrides(root: Path) -> dict[int, str]:
+    candidates = list((root / "drafts").glob("*prospero*copy_pack*.md"))
+    if not candidates:
+        return {}
+    pack_path = candidates[0]
+
+    try:
+        text = pack_path.read_text(encoding="utf-8", errors="replace").replace("\r\n", "\n")
+    except OSError:
+        return {}
+
+    sections = re.split(r"\n##\s+", text)
+    by_num: dict[int, str] = {}
+    for s in sections:
+        lines = s.strip().splitlines()
+        if not lines:
+            continue
+        m = re.match(r"^(\d+)\.\s*(.*)", lines[0])
+        if not m:
+            continue
+        num = int(m.group(1))
+        cb = re.findall(r"```text\n(.*?)\n```", s, re.DOTALL)
+        if cb:
+            val = "\n\n".join(x.strip() for x in cb if x.strip())
+            if num in by_num:
+                by_num[num] += "\n\n" + val
+            else:
+                by_num[num] = val
+
+    mapping: dict[int, str] = {}
+    if 1 in by_num:
+        mapping[1] = by_num[1]
+    if 3 in by_num:
+        mapping[18] = by_num[3]
+    if 4 in by_num:
+        mapping[15] = by_num[4]
+    if 6 in by_num:
+        mapping[36] = by_num[6]
+    if 7 in by_num:
+        mapping[32] = by_num[7]
+    if 8 in by_num:
+        mapping[19] = by_num[8]
+    if 9 in by_num:
+        mapping[20] = by_num[9]
+    if 10 in by_num:
+        mapping[21] = by_num[10]
+    if 11 in by_num:
+        mapping[22] = by_num[11]
+    if 12 in by_num:
+        mapping[23] = by_num[12]
+    if 17 in by_num:
+        mapping[34] = by_num[17]
+    if 19 in by_num:
+        mapping[16] = by_num[19]
+    if 23 in by_num:
+        mapping[26] = by_num[23]
+    if 24 in by_num:
+        mapping[27] = by_num[24]
+    if 27 in by_num:
+        mapping[24] = by_num[27]
+    if 28 in by_num:
+        mapping[25] = by_num[28]
+    if 29 in by_num:
+        mapping[28] = by_num[29]
+    if 30 in by_num:
+        mapping[29] = by_num[30]
+    if 33 in by_num:
+        mapping[35] = by_num[33]
+    if 39 in by_num:
+        mapping[39] = by_num[39]
+    if 40 in by_num:
+        mapping[13] = by_num[40]
+    if 41 in by_num:
+        mapping[37] = by_num[41]
+    return mapping
+
+
 def compile_prospero_40_fields(project_dir: Path) -> dict[str, Any]:
     """Compile all 40 official PROSPERO fields + 5 screening answers + interactive HTML5 assistant."""
     root = Path(project_dir).resolve()
@@ -120,7 +198,9 @@ def compile_prospero_40_fields(project_dir: Path) -> dict[str, Any]:
     start_date = str(protocol.get("start_date") or now.strftime("%d/%m/%Y"))
     completion_date = str(protocol.get("completion_date") or (now + timedelta(days=180)).strftime("%d/%m/%Y"))
 
-    raw_title = str(protocol.get("title") or project.get("name") or root.name).strip()
+    raw_en_title = str(protocol.get("title_en") or "").strip()
+    raw_pt_title = str(protocol.get("title_pt") or protocol.get("title") or project.get("name") or root.name).strip()
+    raw_title = raw_en_title or raw_pt_title
     suffix_needed = "systematic review" not in raw_title.lower() and "meta-analysis" not in raw_title.lower()
     if suffix_needed:
         design_tag = (
@@ -132,8 +212,8 @@ def compile_prospero_40_fields(project_dir: Path) -> dict[str, Any]:
     else:
         en_title = raw_title
 
-    pt_title = str(protocol.get("title_pt") or raw_title)
-    question = str(protocol.get("research_question") or "").strip()
+    pt_title = raw_pt_title
+    question = str(protocol.get("research_question_en") or protocol.get("research_question") or "").strip()
 
     # Extract compiled search string if available
     search_queries_list = compiled_q.get("compiled_queries", []) if isinstance(compiled_q, dict) else []
@@ -624,6 +704,14 @@ def compile_prospero_40_fields(project_dir: Path) -> dict[str, Any]:
         },
     ]
 
+# Enrich with verified English pack if available in drafts/
+    overrides = _load_copy_pack_overrides(root)
+    if overrides:
+        for f in fields_40:
+            f_num = f.get("number")
+            if f_num in overrides and overrides[f_num]:
+                f["value"] = overrides[f_num]
+
     payload = {
         "contract": "Prospero40FieldsPacketV1",
         "status": "pass" if not issues else "blocked",
@@ -782,7 +870,7 @@ def launch_prospero_browser_assistant(
     *,
     dry_run: bool = False,
     headless: bool = False,
-    timeout_seconds: int = 180,
+    timeout_seconds: int = 3600,
 ) -> dict[str, Any]:
     """Launch built-in Playwright browser with injected 40-field PROSPERO auto-fill dock and login support."""
     root = Path(project_dir).resolve()
@@ -799,13 +887,19 @@ def launch_prospero_browser_assistant(
     # Generate the standalone Playwright Node.js script that loads prospero_40_fields_payload.json,
     # optionally pre-fills PROSPERO_EMAIL / PROSPERO_PASSWORD from environment/.env, and injects the
     # interactive floating 40-field auto-fill dock directly into the PROSPERO browser tab!
+    headless_js = "true" if headless else "false"
     js_code = f"""const fs = require('fs');
 const path = require('path');
 const {{ chromium }} = require('playwright');
 
 (async () => {{
   const payload = JSON.parse(fs.readFileSync({json.dumps(payload_path.as_posix())}, 'utf8'));
-  const browser = await chromium.launch({{ headless: {"true" if headless else "false"} }});
+  let browser;
+  try {{
+    browser = await chromium.launch({{ channel: 'msedge', headless: {headless_js} }});
+  }} catch (e) {{
+    browser = await chromium.launch({{ headless: {headless_js} }});
+  }}
   const context = await browser.newContext({{ viewport: {{ width: 1440, height: 900 }} }});
   const page = await context.newPage();
 
@@ -815,18 +909,66 @@ const {{ chromium }} = require('playwright');
       if (document.getElementById('am-prospero-dock')) return;
       const dock = document.createElement('div');
       dock.id = 'am-prospero-dock';
-      dock.style.cssText = 'position:fixed;top:12px;right:12px;width:360px;max-height:92vh;overflow-y:auto;z-index:999999;background:#0f172a;color:#f8fafc;border:2px solid #38bdf8;border-radius:12px;padding:14px;font-family:system-ui,sans-serif;box-shadow:0 10px 30px rgba(0,0,0,0.5);';
-      let html = '<div style="font-weight:700;color:#38bdf8;margin-bottom:8px;">Article Machine — PROSPERO 40-Field Auto-Fill</div>';
-      html += '<div style="font-size:12px;color:#cbd5e1;margin-bottom:10px;">Clique no campo do PROSPERO e depois em <b>Preencher</b> abaixo (Extração travada em NO/NO):</div>';
+      dock.style.cssText = 'position:fixed;top:10px;right:10px;width:380px;max-height:94vh;overflow-y:auto;z-index:9999999;background:#0f172a;color:#f8fafc;border:2px solid #38bdf8;border-radius:12px;padding:12px;font-family:system-ui,sans-serif;box-shadow:0 10px 40px rgba(0,0,0,0.6);';
+
+      let isMinimized = false;
+      let html = '<div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;">';
+      html += '<span style="font-weight:700;color:#38bdf8;font-size:13px;">🤖 Article Machine Auto-Fill</span>';
+      html += '<button id="am-min-btn" style="background:#334155;color:#fff;border:none;padding:2px 8px;border-radius:4px;cursor:pointer;font-size:11px;">Minimizar</button>';
+      html += '</div>';
+
+      html += '<div id="am-body">';
+      html += '<div style="font-size:11px;color:#94a3b8;margin-bottom:8px;">Clique no campo do PROSPERO e depois em <b>Preencher</b>. Extração travada em NO/NO.</div>';
+      html += '<button id="am-autofill-btn" style="width:100%;background:#e11d48;color:#fff;font-weight:700;border:none;padding:9px;border-radius:6px;cursor:pointer;font-size:12px;margin-bottom:6px;box-shadow:0 2px 8px rgba(225,29,72,0.4);">⚡ Auto-Preencher Campos Visíveis na Tela</button>';
+      html += '<button id="am-expand-btn" style="width:100%;background:#0284c7;color:#fff;font-weight:600;border:none;padding:6px;border-radius:6px;cursor:pointer;font-size:11px;margin-bottom:8px;">📂 Abrir Todos os Accordions / Expand All</button>';
+      html += '<input id="am-search" placeholder="🔍 Filtrar campo (ex: rationale, synthesis)..." style="width:100%;box-sizing:border-box;background:#1e293b;border:1px solid #475569;border-radius:6px;color:#fff;padding:6px 10px;font-size:11px;margin-bottom:8px;" />';
+      
+      html += '<div id="am-fields-list">';
       for (const f of data.fields) {{
         const num = String(f.number).padStart(2, '0');
-        html += `<div style="background:#1e293b;padding:8px;border-radius:8px;margin-bottom:6px;border:1px solid #334155;">
-          <div style="font-size:12px;font-weight:600;">#${{num}} ${{f.label_en}}</div>
-          <button data-val="${{encodeURIComponent(f.value)}}" style="margin-top:4px;background:#0284c7;color:#fff;border:none;padding:4px 8px;border-radius:4px;cursor:pointer;font-size:11px;">Preencher Campo Ativo / Copiar</button>
+        const shortVal = f.value.length > 60 ? f.value.substring(0, 60) + '...' : f.value;
+        html += `<div class="am-card" data-key="${{f.key}}" data-label="${{f.label_en.toLowerCase()}}" style="background:#1e293b;padding:8px;border-radius:8px;margin-bottom:6px;border:1px solid #334155;">
+          <div style="font-size:11px;font-weight:700;color:#38bdf8;">#${{num}} ${{f.label_en}}</div>
+          <div style="font-size:10px;color:#cbd5e1;margin:2px 0 4px 0;max-height:30px;overflow:hidden;text-overflow:ellipsis;">${{shortVal}}</div>
+          <button class="am-fill-btn" data-val="${{encodeURIComponent(f.value)}}" style="background:#2563eb;color:#fff;border:none;padding:4px 8px;border-radius:4px;cursor:pointer;font-size:11px;font-weight:600;width:100%;">Preencher Campo Focado / Copiar</button>
         </div>`;
       }}
+      html += '</div></div>';
       dock.innerHTML = html;
       document.body.appendChild(dock);
+
+      // Toggle minimize
+      const minBtn = document.getElementById('am-min-btn');
+      const bodyDiv = document.getElementById('am-body');
+      minBtn.addEventListener('click', () => {{
+        isMinimized = !isMinimized;
+        bodyDiv.style.display = isMinimized ? 'none' : 'block';
+        minBtn.textContent = isMinimized ? 'Expandir' : 'Minimizar';
+        dock.style.width = isMinimized ? '200px' : '380px';
+      }});
+
+      // Search filter
+      const searchInput = document.getElementById('am-search');
+      searchInput.addEventListener('input', () => {{
+        const q = searchInput.value.toLowerCase().trim();
+        dock.querySelectorAll('.am-card').forEach(card => {{
+          const text = (card.getAttribute('data-key') + ' ' + card.getAttribute('data-label') + ' ' + card.innerText).toLowerCase();
+          card.style.display = (!q || text.includes(q)) ? 'block' : 'none';
+        }});
+      }});
+
+      // Expand all accordions
+      document.getElementById('am-expand-btn').addEventListener('click', () => {{
+        let clicked = 0;
+        document.querySelectorAll('div, button, [role="button"]').forEach(el => {{
+          const t = (el.textContent || '').trim();
+          if (t && (t.includes('ELIGIBILITY CRITERIA') || t.includes('SEARCHING') || t.includes('DATA COLLECTION') || t.includes('OUTCOMES') || t.includes('PLANNED DATA SYNTHESIS') || t.includes('CURRENT REVIEW STAGE') || t.includes('REVIEW AFFILIATION') || t.includes('ADDITIONAL INFORMATION') || t.includes('SIMILAR REVIEWS'))) {{
+            el.click();
+            clicked++;
+          }}
+        }});
+        alert(`Disparado comando de abertura em ${{clicked}} seções.`);
+      }});
 
       let lastFocused = null;
       document.addEventListener('focusin', (e) => {{
@@ -835,7 +977,7 @@ const {{ chromium }} = require('playwright');
         }}
       }});
 
-      dock.querySelectorAll('button[data-val]').forEach((btn) => {{
+      dock.querySelectorAll('.am-fill-btn').forEach((btn) => {{
         btn.addEventListener('click', () => {{
           const val = decodeURIComponent(btn.getAttribute('data-val'));
           navigator.clipboard.writeText(val);
@@ -845,9 +987,40 @@ const {{ chromium }} = require('playwright');
             lastFocused.dispatchEvent(new Event('input', {{ bubbles: true }}));
             lastFocused.dispatchEvent(new Event('change', {{ bubbles: true }}));
           }}
+          const orig = btn.textContent;
           btn.textContent = 'Preenchido & Copiado ✓';
           btn.style.background = '#16a34a';
+          setTimeout(() => {{ btn.textContent = orig; btn.style.background = '#2563eb'; }}, 2000);
         }});
+      }});
+
+      // Auto-fill visible fields
+      document.getElementById('am-autofill-btn').addEventListener('click', () => {{
+        let filledCount = 0;
+        const targets = Array.from(document.querySelectorAll('input:not([type="hidden"]):not([type="checkbox"]):not([type="radio"]), textarea'));
+        for (const input of targets) {{
+          if (input.id === 'am-search') continue;
+          if (input.value && input.value.trim().length > 10) continue;
+          
+          const parent = input.closest('.form-group, .field, div, section, tr, td');
+          const contextText = ((parent ? parent.innerText : '') + ' ' + (input.placeholder || '') + ' ' + (input.getAttribute('aria-label') || '') + ' ' + (input.name || '')).toLowerCase();
+          
+          for (const f of data.fields) {{
+            const keyWords = f.key.toLowerCase().split('_').filter(w => w.length > 3);
+            const labelWords = f.label_en.toLowerCase().split(/[^a-z0-9]+/).filter(w => w.length > 4);
+            const allWords = Array.from(new Set([...keyWords, ...labelWords]));
+            
+            if (allWords.some(w => contextText.includes(w))) {{
+              input.focus();
+              input.value = f.value;
+              input.dispatchEvent(new Event('input', {{ bubbles: true }}));
+              input.dispatchEvent(new Event('change', {{ bubbles: true }}));
+              filledCount++;
+              break;
+            }}
+          }}
+        }}
+        alert(filledCount > 0 ? `⚡ ${{filledCount}} campo(s) visível(is) preenchido(s) com sucesso!` : 'Nenhum campo visível sem preenchimento foi associado. Você pode clicar no campo e depois clicar em Preencher Campo Focado na barra lateral.');
       }});
     }});
   }}, payload);
@@ -861,7 +1034,15 @@ const {{ chromium }} = require('playwright');
     snapshot_path: snapPath,
     fields_loaded: payload.fields.length
   }}));
-  await browser.close();
+  if ({headless_js}) {{
+    await browser.close();
+  }} else {{
+    // Keep browser window open for user interaction and manual login / fill
+    await new Promise((resolve) => {{
+      browser.on('disconnected', resolve);
+      page.on('close', resolve);
+    }});
+  }}
 }})();
 """
     script_path.write_text(js_code, encoding="utf-8")

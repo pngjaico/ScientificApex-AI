@@ -1,11 +1,14 @@
 lane: evidence-writing
 guidelines:
+- STARD 2015
 - STROBE
-- TRIPOD+AI
+- TRIPOD+AI (secondary prediction models only)
 risk_of_bias_tools:
 - PROBAST+AI
 policy_labels:
-- observational
+- diagnostic-cohort-proposal
+- paired-aliquot-experiment-proposal
+- not-a-biomarker-guided-treatment-trial
 deliverables:
 - protocol
 - analysis

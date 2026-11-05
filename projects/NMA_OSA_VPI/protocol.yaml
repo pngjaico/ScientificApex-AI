@@ -31,5 +31,19 @@
     "verification_status": "not-verified",
     "report_source": "User statement in current assistant session; receipt, ID, date and submitted protocol unavailable today."
   },
-  "notes": "Protocol frozen for SIICUSP package after corrected extraction on 2026-05-14."
+  "notes": "Protocol frozen for SIICUSP package after corrected extraction on 2026-05-14.",
+  "additional_registrations": [
+    {
+      "registry": "OSF",
+      "registry_id": "f8z3k",
+      "registry_url": "https://osf.io/f8z3k/",
+      "registered_at": "2026-11-03T10:10:26.537986",
+      "status": "pending-embargo-approval",
+      "record_kind": "retrospective recovery protocol",
+      "prospective": false,
+      "snapshot_path": "context/registro_osf_20261103/registration_snapshot.json",
+      "snapshot_sha256": "510b43a80c4b7c314466a0ec8e9d56ad81ede91d0202786b04e246a72c1e60d6",
+      "author_authorized_submission": true
+    }
+  ]
 }

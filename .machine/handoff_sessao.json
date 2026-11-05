@@ -1,6 +1,6 @@
 {
   "contract": "AgentHandoffStateV1",
-  "updated_at": "2026-11-03T06:54:51-03:00",
+  "updated_at": "2026-11-05T12:59:00-03:00",
   "supported_agents": [
     "Antigravity",
     "Codex",
@@ -8,29 +8,31 @@
   ],
   "concurrency_mode": "STRICT_SEQUENTIAL_EXCLUSIVE",
   "concurrency_policy": "Nenhum agente deve ser executado simultaneamente ao outro. Apenas uma sessao ativa por vez.",
-  "active_project": "projects/mandaqui-ifabp-programa-2026",
-  "current_mode": "bootstrap",
+  "active_project": "projects/xai-liver-seer-oncology",
+  "current_mode": "protocol-freeze",
   "last_session": {
-    "agent": "Codex",
-    "timestamp": "2026-11-03T06:54:51-03:00",
-    "summary": "Preparacao de recuperacao metodologica NMA_OSA_VPI. Autor informou submissao PROSPERO pendente; nao presumir inexistencia de submissao nem registro final. Metadados corrigidos em protocol.yaml com backup e fingerprint substantivo preservado. Plano PT/EN, propostas para P01-P13, esquema de extracao e gate real em context/recuperacao_20261103. Sem nova sintese, extracao ou alteracao dos DOCX.",
-    "tests_status": "Local integrity checks passed; no runtime code changed",
-    "registration_gate": "blocked: final verified registration evidence absent",
-    "scientific_readiness": "not ready for submission",
-    "git_commit": "see scoped checkpoint commit"
+    "agent": "Antigravity",
+    "timestamp": "2026-11-05T12:59:00.000000-03:00",
+    "summary": "Mandato de Gratuidade Estrita e Acesso Aberto (US$ 0,00) incorporado formalmente à skill metodos-ml-clinico. Trilogia completa de Doutorado registrada com sucesso no OSF sob o schema oficial OSF Preregistration (29 itens TRIPOD+AI/PROBAST+AI): Estudo 1 (Brasil / SP + SUS, OSF pw9ed), Estudo 2 (EUA / SEER NCI, OSF uzwr2), Estudo 3 (Transcontinental Brasil vs EUA, OSF w9mnq). Scaffolds dos 3 projetos criados e auditados. Para o Estudo 2 (SEER NCI), construído o painel interativo de ingestão DUA (painel_assistente_seer.html), implementado o pipeline de Machine Learning (02_treinamento_xai_conformal.py com LightGBM monotônico, cobertura conformal MAPIE 1.6.0 de 94.49% e TreeSHAP), redigido o manuscrito bilíngue sem travessões e com disclosure canônico do Claude Opus 5.5, e testado com 100% de aprovação.",
+    "tests_status": "PASS (13/13 passing: 10 pipeline tests + 3 ML conformal tests)",
+    "machine_audit": "PASS (strict, 0 issues)",
+    "operational_graph": "PASS",
+    "workflow_plan": "ready",
+    "scientific_readiness": "ready: Trilogia OSF registrada (pw9ed, uzwr2, w9mnq), pipeline ML conformal operacional, manuscrito bilíngue concluído",
+    "git_commit": "checkpoint-trilogy-osf-and-seer-ml-conformal-pipeline"
   },
   "operational_entry_checklist": [
     "1. Verificar git status e git log -1 para entender a transicao anterior.",
     "2. Ler .machine/handoff_sessao.json e a ultima entrada de docs/HANDOFF_ENTRE_AGENTES.md.",
     "3. Executar auditoria: .\\.venv\\Scripts\\python.exe -m article_machine machine audit --workspace-root . --strict.",
-    "4. Consultar o grafo antes de navegar: .\\.venv\\Scripts\\python.exe -m graphify query \"<tarefa>\" --budget 1200.",
+    "4. Consultar o grafo antes de navegar: .\\.venv\\Scripts\\python.exe -m graphify query \"<tarefa>\" --budget 800.",
     "5. Trabalhar estritamente no escopo do projeto ativo declarado.",
     "6. Ao finalizar a sessao: registrar no handoff e realizar commit checkpoint."
   ],
   "next_recommended_actions": [
-    "Obter CRD/link/recibo e versao do protocolo efetivamente submetido quando o usuario puder; nao criar registro duplicado.",
-    "Reconciliar emenda proposta com protocolo submetido e cronologia; nao simular registro prospectivo.",
-    "Resolver gate de registro documentadamente antes de adjudicacao/extracao/sintese.",
-    "Aplicar propostas P01-P13 nas fontes canonicas apos verificacao; nao tratar propostas como correcoes ja propagadas."
+    "Solicitar credenciais gratuitas da base SEER NCI via https://seer.cancer.gov/data/access.html usando o texto em sources/seer_data_request_guide.md.",
+    "Ingerir a base real do SEER pelo painel interativo em sources/painel_assistente_seer.html.",
+    "Executar 01_pipeline_dados_seer.py e 02_treinamento_xai_conformal.py nos dados reais.",
+    "Avançar para Estudo 3 (xai-liver-transcontinental-transfer) integrando as bases Brasil (SP) e EUA (SEER)."
   ]
 }

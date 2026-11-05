@@ -1,0 +1,1 @@
+﻿DADOS E FIGURAS SINTETICOS gerados por simulacao para testar o pipeline. NAO sao UNOS/OPTN. NAO usar em manuscrito, slides ou claims.

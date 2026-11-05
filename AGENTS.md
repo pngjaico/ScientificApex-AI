@@ -1,5 +1,27 @@
 # AGENTS: ARTICLE MACHINE OPERATIONS
 
+## 1. Operação 100% Automática Machine-First
+Toda e qualquer conversa neste workspace é automaticamente uma sessão da Article Machine:
+1. Identifique imediatamente o projeto ativo em `.machine/handoff_sessao.json` ou o projeto citado pelo usuário.
+2. Todo o trabalho deve ocorrer estritamente contido em `projects/<project_id>/`.
+3. Nunca execute scripts improvisados soltos: use os comandos canônicos `.\.venv\Scripts\python.exe -m article_machine <command>`.
+
+## 2. Lean Context Protocol (Máximo Raciocínio, Zero Context Rot)
+Para manter o modelo operando no topo de sua capacidade cognitiva sem estourar tokens:
+- **Pointer-over-Dump**: NUNCA imprima tabelas brutas, CSVs completos ou textos extensos no chat. Execute scripts em Python/R que salvem os dados em `evidence/` ou `analysis/` e imprimam apenas um resumo de 5 a 10 linhas.
+- **Grafo Operacional Enxuto**: Para navegação no workspace, utilize `.\.venv\Scripts\python.exe -m graphify query "<pergunta>" --budget 800`.
+- **Respostas Diretas**: Use links no formato `file:///...` para apontar arquivos gerados. Não re-sumarize artefatos já exibidos na interface.
+
+## 3. Menu Rápido de Roteamento de Skills (7 Intenções)
+1. **Ideação, Hipóteses & Inovação**: `hypothesis-tournament`, `scientific-novelty-checker`.
+2. **Bancada, Validação & Pré-Clínico**: `article-machine bench template`, `analytical-method-validation`, `relsa-severity-assessment`, `pkpd-modeling`, `uncertainty-and-units`, `ontology-term-resolution`, `iso-standards-readiness`, `experimental-design-planner`.
+3. **Literatura Seminal & Corpus Landmark**: `article-machine landmark search/dissect/corpus-atlas`, Atlas dos 1000 Artigos (JAMA/Lancet/NEJM), `pubmed-database`.
+4. **Revisões Sistemáticas & Meta-Análise**: `meta-analise-medica`, `asreview-screening-bridge`, `risk-of-bias-assistant`, `grade-sof-table-builder`.
+5. **Machine Learning Clínico & IA**: `metodos-ml-clinico`, ambiente Python em `modelos/aprendizado_de_maquina_clinico/`.
+6. **Redação Bilíngue & Publicação 9 Pastas**: `.\.venv\Scripts\python.exe -m article_machine publish prepare <dir> --journal <revista>`, `bilingual-scientific-writing`, `anti-ai-writing-governor`.
+7. **Revisão Crítica, Auditoria Hostil & Aprendizado Contínuo**: `scientific-red-team-reviewer`, `manuscript-integrity-response-governor`, `machine-continuous-learner` (`/learn`), `.\.venv\Scripts\python.exe -m article_machine machine audit --strict`.
+
+
 ## Start Here
 - Read `.AGENTES` for the current five-catalog, bilingual, publication and mandatory protocol-registration policy; English counterpart: `docs/ingles/AGENTES_DA_MAQUINA.md`.
 - Read `docs/HANDOFF_ENTRE_AGENTES.md` and `.machine/handoff_sessao.json` for sequential multi-agent handoff state across Antigravity, Codex, and OpenCode.
@@ -94,6 +116,14 @@
 - Preferred local form on this machine: `.\.venv\Scripts\python.exe -m article_machine <command>`.
 - Equivalent console form only after editable install: `article-machine <command>`.
 - `article-machine init "<name>" --type <project_type>`
+- `article-machine bench template <project_dir> --assay <elisa|western|rt-qpcr|chiu|suzuki|teer|biobank>`
+- `article-machine bench sample-manifest <project_dir>`
+- `article-machine landmark search "<query>"`
+- `article-machine landmark dissect <pdf_path> --venue <nature|nejm|lancet|annals-surgery>`
+- `article-machine landmark corpus-plan <project_dir> [--count 1000]`
+- `article-machine landmark corpus-mine <project_dir>`
+- `article-machine landmark corpus-atlas <project_dir>`
+- `article-machine publish prepare <project_dir> --journal <slug>`
 - `article-machine preflight <project_dir>`
 - `article-machine ingest <project_dir> --source <value> --kind <file|url|doi|note>`
 - `article-machine context build <project_dir> --mode <mode> --hypothesis "..."`
@@ -110,6 +140,10 @@
 - `article-machine skills catalog`
 - `article-machine skills route --query "..."`
 - `article-machine skills audit`
+- `article-machine portal build <project_dir> [--firebase-project pharosreader]`
+- `article-machine portal deploy <project_dir>`
+- `article-machine portal sync <project_dir>`
+- `article-machine portal status <project_dir>`
 
 ## Conference Deliverables
 - Deliverables live under `projects/<project_id>/deliverables/<slug>/`.

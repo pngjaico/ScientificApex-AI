@@ -1,5 +1,26 @@
 # Local Agent Control Plane
 
+## 1. Operação 100% Automática Machine-First
+Toda conversa neste workspace é uma sessão da Article Machine:
+1. Obtenha o projeto ativo em `.machine/handoff_sessao.json`.
+2. Limite leituras e gravações a `projects/<project_id>/`.
+3. Use sempre `.\.venv\Scripts\python.exe -m article_machine <command>`.
+
+## 2. Lean Context Protocol (Anti-Context-Rot)
+- **Pointer-over-Dump**: Nunca despeje CSVs, logs brutos ou tabelas inteiras no chat; execute scripts que salvem em disco e resuma em 5-10 linhas.
+- **Grafo Enxuto**: Para consultas ao grafo operacional, use `--budget 800`.
+- **Respostas Diretas**: Links em `file:///...` sem re-sumarizar artefatos existentes.
+
+## 3. Roteamento Direto (7 Intenções)
+- **1. Hipóteses**: `hypothesis-tournament`, `scientific-novelty-checker`
+- **2. Bancada & Pré-Clínico**: `bench template`, `analytical-method-validation`, `relsa-severity-assessment`, `pkpd-modeling`, `uncertainty-and-units`, `ontology-term-resolution`, `iso-standards-readiness`, `experimental-design-planner`
+- **3. Landmark & Literatura**: `landmark search/dissect/corpus-atlas`, Atlas dos 1000 Artigos, `pubmed-database`
+- **4. Meta-Análise**: `meta-analise-medica`, `asreview-screening-bridge`
+- **5. ML Clínico**: `metodos-ml-clinico`, `modelos/aprendizado_de_maquina_clinico/`
+- **6. Redação & Publicação**: `publish prepare`, `bilingual-scientific-writing`, `anti-ai-writing-governor`
+- **7. Auditoria, Red Team & Aprendizado**: `scientific-red-team-reviewer`, `machine-continuous-learner` (`/learn`), `machine audit --strict`
+
+
 This `.agents` directory is the local handoff layer for agents entering
 `D:\Usuario-pc\Projetos\Doutorado`.
 

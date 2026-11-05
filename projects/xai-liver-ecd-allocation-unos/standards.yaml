@@ -1,0 +1,181 @@
+contract_version: 2
+project_type: prediction-model
+lane: evidence-writing
+guidelines:
+- TRIPOD+AI
+- PROBAST+AI
+risk_of_bias_tools:
+- PROBAST+AI
+policy_labels:
+- prediction
+- machine-learning-clinical
+- organ-allocation
+- high-rigor
+deliverables:
+- protocol
+- analysis
+- claim map
+- manuscript
+- review report
+registration_policy:
+  required: true
+  timing: before-scientific-work
+  accepted_registries:
+  - OSF
+  - Zenodo
+  verification_required: true
+  rationale: 'Clinical prediction models and machine learning protocols must be preregistered (e.g. on OSF) prior to model freezing to guarantee reproducibility and prevent analytical dredging.'
+checklist_status:
+  TRIPOD+AI:
+    status: in-progress
+    items:
+    - id: item_1_title
+      name: Title
+      description: Identification as a prediction model developed/validated using AI/ML, specifying target population and outcome.
+      status: addressed
+      location: protocol.yaml / drafts/
+    - id: item_2_abstract
+      name: Abstract
+      description: Structured summary covering Background, Objectives, Methods, Results, Conclusions.
+      status: planned
+      location: drafts/portugues/resumo.md & drafts/ingles/abstract.md
+    - id: item_3_rationale
+      name: Background and Rationale
+      description: Medical context of ECD liver allocation, failure of linear scores (DRI, ET-DRI, BAR, D-MELD), need for non-linear ML and conformal UQ.
+      status: addressed
+      location: protocol.yaml / drafts/
+    - id: item_4_objectives
+      name: Objectives
+      description: Specific study objectives and intended clinical role (decision support at organ offer).
+      status: addressed
+      location: protocol.yaml
+    - id: item_5_data_source
+      name: Source of Data
+      description: UNOS/OPTN STAR registry dataset (2010-2025), study design and ethics/IRB exemption.
+      status: addressed
+      location: protocol.yaml
+    - id: item_6_participants
+      name: Eligibility and Selection
+      description: Inclusion of adult deceased-donor liver transplants (DBD/DCD), exclusion of multi-organ and retransplants.
+      status: addressed
+      location: protocol.yaml
+    - id: item_7_outcomes
+      name: Outcome Definition
+      description: Primary 90-day and 1-year graft failure (death-censored and all-cause), 3/5-year secondary outcomes.
+      status: addressed
+      location: protocol.yaml
+    - id: item_8_predictors
+      name: Predictors Specification
+      description: Donor, recipient, and graft matching variables strictly available before donor organ acceptance.
+      status: addressed
+      location: protocol.yaml
+    - id: item_9_sample_size
+      name: Sample Size and Power
+      description: Number of events, effective sample size, and EPV calculations.
+      status: addressed
+      location: protocol.yaml
+    - id: item_10_missing_data
+      name: Missing Data Strategy
+      description: Analysis of missingness patterns, mechanism, and handling via MICE/gradient boosted trees native routing.
+      status: addressed
+      location: protocol.yaml
+    - id: item_11_ai_methods_dev
+      name: AI Methods - Development
+      description: Baseline penalized regression (ElasticNet) vs Gradient Boosted Trees (LightGBM, XGBoost).
+      status: addressed
+      location: protocol.yaml / analysis/
+    - id: item_12_ai_specification
+      name: AI Model Specification
+      description: Hyperparameter optimization via nested 5-fold cross-validation with Optuna; prevention of data leakage.
+      status: addressed
+      location: protocol.yaml / analysis/
+    - id: item_13_performance_metrics
+      name: Performance Metrics
+      description: Discrimination (AUROC, PR-AUC), calibration (intercept, slope, Brier, ICI), and Decision Curve Analysis.
+      status: addressed
+      location: protocol.yaml / analysis/
+    - id: item_14_uncertainty_quantification
+      name: Uncertainty Quantification
+      description: MAPIE split-conformal prediction sets with guaranteed 95% marginal and conditional coverage.
+      status: addressed
+      location: protocol.yaml / analysis/
+    - id: item_15_explainability
+      name: Explainability (XAI)
+      description: TreeSHAP local values and 2nd-order non-linear interaction matrices (e.g. Donor Age x Recipient MELD).
+      status: addressed
+      location: protocol.yaml / analysis/
+    - id: item_16_risk_groups
+      name: Risk Stratification
+      description: Clinically meaningful risk strata and decision thresholds for organ allocation.
+      status: addressed
+      location: protocol.yaml
+    - id: item_17_validation_design
+      name: Validation Design
+      description: Temporal holdout (2021-2025) and internal-external geographic cross-validation (11 UNOS regions).
+      status: addressed
+      location: protocol.yaml
+    - id: item_18_flowchart
+      name: Flowchart
+      description: Flow diagram of participant selection and partition counts.
+      status: planned
+      location: figures/figura_01_prisma_participant_flow.png
+    - id: item_19_baseline_characteristics
+      name: Baseline Characteristics
+      description: Comprehensive Table 1 across training, temporal holdout, and regional splits.
+      status: planned
+      location: analysis/tabela_01_baseline_characteristics.csv
+    - id: item_20_model_parameters
+      name: Model Parameters and Importance
+      description: Final tuned parameters, SHAP summary global plots and feature rankings.
+      status: planned
+      location: figures/figura_02_shap_summary.png
+    - id: item_21_performance_results
+      name: Performance Results
+      description: Numerical discrimination and calibration results compared to DRI, ET-DRI, BAR, and D-MELD.
+      status: planned
+      location: analysis/results_ledger.json
+    - id: item_22_conformal_results
+      name: Conformal Prediction Results
+      description: Prediction set size distributions and empirical coverage analysis across recipient subgroups.
+      status: planned
+      location: analysis/conformal_coverage_audit.json
+    - id: item_23_clinical_utility_results
+      name: Clinical Utility Results
+      description: Net Benefit curves (DCA) and simulated organ discard reduction / rescue metrics.
+      status: planned
+      location: figures/figura_03_decision_curve_analysis.png
+    - id: item_24_limitations
+      name: Discussion - Limitations
+      description: Registry data quality, unmeasured confounding, survival bias, lack of randomized trial.
+      status: addressed
+      location: drafts/
+    - id: item_25_interpretation
+      name: Discussion - Interpretation
+      description: Clinical meaning of learned non-linearities and synergy with organ preservation techniques (HOPE/NMP).
+      status: addressed
+      location: drafts/
+    - id: item_26_implications
+      name: Clinical Implications
+      description: Potential impact on UNOS/OPTN allocation policy, reduction of organ discard, ethical considerations.
+      status: addressed
+      location: drafts/
+    - id: item_27_governance_info
+      name: Protocol, Code & Declarations
+      description: Protocol registration, code availability, data availability, and canonical Claude Opus 5.5 AI disclosure.
+      status: addressed
+      location: protocol.yaml / drafts/
+  PROBAST+AI:
+    status: in-progress
+    domains:
+    - domain: 1_participants
+      status: low_risk
+      rationale: National population registry (UNOS/OPTN) with exhaustive unselected adult liver transplants; clear eligibility criteria.
+    - domain: 2_predictors
+      status: low_risk
+      rationale: Predictors strictly defined and recorded prior to transplant/at donor organ offer; zero future leakage.
+    - domain: 3_outcome
+      status: low_risk
+      rationale: Objective, standardized definitions of graft failure and patient survival tracked with national vital status registries.
+    - domain: 4_analysis
+      status: low_risk
+      rationale: Large sample size (>50k cases), nested cross-validation, hyperparameter tuning isolated inside inner folds, flexible calibration modeling, conformal prediction, DCA, comparison with standard baselines.

@@ -14,6 +14,7 @@ PLUGIN_CAPABILITIES = {
     "life-science-research": ("biomedical discovery", "life-science-router", "database-lookup"),
     "ngs-analysis": ("sequencing", "ngs-analysis-router", "nextflow-pipeline-runner"),
     "zotero": ("references and attachments", "zotero-reference-manager", "citation-management"),
+    "science": ("scientific research & discovery", "life-science-router", "biomolecular_structure_viewer"),
 }
 
 
@@ -30,6 +31,18 @@ def discover_plugin_candidates(plugin_id: str, cache_root: Path | None = None) -
         candidates.extend(
             version for version in sorted(folder.iterdir()) if version.is_dir() and (version / "skills").is_dir()
         )
+
+    # Also discover Google Antigravity installed plugins
+    ag_root = Path(os.environ.get("ANTIGRAVITY_PLUGINS", str(Path.home() / ".gemini" / "config" / "plugins")))
+    if ag_root.is_dir():
+        ag_folder = ag_root / plugin_id
+        if ag_folder.is_dir() and (ag_folder / "skills").is_dir():
+            candidates.append(ag_folder)
+        elif plugin_id in ("life-science-research", "science"):
+            science_dir = ag_root / "science"
+            if science_dir.is_dir() and (science_dir / "skills").is_dir() and science_dir not in candidates:
+                candidates.append(science_dir)
+
     return candidates
 
 

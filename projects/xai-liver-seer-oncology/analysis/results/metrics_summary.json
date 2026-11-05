@@ -1,0 +1,63 @@
+{
+  "study": "XAI-Liver-SEER-Oncology",
+  "osf_registration": "https://osf.io/uzwr2/",
+  "cohort_sizes": {
+    "development_2000_2015": 1810,
+    "temporal_validation_2016_2021": 690,
+    "train_split": 1448,
+    "conformal_calibration_split": 362
+  },
+  "nested_cross_validation_5fold": {
+    "mean_auroc": 0.7297,
+    "mean_brier_score": 0.2097
+  },
+  "temporal_external_validation": {
+    "model_auroc": 0.714,
+    "milan_criteria_auroc": 0.5801,
+    "auroc_delta_vs_milan": 0.1339,
+    "model_brier_score": 0.2147
+  },
+  "split_conformal_prediction_mapie": {
+    "target_confidence_level": 0.95,
+    "target_marginal_coverage": 0.95,
+    "empirical_coverage_achieved": 0.9449,
+    "coverage_guarantee_met": true,
+    "prediction_set_breakdown": {
+      "singleton_survival_0_percent": 16.67,
+      "singleton_mortality_1_percent": 10.58,
+      "ambiguous_uncertain_percent": 72.75,
+      "empty_percent": 0.0
+    }
+  },
+  "clinical_decision_curve_analysis": {
+    "evaluation_threshold_range": "[0.10, 0.50]",
+    "net_benefit_ml_superior_to_milan": true
+  },
+  "top_predictive_features_shap": [
+    {
+      "feature": "vascular_invasion_code",
+      "mean_abs_shap": 0.53662,
+      "monotone_constraint": 1
+    },
+    {
+      "feature": "tumor_size_cm",
+      "mean_abs_shap": 0.46658,
+      "monotone_constraint": 1
+    },
+    {
+      "feature": "is_transplant",
+      "mean_abs_shap": 0.39134,
+      "monotone_constraint": -1
+    },
+    {
+      "feature": "afp_elevated",
+      "mean_abs_shap": 0.28956,
+      "monotone_constraint": 1
+    },
+    {
+      "feature": "nodule_count",
+      "mean_abs_shap": 0.24191,
+      "monotone_constraint": 1
+    }
+  ]
+}
