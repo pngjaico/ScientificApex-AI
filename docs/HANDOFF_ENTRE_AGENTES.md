@@ -381,3 +381,39 @@ Copie e preencha este bloco ao final de cada intervencao:
      - Manuscritos em português e inglês estruturados sob paridade bilíngue.
      - Preflight report: `status: passed` (0 issues).
   5. **Auditoria Geral:** `article_machine machine audit --workspace-root . --strict` com status `pass` (0 issues).
+
+
+---
+
+## [2026-11-05 14:00] Sessão Antigravity: NMA de Perfusão Hepática 2027 (100% Corpus, Síntese R, Peer Review e Entrega no Google Drive)
+- **Agente Responsável:** Google Antigravity
+- **Projeto Alvo:** `projects/liver-perfusion-hope-vs-nmp-nma-2027`
+- **Ações Realizadas:**
+  1. **Corpus 100% Concluído e Auditado (100 Estudos):**
+     - 95 textos completos recuperados e extraídos em texto (`sources/extracted/`).
+     - 5 estudos não recuperados catalogados com justificativas itemizadas formais sob o item 16b do PRISMA 2020.
+     - 68 estudos de texto completo excluídos com motivos granulares (24 pré-clínicos/animais, 28 revisões/editoriais, 14 consensos/guidelines, 2 comparações de soluções estáticas sem perfusão).
+     - 27 estudos clínicos comparativos incluídos (13 ensaios clínicos randomizados e 14 coortes emparelhadas por escore de propensão, totalizando 4.149 receptores de transplante hepático).
+  2. **Network Meta-Análise Canônica em R 4.6.1 (`netmeta` + `metafor`):**
+     - NAS (Estenoses Biliares Não-Anastomóticas, k=25, N=3.603): HOPE vs SCS (OR 0.46, IC 95% 0.32-0.67, p < 0.0001; I² = 0.0%; alta certeza), NRP vs SCS (OR 0.28, p = 0.0059), NMP vs SCS (OR 0.51, p = 0.0123). Inconsistência global Q = 0.31, p = 0.8558. P-scores: NRP (0.9222) > HOPE (0.5878) > NMP (0.4869) > SCS (0.0031).
+     - EAD (Disfunção Inicial do Enxerto, k=23, N=3.475): HOPE vs SCS (OR 0.45, p < 0.0001), NMP vs SCS (OR 0.42, p < 0.0001), NRP vs SCS (OR 0.16, p = 0.0002). HOPE vs NMP: OR 1.08 (p = 0.752, equivalência biológica). P-scores: NRP (0.9868) > NMP (0.5497) > HOPE (0.4634) > SCS (0.0000).
+     - Perda do Enxerto em 1 Ano (k=25, N=3.603): HOPE vs SCS (OR 0.65, p = 0.0122), NMP vs SCS (OR 0.61, p = 0.0396), NRP vs SCS (OR 0.49, p = 0.0454), I² = 0.0%, inconsistência Q = 0.39, p = 0.8238.
+  3. **Restauração Gráfica Oficial e Formatos Vetoriais:**
+     - Figura 1 (PRISMA 2020 Flowchart): Layout oficial do pacote R `PRISMA2020` exportado em PNG ultra nítido 3000px e SVG vetorial.
+     - Figura 2 (Geometria da Rede): Grafo em `ggplot2` com nós proporcionais a N e arestas a k, sem sobreposição de rótulos.
+     - Figura 3 (Forest Plot Multi-Desfechos): Painel com ORs, ICs 95%, p-valores e P-scores para EAD, NAS e perda do enxerto.
+     - Figura 4 (Rankings P-score/SUCRA): Gráfico de barras horizontais agrupadas com distintivos de classificação.
+     - Figuras 5A, 5B e 6 (Risco de Viés via `robvis`): Resumo e traffic light do Cochrane RoB 2 (13 RCTs) e resumo ROBINS-I (14 coortes).
+  4. **Bibliografia Canônica e Seção de Referências:**
+     - Arquivo BibTeX unificado (`drafts/references.bib` e `02_busca_e_referencias/referencias_bibliograficas_27_estudos.bib`) contendo os 27 estudos clínicos e 10 citações metodológicas seminais (Page 2021, Hutton 2015, Sterne 2019, Sterne 2016, Rücker 2015, Salanti 2014, Olthoff 2005, Clavien 2004, Guyatt 2011, Shea 2017).
+     - Seção 6 de Referências Bibliográficas em formato AMA/Vancouver integrada aos manuscritos em inglês e português.
+  5. **Pareceres de Revisão por Pares (Peer Review Trinity):**
+     - Parecer oficial independente do revisor para o *American Journal of Transplantation* gerado em inglês (`formal_peer_review_report_ajt_2026-11-05_v01.md`) e em português (`relatorio_parecerista_peer_review_ajt_2026-11-05_v01.md`).
+     - Relatórios metodológicos pesados (AMSTAR-2, PRISMA-NMA) e checklists auditados com aprovação.
+  6. **Entrega no Google Drive (Conta pngjaico@gmail.com):**
+     - Pasta dedicada criada: `Liver Perfusion NMA 2027 - Submissao AJT (Pacote Editorial Completo)`.
+     - ID da pasta: `1nR-E76xCPpZaOxHo3qKeVEZXVEv-Bj4E`.
+     - Link direto: https://drive.google.com/drive/folders/1nR-E76xCPpZaOxHo3qKeVEZXVEv-Bj4E
+     - Conteúdo organizado em 7 subpastas numeradas com todos os 35+ arquivos editoriais transferidos e verificados.
+  7. **Auditoria de Máquina:**
+     - `article-machine machine audit --workspace-root . --strict`: STATUS PASS (0 issues).
