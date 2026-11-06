@@ -12,7 +12,12 @@ pytest.importorskip("lightgbm")
 pytest.importorskip("mapie")
 pytest.importorskip("shap")
 
-ML_PIPELINE_PATH = Path("projects/xai-liver-seer-oncology/analysis/02_treinamento_xai_conformal.py")
+CANDIDATE_PATHS = [
+    Path("analysis/seer/02_treinamento_xai_conformal.py"),
+    Path("projects/xai-liver-seer-oncology/analysis/02_treinamento_xai_conformal.py"),
+    Path("../projects/xai-liver-seer-oncology/analysis/02_treinamento_xai_conformal.py"),
+]
+ML_PIPELINE_PATH = next((p for p in CANDIDATE_PATHS if p.exists()), CANDIDATE_PATHS[1])
 
 
 @pytest.fixture
