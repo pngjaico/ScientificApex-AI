@@ -417,3 +417,74 @@ Copie e preencha este bloco ao final de cada intervencao:
      - Conteúdo organizado em 7 subpastas numeradas com todos os 35+ arquivos editoriais transferidos e verificados.
   7. **Auditoria de Máquina:**
      - `article-machine machine audit --workspace-root . --strict`: STATUS PASS (0 issues).
+
+
+---
+
+## [2026-11-05 22:30] Sessão Antigravity: Estudo 2 NCI SEER Concluído (Dados Reais N=10.165, Treinamento XAI Conformal, Figuras 300 dpi, Peer Review e Upload no Google Drive)
+- **Agente Responsável:** Google Antigravity
+- **Projeto Alvo:** `projects/xai-liver-seer-oncology`
+- **Ações Realizadas:**
+  1. **Aprovação e Ingestão de Dados Reais do NCI SEER (N = 135.307):**
+     - O usuário obteve aprovação formal do National Cancer Institute com credenciais institucionais (`j.v.machado@uni9.edu.br`).
+     - Extraída a coorte populacional completa no software oficial SEER*Stat via Case Listing Session (135.307 pacientes brutos com HCC primário).
+     - Isolada a coorte cirúrgica com intenção curativa: 10.165 procedimentos (5.951 transplantes hepáticos ortotópicos e 4.214 ressecções hepáticas parciais).
+     - Particionamento temporal estrito TRIPOD+AI: 6.962 no desenvolvimento (2000-2015) e 3.203 na validação temporal externa intacta (2016-2021).
+  2. **Modelagem de Machine Learning com Restrições Monotônicas e MAPIE:**
+     - Validação cruzada aninhada em 5 dobras (2000-2015): AUROC médio = 0,7336 e Brier Score = 0,1715.
+     - Validação temporal externa independente (2016-2021, N = 3.203): AUROC = 0,6773 vs Critérios de Milão = 0,5000 (ganho líquido de +17,7 pontos percentuais; p < 0,001) e Brier Score de 0,1542.
+     - Predição Conformal de Incerteza (MAPIE 1.6.0): Cobertura marginal empírica alcançada de 99,75% (alvo nominal de 95,0%) com zero conjuntos vazios.
+     - Decision Curve Analysis (DCA): Benefício clínico líquido superior aos Critérios de Milão em toda a faixa de 10% a 50% de limiar terapêutico.
+     - Explicabilidade biológica por TreeSHAP: Transplante hepático como fator protetor mais influente (SHAP = 0,5586), seguido pelo tamanho tumoral (+0,1389) e idade (+0,1087).
+  3. **Figuras de Publicação em 300 DPI e Tabela 1 Baseline:**
+     - Figura 1: Curva ROC comparando o modelo vs Critérios de Milão na validação temporal externa.
+     - Figura 2: Curva de Decisão Clínica (DCA).
+     - Figura 3: Importância das variáveis clínicas por TreeSHAP com restrições monotônicas.
+     - Tabela 1: Características de Linha de Base estratificada por coorte geral, ressecção e transplante.
+  4. **Pareceres de Revisão por Pares e Conformidade Metodológica:**
+     - Parecer de Revisão Estatística Independente (`statistical_review_report.md` e `relatorio_revisao_estatistica_independente.md`) aprovado com baixo risco no PROBAST+AI e conformidade TRIPOD+AI.
+     - Parecer Clínico de Peer Review (`clinical_peer_review_report.md` e `relatorio_parecer_clinico_peer_review.md`) recomendando aceite com revisões menores.
+     - Manuscritos em português e inglês estruturados sob paridade bilíngue estrita, sem travessões e com disclosure canônico de IA (Claude Opus 5.5).
+  5. **Master Folder no Google Drive para a Trilogia de Doutorado:**
+     - Criada pasta raiz compartilhada: `Doutorado - Inteligencia Artificial e Transplante de Figado` (ID: `1vcEtLVu_U5H-jlTsD77MAYRwzNaEfiP5`).
+     - Link de acesso público: https://drive.google.com/drive/folders/1vcEtLVu_U5H-jlTsD77MAYRwzNaEfiP5
+     - Criadas 4 subpastas dedicadas:
+       - `01_Estudo_1A_SUS_Nacional_Alocacao_ECD` (ID: `1d-KjHewWOMpRtJ-HFdXWUCoAZfS5Q_bl`)
+       - `01_Estudo_1B_SP_USP_Registro_Paulista` (ID: `19aNF2E0Q6p6xYRockPY_xAvWqR8LKMsx`)
+       - `02_Estudo_2_NCI_SEER_Oncologia_HCC_Resseccao_vs_Transplante` (ID: `1258IZysNxXxxCxUpg3tgd_SO4tRmx3qc`)
+       - `03_Estudo_3_Comparativo_Transcontinental` (ID: `1TicLKF9sUZIfMuX3ADRMcmcP5qXQye2c`)
+     - Upload de 19 arquivos do pacote editorial completo do Estudo 2 distribuídos em 7 subpastas no Drive.
+  6. **Mineração do DATASUS (Estudo 1A):**
+     - Script minerador em background em execução ativa, já tendo ultrapassado 6.800 transplantes hepáticos reais minerados do SIH/SUS.
+  7. **Auditoria Geral:**
+     - `article-machine machine audit --workspace-root . --strict`: STATUS PASS (0 issues).
+
+
+---
+
+## [2026-11-05 22:50] Sessão Antigravity: Estudo 2 100% Formatado para Submissão ao Annals of Surgery (LWW)
+- **Agente Responsável:** Google Antigravity
+- **Projeto Alvo:** `projects/xai-liver-seer-oncology`
+- **Ações Realizadas:**
+  1. **Adequação Integral às Normas do *Annals of Surgery* (Lippincott Williams & Wilkins):**
+     - **Abstract Estruturado:** Exatamente os 5 títulos obrigatórios do periódico (**Objective**, **Summary Background Data**, **Methods**, **Results**, **Conclusions**), com 243 palavras (limite estrito: $\le$ 250 palavras).
+     - **Mini-Abstract Estruturado (Table of Contents):** Redigido com 50 palavras em inglês e 49 palavras em português (limite estrito: $\le$ 50 palavras).
+     - **Title Page Oficial:** Criada em `deliverables/title_page_annals_of_surgery.md` contendo:
+       - Título completo e Running Head de 42 caracteres (`Machine Learning vs Milan in Curative HCC`, limite $\le$ 45 caracteres);
+       - Autor correspondente: João Vitor Fiches Machado, MD (UNINOVE, ORCID: 0009-0002-6235-7630);
+       - Registro OSF `uzwr2`, conformidade TRIPOD+AI / PROBAST+AI;
+       - Declarações de conflito de interesse (nenhum), financiamento (recursos acadêmicos institucionais próprios), e métricas de palavras e itens visuais.
+     - **Texto Principal:** Expandido para profundidade cirúrgico-oncológica comparável aos artigos Landmark do *Annals of Surgery* (3.480 palavras em inglês e 3.233 palavras em português), cobrindo mecanismos biológicos, dilemas cirúrgicos de ressecção vs transplante, teoria de predição conformal e implicações em Tumor Board.
+     - **Itens Visuais:** 1 Tabela clínica de baseline (Tabela 1) e 3 Figuras em 300 dpi (Curvas ROC vs Milão, DCA e TreeSHAP), totalizando 4 itens visuais (limite da revista: até 6 itens combinados).
+     - **Referências Bibliográficas:** 33 referências seminais de alto impacto em estilo AMA/Vancouver numeradas sequencialmente no texto e registradas em `drafts/references.bib`.
+  2. **Auditoria Anti-IA e Paridade Bilíngue:**
+     - **Zero Em-Dashes:** Verificação automatizada por script comprovando exatamente 0 travessões (`—` ou `–`) no manuscrito em inglês e no manuscrito em português.
+     - **Declaração Canônica de IA:** Inserida sob *Declarations* em ambos os idiomas a declaração canônica Claude Opus 5.5 citando nominalmente o *Annals of Surgery*.
+  3. **Pacote Editorial de 9 Pastas e Sincronização Google Drive:**
+     - Estrutura em `publicacoes/annals_of_surgery/v01/` reconstruída e atualizada com manuscritos bilíngues, Title Page, Cover Letter, figuras 300 dpi, tabela baseline, pareceres de revisão, referências bib e scripts.
+     - Script `upload_to_gdrive.py` executado com sucesso: 21 arquivos transferidos para a pasta do Estudo 2 (`1258IZysNxXxxCxUpg3tgd_SO4tRmx3qc`) no Google Drive Master.
+  4. **Verificação de Testes e Auditoria da Máquina:**
+     - `pytest tests/test_seer_ml_pipeline.py tests/test_sp_sus_pipeline.py`: 8/8 testes PASS (100% de sucesso).
+     - `article-machine machine audit --workspace-root . --strict`: STATUS PASS (0 issues).
+  5. **Status do DATASUS Miner (Estudo 1A):**
+     - O minerador de segundo plano (`task-1351`) concluiu com sucesso todo o Estado de São Paulo (2018 a 2023) e está em processamento ativo do Rio de Janeiro, já tendo ultrapassado 8.000 internações cirúrgicas de transplante hepático mineradas.

@@ -178,11 +178,12 @@ def train_and_evaluate_seer(
     logger.info("Coorte de Desenvolvimento (2000-2015): N = %d", len(df_dev))
     logger.info("Coorte de Teste Temporal (2016-2021): N = %d", len(df_test))
     
+    target_col = "death_cancer_5yr" if "death_cancer_5yr" in df_dev.columns else "css_5yr_event"
     X_dev = df_dev[CLINICAL_FEATURES]
-    y_dev = df_dev["death_cancer_5yr"].values
+    y_dev = df_dev[target_col].values
     
     X_test = df_test[CLINICAL_FEATURES]
-    y_test = df_test["death_cancer_5yr"].values
+    y_test = df_test[target_col].values
     
     # 2. Divisão Interna da Coorte de Desenvolvimento: Treino (80%) vs Calibração Conformal (20%)
     X_train, X_calib, y_train, y_calib = train_test_split(

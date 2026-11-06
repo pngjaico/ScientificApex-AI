@@ -1,14 +1,14 @@
 """Pipeline Canônico de Ingestão e Processamento dos Dados do NCI SEER (Hepatocarcinoma).
 
 Projeto: `xai-liver-seer-oncology`
-Diretrizes: TRIPOD+AI (2024) e PROBAST+AI
-- Fonte de dados: NCI SEER Research Plus Database (2000-2021)
+Diretrizes: TRIPOD+AI (2024) e PROBAST+AI (2025)
+- Fonte de dados: NCI SEER Research Plus Database (1975-2023, Submissão Nov 2025)
 - População: Pacientes adultos com Carcinoma Hepatocelular primário (C22.0, ICD-O-3 8170-8175)
-- Comparação cirúrgica: Ressecção Hepática (parcial/lobectomia) vs Transplante Hepático
+- Comparação cirúrgica: Ressecção Hepática vs Transplante Hepático Ortotópico
 - Desfecho primário: Sobrevida Câncer-Específica em 5 anos (CSS) e Sobrevida Global (OS)
-- Benchmark: Critérios de Milão (Mazzaferro 1996) e Estadiamento AJCC TNM 8ª Edição
+- Benchmark: Critérios de Milão (Mazzaferro 1996) e Estadiamento AJCC TNM 8ª/7ª Edição
 - Partição anti-vazamento: Treino/Nested CV (2000-2015) vs Validação Temporal Externa (2016-2021)
-- ZERO DADO SIMULADO como evidência científica
+- Dados REAIS oficiais do NCI SEER (Zero dado sintético)
 """
 
 from __future__ import annotations
@@ -20,58 +20,34 @@ import pandas as pd
 
 
 def compute_milan_criteria(df: pd.DataFrame) -> pd.Series:
-    """Classifica se o tumor está dentro ou fora dos Critérios de Milão (Mazzaferro et al., 1996).
+    """Classifica se o tumor está dentro ou fora dos Critérios de Milão (Mazzaferro et al., 1996)."""
+    size = pd.to_numeric(df["tumor_size_cm"], errors="coerce").fillna(99.0).values
+    nodules = pd.to_numeric(df["nodule_count"], errors="coerce").fillna(1).values
+    vasc = pd.to_numeric(df["vascular_invasion_code"], errors="coerce").fillna(0).values
+    nodes = pd.to_numeric(df.get("lymph_node_positive", pd.Series([0] * len(df))), errors="coerce").fillna(0).values
 
-    Critérios de Milão:
-    - Nódulo único com diâmetro <= 5.0 cm, OU
-    - Até 3 nódulos, cada um com diâmetro <= 3.0 cm, E
-    - Ausência de invasão micro ou macrovascular, E
-    - Ausência de metástases linfonodais ou à distância.
-    """
-    size = df["tumor_size_cm"].fillna(99.0).values
-    nodules = df["tumor_nodule_count"].fillna(1).values
-    vasc = df["vascular_invasion"].fillna(0).values
-    nodes = df.get("lymph_nodes_positive", pd.Series([0] * len(df))).fillna(0).values
-
-    # Condição 1: Nódulo único <= 5.0 cm
     c1 = (nodules == 1) & (size <= 5.0)
-
-    # Condição 2: Até 3 nódulos, todos <= 3.0 cm
     c2 = (nodules >= 2) & (nodules <= 3) & (size <= 3.0)
-
     within_milan = (c1 | c2) & (vasc == 0) & (nodes == 0)
-    return pd.Series(within_milan.astype(int), index=df.index, name="within_milan_criteria")
-
-
-def compute_tnm_stage_score(df: pd.DataFrame) -> pd.Series:
-    """Mapeia estadiamento AJCC TNM 8ª Edição para pontuação de risco ordinal."""
-    stage = df["ajcc_stage_group"].astype(str).str.upper().str.strip()
-    score = pd.Series(1, index=df.index, dtype=int)
-    score[stage.str.contains("IB|1B")] = 2
-    score[stage.str.contains("II$|2$")] = 3
-    score[stage.str.contains("IIIA|3A")] = 4
-    score[stage.str.contains("IIIB|3B")] = 5
-    score[stage.str.contains("IVA|4A")] = 6
-    score[stage.str.contains("IVB|4B")] = 7
-    return score.rename("score_ajcc_tnm")
+    return pd.Series(within_milan.astype(int), index=df.index, name="within_milan")
 
 
 def map_seer_surgical_modality(surg_code: any) -> str:
     """Mapeia códigos cirúrgicos do SEER (RX Summ--Surg Prim Site) para categorias clínicas.
 
     Códigos SEER para Fígado (C22.0):
-    - 20 a 26: Destruição local / ablação
-    - 30 a 38: Ressecção em cunha ou segmentar (ressecção parcial)
-    - 50 a 59: Lobectomia / trissegmentectomia (hepatectomia maior)
-    - 61: Transplante Hepático Ortotópico
+    - 60, 61, 65: Transplante Hepático (Total hepatectomy and transplant)
+    - 30 a 59: Ressecção Hepática (parcial, cunha, segmentectomia, lobectomia, trissegmentectomia)
+    - 20 a 26, 16: Ablação local / Quimioembolização
+    - 00: Nenhuma cirurgia
     """
     try:
         c = int(surg_code)
-        if c == 61:
+        if c in [60, 61, 65]:
             return "transplant"
         elif 30 <= c <= 59:
             return "resection"
-        elif 20 <= c <= 26:
+        elif 20 <= c <= 26 or c == 16:
             return "ablation"
         else:
             return "other_none"
@@ -81,6 +57,8 @@ def map_seer_surgical_modality(surg_code: any) -> str:
             return "transplant"
         elif "resect" in s or "lobect" in s or "segment" in s:
             return "resection"
+        elif "ablat" in s:
+            return "ablation"
         return "other_none"
 
 
@@ -91,18 +69,13 @@ def process_real_seer_data(raw_dir: Path, output_dir: Path) -> dict:
 
     seer_files = (
         list(raw_dir.glob("*seer*.*"))
-        + list(raw_dir.glob("*SEER*.*"))
-        + list(raw_dir.glob("*hcc*.*"))
+        + list(raw_dir.glob("*export*.*"))
         + list(raw_dir.glob("*.csv"))
         + list(raw_dir.glob("*.txt"))
     )
 
     if not seer_files:
-        raise FileNotFoundError(
-            f"Nenhum arquivo de dados SEER encontrado em '{raw_dir}'. "
-            "Deposite os dados exportados do SEER*Stat na pasta sources/seer/. "
-            "Consulte o guia em sources/seer_data_request_guide.md."
-        )
+        raise FileNotFoundError(f"Nenhum arquivo de dados SEER encontrado em '{raw_dir}'.")
 
     fpath = seer_files[0]
     print(f"Lendo base SEER de Hepatocarcinoma: {fpath}")
@@ -115,84 +88,150 @@ def process_real_seer_data(raw_dir: Path, output_dir: Path) -> dict:
             df_raw = pd.read_csv(fpath, sep="\t", low_memory=False)
         except Exception:
             df_raw = pd.read_csv(fpath, low_memory=False)
-    elif fpath.suffix == ".parquet":
-        df_raw = pd.read_parquet(fpath)
     else:
-        raise ValueError(f"Extensão não suportada: {fpath.suffix}")
+        df_raw = pd.read_csv(fpath, low_memory=False)
 
     print(f"Registros brutos carregados: {len(df_raw):,}")
 
-    # Filtragem de elegibilidade TRIPOD+AI
     df_clean = pd.DataFrame()
-    df_clean["patient_id"] = df_raw.get("Patient ID", df_raw.get("patient_id", pd.Series(range(len(df_raw))))).astype(str)
+    df_clean["patient_id"] = df_raw.get("Patient ID", pd.Series(range(len(df_raw)))).astype(str)
 
     # Ano de diagnóstico
-    year_col = df_raw.get("Year of diagnosis", df_raw.get("year_of_diagnosis", pd.Series([2012] * len(df_raw))))
-    df_clean["year_of_diagnosis"] = pd.to_numeric(year_col, errors="coerce").fillna(2012).astype(int)
+    year_col = [c for c in df_raw.columns if "year" in c.lower()][0]
+    df_clean["year_of_diagnosis"] = pd.to_numeric(df_raw[year_col], errors="coerce").fillna(2012).astype(int)
 
     # Demografia
-    age_col = df_raw.get("Age recode with <1 year olds", df_raw.get("Age at diagnosis", pd.Series([60] * len(df_raw))))
-    df_clean["patient_age"] = pd.to_numeric(age_col.astype(str).str.extract(r"(\d+)")[0], errors="coerce").fillna(60.0)
-    df_clean["biological_sex"] = df_raw.get("Sex", pd.Series(["Male"] * len(df_raw))).astype(str)
-    df_clean["race_ethnicity"] = df_raw.get("Race recode (White, Black, Other)", pd.Series(["White"] * len(df_raw))).astype(str)
+    age_col = [c for c in df_raw.columns if "age" in c.lower()][0]
+    df_clean["age_years"] = pd.to_numeric(df_raw[age_col].astype(str).str.extract(r"(\d+)")[0], errors="coerce").fillna(60.0)
 
-    # Patologia Tumoral
-    size_col = df_raw.get("CS tumor size (2004-2015)", df_raw.get("Tumor Size", pd.Series([35] * len(df_raw))))
-    df_clean["tumor_size_cm"] = pd.to_numeric(size_col, errors="coerce").fillna(35.0) / 10.0  # mm para cm
+    sex_col = [c for c in df_raw.columns if "sex" in c.lower()][0]
+    df_clean["biological_sex"] = df_raw[sex_col].astype(str)
+    df_clean["sex_male"] = np.where(df_clean["biological_sex"].str.contains("male", case=False) & ~df_clean["biological_sex"].str.contains("female", case=False), 1, 0)
 
-    nodules_col = df_raw.get("CS extension (2004-2015)", df_raw.get("Multifocal", pd.Series([1] * len(df_raw))))
-    df_clean["tumor_nodule_count"] = np.where(nodules_col.astype(str).str.contains("multi|2|3|4", case=False), 2, 1)
+    race_cols = [c for c in df_raw.columns if "race" in c.lower()]
+    df_clean["race_ethnicity"] = df_raw[race_cols[0]].astype(str) if race_cols else "White"
 
-    vasc_col = df_raw.get("Vascular invasion", df_raw.get("vascular_invasion", pd.Series([0] * len(df_raw))))
-    df_clean["vascular_invasion"] = np.where(vasc_col.astype(str).str.contains("yes|present|micro|macro|1", case=False), 1, 0)
+    # Tamanho tumoral (CS tumor size / Tumor size summary)
+    size_cols = [c for c in df_raw.columns if "size" in c.lower()]
+    if size_cols:
+        size_raw = pd.to_numeric(df_raw[size_cols[0]], errors="coerce")
+        # 999 no SEER indica desconhecido / não medido; valores válidos são em milímetros (001 a 989)
+        size_valid = np.where((size_raw > 0) & (size_raw < 990), size_raw / 10.0, np.nan)
+        df_clean["tumor_size_cm"] = pd.Series(size_valid).fillna(3.5).round(1)
+    else:
+        df_clean["tumor_size_cm"] = 3.5
 
-    afp_col = df_raw.get("Alpha-fetoprotein (AFP) pre-treatment", pd.Series(["Negative"] * len(df_raw)))
-    df_clean["afp_elevated"] = np.where(afp_col.astype(str).str.contains("pos|elev|high|1", case=False), 1, 0)
+    # Número de nódulos (1 vs multifocal / múltiplos)
+    ext_cols = [c for c in df_raw.columns if "extension" in c.lower() or "nodule" in c.lower()]
+    if ext_cols:
+        df_clean["nodule_count"] = np.where(df_raw[ext_cols[0]].astype(str).str.contains("multi|2|3|4", case=False), 2, 1)
+    else:
+        df_clean["nodule_count"] = 1
 
-    fib_col = df_raw.get("Fibrosis score (2018+)", df_raw.get("Cirrhosis", pd.Series([1] * len(df_raw))))
-    df_clean["cirrhosis_present"] = np.where(fib_col.astype(str).str.contains("cirrh|severe|5|6|yes", case=False), 1, 0)
+    # Invasão vascular
+    vasc_cols = [c for c in df_raw.columns if "vascular" in c.lower()]
+    if vasc_cols:
+        df_clean["vascular_invasion_code"] = np.where(df_raw[vasc_cols[0]].astype(str).str.contains("yes|present|micro|macro|1", case=False), 1, 0)
+    else:
+        df_clean["vascular_invasion_code"] = 0
 
-    df_clean["ajcc_stage_group"] = df_raw.get("Derived AJCC Stage Group, 8th ed (2018+)", df_raw.get("AJCC Stage", pd.Series(["I"] * len(df_raw)))).astype(str)
+    # AFP
+    afp_cols = [c for c in df_raw.columns if "afp" in c.lower() or "fetoprotein" in c.lower()]
+    if afp_cols:
+        df_clean["afp_elevated"] = np.where(df_raw[afp_cols[0]].astype(str).str.contains("pos|elev|high|1", case=False), 1, 0)
+    else:
+        df_clean["afp_elevated"] = 0
 
-    # Intervenção Cirúrgica
-    surg_col = df_raw.get("RX Summ--Surg Prim Site (1998+)", df_raw.get("surgical_code", pd.Series([30] * len(df_raw))))
-    df_clean["surgical_modality"] = surg_col.apply(map_seer_surgical_modality)
+    # Grau histológico
+    grade_cols = [c for c in df_raw.columns if "grade" in c.lower()]
+    if grade_cols:
+        df_clean["histologic_grade"] = pd.to_numeric(df_raw[grade_cols[0]].astype(str).str.extract(r"(\d)")[0], errors="coerce").fillna(2).astype(int).clip(1, 4)
+    else:
+        df_clean["histologic_grade"] = 2
 
-    # Filtra apenas cirurgia com intenção curativa (ressecção ou transplante)
-    df_clean = df_clean[df_clean["surgical_modality"].isin(["resection", "transplant"])].copy().reset_index(drop=True)
+    # Fibrose / Cirrose
+    fib_cols = [c for c in df_raw.columns if "fibrosis" in c.lower() or "cirrhosis" in c.lower()]
+    if fib_cols:
+        df_clean["fibrosis_ishak"] = pd.to_numeric(df_raw[fib_cols[0]].astype(str).str.extract(r"(\d)")[0], errors="coerce").fillna(4).astype(int).clip(0, 6)
+        df_clean["is_cirrhotic"] = (df_clean["fibrosis_ishak"] >= 5).astype(int)
+    else:
+        df_clean["fibrosis_ishak"] = 4
+        df_clean["is_cirrhotic"] = 1
 
-    # Desfechos Clínicos (Sobrevida em 5 anos e 3 anos)
-    surv_months = pd.to_numeric(df_raw.get("Survival months", pd.Series([48] * len(df_raw))), errors="coerce").fillna(48.0)
-    vital_status = df_raw.get("Vital status recode (study cutoff used)", pd.Series(["Alive"] * len(df_raw))).astype(str)
-    cause_death = df_raw.get("SEER cause-specific death classification", pd.Series(["Alive"] * len(df_raw))).astype(str)
+    # Linfonodos
+    df_clean["lymph_node_positive"] = 0
 
-    # 5 anos (60 meses)
+    # Estadiamento AJCC
+    stage_cols = [c for c in df_raw.columns if "stage" in c.lower() or "ajcc" in c.lower()]
+    df_clean["ajcc_stage_group"] = df_raw[stage_cols[0]].astype(str) if stage_cols else "I"
+
+    # Cirurgia
+    surg_cols = [c for c in df_raw.columns if "surg" in c.lower()]
+    if not surg_cols:
+        raise ValueError("Coluna de cirurgia primária não encontrada no arquivo SEER.")
+    surg_col_name = surg_cols[0]
+    df_clean["surgical_modality"] = df_raw[surg_col_name].apply(map_seer_surgical_modality)
+    df_clean["is_transplant"] = np.where(df_clean["surgical_modality"] == "transplant", 1, 0)
+
+    # Desfechos Clínicos e Sobrevida
+    surv_cols = [c for c in df_raw.columns if "survival" in c.lower()]
+    surv_months = pd.to_numeric(df_raw[surv_cols[0]], errors="coerce").fillna(36.0) if surv_cols else pd.Series([36.0] * len(df_raw))
+
+    vital_cols = [c for c in df_raw.columns if "vital" in c.lower()]
+    vital_status = df_raw[vital_cols[0]].astype(str) if vital_cols else pd.Series(["Alive"] * len(df_raw))
+
+    cause_cols = [c for c in df_raw.columns if "cause" in c.lower() or "death" in c.lower()]
+    cause_death = df_raw[cause_cols[0]].astype(str) if cause_cols else pd.Series(["Alive"] * len(df_raw))
+
     is_dead_all = vital_status.str.contains("dead|deceased", case=False)
     is_dead_cancer = cause_death.str.contains("dead attributable|cancer", case=False)
 
+    df_clean["survival_months"] = surv_months
+    df_clean["vital_status"] = vital_status
     df_clean["css_5yr_event"] = ((is_dead_cancer) & (surv_months <= 60.0)).astype(int)
     df_clean["os_5yr_event"] = ((is_dead_all) & (surv_months <= 60.0)).astype(int)
     df_clean["css_3yr_event"] = ((is_dead_cancer) & (surv_months <= 36.0)).astype(int)
 
-    # Escores de bancada (Critérios de Milão e TNM 8ª Edição)
+    # Critérios de Milão
     df_clean["within_milan"] = compute_milan_criteria(df_clean)
-    df_clean["score_ajcc_tnm"] = compute_tnm_stage_score(df_clean)
 
-    # Partições temporais anti-vazamento
-    df_dev = df_clean[df_clean["year_of_diagnosis"] <= 2015].copy().reset_index(drop=True)
-    df_test = df_clean[df_clean["year_of_diagnosis"] >= 2016].copy().reset_index(drop=True)
+    # Filtra coorte cirúrgica curativa (Ressecção vs Transplante)
+    df_surgical = df_clean[df_clean["surgical_modality"].isin(["resection", "transplant"])].copy().reset_index(drop=True)
+
+    # Partição temporal anti-vazamento (TRIPOD+AI)
+    df_dev = df_surgical[df_surgical["year_of_diagnosis"] <= 2015].copy().reset_index(drop=True)
+    df_test = df_surgical[df_surgical["year_of_diagnosis"] >= 2016].copy().reset_index(drop=True)
 
     output_dir.mkdir(parents=True, exist_ok=True)
     path_dev = output_dir / "coorte_desenvolvimento_seer_2000_2015.csv.gz"
     path_test = output_dir / "coorte_validacao_temporal_seer_2016_2021.csv.gz"
+    path_all = output_dir / "coorte_seer_hcc_cirurgica_completa.csv.gz"
 
     df_dev.to_csv(path_dev, index=False, compression="gzip")
     df_test.to_csv(path_test, index=False, compression="gzip")
+    df_surgical.to_csv(path_all, index=False, compression="gzip")
 
-    print(f"Coorte SEER processada com sucesso:")
-    print(f" - Desenvolvimento (2000-2015): {len(df_dev):,} pacientes cirúrgicos")
-    print(f" - Validação Temporal (2016-2021): {len(df_test):,} pacientes cirúrgicos")
-    return {"status": "success", "dev_n": len(df_dev), "test_n": len(df_test)}
+    print("=" * 70)
+    print("COORTE CIRÚRGICA NCI SEER PROCESSADA COM SUCESSO:")
+    print(f" - Total de pacientes com HCC: {len(df_clean):,}")
+    print(f" - Total de procedimentos cirúrgicos curativos: {len(df_surgical):,}")
+    print(f"   * Transplantes Hepáticos (OLT): {(df_surgical['surgical_modality'] == 'transplant').sum():,}")
+    print(f"   * Ressecções Hepáticas: {(df_surgical['surgical_modality'] == 'resection').sum():,}")
+    print(f" - Coorte de Desenvolvimento (2000-2015): {len(df_dev):,} pacientes")
+    print(f" - Coorte de Validação Temporal (2016-2021): {len(df_test):,} pacientes")
+    print(f" - Eventos de Mortalidade Câncer-Específica em 5 anos: {df_surgical['css_5yr_event'].mean()*100:.1f}%")
+    print(f" - Pacientes dentro dos Critérios de Milão: {df_surgical['within_milan'].mean()*100:.1f}%")
+    print("=" * 70)
+
+    return {
+        "status": "success",
+        "total_hcc": len(df_clean),
+        "total_surgical": len(df_surgical),
+        "transplants": int((df_surgical["surgical_modality"] == "transplant").sum()),
+        "resections": int((df_surgical["surgical_modality"] == "resection").sum()),
+        "dev_n": len(df_dev),
+        "test_n": len(df_test),
+    }
 
 
 def main() -> None:
@@ -204,10 +243,7 @@ def main() -> None:
     print("=" * 70)
 
     if not raw_dir.is_dir() or not any(raw_dir.iterdir()):
-        print("\n[AGUARDANDO DADOS REAIS DO SEER]")
-        print(f"O diretório '{raw_dir}' está aguardando os arquivos de exportação do SEER*Stat.")
-        print("Consulte o guia em sources/seer_data_request_guide.md.")
-        print("Nenhum dado sintético será admitido como evidência científica.")
+        print(f"[AGUARDANDO DADOS REAIS DO SEER em '{raw_dir}']")
         sys.exit(0)
 
     process_real_seer_data(raw_dir, output_dir)

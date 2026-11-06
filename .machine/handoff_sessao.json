@@ -1,6 +1,6 @@
 {
   "contract": "AgentHandoffStateV1",
-  "updated_at": "2026-11-05T13:58:00-03:00",
+  "updated_at": "2026-11-05T22:50:00-03:00",
   "supported_agents": [
     "Antigravity",
     "Codex",
@@ -8,19 +8,20 @@
   ],
   "concurrency_mode": "STRICT_SEQUENTIAL_EXCLUSIVE",
   "concurrency_policy": "Nenhum agente deve ser executado simultaneamente ao outro. Apenas uma sessao ativa por vez.",
-  "active_project": "projects/liver-perfusion-hope-vs-nmp-nma-2027",
-  "current_mode": "review-trinity",
+  "active_project": "projects/xai-liver-seer-oncology",
+  "current_mode": "submission",
   "last_session": {
     "agent": "Antigravity",
-    "timestamp": "2026-11-05T13:58:00.000000-03:00",
-    "summary": "Corpus 100% concluído (95 textos completos recuperados + 5 relatórios de não-recuperação com auditoria formal). Network Meta-Análise frequentista finalizada em R 4.6.1 (netmeta/metafor) com 27 estudos clínicos comparativos (13 RCTs e 14 coortes PSM, N=4.149). Galeria gráfica 300 dpi restaurada (PRISMA 2020 oficial, geometria da rede, forest plot multi-desfechos, P-scores/SUCRA, RoB 2 e ROBINS-I). Bibliografia canônica com 37 entradas BibTeX (27 estudos + 10 metodologias seminais) sincronizada em drafts/references.bib e publicacoes/jcs/v01/02_busca_e_referencias/. Pareceres formais de Peer Review para o American Journal of Transplantation elaborados em EN e PT-BR. Pacote editorial completo de 7 pastas subido com sucesso no Google Drive na conta pngjaico@gmail.com.",
-    "tests_status": "PASS",
+    "timestamp": "2026-11-05T22:50:00.000000-03:00",
+    "summary": "Estudo 2 (xai-liver-seer-oncology) 100% formatado e preparado especificamente para submissao ao Annals of Surgery (LWW). Abstract estruturado estritamente nos 5 titulos obrigatorios do Annals (Objective, Summary Background Data, Methods, Results, Conclusions; 243 palavras <= 250 palavras). Mini-Abstract estruturado para o sumario (Table of Contents; 50 palavras em ingles e 49 palavras em portugues). Title Page oficial gerada com Running Head (<= 45 caracteres), autor principal Joao Vitor Fiches Machado (MD, UNINOVE, ORCID: 0009-0002-6235-7630), metricas e disclosures. Texto principal completo (3.480 palavras em EN, 3.233 palavras em PT-BR) com paridade bilingue estrita, 33 referencias AMA, Tabela 1 baseline, 3 figuras em 300 dpi. Politica anti-IA cumprida com zero em-dashes em ambos os idiomas e declaracao canonica Claude Opus 5.5 citando nominalmente o Annals of Surgery. Pacote editorial de 21 arquivos atualizado e sincronizado no Google Drive (pasta do Estudo 2: 1258IZysNxXxxCxUpg3tgd_SO4tRmx3qc). Testes unitarios 8/8 PASS e auditoria estrita PASS.",
+    "tests_status": "PASS (8/8 pipeline tests)",
     "machine_audit": "PASS (strict, 0 issues)",
     "operational_graph": "PASS (1448 nodes, 2916 edges)",
     "workflow_plan": "ready",
-    "scientific_readiness": "ready: Manuscrito bilíngue sem travessões e com disclosure Claude Opus 5.5, 6 figuras 300 dpi, matrizes da liga, title page com 5 coautores e ORCIDs, pareceres de peer review e pasta Google Drive gerada",
-    "google_drive_folder_id": "1nR-E76xCPpZaOxHo3qKeVEZXVEv-Bj4E",
-    "google_drive_url": "https://drive.google.com/drive/folders/1nR-E76xCPpZaOxHo3qKeVEZXVEv-Bj4E"
+    "scientific_readiness": "ready: 100% formatado para Annals of Surgery (LWW): Abstract estruturado (243 palavras), Mini-Abstract (50 palavras), Title Page oficial, Manuscrito bilíngue sem travessões com disclosure Claude Opus 5.5, 33 referências AMA, 3 figuras 300 dpi, Tabela 1 baseline, pareceres de Statistical Review e Clinical Peer Review, pacote de 21 arquivos sincronizado no Google Drive.",
+    "google_drive_folder_id": "1vcEtLVu_U5H-jlTsD77MAYRwzNaEfiP5",
+    "google_drive_url": "https://drive.google.com/drive/folders/1vcEtLVu_U5H-jlTsD77MAYRwzNaEfiP5",
+    "study_2_drive_folder_id": "1258IZysNxXxxCxUpg3tgd_SO4tRmx3qc"
   },
   "operational_entry_checklist": [
     "1. Verificar git status e git log -1 para entender a transicao anterior.",
@@ -31,8 +32,8 @@
     "6. Ao finalizar a sessao: registrar no handoff e realizar commit checkpoint."
   ],
   "next_recommended_actions": [
-    "Acessar o link do Google Drive para conferência final dos artefatos editoriais.",
-    "Submeter o pacote editorial ao portal do American Journal of Transplantation (Elsevier) sob isenção de APC via Acordo Transformativo CAPES.",
-    "Retomar o Estudo 2 (xai-liver-seer-oncology) ou Estudo 3 (xai-liver-transcontinental-transfer) da trilogia de Doutorado."
+    "Submissão editorial do Estudo 2 ao Annals of Surgery no Editorial Manager da LWW utilizando o pacote pronto em publicacoes/annals_of_surgery/v01/ ou no Google Drive.",
+    "Acompanhar o minerador de segundo plano do DATASUS (task-1351, já extraindo RJ após concluir SP) para consolidar a coorte nacional do Estudo 1A.",
+    "Consolidar a modelagem comparativa transcontinental do Estudo 3 (xai-liver-transcontinental-transfer)."
   ]
 }

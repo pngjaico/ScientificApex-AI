@@ -216,6 +216,27 @@ ROUTE_RULES: tuple[dict[str, Any], ...] = (
         ),
     },
     {
+        "skill": "journal-submission-packager",
+        "triggers": (
+            "pasta no drive",
+            "pasta do drive",
+            "criar pasta no drive",
+            "submissao para revista",
+            "arquivos para submissao",
+            "pacote de submissao",
+            "journal submission package",
+            "submission package",
+            "drive submission",
+            "preparar submissao",
+            "entregar para a revista",
+            "submissao editorial",
+        ),
+        "reason": (
+            "Cria o pacote academico canonico de submissao em 7 pastas limpas no Google Drive "
+            "com conversao em Word (docx), figuras 300 dpi, checklists e tabelas editoriais."
+        ),
+    },
+    {
         "skill": "machine-continuous-learner",
         "triggers": (
             "learn",
